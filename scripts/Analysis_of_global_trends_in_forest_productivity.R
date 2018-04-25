@@ -2,6 +2,7 @@
 # Purpose: Statistical analysis to explore global trends in forest Productivity
 # Inputs:
 # - ForC_simplified table
+# - VARIABLES table
 # Outputs:
 # - 
 # Developped by: Valentine Herrmann - HerrmannV@si.edu in Arpil 2018
@@ -20,6 +21,7 @@ library(lme4)
 
 # Load data ####
 ForC_simplified <- read.csv("raw.data/ForC_simplified.csv", stringsAsFactors = F)
+VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
 
 na_codes <- c("NA", "NI", "NRA", "NaN", "NAC") 
 my_is.na <- function(x) { is.na(x) | x %in% na_codes}
@@ -36,10 +38,14 @@ ForC_simplified$min.db <- as.numeric(ForC_simplified$min.db)
 ForC_simplified$plot.name <- addNA(ForC_simplified$plot.name)
 ForC_simplified$geographic.area <- addNA(ForC_simplified$geographic.area)
 
+## change sign of NEE 
+ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$mean <- -ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$mean
+
 # Control for some factors ####
 
 ## Keep only age >=100 (or 999)
-age.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+ages.not.999.nor.0.nor.na <- !ForC_simplified$stand.age %in% 999 &  !ForC_simplified$stand.age %in% 0 & !is.na(ForC_simplified$stand.age)
+age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
@@ -66,66 +72,203 @@ deciduous_codes <- c("2TDN", "2TDB", "2TD")
 
 ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% evergreen_codes, "evergreen",
                                     ifelse(ForC_simplified$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
+
+
+# Prepare some variables ####
+
+## response variable list (fluxes) ####
+all.response.variables <- VARIABLES[VARIABLES$variable.type %in% "flux",]$variable.name #c("GPP", "NPP", "ANPP", "ANPP_woody", "BNPP_root_fine")
+all.response.variables <- gsub("(_OM|_C)", "", all.response.variables)
+all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
+all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
+
+response.variables.groups <- list(c("NEE", "GPP", "NPP", "ANPP", "delta.agb", "BNPP_root"),
+                                  c("ANPP_woody",  "ANPP_foliage", "ANPP_woody_branch", "ANPP_woody_stem", "NPP_woody", "NPP_understory"),
+                                  c("ANPP_repro", "woody.mortality_ag", "ANPP_litterfall", "BNPP_root_fine", "BNPP_root_coarse", "TBCF", "ANPP_folivory"),
+                                  c("R_auto_ag", "R_auto", "R_eco", "R_soil", "R_soil_het", "R_auto_wood", "R_auto_foliage", "R_auto_root"))
+all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
+
+## fixed variables list ####
+fixed.variables <- c("mat", "map", "lat", "stand.age", "leaf.type", "leaf.phenology")
+
 ## prepare results table
 
 all.results <- NULL
-# Run analysis ####
-
-# Effect of MAT ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody", "BNPP_root_fine")){ #, "ANPP_stem"
-fixed.v = "MAT"
-
-if(response.v %in% "GPP") variable.to.keep  <- response.v
-if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-if(response.v %in% "BNPP_root_fine") variable.to.keep  <- response.v
-
-response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-
-fixed.to.keep <- !is.na(ForC_simplified$mat)
-
-df <- ForC_simplified[response.to.keep & age.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
 
 
-tiff(paste0("figures/Effect_of_Mean_Annual_Temperature_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-plot(mean ~ mat, data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
 
-mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-mod.full <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df)
-significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
+# Run analysis an plot ####
+for(fixed.v in fixed.variables){
+  
+  tiff(file = paste("figures/Effect of", fixed.v, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  
+  par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
+  print(fixed.v)
+  
+  categorical <- ifelse(fixed.v %in% c("leaf.type", "leaf.phenology"), TRUE, FALSE)
+  
+  ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.groups),]$mean)
+  
+  pannel.nb <- 1
+  
+  for(response.variables in response.variables.groups) {
+    
+    
+    response.variables.col <- 1:length(response.variables)
+  
+    first.plot <- TRUE
+    
+    for (response.v in response.variables){ #, "ANPP_stem"
+      
+      print(response.v)
+      
+      if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+      if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
+      if(!response.v %in% c("NEE", "NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+      
+   
+      response.v.color <- response.variables.col[which(response.variables %in% response.v)]
+      
+      rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+      
+      fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+      
+      if(categorical) fixed.no.na <- fixed.no.na & !ForC_simplified[, fixed.v] %in% c("Other", "mixed")
+      
+      # drop age only for the analysis that has age as a fixed variable
+      if(fixed.v %in% "stand.age") drop.ages.not.999.nor.0.nor.na <- ages.not.999.nor.0.nor.na
+      if(!fixed.v %in% "stand.age") drop.ages.not.999.nor.0.nor.na <- rep(TRUE, nrow(ForC_simplified))
+      
+      # subset to keep only what we need
+      df <- ForC_simplified[rows.with.response & drop.ages.not.999.nor.0.nor.na & age.greater.than.100 & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+      
+      
+      if(all(responses.to.keep %in% c("NEE", "NEP"))) {
+        # multiply NEP  by -1
+        m <- match(df$variable.name, responses.to.keep)
+        df$mean <- df$mean *c(1,-1)[m]
+      }
+      
+      
+      if(nrow(df) > 30 & ifelse(!categorical | (categorical & length(unique(df[, fixed.v])) >1), TRUE, FALSE)){
+        df$fixed <- df[, fixed.v]
+        
+        
+        # Deal with categorical levels
+        
+        
+        if(categorical){
+          
+          if(fixed.v %in% "leaf.type") categories <- c("needleleaf", "broadleaf")
+          if(fixed.v %in% "leaf.phenology") categories <- c("evergreen", "deciduous")
+          if(!fixed.v %in% c("leaf.type", "leaf.phenology")) stop("Error: need to code here")
+          
+          
+          df <- df[df[, fixed.v]%in% categories,]
+          df$fixed <- factor(df$fixed, levels = categories)
+          
+        }
+        
+        # model
+        
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+        
+        if(fixed.v %in% "stand.age") mod.full <- lmer(mean ~ log10(fixed) + (1|geographic.area/plot.name), data = df)
+        if(!fixed.v %in% "stand.age") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+        
+        significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        
+        
+        # plot 
+        
+        if(!categorical){
+          if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, log = ifelse(fixed.v %in% "stand.age", "x", ""), xaxt = "n", yaxt = "n")
+          if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+          
+          abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effet, 1, 2))
+          
+          if(first.plot) {
+            axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
+            axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
+          }
+        }
+        
+        if(categorical){
+          
+          df$fixed_cat <- paste(df$fixed, response.v, sep = "_")
+          df$fixed_cat <- factor(df$fixed_cat, levels = apply(expand.grid(categories, response.variables), 1, paste, collapse = "_"))
+          
+          categorical.color <- 
+          
+          b <- boxplot(mean ~ fixed_cat, data = df,  xlab = "", ylab = "", ylim = ylim, add = !first.plot, xaxt = "n", yaxt = "n",  col = rgb(t(col2rgb(response.v.color)), maxColorValue = 255, alpha = c(255, 100)))
+          
+          
+          if(first.plot) {
+            axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
+            axis(1, at = 1:nlevels(df$fixed_cat), labels = F)
+          }
+            # if(pannel.nb %in% c(3,4)) text(x = 1:nlevels(df$fixed_cat), y = ylim[1]-(diff(ylim)/8), labels = rep(categories, nlevels(df$fixed_cat)/2), srt = 45, xpd = T)
+          
+          points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effet, "grey", response.v.color))
+        }
+        
+        
+        
+        first.plot <- FALSE
+    
+        
+    
+        
+        r <- round(fixef(mod.full), 2)
+        equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+        
+        mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color)
+        
+        # dev.off()
+        
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
+        
+        all.results <- rbind(all.results, results)
+      }
+      
+    }
+    
+    
+    pannel.nb <- pannel.nb +1
+    
+    
+  }
 
-
-legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
-
-r <- round(fixef(mod.full), 2)
-equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
-
-mtext(side = 3, line = -1, text = equation, adj = 0.1)
-
-dev.off()
-results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
-
-all.results <- rbind(all.results, results)
+  if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
+  if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effet", "non-significant effect", categories), bty = "n")
+  
+  title (paste("Effect of", fixed.v), outer = T, line = 1)
+  mtext(side = 1, line = ifelse(categorical, 4, 3), text = fixed.v, outer = T)
+  mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
+  
+  dev.off()
 }
+### look at results ####
+
+all.results
 
 # Effect of MAT + AGE####
-
+first.plot <- TRUE
 for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   fixed.v = "MAT + AGE"
   
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
+  if(response.v %in% "GPP") responses.to.keep  <- response.v
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+  if(response.v %in% "ANPP_woody") responses.to.keep  <- response.v
   
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
+  rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
   
-  fixed.to.keep <- !is.na(ForC_simplified$mat) & !is.na(ForC_simplified$stand.age)
+  fixed.no.na <- !is.na(ForC_simplified$mat) & !is.na(ForC_simplified$stand.age)
   
-  df <- ForC_simplified[response.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
+  df <- ForC_simplified[rows.with.response & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
   
   mod.full <- lmer(mean ~ mat * stand.age +(1|geographic.area/plot.name), data = df)
   significant.effet.interaction <- which.min(drop1(mod.full)$AIC) == 1
@@ -138,20 +281,20 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   if( significant.effet.interaction) stop ("code here")
   mod.full <- lmer(mean ~ mat * stand.age +(1|geographic.area/plot.name), data = df)
   significant.effet <- which.min(drop1(mod.full)$AIC) == 1
-
+  
   max.effect.v <- rownames(drop1(mod.full))[which.max(drop1(mod.full)$AIC)]
   other.v <- rownames(drop1(mod.full))[-which.max(drop1(mod.full)$AIC)][2]
-
+  
   plot(df$mean ~ df$mat, main = paste(response.v, "vs", max.effect.v), ylab = response.v, cex = sqrt(df$stand.age)/10)
-
+  
   
   newDat1 <- data.frame(mat = seq(min(df$mat), max(df$mat), length.out = 100),
-                       stand.age = quantile(df$stand.age, 0.25))
+                        stand.age = quantile(df$stand.age, 0.25))
   newDat2 <- data.frame(mat = seq(min(df$mat), max(df$mat), length.out = 100),
                         stand.age = quantile(df$stand.age, 0.5))
   newDat3 <-data.frame(mat = seq(min(df$mat), max(df$mat), length.out = 100),
                        stand.age = quantile(df$stand.age, 0.75))
-
+  
   fit1 <- predict(mod.full, newDat1, re.form =  NA)
   fit2 <- predict(mod.full, newDat2, re.form =  NA)
   fit3 <- predict(mod.full, newDat3, re.form =  NA)
@@ -161,72 +304,32 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   lines(fit3~ newDat1$mat, lwd = 3)
   
   legend("topright", lwd = 1:3, legend = c("age 1st quartile", "age median", "age 3rd quartile"), bty = "n")
-
-  r <- round(fixef(mod.full), 2)
-  equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
-
-  mtext(side = 3, line = -1, text = equation, adj = 0.1)
-
-  results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
-
-  all.results <- rbind(all.results, results)
-}
-
-# Effect of LAT ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
-  fixed.v = "LAT"
-  
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-  
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-  
-  fixed.to.keep <- !is.na(ForC_simplified$lat)
-  
-  df <- ForC_simplified[response.to.keep & age.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
-  
-  
-  tiff(paste0("figures/Effect_of_Latitude_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-  
-  plot(mean ~ abs(lat), data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
-  
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <- lmer(mean ~ lat + (1|geographic.area/plot.name), data = df)
-  significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
-  
-  
-  legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
   
   r <- round(fixef(mod.full), 2)
   equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
   
   mtext(side = 3, line = -1, text = equation, adj = 0.1)
   
-  dev.off()
   results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
   
   all.results <- rbind(all.results, results)
 }
 
 # Effect of LAT + AGE####
-
+first.plot <- TRUE
 for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   fixed.v = "LAT + AGE"
   
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
+  if(response.v %in% "GPP") responses.to.keep  <- response.v
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+  if(response.v %in% "ANPP_woody") responses.to.keep  <- response.v
   
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
+  rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
   
-  fixed.to.keep <- !is.na(ForC_simplified$lat) & !is.na(ForC_simplified$stand.age)
+  fixed.no.na <- !is.na(ForC_simplified$lat) & !is.na(ForC_simplified$stand.age)
   
-  df <- ForC_simplified[response.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
+  df <- ForC_simplified[rows.with.response & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
   
   mod.full <- lmer(mean ~ lat * stand.age +(1|geographic.area/plot.name), data = df)
   significant.effet.interaction <- which.min(drop1(mod.full)$AIC) == 1
@@ -265,153 +368,3 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   # all.results <- rbind(all.results, results)
 }
 
-# Effect of leaf.type ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
-  fixed.v = "leaf type"
-  
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-  
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-  
-  fixed.to.keep <- !ForC_simplified$leaf.type %in% "other"
-  
-  df <- ForC_simplified[response.to.keep & age.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
-  
-  tiff(paste0("figures/Effect_of_leaf_type_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-  
-  
-  boxplot(mean ~ leaf.type, data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
-  
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <- lmer(mean ~ leaf.type + (1|geographic.area/plot.name), data = df)
-  significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[c(2:3)]) ~ c(1:3), col = "red", pch = ifelse(significant.effet, 16, 1))
-  
-  legend("topright", col = "red", pch = c(16,1), legend = c("significant effet", "non-significant effect"), bty = "n")
-  
-  dev.off()
-}
-
-# Effect of AGE ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
-  fixed.v = "AGE"
-  
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-  
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-  
-  fixed.to.keep <- !is.na(ForC_simplified$stand.age)
-  
-  df <- ForC_simplified[response.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
-  
-  tiff(paste0("figures/Effect_of_stand_age_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-  
-  
-  plot(mean ~ stand.age, data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
-  
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <- lmer(mean ~ stand.age + (1|geographic.area/plot.name), data = df)
-  significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
-  
-  
-  legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
-  
-  
-  r <- round(fixef(mod.full), 2)
-  equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
-  
-  mtext(side = 3, line = -1, text = equation, adj = 0.1)
-  
-  dev.off()
-  results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = "none", equation = equation, significant = significant.effet)
-  
-  all.results <- rbind(all.results, results)
-}
-
-# Effect of MAP ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
-  fixed.v = "MAP"
-  
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-  
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-  
-  fixed.to.keep <- !is.na(ForC_simplified$map)
-  
-  df <- ForC_simplified[response.to.keep & age.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
-  
-  tiff(paste0("figures/Effect_of_Mean_annual_Precipitation_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-  
-  
-  plot(mean ~ map, data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
-  
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <- lmer(mean ~ map + (1|geographic.area/plot.name), data = df)
-  significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
-  
-  
-  legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
-  
-  
-  
-  r <- round(fixef(mod.full), 2)
-  equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
-  
-  mtext(side = 3, line = -1, text = equation, adj = 0.1)
-  
-  dev.off()
-  
-  results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
-  
-  all.results <- rbind(all.results, results)
-  
-}
-
-# Effect of leaf.phenology ####
-
-for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
-  fixed.v = "leaf phenology"
-  
-  if(response.v %in% "GPP") variable.to.keep  <- response.v
-  if(response.v %in% "NPP") variable.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-  if(response.v %in% "ANPP") variable.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_woody") variable.to.keep  <- response.v
-  
-  response.to.keep <- ForC_simplified$variable.name %in% variable.to.keep
-  
-  fixed.to.keep <- !ForC_simplified$leaf.phenology %in% "other"
-  
-  df <- ForC_simplified[response.to.keep & age.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.to.keep, ]
-  
-  tiff(paste0("figures/Effect_of_Leaf_phenologye_on", response.v, ".tiff"), width = 2250, height = 1500, units = "px", res = 300)
-  
-  
-  boxplot(mean ~ leaf.phenology, data = df, main = paste(response.v, "vs", fixed.v), ylab = response.v)
-  
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <- lmer(mean ~ leaf.phenology + (1|geographic.area/plot.name), data = df)
-  significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[c(2:3)]) ~ c(1:3), col = "red", pch = ifelse(significant.effet, 16, 1))
-  
-  legend("topright", col = "red", pch = c(16,1), legend = c("significant effet", "non-significant effect"), bty = "n")
-  
-  dev.off()
-}
-
-### look at results ####
-
-all.results
