@@ -1,207 +1,193 @@
 "response","fixed","random","Age.filter","equation","significant"
-"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = 1.69 + mat x -0.04",FALSE
-"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 8.19 + mat x 0.9",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4 + mat x 0.24",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 2.36 + mat x 0.18",TRUE
-"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.54 + mat x 0.07",TRUE
-"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.86 + mat x 0.1",TRUE
-"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.8 + mat x 0.01",FALSE
-"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 0.77 + mat x 0.08",TRUE
+"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = 0.75 + mat x -0.01",FALSE
+"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 8.17 + mat x 0.89",TRUE
+"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 3.74 + mat x 0.25",TRUE
+"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 2.07 + mat x 0.19",TRUE
+"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.09 + mat x 0.08",TRUE
+"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.6 + mat x 0.1",TRUE
+"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.34 + mat x 0.02",FALSE
+"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 0.33 + mat x 0.1",TRUE
 "NPP_woody","mat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4 + mat x -0.01",FALSE
-"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 1.34 + mat x 0.1",TRUE
-"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1 + mat x 0.09",TRUE
-"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.45 + mat x 0.06",TRUE
-"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.31 + mat x 0.01",FALSE
-"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 5.09 + mat x 0.92",TRUE
-"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 4.87 + mat x 0.36",TRUE
-"R_soil_het","mat","geographic.area/plot.name",">=100 yrs","R_soil_het = 2.22 + mat x 0.26",TRUE
-"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 1.09 + map x 0",FALSE
-"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 11.47 + map x 0.01",TRUE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 7.15 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 4.74 + map x 0",FALSE
-"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.24 + map x 0",FALSE
+"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 2.06 + mat x 0.07",TRUE
+"woody.mortality_ag","mat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = -0.05 + mat x 0.11",TRUE
+"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.04 + mat x 0.09",TRUE
+"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.47 + mat x 0.06",TRUE
+"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.24 + mat x 0.01",FALSE
+"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 6.45 + mat x 0.88",TRUE
+"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 5.46 + mat x 0.34",TRUE
+"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 0.34 + map x 0",FALSE
+"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 12.98 + map x 0.01",TRUE
+"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 7.16 + map x 0",FALSE
+"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 4.95 + map x 0",TRUE
+"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.27 + map x 0",FALSE
 "ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.1 + map x 0",FALSE
-"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 1.08 + map x 0",FALSE
-"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.48 + map x 0",FALSE
+"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.79 + map x 0",FALSE
+"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.51 + map x 0",FALSE
 "NPP_woody","map","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.88 + map x 0",FALSE
-"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.44 + map x 0",TRUE
-"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.52 + map x 0",TRUE
-"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.55 + map x 0",TRUE
-"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.25 + map x 0",TRUE
-"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.36 + map x 0",FALSE
-"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 5.54 + map x 0.01",TRUE
-"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 5.31 + map x 0",TRUE
-"R_soil_het","map","geographic.area/plot.name",">=100 yrs","R_soil_het = 2.53 + map x 0",TRUE
-"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 1.2 + lat x -0.01",FALSE
-"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 34.57 + lat x -0.43",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.5 + lat x -0.11",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 6.55 + lat x -0.06",TRUE
-"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.11 + lat x -0.02",FALSE
-"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.11 + lat x -0.03",TRUE
-"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.93 + lat x -0.01",FALSE
-"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.94 + lat x -0.02",TRUE
+"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.59 + map x 0",TRUE
+"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.43 + map x 0",FALSE
+"woody.mortality_ag","map","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.3 + map x 0",FALSE
+"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.66 + map x 0",FALSE
+"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.38 + map x 0",TRUE
+"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.31 + map x 0",FALSE
+"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 7.44 + map x 0.01",TRUE
+"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 5.86 + map x 0",TRUE
+"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 1.05 + lat x -0.01",FALSE
+"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 34.77 + lat x -0.45",TRUE
+"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.57 + lat x -0.12",TRUE
+"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 6.61 + lat x -0.07",TRUE
+"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.15 + lat x -0.03",TRUE
+"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.07 + lat x -0.04",TRUE
+"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.79 + lat x -0.01",TRUE
+"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.95 + lat x -0.02",TRUE
 "NPP_woody","lat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.87 + lat x -0.1",TRUE
-"NPP_understory","lat","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.15 + lat x 0.01",FALSE
-"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.99 + lat x -0.04",FALSE
-"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.29 + lat x 0.01",TRUE
-"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 3.66 + lat x -0.04",TRUE
-"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.21 + lat x -0.03",TRUE
-"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.44 + lat x 0",FALSE
-"R_auto","lat","geographic.area/plot.name",">=100 yrs","R_auto = 23.28 + lat x -0.29",TRUE
-"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 31.35 + lat x -0.43",TRUE
-"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 15.35 + lat x -0.15",TRUE
-"R_soil_het","lat","geographic.area/plot.name",">=100 yrs","R_soil_het = 9.46 + lat x -0.12",TRUE
-"NEE","stand.age","geographic.area/plot.name",">=100 yrs","NEE = -4.55 + stand.age x 2.42",FALSE
-"GPP","stand.age","geographic.area/plot.name",">=100 yrs","GPP = 32.97 + stand.age x -9.24",TRUE
-"NPP","stand.age","geographic.area/plot.name",">=100 yrs","NPP = 8.53 + stand.age x -1.53",FALSE
-"ANPP","stand.age","geographic.area/plot.name",">=100 yrs","ANPP = 6.23 + stand.age x -1.29",FALSE
-"ANPP_woody","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.71 + stand.age x -0.66",FALSE
-"ANPP_foliage","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.14 + stand.age x -0.77",FALSE
-"ANPP_woody_branch","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 1.49 + stand.age x -0.37",FALSE
-"ANPP_woody_stem","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 4.49 + stand.age x -1.1",FALSE
-"NPP_understory","stand.age","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.53 + stand.age x 0.41",FALSE
-"BNPP_root","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.45 + stand.age x 0.02",FALSE
-"BNPP_root_fine","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.96 + stand.age x 0.26",FALSE
-"BNPP_root_coarse","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.38 + stand.age x 0.07",FALSE
-"R_eco","stand.age","geographic.area/plot.name",">=100 yrs","R_eco = 1.5 + stand.age x 3.53",FALSE
-"R_soil","stand.age","geographic.area/plot.name",">=100 yrs","R_soil = -2.89 + stand.age x 5.48",FALSE
-"R_soil_het","stand.age","geographic.area/plot.name",">=100 yrs","R_soil_het = -2.06 + stand.age x 2.77",TRUE
-"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.16 + leaf.type x 0.75",FALSE
-"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.71 + leaf.type x 14.76",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 3.84 + leaf.type x 4.21",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 2.96 + leaf.type x 2.15",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.09 + leaf.type x 0.63",FALSE
-"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.31 + leaf.type x 1.39",TRUE
-"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.41 + leaf.type x 0.56",TRUE
-"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.26 + leaf.type x 0.35",FALSE
-"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.38 + leaf.type x 0.02",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.34 + leaf.type x 1.15",TRUE
-"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.34 + leaf.type x 1.27",TRUE
-"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.64 + leaf.type x -0.24",TRUE
-"R_auto","leaf.type","geographic.area/plot.name",">=100 yrs","R_auto = 8.41 + leaf.type x 7.56",TRUE
-"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 9.98 + leaf.type x 11.71",TRUE
-"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 8.55 + leaf.type x 3.59",TRUE
-"R_soil_het","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil_het = 3.95 + leaf.type x 3.1",TRUE
-"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.43 + leaf.phenology x 0.3",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 21 + leaf.phenology x -5.58",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 6.72 + leaf.phenology x -0.71",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.07 + leaf.phenology x -0.15",FALSE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.48 + leaf.phenology x -0.24",FALSE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.4 + leaf.phenology x -0.62",FALSE
-"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.71 + leaf.phenology x 0.26",FALSE
-"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.66 + leaf.phenology x -0.92",TRUE
+"NPP_understory","lat","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.16 + lat x 0.01",FALSE
+"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.82 + lat x -0.01",FALSE
+"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.3 + lat x 0",FALSE
+"woody.mortality_ag","lat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.55 + lat x -0.02",FALSE
+"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 3.69 + lat x -0.05",TRUE
+"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.11 + lat x -0.03",TRUE
+"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.42 + lat x 0",FALSE
+"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 31.77 + lat x -0.43",TRUE
+"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 15.08 + lat x -0.14",TRUE
+"NEE","stand.age","geographic.area/plot.name",">=100 yrs","NEE = -0.44 + stand.age x 0.34",FALSE
+"GPP","stand.age","geographic.area/plot.name",">=100 yrs","GPP = 37.12 + stand.age x -11.05",FALSE
+"NPP","stand.age","geographic.area/plot.name",">=100 yrs","NPP = 5.47 + stand.age x -0.3",FALSE
+"ANPP","stand.age","geographic.area/plot.name",">=100 yrs","ANPP = 4.78 + stand.age x -0.72",FALSE
+"ANPP_woody","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody = -2.32 + stand.age x 1.75",TRUE
+"ANPP_foliage","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.14 + stand.age x 0.07",FALSE
+"ANPP_woody_stem","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 4.6 + stand.age x -1.04",FALSE
+"NPP_understory","stand.age","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.33 + stand.age x 0.32",FALSE
+"BNPP_root","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root = 0.96 + stand.age x 0.19",FALSE
+"BNPP_root_fine","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.07 + stand.age x 0.2",FALSE
+"BNPP_root_coarse","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = -0.09 + stand.age x 0.3",FALSE
+"R_eco","stand.age","geographic.area/plot.name",">=100 yrs","R_eco = 4.19 + stand.age x 2.42",FALSE
+"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.06 + leaf.type x 0.83",FALSE
+"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.86 + leaf.type x 16.54",TRUE
+"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 3.78 + leaf.type x 4.71",TRUE
+"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 2.64 + leaf.type x 2.9",TRUE
+"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.81 + leaf.type x 0.91",FALSE
+"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.14 + leaf.type x 1.65",TRUE
+"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.32 + leaf.type x 0.38",TRUE
+"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.29 + leaf.type x 0.46",FALSE
+"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.44 + leaf.type x -0.04",FALSE
+"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.23 + leaf.type x 1.52",TRUE
+"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.35 + leaf.type x 1.33",TRUE
+"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.63 + leaf.type x -0.2",FALSE
+"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 9.15 + leaf.type x 16.14",TRUE
+"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 7.97 + leaf.type x 5.55",TRUE
+"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.41 + leaf.phenology x 0.13",FALSE
+"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 23.48 + leaf.phenology x -7.03",FALSE
+"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 6.9 + leaf.phenology x -1.1",FALSE
+"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.1 + leaf.phenology x 0.06",FALSE
+"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.36 + leaf.phenology x -1.33",FALSE
+"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.42 + leaf.phenology x -0.64",FALSE
+"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.59 + leaf.phenology x -0.16",FALSE
+"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.67 + leaf.phenology x -0.06",FALSE
 "NPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.95 + leaf.phenology x -1.97",FALSE
-"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.39 + leaf.phenology x -0.02",FALSE
-"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.63 + leaf.phenology x 0.37",FALSE
-"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.33 + leaf.phenology x 0.11",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.3 + leaf.phenology x -0.62",FALSE
-"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 2.38 + leaf.phenology x -1.01",TRUE
-"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.54 + leaf.phenology x -0.14",FALSE
-"R_auto","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_auto = 14.41 + leaf.phenology x -6.69",FALSE
-"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 18.18 + leaf.phenology x -7.26",FALSE
-"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 11.2 + leaf.phenology x -5.79",TRUE
-"R_soil_het","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil_het = 5.92 + leaf.phenology x -2.82",FALSE
-"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = -0.58 + mat x 0.19  + age x 0.01 + 0  x interaction",TRUE
-"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 7.09 + mat x 0.59  + age x 0.01",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4.49 + mat x 0.22",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 3.35 + mat x 0.3  + age x 0",TRUE
-"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.97 + mat x 0.14  + age x 0",TRUE
-"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.02 + mat x 0.06  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.64 + mat x 0.02",TRUE
-"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.2 + mat x 0.04  + age x 0 + 0  x interaction",TRUE
+"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.44 + leaf.phenology x -0.16",FALSE
+"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.64 + leaf.phenology x 1.73",TRUE
+"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.32 + leaf.phenology x -0.06",FALSE
+"woody.mortality_ag","leaf.phenology","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.36 + leaf.phenology x -0.24",FALSE
+"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.29 + leaf.phenology x -0.58",FALSE
+"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 2.38 + leaf.phenology x -1.2",FALSE
+"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.53 + leaf.phenology x 0.01",FALSE
+"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 20.26 + leaf.phenology x -7.19",FALSE
+"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 11.6 + leaf.phenology x -5.87",TRUE
+"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = -0.17 + mat x 0.13  + age x 0.01 + 0  x interaction",TRUE
+"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 6.5 + mat x 0.6  + age x 0.01",TRUE
+"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4.28 + mat x 0.22",TRUE
+"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 3.19 + mat x 0.12  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.84 + mat x 0.1  + age x 0",TRUE
+"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.97 + mat x 0.07  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.55 + mat x 0.01",FALSE
+"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.19 + mat x 0.03  + age x 0 + 0  x interaction",TRUE
 "NPP_woody","mat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.03 + mat x 0.02  + age x 0",FALSE
-"NPP_understory","mat","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.95 + mat x -0.06",TRUE
-"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 1.35 + mat x 0.1",TRUE
-"ANPP_repro","mat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.68 + mat x -0.03  + age x 0 + 0  x interaction",TRUE
-"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.36 + mat x 0.04  + age x 0",TRUE
-"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.3 + mat x 0  + age x 0",FALSE
-"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = -0.04 + mat x 0.13  + age x 0 + 0  x interaction",TRUE
-"R_auto","mat","geographic.area/plot.name",">=100 yrs","R_auto = 7.28 + mat x -0.15  + age x 0 + 0  x interaction",TRUE
-"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 7.27 + mat x 0.4  + age x 0 + 0  x interaction",TRUE
-"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 7.68 + mat x 0.14  + age x 0",TRUE
-"R_soil_het","mat","geographic.area/plot.name",">=100 yrs","R_soil_het = 3.84 + mat x 0.03  + age x 0 + 0  x interaction",TRUE
-"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 0.89 + map x 0",FALSE
-"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 7.11 + map x 0  + age x 0.02 + 0  x interaction",TRUE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 4.28 + map x 0  + age x 0.01 + 0  x interaction",TRUE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 4.18 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.31 + map x 0",FALSE
-"ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.58 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.88 + map x 0",FALSE
-"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.01 + map x 0  + age x 0 + 0  x interaction",TRUE
+"NPP_understory","mat","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.99 + mat x -0.05",TRUE
+"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 1.95 + mat x 0.07",TRUE
+"ANPP_repro","mat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.48 + mat x -0.02  + age x 0 + 0  x interaction",TRUE
+"woody.mortality_ag","mat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = -0.05 + mat x 0.11",TRUE
+"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.19 + mat x 0.04  + age x 0",TRUE
+"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.15 + mat x 0.01  + age x 0",FALSE
+"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.04 + mat x 0.15  + age x 0 + 0  x interaction",TRUE
+"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 7.37 + mat x 0.43  + age x 0 + 0  x interaction",TRUE
+"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 6.48 + mat x 0.2  + age x 0",TRUE
+"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 0.64 + map x 0",FALSE
+"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 7.67 + map x 0  + age x 0.02",TRUE
+"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 3.91 + map x 0  + age x 0.01 + 0  x interaction",TRUE
+"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 2.64 + map x 0  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.87 + map x 0  + age x 0",FALSE
+"ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.43 + map x 0  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.77 + map x 0",FALSE
+"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.07 + map x 0  + age x 0 + 0  x interaction",TRUE
 "NPP_woody","map","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.84 + map x 0",FALSE
-"NPP_understory","map","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.8 + map x 0",FALSE
-"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.33 + map x 0",TRUE
-"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.33 + map x 0  + age x 0",TRUE
-"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.5 + map x 0  + age x 0",FALSE
-"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.93 + map x 0  + age x 0",TRUE
-"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = -0.15 + map x 0  + age x 0 + 0  x interaction",TRUE
-"R_auto","map","geographic.area/plot.name",">=100 yrs","R_auto = 7.33 + map x 0  + age x 0 + 0  x interaction",TRUE
-"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 7.27 + map x 0  + age x 0.02",TRUE
-"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 7.72 + map x 0  + age x 0",FALSE
-"R_soil_het","map","geographic.area/plot.name",">=100 yrs","R_soil_het = 3.27 + map x 0  + age x 0",FALSE
-"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 4.56 + lat x -0.08  + age x 0 + 0  x interaction",TRUE
-"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 23.77 + lat x -0.26  + age x 0.01",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 9.55 + lat x -0.07  + age x 0 + 0  x interaction",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 10.48 + lat x -0.12  + age x 0",TRUE
-"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 5.09 + lat x -0.05  + age x 0",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.6 + lat x -0.03  + age x 0",TRUE
-"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.94 + lat x -0.01",FALSE
-"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 4.01 + lat x -0.04  + age x 0",TRUE
+"NPP_understory","map","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.96 + map x 0",FALSE
+"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.47 + map x 0",TRUE
+"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.25 + map x 0  + age x 0",FALSE
+"woody.mortality_ag","map","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2 + map x 0  + age x 0",FALSE
+"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.32 + map x 0  + age x 0",FALSE
+"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.84 + map x 0  + age x 0",TRUE
+"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.01 + map x 0  + age x 0 + 0  x interaction",TRUE
+"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 5.98 + map x 0  + age x 0.01",TRUE
+"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 6.6 + map x 0  + age x 0.01",FALSE
+"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 1.7 + lat x -0.02",FALSE
+"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 23.47 + lat x -0.26  + age x 0.01 + 0  x interaction",TRUE
+"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.43 + lat x -0.11",TRUE
+"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 6.67 + lat x -0.07",TRUE
+"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.08 + lat x -0.02",TRUE
+"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.06 + lat x -0.04",TRUE
+"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.74 + lat x -0.01",TRUE
+"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 3.83 + lat x -0.04  + age x 0",TRUE
 "NPP_woody","lat","geographic.area/plot.name",">=100 yrs","NPP_woody = 6.08 + lat x -0.07  + age x 0",TRUE
 "NPP_understory","lat","geographic.area/plot.name",">=100 yrs","NPP_understory = -2.01 + lat x 0.05  + age x 0 + 0  x interaction",TRUE
-"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.99 + lat x -0.04",TRUE
-"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = -0.14 + lat x 0.01  + age x 0",TRUE
-"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.55 + lat x -0.02  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.08 + lat x -0.03",TRUE
-"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 3.83 + lat x -0.06  + age x 0 + 0  x interaction",TRUE
-"R_auto","lat","geographic.area/plot.name",">=100 yrs","R_auto = 17.75 + lat x -0.21  + age x 0",TRUE
-"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 16.4 + lat x -0.15  + age x 0.02 + 0  x interaction",TRUE
-"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 14.56 + lat x -0.12",TRUE
-"R_soil_het","lat","geographic.area/plot.name",">=100 yrs","R_soil_het = 6.84 + lat x -0.06  + age x 0",TRUE
-"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.14 + leaf.type x 1.31",TRUE
-"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.4 + leaf.type x 1.54  + age x 0.01 + 0.01  x interaction",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 5.16 + leaf.type x 1.45  + age x 0 + 0.01  x interaction",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 4.22 + leaf.type x 0.61  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.42 + leaf.type x 0.54  + age x 0 + 0  x interaction",TRUE
-"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.29 + leaf.type x 0.41  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.43 + leaf.type x 0.49",TRUE
-"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.31 + leaf.type x 0.44",TRUE
+"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.82 + lat x -0.02",FALSE
+"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.08 + lat x 0  + age x 0",FALSE
+"woody.mortality_ag","lat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.55 + lat x -0.02",FALSE
+"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.5 + lat x -0.02  + age x 0 + 0  x interaction",TRUE
+"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.04 + lat x -0.03",TRUE
+"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 3.79 + lat x -0.06  + age x 0 + 0  x interaction",TRUE
+"R_auto","lat","geographic.area/plot.name",">=100 yrs","R_auto = 23 + lat x -0.28",TRUE
+"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 18.93 + lat x -0.22  + age x 0.01",TRUE
+"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 13.06 + lat x -0.09  + age x 0 + 0  x interaction",TRUE
+"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.3 + leaf.type x 1.05",TRUE
+"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.63 + leaf.type x 0.38  + age x 0 + 0.02  x interaction",TRUE
+"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 4.17 + leaf.type x 2.23  + age x 0 + 0  x interaction",TRUE
+"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 2.78 + leaf.type x 2.15  + age x 0",TRUE
+"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.75 + leaf.type x 1.09  + age x 0 + 0  x interaction",TRUE
+"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.11 + leaf.type x 0.68  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.35 + leaf.type x 0.4",TRUE
+"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.12 + leaf.type x 0.69",TRUE
 "NPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_woody = 9.1 + leaf.type x -4.38  + age x -0.34 + 0.34  x interaction",TRUE
-"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.33 + leaf.type x 0.13",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.8 + leaf.type x -0.11  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.46 + leaf.type x 0.04  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.63 + leaf.type x -0.2",TRUE
-"R_auto","leaf.type","geographic.area/plot.name",">=100 yrs","R_auto = 6.88 + leaf.type x 0.83  + age x 0.01",FALSE
-"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 7.93 + leaf.type x 2.22  + age x 0.02",TRUE
-"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 8.59 + leaf.type x 2.1  + age x 0",TRUE
-"R_soil_het","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil_het = 3.63 + leaf.type x 1.25  + age x 0 + 0  x interaction",TRUE
-"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.66 + leaf.phenology x 0.35",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 11.4 + leaf.phenology x 0.29  + age x 0.02",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 5.08 + leaf.phenology x 1.52  + age x 0",TRUE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.47 + leaf.phenology x 0.26",FALSE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.42 + leaf.phenology x 0.39",FALSE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.35 + leaf.phenology x 0.17  + age x 0",FALSE
-"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.49 + leaf.phenology x 0.31  + age x 0",TRUE
-"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.67 + leaf.phenology x -0.35",FALSE
+"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.39 + leaf.type x 0.16",FALSE
+"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.53 + leaf.type x -0.04  + age x 0 + 0  x interaction",TRUE
+"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.11 + leaf.type x 0.27  + age x 0",FALSE
+"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.56 + leaf.type x -0.14",TRUE
+"R_auto","leaf.type","geographic.area/plot.name",">=100 yrs","R_auto = 9.1 + leaf.type x -0.27  + age x 0 + 0.01  x interaction",TRUE
+"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 7.79 + leaf.type x 2.72  + age x 0.02",TRUE
+"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 8.19 + leaf.type x 2  + age x -0.01 + 0.01  x interaction",TRUE
+"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.61 + leaf.phenology x 0.58",FALSE
+"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 11.26 + leaf.phenology x 0.43  + age x 0.02",FALSE
+"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 4.58 + leaf.phenology x 2.09  + age x 0 + 0  x interaction",TRUE
+"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 3.19 + leaf.phenology x 1.79  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.78 + leaf.phenology x 1.02  + age x 0 + 0  x interaction",TRUE
+"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.32 + leaf.phenology x 0.3  + age x 0",TRUE
+"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.31 + leaf.phenology x 0.51  + age x 0 + 0  x interaction",TRUE
+"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.65 + leaf.phenology x -0.05",FALSE
 "NPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.95 + leaf.phenology x -1.28  + age x 0",FALSE
-"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.34 + leaf.phenology x 0.12",FALSE
-"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.61 + leaf.phenology x 0.42",FALSE
-"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.33 + leaf.phenology x -0.05",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.75 + leaf.phenology x -0.1  + age x 0",FALSE
-"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.36 + leaf.phenology x 0.17  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.57 + leaf.phenology x -0.14",TRUE
-"R_auto","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_auto = 7.41 + leaf.phenology x -1.26  + age x 0.01",FALSE
-"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 8.42 + leaf.phenology x 0.69  + age x 0.02",FALSE
-"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 9.03 + leaf.phenology x 1.29  + age x 0 + -0.01  x interaction",TRUE
-"R_soil_het","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil_het = 3.78 + leaf.phenology x 0.67  + age x 0",FALSE
+"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.39 + leaf.phenology x 0.16",FALSE
+"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.62 + leaf.phenology x 1.61",TRUE
+"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.31 + leaf.phenology x -0.13",FALSE
+"woody.mortality_ag","leaf.phenology","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 1.35 + leaf.phenology x 0.26  + age x 0",FALSE
+"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.61 + leaf.phenology x -0.08  + age x 0",FALSE
+"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.34 + leaf.phenology x -0.22  + age x 0",FALSE
+"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.51 + leaf.phenology x -0.09",FALSE
+"R_auto","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_auto = 9.18 + leaf.phenology x -0.6  + age x 0.01",FALSE
+"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 8.27 + leaf.phenology x 1.2  + age x 0.02",FALSE
+"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 9.82 + leaf.phenology x -0.69  + age x 0 + -0.01  x interaction",TRUE
 "GPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"GPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","7.23 + MAT + AGE x 0.58",FALSE
+"GPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","6.99 + MAT + AGE x 0.56",FALSE
 "NPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"NPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","4.64 + MAT + AGE x 0.2",FALSE
-"ANPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","3.1 + MAT + AGE x 0.33",FALSE
-"ANPP_woody","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP_woody","MAT + AGE","geographic.area/plot.name",">=100 yrs","2.11 + MAT + AGE x 0.12",FALSE
-"GPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
+"NPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","4.53 + MAT + AGE x 0.19",FALSE
+"NPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
 "ANPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
 "ANPP_woody","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
