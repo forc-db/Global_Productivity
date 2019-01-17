@@ -48,6 +48,7 @@ ages.not.999.nor.0.nor.na <- !ForC_simplified$stand.age %in% 999 &  !ForC_simpli
 
 ## Keep only age >=100 (or 999)
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+age.greater.than.200 <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
@@ -101,7 +102,7 @@ all.results <- NULL
 ### mature forests only ####
 for(fixed.v in fixed.variables){
   
-  tiff(file = paste0("results/figures/Effect_of_", fixed.v, "_MATURE_only.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_MATURE_only.tiff"), width = 2255, height = 2000, units = "px", res = 300)
   
   par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
   print(fixed.v)
@@ -257,7 +258,7 @@ for(fixed.v in fixed.variables){
 #### age as an interaction ####
 for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
   
-  tiff(file = paste0("results/figures/Effect_of_", fixed.v, "_INTERACTION_of_AGE.tiff"), width = 1155, height = 1000, units = "px", res = 150)
+  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_INTERACTION_of_AGE.tiff"), width = 1155, height = 1000, units = "px", res = 150)
   
   par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
   print(fixed.v)
@@ -278,11 +279,11 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
       
       print(response.v)
       
-      if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
+      ##if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-      if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
-      if(!response.v %in% c("NEE", "NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+      ##if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
+      if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       
       response.v.color <- response.variables.col[which(response.variables %in% response.v)]
@@ -585,37 +586,37 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
     all.results <- rbind(all.results, results)
   }
   
-  # if( significant.effet.interaction) stop ("code here")
-  # mod.full <- lmer(mean ~ lat * stand.age +(1|geographic.area/plot.name), data = df)
-  # significant.effet <- which.min(drop1(mod.full)$AIC) == 1
-  # 
-  # max.effect.v <- rownames(drop1(mod.full))[which.max(drop1(mod.full)$AIC)]
-  # other.v <- rownames(drop1(mod.full))[-which.max(drop1(mod.full)$AIC)][2]
-  # 
-  # plot(df$mean ~ df[, max.effect.v], main = paste(response.v, "vs", max.effect.v), ylab = response.v)
-  # 
-  # newDat1 <- data.frame(max.effect.v = seq(min(df[, max.effect.v]), max(df[,max.effect.v]), length.out = 100),
-  #                      other.v = quantile(df[, other.v], 0.25))
-  # newDat2 <- data.frame(max.effect.v = seq(min(df[, max.effect.v]), max(df[,max.effect.v]), length.out = 100),
+   #if( significant.effet.interaction) stop ("code here")
+   #mod.full <- lmer(mean ~ lat * stand.age +(1|geographic.area/plot.name), data = df)
+   #significant.effet <- which.min(drop1(mod.full)$AIC) == 1
+   
+   #max.effect.v <- rownames(drop1(mod.full))[which.max(drop1(mod.full)$AIC)]
+   #other.v <- rownames(drop1(mod.full))[-which.max(drop1(mod.full)$AIC)][2]
+   
+   #plot(df$mean ~ df[, max.effect.v], main = paste(response.v, "vs", max.effect.v), ylab = response.v)
+   
+   #newDat1 <- data.frame(max.effect.v = seq(min(df[, max.effect.v]), max(df[,max.effect.v]), length.out = 100),
+   #                     other.v = quantile(df[, other.v], 0.25))
+   #newDat2 <- data.frame(max.effect.v = seq(min(df[, max.effect.v]), max(df[,max.effect.v]), length.out = 100),
   #                       other.v = quantile(df[, other.v], 0.25))
+   
+   #abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
   # 
-  # abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
   # 
+   #legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
   # 
-  # legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
+   #r <- round(fixef(mod.full), 2)
+   #equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
   # 
-  # r <- round(fixef(mod.full), 2)
-  # equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
+   #mtext(side = 3, line = -1, text = equation, adj = 0.1)
   # 
-  # mtext(side = 3, line = -1, text = equation, adj = 0.1)
+   #results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
   # 
-  # results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
-  # 
-  # all.results <- rbind(all.results, results)
+   #all.results <- rbind(all.results, results)
 }
 
 
 # SAVE all.results ####
-write.csv(all.results, file = "results/tables/global_trend_models.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
 
 
