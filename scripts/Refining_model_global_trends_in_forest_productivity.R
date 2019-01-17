@@ -49,6 +49,7 @@ ages.not.999.nor.0.nor.na <- !ForC_simplified$stand.age %in% 999 &  !ForC_simpli
 ## Keep only age >=100 (or 999)
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 age.greater.than.200 <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+ages <- c("age.greater.than.100", "age.greater.than.200")
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
@@ -100,9 +101,14 @@ all.results <- NULL
 # Run analysis an plot ####
 
 ### mature forests only ####
-for(fixed.v in fixed.variables){
+for (age in ages){
   
-  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_MATURE_only.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+  
+  for(fixed.v in fixed.variables){
+  
+  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_MATURE_only_", age, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
   
   par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
   print(fixed.v)
@@ -143,7 +149,7 @@ for(fixed.v in fixed.variables){
       if(!fixed.v %in% "stand.age") drop.ages.999.or.0.or.na <- rep(TRUE, nrow(ForC_simplified))
       
       # subset to keep only what we need
-      df <- ForC_simplified[rows.with.response & drop.ages.999.or.0.or.na & age.greater.than.100 & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+      df <- ForC_simplified[rows.with.response & drop.ages.999.or.0.or.na & ages.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
       
       
       if(all(responses.to.keep %in% c("NEE", "NEP"))) {
@@ -229,7 +235,7 @@ for(fixed.v in fixed.variables){
         if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
         # dev.off()
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effet)
         
         all.results <- rbind(all.results, results)
       }
@@ -252,8 +258,9 @@ for(fixed.v in fixed.variables){
   dev.off()
   
   
-  
+  }  
 }
+
 
 #### age as an interaction ####
 for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
