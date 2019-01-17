@@ -84,9 +84,13 @@ all.response.variables <- VARIABLES[c(4, 7:18, 25:32, 37:38),]$variable.name
 all.response.variables <- gsub("(_OM|_C)", "", all.response.variables)
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
+all.response.variables <- c(all.response.variables, "NPP_1", "NPP_2", "ANPP_2")
 
 response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody"))
+                                  c("ANPP_foliage", "ANPP_woody"),
+                                  c("NPP", "NPP_1", "NPP_2"),
+                                  c("ANPP", "ANPP_2"))
+
           
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
