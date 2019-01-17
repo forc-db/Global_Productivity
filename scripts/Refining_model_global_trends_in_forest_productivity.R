@@ -122,11 +122,11 @@ for(fixed.v in fixed.variables){
       
       print(response.v)
       
-      if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
+      ##if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
-      if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
-      if(!response.v %in% c("NEE", "NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+      ##if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
+      if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       
       response.v.color <- response.variables.col[which(response.variables %in% response.v)]
