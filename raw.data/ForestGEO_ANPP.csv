@@ -1,4 +1,4 @@
-﻿,site,census_interval,ANPP_total_1cm,ANPP_total_10cm,min.dbh,lat,lon,masl,mat,map,stand.age
+﻿,site,census_interval,ANPP_total_1cm,ANPP_total_10cm,min.dbh,LAT,LON,MASL,MAT,MAP,stand.age
 1,bci,census_2_3,1.584715966,1.366802715,10,9.1543,-79.8461,140,27.4,2167,999
 2,bci,census_3_4,1.33966848,1.157876408,10,9.1543,-79.8461,140,27.4,2167,999
 3,bci,census_4_5,1.966729059,1.766302985,10,9.1543,-79.8461,140,27.4,2167,999
