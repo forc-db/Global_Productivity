@@ -80,16 +80,17 @@ ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% everg
 # Prepare some variables ####
 
 ## response variable list (fluxes) ####
-all.response.variables <- VARIABLES[c(4, 7:18, 25:32, 37:38),]$variable.name
+all.response.variables <- VARIABLES[c(4, 7:18, 25:32, 37:38, 51:52),]$variable.name
 all.response.variables <- gsub("(_OM|_C)", "", all.response.variables)
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 all.response.variables <- c(all.response.variables, "NPP_1", "NPP_2", "ANPP_2")
 
 response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody"),
+                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"),
                                   c("NPP", "NPP_1", "NPP_2"),
                                   c("ANPP", "ANPP_2"))
+
 
           
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
@@ -189,7 +190,7 @@ for (age in ages){
         if(fixed.v %in% "stand.age") mod.full <- lmer(mean ~ log10(fixed) + (1|geographic.area/plot.name), data = df)
         if(!fixed.v %in% "stand.age") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
         
-        significant.effet <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         
         
         # plot 
@@ -198,7 +199,7 @@ for (age in ages){
           if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, log = ifelse(fixed.v %in% "stand.age", "x", ""), xaxt = "n", yaxt = "n")
           if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
           
-          abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effet, 1, 2))
+          abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
           
           if(first.plot) {
             axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
@@ -221,7 +222,7 @@ for (age in ages){
           }
           # if(pannel.nb %in% c(3,4)) text(x = 1:nlevels(df$fixed_cat), y = ylim[1]-(diff(ylim)/8), labels = rep(categories, nlevels(df$fixed_cat)/2), srt = 45, xpd = T)
           
-          points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effet, "grey", response.v.color))
+          points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effect, "grey", response.v.color))
         }
         
         
@@ -239,7 +240,7 @@ for (age in ages){
         if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
         # dev.off()
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effet)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect)
         
         all.results <- rbind(all.results, results)
       }
@@ -252,8 +253,8 @@ for (age in ages){
     
   }
   
-  if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
-  if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effet", "non-significant effect", categories), bty = "n")
+  if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effect", "non-significant effect"), bty = "n")
+  if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effect", "non-significant effect", categories), bty = "n")
   
   title (paste("Effect of", fixed.v), outer = T, line = 1)
   mtext(side = 1, line = ifelse(categorical, 4, 3), text = fixed.v, outer = T)
@@ -343,35 +344,35 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
         
         mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df)
         
-        significant.effet.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
+        significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
         
         
-        if(!significant.effet.of.interaction) {
+        if(!significant.effect.of.interaction) {
           
           mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df)
         
-          significant.effet.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
+          significant.effect.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
          
-          if(!significant.effet.of.additive) {
+          if(!significant.effect.of.additive) {
             mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
-            significant.effet <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
+            significant.effect <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
           } 
           
-          if(significant.effet.of.additive) { # just to know if there is a significant effect of the main fixed effect
-            significant.effet <-  drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
+          if(significant.effect.of.additive) { # just to know if there is a significant effect of the main fixed effect
+            significant.effect <-  drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
           }
          
         }
         
-        if(significant.effet.of.interaction) { # just to know if there is a significant effect of the main fixed effect
-          significant.effet.of.additive <- FALSE
-          significant.effet <- TRUE
+        if(significant.effect.of.interaction) { # just to know if there is a significant effect of the main fixed effect
+          significant.effect.of.additive <- FALSE
+          significant.effect <- TRUE
         }
         
         # predict and plot if significant effect of age (with or without intereaction) + plot ####
     
         
-        if (significant.effet.of.interaction | significant.effet.of.additive) {
+        if (significant.effect.of.interaction | significant.effect.of.additive) {
           # predict 
           
           if(!categorical) newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), stand.age = c(50, 150, 500))
@@ -388,7 +389,7 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
             
             for(stand.age in unique(newDat$stand.age)){
               i <- which(unique(newDat$stand.age) %in% stand.age)
-              lines(fit ~ fixed, data = newDat[newDat$stand.age %in% stand.age,], col = response.v.color, lty = ifelse(significant.effet.of.interaction, 1, 2), lwd = i)
+              lines(fit ~ fixed, data = newDat[newDat$stand.age %in% stand.age,], col = response.v.color, lty = ifelse(significant.effect.of.interaction, 1, 2), lwd = i)
               
             }
             
@@ -415,8 +416,8 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
             
             for(stand.age in unique(newDat$stand.age)){
               i <- which(unique(newDat$stand.age) %in% stand.age)
-              # lines(fit ~ fixed, data = newDat[newDat$stand.age %in% stand.age,], col = response.v.color, lty = ifelse(significant.effet.of.interaction, 1, 2), lwd = i)
-              points(fit ~ which(!is.na(b$stats[1,])),  data = newDat[newDat$stand.age %in% stand.age,], pch = 24, col=  "grey", bg = ifelse(significant.effet, "grey", response.v.color), cex = i/2)
+              # lines(fit ~ fixed, data = newDat[newDat$stand.age %in% stand.age,], col = response.v.color, lty = ifelse(significant.effect.of.interaction, 1, 2), lwd = i)
+              points(fit ~ which(!is.na(b$stats[1,])),  data = newDat[newDat$stand.age %in% stand.age,], pch = 24, col=  "grey", bg = ifelse(significant.effect, "grey", response.v.color), cex = i/2)
             }
             
             
@@ -426,8 +427,8 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
           
           r <- round(fixef(mod.full), 2)
           
-          if(significant.effet.of.interaction) equation <- paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3], "+", r[4], " x interaction" )
-          if(significant.effet.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
+          if(significant.effect.of.interaction) equation <- paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3], "+", r[4], " x interaction" )
+          if(significant.effect.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
           
           
           if(!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color, cex = 0.5)
@@ -437,12 +438,12 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
         
         # plot if no effect of age, plot
         
-        if(!significant.effet.of.interaction & !significant.effet.of.additive){
+        if(!significant.effect.of.interaction & !significant.effect.of.additive){
           if(!categorical){
           if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, log = ifelse(fixed.v %in% "stand.age", "x", ""), xaxt = "n", yaxt = "n")
           if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
           
-          abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effet, 1, 2))
+          abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
           
           if(first.plot) {
             axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
@@ -466,7 +467,7 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
           }
           # if(pannel.nb %in% c(3,4)) text(x = 1:nlevels(df$fixed_cat), y = ylim[1]-(diff(ylim)/8), labels = rep(categories, nlevels(df$fixed_cat)/2), srt = 45, xpd = T)
           
-          points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effet, "grey", response.v.color))
+          points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effect, "grey", response.v.color))
         }
         
           
@@ -482,7 +483,7 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
         
        
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effect)
         
         all.results <- rbind(all.results, results)
       }
@@ -495,8 +496,8 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
     
   } # for(response.variables in response.variables.groups)
   
-  if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
-  if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effet", "non-significant effect", categories), bty = "n")
+  if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effect", "non-significant effect"), bty = "n")
+  if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effect", "non-significant effect", categories), bty = "n")
   
   title (paste("Effect of", fixed.v), outer = T, line = 1)
   mtext(side = 1, line = ifelse(categorical, 4, 3), text = fixed.v, outer = T)
@@ -529,16 +530,16 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   df <- ForC_simplified[rows.with.response & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
   
   mod.full <- lmer(mean ~ mat * stand.age +(1|geographic.area/plot.name), data = df)
-  significant.effet.interaction <- which.min(drop1(mod.full)$AIC) == 1
+  significant.effect.interaction <- which.min(drop1(mod.full)$AIC) == 1
   
-  if(!significant.effet.interaction) {
-    results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = "none", equation = NA, significant = significant.effet.interaction)
+  if(!significant.effect.interaction) {
+    results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = "none", equation = NA, significant = significant.effect.interaction)
     all.results <- rbind(all.results, results)
   }
   
-  if( significant.effet.interaction) stop ("code here")
+  if( significant.effect.interaction) stop ("code here")
   mod.full <- lmer(mean ~ mat * stand.age +(1|geographic.area/plot.name), data = df)
-  significant.effet <- which.min(drop1(mod.full)$AIC) == 1
+  significant.effect <- which.min(drop1(mod.full)$AIC) == 1
   
   max.effect.v <- rownames(drop1(mod.full))[which.max(drop1(mod.full)$AIC)]
   other.v <- rownames(drop1(mod.full))[-which.max(drop1(mod.full)$AIC)][2]
@@ -568,7 +569,7 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   
   mtext(side = 3, line = -1, text = equation, adj = 0.1, cex = 0.5)
   
-  results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
+  results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effect)
   
   all.results <- rbind(all.results, results)
 }
@@ -590,16 +591,16 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   df <- ForC_simplified[rows.with.response & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
   
   mod.full <- lmer(mean ~ lat * stand.age +(1|geographic.area/plot.name), data = df)
-  significant.effet.interaction <- which.min(drop1(mod.full)$AIC) == 1
+  significant.effect.interaction <- which.min(drop1(mod.full)$AIC) == 1
   
-  if(!significant.effet.interaction) {
-    results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = "none", equation = NA, significant = significant.effet.interaction)
+  if(!significant.effect.interaction) {
+    results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = "none", equation = NA, significant = significant.effect.interaction)
     all.results <- rbind(all.results, results)
   }
   
-   #if( significant.effet.interaction) stop ("code here")
+   #if( significant.effect.interaction) stop ("code here")
    #mod.full <- lmer(mean ~ lat * stand.age +(1|geographic.area/plot.name), data = df)
-   #significant.effet <- which.min(drop1(mod.full)$AIC) == 1
+   #significant.effect <- which.min(drop1(mod.full)$AIC) == 1
    
    #max.effect.v <- rownames(drop1(mod.full))[which.max(drop1(mod.full)$AIC)]
    #other.v <- rownames(drop1(mod.full))[-which.max(drop1(mod.full)$AIC)][2]
@@ -611,17 +612,17 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
    #newDat2 <- data.frame(max.effect.v = seq(min(df[, max.effect.v]), max(df[,max.effect.v]), length.out = 100),
   #                       other.v = quantile(df[, other.v], 0.25))
    
-   #abline(fixef(mod.full), col = "red", lty = ifelse(significant.effet, 1, 2))
+   #abline(fixef(mod.full), col = "red", lty = ifelse(significant.effect, 1, 2))
   # 
   # 
-   #legend("topright", col = "red", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
+   #legend("topright", col = "red", lty = c(1,2), legend = c("significant effect", "non-significant effect"), bty = "n")
   # 
    #r <- round(fixef(mod.full), 2)
    #equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
   # 
    #mtext(side = 3, line = -1, text = equation, adj = 0.1)
   # 
-   #results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effet)
+   #results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effect)
   # 
    #all.results <- rbind(all.results, results)
 }
