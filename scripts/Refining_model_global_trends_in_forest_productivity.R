@@ -192,6 +192,8 @@ for (age in ages){
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         
+        sample.size <- length(df$mean)
+        
         
         # plot 
         
@@ -234,13 +236,14 @@ for (age in ages){
         
         r <- round(fixef(mod.full), 2)
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+        legend <- paste(response.v, "sample size =", sample.size)
         
-        if (!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color, cex = 0.5)
+        if (!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
         
         if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
-        # dev.off()
+        #dev.off ()
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, sample.size = sample.size)
         
         all.results <- rbind(all.results, results)
       }
@@ -426,12 +429,14 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
           # add equation
           
           r <- round(fixef(mod.full), 2)
+          sample.size <- length(df$mean)
+          legend <- paste(response.v, "sample size =", sample.size)
           
           if(significant.effect.of.interaction) equation <- paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3], "+", r[4], " x interaction" )
           if(significant.effect.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
           
           
-          if(!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color, cex = 0.5)
+          if(!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
           if(categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
           
         }
@@ -473,8 +478,10 @@ for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
           
           r <- round(fixef(mod.full), 2)
           equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+          sample.size <- length(df$mean)
+          legend <- paste(response.v, "sample size =", sample.size)
           
-          if(!categorical)  mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color, cex = 0.5)
+          if(!categorical)  mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
           if(categorical)  mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
         }
         
@@ -566,8 +573,10 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
   
   r <- round(fixef(mod.full), 2)
   equation <-  paste(r[1], "+", fixed.v,  "x", r[2])
+  sample.size <- length(df$mean)
+  legend <- paste(response.v, "sample size =", sample.size)
   
-  mtext(side = 3, line = -1, text = equation, adj = 0.1, cex = 0.5)
+  mtext(side = 3, line = -1, text = legend, adj = 0.1, cex = 0.5)
   
   results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = ">=100 yrs", equation = equation, significant = significant.effect)
   
