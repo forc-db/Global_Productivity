@@ -1,182 +1,116 @@
-"response","fixed","random","Age.filter","equation","significant"
-"GPP","mat","geographic.area/plot.name","age.greater.than.100","GPP = 8.48 + mat x 0.86",TRUE
-"NPP","mat","geographic.area/plot.name","age.greater.than.100","NPP = 3.74 + mat x 0.24",TRUE
-"ANPP","mat","geographic.area/plot.name","age.greater.than.100","ANPP = 4.48 + mat x 0.05",FALSE
-"ANPP_foliage","mat","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 0.82 + mat x 0.1",TRUE
-"ANPP_woody","mat","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 1.12 + mat x 0.08",TRUE
-"BNPP_root","mat","geographic.area/plot.name","age.greater.than.100","BNPP_root = 0.98 + mat x 0.1",TRUE
-"NPP","mat","geographic.area/plot.name","age.greater.than.100","NPP = 3.74 + mat x 0.24",TRUE
-"NPP_1","mat","geographic.area/plot.name","age.greater.than.100","NPP_1 = 3.49 + mat x 0.25",TRUE
-"ANPP","mat","geographic.area/plot.name","age.greater.than.100","ANPP = 4.48 + mat x 0.05",FALSE
-"ANPP_2","mat","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 2.79 + mat x 0.17",TRUE
-"GPP","map","geographic.area/plot.name","age.greater.than.100","GPP = 12.82 + map x 0.01",TRUE
-"NPP","map","geographic.area/plot.name","age.greater.than.100","NPP = 7.1 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name","age.greater.than.100","ANPP = 4.73 + map x 0",FALSE
-"ANPP_foliage","map","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 2.5 + map x 0",FALSE
-"ANPP_woody","map","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 2.24 + map x 0",FALSE
-"BNPP_root","map","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.96 + map x 0",TRUE
-"NPP","map","geographic.area/plot.name","age.greater.than.100","NPP = 7.1 + map x 0",FALSE
-"NPP_1","map","geographic.area/plot.name","age.greater.than.100","NPP_1 = 6.71 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name","age.greater.than.100","ANPP = 4.73 + map x 0",FALSE
-"ANPP_2","map","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 5.29 + map x 0",TRUE
-"GPP","lat","geographic.area/plot.name","age.greater.than.100","GPP = 34.27 + lat x -0.46",TRUE
-"NPP","lat","geographic.area/plot.name","age.greater.than.100","NPP = 10.35 + lat x -0.11",TRUE
-"ANPP","lat","geographic.area/plot.name","age.greater.than.100","ANPP = 6.02 + lat x -0.04",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 3.02 + lat x -0.03",TRUE
-"ANPP_woody","lat","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 3.06 + lat x -0.03",TRUE
-"BNPP_root","lat","geographic.area/plot.name","age.greater.than.100","BNPP_root = 4.09 + lat x -0.05",TRUE
-"NPP","lat","geographic.area/plot.name","age.greater.than.100","NPP = 10.35 + lat x -0.11",TRUE
-"NPP_1","lat","geographic.area/plot.name","age.greater.than.100","NPP_1 = 10.02 + lat x -0.11",TRUE
-"ANPP","lat","geographic.area/plot.name","age.greater.than.100","ANPP = 6.02 + lat x -0.04",TRUE
-"ANPP_2","lat","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 7.16 + lat x -0.07",TRUE
-"GPP","stand.age","geographic.area/plot.name","age.greater.than.100","GPP = 8.31 + stand.age x 1.61",FALSE
-"NPP","stand.age","geographic.area/plot.name","age.greater.than.100","NPP = 5.47 + stand.age x -0.3",FALSE
-"ANPP","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP = 6.63 + stand.age x -1.41",FALSE
-"ANPP_foliage","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 1.44 + stand.age x 0.07",FALSE
-"ANPP_woody","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_woody = -2.32 + stand.age x 1.75",TRUE
-"BNPP_root","stand.age","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.5 + stand.age x -0.06",FALSE
-"NPP","stand.age","geographic.area/plot.name","age.greater.than.100","NPP = 5.47 + stand.age x -0.3",FALSE
-"NPP_1","stand.age","geographic.area/plot.name","age.greater.than.100","NPP_1 = 7.44 + stand.age x -1.23",FALSE
-"ANPP","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP = 6.63 + stand.age x -1.41",FALSE
-"ANPP_2","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 5.89 + stand.age x -1.04",FALSE
-"GPP","leaf.type","geographic.area/plot.name","age.greater.than.100","GPP = 14.01 + leaf.type x 12.37",TRUE
-"NPP","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP = 3.79 + leaf.type x 4.56",TRUE
-"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP = 3.98 + leaf.type x 1.31",TRUE
-"ANPP_foliage","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 1.37 + leaf.type x 1.33",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 1.81 + leaf.type x 0.84",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.25 + leaf.type x 1.89",TRUE
-"NPP","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP = 3.79 + leaf.type x 4.56",TRUE
-"NPP_1","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP_1 = 3.61 + leaf.type x 4.48",TRUE
-"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP = 3.98 + leaf.type x 1.31",TRUE
-"ANPP_2","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 3.84 + leaf.type x 1.11",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","GPP = 21.18 + leaf.phenology x -1.36",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP = 6.79 + leaf.phenology x -1.02",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP = 5 + leaf.phenology x -1.18",TRUE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 2.45 + leaf.phenology x -0.15",FALSE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 2.33 + leaf.phenology x -1.3",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name","age.greater.than.100","BNPP_root = 2.66 + leaf.phenology x -0.7",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP = 6.79 + leaf.phenology x -1.02",FALSE
-"NPP_1","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP_1 = 6.5 + leaf.phenology x -0.8",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP = 5 + leaf.phenology x -1.18",TRUE
-"ANPP_2","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 4.72 + leaf.phenology x -1.56",TRUE
-"GPP","mat","geographic.area/plot.name","age.greater.than.200","GPP = 9.74 + mat x 0.82",TRUE
-"NPP","mat","geographic.area/plot.name","age.greater.than.200","NPP = 3.79 + mat x 0.24",TRUE
-"ANPP","mat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.96 + mat x -0.02",FALSE
-"ANPP_foliage","mat","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 0.72 + mat x 0.1",TRUE
-"ANPP_woody","mat","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 1.25 + mat x 0.07",TRUE
-"BNPP_root","mat","geographic.area/plot.name","age.greater.than.200","BNPP_root = 1.21 + mat x 0.1",TRUE
-"NPP","mat","geographic.area/plot.name","age.greater.than.200","NPP = 3.79 + mat x 0.24",TRUE
-"NPP_1","mat","geographic.area/plot.name","age.greater.than.200","NPP_1 = 3.17 + mat x 0.26",TRUE
-"ANPP","mat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.96 + mat x -0.02",FALSE
-"ANPP_2","mat","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 2.73 + mat x 0.18",TRUE
-"GPP","map","geographic.area/plot.name","age.greater.than.200","GPP = 18.46 + map x 0",FALSE
-"NPP","map","geographic.area/plot.name","age.greater.than.200","NPP = 8.67 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name","age.greater.than.200","ANPP = 5.38 + map x 0",FALSE
-"ANPP_foliage","map","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 2.74 + map x 0",FALSE
-"ANPP_woody","map","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.91 + map x 0",FALSE
-"BNPP_root","map","geographic.area/plot.name","age.greater.than.200","BNPP_root = 2.79 + map x 0",FALSE
-"NPP","map","geographic.area/plot.name","age.greater.than.200","NPP = 8.67 + map x 0",FALSE
-"NPP_1","map","geographic.area/plot.name","age.greater.than.200","NPP_1 = 8.54 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name","age.greater.than.200","ANPP = 5.38 + map x 0",FALSE
-"ANPP_2","map","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 6.72 + map x 0",TRUE
-"GPP","lat","geographic.area/plot.name","age.greater.than.200","GPP = 34.59 + lat x -0.45",TRUE
-"NPP","lat","geographic.area/plot.name","age.greater.than.200","NPP = 10.34 + lat x -0.12",TRUE
-"ANPP","lat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.98 + lat x -0.03",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 3.05 + lat x -0.04",TRUE
-"ANPP_woody","lat","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.95 + lat x -0.02",FALSE
-"BNPP_root","lat","geographic.area/plot.name","age.greater.than.200","BNPP_root = 4.14 + lat x -0.05",TRUE
-"NPP","lat","geographic.area/plot.name","age.greater.than.200","NPP = 10.34 + lat x -0.12",TRUE
-"NPP_1","lat","geographic.area/plot.name","age.greater.than.200","NPP_1 = 9.98 + lat x -0.11",TRUE
-"ANPP","lat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.98 + lat x -0.03",TRUE
-"ANPP_2","lat","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 6.72 + lat x -0.06",TRUE
-"GPP","stand.age","geographic.area/plot.name","age.greater.than.200","GPP = 21.46 + stand.age x -3.38",FALSE
-"ANPP","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP = 6.62 + stand.age x -1.29",FALSE
-"ANPP_foliage","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = -1.7 + stand.age x 1.26",FALSE
-"ANPP","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP = 6.62 + stand.age x -1.29",FALSE
-"ANPP_2","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 15.79 + stand.age x -4.88",FALSE
-"GPP","leaf.type","geographic.area/plot.name","age.greater.than.200","GPP = 16.67 + leaf.type x 12.27",TRUE
-"NPP","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP = 4.69 + leaf.type x 4.37",TRUE
-"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP = 4.72 + leaf.type x 0.72",FALSE
-"ANPP_foliage","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 1.33 + leaf.type x 1.41",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.24 + leaf.type x 0.41",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name","age.greater.than.200","BNPP_root = 1.46 + leaf.type x 2.16",TRUE
-"NPP","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP = 4.69 + leaf.type x 4.37",TRUE
-"NPP_1","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP_1 = 4.49 + leaf.type x 4.21",TRUE
-"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP = 4.72 + leaf.type x 0.72",FALSE
-"ANPP_2","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 3.96 + leaf.type x 1.81",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","GPP = 26.56 + leaf.phenology x -5.2",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP = 7.61 + leaf.phenology x -0.61",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP = 5.32 + leaf.phenology x -1.27",FALSE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 2.56 + leaf.phenology x -0.09",FALSE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.6 + leaf.phenology x -1.16",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name","age.greater.than.200","BNPP_root = 3.06 + leaf.phenology x -0.25",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP = 7.61 + leaf.phenology x -0.61",FALSE
-"NPP_1","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP_1 = 7.31 + leaf.phenology x -0.46",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP = 5.32 + leaf.phenology x -1.27",FALSE
-"ANPP_2","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 4.98 + leaf.phenology x -1.07",FALSE
-"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 6.82 + mat x 0.61  + age x 0.01",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4.28 + mat x 0.21",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 5.16 + mat x 0.1  + age x 0",TRUE
-"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.23 + mat x 0.04  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.89 + mat x 0.1  + age x 0",TRUE
-"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.08 + mat x 0.04  + age x 0",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4.28 + mat x 0.21",TRUE
-"NPP_1","mat","geographic.area/plot.name",">=100 yrs","NPP_1 = 4.07 + mat x 0.22",TRUE
-"NPP_2","mat","geographic.area/plot.name",">=100 yrs","NPP_2 = 5.13 + mat x 0.2  + age x 0",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 5.16 + mat x 0.1  + age x 0",TRUE
-"ANPP_2","mat","geographic.area/plot.name",">=100 yrs","ANPP_2 = 3.3 + mat x 0.2  + age x 0",TRUE
-"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 6.97 + map x 0  + age x 0.02",TRUE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 4.01 + map x 0  + age x 0.01 + 0  x interaction",TRUE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 3.75 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.92 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.02 + map x 0",FALSE
-"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.32 + map x 0  + age x 0",FALSE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 4.01 + map x 0  + age x 0.01 + 0  x interaction",TRUE
-"NPP_1","map","geographic.area/plot.name",">=100 yrs","NPP_1 = 3.67 + map x 0  + age x 0.01 + 0  x interaction",TRUE
-"NPP_2","map","geographic.area/plot.name",">=100 yrs","NPP_2 = 4.44 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 3.75 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_2","map","geographic.area/plot.name",">=100 yrs","ANPP_2 = 2.36 + map x 0  + age x 0 + 0  x interaction",TRUE
-"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 25.49 + lat x -0.29  + age x 0.01 + 0  x interaction",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.28 + lat x -0.1",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 8.3 + lat x -0.08  + age x 0",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.99 + lat x -0.03",TRUE
-"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.02 + lat x -0.02",TRUE
-"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.5 + lat x -0.02  + age x 0 + 0  x interaction",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.28 + lat x -0.1",TRUE
-"NPP_1","lat","geographic.area/plot.name",">=100 yrs","NPP_1 = 9.96 + lat x -0.1",TRUE
-"NPP_2","lat","geographic.area/plot.name",">=100 yrs","NPP_2 = 15.18 + lat x -0.19  + age x -0.01 + 0  x interaction",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 8.3 + lat x -0.08  + age x 0",TRUE
-"ANPP_2","lat","geographic.area/plot.name",">=100 yrs","ANPP_2 = 7.35 + lat x -0.07",TRUE
-"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 12.92 + leaf.type x 1.16  + age x 0 + 0.02  x interaction",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 4.17 + leaf.type x 2.59  + age x 0",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 3.94 + leaf.type x 0.58  + age x 0",TRUE
-"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.22 + leaf.type x 0.46  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.77 + leaf.type x 1.23  + age x 0 + 0  x interaction",TRUE
-"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.56 + leaf.type x -0.09  + age x 0 + 0  x interaction",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 4.17 + leaf.type x 2.59  + age x 0",TRUE
-"NPP_1","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_1 = 4.19 + leaf.type x 2.38  + age x 0",TRUE
-"NPP_2","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_2 = 4.99 + leaf.type x 2.22",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 3.94 + leaf.type x 0.58  + age x 0",TRUE
-"ANPP_2","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_2 = 3.76 + leaf.type x 0.54  + age x 0",TRUE
-"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 12.18 + leaf.phenology x 0.86  + age x 0.01",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 4.73 + leaf.phenology x 2.07  + age x 0 + 0  x interaction",TRUE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.3 + leaf.phenology x -0.12  + age x 0",FALSE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.34 + leaf.phenology x 0.3  + age x 0",TRUE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.8 + leaf.phenology x 1.12  + age x 0 + 0  x interaction",TRUE
-"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.63 + leaf.phenology x -0.11  + age x 0",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 4.73 + leaf.phenology x 2.07  + age x 0 + 0  x interaction",TRUE
-"NPP_1","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_1 = 4.88 + leaf.phenology x 1.22  + age x 0",TRUE
-"NPP_2","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_2 = 5.1 + leaf.phenology x 2.8  + age x 0 + 0  x interaction",TRUE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.3 + leaf.phenology x -0.12  + age x 0",FALSE
-"ANPP_2","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_2 = 4.05 + leaf.phenology x -0.09  + age x 0",FALSE
-"GPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"GPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","6.88 + MAT + AGE x 0.6",FALSE
-"NPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"NPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","4.51 + MAT + AGE x 0.19",FALSE
-"ANPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","5.02 + MAT + AGE x 0.11",FALSE
-"ANPP_woody","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP_woody","MAT + AGE","geographic.area/plot.name",">=100 yrs","2.01 + MAT + AGE x 0.06",FALSE
-"NPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP_woody","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
+"response","fixed","random","Age.filter","equation","significant","sample.size"
+"GPP","mat","geographic.area/plot.name","age.greater.than.100","GPP = 8.48 + mat x 0.86",TRUE,221
+"NPP","mat","geographic.area/plot.name","age.greater.than.100","NPP = 3.74 + mat x 0.24",TRUE,101
+"ANPP","mat","geographic.area/plot.name","age.greater.than.100","ANPP = 4.48 + mat x 0.05",FALSE,257
+"ANPP_foliage","mat","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 0.82 + mat x 0.1",TRUE,88
+"ANPP_woody","mat","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 1.12 + mat x 0.08",TRUE,45
+"BNPP_root","mat","geographic.area/plot.name","age.greater.than.100","BNPP_root = 0.98 + mat x 0.1",TRUE,82
+"NPP","mat","geographic.area/plot.name","age.greater.than.100","NPP = 3.74 + mat x 0.24",TRUE,101
+"NPP_1","mat","geographic.area/plot.name","age.greater.than.100","NPP_1 = 3.49 + mat x 0.25",TRUE,73
+"ANPP","mat","geographic.area/plot.name","age.greater.than.100","ANPP = 4.48 + mat x 0.05",FALSE,257
+"ANPP_2","mat","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 2.79 + mat x 0.17",TRUE,110
+"GPP","map","geographic.area/plot.name","age.greater.than.100","GPP = 12.82 + map x 0.01",TRUE,222
+"NPP","map","geographic.area/plot.name","age.greater.than.100","NPP = 7.1 + map x 0",FALSE,101
+"ANPP","map","geographic.area/plot.name","age.greater.than.100","ANPP = 4.73 + map x 0",FALSE,274
+"ANPP_foliage","map","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 2.5 + map x 0",FALSE,136
+"ANPP_woody","map","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 2.24 + map x 0",FALSE,45
+"BNPP_root","map","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.96 + map x 0",TRUE,86
+"NPP","map","geographic.area/plot.name","age.greater.than.100","NPP = 7.1 + map x 0",FALSE,101
+"NPP_1","map","geographic.area/plot.name","age.greater.than.100","NPP_1 = 6.71 + map x 0",FALSE,73
+"ANPP","map","geographic.area/plot.name","age.greater.than.100","ANPP = 4.73 + map x 0",FALSE,274
+"ANPP_2","map","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 5.29 + map x 0",TRUE,111
+"GPP","lat","geographic.area/plot.name","age.greater.than.100","GPP = 34.27 + lat x -0.46",TRUE,245
+"NPP","lat","geographic.area/plot.name","age.greater.than.100","NPP = 10.35 + lat x -0.11",TRUE,115
+"ANPP","lat","geographic.area/plot.name","age.greater.than.100","ANPP = 6.02 + lat x -0.04",TRUE,323
+"ANPP_foliage","lat","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 3.02 + lat x -0.03",TRUE,161
+"ANPP_woody","lat","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 3.06 + lat x -0.03",TRUE,64
+"BNPP_root","lat","geographic.area/plot.name","age.greater.than.100","BNPP_root = 4.09 + lat x -0.05",TRUE,96
+"NPP","lat","geographic.area/plot.name","age.greater.than.100","NPP = 10.35 + lat x -0.11",TRUE,115
+"NPP_1","lat","geographic.area/plot.name","age.greater.than.100","NPP_1 = 10.02 + lat x -0.11",TRUE,83
+"ANPP","lat","geographic.area/plot.name","age.greater.than.100","ANPP = 6.02 + lat x -0.04",TRUE,323
+"ANPP_2","lat","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 7.16 + lat x -0.07",TRUE,131
+"GPP","stand.age","geographic.area/plot.name","age.greater.than.100","GPP = 8.31 + stand.age x 1.61",FALSE,183
+"NPP","stand.age","geographic.area/plot.name","age.greater.than.100","NPP = 5.47 + stand.age x -0.3",FALSE,61
+"ANPP","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP = 6.63 + stand.age x -1.41",FALSE,130
+"ANPP_foliage","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 1.44 + stand.age x 0.07",FALSE,65
+"ANPP_woody","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_woody = -2.32 + stand.age x 1.75",TRUE,34
+"BNPP_root","stand.age","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.5 + stand.age x -0.06",FALSE,48
+"NPP","stand.age","geographic.area/plot.name","age.greater.than.100","NPP = 5.47 + stand.age x -0.3",FALSE,61
+"NPP_1","stand.age","geographic.area/plot.name","age.greater.than.100","NPP_1 = 7.44 + stand.age x -1.23",FALSE,46
+"ANPP","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP = 6.63 + stand.age x -1.41",FALSE,130
+"ANPP_2","stand.age","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 5.89 + stand.age x -1.04",FALSE,98
+"GPP","leaf.type","geographic.area/plot.name","age.greater.than.100","GPP = 14.01 + leaf.type x 12.37",TRUE,229
+"NPP","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP = 3.79 + leaf.type x 4.56",TRUE,115
+"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP = 3.98 + leaf.type x 1.31",TRUE,307
+"ANPP_foliage","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 1.37 + leaf.type x 1.33",TRUE,155
+"ANPP_woody","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 1.81 + leaf.type x 0.84",FALSE,64
+"BNPP_root","leaf.type","geographic.area/plot.name","age.greater.than.100","BNPP_root = 1.25 + leaf.type x 1.89",TRUE,94
+"NPP","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP = 3.79 + leaf.type x 4.56",TRUE,115
+"NPP_1","leaf.type","geographic.area/plot.name","age.greater.than.100","NPP_1 = 3.61 + leaf.type x 4.48",TRUE,83
+"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP = 3.98 + leaf.type x 1.31",TRUE,307
+"ANPP_2","leaf.type","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 3.84 + leaf.type x 1.11",FALSE,128
+"GPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","GPP = 21.18 + leaf.phenology x -1.36",FALSE,226
+"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP = 6.79 + leaf.phenology x -1.02",FALSE,115
+"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP = 5 + leaf.phenology x -1.18",TRUE,306
+"ANPP_foliage","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_foliage = 2.45 + leaf.phenology x -0.15",FALSE,157
+"ANPP_woody","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_woody = 2.33 + leaf.phenology x -1.3",FALSE,64
+"BNPP_root","leaf.phenology","geographic.area/plot.name","age.greater.than.100","BNPP_root = 2.66 + leaf.phenology x -0.7",FALSE,94
+"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP = 6.79 + leaf.phenology x -1.02",FALSE,115
+"NPP_1","leaf.phenology","geographic.area/plot.name","age.greater.than.100","NPP_1 = 6.5 + leaf.phenology x -0.8",FALSE,83
+"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP = 5 + leaf.phenology x -1.18",TRUE,306
+"ANPP_2","leaf.phenology","geographic.area/plot.name","age.greater.than.100","ANPP_2 = 4.72 + leaf.phenology x -1.56",TRUE,128
+"GPP","mat","geographic.area/plot.name","age.greater.than.200","GPP = 9.74 + mat x 0.82",TRUE,116
+"NPP","mat","geographic.area/plot.name","age.greater.than.200","NPP = 3.79 + mat x 0.24",TRUE,66
+"ANPP","mat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.96 + mat x -0.02",FALSE,212
+"ANPP_foliage","mat","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 0.72 + mat x 0.1",TRUE,67
+"ANPP_woody","mat","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 1.25 + mat x 0.07",TRUE,34
+"BNPP_root","mat","geographic.area/plot.name","age.greater.than.200","BNPP_root = 1.21 + mat x 0.1",TRUE,53
+"NPP","mat","geographic.area/plot.name","age.greater.than.200","NPP = 3.79 + mat x 0.24",TRUE,66
+"NPP_1","mat","geographic.area/plot.name","age.greater.than.200","NPP_1 = 3.17 + mat x 0.26",TRUE,44
+"ANPP","mat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.96 + mat x -0.02",FALSE,212
+"ANPP_2","mat","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 2.73 + mat x 0.18",TRUE,66
+"GPP","map","geographic.area/plot.name","age.greater.than.200","GPP = 18.46 + map x 0",FALSE,117
+"NPP","map","geographic.area/plot.name","age.greater.than.200","NPP = 8.67 + map x 0",FALSE,66
+"ANPP","map","geographic.area/plot.name","age.greater.than.200","ANPP = 5.38 + map x 0",FALSE,228
+"ANPP_foliage","map","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 2.74 + map x 0",FALSE,114
+"ANPP_woody","map","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.91 + map x 0",FALSE,34
+"BNPP_root","map","geographic.area/plot.name","age.greater.than.200","BNPP_root = 2.79 + map x 0",FALSE,57
+"NPP","map","geographic.area/plot.name","age.greater.than.200","NPP = 8.67 + map x 0",FALSE,66
+"NPP_1","map","geographic.area/plot.name","age.greater.than.200","NPP_1 = 8.54 + map x 0",FALSE,44
+"ANPP","map","geographic.area/plot.name","age.greater.than.200","ANPP = 5.38 + map x 0",FALSE,228
+"ANPP_2","map","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 6.72 + map x 0",TRUE,67
+"GPP","lat","geographic.area/plot.name","age.greater.than.200","GPP = 34.59 + lat x -0.45",TRUE,129
+"NPP","lat","geographic.area/plot.name","age.greater.than.200","NPP = 10.34 + lat x -0.12",TRUE,74
+"ANPP","lat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.98 + lat x -0.03",TRUE,259
+"ANPP_foliage","lat","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 3.05 + lat x -0.04",TRUE,130
+"ANPP_woody","lat","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.95 + lat x -0.02",FALSE,45
+"BNPP_root","lat","geographic.area/plot.name","age.greater.than.200","BNPP_root = 4.14 + lat x -0.05",TRUE,63
+"NPP","lat","geographic.area/plot.name","age.greater.than.200","NPP = 10.34 + lat x -0.12",TRUE,74
+"NPP_1","lat","geographic.area/plot.name","age.greater.than.200","NPP_1 = 9.98 + lat x -0.11",TRUE,49
+"ANPP","lat","geographic.area/plot.name","age.greater.than.200","ANPP = 5.98 + lat x -0.03",TRUE,259
+"ANPP_2","lat","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 6.72 + lat x -0.06",TRUE,79
+"GPP","stand.age","geographic.area/plot.name","age.greater.than.200","GPP = 21.46 + stand.age x -3.38",FALSE,67
+"ANPP","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP = 6.62 + stand.age x -1.29",FALSE,66
+"ANPP_foliage","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = -1.7 + stand.age x 1.26",FALSE,34
+"ANPP","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP = 6.62 + stand.age x -1.29",FALSE,66
+"ANPP_2","stand.age","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 15.79 + stand.age x -4.88",FALSE,46
+"GPP","leaf.type","geographic.area/plot.name","age.greater.than.200","GPP = 16.67 + leaf.type x 12.27",TRUE,113
+"NPP","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP = 4.69 + leaf.type x 4.37",TRUE,74
+"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP = 4.72 + leaf.type x 0.72",FALSE,245
+"ANPP_foliage","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 1.33 + leaf.type x 1.41",TRUE,125
+"ANPP_woody","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.24 + leaf.type x 0.41",FALSE,45
+"BNPP_root","leaf.type","geographic.area/plot.name","age.greater.than.200","BNPP_root = 1.46 + leaf.type x 2.16",TRUE,62
+"NPP","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP = 4.69 + leaf.type x 4.37",TRUE,74
+"NPP_1","leaf.type","geographic.area/plot.name","age.greater.than.200","NPP_1 = 4.49 + leaf.type x 4.21",TRUE,49
+"ANPP","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP = 4.72 + leaf.type x 0.72",FALSE,245
+"ANPP_2","leaf.type","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 3.96 + leaf.type x 1.81",FALSE,78
+"GPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","GPP = 26.56 + leaf.phenology x -5.2",FALSE,110
+"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP = 7.61 + leaf.phenology x -0.61",FALSE,74
+"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP = 5.32 + leaf.phenology x -1.27",FALSE,244
+"ANPP_foliage","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_foliage = 2.56 + leaf.phenology x -0.09",FALSE,127
+"ANPP_woody","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_woody = 2.6 + leaf.phenology x -1.16",FALSE,45
+"BNPP_root","leaf.phenology","geographic.area/plot.name","age.greater.than.200","BNPP_root = 3.06 + leaf.phenology x -0.25",FALSE,62
+"NPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP = 7.61 + leaf.phenology x -0.61",FALSE,74
+"NPP_1","leaf.phenology","geographic.area/plot.name","age.greater.than.200","NPP_1 = 7.31 + leaf.phenology x -0.46",FALSE,49
+"ANPP","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP = 5.32 + leaf.phenology x -1.27",FALSE,244
+"ANPP_2","leaf.phenology","geographic.area/plot.name","age.greater.than.200","ANPP_2 = 4.98 + leaf.phenology x -1.07",FALSE,78
