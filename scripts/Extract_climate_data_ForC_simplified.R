@@ -13,6 +13,7 @@ proj4string(ForC_simplified)<-proj
 plot(ForC_simplified)
 as.data.frame(ForC_simplified)
 
+#### this section takes a long time to run
 # cld
 r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.cld.dat.nc", varname="cld")
 cld.1901.2014 <- raster::extract(r, ForC_simplified)
