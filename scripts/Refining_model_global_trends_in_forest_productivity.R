@@ -9,13 +9,13 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
 
 # Load data ####
-ForC_simplified <- read.csv("ForC_simplified/ForC_simplified.csv", stringsAsFactors = F)
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU.csv", stringsAsFactors = F)
 VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
 
 na_codes <- c("NA", "NI", "NRA", "NaN", "NAC") 
@@ -96,7 +96,7 @@ response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
 ## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "stand.age", "leaf.type", "leaf.phenology")
+fixed.variables <- c("mat", "map", "lat", "stand.age", "leaf.type", "leaf.phenology", "AnnualMeanTemp", "MeanDiurnalRange", "Isothermality", "TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ", "MeanTWarmQ", "MeanTColdQ","AnnualPre", "PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays")
 
 ## prepare results table
 
@@ -113,7 +113,7 @@ for (age in ages){
   
   for(fixed.v in fixed.variables){
   
-  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_MATURE_only_", age, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_MATURE_only_", age, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
   
   par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
   print(fixed.v)
@@ -269,11 +269,173 @@ for (age in ages){
   }  
 }
 
+for (age in ages){
+  
+  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+  
+  for(fixed.v in fixed.variables){
+    
+    tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_ANPP_detail_MATURE_only_", age, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    
+    response.variables <- c("ANPP_foliage", "ANPP_woody", "BNPP_root")
+    
+    ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
+    
+    print(fixed.v)
+    
+    categorical <- ifelse(fixed.v %in% c("leaf.type", "leaf.phenology"), TRUE, FALSE)
+    
+    pannel.nb <- 1
+    
+    response.variables <- c("ANPP_foliage", "ANPP_woody", "BNPP_root")
+      
+      response.variables.col <- 1:length(response.variables)
+      
+      first.plot <- TRUE
+      
+      for (response.v in response.variables){ #, "ANPP_stem"
+        
+        print(response.v)
+        
+        ##if(response.v %in% "NEE") responses.to.keep  <- c("NEE", "NEP")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+        ##if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1", "ANPP_litterfall_2", "ANPP_litterfall_3")
+        if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+        
+        
+        response.v.color <- response.variables.col[which(response.variables %in% response.v)]
+        
+        rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+        
+        fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+        
+        if(categorical) fixed.no.na <- fixed.no.na & !ForC_simplified[, fixed.v] %in% c("Other", "mixed")
+        
+        # drop age only for the analysis that has age as a fixed variable
+        if(fixed.v %in% "stand.age") drop.ages.999.or.0.or.na <- ages.not.999.nor.0.nor.na
+        if(!fixed.v %in% "stand.age") drop.ages.999.or.0.or.na <- rep(TRUE, nrow(ForC_simplified))
+        
+        # subset to keep only what we need
+        df <- ForC_simplified[rows.with.response & drop.ages.999.or.0.or.na & ages.to.keep & dist.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+        
+        
+        if(all(responses.to.keep %in% c("NEE", "NEP"))) {
+          # multiply NEP  by -1
+          m <- match(df$variable.name, responses.to.keep)
+          df$mean <- df$mean *c(1,-1)[m]
+        }
+        
+        
+        if(nrow(df) > 30 & ifelse(!categorical | (categorical & length(unique(df[, fixed.v])) >1), TRUE, FALSE)){
+          df$fixed <- df[, fixed.v]
+          
+          
+          # Deal with categorical levels
+          
+          
+          if(categorical){
+            
+            if(fixed.v %in% "leaf.type") categories <- c("needleleaf", "broadleaf")
+            if(fixed.v %in% "leaf.phenology") categories <- c("evergreen", "deciduous")
+            if(!fixed.v %in% c("leaf.type", "leaf.phenology")) stop("Error: need to code here")
+            
+            
+            df <- df[df[, fixed.v]%in% categories,]
+            df$fixed <- factor(df$fixed, levels = categories)
+            
+          }
+          
+          # model
+          
+          mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+          
+          if(fixed.v %in% "stand.age") mod.full <- lmer(mean ~ log10(fixed) + (1|geographic.area/plot.name), data = df)
+          if(!fixed.v %in% "stand.age") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+          
+          significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+          
+          sample.size <- length(df$mean)
+          
+          
+          # plot 
+          
+          if(!categorical){
+            if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, log = ifelse(fixed.v %in% "stand.age", "x", ""), xaxt = "n", yaxt = "n")
+            if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+            
+            abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+            
+            if(first.plot) {
+              axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
+              axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
+            }
+          }
+          
+          if(categorical){
+            
+            df$fixed_cat <- paste(df$fixed, response.v, sep = "_")
+            df$fixed_cat <- factor(df$fixed_cat, levels = apply(expand.grid(categories, response.variables), 1, paste, collapse = "_"))
+            
+            
+            b <- boxplot(mean ~ fixed_cat, data = df,  xlab = "", ylab = "", ylim = ylim, add = !first.plot, xaxt = "n", yaxt = "n",  col = rgb(t(col2rgb(response.v.color)), maxColorValue = 255, alpha = c(255, 100)))
+            
+            
+            if(first.plot) {
+              axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
+              axis(1, at = 1:nlevels(df$fixed_cat), labels = F)
+            }
+            # if(pannel.nb %in% c(3,4)) text(x = 1:nlevels(df$fixed_cat), y = ylim[1]-(diff(ylim)/8), labels = rep(categories, nlevels(df$fixed_cat)/2), srt = 45, xpd = T)
+            
+            points(c(fixef(mod.full)[1], fixef(mod.full)[1] + fixef(mod.full)[2]) ~ which(!is.na(b$stats[1,])), pch = 24, col=  "grey", bg = ifelse(significant.effect, "grey", response.v.color))
+          }
+          
+          
+          
+          first.plot <- FALSE
+          
+          
+          
+          
+          r <- round(fixef(mod.full), 2)
+          equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+          legend <- paste(response.v, "sample size =", sample.size)
+          
+          if (!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
+          
+          if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
+          #dev.off ()
+          
+          results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, sample.size = sample.size)
+          
+          all.results <- rbind(all.results, results)
+        }
+        
+      }
+      
+      
+      pannel.nb <- pannel.nb +1
+    
+      if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effect", "non-significant effect"), bty = "n")
+      if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effect", "non-significant effect", categories), bty = "n")
+      
+      title (paste("Effect of", fixed.v), outer = T, line = 1)
+      mtext(side = 1, line = ifelse(categorical, 4, 3), text = fixed.v, outer = T)
+      mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
+      
+      dev.off()  
+      
+    }
+    
+    dev.off()
+  }  
+
 
 #### age as an interaction ####
 for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
   
-  tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_INTERACTION_of_AGE.tiff"), width = 1155, height = 1000, units = "px", res = 150)
+  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/Effect_of_", fixed.v, "_INTERACTION_of_AGE.tiff"), width = 1155, height = 1000, units = "px", res = 150)
   
   par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
   print(fixed.v)
@@ -638,6 +800,6 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
 
 
 # SAVE all.results ####
-write.csv(all.results, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
 
 
