@@ -282,6 +282,7 @@ for (age in ages){
     
     ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
     
+    
     print(fixed.v)
     
     categorical <- ifelse(fixed.v %in% c("leaf.type", "leaf.phenology"), TRUE, FALSE)
@@ -405,30 +406,31 @@ for (age in ages){
           if (!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
           
           if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
-          #dev.off ()
+          
           
           results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, sample.size = sample.size)
           
           all.results <- rbind(all.results, results)
         }
         
+        
       }
-      
-      
       pannel.nb <- pannel.nb +1
-    
+      
       if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effect", "non-significant effect"), bty = "n")
       if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effect", "non-significant effect", categories), bty = "n")
       
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = ifelse(categorical, 4, 3), text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
+      #dev.off ()
       
-      dev.off()  
       
+     
+      dev.off()
     }
     
-    dev.off()
+  
   }  
 
 
