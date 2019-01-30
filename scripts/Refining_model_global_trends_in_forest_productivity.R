@@ -192,6 +192,8 @@ for (age in ages){
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        
         sample.size <- length(df$mean)
         
         
@@ -243,7 +245,7 @@ for (age in ages){
         if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
         #dev.off ()
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, sample.size = sample.size)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, p.value = significance, sample.size = sample.size)
         
         all.results <- rbind(all.results, results)
       }
@@ -357,6 +359,8 @@ for (age in ages){
           
           significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
           
+          significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+          
           sample.size <- length(df$mean)
           
           
@@ -407,10 +411,6 @@ for (age in ages){
           
           if (categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = response.v, adj = 0.1, col = response.v.color, cex = 0.5)
           
-          
-          results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, equation = equation, significant = significant.effect, sample.size = sample.size)
-          
-          all.results <- rbind(all.results, results)
         }
         
         
@@ -802,6 +802,9 @@ for (response.v in c("GPP", "NPP", "ANPP", "ANPP_woody")){
 
 
 # SAVE all.results ####
+
+duplicates <- which(duplicated(all.results))
+all.results <- all.results[-duplicates,]
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
 
 
