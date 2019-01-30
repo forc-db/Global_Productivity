@@ -1,4 +1,4 @@
-"response","fixed","random","Age.filter","equation","significant","significance","sample.size"
+"response","fixed","random","Age.filter","equation","significant","p.value","sample.size"
 "GPP","mat","geographic.area/plot.name","age.greater.than.100","GPP = 8.48 + mat x 0.86",TRUE,1.04928767223225e-12,221
 "NPP","mat","geographic.area/plot.name","age.greater.than.100","NPP = 3.74 + mat x 0.24",TRUE,1.55916945594585e-09,101
 "ANPP","mat","geographic.area/plot.name","age.greater.than.100","ANPP = 4.48 + mat x 0.05",FALSE,0.111912047603708,257
