@@ -32,73 +32,12 @@ ANPP_woody_stem_and_litterfall <- merge(ANPP_litterfall, ANPP_woody_stem[, c("va
 ANPP_woody_and_canopy <- merge(ANPP_canopy, ANPP_woody[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 ANPP_woody_stem_and_canopy <- merge(ANPP_canopy, ANPP_woody_stem[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 
-#write.csv(ANPP_woody_and_foliage, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_foliage.csv")
-#write.csv(ANPP_woody_stem_and_foliage, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_stem_and_foliage.csv")
-#write.csv(ANPP_woody_and_litterfall, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_litterfall.csv")
-#write.csv(ANPP_woody_stem_and_litterfall, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_stem_and_litterfall.csv")
+#####now working with ANPP_woody_stem_and_canopy
 
-subtropical_waf <- ANPP_woody_and_foliage[ANPP_woody_and_foliage$biomes == "subtropical",]
-tropical_waf <- ANPP_woody_and_foliage[ANPP_woody_and_foliage$biomes == "tropical",]
-boreal_waf <- ANPP_woody_and_foliage[ANPP_woody_and_foliage$biomes == "boreal",]
-temperate_waf <- ANPP_woody_and_foliage[ANPP_woody_and_foliage$biomes == "temperate",]
+names(ANPP_woody_stem_and_canopy)[13] <- "ANPP_canopy"
+names(ANPP_woody_stem_and_canopy)[41] <- "ANPP_woody_stem"
 
-boreal_wal <- ANPP_woody_and_foliage[ANPP_woody_and_litterfall$biomes == "boreal",]
-
-subtropical_wsaf <- ANPP_woody_stem_and_foliage[ANPP_woody_stem_and_foliage$biomes == "subtropical",]
-tropical_wsaf <- ANPP_woody_stem_and_foliage[ANPP_woody_stem_and_foliage$biomes == "tropical",]
-boreal_wsaf <- ANPP_woody_stem_and_foliage[ANPP_woody_stem_and_foliage$biomes == "boreal",]
-temperate_wsaf <- ANPP_woody_stem_and_foliage[ANPP_woody_stem_and_foliage$biomes == "temperate",]
-
-tropicalModwaf <- lm(mean.x ~ 0 + mean.y, data=tropical_waf)
-subtropicalModwaf <- lm(mean.x ~ 0 + mean.y, data=subtropical_waf)
-borealModwaf <- lm(mean.x ~ 0 + mean.y, data=boreal_waf)
-temperateModwaf <- lm(mean.x ~ 0 + mean.y, data=temperate_waf)
-tropicalModwsaf <- lm(mean.x ~ 0 + mean.y, data=tropical_wsaf)
-subtropicalModwsaf <- lm(mean.x ~ 0 + mean.y, data=subtropical_wsaf)
-borealModwsaf <- lm(mean.x ~ 0 + mean.y, data=boreal_wsaf)
-temperateModwsaf <- lm(mean.x ~ 0 + mean.y, data=temperate_wsaf)
-
-par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
-plot(tropical_waf$mean.y, tropical_waf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:15))
-abline(tropicalModwaf)
-plot(subtropical_waf$mean.y, subtropical_waf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(subtropicalModwaf)
-plot(temperate_waf$mean.y, temperate_waf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(temperateModwaf)
-plot(boreal_waf$mean.y, boreal_waf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(borealModwaf)
-
-par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
-plot(tropical_wsaf$mean.y, tropical_wsaf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(tropicalModwsaf)
-plot(subtropical_wsaf$mean.y, subtropical_wsaf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(subtropicalModwsaf)
-plot(temperate_wsaf$mean.y, temperate_wsaf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(temperateModwsaf)
-plot(boreal_wsaf$mean.y, boreal_wsaf$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(borealModwsaf)
-
-
-
-subtropical_wsal <- ANPP_woody_stem_and_litterfall[ANPP_woody_stem_and_litterfall$biomes == "subtropical",]
-tropical_wsal <- ANPP_woody_stem_and_litterfall[ANPP_woody_stem_and_litterfall$biomes == "tropical",]
-boreal_wsal <- ANPP_woody_stem_and_litterfall[ANPP_woody_stem_and_litterfall$biomes == "boreal",]
-temperate_wsal <- ANPP_woody_stem_and_litterfall[ANPP_woody_stem_and_litterfall$biomes == "temperate",]
-
-tropicalModwsal <- lm(mean.x ~ 0 + mean.y, data=tropical_wsal)
-subtropicalModwsal <- lm(mean.x ~ 0 + mean.y, data=subtropical_wsal)
-borealModwsal <- lm(mean.x ~ 0 + mean.y, data=boreal_wsal)
-temperateModwsal <- lm(mean.x ~ 0 + mean.y, data=temperate_wsal)
-
-par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
-plot(tropical_wsal$mean.y, tropical_wsal$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(tropicalModwsal)
-plot(subtropical_wsal$mean.y, subtropical_wsal$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(subtropicalModwsal)
-plot(temperate_wsal$mean.y, temperate_wsal$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(temperateModwsal)
-plot(boreal_wsal$mean.y, boreal_wsal$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(borealModwsal)
+write.csv(ANPP_woody_stem_and_canopy, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_stem_and_canopy.csv")
 
 
 subtropical_wsac <- ANPP_woody_stem_and_canopy[which(ANPP_woody_stem_and_canopy$biomes == "subtropical"),]
@@ -106,27 +45,33 @@ tropical_wsac <- ANPP_woody_stem_and_canopy[which(ANPP_woody_stem_and_canopy$bio
 boreal_wsac <- ANPP_woody_stem_and_canopy[which(ANPP_woody_stem_and_canopy$biomes == "boreal"),]
 temperate_wsac <- ANPP_woody_stem_and_canopy[which(ANPP_woody_stem_and_canopy$biomes == "temperate"),]
 
-tropicalModwsac <- lm(mean.x ~ 0 + mean.y, data=tropical_wsac)
-subtropicalModwsac <- lm(mean.x ~ 0 + mean.y, data=subtropical_wsac)
-borealModwsac <- lm(mean.x ~ 0 + mean.y, data=boreal_wsac)
-temperateModwsac <- lm(mean.x ~ 0 + mean.y, data=temperate_wsac)
+tropicalModwsac <- lm(ANPP_canopy ~ 0 + ANPP_woody_stem, data=tropical_wsac)
+subtropicalModwsac <- lm(ANPP_canopy ~ 0 + ANPP_woody_stem, data=subtropical_wsac)
+borealModwsac <- lm(ANPP_canopy ~ 0 + ANPP_woody_stem, data=boreal_wsac)
+temperateModwsac <- lm(ANPP_canopy ~ 0 + ANPP_woody_stem, data=temperate_wsac)
+
+biomes <- c("tropical", "subtropical", "temperate", "boreal")
+
+tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/ANPP_canopy_woody_by_biome.tiff"), width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,0))
-plot(tropical_wsac$mean.y, tropical_wsac$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(tropicalModwsac)
-plot(subtropical_wsac$mean.y, subtropical_wsac$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(subtropicalModwsac)
-plot(temperate_wsac$mean.y, temperate_wsac$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(temperateModwsac)
-plot(boreal_wsac$mean.y, boreal_wsac$mean.x, pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
-abline(borealModwsac)
 
-summary(tropicalModwsac)
-summary(temperateModwsac)
-summary(borealModwsac)
+for (biome in biomes){
+  samplex <- get(paste0(biome, "_wsac"))
+  sample.size <- length(samplex$ANPP_canopy)
+  legend <- paste0(biome, " sample size = ", sample.size)
+  plot(ANPP_canopy ~ ANPP_woody_stem, data = get(paste0(biome, "_wsac")), pch = 16, col = "blue", xlim = range(0:15), ylim = range(0:6))
+  abline(get(paste0(biome, "Modwsac")))
+  mtext(side = 1, line = -3, text = legend, adj = 0.5, col = "black", cex = 0.75)
+}
 
+title (paste("Relationship between canopy ANPP and woody stem ANPP"), outer = T, line = 1)
+mtext(side = 1, line = 3, text = expression("Woody stem ANPP Mg C"~ha^-1~yr^-1), outer = T)
+mtext(side = 2, line = 3,  text = expression("Canopy ANPP Mg C"~ha^-1~yr^-1), outer = T)
+  
+dev.off()
 
-
+##########################################################################################################################
 
 ANPP_all <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_foliage", "ANPP_litterfall_0", "ANPP_litterfall_1", "ANPP_litterfall_2"),]
 ANPP_all$variable.name <- gsub("(\\w*)(_1$|_2$|_0$)", "\\1", ANPP_all$variable.name, perl = T)
