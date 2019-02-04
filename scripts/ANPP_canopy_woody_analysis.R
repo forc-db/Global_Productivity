@@ -17,6 +17,13 @@ ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- (ANPP_woody_stem_and_canopy$A
 
 fixed.variables <- c("lat", "AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ", "CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays")
 
+fixed.variables.groups <- list(c("lat", "AnnualMeanTemp", "MeanDiurnalRange", "Isothermality"),
+                                  c("TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual"),
+                                  c("MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ"),
+                                  c("AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality"),
+                                  c("PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ"),
+                               c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays"))
+
 all.results <- NULL
 par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
 for (fixed.variable in fixed.variables){
@@ -58,6 +65,35 @@ all.results <- rbind(all.results, results)
 dev.off()
 
 }
+
+par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,2))
+for (group in fixed.variables.groups){
+for (fixed.variable in fixed.variables){
+  
+  #tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/residuals/residuals", group, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  
+  mod <-  lmer(ratio_canopy_to_wood ~ 1 + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
+  
+  mod.full <- lmer(ratio_canopy_to_wood ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
+  
+  significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+  
+  residuals <- resid(mod.full)
+  plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
+  
+  legend1 <- paste0(fixed.variable)
+  
+  legend("bottomleft", legend = legend1, bty = "n", text.col = "blue")
+  
+ 
+  
+}
+  #dev.off()
+}
+
+residuals <- resid(mod.full)
+plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
+
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_mixed_model_results.csv")
 
@@ -106,3 +142,25 @@ for (fixed.variable in fixed.variables){
   
 }
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_linear_model_results.csv")
+
+par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,2))
+for (group in fixed.variables.groups){
+  for (fixed.variable in fixed.variables){
+    
+    #tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/residuals/residuals", group, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    
+    mod <-  lm(ratio_canopy_to_wood ~ 1, data = ANPP_woody_stem_and_canopy)
+    
+    mod.full <- lm(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
+    
+    residuals <- resid(mod.full)
+    plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
+    
+    legend1 <- paste0(fixed.variable)
+    
+    legend("bottomleft", legend = legend1, bty = "n", text.col = "blue")
+    
+    
+  }
+  #dev.off()
+}
