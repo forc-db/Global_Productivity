@@ -59,7 +59,7 @@ dev.off()
 
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_mixed_model_results.csv")
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_mixed_model_results.csv")
 
 
 all.results <- NULL
@@ -105,7 +105,7 @@ for (fixed.variable in fixed.variables){
   dev.off()
   
 }
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_linear_model_results.csv")
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_linear_model_results.csv")
 
 
 res.man <- manova(cbind(ANPP_canopy, ANPP_woody_stem) ~ lat, data = ANPP_woody_stem_and_canopy)
