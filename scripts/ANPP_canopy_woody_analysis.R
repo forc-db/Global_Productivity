@@ -66,34 +66,19 @@ dev.off()
 
 }
 
-par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,2))
-for (group in fixed.variables.groups){
 for (fixed.variable in fixed.variables){
   
-  #tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/residuals/residuals", group, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-  
+  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/residuals/residuals", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
   mod <-  lmer(ratio_canopy_to_wood ~ 1 + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
   
   mod.full <- lmer(ratio_canopy_to_wood ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
+  par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
+  plot(residuals(mod.full))
   
-  significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  
-  residuals <- resid(mod.full)
-  plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
-  
-  legend1 <- paste0(fixed.variable)
-  
-  legend("bottomleft", legend = legend1, bty = "n", text.col = "blue")
-  
- 
-  
+  title <- paste0("Residuals ", fixed.variable)
+  title(title, outer = T, line = 1)
+  dev.off()
 }
-  #dev.off()
-}
-
-residuals <- resid(mod.full)
-plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
-
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_mixed_model_results.csv")
 
@@ -141,26 +126,23 @@ for (fixed.variable in fixed.variables){
   dev.off()
   
 }
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_linear_model_results.csv")
 
 par(mfrow = c(2,2), mar = c(0,0,0,0), oma = c(5,5,2,2))
-for (group in fixed.variables.groups){
-  for (fixed.variable in fixed.variables){
-    
-    #tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/residuals/residuals", group, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-    
-    mod <-  lm(ratio_canopy_to_wood ~ 1, data = ANPP_woody_stem_and_canopy)
-    
-    mod.full <- lm(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
-    
-    residuals <- resid(mod.full)
-    plot(residuals ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
-    
-    legend1 <- paste0(fixed.variable)
-    
-    legend("bottomleft", legend = legend1, bty = "n", text.col = "blue")
-    
-    
-  }
-  #dev.off()
+
+for (fixed.variable in fixed.variables){
+  
+  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/linear_model/residuals/residuals", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  mod <-  lm(ratio_canopy_to_wood ~ 1, data = ANPP_woody_stem_and_canopy)
+  
+  mod.full <- lm(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy)
+  par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
+  plot(residuals(mod.full))
+  
+  title <- paste0("Residuals ", fixed.variable)
+  title(title, outer = T, line = 1)
+  
+  dev.off()
 }
+
+
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_linear_model_results.csv")
