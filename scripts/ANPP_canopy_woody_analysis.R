@@ -2,14 +2,13 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
 library(lme4)
 library(MuMIn)
-library(tiff)
 
 
-ANPP_woody_stem_and_canopy <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_canopy_WorldClim_CRU.csv")
+ANPP_woody_stem_and_canopy <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_canopy_WorldClim_CRU.csv")
 ANPP_woody_stem_and_canopy <- ANPP_woody_stem_and_canopy[-121,]
 
 
@@ -37,13 +36,16 @@ legend2 <- paste0("r-squared = ", Rsq[1])
 
 sample.size <- length(ANPP_woody_stem_and_canopy$ratio_canopy_to_wood)
 
-tiff(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 
-plot <- plot(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy, ylim = range(0:4))
+plot <- plot(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy, ylim = range(0:4),
+             xlab = paste0(fixed.variable),
+             ylab = "ANPP_canopy:ANPP_woody_stem",
+             main = paste0("ANPP_canopy:ANPP_woody_stem and ", fixed.variable))
 abline(fixef(mod.full))
-title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
-mtext(side = 1, line = 3, text = fixed.variable, outer = T)
-mtext(side = 2, text = expression("ANPP_canopy:ANPP_woody_stem"), line = 3, outer = T)
+#title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
+#mtext(side = 1, line = 3, text = fixed.variable, outer = T)
+#mtext(side = 2, text = expression("ANPP_canopy:ANPP_woody_stem"), line = 3, outer = T)
 
 legend("topright", legend=c(legend1, legend2))
 
@@ -57,7 +59,7 @@ dev.off()
 
 }
 
-write.csv(all.results, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_mixed_model_results.csv")
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_mixed_model_results.csv")
 
 
 all.results <- NULL
@@ -79,13 +81,18 @@ for (fixed.variable in fixed.variables){
   
   Fstat <- summary(mod.full)$fstatistic
   
-  
   sample.size <- length(ANPP_woody_stem_and_canopy$ratio_canopy_to_wood)
-  plot(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy, ylim = range(0:4))
+  
+  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/linear_model/ANPP_canopy_to ANPP_woody_stem_linear_model_", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+  
+  plot(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy, ylim = range(0:4),
+       xlab = paste0(fixed.variable),
+       ylab = "ANPP_canopy:ANPP_woody_stem",
+       main = paste0("ANPP_canopy:ANPP_woody_stem and ", fixed.variable))
   abline(mod.full)
-  title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
-  mtext(side = 1, line = 3, text = fixed.variable, outer = T)
-  mtext(side = 2, text = expression("ANPP_canopy:ANPP_woody_stem"), line = 3, outer = T)
+  #title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
+  #mtext(side = 1, line = 3, text = fixed.variable, outer = T)
+  #mtext(side = 2, text = expression("ANPP_canopy:ANPP_woody_stem"), line = 3, outer = T)
   
   legend("topright", legend=c(legend1, legend2))
   
@@ -95,11 +102,14 @@ for (fixed.variable in fixed.variables){
   
   all.results <- rbind(all.results, results)
   
+  dev.off()
+  
 }
-write.csv(all.results, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_linear_model_results.csv")
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/canopy_vs_woody_linear_model_results.csv")
 
 
 res.man <- manova(cbind(ANPP_canopy, ANPP_woody_stem) ~ lat, data = ANPP_woody_stem_and_canopy)
 summary(res.man)
 summary.aov(res.man)
 
+##ggsave(paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), plot = last_plot())
