@@ -106,10 +106,3 @@ for (fixed.variable in fixed.variables){
   
 }
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/canopy_vs_woody_linear_model_results.csv")
-
-
-res.man <- manova(cbind(ANPP_canopy, ANPP_woody_stem) ~ lat, data = ANPP_woody_stem_and_canopy)
-summary(res.man)
-summary.aov(res.man)
-
-##ggsave(paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), plot = last_plot())
