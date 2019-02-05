@@ -24,9 +24,29 @@ fixed.variables.groups <- list(c("lat", "AnnualMeanTemp", "MeanDiurnalRange", "I
                                   c("PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ"),
                                c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays"))
 
+## give leaf type
+broadleaf_codes <- c("2TEB", "2TDB", "2TB")
+needleleaf_codes <- c("2TEN", "2TDN", "2TN")
+mixed <- c("2TD", "2TE", "2TM", "2TREE")
+
+ANPP_woody_stem_and_canopy$leaf.type <- ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% broadleaf_codes, "broadleaf",
+                                    ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% needleleaf_codes, "needleleaf",
+                                           ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% mixed, "mixed", "Other")))
+
+## give leaf phenology
+evergreen_codes <- c("2TE", "2TEB", "2TEN")
+deciduous_codes <- c("2TDN", "2TDB", "2TD")
+
+
+ANPP_woody_stem_and_canopy$leaf.phenology <- ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% evergreen_codes, "evergreen",
+                                         ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
+
+df<- ANPP_woody_stem_and_canopy
+
 all.results <- NULL
 par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
 for (fixed.variable in fixed.variables){
+df$fixed <- df[, fixed.variable]
 mod <-  lmer(ratio_canopy_to_wood ~ 1 + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
 
 mod.full <- lmer(ratio_canopy_to_wood ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
