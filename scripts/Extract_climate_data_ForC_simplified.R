@@ -40,17 +40,17 @@ write.csv(cld, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Glob
 
 # frs
 frs <- data.frame(ForC_simplified)
-frs <- data.frame(measurement.ID = cld[,1], sites.sitename = as.character(cld[,2]), plot.name = as.character(cld[,3]), frs.1901.2014)
+frs <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]), frs.1901.2014)
 write.csv(frs, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv", row.names = F)
 
 # pet
 pet <- data.frame(ForC_simplified)
-pet <- data.frame(measurement.ID = cld[,1], sites.sitename = as.character(cld[,2]), plot.name = as.character(cld[,3]), pet.1901.2014)
+pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
 write.csv(pet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv", row.names = F)
 
 # wet
 wet <- data.frame(ForC_simplified)
-wet <- data.frame(measurement.ID = cld[,1], sites.sitename = as.character(cld[,2]), plot.name = as.character(cld[,3]), wet.1901.2014)
+wet <- data.frame(measurement.ID = wet[,1], sites.sitename = as.character(wet[,2]), plot.name = as.character(wet[,3]), wet.1901.2014)
 write.csv(wet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/wet.1901.2014.csv", row.names = F)
 
 #cld <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/cld.1901.2014.csv")
@@ -74,11 +74,58 @@ pet_colnames <- colnames(pet)[(4:1371)]
 pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
 pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
 pet_colnames <- monthDays(pet_colnames)
+###multiply each value by days in month to get monthly total
 pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
 pet_month <- cbind(pet[,c(1:3)], pet_month)
+###sum all months (114 years)
 pet$mean <- rowSums(pet_month[, c(4:1371)], na.rm = TRUE)
+###divide by 114 to get annual mean
 pet$mean <- (pet$mean)/114
 pet <- pet[, c(1:3, 1372)]
+
+
+setwd("S:/Global Maps Data/WorldClim/tiff")
+unzip("wc2.0_30s_vapr.zip")
+S_filenames<- paste("wc2.0_30s_srad_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
+srad <- stack(S_filenames) 
+month <- c("01 Jan 2010", "01 Feb 2010", "01 Mar 2010", "01 Apr 2010", "01 May 2010", "01 Jun 2010", "01 Jul 2010", "01 Aug 2010", "01 Sep 2010", "01 Oct 2010", "01 Nov 2010", "01 Dec 2010")
+
+names(srad) <- month
+
+ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
+
+ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
+coordinates(ForC_simplified)<-c("lon", "lat")
+proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+proj4string(ForC_simplified)<-proj
+plot(ForC_simplified)
+as.data.frame(ForC_simplified)
+
+ForC_srad <- raster::extract(srad, ForC_simplified)
+srad1 <- data.frame(ForC_simplified)
+srad1 <- data.frame(measurement.ID = srad1[,1], sites.sitename = as.character(srad1[,2]), plot.name = as.character(srad1[,3]), ForC_srad)
+
+srad_colnames <- colnames(srad1)[(4:15)]
+srad_colnames <- gsub("X", "", srad_colnames)
+srad_colnames <- as.Date(srad_colnames, format = "%d.%b.%Y")
+srad_colnames <- monthDays(srad_colnames)
+
+srad_month <- srad1[, c(4:15)]*matrix(rep(srad_colnames, nrow(srad1)), nrow = nrow(srad1), byrow = T)
+srad_month <- cbind(srad1[,c(1:3)], srad_month)
+srad1$mean <- rowSums(srad_month[, c(4:15)], na.rm = TRUE)
+srad <- srad1[, c(1:3, 16)]
+
+unzip("wc2.0_30s_vapr.zip")
+V_filenames<- paste("wc2.0_30s_vapr_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
+vapr <- stack(V_filenames) 
+
+ForC_vapr <- raster::extract(vapr, ForC_simplified)
+vapr1 <- data.frame(ForC_simplified)
+vapr1 <- data.frame(measurement.ID = vapr1[,1], sites.sitename = as.character(vapr1[,2]), plot.name = as.character(vapr1[,3]), ForC_vapr)
+
+vapr1$vapr_mean <- rowSums(vapr1[, c(4:15)], na.rm = TRUE)
+vapr1$vapr_mean <- (vapr1$vapr_mean)/12
+vapr <- vapr1[, c(1:3, 16)]
 
 
 r <- stack("S:/Global Maps Data/WorldClim/tiff/1bioclim_stacked_all.tif")
@@ -91,8 +138,8 @@ WorldClimDF <- cbind(WorldClimDF, WorldClim)
 #rename variables
 names(WorldClimDF)[36:54] <- c("AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ")
 head(WorldClimDF)
-WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, pet$mean, wet$mean)
-names(WorldClimDF)[55:58] <- c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays")
+WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, pet$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
+names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 
 
 WorldClimDF$AnnualMeanTemp  <- WorldClimDF$AnnualMeanTemp / 10
@@ -106,6 +153,8 @@ WorldClimDF$MeanTWetQ <- WorldClimDF$MeanTWetQ / 10
 WorldClimDF$MeanTDryQ <- WorldClimDF$MeanTDryQ / 10
 WorldClimDF$MeanTWarmQ <- WorldClimDF$MeanTWarmQ / 10
 WorldClimDF$MeanTColdQ <- WorldClimDF$MeanTColdQ / 10
+WorldClimDF$VapourPressure <- WorldClimDF$VapourPressure / 10
+WorldClimDF$SolarRadiation <- WorldClimDF$SolarRadiation / 10
 
 head(WorldClimDF)
 
