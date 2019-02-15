@@ -20,11 +20,10 @@ library(devtools)
 library(MuMIn)
 
 # Load data ####
-ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU.csv", stringsAsFactors = F)
-ANPP <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_canopy_WorldClim_CRU.csv", stringsAsFactors = F)
-ForC_simplified <- ForC_simplified[,-c(43:46, 51:54)]
-ForC_simplified <- ForC_simplified[,-c(38, 40:41, 44:45)]
-ForC_simplified <- ForC_simplified[,-c(43)]
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+# ForC_simplified <- ForC_simplified[,-c(43:46, 51:54)]
+# ForC_simplified <- ForC_simplified[,-c(38, 40:41, 44:45)]
+# ForC_simplified <- ForC_simplified[,-c(43)]
 VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
 
 na_codes <- c("NA", "NI", "NRA", "NaN", "NAC") 
@@ -102,7 +101,7 @@ response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
 ## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "stand.age", "leaf.type", "leaf.phenology", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ", "MeanTWarmQ", "MeanTColdQ","AnnualPre", "PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 
 ## prepare results table
 
@@ -124,7 +123,7 @@ leaf.type <- df$leaf.type
 leaf.phenology <- df$leaf.phenology
 leaf.type.phenology <- df$leaf.type.phenology
 
-df_pca <- prcomp(df[, c(36:44)], center = TRUE,scale. = TRUE)
+df_pca <- prcomp(df[, c(38:49)], center = TRUE,scale. = TRUE)
 for (n in 2){
 tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_biplot_", response.v, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 print(ggbiplot::ggbiplot(df_pca, choices = (n-1):(n), groups = leaf.type.phenology) + ggtitle(paste0("PCA plot for ", response.v)) + scale_x_continuous(expand = c(.3, .3)) + scale_y_continuous(expand = c(.3, .3)))
