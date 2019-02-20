@@ -13,6 +13,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
+library(MuMIn)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -119,7 +120,7 @@ for (age in ages){
     par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
     print(fixed.v)
     
-    ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% response.variables,]$mean)
+    
     
     ###subset ForC
     response.variables.col <- 1:length(response.variables)
@@ -142,6 +143,9 @@ for (age in ages){
       df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
       
       df$fixed <- df[, fixed.v]
+      ylim <- range(df[df$variable.name %in% response.variables,]$mean)
+      ylim[1] <- ylim[1] - 1
+      ylim[2] <- ylim[2] + 1
       
       mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
       mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
@@ -270,16 +274,18 @@ for(response.variables in response.variables.groups){
   
 }
 
-
+library(sjPlot)
 ###using quadratic models
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
-response.variables <- "ANPP"
-response.v <- "ANPP"
+all.results <- NULL
 
-#for(response.variables in response.variables.groups){
+fixed.variables <- c("PreSeasonality")
+response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
+                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
+
+for(response.variables in response.variables.groups){
   
- # n <- ifelse(response.variables[1] == "GPP", 1, 2)
+  n <- ifelse(response.variables[1] == "GPP", 1, 2)
   
   ### mature forests only ####
   for (age in ages){
@@ -289,12 +295,12 @@ response.v <- "ANPP"
     
     for(fixed.v in fixed.variables){
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/quadratic_model/Effect_of_", fixed.v, "_MATURE_only_", age, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/quadratic_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
       # 
-      par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
-      print(fixed.v)
-      
-      
+      # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
+      # print(fixed.v)
+      # 
+      # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% response.variables,]$mean)
       
       ###subset ForC
       response.variables.col <- 1:length(response.variables)
@@ -318,24 +324,21 @@ response.v <- "ANPP"
         
         df$fixed <- df[, fixed.v]
         
-        ylim <- range(df$mean)
-        
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
         mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
-        mod1 <- lmer(mean ~ (fixed) + (1|geographic.area/plot.name), data = df)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if(first.plot) plot(mean ~ (fixed), data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
-        if(!first.plot) points(mean ~ (fixed), data = df, ylab = "", col = response.v.color)
-
-        abline(fixef(mod1), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
-
-        first.plot <- FALSE
-        
-        # r <- round(fixef(mod.full), 2)
-        # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+        # if(first.plot) sjp.poly(mod.full, fixed, 2)
+        # if(!first.plot) points(mean ~ log(fixed), data = df, ylab = "", col = response.v.color) 
+        # 
+        # abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+        # 
+        # first.plot <- FALSE
+        # 
+        r <- round(fixef(mod.full), 2)
+        equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
         # legend <- paste(response.v, "sample size =", sample.size)
         # mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
         
@@ -347,19 +350,19 @@ response.v <- "ANPP"
         # legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         # mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
         
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+        
+        all.results <- rbind(all.results, results)
+        
       }
       
       
       # title (paste("Effect of", fixed.v), outer = T, line = 1)
       # mtext(side = 1, line = 3, text = fixed.v, outer = T)
       # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      dev.off()
-      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, r.squared = Rsq, p.value = significance, sample.size = sample.size)
-      
-      all.results <- rbind(all.results, results)
-      
+      # dev.off()
     }
     
   }
   
-
+}
