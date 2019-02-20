@@ -144,8 +144,8 @@ for (age in ages){
       
       df$fixed <- df[, fixed.v]
       ylim <- range(df[df$variable.name %in% response.variables,]$mean)
-      ylim[1] <- ylim[1] - 1
-      ylim[2] <- ylim[2] + 1
+      ylim[1] <- ylim[1] - 2
+      ylim[2] <- ylim[2] + 2
       
       mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
       mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
@@ -188,7 +188,7 @@ for (age in ages){
 
 ###using log models
 
-fixed.variables <- c("map", "AnnualPre", "AnnualPET")
+fixed.variables <- c("map", "AnnualPre")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
