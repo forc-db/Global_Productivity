@@ -77,6 +77,8 @@ deciduous_codes <- c("2TDN", "2TDB", "2TD")
 ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% evergreen_codes, "evergreen",
                                          ifelse(ForC_simplified$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
 
+### exclude Tura due to extreme high latitude
+ForC_simplified <- ForC_simplified[!(ForC_simplified$sites.sitename %in% "Tura"),]
 
 # Prepare some variables ####
 
@@ -87,8 +89,8 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
+                                  c("ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem"))
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
@@ -98,10 +100,6 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", 
 ## prepare results table
 
 all.results <- NULL
-
-
-response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
 
 for(response.variables in response.variables.groups){
   
@@ -129,8 +127,8 @@ for (age in ages){
     
     for (response.v in response.variables){
       
-      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       
@@ -143,18 +141,25 @@ for (age in ages){
       df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
       
       df$fixed <- df[, fixed.v]
-      ylim <- range(df[df$variable.name %in% response.variables,]$mean)
+      ylim <- range(df$mean)
       ylim[1] <- ylim[1] - 2
       ylim[2] <- ylim[2] + 2
       
       mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-      mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+      
+      if(fixed.v %in% c("map", "AnnualPre")) mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df)
+      if(!(fixed.v %in% c("map", "AnnualPre"))) mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
       significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
       sample.size <- length(df$mean)
       
-      if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
-      if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+      if(fixed.v %in% c("map", "AnnualPre") & first.plot == T){ plot(mean ~ log(fixed), data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+      } else if (fixed.v %in% c("map", "AnnualPre") & first.plot == F) { points(mean ~ log(fixed), data = df, ylab = "", col = response.v.color)
+      } else if (!(fixed.v %in% c("map", "AnnualPre")) & first.plot == T) { plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+      } else if (!(fixed.v %in% c("map", "AnnualPre")) & first.plot == F) {points(mean ~ fixed, data = df, ylab = "", col = response.v.color) }
+      
+      # if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+      # if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
       
       abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
       
@@ -173,6 +178,10 @@ for (age in ages){
       legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
       mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
       
+      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+      
+      all.results <- rbind(all.results, results)
+      
     }
     
     
@@ -186,13 +195,15 @@ for (age in ages){
   
 }
 
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
+
 ###using log models
 
-fixed.variables <- c("map", "AnnualPre")
+fixed.variables <- c("TempSeasonality", "TempRangeAnnual")
 
 
-response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
+                                  c("ANPP_foliage", "ANPP_woody", "ANPP"))
 
 for(response.variables in response.variables.groups){
   
@@ -220,8 +231,8 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
         if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
         
         
@@ -236,13 +247,13 @@ for(response.variables in response.variables.groups){
         df$fixed <- df[, fixed.v]
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-        mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df)
+        mod.full <- lmer(mean ~ log(fixed, base = exp(0.5)) + (1|geographic.area/plot.name), data = df)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if(first.plot) plot(mean ~ log(fixed), data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
-        if(!first.plot) points(mean ~ log(fixed), data = df, ylab = "", col = response.v.color) 
+        if(first.plot) plot(mean ~ log(fixed, base = exp(0.5)), data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+        if(!first.plot) points(mean ~ log(fixed, base = exp(0.5)), data = df, ylab = "", col = response.v.color) 
         
         abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
         
@@ -279,7 +290,7 @@ library(sjPlot)
 
 all.results <- NULL
 
-fixed.variables <- c("PreSeasonality")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
                                   c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
 
@@ -324,7 +335,8 @@ for(response.variables in response.variables.groups){
         
         df$fixed <- df[, fixed.v]
         
-        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+        if(fixed.v %in% c("map", "AnnualPre")) mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df)
+        if(!(fixed.v %in% c("map", "AnnualPre"))) mod <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
         mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
@@ -345,12 +357,16 @@ for(response.variables in response.variables.groups){
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         significance <- signif(significance, digits=4)
         
+        AICmod <- anova(mod, mod.full)$"AIC"[1]
+        AICmod.full <- anova(mod, mod.full)$"AIC"[2]
+        AICsig <- ifelse (AICmod.full < AICmod, TRUE, FALSE)
+        
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
         # legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         # mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, AICsig = AICsig)
         
         all.results <- rbind(all.results, results)
         
@@ -366,3 +382,4 @@ for(response.variables in response.variables.groups){
   }
   
 }
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/polynomial_models.csv", row.names = F )
