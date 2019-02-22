@@ -53,13 +53,13 @@ wet <- data.frame(ForC_simplified)
 wet <- data.frame(measurement.ID = wet[,1], sites.sitename = as.character(wet[,2]), plot.name = as.character(wet[,3]), wet.1901.2014)
 write.csv(wet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/wet.1901.2014.csv", row.names = F)
 
-#cld <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/cld.1901.2014.csv")
-#frs <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv")
-#pet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv")
-#wet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/wet.1901.2014.csv")
+cld <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/cld.1901.2014.csv")
+frs <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv")
+pet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv")
+wet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/wet.1901.2014.csv")
 
 cld$mean <- rowMeans(cld[, c(4:1371)], na.rm = TRUE)
-wet[,1372]
+cld[,1372]
 cld <- cld[, c(1:3, 1372)]
 
 frs$mean <- rowSums(frs[, c(4:1371)], na.rm = TRUE)
@@ -159,3 +159,6 @@ WorldClimDF$SolarRadiation <- WorldClimDF$SolarRadiation / 10
 head(WorldClimDF)
 
 write.csv(WorldClimDF,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU.csv", row.names = F)
+
+WorldClimDFRefined <- WorldClimDF[,-c(38, 40:41, 43:46, 48:49, 51:54)]
+write.csv(WorldClimDFRefined,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
