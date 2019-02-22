@@ -1,6 +1,3 @@
-mtcars.pca <- prcomp(mtcars[,c(1:7,10,11)], center = TRUE,scale. = TRUE)
-
-summary(mtcars.pca)
 ######################################################
 # Purpose: Statistical analysis to explore global trends in forest Productivity
 # Developped by: Valentine Herrmann - HerrmannV@si.edu in Arpil 2018
