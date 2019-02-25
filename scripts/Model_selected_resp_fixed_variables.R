@@ -198,6 +198,7 @@ for (age in ages){
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
 
 ###using log models
+all.results <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
 
@@ -276,6 +277,9 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+        
+        all.results <- rbind(all.results, results)
         
       }
       
@@ -289,6 +293,8 @@ for(response.variables in response.variables.groups){
   }
   
 }
+
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_log_models.csv", row.names = F)
 
 library(sjPlot)
 ###using quadratic models
