@@ -199,11 +199,11 @@ write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/Git
 
 ###using log models
 
-fixed.variables <- c("TempSeasonality", "TempRangeAnnual")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
-                                  c("ANPP_foliage", "ANPP_woody", "ANPP"))
+                                  c("ANPP", "ANPP_foliage", "ANPP_woody"))
 
 for(response.variables in response.variables.groups){
   
@@ -222,7 +222,7 @@ for(response.variables in response.variables.groups){
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
-      ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% response.variables,]$mean)
+      
       
       ###subset ForC
       response.variables.col <- 1:length(response.variables)
@@ -245,17 +245,22 @@ for(response.variables in response.variables.groups){
         df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
+        ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-        mod.full <- lmer(mean ~ log(fixed, base = exp(0.5)) + (1|geographic.area/plot.name), data = df)
+        mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if(first.plot) plot(mean ~ log(fixed, base = exp(0.5)), data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
-        if(!first.plot) points(mean ~ log(fixed, base = exp(0.5)), data = df, ylab = "", col = response.v.color) 
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         
-        abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+        newDat$fit <- predict(mod.full, newDat, re.form = NA)
+        
+        if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+        if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+        
+        lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
         
         first.plot <- FALSE
         
