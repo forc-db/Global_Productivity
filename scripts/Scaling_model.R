@@ -189,7 +189,7 @@ for(response.variables in response.variables.groups){
   
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_linear_scaled.csv", row.names = F)
 
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 
@@ -267,7 +267,7 @@ for(response.variables in response.variables.groups){
         first.plot <- FALSE
         
         r <- round(fixef(mod.full), 2)
-        equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+        equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], "+ (", fixed.v, "^2) x", r[3])
         legend <- paste(response.v, "sample size =", sample.size)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
         
@@ -278,7 +278,7 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", equation = equation, Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
         
         all.results <- rbind(all.results, results)
         
@@ -295,4 +295,4 @@ for(response.variables in response.variables.groups){
   
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_polynomial_models.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_polynomial_scaled.csv", row.names = F)
