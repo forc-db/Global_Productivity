@@ -322,7 +322,7 @@ for(response.variables in response.variables.groups){
     for(fixed.v in fixed.variables){
       
       tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-      
+
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
@@ -357,12 +357,24 @@ for(response.variables in response.variables.groups){
         
         aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
         
+        # mod.age.linear <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df)
+        # mod.age.int <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df)
+        # mod.age.linear.poly <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df)
+        # mod.age.int.poly <- lmer(mean ~ poly(fixed, 2) * stand.age + (1|geographic.area/plot.name), data = df)
+        # 
+        # 
+        # aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.age.linear = mod.age.linear, mod.age.int = mod.age.int, mod.age.linear.poly = mod.age.linear.poly, mod.age.int.poly = mod.age.int.poly), sort = T)
+        
         best.model <- as.character(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
         delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
         if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
         if (best.model == "mod.linear") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.age.int.poly") mod.full <- lmer(mean ~ poly(fixed, 2) * stand.age + (1|geographic.area/plot.name), data = df)
         
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
