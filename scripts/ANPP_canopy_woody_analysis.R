@@ -15,14 +15,7 @@ ANPP_woody_stem_and_canopy <- ANPP_woody_stem_and_canopy[-121,]
 ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- NA
 ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- (ANPP_woody_stem_and_canopy$ANPP_woody_stem/ANPP_woody_stem_and_canopy$ANPP_canopy)
 
-fixed.variables <- c("lat", "AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ", "CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays")
-
-fixed.variables.groups <- list(c("lat", "AnnualMeanTemp", "MeanDiurnalRange", "Isothermality"),
-                                  c("TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual"),
-                                  c("MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ"),
-                                  c("AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality"),
-                                  c("PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ"),
-                               c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays"))
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 
 ## give leaf type
 broadleaf_codes <- c("2TEB", "2TDB", "2TB")
