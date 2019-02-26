@@ -178,7 +178,7 @@ for (age in ages){
       legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
       mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
       
-      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", equation = equation, Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
       all.results <- rbind(all.results, results)
       
@@ -197,7 +197,7 @@ for (age in ages){
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models.csv", row.names = F)
 
-###using log models
+###using polynomial models
 all.results <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
@@ -294,16 +294,20 @@ for(response.variables in response.variables.groups){
   
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_log_models.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_polynomial_models.csv", row.names = F)
 
-library(sjPlot)
-###using quadratic models
 
+###comparing models
+
+library(AICcmodavg)
 all.results <- NULL
+all.aictab <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
-response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
+
+
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
+                                  c("ANPP", "ANPP_foliage", "ANPP_woody"))
 
 for(response.variables in response.variables.groups){
   
@@ -317,12 +321,12 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/quadratic_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-      # 
-      # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
-      # print(fixed.v)
-      # 
-      # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% response.variables,]$mean)
+      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      
+      par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
+      print(fixed.v)
+      
+      
       
       ###subset ForC
       response.variables.col <- 1:length(response.variables)
@@ -331,8 +335,8 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3",  "NPP_4", "NPP_5")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
         if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
         
         
@@ -345,52 +349,67 @@ for(response.variables in response.variables.groups){
         df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
+        ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
-        if(fixed.v %in% c("map", "AnnualPre")) mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df)
-        if(!(fixed.v %in% c("map", "AnnualPre"))) mod <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
-        mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+        mod.linear <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+        mod.poly <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
+        
+        aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
+        
+        best.model <- as.character(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
+        delta.aic <- signif(delta.aic, digits=4)
+        
+        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.linear") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+        
+        
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        # if(first.plot) sjp.poly(mod.full, fixed, 2)
-        # if(!first.plot) points(mean ~ log(fixed), data = df, ylab = "", col = response.v.color) 
-        # 
-        # abline(fixef(mod.full), col = response.v.color, lty = ifelse(significant.effect, 1, 2))
-        # 
-        # first.plot <- FALSE
-        # 
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
+        
+        newDat$fit <- predict(mod.full, newDat, re.form = NA)
+        
+        if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
+        if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+        
+        
+        if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+        if (best.model == "mod.linear") abline(fixef(mod.linear), col = response.v.color, lty = ifelse(significant.effect, 1, 2)) 
+        
+        first.plot <- FALSE
+        
         r <- round(fixef(mod.full), 2)
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
-        # legend <- paste(response.v, "sample size =", sample.size)
-        # mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
+        legend <- paste(response.v, "sample size =", sample.size)
+        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
         
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         significance <- signif(significance, digits=4)
         
-        AICmod <- anova(mod, mod.full)$"AIC"[1]
-        AICmod.full <- anova(mod, mod.full)$"AIC"[2]
-        AICsig <- ifelse (AICmod.full < AICmod, TRUE, FALSE)
-        
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
-        # legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
-        # mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, AICsig = AICsig)
+        legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
+        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic)
         
         all.results <- rbind(all.results, results)
+        all.aictab <- rbind(all.aictab, aictab)
         
       }
       
       
-      # title (paste("Effect of", fixed.v), outer = T, line = 1)
-      # mtext(side = 1, line = 3, text = fixed.v, outer = T)
-      # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      # dev.off()
+      title (paste("Effect of", fixed.v), outer = T, line = 1)
+      mtext(side = 1, line = 3, text = fixed.v, outer = T)
+      mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
+      dev.off()
     }
     
   }
   
 }
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/polynomial_models.csv", row.names = F )
+
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_comparison.csv", row.names = F)
