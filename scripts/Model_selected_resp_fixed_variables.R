@@ -141,9 +141,7 @@ for (age in ages){
       df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
       
       df$fixed <- df[, fixed.v]
-      ylim <- range(df$mean)
-      ylim[1] <- ylim[1] - 2
-      ylim[2] <- ylim[2] + 2
+      ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
       
       mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
       
