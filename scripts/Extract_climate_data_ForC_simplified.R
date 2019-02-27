@@ -188,9 +188,29 @@ ForC_evap <- raster::extract(r, ForC_simplified)
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, ForC_arid, ForC_evap)
-ForC_simplified <-ForC_simplified[-c(48:50)]
-
-names(ForC_simplified)[46:47] <- c("Aridity", "PotentialEvapotranspiration")
+names(ForC_simplified)[49:50] <- c("Aridity", "PotentialEvapotranspiration")
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
 
+#################
+ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+
+setwd("S:/Global Maps Data/TerraClimate")
+
+vpd_filenames<- paste("TerraClimate_vpd_", c(paste(1958:2017, sep="")), ".nc",sep="")
+vpd <- stack(vpd_filenames) 
+ForC_vpd <- raster::extract(vpd, ForC_simplified)
+
+vpd1 <- data.frame(ForC_simplified)
+vpd1 <- data.frame(measurement.ID = vpd1[,1], sites.sitename = as.character(vpd1[,2]), plot.name = as.character(vpd1[,3]), ForC_vpd)
+
+vpd1$vpd_mean <- rowSums(vpd1[, c(4:723)], na.rm = TRUE)
+vpd1$vpd_mean <- (vpd1$vpd_mean)/720
+vpd <- vpd1[, c(1:3, 724)]
+
+ForC_simplified <- data.frame(ForC_simplified)
+
+ForC_simplified <- cbind(ForC_simplified, vpd$vpd_mean)
+names(ForC_simplified)[51] <- "VapourPressureDeficit"
+
+write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
