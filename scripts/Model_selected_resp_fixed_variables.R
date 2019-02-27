@@ -95,7 +95,7 @@ response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
 ## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 ## prepare results table
 
@@ -198,7 +198,7 @@ write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/Git
 ###using polynomial models
 all.results <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
@@ -301,7 +301,7 @@ library(AICcmodavg)
 all.results <- NULL
 all.aictab <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
