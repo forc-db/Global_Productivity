@@ -5,7 +5,7 @@ library(raster)
 library(ncdf4)
 library(Hmisc)
 
-ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
+ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv")
 
 ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
 coordinates(ForC_simplified)<-c("lon", "lat")
@@ -162,3 +162,35 @@ write.csv(WorldClimDF,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC
 
 WorldClimDFRefined <- WorldClimDF[,-c(38, 40:41, 43:46, 48:49, 51:54)]
 write.csv(WorldClimDFRefined,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
+
+
+#############################################
+
+setwd("S:/Global Maps Data/Global Aridity Index/")
+unzip("7504448.zip")
+unzip("global-et0_annual.tif.zip")
+unzip("global-ai_et0.zip")
+unzip("global-et0_monthly.tif.zip")
+
+ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
+coordinates(ForC_simplified)<-c("lon", "lat")
+proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+proj4string(ForC_simplified)<-proj
+plot(ForC_simplified)
+as.data.frame(ForC_simplified)
+
+r <- stack("S:/Global Maps Data/Global Aridity Index/ai_et0/ai_et0.tif")
+ForC_arid <- raster::extract(r, ForC_simplified)
+
+r <- stack("S:/Global Maps Data/Global Aridity Index/et0_yr/et0_yr.tif")
+ForC_evap <- raster::extract(r, ForC_simplified)
+
+ForC_simplified <- data.frame(ForC_simplified)
+
+ForC_simplified <- cbind(ForC_simplified, ForC_arid, ForC_evap)
+ForC_simplified <-ForC_simplified[-c(48:50)]
+
+names(ForC_simplified)[46:47] <- c("Aridity", "PotentialEvapotranspiration")
+
+write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
+
