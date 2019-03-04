@@ -50,7 +50,7 @@ ages.not.999.nor.0.nor.na <- !ForC_simplified$stand.age %in% 999 &  !ForC_simpli
 ## Keep only age >=100 (or 999)
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 age.greater.than.200 <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
-ages <- c("age.greater.than.100", "age.greater.than.200")
+ages <- c("age.greater.than.100")
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
@@ -89,8 +89,10 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"),
+                                  c("woody.mortality_ag", "R_auto"))
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
@@ -103,7 +105,10 @@ all.results <- NULL
 
 for(response.variables in response.variables.groups){
   
-  n <- ifelse(response.variables[1] == "GPP", 1, 2)
+  if(response.variables[1] == "GPP") n <- 1
+  if(response.variables[1] == "ANPP_1") n <- 2
+  if(response.variables[1] == "ANPP_woody") n <- 3
+  if(response.variables[1] == "woody.mortality_ag") n <- 4
   
   ### mature forests only ####
 for (age in ages){
@@ -129,7 +134,8 @@ for (age in ages){
       
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
-      if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+      if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+      if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
       
       
       response.v.color <- response.variables.col[which(response.variables %in% response.v)]
@@ -143,10 +149,10 @@ for (age in ages){
       df$fixed <- df[, fixed.v]
       ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
       
-      mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+      mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
       
-      if(fixed.v %in% c("map", "AnnualPre")) mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df)
-      if(!(fixed.v %in% c("map", "AnnualPre"))) mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+      if(fixed.v %in% c("map", "AnnualPre")) mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
+      if(!(fixed.v %in% c("map", "AnnualPre"))) mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df, REML = F)
       significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
       sample.size <- length(df$mean)
@@ -201,12 +207,17 @@ all.results <- NULL
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"),
+                                  c("woody.mortality_ag", "R_auto"))
 
 for(response.variables in response.variables.groups){
   
-  n <- ifelse(response.variables[1] == "GPP", 1, 2)
+  if(response.variables[1] == "GPP") n <- 1
+  if(response.variables[1] == "ANPP_1") n <- 2
+  if(response.variables[1] == "ANPP_woody") n <- 3
+  if(response.variables[1] == "woody.mortality_ag") n <- 4
   
   ### mature forests only ####
   for (age in ages){
@@ -232,7 +243,8 @@ for(response.variables in response.variables.groups){
         
         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
         if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
-        if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+        if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+        if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
         
         response.v.color <- response.variables.col[which(response.variables %in% response.v)]
@@ -246,8 +258,8 @@ for(response.variables in response.variables.groups){
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
-        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-        mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
@@ -304,12 +316,17 @@ all.aictab <- NULL
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"),
+                                  c("woody.mortality_ag", "R_auto"))
 
 for(response.variables in response.variables.groups){
   
-  n <- ifelse(response.variables[1] == "GPP", 1, 2)
+  if(response.variables[1] == "GPP") n <- 1
+  if(response.variables[1] == "ANPP_1") n <- 2
+  if(response.variables[1] == "ANPP_woody") n <- 3
+  if(response.variables[1] == "woody.mortality_ag") n <- 4
   
   ### mature forests only ####
   for (age in ages){
@@ -335,7 +352,8 @@ for(response.variables in response.variables.groups){
         
         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
         if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
-        if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+        if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+        if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
         
         response.v.color <- response.variables.col[which(response.variables %in% response.v)]
@@ -349,9 +367,9 @@ for(response.variables in response.variables.groups){
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
-        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-        mod.linear <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
-        mod.poly <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.linear <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.poly <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F)
         
         aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
         
@@ -363,21 +381,25 @@ for(response.variables in response.variables.groups){
         # 
         # aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.age.linear = mod.age.linear, mod.age.int = mod.age.int, mod.age.linear.poly = mod.age.linear.poly, mod.age.int.poly = mod.age.int.poly), sort = T)
         
-        best.model <- as.character(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
+        best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
         delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
-        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df)
-        if (best.model == "mod.linear") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
-        if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df)
-        if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df)
-        if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df)
-        if (best.model == "mod.age.int.poly") mod.full <- lmer(mean ~ poly(fixed, 2) * stand.age + (1|geographic.area/plot.name), data = df)
+        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.age.int.poly") mod.full <- lmer(mean ~ poly(fixed, 2) * stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
+        
+        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         
@@ -385,10 +407,10 @@ for(response.variables in response.variables.groups){
         
         if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
         if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+        lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
         
-        
-        if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
-        if (best.model == "mod.linear") abline(fixef(mod.linear), col = response.v.color, lty = ifelse(significant.effect, 1, 2)) 
+        # if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+        # if (best.model == "mod.linear") abline(fixef(mod.linear), col = response.v.color, lty = ifelse(significant.effect, 1, 2)) 
         
         first.plot <- FALSE
         
