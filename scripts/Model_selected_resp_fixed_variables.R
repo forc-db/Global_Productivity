@@ -55,10 +55,18 @@ ages <- c("age.greater.than.100")
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
+ForC_simplified <- ForC_simplified[dist.to.keep, ]
 
 ## keep only records with min.dbh <= 10cm
-min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 ##& !is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
-min.dbh.to.keep <- rep(TRUE, nrow(ForC_simplified))
+ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
+# min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
+min.dbh.to.remove <- ForC_simplified$min.dbh >= 10 & !is.na(ForC_simplified$min.dbh)
+ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
+
+###keep only altitude below 500 metres
+# 
+# alt.to.keep <- ForC_simplified$masl <= 500 & !is.na(ForC_simplified$masl)
+# ForC_simplified <- ForC_simplified[alt.to.keep, ]
 
 ## give leaf type
 broadleaf_codes <- c("2TEB", "2TDB", "2TB")
@@ -144,7 +152,7 @@ for (age in ages){
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
       
-      df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+      df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
       
       df$fixed <- df[, fixed.v]
       ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -253,7 +261,7 @@ for(response.variables in response.variables.groups){
         
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
         
-        df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+        df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -318,8 +326,7 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
-                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"),
-                                  c("woody.mortality_ag", "R_auto"))
+                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"))
 
 for(response.variables in response.variables.groups){
   
@@ -336,7 +343,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -362,7 +369,7 @@ for(response.variables in response.variables.groups){
         
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
         
-        df <- ForC_simplified[rows.with.response & ages.to.keep & min.dbh.to.keep & dist.to.keep & fixed.no.na, ]
+        df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -437,11 +444,11 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      dev.off()
+      # dev.off()
     }
     
   }
   
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_comparison.csv", row.names = F)
+# write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_comparison.csv", row.names = F)
