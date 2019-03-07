@@ -164,14 +164,15 @@ for(response.variables in response.variables.groups){
         
         df$fixed1 <- df[, fixed.v1]
         df$fixed2 <- df[, fixed.v2]
+        df$masl <- (df$masl/1000)
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.linear <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.s.int <- lmer(mean ~ fixed1*masl + (1|geographic.area/plot.name), data = df, REML = F)
         mod.poly <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         mod.int <- lmer(mean ~ fixed1*fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
-        
-        aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int), sort = T)
+        mod.d.int <- lmer(mean ~ fixed1*fixed2 + fixed1*masl + (1|geographic.area/plot.name), data = df, REML = F)
         
         # mod.age.linear <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df)
         # mod.age.int <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df)
@@ -181,14 +182,16 @@ for(response.variables in response.variables.groups){
         # 
         # aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.age.linear = mod.age.linear, mod.age.int = mod.age.int, mod.age.linear.poly = mod.age.linear.poly, mod.age.int.poly = mod.age.int.poly), sort = T)
         
-        best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int), sort = T)$Modname[1])
-        delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
+        best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int, mod.d.int = mod.d.int, mod.s.int = mod.s.int), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int, mod.d.int = mod.d.int, mod.s.int = mod.s.int), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
         if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod.int") mod.full <- lmer(mean ~ fixed1*fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        if(best.model == "mod.d.int") mod.full <- lmer(mean ~ fixed1*fixed2 + fixed1*masl + (1|geographic.area/plot.name), data = df, REML = F)
+        if(best.model == "mod.s.int") mod.full <- lmer(mean ~ fixed1*masl + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
@@ -230,7 +233,7 @@ for(response.variables in response.variables.groups){
         results <- data.frame(response = response.v, fixed1 = fixed.v1, fixed2 = fixed.v2, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic)
         
         all.results <- rbind(all.results, results)
-        all.aictab <- rbind(all.aictab, aictab)
+        # all.aictab <- rbind(all.aictab, aictab)
         
       }
       
