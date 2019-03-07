@@ -55,12 +55,13 @@ ages <- c("age.greater.than.100")
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
+ForC_simplified <- ForC_simplified[dist.to.keep, ]
 
 ## keep only records with min.dbh <= 10cm
-min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 ##& !is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
-min.dbh.to.keep <- rep(TRUE, nrow(ForC_simplified))
-
-df <- ForC_simplified[min.dbh.to.keep & dist.to.keep, ]
+ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
+# min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
+min.dbh.to.remove <- ForC_simplified$min.dbh >= 10 & !is.na(ForC_simplified$min.dbh)
+ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
 
 ## give leaf type
 broadleaf_codes <- c("2TEB", "2TDB", "2TB")
@@ -97,7 +98,6 @@ response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine")
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
-## fixed variables list ####
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 ## prepare results table
@@ -106,6 +106,11 @@ all.results <- NULL
 
 
 #### age as an interaction ####
+for (age in ages){
+  
+  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+
 for(response.variables in response.variables.groups){
   
   if(response.variables[1] == "GPP") n <- 1
@@ -153,7 +158,8 @@ for(response.variables in response.variables.groups){
       # if(!fixed.v %in% "stand.age") drop.ages.999.or.0.or.na <- rep(TRUE, nrow(ForC_simplified))
       
       # subset to keep only what we need
-      df <- ForC_simplified[rows.with.response & fixed.no.na, ]
+      df <- ForC_simplified[rows.with.response & fixed.no.na & ages.to.keep, ]
+      df$masl <- df$masl/1000
       
       
       if(all(responses.to.keep %in% c("NEE", "NEP"))) {
@@ -218,9 +224,9 @@ for(response.variables in response.variables.groups){
         if (significant.effect.of.interaction | significant.effect.of.additive) {
           # predict 
           
-          if(!categorical) newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(100, 500, 1000))
+          if(!categorical) newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.1, 0.5, 1))
           
-          if(categorical) newDat <- expand.grid(fixed = levels(df$fixed), masl = c(100, 500, 1000))
+          if(categorical) newDat <- expand.grid(fixed = levels(df$fixed), masl = c(0.1, 0.5, 1))
           
           newDat$fit <- predict(mod.full, newDat, re.form = NA)
           
@@ -352,4 +358,5 @@ for(response.variables in response.variables.groups){
   } 
 }
 
+}
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_masl.csv", row.names = F)
