@@ -154,14 +154,14 @@ for (age in ages){
       lon <- df$lon
       lat <- df$lat
       # 
-      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
       
       mapWorld <- borders("world", colour="gray50", fill="gray50")
       mp <- ggplot() +   mapWorld
       mp <- mp+ geom_point(aes(x=lon, y=lat) ,color="blue", size=1) + ggtitle(paste0(response.v))
       print(mp)
       
-      # dev.off()
+      dev.off()
       
       # coordinates(df)<-c("lon", "lat")
       # plot(df)

@@ -5,7 +5,7 @@ library(raster)
 library(ncdf4)
 library(Hmisc)
 
-ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv")
+ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
 
 ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
 coordinates(ForC_simplified)<-c("lon", "lat")
@@ -172,6 +172,8 @@ unzip("global-et0_annual.tif.zip")
 unzip("global-ai_et0.zip")
 unzip("global-et0_monthly.tif.zip")
 
+ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+
 ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
 coordinates(ForC_simplified)<-c("lon", "lat")
 proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
@@ -197,6 +199,13 @@ ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHu
 
 setwd("S:/Global Maps Data/TerraClimate")
 
+ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
+coordinates(ForC_simplified)<-c("lon", "lat")
+proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+proj4string(ForC_simplified)<-proj
+plot(ForC_simplified)
+as.data.frame(ForC_simplified)
+
 vpd_filenames<- paste("TerraClimate_vpd_", c(paste(1958:2017, sep="")), ".nc",sep="")
 vpd <- stack(vpd_filenames) 
 ForC_vpd <- raster::extract(vpd, ForC_simplified)
@@ -211,6 +220,6 @@ vpd <- vpd1[, c(1:3, 724)]
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, vpd$vpd_mean)
-names(ForC_simplified)[51] <- "VapourPressureDeficit"
+names(ForC_simplified)[52] <- "VapourPressureDeficit"
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)

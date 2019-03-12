@@ -343,7 +343,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -444,7 +444,7 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      # dev.off()
+      dev.off()
     }
     
   }
