@@ -4,6 +4,9 @@ rm(list = ls())
 # Set working directory as ForC main folder ####
 setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
+library(ggplot2)
+library(ggpubr)
+
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified.csv", stringsAsFactors = F)
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
 ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
@@ -26,8 +29,8 @@ ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozo
 # ANPP_woody_and_foliage <- merge(ANPP_foliage, ANPP_woody[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 # ANPP_woody_stem_and_foliage <- merge(ANPP_foliage, ANPP_woody_stem[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 
-set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage")
-set2 <- c("NPP_1", "ANPP_1", "BNPP_root", "ANPP_woody", "ANPP_woody_stem")
+set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "NPP_1")
+set2 <- c("NPP_1", "ANPP_1", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root")
 
 
 for (i in seq(along = set1)){
@@ -36,7 +39,7 @@ for (i in seq(along = set1)){
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
       
-      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
       
       df$ratio <- df$mean.x/df$mean.y
       
