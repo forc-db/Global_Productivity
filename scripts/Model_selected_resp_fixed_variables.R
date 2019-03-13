@@ -14,6 +14,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 # Load libaries ####
 library(lme4)
 library(MuMIn)
+library(plyr)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -320,8 +321,9 @@ write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/Git
 library(AICcmodavg)
 all.results <- NULL
 all.aictab <- NULL
+all.koeppen <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
@@ -370,6 +372,11 @@ for(response.variables in response.variables.groups){
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+        
+        koeppen_count <- count(df, "Koeppen")
+        koeppen_count$variable <- paste(response.v, fixed.v)
+        koeppen_count$percentage <- (koeppen_count$freq/length(df$Koeppen))*100
+        koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
         
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -437,6 +444,7 @@ for(response.variables in response.variables.groups){
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
+        all.koeppen <- rbind(all.koeppen, koeppen_count)
         
       }
       
@@ -451,4 +459,4 @@ for(response.variables in response.variables.groups){
   
 }
 
-# write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_comparison.csv", row.names = F)
+write.csv(all.koeppen, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/koeppen_counts.csv", row.names = F)
