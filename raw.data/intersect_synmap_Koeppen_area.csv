@@ -1,0 +1,427 @@
+SYNMAP,synform,synLPh,synLT,Koeppen,AREAkm2
+1,Trees,Evergreen,Needle,Af,2368.830621
+1,Trees,Evergreen,Needle,Am,7195.670022
+1,Trees,Evergreen,Needle,As,403.3425499
+1,Trees,Evergreen,Needle,Aw,29460.77232
+1,Trees,Evergreen,Needle,BSh,29382.7022
+1,Trees,Evergreen,Needle,BSk,85549.91159
+1,Trees,Evergreen,Needle,BWk,30.16461026
+1,Trees,Evergreen,Needle,Cfa,1229772.459
+1,Trees,Evergreen,Needle,Cfb,339509.792
+1,Trees,Evergreen,Needle,Cfc,30237.55739
+1,Trees,Evergreen,Needle,Csa,112003.4775
+1,Trees,Evergreen,Needle,Csb,458363.8368
+1,Trees,Evergreen,Needle,Cwa,53402.99814
+1,Trees,Evergreen,Needle,Cwb,103289.7206
+1,Trees,Evergreen,Needle,Cwc,1598.709527
+1,Trees,Evergreen,Needle,Dfa,305.8082956
+1,Trees,Evergreen,Needle,Dfb,1255277.7
+1,Trees,Evergreen,Needle,Dfc,7962261.128
+1,Trees,Evergreen,Needle,Dfd,138270.4868
+1,Trees,Evergreen,Needle,Dsb,83629.03508
+1,Trees,Evergreen,Needle,Dsc,164048.143
+1,Trees,Evergreen,Needle,Dwb,67129.67952
+1,Trees,Evergreen,Needle,Dwc,887305.9085
+1,Trees,Evergreen,Needle,Dwd,8322.76722
+1,Trees,Evergreen,Needle,ET,158318.8204
+2,Trees,Deciduous,Needle,Dfb,15971.27419
+2,Trees,Deciduous,Needle,Dfc,1144965.982
+2,Trees,Deciduous,Needle,Dfd,517129.3504
+2,Trees,Deciduous,Needle,Dwb,10618.82428
+2,Trees,Deciduous,Needle,Dwc,318180.5981
+2,Trees,Deciduous,Needle,Dwd,35547.68679
+2,Trees,Deciduous,Needle,ET,2947.797766
+3,Trees,Mixed D/E,Needle,Dfc,156810.0329
+3,Trees,Mixed D/E,Needle,Dfd,22516.31961
+3,Trees,Mixed D/E,Needle,Dwb,1227.684352
+3,Trees,Mixed D/E,Needle,Dwc,17631.48764
+3,Trees,Mixed D/E,Needle,Dwd,713.6167191
+3,Trees,Mixed D/E,Needle,ET,1721.507765
+4,Trees,Evergreen,Broad,Af,6273706.114
+4,Trees,Evergreen,Broad,Am,4123194.33
+4,Trees,Evergreen,Broad,As,185293.2651
+4,Trees,Evergreen,Broad,Aw,4910794.61
+4,Trees,Evergreen,Broad,BSh,13670.57842
+4,Trees,Evergreen,Broad,BSk,7149.393695
+4,Trees,Evergreen,Broad,BWh,2860.644608
+4,Trees,Evergreen,Broad,Cfa,568482.2631
+4,Trees,Evergreen,Broad,Cfb,821422.2672
+4,Trees,Evergreen,Broad,Cfc,51575.17989
+4,Trees,Evergreen,Broad,Csa,16297.74795
+4,Trees,Evergreen,Broad,Csb,96403.37234
+4,Trees,Evergreen,Broad,Csc,2064.445652
+4,Trees,Evergreen,Broad,Cwa,611042.5049
+4,Trees,Evergreen,Broad,Cwb,227680.2926
+4,Trees,Evergreen,Broad,Dwc,81.83989906
+4,Trees,Evergreen,Broad,ET,40648.03929
+5,Trees,Deciduous,Broad,Af,7244.289922
+5,Trees,Deciduous,Broad,Am,11616.02022
+5,Trees,Deciduous,Broad,As,69178.89602
+5,Trees,Deciduous,Broad,Aw,1666865.802
+5,Trees,Deciduous,Broad,BSh,228491.5006
+5,Trees,Deciduous,Broad,BSk,2758.336267
+5,Trees,Deciduous,Broad,Cfa,626932.6924
+5,Trees,Deciduous,Broad,Cfb,464007.4915
+5,Trees,Deciduous,Broad,Cfc,1706.559347
+5,Trees,Deciduous,Broad,Csa,79092.40856
+5,Trees,Deciduous,Broad,Csb,44952.96324
+5,Trees,Deciduous,Broad,Cwa,837421.6728
+5,Trees,Deciduous,Broad,Cwb,55098.55904
+5,Trees,Deciduous,Broad,Dfa,35853.20541
+5,Trees,Deciduous,Broad,Dfb,723718.2521
+5,Trees,Deciduous,Broad,Dfc,59906.03389
+5,Trees,Deciduous,Broad,Dsb,2493.296545
+5,Trees,Deciduous,Broad,Dsc,9942.98999
+5,Trees,Deciduous,Broad,Dwa,116495.6546
+5,Trees,Deciduous,Broad,Dwb,333927.9564
+5,Trees,Deciduous,Broad,Dwc,18208.92177
+5,Trees,Deciduous,Broad,ET,16348.59794
+6,Trees,Mixed D/E,Broad,Af,2909.438448
+6,Trees,Mixed D/E,Broad,Am,5840.495902
+6,Trees,Mixed D/E,Broad,Aw,107281.2905
+6,Trees,Mixed D/E,Broad,Cfa,7117.298239
+6,Trees,Mixed D/E,Broad,Cfb,11664.8208
+6,Trees,Mixed D/E,Broad,Cfc,14309.82774
+6,Trees,Mixed D/E,Broad,Csb,14319.9434
+6,Trees,Mixed D/E,Broad,Cwa,48754.61873
+6,Trees,Mixed D/E,Broad,Cwb,15206.89221
+7,Trees,Evergreen,Mixed B/N,Cfa,24492.07018
+7,Trees,Evergreen,Mixed B/N,Cfb,15372.5206
+7,Trees,Evergreen,Mixed B/N,Cfc,19706.89038
+7,Trees,Evergreen,Mixed B/N,Csc,3592.754625
+7,Trees,Evergreen,Mixed B/N,Cwa,6824.525742
+7,Trees,Evergreen,Mixed B/N,Cwb,157.2954748
+7,Trees,Evergreen,Mixed B/N,ET,1032.182237
+9,Trees,Mixed D/E,Mixed B/N,Am,2564.397982
+9,Trees,Mixed D/E,Mixed B/N,Aw,18436.05644
+9,Trees,Mixed D/E,Mixed B/N,BSh,341.4072068
+9,Trees,Mixed D/E,Mixed B/N,BSk,69.53089436
+9,Trees,Mixed D/E,Mixed B/N,Cfa,287682.4364
+9,Trees,Mixed D/E,Mixed B/N,Cfb,82409.53363
+9,Trees,Mixed D/E,Mixed B/N,Cfc,5287.517808
+9,Trees,Mixed D/E,Mixed B/N,Csa,15454.79092
+9,Trees,Mixed D/E,Mixed B/N,Csb,3054.528656
+9,Trees,Mixed D/E,Mixed B/N,Csc,2044.420386
+9,Trees,Mixed D/E,Mixed B/N,Cwa,28753.39922
+9,Trees,Mixed D/E,Mixed B/N,Cwb,19591.94637
+9,Trees,Mixed D/E,Mixed B/N,Dfa,10478.51803
+9,Trees,Mixed D/E,Mixed B/N,Dfb,2181128.613
+9,Trees,Mixed D/E,Mixed B/N,Dfc,997481.6961
+9,Trees,Mixed D/E,Mixed B/N,Dfd,7211.227796
+9,Trees,Mixed D/E,Mixed B/N,Dwa,39302.83665
+9,Trees,Mixed D/E,Mixed B/N,Dwb,342974.2846
+9,Trees,Mixed D/E,Mixed B/N,Dwc,298620.9786
+9,Trees,Mixed D/E,Mixed B/N,Dwd,134.0423479
+9,Trees,Mixed D/E,Mixed B/N,ET,49266.90083
+13,Trees & Shrubs,Evergreen,Broad,Af,695.1869455
+13,Trees & Shrubs,Evergreen,Broad,Am,2381.358869
+13,Trees & Shrubs,Evergreen,Broad,Aw,14240.72966
+14,Trees & Shrubs,Deciduous,Broad,Am,13626.8194
+14,Trees & Shrubs,Deciduous,Broad,As,3074.949516
+14,Trees & Shrubs,Deciduous,Broad,Aw,551751.6554
+14,Trees & Shrubs,Deciduous,Broad,BSh,17781.91103
+14,Trees & Shrubs,Deciduous,Broad,Cfb,4864.681067
+14,Trees & Shrubs,Deciduous,Broad,Cwa,18224.11075
+14,Trees & Shrubs,Deciduous,Broad,Cwb,30097.97345
+15,Trees & Shrubs,Mixed D/E,Broad,Aw,40075.16434
+19,Trees & Grasses,Evergreen,Needle,Aw,3542.527561
+19,Trees & Grasses,Evergreen,Needle,BSh,2667.300485
+19,Trees & Grasses,Evergreen,Needle,Cfa,2539.454268
+19,Trees & Grasses,Evergreen,Needle,Csa,1510.950798
+19,Trees & Grasses,Evergreen,Needle,Cwb,8210.921873
+19,Trees & Grasses,Evergreen,Needle,Dwc,11917.65552
+22,Trees & Grasses,Evergreen,Broad,Af,11106.6365
+22,Trees & Grasses,Evergreen,Broad,Am,41374.96631
+22,Trees & Grasses,Evergreen,Broad,As,4348.043795
+22,Trees & Grasses,Evergreen,Broad,Aw,234347.6006
+22,Trees & Grasses,Evergreen,Broad,Cfa,17719.5247
+22,Trees & Grasses,Evergreen,Broad,Cfb,84608.80102
+22,Trees & Grasses,Evergreen,Broad,Csa,3755.32915
+22,Trees & Grasses,Evergreen,Broad,Csb,801.0339655
+23,Trees & Grasses,Deciduous,Broad,Am,75598.27508
+23,Trees & Grasses,Deciduous,Broad,As,20304.54966
+23,Trees & Grasses,Deciduous,Broad,Aw,4554619.959
+23,Trees & Grasses,Deciduous,Broad,BSh,1243338.003
+23,Trees & Grasses,Deciduous,Broad,BSk,371.0201296
+23,Trees & Grasses,Deciduous,Broad,BWh,1964.162103
+23,Trees & Grasses,Deciduous,Broad,Cfa,146604.796
+23,Trees & Grasses,Deciduous,Broad,Cfb,75578.57324
+23,Trees & Grasses,Deciduous,Broad,Csa,2873.079878
+23,Trees & Grasses,Deciduous,Broad,Csb,2977.19245
+23,Trees & Grasses,Deciduous,Broad,Cwa,499968.9366
+23,Trees & Grasses,Deciduous,Broad,Cwb,190452.9884
+23,Trees & Grasses,Deciduous,Broad,Dwc,4331.783111
+24,Trees & Grasses,Mixed D/E,Broad,Am,992.6632843
+24,Trees & Grasses,Mixed D/E,Broad,Aw,111588.5263
+24,Trees & Grasses,Mixed D/E,Broad,Cfa,18542.6836
+24,Trees & Grasses,Mixed D/E,Broad,Cwa,12548.92269
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Aw,15773.83849
+27,Trees & Grasses,Mixed D/E,Mixed B/N,BSh,178164.786
+27,Trees & Grasses,Mixed D/E,Mixed B/N,BSk,1951.661686
+27,Trees & Grasses,Mixed D/E,Mixed B/N,BWh,13213.64543
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Cfa,2524.261924
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Cwa,2787.739467
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Cwb,77.49424568
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Dwb,8298.078442
+27,Trees & Grasses,Mixed D/E,Mixed B/N,Dwc,20851.64672
+28,Trees & Crops,Evergreen,Needle,Aw,2926.310779
+28,Trees & Crops,Evergreen,Needle,Cwb,2680.501569
+28,Trees & Crops,Evergreen,Needle,Dfb,6557.713599
+31,Trees & Crops,Evergreen,Broad,Af,28015.48794
+31,Trees & Crops,Evergreen,Broad,Am,129248.4777
+31,Trees & Crops,Evergreen,Broad,As,93.79441304
+31,Trees & Crops,Evergreen,Broad,Aw,273479.6493
+31,Trees & Crops,Evergreen,Broad,BSh,6139.868022
+31,Trees & Crops,Evergreen,Broad,Cfa,11627.31366
+31,Trees & Crops,Evergreen,Broad,Cfb,17888.32902
+31,Trees & Crops,Evergreen,Broad,Cwb,10549.05338
+32,Trees & Crops,Deciduous,Broad,Af,5922.068605
+32,Trees & Crops,Deciduous,Broad,Am,3397.862365
+32,Trees & Crops,Deciduous,Broad,As,3386.179417
+32,Trees & Crops,Deciduous,Broad,Aw,196314.0504
+32,Trees & Crops,Deciduous,Broad,BSh,11.98258753
+32,Trees & Crops,Deciduous,Broad,Cfa,47724.8837
+32,Trees & Crops,Deciduous,Broad,Cfb,1875.763897
+32,Trees & Crops,Deciduous,Broad,Csa,466.2734719
+32,Trees & Crops,Deciduous,Broad,Csb,2477.525553
+32,Trees & Crops,Deciduous,Broad,Cwa,12503.7075
+32,Trees & Crops,Deciduous,Broad,Cwb,21242.20771
+32,Trees & Crops,Deciduous,Broad,Dfb,14983.65922
+33,Trees & Crops,Mixed D/E,Broad,Af,4583.451759
+33,Trees & Crops,Mixed D/E,Broad,Am,8509.230437
+33,Trees & Crops,Mixed D/E,Broad,Aw,1133.161847
+33,Trees & Crops,Mixed D/E,Broad,Cfa,3625.50624
+33,Trees & Crops,Mixed D/E,Broad,Cfb,2091.545055
+33,Trees & Crops,Mixed D/E,Broad,Cwa,2863.448858
+36,Trees & Crops,Mixed D/E,Mixed B/N,Aw,5818.876896
+36,Trees & Crops,Mixed D/E,Mixed B/N,Cfa,4077.281568
+36,Trees & Crops,Mixed D/E,Mixed B/N,Cfb,2.593821812
+36,Trees & Crops,Mixed D/E,Mixed B/N,Cwb,2693.498645
+36,Trees & Crops,Mixed D/E,Mixed B/N,Dfa,3289.063797
+36,Trees & Crops,Mixed D/E,Mixed B/N,Dfb,35328.56915
+37,Shrubs,-,-,Af,8185.619034
+37,Shrubs,-,-,Am,10415.07271
+37,Shrubs,-,-,As,122688.8511
+37,Shrubs,-,-,Aw,1154242.617
+37,Shrubs,-,-,BSh,1825061.325
+37,Shrubs,-,-,BSk,1066583.486
+37,Shrubs,-,-,BWh,948614.1823
+37,Shrubs,-,-,BWk,233836.6175
+37,Shrubs,-,-,Cfa,431662.8106
+37,Shrubs,-,-,Cfb,119799.638
+37,Shrubs,-,-,Cfc,24778.28988
+37,Shrubs,-,-,Csa,337789.1985
+37,Shrubs,-,-,Csb,191505.1867
+37,Shrubs,-,-,Cwa,357187.2493
+37,Shrubs,-,-,Cwb,272381.0989
+37,Shrubs,-,-,Cwc,85.16355261
+37,Shrubs,-,-,Dfa,1045.491057
+37,Shrubs,-,-,Dfb,5799.137802
+37,Shrubs,-,-,Dfc,1159856.962
+37,Shrubs,-,-,Dfd,51211.09594
+37,Shrubs,-,-,Dsb,4451.121225
+37,Shrubs,-,-,Dsc,18331.65317
+37,Shrubs,-,-,Dwa,2736.964337
+37,Shrubs,-,-,Dwb,3349.569428
+37,Shrubs,-,-,Dwc,4799.222796
+37,Shrubs,-,-,Dwd,3456.018304
+37,Shrubs,-,-,ET,192162.4604
+38,Shrubs & Grasses,-,-,Af,2032.059438
+38,Shrubs & Grasses,-,-,Am,31503.28077
+38,Shrubs & Grasses,-,-,As,96879.55521
+38,Shrubs & Grasses,-,-,Aw,270598.7299
+38,Shrubs & Grasses,-,-,BSh,2445402.757
+38,Shrubs & Grasses,-,-,BSk,2125414.06
+38,Shrubs & Grasses,-,-,BWh,3878303.186
+38,Shrubs & Grasses,-,-,BWk,475220.6254
+38,Shrubs & Grasses,-,-,Cfa,81341.73367
+38,Shrubs & Grasses,-,-,Cfb,247036.1124
+38,Shrubs & Grasses,-,-,Cfc,58640.24508
+38,Shrubs & Grasses,-,-,Csa,181665.1576
+38,Shrubs & Grasses,-,-,Csb,264562.2252
+38,Shrubs & Grasses,-,-,Csc,8584.150975
+38,Shrubs & Grasses,-,-,Cwa,36466.86513
+38,Shrubs & Grasses,-,-,Cwb,99568.4759
+38,Shrubs & Grasses,-,-,Cwc,8527.952284
+38,Shrubs & Grasses,-,-,Dfa,21721.34725
+38,Shrubs & Grasses,-,-,Dfb,226001.7918
+38,Shrubs & Grasses,-,-,Dfc,2566293.839
+38,Shrubs & Grasses,-,-,Dfd,502629.5647
+38,Shrubs & Grasses,-,-,Dsa,54192.65896
+38,Shrubs & Grasses,-,-,Dsb,164033.4726
+38,Shrubs & Grasses,-,-,Dsc,72993.09608
+38,Shrubs & Grasses,-,-,Dwa,12734.20077
+38,Shrubs & Grasses,-,-,Dwb,22794.28964
+38,Shrubs & Grasses,-,-,Dwc,205481.0036
+38,Shrubs & Grasses,-,-,Dwd,79865.30031
+38,Shrubs & Grasses,-,-,ET,2051233.139
+39,Shrubs & Crops,-,-,Am,3270.253234
+39,Shrubs & Crops,-,-,As,25906.13413
+39,Shrubs & Crops,-,-,Aw,409062.2259
+39,Shrubs & Crops,-,-,BSh,120733.3108
+39,Shrubs & Crops,-,-,BSk,42859.76852
+39,Shrubs & Crops,-,-,BWh,29256.19225
+39,Shrubs & Crops,-,-,BWk,9058.491619
+39,Shrubs & Crops,-,-,Cfa,68784.69995
+39,Shrubs & Crops,-,-,Cfb,61327.93459
+39,Shrubs & Crops,-,-,Cfc,656.5585312
+39,Shrubs & Crops,-,-,Csa,86767.30054
+39,Shrubs & Crops,-,-,Csb,23777.46058
+39,Shrubs & Crops,-,-,Cwa,87313.02671
+39,Shrubs & Crops,-,-,Cwb,26209.7631
+39,Shrubs & Crops,-,-,Dfa,1192.872906
+39,Shrubs & Crops,-,-,Dfb,47088.24964
+39,Shrubs & Crops,-,-,Dfc,8179.80605
+39,Shrubs & Crops,-,-,Dsa,3148.788033
+39,Shrubs & Crops,-,-,Dwa,30624.10777
+39,Shrubs & Crops,-,-,Dwb,10514.30242
+40,Shrubs & Barren,-,-,Af,27577.33783
+40,Shrubs & Barren,-,-,Am,11552.72593
+40,Shrubs & Barren,-,-,As,28965.26505
+40,Shrubs & Barren,-,-,Aw,44089.12175
+40,Shrubs & Barren,-,-,BSh,279974.8656
+40,Shrubs & Barren,-,-,BSk,132908.1328
+40,Shrubs & Barren,-,-,BWh,523608.2424
+40,Shrubs & Barren,-,-,BWk,131555.979
+40,Shrubs & Barren,-,-,Cfa,26849.62032
+40,Shrubs & Barren,-,-,Cfb,15253.5275
+40,Shrubs & Barren,-,-,Cfc,9589.988712
+40,Shrubs & Barren,-,-,Csa,41007.72771
+40,Shrubs & Barren,-,-,Csb,57431.19969
+40,Shrubs & Barren,-,-,Csc,3297.097804
+40,Shrubs & Barren,-,-,Cwa,691.9846948
+40,Shrubs & Barren,-,-,Cwb,16702.8055
+40,Shrubs & Barren,-,-,Cwc,4589.838149
+40,Shrubs & Barren,-,-,Dfb,7068.889334
+40,Shrubs & Barren,-,-,Dfc,1565202.159
+40,Shrubs & Barren,-,-,Dfd,317650.1979
+40,Shrubs & Barren,-,-,Dsa,2344.57945
+40,Shrubs & Barren,-,-,Dsb,4675.308947
+40,Shrubs & Barren,-,-,Dsc,97064.90276
+40,Shrubs & Barren,-,-,Dwc,21231.15477
+40,Shrubs & Barren,-,-,Dwd,4523.174663
+40,Shrubs & Barren,-,-,EF,6048.298512
+40,Shrubs & Barren,-,-,ET,3431426.642
+41,Grasses,-,-,Af,5757.854308
+41,Grasses,-,-,Am,138896.4115
+41,Grasses,-,-,As,10087.11185
+41,Grasses,-,-,Aw,477796.8894
+41,Grasses,-,-,BSh,992223.1531
+41,Grasses,-,-,BSk,2652491.503
+41,Grasses,-,-,BWh,1066272.58
+41,Grasses,-,-,BWk,238290.1776
+41,Grasses,-,-,Cfa,865976.3991
+41,Grasses,-,-,Cfb,212308.1135
+41,Grasses,-,-,Cfc,37226.83603
+41,Grasses,-,-,Csa,121581.5502
+41,Grasses,-,-,Csb,13985.317
+41,Grasses,-,-,Cwa,61032.88255
+41,Grasses,-,-,Cwb,221834.1676
+41,Grasses,-,-,Cwc,2213.852521
+41,Grasses,-,-,Dfa,530512.9498
+41,Grasses,-,-,Dfb,563912.4323
+41,Grasses,-,-,Dfc,102414.9445
+41,Grasses,-,-,Dsa,85890.31892
+41,Grasses,-,-,Dsb,186641.1548
+41,Grasses,-,-,Dsc,32831.19848
+41,Grasses,-,-,Dwa,39755.71447
+41,Grasses,-,-,Dwb,351993.267
+41,Grasses,-,-,Dwc,725523.8359
+41,Grasses,-,-,ET,803292.754
+42,Grasses & Crops,-,-,Af,16944.63508
+42,Grasses & Crops,-,-,Am,33577.09071
+42,Grasses & Crops,-,-,As,29557.16701
+42,Grasses & Crops,-,-,Aw,171821.5325
+42,Grasses & Crops,-,-,BSh,157148.7372
+42,Grasses & Crops,-,-,BSk,185080.5679
+42,Grasses & Crops,-,-,BWk,10110.70349
+42,Grasses & Crops,-,-,Cfa,369851.251
+42,Grasses & Crops,-,-,Cfb,244965.8547
+42,Grasses & Crops,-,-,Cfc,1376.381499
+42,Grasses & Crops,-,-,Csa,34043.30033
+42,Grasses & Crops,-,-,Csb,11841.97316
+42,Grasses & Crops,-,-,Cwa,35045.55616
+42,Grasses & Crops,-,-,Cwb,44488.69489
+42,Grasses & Crops,-,-,Dfa,113003.6812
+42,Grasses & Crops,-,-,Dfb,248266.2766
+42,Grasses & Crops,-,-,Dfc,4021.430097
+42,Grasses & Crops,-,-,Dsa,16018.46663
+42,Grasses & Crops,-,-,Dsb,13649.13797
+42,Grasses & Crops,-,-,Dsc,71.27437124
+42,Grasses & Crops,-,-,Dwa,42777.07881
+42,Grasses & Crops,-,-,Dwb,52043.69401
+42,Grasses & Crops,-,-,Dwc,8846.204556
+43,Grasses & Barren,-,-,Af,3059.453787
+43,Grasses & Barren,-,-,Aw,1843.870514
+43,Grasses & Barren,-,-,BSh,678.1404887
+43,Grasses & Barren,-,-,Cfa,1042.729693
+43,Grasses & Barren,-,-,Csa,2412.544137
+43,Grasses & Barren,-,-,Dfa,73.02697894
+43,Grasses & Barren,-,-,Dfb,4037.432945
+44,Crops,-,-,Af,158697.8655
+44,Crops,-,-,Am,345411.8639
+44,Crops,-,-,As,155677.0203
+44,Crops,-,-,Aw,1896721.059
+44,Crops,-,-,BSh,1017374.697
+44,Crops,-,-,BSk,509223.1934
+44,Crops,-,-,BWh,245039.1849
+44,Crops,-,-,BWk,18249.73944
+44,Crops,-,-,Cfa,2219966.189
+44,Crops,-,-,Cfb,1823512.736
+44,Crops,-,-,Csa,1221567.577
+44,Crops,-,-,Csb,351343.9612
+44,Crops,-,-,Cwa,1451771.699
+44,Crops,-,-,Cwb,178770.2308
+44,Crops,-,-,Dfa,896242.0017
+44,Crops,-,-,Dfb,2945177.102
+44,Crops,-,-,Dfc,62091.91879
+44,Crops,-,-,Dsa,30734.03091
+44,Crops,-,-,Dsb,18322.44409
+44,Crops,-,-,Dwa,398616.2512
+44,Crops,-,-,Dwb,222367.2882
+44,Crops,-,-,Dwc,17535.07164
+44,Crops,-,-,ET,1416.311999
+45,Barren,-,-,Af,4719.038531
+45,Barren,-,-,Aw,740.3961902
+45,Barren,-,-,BSh,277245.3927
+45,Barren,-,-,BSk,857464.7724
+45,Barren,-,-,BWh,13261078.06
+45,Barren,-,-,BWk,3201514.906
+45,Barren,-,-,Cfa,332.8237572
+45,Barren,-,-,Cfb,1998.537858
+45,Barren,-,-,Csa,50333.25528
+45,Barren,-,-,Csb,129.8152774
+45,Barren,-,-,Cwc,6458.78952
+45,Barren,-,-,Dfa,1257.39154
+45,Barren,-,-,Dfb,2578.044963
+45,Barren,-,-,Dfc,15313.94409
+45,Barren,-,-,Dfd,15626.78208
+45,Barren,-,-,Dsb,258.802118
+45,Barren,-,-,Dsc,14632.19113
+45,Barren,-,-,Dwc,7100.482541
+45,Barren,-,-,EF,9803.375134
+45,Barren,-,-,ET,724673.6351
+46,Urban,-,-,Af,8891.395167
+46,Urban,-,-,Am,10117.15791
+46,Urban,-,-,Aw,6456.541991
+46,Urban,-,-,BSk,776.1785496
+46,Urban,-,-,Cfa,66767.98603
+46,Urban,-,-,Cfb,24442.44824
+46,Urban,-,-,Csa,17431.46628
+46,Urban,-,-,Csb,14760.78318
+46,Urban,-,-,Cwa,1815.319193
+46,Urban,-,-,Cwb,5676.247965
+46,Urban,-,-,Dfa,13245.73411
+46,Urban,-,-,Dfb,14221.728
+47,Snow & Ice,-,-,BWk,1224.76192
+47,Snow & Ice,-,-,Cfb,59.81560664
+47,Snow & Ice,-,-,Cfc,2662.978701
+47,Snow & Ice,-,-,Csc,516.1114129
+47,Snow & Ice,-,-,Dfb,509.7300317
+47,Snow & Ice,-,-,Dfc,34635.95161
+47,Snow & Ice,-,-,Dfd,5474.798489
+47,Snow & Ice,-,-,Dsb,197.0790726
+47,Snow & Ice,-,-,Dsc,4471.845398
+47,Snow & Ice,-,-,Dwc,5379.310226
+47,Snow & Ice,-,-,EF,14651143.17
+47,Snow & Ice,-,-,ET,1087208.218
