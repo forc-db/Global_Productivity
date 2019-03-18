@@ -4,7 +4,7 @@ rm(list = ls())
 # Set working directory as ForC main folder ####
 setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
-ForC_simplified <- read.csv("ForC_simplified/ForC_simplified.csv", stringsAsFactors = F)
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
 ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
 ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 50), ]
@@ -104,3 +104,35 @@ abline(borealModall)
 
 
 dev.off()
+
+
+########################################
+
+# Clean environment ####
+rm(list = ls())
+
+# Set working directory as ForC main folder ####
+setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
+ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
+ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 50), ]
+dist.to.keep <- ForC_simplified$managed %in% 0
+ForC_simplified <- ForC_simplified[which(dist.to.keep),]
+
+ForC_simplified$biomes <- NA
+ForC_simplified$biomes <- ifelse((grepl("Temperate", ForC_simplified$FAO.ecozone, fixed = TRUE)), "temperate", ForC_simplified$biomes)
+ForC_simplified$biomes <- ifelse((grepl("Boreal", ForC_simplified$FAO.ecozone, fixed = TRUE)), "boreal", ForC_simplified$biomes)
+ForC_simplified$biomes <- ifelse((grepl("Tropical", ForC_simplified$FAO.ecozone, fixed = TRUE)), "tropical", ForC_simplified$biomes)
+ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozone, fixed = TRUE)), "subtropical", ForC_simplified$biomes)
+
+ANPP_woody <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody"),]
+ANPP_woody_stem <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_stem"),]
+ANPP_woody_branch <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_branch"),]
+ANPP_woody_and_branch <- merge(ANPP_woody_stem, ANPP_woody_branch[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
+
+ANPP_woody_and_branch$ratio <- ANPP_woody_and_branch$mean.x/ANPP_woody_and_branch$mean.y
+
+write.csv(ANPP_woody_and_branch, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_branch.csv")
+
