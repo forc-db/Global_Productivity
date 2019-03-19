@@ -257,7 +257,7 @@ for(response.variables in response.variables.groups){
 }
 
 
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody")
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
 
 all.results = NULL
 
