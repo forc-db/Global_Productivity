@@ -17,7 +17,10 @@ library(MuMIn)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+koeppen_prob <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/forest_area_koeppen.csv", stringsAsFactors = F)
 VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
+
+ForC_simplified$weight <- koeppen_prob$prob[match(ForC_simplified$Koeppen, koeppen_prob$koeppen)]
 
 na_codes <- c("NA", "NI", "NRA", "NaN", "NAC") 
 my_is.na <- function(x) { is.na(x) | x %in% na_codes}
@@ -191,19 +194,19 @@ for(response.variables in response.variables.groups){
         # mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
         # if(fixed.v %in% "stand.age") mod.full <- lmer(mean ~ log10(fixed) + (1|geographic.area/plot.name), data = df)   # if(!fixed.v %in% "stand.age") mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
         
-        mod.full <- lmer(mean ~ fixed * masl + (1|geographic.area/plot.name), data = df)
+        mod.full <- lmer(mean ~ fixed * masl + (1|geographic.area/plot.name), data = df, weights = weight)
         
         significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
         
         
         if(!significant.effect.of.interaction) {
           
-          mod.full <- lmer(mean ~ fixed + masl + (1|geographic.area/plot.name), data = df)
+          mod.full <- lmer(mean ~ fixed + masl + (1|geographic.area/plot.name), data = df, weights = weight)
           
           significant.effect.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
           
           if(!significant.effect.of.additive) {
-            mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+            mod.full <- lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df, weights = weight)
             significant.effect <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
           } 
           
