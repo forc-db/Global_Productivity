@@ -176,13 +176,13 @@ for(response.variables in response.variables.groups){
         
         mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, weights = weight)
         
-        mod.full <- lmer(scale(mean) ~ scale(fixed) + (1|geographic.area/plot.name), data = df, weights = weight)
+        mod.full <- lmer(scale(mean) ~ fixed + (1|geographic.area/plot.name), data = df, weights = weight)
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if(first.plot == T) plot(scale(mean) ~ scale(fixed), data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n", ylim = ylim)
-        if (first.plot == F) points(scale(mean) ~ scale(fixed), data = df, ylab = "", col = response.v.color)
+        if(first.plot == T) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n", ylim = ylim)
+        if (first.plot == F) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color)
         
         # if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
         # if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
@@ -193,6 +193,7 @@ for(response.variables in response.variables.groups){
         
         r <- round(fixef(mod.full), 2)
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+        slope <- r[2]
         legend <- paste(response.v, "sample size =", sample.size)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
         
@@ -204,7 +205,7 @@ for(response.variables in response.variables.groups){
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
         
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", equation = equation, Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", equation = equation, Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, slope = slope)
         
         all.results <- rbind(all.results, results)
         
@@ -404,13 +405,13 @@ for (age in ages){
       
       mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, weights = weight)
       
-      mod.full <- lmer(scale(mean) ~ scale(fixed) + (1|geographic.area/plot.name), data = df, weights = weight)
+      mod.full <- lmer(scale(mean) ~ fixed + (1|geographic.area/plot.name), data = df, weights = weight)
       significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
       sample.size <- length(df$mean)
       
-      if(first.plot == T) plot(scale(mean) ~ scale(fixed), data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
-      if (first.plot == F) points(scale(mean) ~ scale(fixed), data = df, ylab = "", col = response.v.color)
+      if(first.plot == T) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
+      if (first.plot == F) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color)
       
       # if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
       # if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
