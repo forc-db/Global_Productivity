@@ -363,10 +363,7 @@ write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/Git
 ###################################################################################################################################
 ### to graph all response variables on one graph for comparison
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody"))
-
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody")
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
 
 ### mature forests only ####
 for (age in ages){
@@ -455,7 +452,7 @@ write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/Git
 
 ##########################
 
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody")
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
 
 ### mature forests only ####
 for (age in ages){
