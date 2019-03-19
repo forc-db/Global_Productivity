@@ -237,7 +237,7 @@ ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
 ###using polynomial models
 all.results <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
@@ -452,3 +452,92 @@ for (age in ages){
 
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_linear_scaled.csv", row.names = F)
+
+##########################
+
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody")
+
+### mature forests only ####
+for (age in ages){
+  
+  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+  
+  for(fixed.v in fixed.variables){
+    
+    tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/polynomial/Effect_of_", fixed.v, "_MATURE_only_poly_all.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    
+    par(mfrow = c(1,1), mar = c(0,0,0,7), oma = c(5,5,2,0))
+    print(fixed.v)
+    
+    ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
+    
+    ###subset ForC
+    response.variables.col <- 1:length(response.variables)
+    
+    first.plot <- TRUE
+    
+    for (response.v in response.variables){
+      
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
+      if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+      
+      
+      response.v.color <- response.variables.col[which(response.variables %in% response.v)]
+      
+      rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+      
+      fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+      
+      df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+      
+      df$fixed <- df[, fixed.v]
+      
+      mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, weights = weight)
+      mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, weights = weight)
+      significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+      sample.size <- length(df$mean)
+      
+      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
+      
+      newDat$fit <- predict(mod.full, newDat, re.form = NA)
+      
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
+      if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
+      
+      lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
+      
+      first.plot <- FALSE
+      
+      first.plot <- FALSE
+      
+      r <- round(fixef(mod.full), 2)
+      equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+      
+      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+      significance <- signif(significance, digits=4)
+      
+      Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+      Rsq <- signif(Rsq, digits=4)
+      legend2 <- paste(response.v, "r-squared = ", Rsq[1])
+      legend3 <- paste(response.v, "p-value = ", significance)
+      mtext(side = 3, line = -7 - (which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = response.v.color, cex = 0.5, outer = T)
+      mtext(side = 3, line = -which(response.variables %in% response.v), text = legend3, adj = 0.95, col = response.v.color, cex = 0.5, outer = T)
+      
+      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", equation = equation, Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+      
+      all.results <- rbind(all.results, results)
+      
+    }
+    
+    
+    title (paste("Effect of", fixed.v), outer = T, line = 1)
+    mtext(side = 1, line = 3, text = fixed.v, outer = T)
+    mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
+    dev.off()
+  }
+  
+}
+
