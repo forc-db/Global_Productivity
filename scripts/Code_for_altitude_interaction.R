@@ -101,7 +101,7 @@ response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine")
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualPET", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation")
 
 ## prepare results table
 
