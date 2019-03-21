@@ -102,8 +102,6 @@ response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine")
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
-## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 ## prepare results table
 
@@ -116,7 +114,9 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
+## fixed variables list ####
+
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
@@ -162,9 +162,11 @@ for(response.variables in response.variables.groups){
         
         rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
         
-        fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+        fixed.no.na <- !is.na(ForC_simplified[, fixed.v])  & !is.na(ForC_simplified[, "masl"])
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+        
+        df$masl <- df$masl/1000
         
         koeppen_count <- count(df, "Koeppen")
         koeppen_count$variable <- paste(response.v, fixed.v)
@@ -175,8 +177,8 @@ for(response.variables in response.variables.groups){
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        mod.linear <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        mod.poly <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        mod.linear <- lmer(mean ~ poly(fixed, 1)  + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        mod.poly <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
         
         aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
         
@@ -192,9 +194,9 @@ for(response.variables in response.variables.groups){
         delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
-        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
         # if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
@@ -205,11 +207,10 @@ for(response.variables in response.variables.groups){
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
-        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
         
-        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
-        
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         if(first.plot) plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, ylim = ylim, xaxt = "n", yaxt = "n")
