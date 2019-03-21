@@ -51,6 +51,10 @@
 "NPP","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","NPP = -0.25 + VapourPressureDeficit x 13.65  + age x 2.69 + -6.01  x interaction",TRUE,FALSE,TRUE,0.5804,0.9842
 "BNPP_root","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","BNPP_root = -1.3 + VapourPressureDeficit x 6.67  + age x 2.55 + -4.93  x interaction",TRUE,FALSE,TRUE,0.4789,0.9859
 "BNPP_root_fine","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.78 + VapourPressureDeficit x 2.87  + age x 1.53 + -3.01  x interaction",TRUE,FALSE,TRUE,0.1934,0.8926
+"GPP","SolarRadiation","geographic.area/plot.name",">=100 yrs","GPP = -0.75 + SolarRadiation x 0  + age x -4.74",TRUE,TRUE,FALSE,0.3169,0.9973
+"NPP","SolarRadiation","geographic.area/plot.name",">=100 yrs","NPP = -6.05 + SolarRadiation x 0  + age x -1.52",TRUE,TRUE,FALSE,0.587,0.988
+"BNPP_root","SolarRadiation","geographic.area/plot.name",">=100 yrs","BNPP_root = -2.06 + SolarRadiation x 0",TRUE,FALSE,FALSE,0.2911,0.9865
+"BNPP_root_fine","SolarRadiation","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.55 + SolarRadiation x 0",TRUE,FALSE,FALSE,0.08512,0.8987
 "ANPP_1","mat","geographic.area/plot.name",">=100 yrs","ANPP_1 = 3.48 + mat x 0.12  + age x -0.74",TRUE,TRUE,FALSE,0.4251,0.9824
 "ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.77 + mat x 0.09  + age x -0.44 + 0.03  x interaction",TRUE,FALSE,TRUE,0.712,0.9869
 "ANPP_1","map","geographic.area/plot.name",">=100 yrs","ANPP_1 = 5.4 + map x 0  + age x -0.47 + 0  x interaction",TRUE,FALSE,TRUE,0.3142,0.984
@@ -89,6 +93,9 @@
 "ANPP_1","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_1 = 6.56 + VapourPressureDeficit x -1.47  + age x -1.93 + 2.34  x interaction",TRUE,FALSE,TRUE,0.217,0.9874
 "ANPP_foliage","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.26 + VapourPressureDeficit x 3.42",TRUE,FALSE,FALSE,0.4074,0.9853
 "ANPP_repro","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.33 + VapourPressureDeficit x 0.1  + age x -0.16",FALSE,TRUE,FALSE,0.3627,0.9969
+"ANPP_1","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_1 = 3.11 + SolarRadiation x 0  + age x -1.25",TRUE,TRUE,FALSE,0.3189,0.9874
+"ANPP_foliage","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_foliage = -0.64 + SolarRadiation x 0  + age x -0.59",TRUE,TRUE,FALSE,0.3859,0.9898
+"ANPP_repro","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.21 + SolarRadiation x 0  + age x -0.52 + 0  x interaction",TRUE,FALSE,TRUE,0.4846,0.9983
 "ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 0.96 + mat x 0.1  + age x 0.34 + -0.06  x interaction",TRUE,FALSE,TRUE,0.6214,0.994
 "ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 0.22 + mat x 0.11",TRUE,FALSE,FALSE,0.2962,0.9878
 "ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.33 + mat x 0.02",TRUE,FALSE,FALSE,0.1331,0.9643
@@ -128,3 +135,6 @@
 "ANPP_woody","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_woody = -0.07 + VapourPressureDeficit x 4.71  + age x 0.82 + -2.36  x interaction",TRUE,FALSE,TRUE,0.6268,0.9886
 "ANPP_woody_stem","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.76 + VapourPressureDeficit x 0.27  + age x -0.62",FALSE,TRUE,FALSE,0.1739,0.9903
 "ANPP_woody_branch","VapourPressureDeficit","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.58 + VapourPressureDeficit x 0.23  + age x -0.2",FALSE,TRUE,FALSE,0.21,0.9735
+"ANPP_woody","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_woody = -2.04 + SolarRadiation x 0  + age x -0.58",TRUE,TRUE,FALSE,0.4056,0.9895
+"ANPP_woody_stem","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.47 + SolarRadiation x 0  + age x -0.65",FALSE,TRUE,FALSE,0.1677,0.9903
+"ANPP_woody_branch","SolarRadiation","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.66 + SolarRadiation x 0  + age x -0.22",FALSE,TRUE,FALSE,0.2136,0.9744
