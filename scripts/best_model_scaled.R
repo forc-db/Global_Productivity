@@ -121,7 +121,7 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
-                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"))
+                                  c("ANPP_woody", "ANPP_woody_stem"))
 
 for(response.variables in response.variables.groups){
   
@@ -225,7 +225,9 @@ for(response.variables in response.variables.groups){
         
         first.plot <- FALSE
         
-        r <- ifelse(best.model == "mod.linear", round(fixef(mod.full), 2), NA)
+        r <- round(fixef(mod.full), 2)
+        slope <- ifelse(best.model == "mod.linear", r[2], NA)
+        
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
         legend <- paste(response.v, "sample size =", sample.size)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
@@ -237,7 +239,7 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, slope = r)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, slope = slope)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
@@ -339,7 +341,6 @@ for (age in ages){
       
       first.plot <- FALSE
       
-      r <- ifelse(best.model == "mod.linear", round(fixef(mod.full), 2), NA)
       # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
       
       significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
@@ -352,7 +353,7 @@ for (age in ages){
       mtext(side = 3, line = -7 - (which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = response.v.color, cex = 0.5, outer = T)
       mtext(side = 3, line = -which(response.variables %in% response.v), text = legend3, adj = 0.95, col = response.v.color, cex = 0.5, outer = T)
       
-      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, slope = r)
+      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
       all.results <- rbind(all.results, results)
       
