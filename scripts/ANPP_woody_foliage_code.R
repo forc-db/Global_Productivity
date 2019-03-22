@@ -127,6 +127,9 @@ ForC_simplified$biomes <- ifelse((grepl("Boreal", ForC_simplified$FAO.ecozone, f
 ForC_simplified$biomes <- ifelse((grepl("Tropical", ForC_simplified$FAO.ecozone, fixed = TRUE)), "tropical", ForC_simplified$biomes)
 ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozone, fixed = TRUE)), "subtropical", ForC_simplified$biomes)
 
+ANPP_2 <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_2"),]
+ANPP_1 <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_1"),]
+
 ANPP_woody <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody"),]
 ANPP_woody_stem <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_stem"),]
 ANPP_woody_branch <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_branch"),]
