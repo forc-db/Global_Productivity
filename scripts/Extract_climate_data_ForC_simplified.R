@@ -85,21 +85,12 @@ pet <- pet[, c(1:3, 1372)]
 
 
 setwd("S:/Global Maps Data/WorldClim/tiff")
-unzip("wc2.0_30s_vapr.zip")
+# unzip("wc2.0_30s_vapr.zip")
 S_filenames<- paste("wc2.0_30s_srad_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
 srad <- stack(S_filenames) 
 month <- c("01 Jan 2010", "01 Feb 2010", "01 Mar 2010", "01 Apr 2010", "01 May 2010", "01 Jun 2010", "01 Jul 2010", "01 Aug 2010", "01 Sep 2010", "01 Oct 2010", "01 Nov 2010", "01 Dec 2010")
 
 names(srad) <- month
-
-ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
-
-ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
-coordinates(ForC_simplified)<-c("lon", "lat")
-proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
-proj4string(ForC_simplified)<-proj
-plot(ForC_simplified)
-as.data.frame(ForC_simplified)
 
 ForC_srad <- raster::extract(srad, ForC_simplified)
 srad1 <- data.frame(ForC_simplified)
@@ -115,7 +106,7 @@ srad_month <- cbind(srad1[,c(1:3)], srad_month)
 srad1$mean <- rowSums(srad_month[, c(4:15)], na.rm = TRUE)
 srad <- srad1[, c(1:3, 16)]
 
-unzip("wc2.0_30s_vapr.zip")
+# unzip("wc2.0_30s_vapr.zip")
 V_filenames<- paste("wc2.0_30s_vapr_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
 vapr <- stack(V_filenames) 
 
@@ -140,6 +131,7 @@ names(WorldClimDF)[36:54] <- c("AnnualMeanTemp", "MeanDiurnalRange", "Isothermal
 head(WorldClimDF)
 WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, pet$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
 names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+head(WorldClimDF)
 
 
 WorldClimDF$AnnualMeanTemp  <- WorldClimDF$AnnualMeanTemp / 10
@@ -161,16 +153,17 @@ head(WorldClimDF)
 write.csv(WorldClimDF,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU.csv", row.names = F)
 
 WorldClimDFRefined <- WorldClimDF[,-c(38, 40:41, 43:46, 48:49, 51:54)]
+head(WorldClimDFRefined)
 write.csv(WorldClimDFRefined,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
 
 
 #############################################
 
 setwd("S:/Global Maps Data/Global Aridity Index/")
-unzip("7504448.zip")
-unzip("global-et0_annual.tif.zip")
-unzip("global-ai_et0.zip")
-unzip("global-et0_monthly.tif.zip")
+# unzip("7504448.zip")
+# unzip("global-et0_annual.tif.zip")
+# unzip("global-ai_et0.zip")
+# unzip("global-et0_monthly.tif.zip")
 
 ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
 
