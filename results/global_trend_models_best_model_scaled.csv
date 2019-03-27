@@ -125,3 +125,17 @@
 "ANPP_woody_stem","VapourPressureDeficit","geographic.area/plot.name","age.greater.than.100","mod.poly",TRUE,2.769e-07,265,0.2842,0.9894,4.84,4.02
 "ANPP_woody","SolarRadiation","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0006326,54,0.4148,0.9881,2.139,3.02
 "ANPP_woody_stem","SolarRadiation","geographic.area/plot.name","age.greater.than.100","mod.poly",TRUE,1.188e-09,265,0.2089,0.9899,12.04,3.96
+"R_auto","mat","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,1.087e-05,14,0.8943,0.9939,8.622,2.29
+"R_auto","map","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0001917,14,0.9407,0.9808,3.668,2.98
+"R_auto","lat","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0001085,22,0.7224,0.9971,3.639,-3.75
+"R_auto","AnnualMeanTemp","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0002231,22,0.6724,0.9971,4.29,3.3
+"R_auto","TempSeasonality","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0006129,22,0.6274,0.9966,0.7556,-2.64
+"R_auto","TempRangeAnnual","geographic.area/plot.name","age.greater.than.100","mod.poly",TRUE,0.0003722,22,0.678,0.9972,0.509,-2.75
+"R_auto","AnnualPre","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.001358,22,0.6224,0.9972,0.4505,3.27
+"R_auto","AnnualFrostDays","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.001237,22,0.5908,0.9973,3.815,-3.42
+"R_auto","AnnualWetDays","geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.09903,22,0.3529,0.997,2.974,1.77
+"R_auto","VapourPressure","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.0002172,22,0.6894,0.9973,4.347,4.06
+"R_auto","Aridity","geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.08227,22,0.4429,0.9971,2.127,2.08
+"R_auto","PotentialEvapotranspiration","geographic.area/plot.name","age.greater.than.100","mod.poly",TRUE,0.0002329,22,0.7245,0.9961,2.526,2.42
+"R_auto","VapourPressureDeficit","geographic.area/plot.name","age.greater.than.100","mod.poly",TRUE,4.976e-05,22,0.8081,0.9958,7.508,2.3
+"R_auto","SolarRadiation","geographic.area/plot.name","age.greater.than.100","mod.linear",TRUE,0.006453,22,0.4953,0.9968,2.331,2.27
