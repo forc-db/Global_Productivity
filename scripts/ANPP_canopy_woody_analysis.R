@@ -8,12 +8,12 @@ library(lme4)
 library(MuMIn)
 
 
-ANPP_woody_stem_and_canopy <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_canopy_WorldClim_CRU.csv")
-ANPP_woody_stem_and_canopy <- ANPP_woody_stem_and_canopy[-121,]
+ANPP_woody_and_branch <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_branch.csv")
+# ANPP_woody_stem_and_canopy <- ANPP_woody_stem_and_canopy[-121,]
 
 
-ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- NA
-ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- (ANPP_woody_stem_and_canopy$ANPP_woody_stem/ANPP_woody_stem_and_canopy$ANPP_canopy)
+# ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- NA
+# ANPP_woody_stem_and_canopy$ratio_canopy_to_wood <- (ANPP_woody_stem_and_canopy$ANPP_woody_stem/ANPP_woody_stem_and_canopy$ANPP_canopy)
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 
@@ -22,27 +22,32 @@ broadleaf_codes <- c("2TEB", "2TDB", "2TB")
 needleleaf_codes <- c("2TEN", "2TDN", "2TN")
 mixed <- c("2TD", "2TE", "2TM", "2TREE")
 
-ANPP_woody_stem_and_canopy$leaf.type <- ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% broadleaf_codes, "broadleaf",
-                                    ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% needleleaf_codes, "needleleaf",
-                                           ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% mixed, "mixed", "Other")))
+ANPP_woody_and_branch$leaf.type <- ifelse(ANPP_woody_and_branch$dominant.veg %in% broadleaf_codes, "broadleaf",
+                                    ifelse(ANPP_woody_and_branch$dominant.veg %in% needleleaf_codes, "needleleaf",
+                                           ifelse(ANPP_woody_and_branch$dominant.veg %in% mixed, "mixed", "Other")))
 
 ## give leaf phenology
 evergreen_codes <- c("2TE", "2TEB", "2TEN")
 deciduous_codes <- c("2TDN", "2TDB", "2TD")
 
 
-ANPP_woody_stem_and_canopy$leaf.phenology <- ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% evergreen_codes, "evergreen",
-                                         ifelse(ANPP_woody_stem_and_canopy$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
+ANPP_woody_and_branch$leaf.phenology <- ifelse(ANPP_woody_and_branch$dominant.veg %in% evergreen_codes, "evergreen",
+                                         ifelse(ANPP_woody_and_branch$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
 
-df<- ANPP_woody_stem_and_canopy
+df<- ANPP_woody_and_branch
 
 all.results <- NULL
 par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
 for (fixed.variable in fixed.variables){
 df$fixed <- df[, fixed.variable]
-mod <-  lmer(ratio_canopy_to_wood ~ 1 + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
 
-mod.full <- lmer(ratio_canopy_to_wood ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = ANPP_woody_stem_and_canopy)
+fixed.no.na <- !is.na(df[, fixed.variable])
+
+df <- df[fixed.no.na, ]
+
+mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df)
+
+mod.full <- lmer(ratio ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = df)
 
 significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
 
@@ -54,14 +59,14 @@ Rsq <- as.data.frame(r.squaredGLMM(mod.full))
 Rsq <- signif(Rsq, digits=4)
 legend2 <- paste0("r-squared = ", Rsq[1])
 
-sample.size <- length(ANPP_woody_stem_and_canopy$ratio_canopy_to_wood)
+sample.size <- length(df$ratio)
 
-tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+# tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/mixed_effects_model/ANPP_canopy_to ANPP_woody_stem_mixed_model_", fixed.variable, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 
-plot <- plot(ratio_canopy_to_wood ~ get(paste0(fixed.variable)), data = ANPP_woody_stem_and_canopy, ylim = range(0:4),
+plot <- plot(ratio ~ get(paste0(fixed.variable)), data = df,
              xlab = paste0(fixed.variable),
-             ylab = "ANPP_canopy:ANPP_woody_stem",
-             main = paste0("ANPP_canopy:ANPP_woody_stem and ", fixed.variable))
+             ylab = "ANPP_woody:ANPP_branch",
+             main = paste0("ANPP_woody:ANPP_branch and ", fixed.variable))
 abline(fixef(mod.full))
 #title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
 #mtext(side = 1, line = 3, text = fixed.variable, outer = T)
@@ -75,7 +80,7 @@ results <- cbind(results, Rsq)
 
 all.results <- rbind(all.results, results)
 
-dev.off()
+# dev.off()
 
 }
 
