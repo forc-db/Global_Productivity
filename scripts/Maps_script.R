@@ -34,7 +34,7 @@ ForC_simplified$geographic.area <- addNA(ForC_simplified$geographic.area)
 ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$mean <- -ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$mean
 
 ## take absolute value of latitude
-ForC_simplified$lat <- abs(ForC_simplified$lat)
+# ForC_simplified$lat <- abs(ForC_simplified$lat)
 
 
 # Control for some factors ####
@@ -93,11 +93,11 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-# response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-#                                   c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
-#                                   c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"))
 
-response.variables.groups <- list(c("ANPP_0", "ANPP_1", "ANPP_2"))
+# response.variables.groups <- list(c("ANPP_1"))
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
