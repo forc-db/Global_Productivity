@@ -130,12 +130,17 @@ ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozo
 ANPP_2 <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_2"),]
 ANPP_1 <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_1"),]
 
+ANPP <- merge(ANPP_1, ANPP_2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
+
 ANPP_woody <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody"),]
 ANPP_woody_stem <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_stem"),]
 ANPP_woody_branch <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_branch"),]
 ANPP_woody_and_branch <- merge(ANPP_woody_stem, ANPP_woody_branch[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 
 ANPP_woody_and_branch$ratio <- ANPP_woody_and_branch$mean.x/ANPP_woody_and_branch$mean.y
+ANPP$ratio <- ANPP$mean.x/ANPP$mean.y
 
 write.csv(ANPP_woody_and_branch, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_branch.csv")
+
+write.csv(ANPP, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_1_2.csv")
 
