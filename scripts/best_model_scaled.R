@@ -9,6 +9,8 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 library(lme4)
 library(MuMIn)
 library(plyr)
+library(merTools)
+library(visreg)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -139,7 +141,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/alt_best/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/confidence_intervals/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -169,10 +171,10 @@ for(response.variables in response.variables.groups){
         
         df$masl <- df$masl/1000
         
-        koeppen_count <- count(df, "Koeppen")
-        koeppen_count$variable <- paste(response.v, fixed.v)
-        koeppen_count$percentage <- (koeppen_count$freq/length(df$Koeppen))*100
-        koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
+        # koeppen_count <- count(df, "Koeppen")
+        # koeppen_count$variable <- paste(response.v, fixed.v)
+        # koeppen_count$percentage <- (koeppen_count$freq/length(df$Koeppen))*100
+        # koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
         
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -213,13 +215,21 @@ for(response.variables in response.variables.groups){
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
+        pred <- predict(mod.full, newDat, re.form = NA)
+        ci_line<-bootMer(mod.full,FUN=function(.)
+          predict(., newdata=newDat,re.form = NA), nsim=2000)
+        ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
         
+       
         if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
         if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
         
         for(masl in unique(newDat$masl)){
           i <- which(unique(newDat$masl) %in% masl)
-          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) }
+          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) 
+          lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
+          lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
+        
         
         # if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
         # if (best.model == "mod.linear") abline(fixef(mod.linear), col = response.v.color, lty = ifelse(significant.effect, 1, 2)) 
@@ -244,7 +254,7 @@ for(response.variables in response.variables.groups){
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
-        all.koeppen <- rbind(all.koeppen, koeppen_count)
+        # all.koeppen <- rbind(all.koeppen, koeppen_count)
         
       }
       
