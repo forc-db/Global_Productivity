@@ -123,8 +123,7 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
-                                  c("ANPP_woody", "ANPP_woody_stem"),
-                                  c("R_auto"))
+                                  c("ANPP_woody", "ANPP_woody_stem"))
 
 for(response.variables in response.variables.groups){
   
@@ -141,7 +140,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/confidence_intervals/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/confidence_intervals/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -215,10 +214,10 @@ for(response.variables in response.variables.groups){
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
-        pred <- predict(mod.full, newDat, re.form = NA)
-        ci_line<-bootMer(mod.full,FUN=function(.)
-          predict(., newdata=newDat,re.form = NA), nsim=2000)
-        ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
+        # pred <- predict(mod.full, newDat, re.form = NA)
+        # ci_line<-bootMer(mod.full,FUN=function(.)
+        #   predict(., newdata=newDat,re.form = NA), nsim=2000)
+        # ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
         
        
         if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
@@ -236,6 +235,12 @@ for(response.variables in response.variables.groups){
         
         first.plot <- FALSE
         
+        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        summary <- summary(mod.linear)
+        CI <- summary$coefficient[,"Std. Error"]*1.96
+        lowerCI <- summary$coefficient[2,1] - CI[2]
+        upperCI <- summary$coefficient[2,1] + CI[2]
+        
         r <- round(fixef(mod.linear), 2)
         slope <- r[2]
         
@@ -250,7 +255,7 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, lowerCI = lowerCI, upperCI = upperCI)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
@@ -262,7 +267,7 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      dev.off()
+      # dev.off()
     }
     
   }
