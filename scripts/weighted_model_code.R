@@ -138,7 +138,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/weighted_sampling/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/weighted_sampling/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -168,10 +168,10 @@ for(response.variables in response.variables.groups){
         
         df$masl <- df$masl/1000
         
-        koeppen_count <- count(df, "Koeppen")
-        koeppen_count$variable <- paste(response.v, fixed.v)
-        koeppen_count$percentage <- (koeppen_count$freq/length(df$Koeppen))*100
-        koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
+        # koeppen_count <- count(df, "Koeppen")
+        # koeppen_count$variable <- paste(response.v, fixed.v)
+        # koeppen_count$percentage <- (koeppen_count$freq/length(df$Koeppen))*100
+        # koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
         
         df$fixed <- df[, fixed.v]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
@@ -222,6 +222,16 @@ for(response.variables in response.variables.groups){
         
         first.plot <- FALSE
         
+        mod.linear <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        
+        summary <- summary(mod.linear)
+        CI <- summary$coefficient[,"Std. Error"]*1.96
+        lowerCI <- summary$coefficient[2,1] - CI[2]
+        upperCI <- summary$coefficient[2,1] + CI[2]
+        
+        r <- round(fixef(mod.linear), 2)
+        slope <- r[2]
+        
         r <- round(fixef(mod.full), 2)
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
         legend <- paste(response.v, "sample size =", sample.size)
@@ -234,11 +244,11 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, slope = slope, lowerCI = lowerCI, upperCI = upperCI)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
-        all.koeppen <- rbind(all.koeppen, koeppen_count)
+        # all.koeppen <- rbind(all.koeppen, koeppen_count)
         
       }
       
@@ -246,9 +256,11 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      dev.off()
+      # dev.off()
     }
     
   }
   
 }
+
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_weighted_model.csv", row.names = F)
