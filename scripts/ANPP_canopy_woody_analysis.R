@@ -8,7 +8,7 @@ library(lme4)
 library(MuMIn)
 
 
-ANPP_woody_and_branch <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_woody_and_branch.csv")
+ANPP_woody_and_branch <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/ANPP_1_2.csv")
 # ANPP_woody_stem_and_canopy <- ANPP_woody_stem_and_canopy[-121,]
 
 
