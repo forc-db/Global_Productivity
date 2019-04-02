@@ -225,9 +225,9 @@ for(response.variables in response.variables.groups){
         
         for(masl in unique(newDat$masl)){
           i <- which(unique(newDat$masl) %in% masl)
-          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) 
-          lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
-          lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
+          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) }
+          # lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
+          # lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
         
         
         # if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
@@ -236,10 +236,28 @@ for(response.variables in response.variables.groups){
         first.plot <- FALSE
         
         mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
-        summary <- summary(mod.linear)
-        CI <- summary$coefficient[,"Std. Error"]*1.96
-        lowerCI <- summary$coefficient[2,1] - CI[2]
-        upperCI <- summary$coefficient[2,1] + CI[2]
+        
+        require(boot) 
+        lmercoef <- function(data, i, formula = "scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name)") {
+          d <- data[i, ]
+          d.reg <- lmer(formula, data = d, REML = T, weights = weight)
+         return(fixef(d.reg)[2])
+          }
+        
+        lmerboot <- boot(df, lmercoef, R = 999)
+        
+        lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
+        upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
+        
+        # summary <- summary(mod.linear)
+        # CI <- summary$coefficient[,"Std. Error"]*1.96
+        # lowerCI <- summary$coefficient[2,1] - CI[2]
+        # upperCI <- summary$coefficient[2,1] + CI[2]
+        
+        # profileCI <- confint.merMod(mod.linear, method = "profile")[5,]
+        # WaldCI <- confint.merMod(mod.linear, method = "Wald")[5,]
+        # bootCI <- confint.merMod(mod.linear, method = "boot")[5,]
+        # CI <- rbind(profileCI, WaldCI, bootCI)
         
         r <- round(fixef(mod.linear), 2)
         slope <- r[2]
