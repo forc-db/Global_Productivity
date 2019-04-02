@@ -122,7 +122,7 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP_1", "ANPP_foliage"),
                                   c("ANPP_woody", "ANPP_woody_stem"))
 
 for(response.variables in response.variables.groups){
