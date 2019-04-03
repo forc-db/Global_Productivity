@@ -123,7 +123,8 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP_1", "ANPP_foliage"),
-                                  c("ANPP_woody", "ANPP_woody_stem"))
+                                  c("ANPP_woody", "ANPP_woody_stem"),
+                                  c("R_auto"))
 
 for(response.variables in response.variables.groups){
   
@@ -214,10 +215,10 @@ for(response.variables in response.variables.groups){
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
-        # pred <- predict(mod.full, newDat, re.form = NA)
-        # ci_line<-bootMer(mod.full,FUN=function(.)
-        #   predict(., newdata=newDat,re.form = NA), nsim=2000)
-        # ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
+        pred <- predict(mod.full, newDat, re.form = NA)
+        ci_line<-bootMer(mod.full,FUN=function(.)
+          predict(., newdata=newDat,re.form = NA), nsim=2000)
+        ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
         
        
         if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
@@ -225,9 +226,9 @@ for(response.variables in response.variables.groups){
         
         for(masl in unique(newDat$masl)){
           i <- which(unique(newDat$masl) %in% masl)
-          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) }
-          # lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
-          # lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
+          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i)
+          lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
+          lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
         
         
         # if (best.model == "mod.poly") lines(fit ~ fixed, data = newDat, col = response.v.color, lty = ifelse(significant.effect, 1, 2))
@@ -364,14 +365,19 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
       
+      pred <- predict(mod.full, newDat, re.form = NA)
+      ci_line<-bootMer(mod.full,FUN=function(.)
+        predict(., newdata=newDat,re.form = NA), nsim=2000)
+      ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
+      
       if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
       
       for(masl in unique(newDat$masl)){
         i <- which(unique(newDat$masl) %in% masl)
-        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) }
-      
-      first.plot <- FALSE
+        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) 
+        lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
+        lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
       
       first.plot <- FALSE
       
