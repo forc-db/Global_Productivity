@@ -11,7 +11,13 @@ Authors:
 ## Abstract
 
 ## Introduction
-### Hypotheses
+*Hypotheses*
+
+These are the null hypotheses:
+
+H1. C fluxes vary in constant proportion to one another across major climate gradients (i.e., C allocation climate-invariant)
+
+H2. Climate explains the same proportion of variability in C fluxes (i.e., the relative importance of climate is invariant)
 
 ## Methods (summary?)
 **Fig. 1** - Map showing all data used in the anlysis, coded by variable.
@@ -26,9 +32,18 @@ Authors:
 **Variables sum (approximately) as expected.**
   - Sum of statistical models for component models falls within confidence intervals for larger flux. 
   - Fig. 2
+  
+[There are some modest differences in allocation across climate gradients (?)]
 
 **Climate / latitude explains a larger portion of variation in major fluxes (GPP, NPP, and Rauto) than in subsidiary components.**
   - R2  ~ 0.7 for GPP, NPP, less for subsidiary components 
   - in model where mean and variance are scaled, both R2 and slope are highest for major fluxes, lower in subsidiary components
 
 **Fig. 3** - bar plot or table showing R2 and slope (preferably with CIs) by variable
+
+## Discussion
+
+H1-
+
+H2- 
+- factors other than climate are important for determining allocation to subsidiary components
