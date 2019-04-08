@@ -12,13 +12,13 @@ Authors:
 
 ## Introduction
 
-[We know, broadly, that forest productivity decreases with increasing latidude; however, we don't know how this relationship compares across various productivity variables.]
+[We know, broadly, that forest productivity decreases with increasing latidude; however, we don't know how this relationship compares across the various productivity variables.]
 
 *Hypotheses* (These are the null hypotheses. Consider order.):
 
 H1. C fluxes vary in constant proportion to one another across major climate gradients (i.e., C allocation climate-invariant)
 
-H2. C fluxes respond in the same way/ to the same set of climate variables. 
+H2. C fluxes respond in the same way to the same set of climate variables. 
 
 H3. Climate explains the same proportion of variability in C fluxes (i.e., the relative importance of climate is invariant)
 
@@ -30,9 +30,9 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 
 ## Results
 *Setting the foundation:*
+
 **All major C fluxes increase with decreasing latitude (and altitude) and associated climate variables.** (see preliminary [figures](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/best_model) and [results](https://github.com/forc-db/Global_Productivity/blob/master/results/global_trend_models_weighted_model.csv))
-  - best fit is often polynomial, shapes vary (in potentially interesting ways - covered under H1)
-  
+  - best fit is often polynomial, shapes vary (in potentially interesting ways - covered under H1)  
 
 **Fig. 2** - multi-panel plots similar to [these](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/stacked_plots) showing (a) GPP = NPP + R_auto, (b) NPP = ANPP + BNPP, (c) ANPP = ANPP_foliage+ ANPP_woody_stem (+ ANPP_woody_branch + ANPP_repro) (d) BNPP, BNPP_root_fine, hopefully R_root
   
@@ -48,7 +48,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
     
 *Testing H2:*
 
-THere is some variation as to which are the best predictor variables.
+[THere is some variation as to which are the best predictor variables. is any of it very interesting?]
 
 *Testing H3:*
 **Climate / latitude explains a larger portion of variation in major fluxes (GPP, NPP, and Rauto) than in subsidiary components.**
@@ -61,5 +61,5 @@ THere is some variation as to which are the best predictor variables.
 
 H1-
 
-H2- 
+H3- 
 - factors other than climate are important for determining allocation to subsidiary components
