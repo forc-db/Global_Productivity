@@ -41,6 +41,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
   - Fig. 2
 
 *Testing H1:*
+
 **There are some differences in allocation across climate gradients (but how strong/signficant?)**
   - tendencies, based on [these plots](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/ratio_plots):
     - allocation to woody productivity increases with latitude. (Agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/foliage_woody).)
@@ -51,6 +52,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 [THere is some variation as to which are the best predictor variables. is any of it very interesting?]
 
 *Testing H3:*
+
 **Climate / latitude explains a larger portion of variation in major fluxes (GPP, NPP, and Rauto) than in subsidiary components.**
   - R2  ~ 0.7 for GPP, NPP, less for subsidiary components 
   - in model where mean and variance are scaled, both R2 and slope are highest for major fluxes, lower in subsidiary components
