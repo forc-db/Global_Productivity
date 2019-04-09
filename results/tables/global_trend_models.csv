@@ -1,193 +1,217 @@
-"response","fixed","random","Age.filter","equation","significant"
-"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = 0.75 + mat x -0.01",FALSE
-"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 8.17 + mat x 0.89",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 3.74 + mat x 0.25",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 2.07 + mat x 0.19",TRUE
-"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.09 + mat x 0.08",TRUE
-"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.6 + mat x 0.1",TRUE
-"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.34 + mat x 0.02",FALSE
-"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 0.33 + mat x 0.1",TRUE
-"NPP_woody","mat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4 + mat x -0.01",FALSE
-"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 2.06 + mat x 0.07",TRUE
-"woody.mortality_ag","mat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = -0.05 + mat x 0.11",TRUE
-"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.04 + mat x 0.09",TRUE
-"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.47 + mat x 0.06",TRUE
-"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.24 + mat x 0.01",FALSE
-"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 6.45 + mat x 0.88",TRUE
-"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 5.46 + mat x 0.34",TRUE
-"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 0.34 + map x 0",FALSE
-"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 12.98 + map x 0.01",TRUE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 7.16 + map x 0",FALSE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 4.95 + map x 0",TRUE
-"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.27 + map x 0",FALSE
-"ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.1 + map x 0",FALSE
-"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.79 + map x 0",FALSE
-"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.51 + map x 0",FALSE
-"NPP_woody","map","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.88 + map x 0",FALSE
-"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.59 + map x 0",TRUE
-"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.43 + map x 0",FALSE
-"woody.mortality_ag","map","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.3 + map x 0",FALSE
-"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.66 + map x 0",FALSE
-"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.38 + map x 0",TRUE
-"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.31 + map x 0",FALSE
-"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 7.44 + map x 0.01",TRUE
-"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 5.86 + map x 0",TRUE
-"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 1.05 + lat x -0.01",FALSE
-"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 34.77 + lat x -0.45",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.57 + lat x -0.12",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 6.61 + lat x -0.07",TRUE
-"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.15 + lat x -0.03",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.07 + lat x -0.04",TRUE
-"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.79 + lat x -0.01",TRUE
-"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.95 + lat x -0.02",TRUE
-"NPP_woody","lat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.87 + lat x -0.1",TRUE
-"NPP_understory","lat","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.16 + lat x 0.01",FALSE
-"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.82 + lat x -0.01",FALSE
-"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.3 + lat x 0",FALSE
-"woody.mortality_ag","lat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.55 + lat x -0.02",FALSE
-"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 3.69 + lat x -0.05",TRUE
-"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.11 + lat x -0.03",TRUE
-"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.42 + lat x 0",FALSE
-"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 31.77 + lat x -0.43",TRUE
-"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 15.08 + lat x -0.14",TRUE
-"NEE","stand.age","geographic.area/plot.name",">=100 yrs","NEE = -0.44 + stand.age x 0.34",FALSE
-"GPP","stand.age","geographic.area/plot.name",">=100 yrs","GPP = 37.12 + stand.age x -11.05",FALSE
-"NPP","stand.age","geographic.area/plot.name",">=100 yrs","NPP = 5.47 + stand.age x -0.3",FALSE
-"ANPP","stand.age","geographic.area/plot.name",">=100 yrs","ANPP = 4.78 + stand.age x -0.72",FALSE
-"ANPP_woody","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody = -2.32 + stand.age x 1.75",TRUE
-"ANPP_foliage","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.14 + stand.age x 0.07",FALSE
-"ANPP_woody_stem","stand.age","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 4.6 + stand.age x -1.04",FALSE
-"NPP_understory","stand.age","geographic.area/plot.name",">=100 yrs","NPP_understory = -0.33 + stand.age x 0.32",FALSE
-"BNPP_root","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root = 0.96 + stand.age x 0.19",FALSE
-"BNPP_root_fine","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.07 + stand.age x 0.2",FALSE
-"BNPP_root_coarse","stand.age","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = -0.09 + stand.age x 0.3",FALSE
-"R_eco","stand.age","geographic.area/plot.name",">=100 yrs","R_eco = 4.19 + stand.age x 2.42",FALSE
-"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.06 + leaf.type x 0.83",FALSE
-"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.86 + leaf.type x 16.54",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 3.78 + leaf.type x 4.71",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 2.64 + leaf.type x 2.9",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.81 + leaf.type x 0.91",FALSE
-"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.14 + leaf.type x 1.65",TRUE
-"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.32 + leaf.type x 0.38",TRUE
-"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.29 + leaf.type x 0.46",FALSE
-"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.44 + leaf.type x -0.04",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.23 + leaf.type x 1.52",TRUE
-"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.35 + leaf.type x 1.33",TRUE
-"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.63 + leaf.type x -0.2",FALSE
-"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 9.15 + leaf.type x 16.14",TRUE
-"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 7.97 + leaf.type x 5.55",TRUE
-"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.41 + leaf.phenology x 0.13",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 23.48 + leaf.phenology x -7.03",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 6.9 + leaf.phenology x -1.1",FALSE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 4.1 + leaf.phenology x 0.06",FALSE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 2.36 + leaf.phenology x -1.33",FALSE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 2.42 + leaf.phenology x -0.64",FALSE
-"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.59 + leaf.phenology x -0.16",FALSE
-"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.67 + leaf.phenology x -0.06",FALSE
-"NPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.95 + leaf.phenology x -1.97",FALSE
-"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.44 + leaf.phenology x -0.16",FALSE
-"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.64 + leaf.phenology x 1.73",TRUE
-"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.32 + leaf.phenology x -0.06",FALSE
-"woody.mortality_ag","leaf.phenology","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.36 + leaf.phenology x -0.24",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.29 + leaf.phenology x -0.58",FALSE
-"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 2.38 + leaf.phenology x -1.2",FALSE
-"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.53 + leaf.phenology x 0.01",FALSE
-"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 20.26 + leaf.phenology x -7.19",FALSE
-"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 11.6 + leaf.phenology x -5.87",TRUE
-"NEE","mat","geographic.area/plot.name",">=100 yrs","NEE = -0.17 + mat x 0.13  + age x 0.01 + 0  x interaction",TRUE
-"GPP","mat","geographic.area/plot.name",">=100 yrs","GPP = 6.5 + mat x 0.6  + age x 0.01",TRUE
-"NPP","mat","geographic.area/plot.name",">=100 yrs","NPP = 4.28 + mat x 0.22",TRUE
-"ANPP","mat","geographic.area/plot.name",">=100 yrs","ANPP = 3.19 + mat x 0.12  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.84 + mat x 0.1  + age x 0",TRUE
-"ANPP_foliage","mat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.97 + mat x 0.07  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.55 + mat x 0.01",FALSE
-"ANPP_woody_stem","mat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.19 + mat x 0.03  + age x 0 + 0  x interaction",TRUE
-"NPP_woody","mat","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.03 + mat x 0.02  + age x 0",FALSE
-"NPP_understory","mat","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.99 + mat x -0.05",TRUE
-"ANPP_litterfall","mat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 1.95 + mat x 0.07",TRUE
-"ANPP_repro","mat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.48 + mat x -0.02  + age x 0 + 0  x interaction",TRUE
-"woody.mortality_ag","mat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = -0.05 + mat x 0.11",TRUE
-"BNPP_root","mat","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.19 + mat x 0.04  + age x 0",TRUE
-"BNPP_root_fine","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.15 + mat x 0.01  + age x 0",FALSE
-"BNPP_root_coarse","mat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.04 + mat x 0.15  + age x 0 + 0  x interaction",TRUE
-"R_eco","mat","geographic.area/plot.name",">=100 yrs","R_eco = 7.37 + mat x 0.43  + age x 0 + 0  x interaction",TRUE
-"R_soil","mat","geographic.area/plot.name",">=100 yrs","R_soil = 6.48 + mat x 0.2  + age x 0",TRUE
-"NEE","map","geographic.area/plot.name",">=100 yrs","NEE = 0.64 + map x 0",FALSE
-"GPP","map","geographic.area/plot.name",">=100 yrs","GPP = 7.67 + map x 0  + age x 0.02",TRUE
-"NPP","map","geographic.area/plot.name",">=100 yrs","NPP = 3.91 + map x 0  + age x 0.01 + 0  x interaction",TRUE
-"ANPP","map","geographic.area/plot.name",">=100 yrs","ANPP = 2.64 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","map","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.87 + map x 0  + age x 0",FALSE
-"ANPP_foliage","map","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 0.43 + map x 0  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.77 + map x 0",FALSE
-"ANPP_woody_stem","map","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.07 + map x 0  + age x 0 + 0  x interaction",TRUE
-"NPP_woody","map","geographic.area/plot.name",">=100 yrs","NPP_woody = 3.84 + map x 0",FALSE
-"NPP_understory","map","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.96 + map x 0",FALSE
-"ANPP_litterfall","map","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 4.47 + map x 0",TRUE
-"ANPP_repro","map","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.25 + map x 0  + age x 0",FALSE
-"woody.mortality_ag","map","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2 + map x 0  + age x 0",FALSE
-"BNPP_root","map","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.32 + map x 0  + age x 0",FALSE
-"BNPP_root_fine","map","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 0.84 + map x 0  + age x 0",TRUE
-"BNPP_root_coarse","map","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.01 + map x 0  + age x 0 + 0  x interaction",TRUE
-"R_eco","map","geographic.area/plot.name",">=100 yrs","R_eco = 5.98 + map x 0  + age x 0.01",TRUE
-"R_soil","map","geographic.area/plot.name",">=100 yrs","R_soil = 6.6 + map x 0  + age x 0.01",FALSE
-"NEE","lat","geographic.area/plot.name",">=100 yrs","NEE = 1.7 + lat x -0.02",FALSE
-"GPP","lat","geographic.area/plot.name",">=100 yrs","GPP = 23.47 + lat x -0.26  + age x 0.01 + 0  x interaction",TRUE
-"NPP","lat","geographic.area/plot.name",">=100 yrs","NPP = 10.43 + lat x -0.11",TRUE
-"ANPP","lat","geographic.area/plot.name",">=100 yrs","ANPP = 6.67 + lat x -0.07",TRUE
-"ANPP_woody","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody = 3.08 + lat x -0.02",TRUE
-"ANPP_foliage","lat","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 3.06 + lat x -0.04",TRUE
-"ANPP_woody_branch","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.74 + lat x -0.01",TRUE
-"ANPP_woody_stem","lat","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 3.83 + lat x -0.04  + age x 0",TRUE
-"NPP_woody","lat","geographic.area/plot.name",">=100 yrs","NPP_woody = 6.08 + lat x -0.07  + age x 0",TRUE
-"NPP_understory","lat","geographic.area/plot.name",">=100 yrs","NPP_understory = -2.01 + lat x 0.05  + age x 0 + 0  x interaction",TRUE
-"ANPP_litterfall","lat","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.82 + lat x -0.02",FALSE
-"ANPP_repro","lat","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.08 + lat x 0  + age x 0",FALSE
-"woody.mortality_ag","lat","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 2.55 + lat x -0.02",FALSE
-"BNPP_root","lat","geographic.area/plot.name",">=100 yrs","BNPP_root = 2.5 + lat x -0.02  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_fine","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 3.04 + lat x -0.03",TRUE
-"BNPP_root_coarse","lat","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 3.79 + lat x -0.06  + age x 0 + 0  x interaction",TRUE
-"R_auto","lat","geographic.area/plot.name",">=100 yrs","R_auto = 23 + lat x -0.28",TRUE
-"R_eco","lat","geographic.area/plot.name",">=100 yrs","R_eco = 18.93 + lat x -0.22  + age x 0.01",TRUE
-"R_soil","lat","geographic.area/plot.name",">=100 yrs","R_soil = 13.06 + lat x -0.09  + age x 0 + 0  x interaction",TRUE
-"NEE","leaf.type","geographic.area/plot.name",">=100 yrs","NEE = 0.3 + leaf.type x 1.05",TRUE
-"GPP","leaf.type","geographic.area/plot.name",">=100 yrs","GPP = 11.63 + leaf.type x 0.38  + age x 0 + 0.02  x interaction",TRUE
-"NPP","leaf.type","geographic.area/plot.name",">=100 yrs","NPP = 4.17 + leaf.type x 2.23  + age x 0 + 0  x interaction",TRUE
-"ANPP","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP = 2.78 + leaf.type x 2.15  + age x 0",TRUE
-"ANPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.75 + leaf.type x 1.09  + age x 0 + 0  x interaction",TRUE
-"ANPP_foliage","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.11 + leaf.type x 0.68  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_branch","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.35 + leaf.type x 0.4",TRUE
-"ANPP_woody_stem","leaf.type","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.12 + leaf.type x 0.69",TRUE
-"NPP_woody","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_woody = 9.1 + leaf.type x -4.38  + age x -0.34 + 0.34  x interaction",TRUE
-"NPP_understory","leaf.type","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.39 + leaf.type x 0.16",FALSE
-"BNPP_root","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.53 + leaf.type x -0.04  + age x 0 + 0  x interaction",TRUE
-"BNPP_root_fine","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.11 + leaf.type x 0.27  + age x 0",FALSE
-"BNPP_root_coarse","leaf.type","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.56 + leaf.type x -0.14",TRUE
-"R_auto","leaf.type","geographic.area/plot.name",">=100 yrs","R_auto = 9.1 + leaf.type x -0.27  + age x 0 + 0.01  x interaction",TRUE
-"R_eco","leaf.type","geographic.area/plot.name",">=100 yrs","R_eco = 7.79 + leaf.type x 2.72  + age x 0.02",TRUE
-"R_soil","leaf.type","geographic.area/plot.name",">=100 yrs","R_soil = 8.19 + leaf.type x 2  + age x -0.01 + 0.01  x interaction",TRUE
-"NEE","leaf.phenology","geographic.area/plot.name",">=100 yrs","NEE = 0.61 + leaf.phenology x 0.58",FALSE
-"GPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","GPP = 11.26 + leaf.phenology x 0.43  + age x 0.02",FALSE
-"NPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP = 4.58 + leaf.phenology x 2.09  + age x 0 + 0  x interaction",TRUE
-"ANPP","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP = 3.19 + leaf.phenology x 1.79  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody = 1.78 + leaf.phenology x 1.02  + age x 0 + 0  x interaction",TRUE
-"ANPP_foliage","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_foliage = 1.32 + leaf.phenology x 0.3  + age x 0",TRUE
-"ANPP_woody_branch","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_branch = 0.31 + leaf.phenology x 0.51  + age x 0 + 0  x interaction",TRUE
-"ANPP_woody_stem","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_woody_stem = 2.65 + leaf.phenology x -0.05",FALSE
-"NPP_woody","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_woody = 4.95 + leaf.phenology x -1.28  + age x 0",FALSE
-"NPP_understory","leaf.phenology","geographic.area/plot.name",">=100 yrs","NPP_understory = 0.39 + leaf.phenology x 0.16",FALSE
-"ANPP_litterfall","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_litterfall = 3.62 + leaf.phenology x 1.61",TRUE
-"ANPP_repro","leaf.phenology","geographic.area/plot.name",">=100 yrs","ANPP_repro = 0.31 + leaf.phenology x -0.13",FALSE
-"woody.mortality_ag","leaf.phenology","geographic.area/plot.name",">=100 yrs","woody.mortality_ag = 1.35 + leaf.phenology x 0.26  + age x 0",FALSE
-"BNPP_root","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root = 1.61 + leaf.phenology x -0.08  + age x 0",FALSE
-"BNPP_root_fine","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_fine = 1.34 + leaf.phenology x -0.22  + age x 0",FALSE
-"BNPP_root_coarse","leaf.phenology","geographic.area/plot.name",">=100 yrs","BNPP_root_coarse = 0.51 + leaf.phenology x -0.09",FALSE
-"R_auto","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_auto = 9.18 + leaf.phenology x -0.6  + age x 0.01",FALSE
-"R_eco","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_eco = 8.27 + leaf.phenology x 1.2  + age x 0.02",FALSE
-"R_soil","leaf.phenology","geographic.area/plot.name",">=100 yrs","R_soil = 9.82 + leaf.phenology x -0.69  + age x 0 + -0.01  x interaction",TRUE
-"GPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"GPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","6.99 + MAT + AGE x 0.56",FALSE
-"NPP","MAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"NPP","MAT + AGE","geographic.area/plot.name",">=100 yrs","4.53 + MAT + AGE x 0.19",FALSE
-"NPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
-"ANPP_woody","LAT + AGE","geographic.area/plot.name","none",NA,FALSE
+"response","fixed","random","equation","Age.filter","significant","p.value","sample.size","Rsq.R2m","Rsq.R2c"
+"GPP","mat","geographic.area/plot.name","GPP = 8.26 + mat x 0.87","age.greater.than.100",TRUE,9.711e-12,220,0.7019,0.9676
+"NPP","mat","geographic.area/plot.name","NPP = 3.41 + mat x 0.25","age.greater.than.100",TRUE,3.903e-09,72,0.5402,0.8427
+"BNPP_root","mat","geographic.area/plot.name","BNPP_root = 0.84 + mat x 0.11","age.greater.than.100",TRUE,4.313e-06,82,0.3428,0.7617
+"BNPP_root_fine","mat","geographic.area/plot.name","BNPP_root_fine = 1.47 + mat x 0.06","age.greater.than.100",TRUE,0.01827,72,0.112,0.4607
+"GPP","map","geographic.area/plot.name","GPP = -46.03 + map x 9.41","age.greater.than.100",TRUE,0.001377,221,0.3127,0.9694
+"NPP","map","geographic.area/plot.name","NPP = -6.09 + map x 1.77","age.greater.than.100",TRUE,0.0121,72,0.1883,0.7882
+"BNPP_root","map","geographic.area/plot.name","BNPP_root = -4.33 + map x 0.93","age.greater.than.100",TRUE,0.0009467,86,0.158,0.8112
+"BNPP_root_fine","map","geographic.area/plot.name","BNPP_root_fine = -2.64 + map x 0.69","age.greater.than.100",TRUE,0.01858,72,0.1086,0.5348
+"GPP","lat","geographic.area/plot.name","GPP = 34.19 + lat x -0.46","age.greater.than.100",TRUE,4.139e-13,244,0.6852,0.9663
+"NPP","lat","geographic.area/plot.name","NPP = 10.01 + lat x -0.11","age.greater.than.100",TRUE,4.972e-08,82,0.4962,0.8569
+"BNPP_root","lat","geographic.area/plot.name","BNPP_root = 4.11 + lat x -0.06","age.greater.than.100",TRUE,3.136e-08,96,0.3989,0.8319
+"BNPP_root_fine","lat","geographic.area/plot.name","BNPP_root_fine = 3 + lat x -0.03","age.greater.than.100",TRUE,0.004969,82,0.1404,0.5332
+"GPP","AnnualMeanTemp","geographic.area/plot.name","GPP = 9.4 + AnnualMeanTemp x 0.81","age.greater.than.100",TRUE,2.659e-14,244,0.6863,0.9648
+"NPP","AnnualMeanTemp","geographic.area/plot.name","NPP = 3.47 + AnnualMeanTemp x 0.24","age.greater.than.100",TRUE,1.895e-09,82,0.5366,0.8353
+"BNPP_root","AnnualMeanTemp","geographic.area/plot.name","BNPP_root = 0.89 + AnnualMeanTemp x 0.11","age.greater.than.100",TRUE,1.442e-07,96,0.3721,0.7908
+"BNPP_root_fine","AnnualMeanTemp","geographic.area/plot.name","BNPP_root_fine = 1.24 + AnnualMeanTemp x 0.06","age.greater.than.100",TRUE,0.001405,82,0.1729,0.4989
+"GPP","MeanDiurnalRange","geographic.area/plot.name","GPP = 28.6 + MeanDiurnalRange x -0.69","age.greater.than.100",FALSE,0.1526,244,0.02241,0.9718
+"NPP","MeanDiurnalRange","geographic.area/plot.name","NPP = 6.6 + MeanDiurnalRange x -0.02","age.greater.than.100",FALSE,0.9196,82,0.0002163,0.8505
+"BNPP_root","MeanDiurnalRange","geographic.area/plot.name","BNPP_root = 2.6 + MeanDiurnalRange x -0.01","age.greater.than.100",FALSE,0.9345,96,0.0001271,0.8308
+"BNPP_root_fine","MeanDiurnalRange","geographic.area/plot.name","BNPP_root_fine = 3.46 + MeanDiurnalRange x -0.11","age.greater.than.100",FALSE,0.3259,82,0.01886,0.5118
+"GPP","TempSeasonality","geographic.area/plot.name","GPP = 31.74 + TempSeasonality x -0.19","age.greater.than.100",TRUE,3.875e-14,244,0.6671,0.9662
+"NPP","TempSeasonality","geographic.area/plot.name","NPP = 9.23 + TempSeasonality x -0.05","age.greater.than.100",TRUE,1.838e-07,82,0.4683,0.8593
+"BNPP_root","TempSeasonality","geographic.area/plot.name","BNPP_root = 3.84 + TempSeasonality x -0.03","age.greater.than.100",TRUE,6.63e-08,96,0.3966,0.8426
+"BNPP_root_fine","TempSeasonality","geographic.area/plot.name","BNPP_root_fine = 2.76 + TempSeasonality x -0.01","age.greater.than.100",TRUE,0.01211,82,0.1201,0.5428
+"GPP","TempRangeAnnual","geographic.area/plot.name","GPP = 39.07 + TempRangeAnnual x -0.67","age.greater.than.100",TRUE,1.985e-14,244,0.6855,0.9679
+"NPP","TempRangeAnnual","geographic.area/plot.name","NPP = 11.14 + TempRangeAnnual x -0.18","age.greater.than.100",TRUE,9.478e-08,82,0.4826,0.8556
+"BNPP_root","TempRangeAnnual","geographic.area/plot.name","BNPP_root = 4.84 + TempRangeAnnual x -0.1","age.greater.than.100",TRUE,8.421e-08,96,0.3842,0.8445
+"BNPP_root_fine","TempRangeAnnual","geographic.area/plot.name","BNPP_root_fine = 3.25 + TempRangeAnnual x -0.04","age.greater.than.100",TRUE,0.008181,82,0.1282,0.5458
+"GPP","AnnualPre","geographic.area/plot.name","GPP = -63.52 + AnnualPre x 11.81","age.greater.than.100",TRUE,2.419e-08,244,0.4564,0.9655
+"NPP","AnnualPre","geographic.area/plot.name","NPP = -7.79 + AnnualPre x 1.99","age.greater.than.100",TRUE,0.0001601,82,0.2096,0.7762
+"BNPP_root","AnnualPre","geographic.area/plot.name","BNPP_root = -3.96 + AnnualPre x 0.89","age.greater.than.100",TRUE,0.0006868,96,0.1205,0.7888
+"BNPP_root_fine","AnnualPre","geographic.area/plot.name","BNPP_root_fine = -1.75 + AnnualPre x 0.55","age.greater.than.100",TRUE,0.03586,82,0.07763,0.5244
+"GPP","PreSeasonality","geographic.area/plot.name","GPP = 19.69 + PreSeasonality x 0.03","age.greater.than.100",FALSE,0.4612,244,0.004022,0.9732
+"NPP","PreSeasonality","geographic.area/plot.name","NPP = 7.14 + PreSeasonality x -0.02","age.greater.than.100",FALSE,0.4562,82,0.009004,0.8481
+"BNPP_root","PreSeasonality","geographic.area/plot.name","BNPP_root = 2.14 + PreSeasonality x 0.01","age.greater.than.100",FALSE,0.4021,96,0.009136,0.8384
+"BNPP_root_fine","PreSeasonality","geographic.area/plot.name","BNPP_root_fine = 2.38 + PreSeasonality x 0","age.greater.than.100",FALSE,0.7794,82,0.001781,0.4993
+"GPP","CloudCover","geographic.area/plot.name","GPP = 20.72 + CloudCover x 0.01","age.greater.than.100",FALSE,0.9523,244,2.884e-05,0.9731
+"NPP","CloudCover","geographic.area/plot.name","NPP = -0.9 + CloudCover x 0.1","age.greater.than.100",FALSE,0.1628,82,0.04359,0.8467
+"BNPP_root","CloudCover","geographic.area/plot.name","BNPP_root = 1.15 + CloudCover x 0.02","age.greater.than.100",FALSE,0.462,96,0.007911,0.8287
+"BNPP_root_fine","CloudCover","geographic.area/plot.name","BNPP_root_fine = 1.9 + CloudCover x 0.01","age.greater.than.100",FALSE,0.858,82,0.000776,0.5024
+"GPP","AnnualFrostDays","geographic.area/plot.name","GPP = 28.29 + AnnualFrostDays x -0.07","age.greater.than.100",TRUE,7.969e-11,244,0.5835,0.9655
+"NPP","AnnualFrostDays","geographic.area/plot.name","NPP = 9.07 + AnnualFrostDays x -0.03","age.greater.than.100",TRUE,5.346e-09,82,0.5244,0.8528
+"BNPP_root","AnnualFrostDays","geographic.area/plot.name","BNPP_root = 3.53 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,2.801e-07,96,0.3519,0.8257
+"BNPP_root_fine","AnnualFrostDays","geographic.area/plot.name","BNPP_root_fine = 2.8 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,0.0008757,82,0.1842,0.5113
+"GPP","AnnualPET","geographic.area/plot.name","GPP = 0.63 + AnnualPET x 0.02","age.greater.than.100",TRUE,1.554e-06,244,0.4176,0.9655
+"NPP","AnnualPET","geographic.area/plot.name","NPP = 1.15 + AnnualPET x 0.01","age.greater.than.100",TRUE,1.434e-05,82,0.3695,0.8687
+"BNPP_root","AnnualPET","geographic.area/plot.name","BNPP_root = -0.19 + AnnualPET x 0","age.greater.than.100",TRUE,7.873e-06,96,0.3038,0.8364
+"BNPP_root_fine","AnnualPET","geographic.area/plot.name","BNPP_root_fine = 1.57 + AnnualPET x 0","age.greater.than.100",FALSE,0.2047,82,0.03698,0.5129
+"GPP","AnnualWetDays","geographic.area/plot.name","GPP = 8.18 + AnnualWetDays x 0.08","age.greater.than.100",TRUE,0.004384,244,0.125,0.9682
+"NPP","AnnualWetDays","geographic.area/plot.name","NPP = 2.28 + AnnualWetDays x 0.02","age.greater.than.100",TRUE,0.01374,82,0.1291,0.8459
+"BNPP_root","AnnualWetDays","geographic.area/plot.name","BNPP_root = 1.76 + AnnualWetDays x 0","age.greater.than.100",FALSE,0.3302,96,0.01634,0.8271
+"BNPP_root_fine","AnnualWetDays","geographic.area/plot.name","BNPP_root_fine = 1.33 + AnnualWetDays x 0.01","age.greater.than.100",FALSE,0.1553,82,0.04081,0.5159
+"GPP","VapourPressure","geographic.area/plot.name","GPP = 4.76 + VapourPressure x 100.24","age.greater.than.100",TRUE,6.339e-17,244,0.7589,0.9654
+"NPP","VapourPressure","geographic.area/plot.name","NPP = 2.32 + VapourPressure x 28.4","age.greater.than.100",TRUE,3.133e-09,82,0.5128,0.8273
+"BNPP_root","VapourPressure","geographic.area/plot.name","BNPP_root = 0.43 + VapourPressure x 12.89","age.greater.than.100",TRUE,6.474e-08,96,0.3753,0.7874
+"BNPP_root_fine","VapourPressure","geographic.area/plot.name","BNPP_root_fine = 0.99 + VapourPressure x 7.28","age.greater.than.100",TRUE,0.001881,82,0.1605,0.4944
+"GPP","SolarRadiation","geographic.area/plot.name","GPP = -1.38 + SolarRadiation x 0","age.greater.than.100",TRUE,0.000391,244,0.175,0.967
+"NPP","SolarRadiation","geographic.area/plot.name","NPP = -3.8 + SolarRadiation x 0","age.greater.than.100",TRUE,5.53e-06,82,0.3723,0.8718
+"BNPP_root","SolarRadiation","geographic.area/plot.name","BNPP_root = -2.17 + SolarRadiation x 0","age.greater.than.100",TRUE,1.849e-06,96,0.2812,0.8468
+"BNPP_root_fine","SolarRadiation","geographic.area/plot.name","BNPP_root_fine = -0.46 + SolarRadiation x 0","age.greater.than.100",TRUE,0.01401,82,0.1114,0.5532
+"GPP","Aridity","geographic.area/plot.name","GPP = 15.93 + Aridity x 0","age.greater.than.100",FALSE,0.05976,244,0.0432,0.9694
+"NPP","Aridity","geographic.area/plot.name","NPP = 4.56 + Aridity x 0","age.greater.than.100",TRUE,0.02105,82,0.07703,0.8265
+"BNPP_root","Aridity","geographic.area/plot.name","BNPP_root = 1.82 + Aridity x 0","age.greater.than.100",FALSE,0.08694,96,0.03367,0.8292
+"BNPP_root_fine","Aridity","geographic.area/plot.name","BNPP_root_fine = 1.71 + Aridity x 0","age.greater.than.100",FALSE,0.1799,82,0.03644,0.5364
+"GPP","PotentialEvapotranspiration","geographic.area/plot.name","GPP = 6.06 + PotentialEvapotranspiration x 0.01","age.greater.than.100",TRUE,0.0003718,244,0.1983,0.9652
+"NPP","PotentialEvapotranspiration","geographic.area/plot.name","NPP = -0.24 + PotentialEvapotranspiration x 0.01","age.greater.than.100",TRUE,3.976e-06,82,0.3667,0.8522
+"BNPP_root","PotentialEvapotranspiration","geographic.area/plot.name","BNPP_root = -0.56 + PotentialEvapotranspiration x 0","age.greater.than.100",TRUE,1.773e-05,96,0.2509,0.8048
+"BNPP_root_fine","PotentialEvapotranspiration","geographic.area/plot.name","BNPP_root_fine = 0.05 + PotentialEvapotranspiration x 0","age.greater.than.100",TRUE,0.006743,82,0.133,0.5213
+"GPP","VapourPressureDeficit","geographic.area/plot.name","GPP = 14.47 + VapourPressureDeficit x 11.2","age.greater.than.100",TRUE,0.01029,244,0.07289,0.9665
+"NPP","VapourPressureDeficit","geographic.area/plot.name","NPP = 2.4 + VapourPressureDeficit x 7.74","age.greater.than.100",TRUE,1.686e-05,82,0.2838,0.8299
+"BNPP_root","VapourPressureDeficit","geographic.area/plot.name","BNPP_root = 0.61 + VapourPressureDeficit x 3.4","age.greater.than.100",TRUE,0.0002614,96,0.1937,0.7803
+"BNPP_root_fine","VapourPressureDeficit","geographic.area/plot.name","BNPP_root_fine = 0.96 + VapourPressureDeficit x 2.17","age.greater.than.100",TRUE,0.0299,82,0.08723,0.4586
+"ANPP_1","mat","geographic.area/plot.name","ANPP_1 = 3.35 + mat x 0.11","age.greater.than.100",TRUE,0.0009394,144,0.0933,0.7739
+"ANPP_foliage","mat","geographic.area/plot.name","ANPP_foliage = 0.67 + mat x 0.1","age.greater.than.100",TRUE,1.16e-11,77,0.5947,0.8762
+"ANPP_repro","mat","geographic.area/plot.name","ANPP_repro = 0.13 + mat x 0.01","age.greater.than.100",TRUE,0.01637,32,0.2058,0.5134
+"ANPP_1","map","geographic.area/plot.name","ANPP_1 = -3.2 + map x 1.13","age.greater.than.100",TRUE,0.00148,158,0.0662,0.8206
+"ANPP_foliage","map","geographic.area/plot.name","ANPP_foliage = -3.03 + map x 0.73","age.greater.than.100",TRUE,0.0001431,125,0.243,0.7058
+"ANPP_repro","map","geographic.area/plot.name","ANPP_repro = 0.57 + map x -0.03","age.greater.than.100",FALSE,0.6342,65,0.006113,0.5347
+"ANPP_1","lat","geographic.area/plot.name","ANPP_1 = 6.4 + lat x -0.06","age.greater.than.100",TRUE,8.028e-06,185,0.1521,0.8234
+"ANPP_foliage","lat","geographic.area/plot.name","ANPP_foliage = 3.04 + lat x -0.04","age.greater.than.100",TRUE,3.181e-12,150,0.4775,0.7997
+"ANPP_repro","lat","geographic.area/plot.name","ANPP_repro = 0.31 + lat x 0","age.greater.than.100",FALSE,0.7277,66,0.003043,0.4576
+"ANPP_1","AnnualMeanTemp","geographic.area/plot.name","ANPP_1 = 3.54 + AnnualMeanTemp x 0.09","age.greater.than.100",TRUE,0.0003251,184,0.09613,0.7932
+"ANPP_foliage","AnnualMeanTemp","geographic.area/plot.name","ANPP_foliage = 0.87 + AnnualMeanTemp x 0.08","age.greater.than.100",TRUE,2.608e-15,150,0.5387,0.8205
+"ANPP_repro","AnnualMeanTemp","geographic.area/plot.name","ANPP_repro = 0.11 + AnnualMeanTemp x 0.01","age.greater.than.100",TRUE,0.02761,66,0.1042,0.5096
+"ANPP_1","MeanDiurnalRange","geographic.area/plot.name","ANPP_1 = 7.59 + MeanDiurnalRange x -0.23","age.greater.than.100",TRUE,0.02169,184,0.04097,0.8543
+"ANPP_foliage","MeanDiurnalRange","geographic.area/plot.name","ANPP_foliage = 3.72 + MeanDiurnalRange x -0.13","age.greater.than.100",TRUE,0.005752,150,0.07287,0.777
+"ANPP_repro","MeanDiurnalRange","geographic.area/plot.name","ANPP_repro = 0.62 + MeanDiurnalRange x -0.03","age.greater.than.100",TRUE,0.01678,66,0.1184,0.4435
+"ANPP_1","TempSeasonality","geographic.area/plot.name","ANPP_1 = 5.97 + TempSeasonality x -0.03","age.greater.than.100",TRUE,0.0002989,184,0.09574,0.8185
+"ANPP_foliage","TempSeasonality","geographic.area/plot.name","ANPP_foliage = 2.89 + TempSeasonality x -0.02","age.greater.than.100",TRUE,1.343e-11,150,0.4757,0.801
+"ANPP_repro","TempSeasonality","geographic.area/plot.name","ANPP_repro = 0.33 + TempSeasonality x 0","age.greater.than.100",FALSE,0.1533,66,0.0467,0.4534
+"ANPP_1","TempRangeAnnual","geographic.area/plot.name","ANPP_1 = 6.96 + TempRangeAnnual x -0.1","age.greater.than.100",TRUE,0.0001144,184,0.1068,0.825
+"ANPP_foliage","TempRangeAnnual","geographic.area/plot.name","ANPP_foliage = 3.52 + TempRangeAnnual x -0.06","age.greater.than.100",TRUE,2.17e-12,150,0.4991,0.7854
+"ANPP_repro","TempRangeAnnual","geographic.area/plot.name","ANPP_repro = 0.4 + TempRangeAnnual x -0.01","age.greater.than.100",TRUE,0.04558,66,0.0837,0.4548
+"ANPP_1","AnnualPre","geographic.area/plot.name","ANPP_1 = -1.46 + AnnualPre x 0.9","age.greater.than.100",TRUE,0.000732,184,0.04472,0.8273
+"ANPP_foliage","AnnualPre","geographic.area/plot.name","ANPP_foliage = -2.95 + AnnualPre x 0.71","age.greater.than.100",TRUE,1.695e-06,150,0.216,0.7581
+"ANPP_repro","AnnualPre","geographic.area/plot.name","ANPP_repro = -0.37 + AnnualPre x 0.09","age.greater.than.100",FALSE,0.162,66,0.05045,0.5043
+"ANPP_1","PreSeasonality","geographic.area/plot.name","ANPP_1 = 5.82 + PreSeasonality x -0.01","age.greater.than.100",FALSE,0.07305,184,0.01282,0.8762
+"ANPP_foliage","PreSeasonality","geographic.area/plot.name","ANPP_foliage = 2.46 + PreSeasonality x 0","age.greater.than.100",FALSE,0.724,150,0.001267,0.8028
+"ANPP_repro","PreSeasonality","geographic.area/plot.name","ANPP_repro = 0.3 + PreSeasonality x 0","age.greater.than.100",FALSE,0.9125,66,0.0002943,0.4603
+"ANPP_1","CloudCover","geographic.area/plot.name","ANPP_1 = 3.28 + CloudCover x 0.03","age.greater.than.100",FALSE,0.08107,185,0.01664,0.8676
+"ANPP_foliage","CloudCover","geographic.area/plot.name","ANPP_foliage = -0.05 + CloudCover x 0.03","age.greater.than.100",TRUE,0.007055,150,0.07148,0.8001
+"ANPP_repro","CloudCover","geographic.area/plot.name","ANPP_repro = 0.24 + CloudCover x 0","age.greater.than.100",FALSE,0.7597,66,0.002253,0.469
+"ANPP_1","AnnualFrostDays","geographic.area/plot.name","ANPP_1 = 5.65 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,0.007427,185,0.05817,0.8006
+"ANPP_foliage","AnnualFrostDays","geographic.area/plot.name","ANPP_foliage = 2.84 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,7.377e-14,150,0.5104,0.7874
+"ANPP_repro","AnnualFrostDays","geographic.area/plot.name","ANPP_repro = 0.32 + AnnualFrostDays x 0","age.greater.than.100",TRUE,0.02732,66,0.08725,0.4796
+"ANPP_1","AnnualPET","geographic.area/plot.name","ANPP_1 = 4.33 + AnnualPET x 0","age.greater.than.100",FALSE,0.07254,185,0.01981,0.835
+"ANPP_foliage","AnnualPET","geographic.area/plot.name","ANPP_foliage = 0.54 + AnnualPET x 0","age.greater.than.100",TRUE,5.137e-07,150,0.2667,0.8016
+"ANPP_repro","AnnualPET","geographic.area/plot.name","ANPP_repro = 0.25 + AnnualPET x 0","age.greater.than.100",FALSE,0.5709,66,0.007331,0.4819
+"ANPP_1","AnnualWetDays","geographic.area/plot.name","ANPP_1 = 3.39 + AnnualWetDays x 0.01","age.greater.than.100",TRUE,0.001747,185,0.06261,0.8685
+"ANPP_foliage","AnnualWetDays","geographic.area/plot.name","ANPP_foliage = 0.74 + AnnualWetDays x 0.01","age.greater.than.100",TRUE,1.475e-05,150,0.2028,0.7971
+"ANPP_repro","AnnualWetDays","geographic.area/plot.name","ANPP_repro = 0.26 + AnnualWetDays x 0","age.greater.than.100",FALSE,0.7093,66,0.003156,0.4734
+"ANPP_1","VapourPressure","geographic.area/plot.name","ANPP_1 = 2.71 + VapourPressure x 12.93","age.greater.than.100",TRUE,2.15e-07,185,0.1889,0.8037
+"ANPP_foliage","VapourPressure","geographic.area/plot.name","ANPP_foliage = 0.73 + VapourPressure x 8.04","age.greater.than.100",TRUE,1.567e-13,150,0.4872,0.8192
+"ANPP_repro","VapourPressure","geographic.area/plot.name","ANPP_repro = 0.12 + VapourPressure x 0.78","age.greater.than.100",TRUE,0.03491,66,0.1011,0.4734
+"ANPP_1","SolarRadiation","geographic.area/plot.name","ANPP_1 = 4.77 + SolarRadiation x 0","age.greater.than.100",FALSE,0.5352,185,0.001953,0.852
+"ANPP_foliage","SolarRadiation","geographic.area/plot.name","ANPP_foliage = -0.3 + SolarRadiation x 0","age.greater.than.100",TRUE,6.568e-05,150,0.1886,0.7782
+"ANPP_repro","SolarRadiation","geographic.area/plot.name","ANPP_repro = 0.13 + SolarRadiation x 0","age.greater.than.100",FALSE,0.3441,66,0.02823,0.4088
+"ANPP_1","Aridity","geographic.area/plot.name","ANPP_1 = 4.57 + Aridity x 0","age.greater.than.100",TRUE,0.03699,183,0.0455,0.8695
+"ANPP_foliage","Aridity","geographic.area/plot.name","ANPP_foliage = 1.57 + Aridity x 0","age.greater.than.100",TRUE,0.001077,150,0.09638,0.8017
+"ANPP_repro","Aridity","geographic.area/plot.name","ANPP_repro = 0.31 + Aridity x 0","age.greater.than.100",FALSE,0.938,66,0.0001475,0.4702
+"ANPP_1","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_1 = 5.01 + PotentialEvapotranspiration x 0","age.greater.than.100",FALSE,0.5918,183,0.001676,0.8524
+"ANPP_foliage","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_foliage = -0.37 + PotentialEvapotranspiration x 0","age.greater.than.100",TRUE,1.053e-08,150,0.3356,0.8184
+"ANPP_repro","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_repro = 0.06 + PotentialEvapotranspiration x 0","age.greater.than.100",FALSE,0.08408,66,0.06811,0.4882
+"ANPP_1","VapourPressureDeficit","geographic.area/plot.name","ANPP_1 = 5.59 + VapourPressureDeficit x -0.36","age.greater.than.100",FALSE,0.4151,185,0.002456,0.8654
+"ANPP_foliage","VapourPressureDeficit","geographic.area/plot.name","ANPP_foliage = 0.71 + VapourPressureDeficit x 2.65","age.greater.than.100",TRUE,9.139e-08,150,0.222,0.8062
+"ANPP_repro","VapourPressureDeficit","geographic.area/plot.name","ANPP_repro = 0.25 + VapourPressureDeficit x 0.09","age.greater.than.100",FALSE,0.5244,66,0.007032,0.5074
+"ANPP_woody","mat","geographic.area/plot.name","ANPP_woody = 1.22 + mat x 0.07","age.greater.than.100",TRUE,0.0004318,41,0.3638,0.8445
+"ANPP_woody_stem","mat","geographic.area/plot.name","ANPP_woody_stem = 0.43 + mat x 0.1","age.greater.than.100",TRUE,2.808e-10,270,0.183,0.901
+"ANPP_woody_branch","mat","geographic.area/plot.name","ANPP_woody_branch = 0.36 + mat x 0.02","age.greater.than.100",FALSE,0.05846,43,0.1007,0.6847
+"ANPP_woody","map","geographic.area/plot.name","ANPP_woody = -1.81 + map x 0.57","age.greater.than.100",FALSE,0.06865,41,0.1639,0.7652
+"ANPP_woody_stem","map","geographic.area/plot.name","ANPP_woody_stem = -2.06 + map x 0.6","age.greater.than.100",TRUE,9.11e-05,285,0.05279,0.8994
+"ANPP_woody_branch","map","geographic.area/plot.name","ANPP_woody_branch = 1.23 + map x -0.07","age.greater.than.100",FALSE,0.7066,47,0.009206,0.6764
+"ANPP_woody","lat","geographic.area/plot.name","ANPP_woody = 2.99 + lat x -0.02","age.greater.than.100",TRUE,0.01587,60,0.1659,0.6235
+"ANPP_woody_stem","lat","geographic.area/plot.name","ANPP_woody_stem = 2.98 + lat x -0.03","age.greater.than.100",TRUE,2.77e-06,313,0.1008,0.873
+"ANPP_woody_branch","lat","geographic.area/plot.name","ANPP_woody_branch = 0.74 + lat x -0.01","age.greater.than.100",TRUE,0.01007,74,0.1345,0.6241
+"ANPP_woody","AnnualMeanTemp","geographic.area/plot.name","ANPP_woody = 1.52 + AnnualMeanTemp x 0.06","age.greater.than.100",TRUE,0.001667,60,0.2435,0.6169
+"ANPP_woody_stem","AnnualMeanTemp","geographic.area/plot.name","ANPP_woody_stem = 1.02 + AnnualMeanTemp x 0.07","age.greater.than.100",TRUE,2.023e-08,312,0.1534,0.8683
+"ANPP_woody_branch","AnnualMeanTemp","geographic.area/plot.name","ANPP_woody_branch = 0.24 + AnnualMeanTemp x 0.02","age.greater.than.100",TRUE,0.0008231,74,0.1978,0.6264
+"ANPP_woody","MeanDiurnalRange","geographic.area/plot.name","ANPP_woody = 2.78 + MeanDiurnalRange x -0.04","age.greater.than.100",FALSE,0.6716,60,0.004279,0.6082
+"ANPP_woody_stem","MeanDiurnalRange","geographic.area/plot.name","ANPP_woody_stem = 3.13 + MeanDiurnalRange x -0.06","age.greater.than.100",FALSE,0.2325,312,0.006992,0.8727
+"ANPP_woody_branch","MeanDiurnalRange","geographic.area/plot.name","ANPP_woody_branch = 1.02 + MeanDiurnalRange x -0.04","age.greater.than.100",FALSE,0.07649,74,0.06184,0.6497
+"ANPP_woody","TempSeasonality","geographic.area/plot.name","ANPP_woody = 2.89 + TempSeasonality x -0.01","age.greater.than.100",TRUE,0.004703,60,0.2249,0.6262
+"ANPP_woody_stem","TempSeasonality","geographic.area/plot.name","ANPP_woody_stem = 2.79 + TempSeasonality x -0.01","age.greater.than.100",TRUE,0.0001593,312,0.06052,0.8704
+"ANPP_woody_branch","TempSeasonality","geographic.area/plot.name","ANPP_woody_branch = 0.7 + TempSeasonality x 0","age.greater.than.100",TRUE,0.01812,74,0.09976,0.664
+"ANPP_woody","TempRangeAnnual","geographic.area/plot.name","ANPP_woody = 3.42 + TempRangeAnnual x -0.05","age.greater.than.100",TRUE,0.003582,60,0.2302,0.6171
+"ANPP_woody_stem","TempRangeAnnual","geographic.area/plot.name","ANPP_woody_stem = 3.13 + TempRangeAnnual x -0.04","age.greater.than.100",TRUE,0.0009499,312,0.04391,0.8696
+"ANPP_woody_branch","TempRangeAnnual","geographic.area/plot.name","ANPP_woody_branch = 0.89 + TempRangeAnnual x -0.01","age.greater.than.100",TRUE,0.005675,74,0.1346,0.6569
+"ANPP_woody","AnnualPre","geographic.area/plot.name","ANPP_woody = -2.43 + AnnualPre x 0.65","age.greater.than.100",TRUE,0.008294,60,0.1685,0.5079
+"ANPP_woody_stem","AnnualPre","geographic.area/plot.name","ANPP_woody_stem = -0.72 + AnnualPre x 0.43","age.greater.than.100",TRUE,0.0009798,312,0.02873,0.8422
+"ANPP_woody_branch","AnnualPre","geographic.area/plot.name","ANPP_woody_branch = 0.19 + AnnualPre x 0.05","age.greater.than.100",FALSE,0.514,74,0.005567,0.637
+"ANPP_woody","PreSeasonality","geographic.area/plot.name","ANPP_woody = 2.79 + PreSeasonality x -0.01","age.greater.than.100",FALSE,0.3443,60,0.02014,0.6227
+"ANPP_woody_stem","PreSeasonality","geographic.area/plot.name","ANPP_woody_stem = 2.49 + PreSeasonality x 0","age.greater.than.100",FALSE,0.742,312,0.0003827,0.8738
+"ANPP_woody_branch","PreSeasonality","geographic.area/plot.name","ANPP_woody_branch = 0.65 + PreSeasonality x 0","age.greater.than.100",FALSE,0.4687,74,0.01736,0.6481
+"ANPP_woody","CloudCover","geographic.area/plot.name","ANPP_woody = -1.43 + CloudCover x 0.05","age.greater.than.100",FALSE,0.06326,60,0.09508,0.6065
+"ANPP_woody_stem","CloudCover","geographic.area/plot.name","ANPP_woody_stem = 3.14 + CloudCover x -0.01","age.greater.than.100",FALSE,0.2799,313,0.00466,0.8759
+"ANPP_woody_branch","CloudCover","geographic.area/plot.name","ANPP_woody_branch = -0.34 + CloudCover x 0.01","age.greater.than.100",TRUE,0.0447,74,0.09131,0.6723
+"ANPP_woody","AnnualFrostDays","geographic.area/plot.name","ANPP_woody = 2.96 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,0.003054,60,0.2234,0.6143
+"ANPP_woody_stem","AnnualFrostDays","geographic.area/plot.name","ANPP_woody_stem = 2.72 + AnnualFrostDays x -0.01","age.greater.than.100",TRUE,1.307e-05,313,0.0941,0.8754
+"ANPP_woody_branch","AnnualFrostDays","geographic.area/plot.name","ANPP_woody_branch = 0.7 + AnnualFrostDays x 0","age.greater.than.100",TRUE,0.003701,74,0.1624,0.6584
+"ANPP_woody","AnnualPET","geographic.area/plot.name","ANPP_woody = 0.91 + AnnualPET x 0","age.greater.than.100",TRUE,0.01515,60,0.1743,0.654
+"ANPP_woody_stem","AnnualPET","geographic.area/plot.name","ANPP_woody_stem = 1.07 + AnnualPET x 0","age.greater.than.100",TRUE,7.505e-07,313,0.09235,0.8755
+"ANPP_woody_branch","AnnualPET","geographic.area/plot.name","ANPP_woody_branch = 0.12 + AnnualPET x 0","age.greater.than.100",TRUE,0.03747,74,0.1029,0.652
+"ANPP_woody","AnnualWetDays","geographic.area/plot.name","ANPP_woody = 1.04 + AnnualWetDays x 0.01","age.greater.than.100",TRUE,0.03542,60,0.1187,0.6083
+"ANPP_woody_stem","AnnualWetDays","geographic.area/plot.name","ANPP_woody_stem = 2.46 + AnnualWetDays x 0","age.greater.than.100",FALSE,0.7783,313,0.0003463,0.8739
+"ANPP_woody_branch","AnnualWetDays","geographic.area/plot.name","ANPP_woody_branch = 0.12 + AnnualWetDays x 0","age.greater.than.100",TRUE,0.008183,74,0.1241,0.6786
+"ANPP_woody","VapourPressure","geographic.area/plot.name","ANPP_woody = 1.4 + VapourPressure x 5.94","age.greater.than.100",TRUE,0.0038,60,0.2046,0.5991
+"ANPP_woody_stem","VapourPressure","geographic.area/plot.name","ANPP_woody_stem = 0.92 + VapourPressure x 7.27","age.greater.than.100",TRUE,1.112e-09,313,0.1707,0.8661
+"ANPP_woody_branch","VapourPressure","geographic.area/plot.name","ANPP_woody_branch = 0.22 + VapourPressure x 2.04","age.greater.than.100",TRUE,0.0003091,74,0.2314,0.598
+"ANPP_woody","SolarRadiation","geographic.area/plot.name","ANPP_woody = -0.7 + SolarRadiation x 0","age.greater.than.100",TRUE,0.02688,60,0.1207,0.5994
+"ANPP_woody_stem","SolarRadiation","geographic.area/plot.name","ANPP_woody_stem = 1.3 + SolarRadiation x 0","age.greater.than.100",TRUE,0.01036,313,0.02124,0.8755
+"ANPP_woody_branch","SolarRadiation","geographic.area/plot.name","ANPP_woody_branch = 0.45 + SolarRadiation x 0","age.greater.than.100",FALSE,0.799,74,0.001526,0.6563
+"ANPP_woody","Aridity","geographic.area/plot.name","ANPP_woody = 1.49 + Aridity x 0","age.greater.than.100",TRUE,0.03048,60,0.1231,0.5513
+"ANPP_woody_stem","Aridity","geographic.area/plot.name","ANPP_woody_stem = 2.25 + Aridity x 0","age.greater.than.100",FALSE,0.06183,311,0.01815,0.8724
+"ANPP_woody_branch","Aridity","geographic.area/plot.name","ANPP_woody_branch = 0.52 + Aridity x 0","age.greater.than.100",FALSE,0.7584,74,0.001646,0.6531
+"ANPP_woody","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_woody = -0.1 + PotentialEvapotranspiration x 0","age.greater.than.100",TRUE,0.003642,60,0.1983,0.6256
+"ANPP_woody_stem","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_woody_stem = 1.4 + PotentialEvapotranspiration x 0","age.greater.than.100",TRUE,0.003683,311,0.03864,0.8759
+"ANPP_woody_branch","PotentialEvapotranspiration","geographic.area/plot.name","ANPP_woody_branch = 0.19 + PotentialEvapotranspiration x 0","age.greater.than.100",FALSE,0.1614,74,0.03803,0.6665
+"ANPP_woody","VapourPressureDeficit","geographic.area/plot.name","ANPP_woody = 0.58 + VapourPressureDeficit x 3.04","age.greater.than.100",TRUE,0.0007732,60,0.242,0.6022
+"ANPP_woody_stem","VapourPressureDeficit","geographic.area/plot.name","ANPP_woody_stem = 2.17 + VapourPressureDeficit x 0.53","age.greater.than.100",TRUE,0.0499,313,0.01363,0.8727
+"ANPP_woody_branch","VapourPressureDeficit","geographic.area/plot.name","ANPP_woody_branch = 0.3 + VapourPressureDeficit x 0.42","age.greater.than.100",FALSE,0.08167,74,0.04425,0.6623
+"woody.mortality_ag","mat","geographic.area/plot.name","woody.mortality_ag = -3.13 + mat x 0.22","age.greater.than.100",TRUE,0.001814,34,0.341,0.4901
+"R_auto","mat","geographic.area/plot.name","R_auto = 4.07 + mat x 0.65","age.greater.than.100",TRUE,7.432e-06,15,0.8028,0.9539
+"woody.mortality_ag","map","geographic.area/plot.name","woody.mortality_ag = 5.13 + map x -0.34","age.greater.than.100",FALSE,0.3416,34,0.01435,0.7267
+"R_auto","map","geographic.area/plot.name","R_auto = -39.18 + map x 7.56","age.greater.than.100",TRUE,0.0005521,15,0.6188,0.9422
+"woody.mortality_ag","lat","geographic.area/plot.name","woody.mortality_ag = 2.7 + lat x -0.05","age.greater.than.100",TRUE,0.02072,42,0.07579,0.85
+"R_auto","lat","geographic.area/plot.name","R_auto = 23.15 + lat x -0.29","age.greater.than.100",TRUE,1.026e-05,24,0.7198,0.9175
+"woody.mortality_ag","AnnualMeanTemp","geographic.area/plot.name","woody.mortality_ag = -2.93 + AnnualMeanTemp x 0.21","age.greater.than.100",FALSE,0.1087,42,0.1798,0.4417
+"R_auto","AnnualMeanTemp","geographic.area/plot.name","R_auto = 6.62 + AnnualMeanTemp x 0.55","age.greater.than.100",TRUE,1.672e-05,24,0.7019,0.9196
+"woody.mortality_ag","MeanDiurnalRange","geographic.area/plot.name","woody.mortality_ag = 0.44 + MeanDiurnalRange x 0.19","age.greater.than.100",FALSE,0.1193,42,0.05365,0.8746
+"R_auto","MeanDiurnalRange","geographic.area/plot.name","R_auto = 28.32 + MeanDiurnalRange x -1.22","age.greater.than.100",FALSE,0.2244,24,0.1004,0.9129
+"woody.mortality_ag","TempSeasonality","geographic.area/plot.name","woody.mortality_ag = 2.56 + TempSeasonality x -0.03","age.greater.than.100",TRUE,0.03457,42,0.03807,0.8382
+"R_auto","TempSeasonality","geographic.area/plot.name","R_auto = 20.62 + TempSeasonality x -0.13","age.greater.than.100",TRUE,9.723e-05,24,0.6265,0.9097
+"woody.mortality_ag","TempRangeAnnual","geographic.area/plot.name","woody.mortality_ag = 3.21 + TempRangeAnnual x -0.07","age.greater.than.100",FALSE,0.303,42,0.02135,0.8047
+"R_auto","TempRangeAnnual","geographic.area/plot.name","R_auto = 25.26 + TempRangeAnnual x -0.43","age.greater.than.100",TRUE,0.0001165,24,0.6257,0.911
+"woody.mortality_ag","AnnualPre","geographic.area/plot.name","woody.mortality_ag = 9.55 + AnnualPre x -0.93","age.greater.than.100",FALSE,0.1265,42,0.03789,0.8573
+"R_auto","AnnualPre","geographic.area/plot.name","R_auto = -52.59 + AnnualPre x 9.26","age.greater.than.100",TRUE,9.726e-05,24,0.6428,0.9167
+"woody.mortality_ag","PreSeasonality","geographic.area/plot.name","woody.mortality_ag = 2.1 + PreSeasonality x 0.01","age.greater.than.100",FALSE,0.5723,42,0.008183,0.6992
+"R_auto","PreSeasonality","geographic.area/plot.name","R_auto = 15.52 + PreSeasonality x -0.01","age.greater.than.100",FALSE,0.9242,24,0.0005465,0.9094
+"woody.mortality_ag","CloudCover","geographic.area/plot.name","woody.mortality_ag = 3.22 + CloudCover x -0.01","age.greater.than.100",FALSE,0.5243,42,0.009483,0.7459
+"R_auto","CloudCover","geographic.area/plot.name","R_auto = -18.83 + CloudCover x 0.49","age.greater.than.100",TRUE,0.03198,24,0.2482,0.9052
+"woody.mortality_ag","AnnualFrostDays","geographic.area/plot.name","woody.mortality_ag = 2.38 + AnnualFrostDays x -56.66","age.greater.than.100",FALSE,0.06229,42,0.1157,0.8146
+"R_auto","AnnualFrostDays","geographic.area/plot.name","R_auto = 20.25 + AnnualFrostDays x -0.06","age.greater.than.100",TRUE,9.815e-05,24,0.6499,0.9154
+"woody.mortality_ag","AnnualPET","geographic.area/plot.name","woody.mortality_ag = 3.15 + AnnualPET x 0","age.greater.than.100",FALSE,0.6064,42,0.007597,0.7365
+"R_auto","AnnualPET","geographic.area/plot.name","R_auto = -2.59 + AnnualPET x 0.02","age.greater.than.100",TRUE,4.067e-05,24,0.6783,0.91
+"woody.mortality_ag","AnnualWetDays","geographic.area/plot.name","woody.mortality_ag = 2.28 + AnnualWetDays x 0","age.greater.than.100",FALSE,0.9359,42,0.0001611,0.7402
+"R_auto","AnnualWetDays","geographic.area/plot.name","R_auto = 3.7 + AnnualWetDays x 0.07","age.greater.than.100",TRUE,0.02314,24,0.2927,0.9082
+"woody.mortality_ag","VapourPressure","geographic.area/plot.name","woody.mortality_ag = -0.21 + VapourPressure x 9.6","age.greater.than.100",FALSE,0.1577,42,0.09396,0.5953
+"R_auto","VapourPressure","geographic.area/plot.name","R_auto = 4.93 + VapourPressure x 59.6","age.greater.than.100",TRUE,2.668e-05,24,0.6977,0.9238
+"woody.mortality_ag","SolarRadiation","geographic.area/plot.name","woody.mortality_ag = 0.49 + SolarRadiation x 0","age.greater.than.100",FALSE,0.2217,42,0.03923,0.7945
+"R_auto","SolarRadiation","geographic.area/plot.name","R_auto = -23.12 + SolarRadiation x 0","age.greater.than.100",TRUE,0.008138,24,0.3422,0.9063
+"woody.mortality_ag","Aridity","geographic.area/plot.name","woody.mortality_ag = 3.56 + Aridity x 0","age.greater.than.100",TRUE,0.02847,42,0.1103,0.9352
+"R_auto","Aridity","geographic.area/plot.name","R_auto = 8.32 + Aridity x 0","age.greater.than.100",FALSE,0.05909,24,0.2674,0.913
+"woody.mortality_ag","PotentialEvapotranspiration","geographic.area/plot.name","woody.mortality_ag = 1.04 + PotentialEvapotranspiration x 0","age.greater.than.100",FALSE,0.2359,42,0.02751,0.7507
+"R_auto","PotentialEvapotranspiration","geographic.area/plot.name","R_auto = -5.62 + PotentialEvapotranspiration x 0.02","age.greater.than.100",TRUE,0.002752,24,0.4257,0.9146
+"woody.mortality_ag","VapourPressureDeficit","geographic.area/plot.name","woody.mortality_ag = 0.82 + VapourPressureDeficit x 2","age.greater.than.100",FALSE,0.07239,42,0.07653,0.8319
+"R_auto","VapourPressureDeficit","geographic.area/plot.name","R_auto = 4.04 + VapourPressureDeficit x 18.54","age.greater.than.100",TRUE,0.01032,24,0.3353,0.9048
