@@ -10,6 +10,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 library(lme4)
 library(MuMIn)
 library(ggplot2)
+library(viridis)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -162,14 +163,36 @@ for (age in ages){
       print(mp)
       
       dev.off()
-      
-      # coordinates(df)<-c("lon", "lat")
-      # plot(df)
-      
-      
+
     }
     
   }
   
 }
 }
+
+
+################# all plots on one
+
+ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+
+
+responses.to.keep <- c("GPP", "NPP_1", "BNPP_root", "ANPP_1", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem")
+
+rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+
+fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+
+df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+
+df$fixed <- df[, fixed.v]
+
+lon <- df$lon
+lat <- df$lat
+variable.name <- df$variable.name
+
+mapWorld <- borders("world", colour="gray50", fill="gray50")
+mp <- ggplot() +   mapWorld
+mp <- mp + geom_point(aes(x=lon, y=lat, color= variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma")
+ggsave("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
+
