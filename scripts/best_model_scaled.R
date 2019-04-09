@@ -118,13 +118,14 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation")
+# fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation")
+
+fixed.variables <- "AnnualPET"
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP_1", "ANPP_foliage"),
-                                  c("ANPP_woody", "ANPP_woody_stem"),
-                                  c("R_auto"))
+                                  c("ANPP_woody", "ANPP_woody_stem"))
 
 for(response.variables in response.variables.groups){
   
@@ -141,7 +142,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/confidence_intervals/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt_and_ci/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -177,11 +178,13 @@ for(response.variables in response.variables.groups){
         # koeppen_count <- koeppen_count[,c("Koeppen", "variable", "percentage")]
         
         df$fixed <- df[, fixed.v]
+        
+        if(fixed.v == "AnnualPET") df <- df[df$fixed != 0,]
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        mod.poly <- lmer(scale(mean) ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        mod.poly <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
         
         aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
         
@@ -197,9 +200,9 @@ for(response.variables in response.variables.groups){
         delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
-        if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
-        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
+        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight)
         # if (best.model == "mod.age.linear") mod.full <- lmer(mean ~ fixed + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.int") mod.full <- lmer(mean ~ fixed * stand.age + (1|geographic.area/plot.name), data = df, REML = F)
         # if (best.model == "mod.age.linear.poly") mod.full <- lmer(mean ~ poly(fixed, 2) + stand.age + (1|geographic.area/plot.name), data = df, REML = F)
@@ -210,8 +213,8 @@ for(response.variables in response.variables.groups){
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
-        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
@@ -236,19 +239,19 @@ for(response.variables in response.variables.groups){
         
         first.plot <- FALSE
         
-        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
+        mod.linear <- lmer(scale(mean) ~ scale(fixed) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
         
-        require(boot) 
-        lmercoef <- function(data, i, formula = "scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name)") {
-          d <- data[i, ]
-          d.reg <- lmer(formula, data = d, REML = T, weights = weight)
-         return(fixef(d.reg)[2])
-          }
-        
-        lmerboot <- boot(df, lmercoef, R = 999)
-        
-        lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
-        upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
+        # require(boot)
+        # lmercoef <- function(data, i, formula = "scale(mean) ~ scale(fixed) + masl + (1|geographic.area/plot.name)") {
+        #   d <- data[i, ]
+        #   d.reg <- lmer(formula, data = d, REML = T, weights = weight)
+        #  return(fixef(d.reg)[2])
+        #   }
+        # 
+        # lmerboot <- boot(df, lmercoef, R = 999)
+        # 
+        # lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
+        # upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
         
         # summary <- summary(mod.linear)
         # CI <- summary$coefficient[,"Std. Error"]*1.96
@@ -260,7 +263,7 @@ for(response.variables in response.variables.groups){
         # bootCI <- confint.merMod(mod.linear, method = "boot")[5,]
         # CI <- rbind(profileCI, WaldCI, bootCI)
         
-        r <- round(fixef(mod.linear), 2)
+        r <- round(fixef(mod.linear), 5)
         slope <- r[2]
         
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
@@ -274,7 +277,7 @@ for(response.variables in response.variables.groups){
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
-        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, lowerCI = lowerCI, upperCI = upperCI)
+        results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
@@ -286,7 +289,7 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      # dev.off()
+      dev.off()
     }
     
   }
@@ -294,8 +297,10 @@ for(response.variables in response.variables.groups){
 }
 
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_best_model_scaled.csv", row.names = F)
+# write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/global_trend_models_best_model_scaled_CI.csv", row.names = F)
 
+
+# fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
 
@@ -309,7 +314,7 @@ for (age in ages){
   
   for(fixed.v in fixed.variables){
     
-    tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/scaled_model/alt_best/Effect_of_", fixed.v, "_MATURE_only_poly_all.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt_and_ci/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
     
     par(mfrow = c(1,1), mar = c(0,0,0,7), oma = c(5,5,2,0))
     print(fixed.v)
@@ -375,7 +380,7 @@ for (age in ages){
       
       for(masl in unique(newDat$masl)){
         i <- which(unique(newDat$masl) %in% masl)
-        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i) 
+        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i)
         lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
         lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
       
