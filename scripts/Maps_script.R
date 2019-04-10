@@ -174,6 +174,8 @@ for (age in ages){
 
 ################# all plots on one
 
+fixed.v <- "AnnualMeanTemp"
+
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
 
@@ -189,10 +191,13 @@ df$fixed <- df[, fixed.v]
 
 lon <- df$lon
 lat <- df$lat
+
+df$variable.name <- gsub("(_1)", "", df$variable.name)
+
 variable.name <- df$variable.name
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot() +   mapWorld
 mp <- mp + geom_point(aes(x=lon, y=lat, color= variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma")
-ggsave("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
+ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
