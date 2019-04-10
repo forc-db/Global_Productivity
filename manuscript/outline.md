@@ -24,7 +24,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 
 ## Methods (summary?)
 **Fig. 1** - Map showing all data used in the anlysis, coded by variable.
-![Distribution of carbon data](C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png)
+![Distribution of carbon data](https://github.com/forc-db/Global_Productivity/blob/master/results/figures/final_figures/maps/distribution_all_variables.png)
 
 - specify main model
 - mention other versions triend, with logic behind each
