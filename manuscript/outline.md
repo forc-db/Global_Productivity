@@ -44,9 +44,9 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 *Testing H1:*
 
 **There are some differences in allocation across climate gradients (but how strong/signficant?)**
-  - tendencies, based on [these plots](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/ratio_plots):
-    - allocation to woody productivity increases with latitude. (Agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/foliage_woody).)
-    - allocation to roots declines with latitude. (Partially agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/foliage_woody), which show lowest fraction to BNPP in temperate.)
+  - tendencies, based on [these plots](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/test/ratio_plots):
+    - allocation to woody productivity increases with latitude. (Agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/foliage_woody).)
+    - allocation to roots declines with latitude. (Partially agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/foliage_woody), which show lowest fraction to BNPP in temperate.)
     
 *Testing H2:*
 
