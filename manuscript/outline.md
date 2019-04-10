@@ -51,6 +51,8 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 *Testing H2:*
 
 [THere is some variation as to which are the best predictor variables. is any of it very interesting?]
+  - Generally TempSeasonality, mat, lat, TempRangeAnnual, VapourPressure and AnnualMeanTemp come out as the best predictors
+  - For ANPP_woody and ANPP_woody_stem, VapourPressureDeficit and PotentialEvapotranspiration and mat are the best predictors
 
 *Testing H3:*
 
