@@ -24,6 +24,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 
 ## Methods (summary?)
 **Fig. 1** - Map showing all data used in the anlysis, coded by variable.
+![Distribution of carbon data](C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png)
 
 - specify main model
 - mention other versions triend, with logic behind each
@@ -31,10 +32,10 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 ## Results
 *Setting the foundation:*
 
-**All major C fluxes increase with decreasing latitude (and altitude) and associated climate variables.** (see preliminary [figures](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/best_model) and [results](https://github.com/forc-db/Global_Productivity/blob/master/results/global_trend_models_weighted_model.csv))
+**All major C fluxes increase with decreasing latitude (and altitude) and associated climate variables.** (see preliminary [figures](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/final_figures/scaled_best_model_with_alt) and [results](https://github.com/forc-db/Global_Productivity/blob/master/results/tables/best_model_outputs/best_model_scaled_with_ci.csv))
   - best fit is often polynomial, shapes vary (in potentially interesting ways - covered under H1)  
 
-**Fig. 2** - multi-panel plots similar to [these](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/test/stacked_plots) showing (a) GPP = NPP + R_auto, (b) NPP = ANPP + BNPP, (c) ANPP = ANPP_foliage+ ANPP_woody_stem (+ ANPP_woody_branch + ANPP_repro) (d) BNPP, BNPP_root_fine, hopefully R_root
+**Fig. 2** - multi-panel plots similar to [these](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/test/ratio_plots) showing (a) GPP = NPP + R_auto, (b) NPP = ANPP + BNPP, (c) ANPP = ANPP_foliage+ ANPP_woody_stem (+ ANPP_woody_branch + ANPP_repro) (d) BNPP, BNPP_root_fine, hopefully R_root
   
 **Variables sum (approximately) as expected.**
   - Sum of statistical models for component models falls within confidence intervals for larger flux. 
