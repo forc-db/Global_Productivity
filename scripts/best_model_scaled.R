@@ -241,7 +241,7 @@ for(response.variables in response.variables.groups){
         mod.linear <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
         
         require(boot)
-        lmercoef <- function(data, i, formula = "scale(mean) ~ scale(fixed) + masl + (1|geographic.area/plot.name)") {
+        lmercoef <- function(data, i, formula = "scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name)") {
           d <- data[i, ]
           d.reg <- lmer(formula, data = d, REML = T, weights = weight)
          return(fixef(d.reg)[2])
