@@ -101,8 +101,9 @@ fixed.variables <- c("lat")
 # response.variables.1 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 # response.variables.2 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 
-set1 <- c("ANPP_foliage")
-set2 <- c("ANPP_woody")
+set1 <- c("")
+set2 <- c("")
+sum <- c("")
   
   ### mature forests only ####
   for (age in ages){
@@ -122,20 +123,22 @@ set2 <- c("ANPP_woody")
       
       ################################ for response.v.1
       
-      GPP.response <- ForC_simplified$variable.name %in% "ANPP_2"
+      for(s in sum){
+      
+      sum.response <- ForC_simplified$variable.name %in% s
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
       
-      df.GPP <- ForC_simplified[GPP.response & ages.to.keep & fixed.no.na, ]
+      df.sum <- ForC_simplified[sum.response & ages.to.keep & fixed.no.na, ]
       
-      df.GPP$masl <- df.GPP$masl/1000
+      df.sum$masl <- df.sum$masl/1000
       
-      df.GPP$fixed <- df.GPP[, fixed.v]
+      df.sum$fixed <- df.sum[, fixed.v]
       # ylim.1 <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.1),]$mean)
       
-      mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df.GPP, REML = F)
-      mod.linear <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = F)
-      mod.poly <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = F)
+      mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df.sum, REML = F)
+      mod.linear <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.sum, REML = F)
+      mod.poly <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
       aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
       
@@ -143,16 +146,16 @@ set2 <- c("ANPP_woody")
       delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear), sort = T)$Delta_AICc[2])
       delta.aic <- signif(delta.aic, digits=4)
       
-      if (best.model == "mod.poly") GPP.mod <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = F)
-      if (best.model == "mod.linear") GPP.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = F)
-      if (best.model == "mod") GPP.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = F)
+      if (best.model == "mod.poly") sum.mod <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.sum, REML = F)
+      if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.sum, REML = F)
+      if (best.model == "mod") sum.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
-      significant.effect <- anova(mod, GPP.mod)$"Pr(>Chisq)"[2] < 0.05
-      significance <- anova(mod, GPP.mod)$"Pr(>Chisq)"[2]
-      sample.size <- length(df.GPP$mean)
+      significant.effect <- anova(mod, sum.mod)$"Pr(>Chisq)"[2] < 0.05
+      significance <- anova(mod, sum.mod)$"Pr(>Chisq)"[2]
+      sample.size <- length(df.sum$mean)
       
-      if (best.model == "mod.poly") GPP.mod <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = T)
-      if (best.model == "mod.linear") GPP.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.GPP, REML = T)
+      if (best.model == "mod.poly") sum.mod <- lmer(mean ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df.sum, REML = T)
+      if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
       
       for (i in seq(along = set1)){
@@ -248,17 +251,17 @@ set2 <- c("ANPP_woody")
           
           newDat$fit.1 <- predict(mod.full.1, newDat, re.form = NA)
           newDat$fit.2 <- predict(mod.full.2, newDat, re.form = NA)
-          newDat$fit.3 <- predict(GPP.mod, newDat, re.form = NA)
+          newDat$fit.3 <- predict(sum.mod, newDat, re.form = NA)
           
           newDat$stacked_plot <- newDat$fit.1 + newDat$fit.2
           
           ylim <- range(c(newDat$fit.1, newDat$fit.2, newDat$fit.3))
           
-          tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/stacked_plots/", set1[[i]], "_to_", set2[[j]], "_stacked.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+          png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
           plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = 2)
           points(mean ~ fixed, data = df.2, ylab = "", col = 3)
-          points(mean ~ fixed, data = df.GPP, ylab = "", col = 5)
+          points(mean ~ fixed, data = df.sum, ylab = "", col = 5)
           
           for(masl in unique(newDat$masl)){
             i <- which(unique(newDat$masl) %in% masl)
@@ -267,7 +270,7 @@ set2 <- c("ANPP_woody")
             lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 5)
             lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 4)}
           
-          labels <- c("ANPP_foliage", "ANPP_woody", "stacked", "ANPP_2")
+          labels <- c(set1, set2, "stacked", s)
           response.col = 2:5
           for (label in labels){
             legend <- paste(label)
@@ -287,6 +290,7 @@ set2 <- c("ANPP_woody")
           # all.aictab <- rbind(all.aictab, aictab)
           
         }
+      }
       }
     }
     }
