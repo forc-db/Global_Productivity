@@ -11,6 +11,8 @@ library(MuMIn)
 library(plyr)
 library(merTools)
 library(visreg)
+library(r2glmm)
+library(nlme)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -240,17 +242,17 @@ for(response.variables in response.variables.groups){
         
         mod.linear <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T, weights = weight)
         
-        require(boot)
-        lmercoef <- function(data, i, formula = "scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name)") {
-          d <- data[i, ]
-          d.reg <- lmer(formula, data = d, REML = T, weights = weight)
-         return(fixef(d.reg)[2])
-          }
-
-        lmerboot <- boot(df, lmercoef, R = 999)
-
-        lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
-        upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
+        # require(boot)
+        # lmercoef <- function(data, i, formula = "scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name)") {
+        #   d <- data[i, ]
+        #   d.reg <- lmer(formula, data = d, REML = T, weights = weight)
+        #  return(fixef(d.reg)[2])
+        #   }
+        # 
+        # lmerboot <- boot(df, lmercoef, R = 999)
+        # 
+        # lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
+        # upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
         
         # summary <- summary(mod.linear)
         # CI <- summary$coefficient[,"Std. Error"]*1.96
@@ -280,7 +282,7 @@ for(response.variables in response.variables.groups){
         date = Sys.Date()
         altitude = TRUE
         
-        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, lowerCI = lowerCI, upperCI = upperCI)
+        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
@@ -302,6 +304,8 @@ for(response.variables in response.variables.groups){
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_with_ci.csv", row.names = F)
 
+all.results.lat <- all.results[all.results$fixed %in% "lat",]
+ggplot(all.results.lat, aes(x = response, y = Rsq.R2m)) + geom_bar(stat = "identity")
 
 # fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
