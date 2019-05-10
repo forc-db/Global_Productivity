@@ -71,4 +71,5 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
 H1-
 
 H3- 
+- effects of climate on woody growth and other subsidiary components of NPP are complex: ([Friend et al. 2019](https://link.springer.com/content/pdf/10.1007%2Fs13595-019-0819-x.pdf); Helcoski et al. in press)
 - factors other than climate are important for determining allocation to subsidiary components
