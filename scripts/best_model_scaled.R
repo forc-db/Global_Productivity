@@ -99,11 +99,6 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
-                                  c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"),
-                                  c("woody.mortality_ag", "R_auto"))
-
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
 ## fixed variables list ####
@@ -125,13 +120,13 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP_1", "ANPP_foliage"),
+                                  c("ANPP", "ANPP_foliage"),
                                   c("ANPP_woody", "ANPP_woody_stem"))
 
 for(response.variables in response.variables.groups){
   
   if(response.variables[1] == "GPP") n <- 1
-  if(response.variables[1] == "ANPP_1") n <- 2
+  if(response.variables[1] == "ANPP") n <- 2
   if(response.variables[1] == "ANPP_woody") n <- 3
   if(response.variables[1] == "R_auto") n <- 4
   
@@ -143,7 +138,7 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt_and_ci/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
@@ -157,8 +152,8 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
@@ -294,7 +289,7 @@ for(response.variables in response.variables.groups){
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
       mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-      # dev.off()
+      dev.off()
     }
     
   }
@@ -303,9 +298,6 @@ for(response.variables in response.variables.groups){
 
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_with_ci.csv", row.names = F)
-
-all.results.lat <- all.results[all.results$fixed %in% "lat",]
-ggplot(all.results.lat, aes(x = response, y = Rsq.R2m)) + geom_bar(stat = "identity")
 
 # fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
@@ -321,7 +313,7 @@ for (age in ages){
   
   for(fixed.v in fixed.variables){
     
-    png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt_and_ci/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
+    png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
     
     par(mfrow = c(1,1), mar = c(0,0,0,7), oma = c(5,5,2,0))
     print(fixed.v)
@@ -335,8 +327,8 @@ for (age in ages){
     
     for (response.v in response.variables){
       
-      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       
@@ -377,19 +369,19 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
       
-      pred <- predict(mod.full, newDat, re.form = NA)
-      ci_line<-bootMer(mod.full,FUN=function(.)
-        predict(., newdata=newDat,re.form = NA), nsim=2000)
-      ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
+      # pred <- predict(mod.full, newDat, re.form = NA)
+      # ci_line<-bootMer(mod.full,FUN=function(.)
+      #   predict(., newdata=newDat,re.form = NA), nsim=2000)
+      # ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
       
       if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
       
       for(masl in unique(newDat$masl)){
         i <- which(unique(newDat$masl) %in% masl)
-        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i)
-        lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
-        lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
+        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i)}
+        # lines(newDat$fixed,ci_regT[1,], col = response.v.color,lty=2, lwd = i)
+        # lines(newDat$fixed,ci_regT[2,], col = response.v.color,lty=2, lwd = i)}
       
       first.plot <- FALSE
       
