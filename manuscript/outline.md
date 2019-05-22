@@ -13,7 +13,9 @@ Authors:
 
 ## Introduction
 
-[We know, broadly, that forest productivity decreases with increasing latidude; however, we don't know which climate variables drive this pattern or how the relationship compares across the various productivity variables.]
+1. forest C is important.... but in order to better model / predict responses and feedbacks to climate change, we need better fundamental understanding of how forest C cycling varies with respect to climate on global scales  
+
+2. [We know, broadly, that forest productivity decreases with increasing latidude; however, we don't know which climate variables drive this pattern or how the relationship compares across the various productivity variables.]
 
 *Hypotheses* (These are the null hypotheses. Consider order.):
 
@@ -23,7 +25,7 @@ H2. C fluxes vary in constant proportion to one another across major climate gra
 
 H3. Climate explains the same proportion of variability in C fluxes (i.e., the relative importance of climate is invariant)
 
-## Methods (summary?)
+## Methods 
 **Fig. 1** - Map showing all data used in the anlysis, coded by variable.
 ![Distribution of carbon data](https://github.com/forc-db/Global_Productivity/blob/master/results/figures/final_figures/maps/distribution_all_variables.png)
 
