@@ -76,7 +76,7 @@ H3-
 - effects of climate on woody growth and other subsidiary components of NPP are complex: ([Friend et al. 2019](https://link.springer.com/content/pdf/10.1007%2Fs13595-019-0819-x.pdf); Helcoski et al. in press)
 - factors other than climate are important for determining allocation to subsidiary components
 
-##Supplementary information
+## Supplementary information
 
 **Fig 1:**
 ![Distibution of carbon data](https://github.com/forc-db/Global_Productivity/blob/master/results/figures/final_figures/maps/distribution_all_samples.png)
