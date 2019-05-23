@@ -109,95 +109,103 @@ fixed.variables <- c("AnnualMeanTemp")
 
 all.results <- NULL
 
+ForC_simplified$variable.name <- gsub("(_0|_1|_2)", "", ForC_simplified$variable.name)
 
-### mature forests only ####
-for(response.variables in response.variables.groups){
-  
-  if(response.variables[1] == "GPP") n <- 1
-  if(response.variables[1] == "ANPP_1") n <- 2
-  if(response.variables[1] == "ANPP_woody") n <- 3
-  if(response.variables[1] == "woody.mortality_ag") n <- 4
-  
-for (age in ages){
-  
-  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
-  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
-  
-  for(fixed.v in fixed.variables){
-    
-    # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-    
-    print(fixed.v)
-    
-    
-    
-    ###subset ForC
-  
-    
-    first.plot <- TRUE
-    
-    for (response.v in response.variables){
-      
-      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
-      if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
-      if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
-      
-      
-      rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
-      
-      fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
-      
-      df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
-      
-      df$fixed <- df[, fixed.v]
-      
-      lon <- df$lon
-      lat <- df$lat
-      # 
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
-      
-      mapWorld <- borders("world", colour="gray50", fill="gray50")
-      mp <- ggplot() +   mapWorld
-      mp <- mp+ geom_point(aes(x=lon, y=lat) ,color="blue", size=1) + ggtitle(paste0(response.v))
-      print(mp)
-      
-      dev.off()
+ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem"),]
 
-    }
-    
-  }
-  
-}
-}
+fixed.v <- c("AnnualMeanTemp")
+fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
+ForC_simplified <- ForC_simplified[ages.to.keep & fixed.no.na, ]
+
+lon <- ForC_simplified$lon
+lat <- ForC_simplified$lat
+variable.name <- ForC_simplified$variable.name
+
+tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+
+mapWorld <- borders("world", colour="gray50", fill="gray50")
+mp <- ggplot(data = ForC_simplified) +   mapWorld
+mp <- mp+ geom_point(aes(x=lon, y=lat, color= variable.name), size=1) + scale_colour_viridis(discrete = T, option = "plasma") + facet_wrap(vars(variable.name))
+print(mp)
+
+dev.off()
 
 ################# all plots on one
 
-fixed.v <- "AnnualMeanTemp"
-
-ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
-
-
-responses.to.keep <- c("GPP", "NPP_1", "BNPP_root", "ANPP_1", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem")
-
-rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
-
-fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
-
-df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
-
-df$fixed <- df[, fixed.v]
-
-lon <- df$lon
-lat <- df$lat
-
-df$variable.name <- gsub("(_1)", "", df$variable.name)
-
-variable.name <- df$variable.name
-
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot() +   mapWorld
-mp <- mp + geom_point(aes(x=lon, y=lat, color= variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma")
+mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma") + scale_shape_manual(values = 1:8)
 ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
+
+
+
+
+####################### all plots individually
+
+# 
+# 
+# ### mature forests only ####
+# for(response.variables in response.variables.groups){
+#   
+#   if(response.variables[1] == "GPP") n <- 1
+#   if(response.variables[1] == "ANPP_1") n <- 2
+#   if(response.variables[1] == "ANPP_woody") n <- 3
+#   if(response.variables[1] == "woody.mortality_ag") n <- 4
+#   
+#   for (age in ages){
+#     
+#     if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+#     if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+#     
+#     for(fixed.v in fixed.variables){
+#       
+#       # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#       
+#       print(fixed.v)
+#       
+#       
+#       
+#       ###subset ForC
+#       
+#       
+#       first.plot <- TRUE
+#       
+#       for (response.v in response.variables){
+#         
+#         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+#         if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
+#         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+#         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+#         
+#         
+#         rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+#         
+#         fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+#         
+#         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+#         
+#         df$fixed <- df[, fixed.v]
+#         
+#         lon <- df$lon
+#         lat <- df$lat
+#         # 
+#         tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#         
+#         mapWorld <- borders("world", colour="gray50", fill="gray50")
+#         mp <- ggplot() +   mapWorld
+#         mp <- mp+ geom_point(aes(x=lon, y=lat, color= variable.name), size=1) + ggtitle(paste0(response.v))
+#         print(mp)
+#         
+#         dev.off()
+#         
+#       }
+#       
+#     }
+#     
+#   }
+# }
+# 
+# 
