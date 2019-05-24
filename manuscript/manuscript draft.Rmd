@@ -1,0 +1,17 @@
+---
+title: "Untitled"
+output: html_document
+bibliography: library.bib
+---
+
+### Methods
+1.	ForC database [@Anderson-Teixeira2018]
++ Used data compiled from existing literature
+2.	Climate data
++	WorldClim [@Hijmans2005]; WorldClim 2: vapour pressure and solar radiation [@Fick2017]
++	CRU: cloud cover; annual frost days; potential evapotranspiration; annual wet days [@Harris2014]
++	Global Aridity Index and Potential Evapotranspiration Climate Database [@Trabucco2018]
++	TerraClimate: vapour pressure deficit [@Abatzoglou2018]
+3.	Run models in R
+
+### References
