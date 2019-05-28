@@ -18,10 +18,18 @@ bibliography: library.bib
 + Model = response_variable ~ fixed_variable + altitude + (1/geographic_area/plot_name), weighted by koeppen climate area
 
 #### Database  
-Analyses were conducted on data contained in the open-access ForC database [@Anderson-Teixeira2016; @Anderson-Teixeira2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from previously published studies and existing databases (e.g. ORNL DAAC; Luyssaert etc?). Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions.   
+Analyses were conducted on data contained in the open-access ForC database [@Anderson-Teixeira2016; @Anderson-Teixeira2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from previously published studies and existing databases (e.g. ORNL DAAC; Luyssaert etc?). Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions.  
 
-**Fig. 1** - Map showing all data used in the anlysis, coded by variable.
-![Distribution of carbon data](https://github.com/forc-db/Global_Productivity/blob/master/results/figures/final_figures/maps/distribution_all_variables.png)
+---
+output:
+  pdf_document:
+    fig_caption: yes
+---
+
+![Figure 1: Map showing all data used in the anlysis, coded by variable \label{figurelabel}](distribution_all_variables.png)
+  
+  
+  
   
 *Data selection.* ForC contains measures of carbon stocks and fluxes; for the purposes of this analysis only measures of primary productivity were selected from the database. The variables selected were: GPP, NPP, BNPP (total root and fine root), ANPP (total ANPP, foliage, wood and woody stem). 
   
@@ -34,23 +42,7 @@ There is evidence that stand age influences patterns of primary productivity and
 Estimates of total ecosystem primary productivity are based on measurements of the component parts of forest productivity. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and understory. Measures of NPP which included additional components were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis. 
   
 *Climate datasets.* Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. In addition to this data, climate data for each site was extracted from five open-access climate datasets. 
-
-\begin{table}
-\centering
-\caption{}
-\label{table-paramvalues}
-\begin{tabular}{ p{4cm} p{4cm} p{4cm} }
-\hline \\ [-1.5ex]
-Database &amp; Variables downloaded &amp; Citation \\ [1ex]
-\hline \\ [-1.5ex]
-WorldClim & mean annual temperature; temperature seasonality; annual temperature range; mean annual precipitation & [@Hijmans2005] \\ [1ex]
-WorldClim2 & Vapour pressure; solar radiation & [@Fick2017] \\ [1ex]
-Climate Research Unit (CRU) time-series dataset v 4.03 & Cloud cover; annual frost days; annual wet days; potential evapotranspiration & [@Harris2014] \\ [1ex]
-Global Aridity Index and Potential Evapotranspiration Climate Database & Aridity; potential evapotranspiration & [@Trabucco2018] \\ [1ex]
-TerraClimate & Vapour pressure deficit & [@Abatzoglou2018] \\ [1ex]
-\hline
-\end{tabular}
-\end{table}
+  
 
 | Database | Variables downloaded | Citation |
 |---------------|-------------------------------------------------|-------------------|
