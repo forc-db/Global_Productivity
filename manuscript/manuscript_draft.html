@@ -200,6 +200,7 @@ $(document).ready(function () {
 </ol>
 <ul>
 <li>Used data compiled from existing literature</li>
+<li></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li>Climate data</li>
@@ -213,15 +214,38 @@ $(document).ready(function () {
 <ol start="3" style="list-style-type: decimal">
 <li>Run models in R</li>
 </ol>
+<ul>
+<li>Model specification: mixed model using the lme4 package in R.</li>
+<li>Model = response_variable ~ fixed_variable + altitude + (1/geographic_area/plot_name), weighted by koeppen climate area</li>
+</ul>
+<div id="database" class="section level4">
+<h4>Database</h4>
+<p>Analyses were conducted on data contained in the open-access ForC database <span class="citation">(Anderson-Teixeira et al. 2016; Anderson-Teixeira et al. 2018)</span>. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from previously published studies and existing databases (e.g. ORNL DAAC; Luyssaert etc?).<br />
+<em>Data selection.</em> ForC contains measures of carbon stocks and fluxes; for the purposes of this analysis only measures of primary productivity were selected from the database. The variables selected were: GPP, NPP, BNPP (total root and fine root), ANPP (total ANPP, foliage, wood and woody stem).<br />
+Sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term “managed” in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality &gt;10% of trees.<br />
+There is evidence that stand age influences patterns of primary productivity and carbon allocation in forest ecosystems <span class="citation">(De Lucia et al. 2007; Gillman et al. 2015)</span>. To reduce any biasing effects of stand age, stands under 100 years of age were excluded from analysis.</p>
+</div>
+</div>
+<div id="references" class="section level3 unnumbered">
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-Abatzoglou2018">
 <p>Abatzoglou, John T., Solomon Z. Dobrowski, Sean A. Parks, and Katherine C. Hegewisch. 2018. “TerraClimate, a high-resolution global dataset of monthly climate and climatic water balance from 1958-2015.” <em>Scientific Data</em> 5: 1–12. doi:<a href="https://doi.org/10.1038/sdata.2017.191">10.1038/sdata.2017.191</a>.</p>
 </div>
+<div id="ref-Anderson-Teixeira2016">
+<p>Anderson-Teixeira, Kristina J., Maria M.H. Wang, Jennifer C. Mcgarvey, and David S. Lebauer. 2016. “Carbon dynamics of mature and regrowth tropical forests derived from a pantropical database (TropForC-db).” <em>Global Change Biology</em> 22 (5): 1690–1709. doi:<a href="https://doi.org/10.1111/gcb.13226">10.1111/gcb.13226</a>.</p>
+</div>
 <div id="ref-Anderson-Teixeira2018">
 <p>Anderson-Teixeira, Kristina J., Maria M.H. Wang, Jennifer C. McGarvey, Valentine Herrmann, Alan J. Tepley, Ben Bond-Lamberty, and David S. LeBauer. 2018. “ForC: a global database of forest carbon stocks and fluxes.” <em>Ecology</em> 99 (6): 1507. doi:<a href="https://doi.org/10.1002/ecy.2229">10.1002/ecy.2229</a>.</p>
 </div>
+<div id="ref-DeLucia2007">
+<p>De Lucia, Evan H., John E. Drake, Richard B. Thomas, and Miquel Gonzalez-Meler. 2007. “Forest carbon use efficiency: Is respiration a constant fraction of gross primary production?” <em>Global Change Biology</em> 13 (6): 1157–67. doi:<a href="https://doi.org/10.1111/j.1365-2486.2007.01365.x">10.1111/j.1365-2486.2007.01365.x</a>.</p>
+</div>
 <div id="ref-Fick2017">
 <p>Fick, Stephen E., and Robert J. Hijmans. 2017. “WorldClim 2: new 1-km spatial resolution climate surfaces for global land areas.” <em>International Journal of Climatology</em> 37 (12): 4302–15. doi:<a href="https://doi.org/10.1002/joc.5086">10.1002/joc.5086</a>.</p>
+</div>
+<div id="ref-Gillman2015">
+<p>Gillman, Len N., Shane D. Wright, Jarrod Cusens, Paul D. Mcbride, Yadvinder Malhi, and Robert J. Whittaker. 2015. “Latitude, productivity and species richness.” <em>Global Ecology and Biogeography</em> 24 (1): 107–17. doi:<a href="https://doi.org/10.1111/geb.12245">10.1111/geb.12245</a>.</p>
 </div>
 <div id="ref-Harris2014">
 <p>Harris, I., P. D. Jones, T. J. Osborn, and D. H. Lister. 2014. “Updated high-resolution grids of monthly climatic observations - the CRU TS3.10 Dataset.” <em>International Journal of Climatology</em> 34 (3): 623–42. doi:<a href="https://doi.org/10.1002/joc.3711">10.1002/joc.3711</a>.</p>
