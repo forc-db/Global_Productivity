@@ -19,12 +19,17 @@ bibliography: library.bib
 
 #### Database  
 Analyses were conducted on data contained in the open-access ForC database [@Anderson-Teixeira2016; @Anderson-Teixeira2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from previously published studies and existing databases (e.g. ORNL DAAC; Luyssaert etc?).  
+  
 *Data selection.* ForC contains measures of carbon stocks and fluxes; for the purposes of this analysis only measures of primary productivity were selected from the database. The variables selected were: GPP, NPP, BNPP (total root and fine root), ANPP (total ANPP, foliage, wood and woody stem).  
 Sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality >10% of trees.  
 There is evidence that stand age influences patterns of primary productivity and carbon allocation in forest ecosystems [@DeLucia2007; @Gillman2015]. To reduce any biasing effects of stand age, stands under 100 years of age were excluded from analysis.  
-
-*Methodological consistency* The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which uses a minimum dbh measure of 10cm or greater were excluded from analysis.  
+  
+*Methodological consistency.* The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which uses a minimum dbh measure of 10cm or greater were excluded from analysis.  
 Estimates of total ecosystem primary productivity are based on measurements of the component parts of forest productivity. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and understory. Measures of NPP which included additional components were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis.  
+  
+*Climate datasets.* Climate data was extracted from four open-access climate datasets.  
+  
+*Model specification.*
 
 
 ### References
