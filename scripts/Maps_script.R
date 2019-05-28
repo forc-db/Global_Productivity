@@ -123,7 +123,7 @@ lon <- ForC_simplified$lon
 lat <- ForC_simplified$lat
 variable.name <- ForC_simplified$variable.name
 
-tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot(data = ForC_simplified) +   mapWorld
