@@ -52,7 +52,7 @@ Estimates of total ecosystem primary productivity are based on measurements of t
 | Global Aridity Index and Potential Evapotranspiration Climate Database | Aridity; potential evapotranspiration | [@Trabucco2018] |
 | TerraClimate | Vapour pressure deficit | [@Abatzoglou2018] |
   
-*Model specification.* The effects of climate and latitude on primary productivity were analysed using mixed effects models using the package 'lme4' in R v. 1.1.463 (cite). 
+*Model specification.* The effects of climate and latitude on primary productivity were analysed using mixed effects models using the package 'lme4' in R v. 1.1.463 (cite). The effect of each extracted climate variable on each measure of primary productivity was modelled by specifying the climate variable as a fixed effect. Site altitude was also included as a fixed effect. Random effect was stand nested within area. Data from the temperate regions was heavily skewed towards studies from the old-growth forests of the Pacific Northwest. These forests have very high productivity, and so to reduce any bias from over-sampling of this region, the models were weighted according to the proportion of forest cover by Koeppen climate zone. 
 
 
 ### References
