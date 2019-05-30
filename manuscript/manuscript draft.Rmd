@@ -6,6 +6,22 @@ bibliography: library.bib
   
 ### Introduction
 
+Globally, forests play an important role in the carbon cycle, 
+
+Forests are estimated to sequester [x] carbon annually, making them a significant carbon sink, and an important component of global carbon dioxide budgets.
+
+Understanding global patterns of net primary productivity in forest ecosystems is essential for understanding the global carbon cycle. 
+
+The relationship between primary productivity and latitude is unclear. 
+
+*Understanding components of primary productivity.* Gross primary productivity (GPP) represents the gross uptake of carbon dioxide by plants in an ecosystem, to be used in photosynthesis and energy production. Only a fraction of this carbon is assimilated into plant tissues; the rest is used in autotrophic respiration. The component of GPP that is stored as plant material is the net primary productivity (NPP) of an ecosystem; thus GPP can be described as the sum of NPP and ecosystem respiration.  
+  
+Currently, GPP cannot be measured directly by observing total ecosystem photosynthesis. Instead field estimates of GPP have to be derived based on modelling and extrapolation of eddy-covariance studies and measurements of net ecosystem exchange (NEE) [@Clark2017].  
+  
+NPP is typically measured through direct measurements of the productivity of its components, which are then summed to generate a whole-ecosystem estimate. These components can be broadly divided into aboveground NPP (ANPP) and belowground NPP (BNPP). Measurement of aboveground NPP - primarily consisting of woody stem, woody branch and canopy/foliage primary productivity, but also sometimes including estimates of productivity of reproductive and understory components, and losses due to herbivory - is most commonly estimated through forest plot censuses. Belowground NPP is significantly more challenging to measure, meaning that estimates of belowground productivity are less reliable than those of aboveground productivity. Coarse root productivity is typically determined by using allometric equations relating root mass to stem diameter. This relies on extrapolation of ANPP measures, rather than being based on direct measures of root productivity. Fine root productivity is estimated using a variety of methods, such as taking soil cores and minirhizotrons, making it typically more reliable than measures of coarse root productivity.   
+  
+*GPP* Gross primary productivity is generally thought to be highest in the tropics. Modelling of global terrestrial ecosystem GPP though upscaling and calibration of eddy flux measurements indicates a peak in GPP in the tropics, with the highest levels in tropical forests [@Beer2010; @Jung2011]. This is corroborated by analysis of site-level GPP measurements, which show a strong positive correlation between GPP and mean annual temperature (MAT) and mean annual precipitation (MAP) [@Luyssaert2007], with the highest GPP values reported in tropical forests. There is evidence that this increase is not linear: increases in GPP have been reported to saturate above 1500mm MAP [@Luyssaert2007] and 25$^\circ$C [@Larjavaara2012].
+
 ### Methods  
     
 Analyses were conducted on data contained in the open-access ForC database [@Anderson-Teixeira2016; @Anderson-Teixeira2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from previously published studies and existing databases (e.g. ORNL DAAC; Luyssaert etc?). Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions.  
