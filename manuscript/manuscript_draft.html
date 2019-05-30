@@ -203,7 +203,8 @@ $(document).ready(function () {
 <p>Currently, GPP cannot be measured directly by observing total ecosystem photosynthesis. Instead field estimates of GPP have to be derived based on modelling and extrapolation of eddy-covariance studies and measurements of net ecosystem exchange (NEE) <span class="citation">(Clark et al. 2017)</span>.</p>
 <p>NPP is typically measured through direct measurements of the productivity of its components, which are then summed to generate a whole-ecosystem estimate. These components can be broadly divided into aboveground NPP (ANPP) and belowground NPP (BNPP). Measurement of aboveground NPP - primarily consisting of woody stem, woody branch and canopy/foliage primary productivity, but also sometimes including estimates of productivity of reproductive and understory components, and losses due to herbivory - is most commonly estimated through forest plot censuses. Belowground NPP is significantly more challenging to measure, meaning that estimates of belowground productivity are less reliable than those of aboveground productivity. Coarse root productivity is typically determined by using allometric equations relating root mass to stem diameter. This relies on extrapolation of ANPP measures, rather than being based on direct measures of root productivity. Fine root productivity is estimated using a variety of methods, such as taking soil cores and minirhizotrons, making it typically more reliable than measures of coarse root productivity.</p>
 <p><em>GPP</em> Gross primary productivity is generally thought to be highest in the tropics. Modelling of global terrestrial ecosystem GPP though upscaling and calibration of eddy flux measurements indicates a peak in GPP in the tropics, with the highest levels in tropical forests <span class="citation">(C. Beer et al. 2010; Jung et al. 2011)</span>. This is corroborated by analysis of site-level GPP measurements, which show a strong positive correlation between GPP and mean annual temperature (MAT) and mean annual precipitation (MAP) <span class="citation">(Luyssaert et al. 2007)</span>, with the highest GPP values reported in tropical forests. There is evidence that this increase is not linear: increases in GPP have been reported to saturate above 1500mm MAP <span class="citation">(Luyssaert et al. 2007)</span> and 25<span class="math inline">\(^\circ\)</span>C MAT <span class="citation">(Larjavaara and Muller-Landau 2012)</span>.</p>
-<p><em>NPP</em> The influence of latitude on global patterns of NPP is less clear than that of GPP. Simova and Storch (2017) found that, as with GPP, NPP decreases with latitude, peaking in the tropics. However, other studies have found the highest values of NPP in temperate forests, with increases in NPP saturating at 1500mm MAP and 10<span class="math inline">\(^\circ\)</span>C MAT <span class="citation">(Luyssaert et al. 2007)</span>.</p>
+<p><em>NPP</em> The influence of latitude on global patterns of NPP is less clear than that of GPP. Simova and Storch (2017) found that, as with GPP, NPP decreases with latitude, peaking in the tropics. However, other studies have found the highest values of NPP in temperate forests <span class="citation">(Huston and Wolverton 2009)</span>, with increases in NPP saturating at 1500mm MAP and 10<span class="math inline">\(^\circ\)</span>C MAT <span class="citation">(Luyssaert et al. 2007)</span>.</p>
+<p>Because of the challenges in accurately obtaining unbiased measures of belowground productivity, many studies focus on ANPP in preference to measures of NPP. Studies on global patterns of ANPP are equally inconclusive: Gillman et al. (2015) found a weak negative relationship between ANPP and latitude, with the relationship becoming stronger in older forest stands. These findings were echoed in other studies, which have found weak or no relationships between ANPP and latitude <span class="citation">(Huston and Wolverton 2009)</span>.</p>
 <p>Primary productivity of forests is influenced by a range of factors. On a local scale, stand age <span class="citation">(Litton, Raich, and Ryan 2007; Gillman et al. 2015)</span>, management <span class="citation">(Šímová and Storch 2017)</span>; nutrient availability [cite]; and altitude <span class="citation">(C. A. Girardin et al. 2010; Malhi et al. 2017)</span> all impact stand productivity. On a global scale, changes are likely to be influenced by climatic variables. The majority of studies to date have focused on the influence of MAP and MAT on productivity. While MAP and MAT have been argued to be significant predictors of productivity <span class="citation">(Chu et al. 2016)</span>, other studies have found that the correlation between productivity and MAT is a factor of the relationship between productivity and growing season length <span class="citation">(Kerkhoff et al. 2005; Malhi 2012; Michaletz et al. 2014; Michaletz, Kerkhoff, and Enquist 2018)</span>.</p>
 </div>
 <div id="methods" class="section level3">
@@ -214,9 +215,74 @@ $(document).ready(function () {
 <p class="caption">Figure 1: Map showing all data used in the anlysis, coded by variable </p>
 </div>
 <p><em>Data selection.</em> ForC contains measures of carbon stocks and fluxes; for the purposes of this analysis only measures of primary productivity were selected from the database. The variables selected were: GPP, NPP, BNPP (total root and fine root), ANPP (total ANPP, foliage, wood and woody stem).</p>
-<p><em>[insert table here similar to in trop-forC paper, including information on productivity measures, methods used to estimate, components included etc]</em></p>
+<table>
+<colgroup>
+<col width="19%"></col>
+<col width="27%"></col>
+<col width="19%"></col>
+<col width="34%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Definition</th>
+<th>Components included</th>
+<th>Methodologies used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPP</td>
+<td>Annual gross primary production; annual uptake of carbon dioxide by an ecosystem</td>
+<td>NA</td>
+<td>Flux partitioning of eddy covariance</td>
+</tr>
+<tr class="even">
+<td>NPP</td>
+<td>Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration</td>
+<td>Foliage, branch, stem, coarse root, fine root, and optionally understory</td>
+<td>Direct measurement of annual increments of components</td>
+</tr>
+<tr class="odd">
+<td>ANPP</td>
+<td>Aboveground net primary production</td>
+<td>Foliage, stem, and optionally branch</td>
+<td>Direct measurement of annual increments of components</td>
+</tr>
+<tr class="even">
+<td>ANPP_foliage</td>
+<td>Net primary production of foliage</td>
+<td>Foliage</td>
+<td>Direct measurement of litterfall, correcting for changes in leaf biomass when measured</td>
+</tr>
+<tr class="odd">
+<td>ANPP_woody</td>
+<td>Net primary production of woody components</td>
+<td>Stems and branches</td>
+<td>Direct measurement of stem growth and branch fall</td>
+</tr>
+<tr class="even">
+<td>ANPP_woody_stem</td>
+<td>Net primary production of woody stems</td>
+<td>Woody stems</td>
+<td>Direct measurement of stem growth increment</td>
+</tr>
+<tr class="odd">
+<td>BNPP_root</td>
+<td>Belowground net primary production</td>
+<td>Coarse and fine roots</td>
+<td>Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures</td>
+</tr>
+<tr class="even">
+<td>BNPP_root_fine</td>
+<td>Net primary production of fine roots</td>
+<td>Fine roots</td>
+<td>Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores</td>
+</tr>
+</tbody>
+</table>
 <p>Sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term “managed” in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality &gt;10% of trees.<br />
-There is evidence that stand age influences patterns of primary productivity and carbon allocation in forest ecosystems <span class="citation">(De Lucia et al. 2007; Gillman et al. 2015)</span>. To reduce any biasing effects of stand age, stands under 100 years of age were excluded from analysis.</p>
+There is evidence that stand age influences patterns of primary productivity and carbon allocation in forest ecosystems, and can confound relationships between latitude and primary productivity <span class="citation">(De Lucia et al. 2007; Gillman et al. 2015)</span>. To reduce any biasing effects of stand age, stands under 100 years of age were excluded from analysis.</p>
 <p><em>Methodological consistency.</em> The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which uses a minimum dbh measure of 10cm or greater were excluded from analysis.<br />
 Estimates of total ecosystem primary productivity are based on measurements of the component parts of forest productivity. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and understory. Measures of NPP which included additional components were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis.</p>
 <p><em>Climate datasets.</em> Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. In addition to this data, climate data for each site was extracted from five open-access climate datasets.</p>
@@ -301,6 +367,9 @@ Estimates of total ecosystem primary productivity are based on measurements of t
 </div>
 <div id="ref-Hijmans2005">
 <p>Hijmans, Robert J., Susan E. Cameron, Juan L. Parra, Peter G. Jones, and Andy Jarvis. 2005. “Very high resolution interpolated climate surfaces for global land areas.” <em>International Journal of Climatology</em> 25 (15): 1965–78. doi:<a href="https://doi.org/10.1002/joc.1276">10.1002/joc.1276</a>.</p>
+</div>
+<div id="ref-Huston2009">
+<p>Huston, Michael A., and Steve Wolverton. 2009. “The global distribution of net primary production: resolving the paradox.” <em>Ecological Monographs</em> 79 (3): 343–77.</p>
 </div>
 <div id="ref-Jung2011">
 <p>Jung, Martin, Markus Reichstein, Hank A. Margolis, Alessandro Cescatti, Andrew D. Richardson, M. Altaf Arain, Almut Arneth, et al. 2011. “Global patterns of land-atmosphere fluxes of carbon dioxide, latent heat, and sensible heat derived from eddy covariance, satellite, and meteorological observations.” <em>Journal of Geophysical Research: Biogeosciences</em> 116 (3): 1–16. doi:<a href="https://doi.org/10.1029/2010JG001566">10.1029/2010JG001566</a>.</p>
