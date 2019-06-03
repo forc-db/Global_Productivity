@@ -11,7 +11,7 @@ csl: apa.csl
 
 Globally, forests play an important role in the carbon cycle. Old growth forests alone are estimated to sequester up to 1.4 GtCyr ^-1^ [@Malhi1999], making them a significant carbon sink, and an important component of global carbon dioxide budgets [@Luyssaert2008]. Understanding the patterns and mechanisms of forest carbon cycling on a global scale is therefore of high importance in understanding the potential role of forests in mitigating climate change.  
   
-It is understood that the productivity of forests shows variation with latitude, with a general trend of increasing productivity towards the tropics; however the exact nature of this pattern and the mechanisms that drive it are poorly understood. Climate can be an important driver of productivity, particularly on a global scale; achieving a better understanding of the climatic controls on forest productivity will help to illuminate potential responses and feedbacks of forests to climate change.
+The productivity of forests shows variation with latitude, with a general trend of increasing productivity towards the tropics; however the exact nature of this pattern and the mechanisms that drive it are poorly understood. Climate can be an important driver of productivity, particularly on a global scale; achieving a better understanding of the climatic controls on forest productivity will help to illuminate potential responses and feedbacks of forests to climate change.
 
 In order to better understand and predict responses and feedbacks to climate change, we need a better fundamental understand of how forest carbon cycling varies with respect to climate globally.
 
