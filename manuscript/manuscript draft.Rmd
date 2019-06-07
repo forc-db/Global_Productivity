@@ -81,7 +81,7 @@ As discussed above, estimates of NPP, ANPP, and BNPP are generated through summi
   
 
 | Database | Variables downloaded | Citation |
-|---------------|-------------------------------------------------|-------------------|
+|-----------------------|--------------------------------------------|---------------------|
 | WorldClim | Mean annual temperature; temperature seasonality; annual temperature range; mean annual precipitation | [@Hijmans2005] |
 | WorldClim2 | Vapour pressure; solar radiation | [@Fick2017] |
 | Climate Research Unit (CRU) time-series dataset v 4.03 | Cloud cover; annual frost days; annual wet days; potential evapotranspiration | [@Harris2014] |
@@ -93,5 +93,9 @@ Table: Sources of climate data
 *Model specification.* The effects of climate and latitude on primary productivity were analysed using mixed effects models using the package 'lme4' in RStudio v. 1.1.463 (cite). The effect of each extracted climate variable on each measure of primary productivity was modelled by specifying the climate variable as a fixed effect. Site altitude was also included as a fixed effect. Random effect was stand nested within area. Data from the temperate regions was heavily skewed towards studies from the old-growth forests of the Pacific Northwest. These forests have very high productivity, and so to reduce any bias from over-sampling of this region, the proportion of global forest cover contributed by each Koeppen climate zone was calculated, and the models weighted according these proportions. 
   
 Two models were specified: one with the climate variable as a linear term, and one with the climate variable as a polynomial term. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. In addition, slope values were calculated for the linear models.
+  
+  
+  
+###References
 
   
