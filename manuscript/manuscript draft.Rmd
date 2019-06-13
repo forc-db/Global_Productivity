@@ -104,8 +104,8 @@ Two models were specified: one with the climate variable as a linear term, and o
 *Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity. 
 Carbon fluxes show a linear increase with increasing mean annual temperature. However, they show a saturation point with mean annual precipitation, potential evapotranspiration, and vapour pressure deficit.
 Generally, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and vapour pressure. For measures of aboveground woody productivity (ANPP_woody and ANPP_woody_stem), vapour pressure deficit,  potential evapotranspiration, and mean annual temperature are the strongest predictors.
-
   
+*Does climate explain the same proportion of variation in different components of primary productivity?* 
   
 ###References
 
