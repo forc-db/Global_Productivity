@@ -23,9 +23,9 @@ cld.1901.2014 <- raster::extract(r, ForC_simplified)
 r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.frs.dat.nc", varname="frs")
 frs.1901.2014 <- raster::extract(r, ForC_simplified)
 
-# pet
-r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pet.dat.nc", varname="pet")
-pet.1901.2014 <- raster::extract(r, ForC_simplified)
+# # pet - r has a problem with reading this file 
+# r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pet.dat.nc", varname="pet")
+# pet.1901.2014 <- raster::extract(r, ForC_simplified)
 
 # wet
 r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.01.1901.2014.wet.dat.nc", varname="wet")
@@ -43,10 +43,10 @@ frs <- data.frame(ForC_simplified)
 frs <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]), frs.1901.2014)
 write.csv(frs, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv", row.names = F)
 
-# pet
-pet <- data.frame(ForC_simplified)
-pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
-write.csv(pet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv", row.names = F)
+# # pet
+# pet <- data.frame(ForC_simplified)
+# pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
+# write.csv(pet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv", row.names = F)
 
 # wet
 wet <- data.frame(ForC_simplified)
@@ -55,7 +55,7 @@ write.csv(wet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Glob
 
 cld <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/cld.1901.2014.csv")
 frs <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv")
-pet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv")
+# pet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv")
 wet <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/wet.1901.2014.csv")
 
 cld$mean <- rowMeans(cld[, c(4:1371)], na.rm = TRUE)
@@ -70,18 +70,18 @@ wet$mean <- rowSums(wet[, c(4:1371)], na.rm = TRUE)
 wet$mean <- (wet$mean)/114
 wet <- wet[, c(1:3, 1372)]
 
-pet_colnames <- colnames(pet)[(4:1371)]
-pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
-pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
-pet_colnames <- monthDays(pet_colnames)
-###multiply each value by days in month to get monthly total
-pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
-pet_month <- cbind(pet[,c(1:3)], pet_month)
-###sum all months (114 years)
-pet$mean <- rowSums(pet_month[, c(4:1371)], na.rm = TRUE)
-###divide by 114 to get annual mean
-pet$mean <- (pet$mean)/114
-pet <- pet[, c(1:3, 1372)]
+# pet_colnames <- colnames(pet)[(4:1371)]
+# pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
+# pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
+# pet_colnames <- monthDays(pet_colnames)
+# ###multiply each value by days in month to get monthly total
+# pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
+# pet_month <- cbind(pet[,c(1:3)], pet_month)
+# ###sum all months (114 years)
+# pet$mean <- rowSums(pet_month[, c(4:1371)], na.rm = TRUE)
+# ###divide by 114 to get annual mean
+# pet$mean <- (pet$mean)/114
+# pet <- pet[, c(1:3, 1372)]
 
 
 setwd("S:/Global Maps Data/WorldClim/tiff")
@@ -129,8 +129,8 @@ WorldClimDF <- cbind(WorldClimDF, WorldClim)
 #rename variables
 names(WorldClimDF)[36:54] <- c("AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ")
 head(WorldClimDF)
-WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, pet$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
-names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays","AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
+names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 head(WorldClimDF)
 
 
