@@ -34,7 +34,7 @@ Currently, GPP cannot be measured directly by observing total ecosystem photosyn
 In contrast, NPP can be calculated through direct field observations. In order to achieve greater accuracy in estimating NPP, NPP is often broken down into its component parts, with aboveground NPP (ANPP) and belowground NPP (BNPP) considered separately to each other. The components included when estimating ANPP and BNPP often vary between studies, depending on the intensity of fieldwork effort. At its most basic level, ANPP can be expressed as:
 
 $$ ANPP = NPP~stem~ + NPP~branch~ + NPP~canopy~ $$
-where NPP~stem~ is the annual woody increment of all stems above a specified diameter at breast height (DBH), NPP~branch~ is annual woody branch turnover, and NPP~canopy~ is annual foliage production, including leaves, twigs, and reproductive structures. ANPP may also include NPP~VOC~, the annual emission of volatile organic compounds, and NPP~herbivory~, the annual consumption of plant matter by herbivores, but these components are often excluded from field observations as they are much harder to quantify. Other components of aboveground productivity that remain largely unquantified include epiphytes, hemiepiphytes, and understory plants [@clark_reviews_2017]. All current ANPP estimates are based on the assumption that the contribution of these components to overall NPP is insignificant.     
+where NPP~stem~ is the annual woody increment of all stems above a specified diameter at breast height (DBH), NPP~branch~ is annual woody branch turnover, and NPP~canopy~ is annual foliage production, including leaves, twigs, and reproductive structures. ANPP may also include NPP~VOC~, the annual emission of volatile organic compounds, and NPP~herbivory~, the annual consumption of plant matter by herbivores, but these components are often excluded from field observations as they are much harder to quantify. Other components of aboveground productivity that remain largely unquantified include epiphytes, hemiepiphytes, and understory plants [@clark_reviews_2017]. The majority of current ANPP estimates are based on the assumption that the contribution of these components to overall NPP is insignificant.     
   
 There are two major subcomponents of BNPP, which can be expressed as:
 
@@ -82,7 +82,7 @@ There is evidence that stand age influences patterns of primary productivity and
   
 *Methodological consistency.* The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which used a minimum diameter at breast height (DBH) measure of 10cm or greater were excluded from analysis.  It would be preferable to standardise by minimum area sampled; however x% of plots in the database are 1 ha or under in size; excluding these plots would place significant constraints on sample size.
 
-As discussed above, estimates of NPP, ANPP, and BNPP are generated through summing measurements of their component parts. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and optionally understory. Measures of NPP which included additional components were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis. 
+As discussed above, estimates of NPP, ANPP, and BNPP are generated through summing measurements of their component parts. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and optionally understory. Measures of NPP which included additional components, including volatile organic compounds (VOCs), exudates, estimates of NPP lost to herbivory, and the NPP of reproductive structures, were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis. 
   
 *Climate datasets.* Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. In addition to this data, climate data for each site was extracted from five open-access climate datasets based on site geographic co-ordinates. 
   
@@ -110,6 +110,14 @@ Carbon fluxes show a linear increase with increasing mean annual temperature. Ho
 Generally, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and vapour pressure. For measures of aboveground woody productivity (ANPP_woody and ANPP_woody_stem), vapour pressure deficit,  potential evapotranspiration, and mean annual temperature are the strongest predictors.
   
 *Does climate explain the same proportion of variation in different components of primary productivity?* 
+
+###Discussion
+
+*Challenges in estimating NPP*  
+The impact of excluding certain components of NPP on this analysis is unclear, primarily because these components are poorly understood and rarely measured [@clark_net_2001]. Do we want to include a section assessing how much this may or may not impact results?  
+1. Hard to measure BNPP because it often isn't sampled deep enough; impact on ratio tests?  
+2. Unclear if there are latitudinal patterns e.g. of herbivory/VOCs  
+  + Herbivory can be an important component of total NPP so this may be important to account for; likely to be higher in the tropics?  
 
 
   
