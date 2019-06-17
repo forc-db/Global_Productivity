@@ -109,7 +109,7 @@ fixed.variables <- c("AnnualMeanTemp")
 
 all.results <- NULL
 
-ForC_simplified$variable.name <- gsub("(_0|_1|_2)", "", ForC_simplified$variable.name)
+ForC_simplified$variable.name <- gsub("(_1|_2)", "", ForC_simplified$variable.name)
 
 ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem"),]
 
