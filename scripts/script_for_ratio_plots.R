@@ -223,7 +223,7 @@ for(response.variables in response.variables.groups){
         
         newDat$ratio <- newDat$fit.1/newDat$fit.2
         
-        tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/ratio_plots/", response.v.1, "_to_", response.v.2, "_", fixed.v, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+        tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_plots/", response.v.1, "_to_", response.v.2, "_", fixed.v, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
         
         plot(ratio ~ fixed, data = newDat, col = response.v.color, main = paste(response.v.1, response.v.2, fixed.v), xlab = fixed.v, ylab = paste(response.v.1, ":",response.v.2))
         # title(paste(response.v.1, response.v.2, fixed.v), outer = T, line = 1)
