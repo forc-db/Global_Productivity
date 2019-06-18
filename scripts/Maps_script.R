@@ -111,7 +111,7 @@ all.results <- NULL
 
 ForC_simplified$variable.name <- gsub("(_1|_2)", "", ForC_simplified$variable.name)
 
-ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem"),]
+ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem", "R_auto"),]
 
 fixed.v <- c("AnnualMeanTemp")
 fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
@@ -136,7 +136,7 @@ dev.off()
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot() +   mapWorld
-mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma") + scale_shape_manual(values = 1:8)
+mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma") + scale_shape_manual(values = 1:9)
 ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
 
