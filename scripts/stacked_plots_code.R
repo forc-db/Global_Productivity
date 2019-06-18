@@ -101,9 +101,9 @@ fixed.variables <- c("lat")
 # response.variables.1 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 # response.variables.2 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 
-set1 <- c("")
-set2 <- c("")
-sum <- c("")
+set1 <- c("NPP")
+set2 <- c("R_auto")
+sum <- c("GPP")
   
   ### mature forests only ####
   for (age in ages){
@@ -259,7 +259,7 @@ sum <- c("")
           
           png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
-          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = 2)
+          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = 2)
           points(mean ~ fixed, data = df.2, ylab = "", col = 3)
           points(mean ~ fixed, data = df.sum, ylab = "", col = 5)
           
@@ -270,7 +270,7 @@ sum <- c("")
             lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 5)
             lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 4)}
           
-          labels <- c(set1, set2, "stacked", s)
+          labels <- c(set1, set2, paste("sum of", set1, "and", set2), s)
           response.col = 2:5
           for (label in labels){
             legend <- paste(label)
@@ -278,9 +278,9 @@ sum <- c("")
             mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = response.v.color, cex = 0.5, outer = F)
           }
           
-          title(paste("stacked graphs by lat"), outer = T, line = 1)
-          mtext(side = 1, line = 3, text = fixed.v, outer = T)
-          # mtext(side = 2, line = 3,  text = paste(response.v.1, ":",response.v.2), outer = T)
+          # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
+          mtext(side = 1, line = 3, text = fixed.v, outer = F)
+          mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F)
           
           dev.off()
           
