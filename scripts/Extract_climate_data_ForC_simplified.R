@@ -8,6 +8,7 @@ library(Hmisc)
 ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
 
 ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lat),]
+ForC_simplified <- ForC_simplified[!is.na(ForC_simplified$lon),]
 coordinates(ForC_simplified)<-c("lon", "lat")
 proj<-CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
 proj4string(ForC_simplified)<-proj
@@ -130,7 +131,7 @@ WorldClimDF <- cbind(WorldClimDF, WorldClim)
 names(WorldClimDF)[36:54] <- c("AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ")
 head(WorldClimDF)
 WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
-names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+names(WorldClimDF)[55:59] <- c("CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation")
 head(WorldClimDF)
 
 
@@ -183,7 +184,7 @@ ForC_evap <- raster::extract(r, ForC_simplified)
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, ForC_arid, ForC_evap)
-names(ForC_simplified)[49:50] <- c("Aridity", "PotentialEvapotranspiration")
+names(ForC_simplified)[48:49] <- c("Aridity", "PotentialEvapotranspiration")
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
 
@@ -213,6 +214,6 @@ vpd <- vpd1[, c(1:3, 724)]
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, vpd$vpd_mean)
-names(ForC_simplified)[52] <- "VapourPressureDeficit"
+names(ForC_simplified)[51] <- "VapourPressureDeficit"
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
