@@ -7,7 +7,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 library(ggplot2)
 library(ggpubr)
 
-ForC_simplified <- read.csv("ForC_simplified/ForC_simplified.csv", stringsAsFactors = F)
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
 ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
 ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 50), ]
@@ -43,14 +43,16 @@ for (i in seq(along = set1)){
       
       df$ratio <- df$mean.x/df$mean.y
       
+      range <- quantile(df$ratio, 0.99)
+      
       df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
       
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/foliage_woody/boxplot_", set1[[i]], "_", set2[[j]], ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_", set1[[i]], "_", set2[[j]], ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
       p <- ggboxplot(df, x = "biomes", y = "ratio",
-                     color = "biomes", palette = "jco", outlier.shape = NA, ylim = c(0,4), order = c("boreal", "temperate", "tropical")) +
-        stat_compare_means(comparisons = my_comparisons, label.y = c(3, 4, 3.5))
+                     color = "biomes", palette = "jco", outlier.shape = NA, ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
+        stat_compare_means(comparisons = my_comparisons, label.y = c(range, range - 0.25 , range - 0.5))
       print(p)
       dev.off()
     }
