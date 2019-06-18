@@ -153,7 +153,7 @@ for(response.variables in response.variables.groups){
       for (response.v in response.variables){
         
         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
@@ -220,7 +220,7 @@ for(response.variables in response.variables.groups){
         # ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
         
        
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, yaxt = "n")
         if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
         
         for(masl in unique(newDat$masl)){
@@ -328,7 +328,7 @@ for (age in ages){
     for (response.v in response.variables){
       
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_0", "ANPP_1", "ANPP_2")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       
@@ -374,7 +374,7 @@ for (age in ages){
       #   predict(., newdata=newDat,re.form = NA), nsim=2000)
       # ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
       
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, xaxt = "n", yaxt = "n")
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, yaxt = "n")
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
       
       for(masl in unique(newDat$masl)){
