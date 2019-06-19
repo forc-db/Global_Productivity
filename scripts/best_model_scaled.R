@@ -62,8 +62,9 @@ ForC_simplified <- ForC_simplified[dist.to.keep, ]
 ## keep only records with min.dbh <= 10cm
 ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
 # min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
-min.dbh.to.remove <- ForC_simplified$min.dbh > 10 & !is.na(ForC_simplified$min.dbh)
-ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
+## commented out because no values with min.dbh > 10; comment in with future merges if this changes
+# min.dbh.to.remove <- ForC_simplified$min.dbh > 10 & !is.na(ForC_simplified$min.dbh)
+# ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
 
 ###keep only altitude below 500 metres
 # 
