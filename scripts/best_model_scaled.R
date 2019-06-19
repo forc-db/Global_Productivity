@@ -59,11 +59,11 @@ ages <- c("age.greater.than.100")
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[dist.to.keep, ]
 
-## keep only records with min.dbh <= 10cm
-ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
-# min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
-## commented out because no values with min.dbh > 10; comment in with future merges if this changes
-# min.dbh.to.remove <- ForC_simplified$min.dbh > 10 & !is.na(ForC_simplified$min.dbh)
+## keep only records with min.dbh <= 10cm ## commented out because no values with min.dbh > 10; comment in with future merges if this changes
+# ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
+# # min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
+# 
+# min.dbh.to.remove <- ForC_simplified$min.dbh >= 10 & !is.na(ForC_simplified$min.dbh)
 # ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
 
 ###keep only altitude below 500 metres
@@ -99,8 +99,6 @@ all.response.variables <- gsub("(_OM|_C)", "", all.response.variables)
 all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables)
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
-
-all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
 ## fixed variables list ####
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
