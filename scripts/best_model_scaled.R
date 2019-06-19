@@ -62,7 +62,7 @@ ForC_simplified <- ForC_simplified[dist.to.keep, ]
 ## keep only records with min.dbh <= 10cm
 ForC_simplified$min.dbh <- as.numeric(ForC_simplified$min.dbh)
 # min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 & is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
-min.dbh.to.remove <- ForC_simplified$min.dbh >= 10 & !is.na(ForC_simplified$min.dbh)
+min.dbh.to.remove <- ForC_simplified$min.dbh > 10 & !is.na(ForC_simplified$min.dbh)
 ForC_simplified <- ForC_simplified[-min.dbh.to.remove, ]
 
 ###keep only altitude below 500 metres
@@ -249,16 +249,6 @@ for(response.variables in response.variables.groups){
         # lowerCI <- boot.ci(lmerboot, type = "bca")$'bca'[4]
         # upperCI <- boot.ci(lmerboot, type = "bca")$'bca'[5]
         
-        # summary <- summary(mod.linear)
-        # CI <- summary$coefficient[,"Std. Error"]*1.96
-        # lowerCI <- summary$coefficient[2,1] - CI[2]
-        # upperCI <- summary$coefficient[2,1] + CI[2]
-        
-        # profileCI <- confint.merMod(mod.linear, method = "profile")[5,]
-        # WaldCI <- confint.merMod(mod.linear, method = "Wald")[5,]
-        # bootCI <- confint.merMod(mod.linear, method = "boot")[5,]
-        # CI <- rbind(profileCI, WaldCI, bootCI)
-        
         r <- round(fixef(mod.linear), 5)
         slope <- r[2]
         
@@ -297,7 +287,7 @@ for(response.variables in response.variables.groups){
 }
 
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_with_ci.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled.csv", row.names = F)
 
 # fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
