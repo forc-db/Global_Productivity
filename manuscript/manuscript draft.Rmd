@@ -49,7 +49,7 @@ Current research into how primary productivity varies with latitude is inconclus
 
 Furthermore, there is evidence that different components of productivity show individual responses to drivers of productivity. For example, increases in GPP have been reported to saturate above 25$^\circ$C MAT [@larjavaara_temperature_2012], while increases in NPP are recorded to saturate above 10$^\circ$C MAT [@luyssaert_co2_2007]. Similarly, allocation to different components of ANPP varies with climate. Within the tropics, allocation to canopy NPP appears fairly consistent, with significantly greater variation in allocation to woody and belowground NPP [@litton_carbon_2007; @malhi_allocation_2011]. Allocation to these structural biomass components has been shown to increase with water availability [@litton_carbon_2007; @bloom_decadal_2016], and is highest in the wet tropics, indicating that control of woody productivity by MAP may be more significant than control of foliar productivity. However, these studies are regional, meaning that our understanding of variation in allocation and its relationship to climate on a global scale remains limited. In addition, allocation is also influenced by stand age [@de_lucia_forest_2007], nutrient availability [@litton_carbon_2007] and forest structure [@taylor_greater_2019], which can make it challenging to disentangle the effects of climate. 
 
-Data that control for stand age and standardize methodologies are required to resolve this question. Here, we use a comprehensive global database of forest carbon fluxes to explore global patterns in productivity. We explore three questions: 
+Data that control for stand age and standardize methodologies are required to resolve this question. Here, we use a comprehensive global database of forest carbon fluxes to explore global patterns in productivity. We explore three questions:  
 1. **Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?** To date, the majority of studies have focussed on productivity responses to precipitation and temperature, while the influence of other climate variables on productivity remains under-explored. We utilise global climate datasets to investigate the relationships between productivity and a range of climate variables.  
 2. **Do the components of primary productivity show variation in their responses to these climatic drivers?** Allocation to components of primary productivity appears to show some variation across climate and latitudinal gradients. We use global datasets of a range of primary productivity components to explore how significant this variation in allocation is.  
 3. **Does climate explain the same proportion of variation in different components of primary productivity?** Review of current research shows that, while the relationship between GPP and latitude is consistent, NPP and ANPP show weaker relationships with latitude. This may be a result of varying sensitivities to climate drivers. We use mixed models to estimate the proportion of variation explained by climate for different components of productivity, to investigate how the relative importance of climatic drivers varies across components.  
@@ -57,7 +57,7 @@ Data that control for stand age and standardize methodologies are required to re
 
 ### Methods  
     
-Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. For each site, site geographic co-ordinates were used to extract the Koeppen-Geiger zone from the ESRI Koeppen-Geiger map [cite], and the FAO Global Ecological Zone from the ???. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions. ForC currently contains [] records from [] plots, representing [] distinct geographic areas across all forested biogeographic and climate zones.
+Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. For each site, site geographic co-ordinates were used to extract the Koeppen-Geiger zone from the ESRI Koeppen-Geiger map [cite], and the FAO Global Ecological Zone from the ???. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions. ForC currently contains 29768 records from 5227 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones.
 
   ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables.png")
@@ -103,11 +103,23 @@ Two models were specified: one with the climate variable as a linear term, and o
   
 ###Results
   
-*How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude. All models were improved by the inclusion of altitude as a fixed effect, with carbon fluxes showing a significant decrease with increasing altitude. 
+*How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). All models were improved by the inclusion of altitude as a fixed effect, with carbon fluxes showing a significant decrease with increasing altitude. 
+
+  ```{r echo=FALSE, out.width='100%', fig.cap = "Graph to show primary productivity $(MgCha^-1^yr^-1^)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+  knitr::include_graphics("effect_of_latitude.png")
+  ```
   
-*Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity. 
-Carbon fluxes show a linear increase with increasing mean annual temperature. However, they show a saturation point with mean annual precipitation, potential evapotranspiration, and vapour pressure deficit.
-Generally, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and vapour pressure. For measures of aboveground woody productivity (ANPP_woody and ANPP_woody_stem), vapour pressure deficit,  potential evapotranspiration, and mean annual temperature are the strongest predictors.
+Latitude is a strong predictor for many of the carbon fluxes, explaining ~70% of variation in GPP (n = 241, p<0.01), 64% in NPP (n = 109, p<0.01) and 60% in ANPP (n = 252, p<0.01).
+  
+*Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity, explaining less than 30% of the variation in each of the carbon fluxes.
+We found that both measures of mean annual precipitation used were significant (p<0.05) but poor predictors of productivity, explaining at most 45% of variation in carbon flux. Despite being a poor predictor, the results indicate that there is a saturation point at between 3000 and 4000mm annual precipitation, above which productivity no longer increases.  
+Looking across all productivity components, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and vapour pressure. For measures of woody productivity (ANPP~woody~ and ANPP~woody stem~), potential evapotranspiration and vapour pressure deficit were also strong predictors.  
+**Temperature seasonality**  
+**Mean annual temperature**  
+**Annual temperature range**  
+**Vapour pressure**  
+  
+*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?*
   
 *Does climate explain the same proportion of variation in different components of primary productivity?* 
 
