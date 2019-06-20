@@ -13,6 +13,7 @@ library(merTools)
 library(visreg)
 library(r2glmm)
 library(nlme)
+library(viridis)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -498,6 +499,11 @@ for (age in ages){
         axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
       }
       
+      if(pannel.nb == 2){
+        legend1 <- paste(response.v)
+        mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend1, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = F)
+      }
+      
       first.plot <- FALSE
       
       # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
@@ -526,6 +532,7 @@ for (age in ages){
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
     
   }
+  
   dev.off()
 }
 
