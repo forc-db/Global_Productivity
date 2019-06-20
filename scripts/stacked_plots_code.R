@@ -7,6 +7,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 # Load libaries ####
 library(lme4)
 library(MuMIn)
+library(viridis)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -101,9 +102,9 @@ fixed.variables <- c("lat")
 # response.variables.1 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 # response.variables.2 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 
-set1 <- c("NPP")
-set2 <- c("R_auto")
-sum <- c("GPP")
+set1 <- c("ANPP_foliage")
+set2 <- c("ANPP_woody_stem")
+sum <- c("ANPP_1")
   
   ### mature forests only ####
   for (age in ages){
@@ -259,28 +260,28 @@ sum <- c("GPP")
           
           png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
-          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = 2)
-          points(mean ~ fixed, data = df.2, ylab = "", col = 3)
-          points(mean ~ fixed, data = df.sum, ylab = "", col = 5)
+          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(5)[1])
+          points(mean ~ fixed, data = df.2, ylab = "", col = plasma(5)[2])
+          points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(5)[3])
           
           for(masl in unique(newDat$masl)){
             i <- which(unique(newDat$masl) %in% masl)
-            lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 2)
-            lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 3)
-            lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 5)
-            lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = 4)}
+            lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[1])
+            lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[2])
+            lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[3])
+            lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[4])}
           
           labels <- c(set1, set2, paste("sum of", set1, "and", set2), s)
-          response.col = 2:5
+          response.col = 1:4
           for (label in labels){
             legend <- paste(label)
             response.v.color <- response.col[which(labels %in% label)]
-            mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = response.v.color, cex = 0.5, outer = F)
+            mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(5)[response.v.color], cex = 0.5, outer = F)
           }
           
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
-          mtext(side = 1, line = 3, text = fixed.v, outer = F)
-          mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F)
+          mtext(side = 1, line = 3, text = "latitude", outer = F)
+          mtext(side = 2, line = 3,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = F)
           
           dev.off()
           
