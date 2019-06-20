@@ -102,9 +102,9 @@ fixed.variables <- c("lat")
 # response.variables.1 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 # response.variables.2 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
 
-set1 <- c("ANPP_foliage")
-set2 <- c("ANPP_woody_stem")
-sum <- c("ANPP_1")
+set1 <- c("NPP")
+set2 <- c("R_auto")
+sum <- c("GPP")
   
   ### mature forests only ####
   for (age in ages){
@@ -254,6 +254,11 @@ sum <- c("ANPP_1")
           newDat$fit.2 <- predict(mod.full.2, newDat, re.form = NA)
           newDat$fit.3 <- predict(sum.mod, newDat, re.form = NA)
           
+          pred <- predict(sum.mod, newDat, re.form = NA)
+          ci_line<-bootMer(sum.mod,FUN=function(.)
+           predict(., newdata=newDat,re.form = NA), nsim=2000)
+          ci_regT<-apply(ci_line$t,2,function(x) x[order(x)][c(50,1950)])
+          
           newDat$stacked_plot <- newDat$fit.1 + newDat$fit.2
           
           ylim <- range(c(newDat$fit.1, newDat$fit.2, newDat$fit.3))
@@ -269,9 +274,11 @@ sum <- c("ANPP_1")
             lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[1])
             lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[2])
             lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[3])
-            lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[4])}
+            lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(5)[4])
+            lines(newDat$fixed,ci_regT[1,], col = plasma(5)[3],lty=2, lwd = i)
+            lines(newDat$fixed,ci_regT[2,], col = plasma(5)[3],lty=2, lwd = i)}
           
-          labels <- c(set1, set2, paste("sum of", set1, "and", set2), s)
+          labels <- c(set1, set2, s, paste("sum of", set1, "and", set2))
           response.col = 1:4
           for (label in labels){
             legend <- paste(label)
