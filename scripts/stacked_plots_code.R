@@ -106,8 +106,10 @@ set1 <- c("ANPP_2")
 set2 <- c("BNPP_root")
 sum <- c("NPP_1")
   
+
+png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+
 par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
- # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
 
   ### mature forests only ####
   for (age in ages){
@@ -711,4 +713,4 @@ for (age in ages){
   }
 }
 
-
+dev.off()
