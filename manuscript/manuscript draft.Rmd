@@ -59,9 +59,9 @@ Data that control for stand age and standardize methodologies are required to re
     
 Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. For each site, site geographic co-ordinates were used to extract the Koeppen-Geiger zone from the ESRI Koeppen-Geiger map [cite], and the FAO Global Ecological Zone from the ???. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions. ForC currently contains 29768 records from 5227 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones.
 
-  ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables.png")
-  ```
+```
 *Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis. For the purposes of analysis, all estimates of NPP_1 and NPP_2 were combined as NPP, and all estimates of ANPP_1 and ANPP_2 were combined as ANPP.  
   
 | Variable | Definition | Components included | Methodologies used|
@@ -112,25 +112,26 @@ Two models were specified: one with the climate variable as a linear term, and o
   
 *How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). All models were improved by the inclusion of altitude as a fixed effect, with carbon fluxes showing a significant decrease with increasing altitude. 
   
-  ```{r echo=FALSE, out.width='100%', fig.cap = "Graph to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Graph to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("effect_of_latitude.png")
-  ```
+```
   
 Latitude is a strong predictor for many of the carbon fluxes, explaining ~70% of variation in GPP (n = 241, p<0.01), 64% in NPP (n = 109, p<0.01) and 60% in ANPP (n = 252, p<0.01).  
   
 Analysis of component fluxes indicates that measures of smaller component fluxes do approximately sum to measures of larger fluxes (fig. 3). Modelled estimates of NPP, generated from the sum of ANPP and BNPP~root~, and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woodystem~, fall completely within the confidence intervals of the regressions of field estimates of NPP and ANPP.  
   
-  ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots show smaller component fluxes (1) and (2); the larger flux (3) defined by the combination of (1) and (2); and a modelled estimate of the sum of (1) and (2). 95% confidence intervals are plotted for (3).", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots show smaller component fluxes (1) and (2); the larger flux (3) defined by the combination of (1) and (2); and a modelled estimate of the sum of (1) and (2). 95\\% confidence intervals are plotted for (3).", fig.pos='H'}
+
   knitr::include_graphics("combined_stacked.png")
-  ```
+```
    
 *Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity, explaining less than 30% of the variation in each of the carbon fluxes.
 We found that both measures of mean annual precipitation used were significant (p<0.05) but poor predictors of productivity, explaining at most 45% of variation in carbon flux. Despite being a poor predictor, the results indicate that there is a saturation point at between 3000 and 4000mm annual precipitation, above which productivity no longer increases.  
 Looking across all productivity components, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and vapour pressure. For measures of woody productivity (ANPP~woody~ and ANPP~woodystem~), potential evapotranspiration and vapour pressure deficit were also strong predictors.  
 
-  ```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against the climate variables identified as the best predictors. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against the climate variables identified as the best predictors: mean annual temperature; temperature seasonality; annual temperature range; and vapour pressure. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("combined_plots.png")
-  ```
+```
   
 **Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
 **Temperature seasonality.** Productivity is highest where temperature seasonality = 0. GPP, NPP, ANPP, and BNPP~root~ show a polynomial relationship with temperature seasonality. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woodystem~ show a linear relationship with temperature seasonality.  
@@ -138,6 +139,10 @@ Looking across all productivity components, the climate variables which explain 
 **Vapour pressure.** Productivity increases linearly with vapour pressure for all carbon fluxes, with the exception of ANPP~foliage~, which saturates at around 0.24.  
   
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?*
+
+```{r echo=FALSE, out.width='100%', fig.cap = "Ratio of ANPP foliage to ANPP woody and ANPP woody stem plotted against major ecozones. All pairwise comparisons are significant. Significance levels of pairwise comparisons are indicated where * $p \\leq 0.05 $; ** $p \\leq 0.01 $; *** $p \\leq 0.001 $; **** $p \\leq 0.0001 $.", fig.pos='H'}
+  knitr::include_graphics("boxplot_foliage_woody_combined.png")
+```
   
 *Does climate explain the same proportion of variation in different components of primary productivity?* 
 
