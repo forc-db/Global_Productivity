@@ -12,10 +12,13 @@ library(gridExtra)
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
 ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
-ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 50), ]
-dist.to.keep <- ForC_simplified$managed %in% 0
+ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 100), ]
+dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[which(dist.to.keep),]
 ForC_simplified$lat <- abs(ForC_simplified$lat)
+
+koeppen_prob <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/forest_area_koeppen.csv", stringsAsFactors = F)
+ForC_simplified$weight <- koeppen_prob$prob[match(ForC_simplified$Koeppen, koeppen_prob$koeppen)]
 
 
 ForC_simplified$biomes <- NA
@@ -75,7 +78,7 @@ for (i in seq(along = set1)){
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
       
-      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "date"))
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age", "weight")], by= c("site_plot", "date"))
       
       df$ratio <- df$mean.x/df$mean.y
       
@@ -84,13 +87,15 @@ for (i in seq(along = set1)){
       for (fixed.variable in fixed.variables){
         df$fixed <- df[, fixed.variable]
         
-        fixed.no.na <- !is.na(df[, fixed.variable])
+        fixed.no.na <- !is.na(df[, fixed.variable]) & !is.na(df[, "masl"])
         
         df <- df[fixed.no.na, ]
         
-        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df)
+        df$masl <- df$masl/1000
         
-        mod.full <- lmer(ratio ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = df)
+        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F, weights = weight.x)
+        
+        mod.full <- lmer(ratio ~ fixed + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight.x)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         
@@ -108,10 +113,17 @@ for (i in seq(along = set1)){
         
         par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
         
-        plot <- plot(ratio ~ get(paste0(fixed.variable)), data = df)
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+        newDat$fit <- predict(mod.full, newDat, re.form = NA)
+        
+        plot <- plot(ratio ~ fixed, data = df)
         # xlab = paste0(fixed.variable),
         # ylab = paste0(set1[[i]], ":", set2[[j]]))
-        abline(fixef(mod.full))
+        
+        for(masl in unique(newDat$masl)){
+          i <- which(unique(newDat$masl) %in% masl)
+          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = "red", lwd = i)}
+        
         #title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
         mtext(side = 1, line = 3, text = paste0(fixed.variable), outer = T)
         mtext(side = 2, text = paste0(set1[[i]], ":", set2[[j]]), line = 3, outer = T)
