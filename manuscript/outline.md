@@ -59,6 +59,7 @@ H3. Climate explains the same proportion of variability in C fluxes (i.e., the r
   - tendencies, based on [these plots](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/test/ratio_plots):
     - allocation to woody productivity increases with latitude. (Agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/foliage_woody).)
     - allocation to roots declines with latitude. (Partially agrees with [ratio tests](https://github.com/forc-db/Global_Productivity/tree/master/results/figures/archive/foliage_woody), which show lowest fraction to BNPP in temperate.)
+    - ![(a)](https://github.com/forc-db/Global_Productivity/blob/master/results/figures/final_figures/boxplot_comparisons/boxplot_GPP_NPP_1.png) NPP as a fraction of GPP is highest in temperate regions, with no difference between tropical and boreal regions (??)
 
 *Testing H3:*
 
