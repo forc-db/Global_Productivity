@@ -31,8 +31,10 @@ ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozo
 # ANPP_woody_and_foliage <- merge(ANPP_foliage, ANPP_woody[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 # ANPP_woody_stem_and_foliage <- merge(ANPP_foliage, ANPP_woody_stem[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "AnnualPre", "TempSeasonality", "TempRangeAnnual", "VapourPressure", "VapourPressureDeficit")
+
 set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "NPP_1", "ANPP_2")
-set2 <- c("NPP_1", "ANPP_1", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root", "BNPP_root")
+set2 <- c("NPP_1", "ANPP_2", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root", "BNPP_root")
 
 
 for (i in seq(along = set1)){
@@ -57,11 +59,73 @@ for (i in seq(along = set1)){
         stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5), tip.length = 0.01)
       print(p)
       dev.off()
+        
+      }
+      
+    }
+  }
+
+set1 <- c("ANPP_foliage", "ANPP_foliage")
+set2 <- c("ANPP_woody", "ANPP_woody_stem")
+
+
+for (i in seq(along = set1)){
+  for (j in seq(along = set2)){
+    if (i == j){
+      resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
+      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
+      
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "date"))
+      
+      df$ratio <- df$mean.x/df$mean.y
+      
+      range <- quantile(df$ratio, 0.99)
+      
+      for (fixed.variable in fixed.variables){
+        df$fixed <- df[, fixed.variable]
+        
+        fixed.no.na <- !is.na(df[, fixed.variable])
+        
+        df <- df[fixed.no.na, ]
+        
+        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df)
+        
+        mod.full <- lmer(ratio ~ get(paste0(fixed.variable)) + (1|geographic.area/plot.name), data = df)
+        
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        significance <- signif(significance, digits=4)
+        legend1 <- paste0("p-value = ", significance)
+        
+        Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+        Rsq <- signif(Rsq, digits=4)
+        legend2 <- paste0("r-squared = ", Rsq[1])
+        
+        sample.size <- length(df$ratio)
+        
+        png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/foliage_woody_ratio/", set1[[i]], "_", set2[[j]], "_", fixed.variable, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+        
+        par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
+        
+        plot <- plot(ratio ~ get(paste0(fixed.variable)), data = df)
+        # xlab = paste0(fixed.variable),
+        # ylab = paste0(set1[[i]], ":", set2[[j]]))
+        abline(fixef(mod.full))
+        #title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
+        mtext(side = 1, line = 3, text = paste0(fixed.variable), outer = T)
+        mtext(side = 2, text = paste0(set1[[i]], ":", set2[[j]]), line = 3, outer = T)
+        
+        legend("topright", legend=c(legend1, legend2))
+        
+        
+        dev.off()
+        
+      }
+      
     }
   }
 }
-
-
 #########################
 
 set1 <- "ANPP_foliage"
