@@ -31,8 +31,8 @@ ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozo
 # ANPP_woody_and_foliage <- merge(ANPP_foliage, ANPP_woody[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 # ANPP_woody_stem_and_foliage <- merge(ANPP_foliage, ANPP_woody_stem[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot", "citation.ID", "stand.age"))
 
-set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "NPP_1")
-set2 <- c("NPP_1", "ANPP_1", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root")
+set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "NPP_1", "ANPP_2")
+set2 <- c("NPP_1", "ANPP_1", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root", "BNPP_root")
 
 
 for (i in seq(along = set1)){
