@@ -54,7 +54,7 @@ for (i in seq(along = set1)){
       png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_", set1[[i]], "_", set2[[j]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
       p <- ggboxplot(df, x = "biomes", y = "ratio",
                      color = "biomes", palette = "jco", outlier.shape = NA, ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
-        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5))
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5), tip.length = 0.01)
       print(p)
       dev.off()
     }
