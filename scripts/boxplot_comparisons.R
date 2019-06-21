@@ -6,6 +6,8 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
 library(ggplot2)
 library(ggpubr)
+library(cowplot)
+library(gridExtra)
 
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
@@ -49,12 +51,75 @@ for (i in seq(along = set1)){
       
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
-      tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_", set1[[i]], "_", set2[[j]], ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_", set1[[i]], "_", set2[[j]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
       p <- ggboxplot(df, x = "biomes", y = "ratio",
                      color = "biomes", palette = "jco", outlier.shape = NA, ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
-        stat_compare_means(comparisons = my_comparisons, label.y = c(range, range - 0.25 , range - 0.5))
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5))
       print(p)
       dev.off()
     }
   }
 }
+
+
+#########################
+
+set1 <- "ANPP_foliage"
+set2 <- "ANPP_woody"
+
+
+for (i in seq(along = set1)){
+  for (j in seq(along = set2)){
+    if (i == j){
+      resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
+      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
+      
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
+      
+      df$ratio <- df$mean.x/df$mean.y
+      
+      range <- quantile(df$ratio, 0.99)
+      
+      df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
+      
+      my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
+      
+      p1 <- ggboxplot(df, x = "biomes", y = "ratio", outlier.shape = NA, ylab = "ANPP foliage: ANPP woody", xlab = "", ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5), tip.length =  0.01)
+      
+    }
+  }
+}
+
+
+set1 <- "ANPP_foliage"
+set2 <- "ANPP_woody_stem"
+
+
+for (i in seq(along = set1)){
+  for (j in seq(along = set2)){
+    if (i == j){
+      resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
+      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
+      
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
+      
+      df$ratio <- df$mean.x/df$mean.y
+      
+      range <- quantile(df$ratio, 0.99)
+      
+      df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
+      
+      my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
+      
+      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP foliage: ANPP woody stem", xlab = "", outlier.shape = NA, ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.4 , range - 0.8), tip.length = 0.01)
+      
+    }
+  }
+}
+
+png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_foliage_woody_combined.png"), width = 3000, height = 2000, units = "px", res = 300)
+p <- grid.arrange(p1, p2, nrow = 1)
+dev.off()
+
