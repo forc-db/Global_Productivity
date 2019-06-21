@@ -108,6 +108,9 @@ Two models were specified: one with the climate variable as a linear term, and o
 2. ANPP_foliage + ANPP_woody_stem = ANPP_1  
 3. NPP_1 + R_auto = GPP  
   
+*Allocation to carbon fluxes along latitudinal gradients* Variation in allocation to component carbon fluxes along latitudinal gradients was explored for a selection of paired carbon fluxes: GPP:NPP; NPP:ANPP; NPP:BNPP; ANPP:BNPP; ANPP~foliage~:ANPP~woody; and ANPP~foliage~:ANPP~woodystem~. Three approaches were taken. Firstly, for each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together. The ratio of each pair of measurements was calculated. For each set of paired fluxes, the ratios were regressed against latitude and climate variables, using the linear model specified above. Additionally, sites were classified as "boreal", "temperate", or "tropical", using the FAO ecozone classifications from the ForC database. Non-parametric Wilcoxon t-tests were carried out to compare the ratio means between each pair of ecozone classifications.  
+In addition, each carbon flux was regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each flux. For each pair of fluxes, the ratio of each point estimate was calculated and plotted, to gain an approximation of the variation of the ratio of the paired fluxes with latitude. 
+  
 ###Results
   
 *How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). All models were improved by the inclusion of altitude as a fixed effect, with carbon fluxes showing a significant decrease with increasing altitude. 
