@@ -4,7 +4,7 @@ output:
   pdf_document:
     citation_package: natbib
     fig_caption: yes
-bibliography: library.bib
+bibliography: [library.bib,  packages.bib]
 biblio-style: apalike
 csl: apa.csl
 header-includes:  \usepackage{float}
@@ -14,6 +14,14 @@ header-includes:  \usepackage{float}
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
 ```
+
+```{r include=FALSE}
+knitr::write_bib(c(
+  .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra'
+), 'packages.bib')
+```
+
+
 
 ###Abstract
   
