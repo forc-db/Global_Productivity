@@ -305,7 +305,7 @@ for (age in ages){
     
     png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/scaled_best_model_with_alt/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
     
-    par(mfrow = c(2,2), mar = c(0,0,0,8), oma = c(5,5,2,0))
+    par(mfrow = c(1,1), mar = c(0,0,0,8), oma = c(5,5,2,0))
     print(fixed.v)
     
     ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
