@@ -43,6 +43,8 @@ ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$me
 ## take absolute value of latitude
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
+ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
+
 
 # Control for some factors ####
 
@@ -264,10 +266,12 @@ for(response.variables in response.variables.groups){
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
         
+        number_plots <- length(unique(df$site_plot))
+        
         date = Sys.Date()
         altitude = TRUE
         
-        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope)
+        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, number_plots = number_plots)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
