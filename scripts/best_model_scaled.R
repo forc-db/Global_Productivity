@@ -396,7 +396,7 @@ for (age in ages){
     }
     
     
-    title (paste("Effect of", fixed.v), outer = T, line = 1)
+    # title (paste("Effect of", fixed.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = fixed.v, outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
     dev.off()
