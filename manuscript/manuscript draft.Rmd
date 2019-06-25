@@ -72,18 +72,18 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 ```
 *Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis. For the purposes of analysis, all estimates of NPP_1 and NPP_2 were combined as NPP, and all estimates of ANPP_1 and ANPP_2 were combined as ANPP.  
   
-| Variable | Definition | Components included | Methodologies used|
-|--------------|-------------------|-------------|------------------------|
-| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance |
-| NPP_1 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 
-| NPP_2 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root, and understory | Direct measurement of annual increments of components |
-| ANPP_1 | Aboveground net primary production | Foliage and stem | Direct measurement of annual increments of components | 
-| ANPP_2 | Aboveground net primary production | Foliage, stem, and branch | Direct measurement of annual increments of components |
-| ANPP_foliage | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured |
-| ANPP_woody | Net primary production of woody components | Stems and branches | Direct measurement of stem growth and branch fall |
-| ANPP_woody_stem | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment |
-| BNPP_root | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures |
-| BNPP_root_fine | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores |
+| Variable | Definition | Components included | Methodologies used | Number of records | Number of plots |
+|--------------|-------------------|-------------|------------------------|-------|-------|
+| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 254 | 91 |
+| NPP_1 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 93 | 79 |
+| NPP_2 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root, and understory | Direct measurement of annual increments of components | 23 | 23 |
+| ANPP_1 | Aboveground net primary production | Foliage and stem | Direct measurement of annual increments of components | 140 | 131 |
+| ANPP_2 | Aboveground net primary production | Foliage, stem, and branch | Direct measurement of annual increments of components | 119 | 77 |
+| ANPP_foliage | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 100 | 96 |
+| ANPP_woody | Net primary production of woody components | Stems and branches | Direct measurement of stem growth and branch fall | 53 | 50 |
+| ANPP_woody_stem | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 252 |
+| BNPP_root | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 105 | 90 |
+| BNPP_root_fine | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 96 | 88 |
   
 Table: Definitions of variables used in analysis
 
