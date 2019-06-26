@@ -120,7 +120,8 @@ fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
                                   c("ANPP", "ANPP_foliage"),
-                                  c("ANPP_woody", "ANPP_woody_stem"))
+                                  c("ANPP_woody", "ANPP_woody_stem"),
+                                  c("R_auto", "R_auto_root"))
 
 for(response.variables in response.variables.groups){
   
@@ -150,6 +151,11 @@ for(response.variables in response.variables.groups){
       first.plot <- TRUE
       
       for (response.v in response.variables){
+        
+        col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        
+        col <- col.sym$col[which(col.sym$variable %in% response.v)]
+        sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
         
         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
         if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
@@ -196,12 +202,12 @@ for(response.variables in response.variables.groups){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = response.v.color, yaxt = "n")
-        if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = response.v.color) 
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n")
+        if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
         
         for(masl in unique(newDat$masl)){
           i <- which(unique(newDat$masl) %in% masl)
-          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = response.v.color, lty = ifelse(significant.effect, 1, 2), lwd = i)}
+          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2), lwd = i)}
         
         first.plot <- FALSE
         
@@ -212,7 +218,7 @@ for(response.variables in response.variables.groups){
         
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
         legend <- paste(response.v, "sample size =", sample.size)
-        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = response.v.color, cex = 0.5)
+        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend, adj = 0.1, col = plasma(10)[col], cex = 0.5)
         
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         significance <- signif(significance, digits=4)
@@ -220,7 +226,7 @@ for(response.variables in response.variables.groups){
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
-        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = response.v.color, cex = 0.5)
+        mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
         date = Sys.Date()
         altitude = TRUE
@@ -247,7 +253,7 @@ for(response.variables in response.variables.groups){
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_unweighted.csv", row.names = F)
 
 
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto_root")
 
 all.results = NULL
 
@@ -315,12 +321,12 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
      
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(8)[response.v.color], yaxt = "n")
-      if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(8)[response.v.color]) 
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], yaxt = "n", pch = sym)
+      if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
       
       for(masl in unique(newDat$masl)){
         i <- which(unique(newDat$masl) %in% masl)
-        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = plasma(8)[response.v.color], lty = ifelse(significant.effect, 1, 2), lwd = i)}
+        lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2), lwd = i)}
  
       first.plot <- FALSE
       
@@ -332,7 +338,7 @@ for (age in ages){
       legend1 = "R-squared values"
       legend2 <- paste(response.v, " = ", Rsq[1])
       # legend3 <- paste(response.v, "p-value = ", significance)
-      mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
+      mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = T)
       mtext(side = 3, line = 0, text = legend1, adj = 0.95, col = "black", cex = 0.5, outer = T)
       # mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
       
