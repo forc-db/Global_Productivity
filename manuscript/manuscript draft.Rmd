@@ -70,20 +70,19 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables.png")
 ```
-*Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis. For the purposes of analysis, all estimates of NPP_1 and NPP_2 were combined as NPP, and all estimates of ANPP_1 and ANPP_2 were combined as ANPP.  
+*Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis.  
   
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of plots |
 |--------------|-------------------|-------------|------------------------|-------|-------|
 | GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 254 | 91 |
-| NPP_1 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 93 | 79 |
-| NPP_2 | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root, and understory | Direct measurement of annual increments of components | 23 | 23 |
-| ANPP_1 | Aboveground net primary production | Foliage and stem | Direct measurement of annual increments of components | 140 | 131 |
-| ANPP_2 | Aboveground net primary production | Foliage, stem, and branch | Direct measurement of annual increments of components | 119 | 77 |
-| ANPP_foliage | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 100 | 96 |
-| ANPP_woody | Net primary production of woody components | Stems and branches | Direct measurement of stem growth and branch fall | 53 | 50 |
-| ANPP_woody_stem | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 252 |
-| BNPP_root | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 105 | 90 |
-| BNPP_root_fine | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 96 | 88 |
+| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 116 | 85 |
+| ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 259 | 170 |
+| ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 100 | 96 |
+| ANPP~woodystem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 252 |
+| BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 105 | 90 |
+| BNPP~rootfine~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 96 | 88 |
+| R~auto~ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 22 |
+| R~autoroot~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 57 | 38 |
   
 Table: Definitions of variables used in analysis
 
@@ -111,10 +110,11 @@ Table: Sources of climate data
   
 Two models were specified: one with the climate variable as a linear term, and one with the climate variable as a polynomial term. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. In addition, slope values were calculated for the linear models.
   
-*Validating models of component fluxes.* Comparison of component fluxes is based on the assumption that components sum accurately to estimates of larger fluxes. To test this, components of larger fluxes were regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each component. The point estimates for smaller component fluxes were summed to generate new "stacked" estimates of larger fluxes, which were then compared against actual measurements of the larger flux. Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package. Stacked plots were generated for:  
-1. ANPP_2 + BNPP_root = NPP_1  
-2. ANPP_foliage + ANPP_woody_stem = ANPP_1  
-3. NPP_1 + R_auto = GPP  
+*Validating models of component fluxes.* Comparison of component fluxes is based on the assumption that components sum accurately to estimates of larger fluxes. To test this, components of larger fluxes were regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each component. The point estimates for smaller component fluxes were summed to generate new "stacked" estimates of larger fluxes, which were then compared against actual measurements of the larger flux. Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. Stacked plots were generated for:  
+1. GPP = NPP + R~auto~  
+2. NPP = ANPP + BNPP  
+3. ANPP = ANPP~foliage~ + ANPP~woodystem~  
+4. Total belowground carbon flux = BNPP + R~root~  
   
 *Allocation to carbon fluxes along latitudinal gradients* Variation in allocation to component carbon fluxes along latitudinal gradients was explored for a selection of paired carbon fluxes: GPP:NPP; NPP:ANPP; NPP:BNPP; ANPP:BNPP; ANPP~foliage~:ANPP~woody; and ANPP~foliage~:ANPP~woodystem~. Three approaches were taken. Firstly, for each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together. The ratio of each pair of measurements was calculated. For each set of paired fluxes, the ratios were regressed against latitude and climate variables, using the linear model specified above. Additionally, sites were classified as "boreal", "temperate", or "tropical", using the FAO ecozone classifications from the ForC database. Non-parametric Wilcoxon t-tests were carried out to compare the ratio means between each pair of ecozone classifications.  
 In addition, each carbon flux was regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each flux. For each pair of fluxes, the ratio of each point estimate was calculated and plotted, to gain an approximation of the variation of the ratio of the paired fluxes with latitude. 
