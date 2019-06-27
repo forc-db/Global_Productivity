@@ -42,6 +42,8 @@ ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$me
 ## take absolute value of latitude
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
+ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
+
 
 # Control for some factors ####
 
@@ -228,10 +230,12 @@ for(response.variables in response.variables.groups){
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
+        number_plots <- length(unique(df$site_plot))
+        
         date = Sys.Date()
         altitude = TRUE
         
-        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope)
+        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, number.plots = number_plots)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
@@ -252,10 +256,11 @@ for(response.variables in response.variables.groups){
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_unweighted.csv", row.names = F)
 
-
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto_root")
+response.variables.groups <- list(c("GPP", "NPP", "ANPP", "BNPP_root", "R_auto"),
+                                  c("ANPP_foliage", "ANPP_woody_stem", "BNPP_root_fine", "R_auto_root"))
 
 all.results = NULL
+
 
 ### mature forests only ####
 for (age in ages){
@@ -265,19 +270,28 @@ for (age in ages){
   
   for(fixed.v in fixed.variables){
     
-    png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
+    png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, "_MATURE_only_poly_all.png"), width = 5000, height = 2000, units = "px", res = 300)
     
-    par(mfrow = c(1,1), mar = c(0,0,0,8), oma = c(5,5,2,0))
+    layout(matrix(1:3, nrow = 1), widths = c(1,1,0.25))
+    par(mar = c(3,3,3,0), oma = c(3,3,0,7))
+    
     print(fixed.v)
     
     ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
     
-    ###subset ForC
-    response.variables.col <- c(1, 3, 4, 5, 6, 7)
+    for(response.variables in response.variables.groups){
+      
+      if(response.variables[1] == "GPP") n <- 1
+      if(response.variables[1] == "ANPP_foliage") n <- 2
     
     first.plot <- TRUE
     
     for (response.v in response.variables){
+      
+      col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      
+      col <- col.sym$col[which(col.sym$variable %in% response.v)]
+      sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
       
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
@@ -338,9 +352,8 @@ for (age in ages){
       legend1 = "R-squared values"
       legend2 <- paste(response.v, " = ", Rsq[1])
       # legend3 <- paste(response.v, "p-value = ", significance)
-      mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = T)
-      mtext(side = 3, line = 0, text = legend1, adj = 0.95, col = "black", cex = 0.5, outer = T)
-      # mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
+      
+      
       
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
@@ -349,12 +362,23 @@ for (age in ages){
     }
     
     
-    # title (paste("Effect of", fixed.v), outer = T, line = 1)
-    mtext(side = 1, line = 3, text = fixed.v, outer = T)
-    mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
-    dev.off()
+    if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
+    if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
+    mtext(side = 1, line = 2, text = fixed.v, outer = T)
+    mtext(side = 2, line = 2,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
+    
+    
+    
   }
-  
+    plot(1:1, type="n", axes = F)
+    
+    legend("center", legend = c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"), col = plasma(10)[1:9], pch = (1:9), xpd = T, text.col = plasma(10)[1:9], bty = "n")
+    # mtext(side = 3, line = -(which(col.sym$variable %in% response.v)), text = legend2, adj = 1, col = plasma(10)[col], cex = 0.5, outer = T)
+    # if(n==1) mtext(side = 3, line = 0, text = legend1, adj = 1, col = "black", cex = 0.5, outer = T)
+    # mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
+    
+    dev.off()
+}
 }
 
 
