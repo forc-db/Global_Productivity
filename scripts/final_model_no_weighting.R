@@ -365,14 +365,15 @@ for (age in ages){
     if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
     if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
     mtext(side = 1, line = 2, text = fixed.v, outer = T)
-    mtext(side = 2, line = 2,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
+    mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T) 
     
     
     
   }
     plot(1:1, type="n", axes = F)
     
-    legend("center", legend = c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"), col = plasma(10)[1:9], pch = (1:9), xpd = T, text.col = plasma(10)[1:9], bty = "n")
+    legend("topleft", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "R_auto"), col = plasma(10)[c(1:3, 6, 8)], pch = c(1:3, 6, 8), xpd = T, text.col = plasma(10)[c(1:3, 6, 8)], bty = "n", title = "Major fluxes", title.col = "black")
+    legend("left", legend = c("ANPP_woody_stem", "ANPP_foliage", "BNPP_root_fine", "R_auto_root"), col = plasma(10)[c(4, 5, 7, 9)], pch = c(4, 5, 7, 9), xpd = T, text.col = plasma(10)[c(4, 5, 7, 9)], bty = "n", title = "Subsidiary fluxes", title.col = "black")
     # mtext(side = 3, line = -(which(col.sym$variable %in% response.v)), text = legend2, adj = 1, col = plasma(10)[col], cex = 0.5, outer = T)
     # if(n==1) mtext(side = 3, line = 0, text = legend1, adj = 1, col = "black", cex = 0.5, outer = T)
     # mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
