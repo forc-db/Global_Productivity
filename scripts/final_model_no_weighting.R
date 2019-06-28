@@ -178,7 +178,12 @@ for(response.variables in response.variables.groups){
         df$fixed <- df[, fixed.v]
         
         if(fixed.v == "AnnualPET") df <- df[df$fixed != 0,]
-        ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
+        # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
+        
+        a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+        ylim <- range(tapply(a$mean, a$variable.name, scale))
+        ylim[1] <- ylim[1] - 0.25
+        ylim[2] <- ylim[2] + 0.25
         
         mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.linear <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
@@ -204,7 +209,7 @@ for(response.variables in response.variables.groups){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n")
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
         if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
         
         for(masl in unique(newDat$masl)){
@@ -277,7 +282,6 @@ for (age in ages){
     
     print(fixed.v)
     
-    ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
     
     for(response.variables in response.variables.groups){
       
@@ -310,6 +314,12 @@ for (age in ages){
       
       df$fixed <- df[, fixed.v]
       
+      a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+      ylim <- range(tapply(a$mean, a$variable.name, scale))
+      ylim[1] <- ylim[1] - 0.25
+      ylim[2] <- ylim[2] + 0.25
+      
+      
       mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
       mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
       mod.poly <- lmer(scale(mean) ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
@@ -335,7 +345,7 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
      
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], yaxt = "n", pch = sym)
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
       
       for(masl in unique(newDat$masl)){
@@ -437,6 +447,11 @@ for (age in ages){
       mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
       mod.poly <- lmer(scale(mean) ~ poly(fixed, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
       
+      a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+      ylim <- range(tapply(a$mean, a$variable.name, scale))
+      ylim[1] <- ylim[1] - 0.25
+      ylim[2] <- ylim[2] + 0.25
+      
       aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
       
       best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
@@ -458,7 +473,7 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
 
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(8)[response.v.color], yaxt = "n")
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(8)[response.v.color], yaxt = "n", ylim = ylim)
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(8)[response.v.color]) 
       
       for(masl in unique(newDat$masl)){
