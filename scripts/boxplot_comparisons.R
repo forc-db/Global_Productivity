@@ -182,14 +182,17 @@ for (i in seq(along = set1)){
       
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
-      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP foliage: ANPP woody stem", xlab = "", outlier.shape = NA, ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
-        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.4 , range - 0.8), tip.length = 0.01)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_foliage_woodystem.png"), width = 3000, height = 2000, units = "px", res = 300)
+      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP foliage: ANPP woody stem", xlab = "", outlier.shape = NA, ylim = c(0, 4), order = c("boreal", "temperate", "tropical")) +
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(4, 3.75, 3.5), tip.length = 0.01)
+      print(p2)
+      dev.off()
       
     }
   }
 }
 
-png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_foliage_woody_combined.png"), width = 3000, height = 2000, units = "px", res = 300)
-p <- grid.arrange(p1, p2, nrow = 1)
-dev.off()
+# png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_foliage_woody_combined.png"), width = 3000, height = 2000, units = "px", res = 300)
+# p <- grid.arrange(p1, p2, nrow = 1)
+# dev.off()
 
