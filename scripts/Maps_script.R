@@ -111,7 +111,7 @@ all.results <- NULL
 
 ForC_simplified$variable.name <- gsub("(_1|_2)", "", ForC_simplified$variable.name)
 
-ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody", "ANPP_woody_stem", "R_auto"),]
+ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"),]
 
 fixed.v <- c("AnnualMeanTemp")
 fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
@@ -122,12 +122,18 @@ ForC_simplified <- ForC_simplified[ages.to.keep & fixed.no.na, ]
 lon <- ForC_simplified$lon
 lat <- ForC_simplified$lat
 variable.name <- ForC_simplified$variable.name
+ForC_simplified$variable.name <- factor(ForC_simplified$variable.name, levels = c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"))
+
+col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+
+col <- col.sym$col[which(col.sym$variable %in% variable.name)]
+sym <- col.sym$sym[which(col.sym$variable %in% variable.name)]
 
 png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot(data = ForC_simplified) +   mapWorld
-mp <- mp+ geom_point(aes(x=lon, y=lat, color= variable.name), size=1) + scale_colour_viridis(discrete = T, option = "plasma") + facet_wrap(vars(variable.name))
+mp <- mp+ geom_point(aes(x=lon, y=lat, color = variable.name, shape = variable.name), size=1) + scale_colour_viridis(discrete = T, option = "plasma") + facet_wrap(vars(variable.name)) + scale_shape_manual(values = 1:9)
 print(mp)
 
 dev.off()
@@ -135,7 +141,7 @@ dev.off()
 ################# all plots on one
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
-mp <- ggplot() +   mapWorld
+mp <- ggplot(data = ForC_simplified) +   mapWorld
 mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_colour_viridis(discrete = T, option = "plasma") + scale_shape_manual(values = 1:9)
 ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
