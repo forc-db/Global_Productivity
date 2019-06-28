@@ -82,7 +82,7 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 | BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 105 | 90 |
 | BNPP~rootfine~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 96 | 88 |
 | R~auto~ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 22 |
-| R~autoroot~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 57 | 38 |
+| R~root~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 57 | 38 |
   
 Table: Definitions of variables used in analysis
 
@@ -123,15 +123,15 @@ In addition, each carbon flux was regressed against latitude, and the models use
   
 *How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). All models were improved by the inclusion of altitude as a fixed effect, with carbon fluxes showing a significant decrease with increasing altitude. 
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Graph to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Graphs to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("effect_of_latitude.png")
 ```
   
-Latitude is a strong predictor for many of the carbon fluxes, explaining ~70% of variation in GPP (n = 241, p<0.01), 64% in NPP (n = 109, p<0.01) and 60% in ANPP (n = 252, p<0.01).  
+Latitude is a strong predictor for many of the carbon fluxes, explaining ~65% of variation in GPP (n = 254, p<0.01), 51% in NPP (n = 116, p<0.01) and 50% in ANPP (n = 259, p<0.01).  
   
 Analysis of component fluxes indicates that measures of smaller component fluxes do approximately sum to measures of larger fluxes (fig. 3). Modelled estimates of NPP, generated from the sum of ANPP and BNPP~root~, and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woodystem~, fall completely within the confidence intervals of the regressions of field estimates of NPP and ANPP.  
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots show smaller component fluxes (1) and (2); the larger flux (3) defined by the combination of (1) and (2); and a modelled estimate of the sum of (1) and (2). 95\\% confidence intervals are plotted for (3).", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots 1 - 3 show two component fluxes; a larger flux, defined as the combination of the two component fluxes; and a modelled estimate of the sum of the two component fluxes. 95\\% confidence intervals are plotted for the larger flux. Plot 4 shows three belowground fluxes, and a modelled estimate of the total belowground carbon flux", fig.pos='H'}
 
   knitr::include_graphics("combined_stacked.png")
 ```
@@ -151,8 +151,8 @@ Looking across all productivity components, the climate variables which explain 
   
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?*
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Ratio of ANPP foliage to ANPP woody and ANPP woody stem plotted against major ecozones. All pairwise comparisons are significant. Significance levels of pairwise comparisons are indicated where * $p \\leq 0.05 $; ** $p \\leq 0.01 $; *** $p \\leq 0.001 $; **** $p \\leq 0.0001 $.", fig.pos='H'}
-  knitr::include_graphics("boxplot_foliage_woody_combined.png")
+```{r echo=FALSE, out.width='100%', fig.cap = "Ratio of ANPP foliage to ANPP woody stem plotted against major ecozones. All pairwise comparisons are significant. Significance levels of pairwise comparisons are indicated where * $p \\leq 0.05 $; ** $p \\leq 0.01 $; *** $p \\leq 0.001 $; **** $p \\leq 0.0001 $.", fig.pos='H'}
+  knitr::include_graphics("boxplot_foliage_woodystem.png")
 ```
   
 *Does climate explain the same proportion of variation in different components of primary productivity?* 
