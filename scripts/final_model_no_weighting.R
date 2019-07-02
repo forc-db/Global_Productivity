@@ -14,6 +14,7 @@ library(visreg)
 library(r2glmm)
 library(nlme)
 library(viridis)
+library(AICcmodavg)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -111,7 +112,7 @@ all.results <- NULL
 
 ###comparing models
 
-library(AICcmodavg)
+
 all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
@@ -283,13 +284,14 @@ for (age in ages){
     print(fixed.v)
     
     
+    
     for(response.variables in response.variables.groups){
       
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
     
-    first.plot <- TRUE
-    
+      first.plot <- TRUE
+      
     for (response.v in response.variables){
       
       col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
@@ -301,9 +303,6 @@ for (age in ages){
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
-      
-      response.v.color <- response.variables.col[which(response.variables %in% response.v)]
-      
       rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
@@ -314,10 +313,19 @@ for (age in ages){
       
       df$fixed <- df[, fixed.v]
       
+      if(response.v == "GPP"){
       a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
       ylim <- range(tapply(a$mean, a$variable.name, scale))
       ylim[1] <- ylim[1] - 0.25
       ylim[2] <- ylim[2] + 0.25
+      }
+      
+      if(response.v == "GPP"){
+        b <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.groups),]
+        no.na <- !is.na(b[, fixed.v])
+        b <- b[no.na,]
+        xlim <- range(b[, fixed.v])
+      }
       
       
       mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
@@ -345,7 +353,7 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
      
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, ylim = ylim, xlim = xlim)
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
       
       for(masl in unique(newDat$masl)){
@@ -382,8 +390,8 @@ for (age in ages){
   }
     plot(1:1, type="n", axes = F)
     
-    legend("topleft", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "R_auto"), col = plasma(10)[c(1:3, 6, 8)], pch = c(1:3, 6, 8), xpd = T, text.col = plasma(10)[c(1:3, 6, 8)], bty = "n", title = "Major fluxes", title.col = "black")
-    legend("left", legend = c("ANPP_woody_stem", "ANPP_foliage", "BNPP_root_fine", "R_auto_root"), col = plasma(10)[c(4, 5, 7, 9)], pch = c(4, 5, 7, 9), xpd = T, text.col = plasma(10)[c(4, 5, 7, 9)], bty = "n", title = "Subsidiary fluxes", title.col = "black")
+    legend("topleft", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "R_auto"), col = plasma(10)[c(1, 3, 5, 8, 4)], pch = c(1, 3, 5, 8, 4), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8, 4)], bty = "n", title = "Major fluxes", title.col = "black")
+    legend("left", legend = c("ANPP_woody_stem", "ANPP_foliage", "BNPP_root_fine", "R_auto_root"), col = plasma(10)[c(7, 9, 6, 2)], pch = c(7, 9, 6, 2), xpd = T, text.col = plasma(10)[c(7, 9, 6, 2)], bty = "n", title = "Subsidiary fluxes", title.col = "black")
     # mtext(side = 3, line = -(which(col.sym$variable %in% response.v)), text = legend2, adj = 1, col = plasma(10)[col], cex = 0.5, outer = T)
     # if(n==1) mtext(side = 3, line = 0, text = legend1, adj = 1, col = "black", cex = 0.5, outer = T)
     # mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
@@ -529,9 +537,9 @@ for (age in ages){
 
 
 
-fixed.variables <- c("AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "VapourPressure")
+fixed.variables <- c("AnnualMeanTemp", "TempSeasonality", "map", "PotentialEvapotranspiration")
 
-response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP", "ANPP_foliage", "ANPP_woody_stem")
+response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP")
 
 all.results = NULL
 
@@ -552,14 +560,13 @@ for (age in ages){
     
     print(fixed.v)
     
-    ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
+    a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+    ylim <- range(tapply(a$mean, a$variable.name, scale))
+    ylim[1] <- ylim[1] - 0.25
+    ylim[2] <- ylim[2] + 0.25
     
     
     ###subset ForC
-    col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
-    
-    col <- col.sym$col[which(col.sym$variable %in% response.v)]
-    sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
     
     first.plot <- TRUE
     
@@ -569,8 +576,10 @@ for (age in ages){
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
+      col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
       
-      response.v.color <- response.variables.col[which(response.variables %in% response.v)]
+      col <- col.sym$col[which(col.sym$variable %in% response.v)]
+      sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
       
       rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
       
