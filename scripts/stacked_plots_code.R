@@ -272,14 +272,14 @@ par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
           
           # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
-          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[2], pch = 2)
-          points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[8], pch = 8)
+          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[3], pch = 3)
+          points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[4], pch = 4)
           points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[1], pch = 1)
           
           for(masl in unique(newDat$masl)){
             i <- which(unique(newDat$masl) %in% masl)
-            lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[2])
-            lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[8])
+            lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[3])
+            lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[4])
             lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[1])
             lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = "black")
             lines(newDat$fixed,ci_regT[1,], col = plasma(10)[1],lty=2, lwd = i)
@@ -288,7 +288,7 @@ par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
           
           
           labels <- c(paste(set1), paste(set2), paste(s))
-          response.col = c(2, 8, 1)
+          response.col = c(3, 4, 1)
           for (label in labels){
             legend <- paste(label)
             response.v.color <- response.col[which(labels %in% label)]
@@ -481,21 +481,21 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(5)[1], pch = 1)
-            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[3], pch = 3)
-            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[6], pch = 6)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[5], pch = 5)
+            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[8], pch = 8)
+            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[3], pch = 3)
             
             for(masl in unique(newDat$masl)){
               i <- which(unique(newDat$masl) %in% masl)
-              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[3])
-              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[6])
-              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[2])
+              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[5])
+              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[8])
+              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[3])
               lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = "black")
-              lines(newDat$fixed,ci_regT[1,], col = plasma(10)[2],lty=2, lwd = i)
-              lines(newDat$fixed,ci_regT[2,], col = plasma(10)[2],lty=2, lwd = i)}
+              lines(newDat$fixed,ci_regT[1,], col = plasma(10)[3],lty=2, lwd = i)
+              lines(newDat$fixed,ci_regT[2,], col = plasma(10)[3],lty=2, lwd = i)}
             
             labels <- c("ANPP", "BNPP", "NPP")
-            response.col = c(3, 6, 2) 
+            response.col = c(5, 8, 3) 
             for (label in labels){
               legend <- paste(label)
               response.v.color <- response.col[which(labels %in% label)]
@@ -688,21 +688,21 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[5], pch = 5)
-            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[4], pch = 4)
-            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[3], pch = 3)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[9], pch = 9)
+            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[7], pch = 7)
+            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[5], pch = 5)
             
             for(masl in unique(newDat$masl)){
               i <- which(unique(newDat$masl) %in% masl)
-              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[5])
-              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[4])
-              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[3])
+              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[9])
+              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[7])
+              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[5])
               lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = "black")
-              lines(newDat$fixed,ci_regT[1,], col = plasma(10)[3],lty=2, lwd = i)
-              lines(newDat$fixed,ci_regT[2,], col = plasma(10)[3],lty=2, lwd = i)}
+              lines(newDat$fixed,ci_regT[1,], col = plasma(10)[5],lty=2, lwd = i)
+              lines(newDat$fixed,ci_regT[2,], col = plasma(10)[5],lty=2, lwd = i)}
             
             labels <- c("ANPP foliage", "ANPP woody stem", "ANPP")
-            response.col = c(5, 4, 3)
+            response.col = c(9, 7, 5)
             for (label in labels){
               legend <- paste(label)
               response.v.color <- response.col[which(labels %in% label)]
@@ -897,19 +897,19 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[6], pch = 6)
-            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[9], pch = 9)
-            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[7], pch = 7)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[8], pch = 8)
+            points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[2], pch = 2)
+            points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[6], pch = 6)
             
             for(masl in unique(newDat$masl)){
               i <- which(unique(newDat$masl) %in% masl)
-              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[6])
-              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[9])
-              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[7])
+              lines(fit.1 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[8])
+              lines(fit.2 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[2])
+              lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[6])
               lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = "black")}
             
             labels <- c("BNPP", "R root", "BNPP fine root")
-            response.col = c(6, 9, 7)
+            response.col = c(8, 2, 6)
             for (label in labels){
               legend <- paste(label)
               response.v.color <- response.col[which(labels %in% label)]
