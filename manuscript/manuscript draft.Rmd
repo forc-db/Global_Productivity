@@ -17,7 +17,7 @@ options(tinytex.verbose = TRUE)
 
 ```{r include=FALSE}
 knitr::write_bib(c(
-  .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra'
+  .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra', 'AICcmodavg'
 ), 'packages.bib')
 ```
 
