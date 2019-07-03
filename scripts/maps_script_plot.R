@@ -6,10 +6,11 @@ library(lme4)
 library(MuMIn)
 library(ggplot2)
 library(viridis)
+library(maps)
 
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -124,16 +125,19 @@ proj4string(ForC_simplified)<-proj
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 
-# png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
+# png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
 
-par(mfrow = c(1,1), mar = c(0,0,0,0), oa = c(0,0,0,1))
+# par(mfrow = c(1,1), mar = c(0,0,0,0), oa = c(0,0,0,1))
+
+layout(matrix(1:2, nrow = 1), widths = c(1,1,0.25))
+par(mar = c(3,3,3,0), oma = c(3,3,0,7))
 
 first.plot = T
 
 
 for(response.v in response.variables){
   
-  col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+  col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
   
   col <- col.sym$col[which(col.sym$variable %in% response.v)]
   sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -141,11 +145,21 @@ for(response.v in response.variables){
   df <- ForC_simplified[ForC_simplified$variable.name %in% response.v,]
   if(first.plot) map(database = "world", interior = F, col = "darkgray", mar = c(0,0,0,0))
   points(df, col = plasma(10)[col], pch = sym)
-  legend <- paste(response.v)
-  mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend, adj = 0.95, col = plasma(10)[col], pch = sym, cex = 0.5, outer = T)
+  # legend <- paste(response.v)
+  # mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend, adj = 0.95, col = plasma(10)[col], pch = sym, cex = 0.5, outer = T)
   
   first.plot = F
 }
+
+plot(1:1, type="n", axes = F)
+
+legend("topleft", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "R_auto"), col = plasma(10)[c(1, 3, 5, 8, 4)], pch = c(1, 3, 5, 8, 4), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8, 4)], bty = "n", title = "Major fluxes", title.col = "black")
+legend("left", legend = c("ANPP_woody_stem", "ANPP_foliage", "BNPP_root_fine", "R_auto_root"), col = plasma(10)[c(7, 9, 6, 2)], pch = c(7, 9, 6, 2), xpd = T, text.col = plasma(10)[c(7, 9, 6, 2)], bty = "n", title = "Subsidiary fluxes", title.col = "black")
+# mtext(side = 3, line = -(which(col.sym$variable %in% response.v)), text = legend2, adj = 1, col = plasma(10)[col], cex = 0.5, outer = T)
+# if(n==1) mtext(side = 3, line = 0, text = legend1, adj = 1, col = "black", cex = 0.5, outer = T)
+# mtext(side = 3, line = -7 - which(response.variables %in% response.v), text = legend3, adj = 0.95, col = plasma(8)[response.v.color], cex = 0.5, outer = T)
+
+dev.off()
 
 # dev.off()
 
