@@ -382,7 +382,8 @@ for (age in ages){
     
     if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
     if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
-    mtext(side = 1, line = 2, text = fixed.v, outer = T)
+    xaxis <- ifelse(fixed.v == "lat", "Latitude", paste(fixed.v))
+    mtext(side = 1, line = 2, text = xaxis, outer = T)
     mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = T) 
     
     
