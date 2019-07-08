@@ -287,16 +287,18 @@ par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
           
           
           
-          labels <- c(paste(set1), paste(set2), paste(s))
-          response.col = c(3, 4, 1)
-          for (label in labels){
-            legend <- paste(label)
-            response.v.color <- response.col[which(labels %in% label)]
-            mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
-          }
+          # labels <- c(paste(set1), paste(set2), paste(s))
+          # response.col = c(3, 4, 1)
+          # for (label in labels){
+          #   legend <- paste(label)
+          #   response.v.color <- response.col[which(labels %in% label)]
+          #   mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
+          # }
           
-          legend <- paste(set1, "+", set2)
-          mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+          legend <- paste(set1, "+ R auto")
+          # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+          
+          legend("topright", legend = c("NPP", "R auto", "GPP", "NPP + R auto"), col = plasma(10)[c(3, 4, 1, NA)], pch = c(3, 4, 1, NA), xpd = T, text.col = plasma(10)[c(3, 4, 1, NA)], bty = "n", xjust = 1, cex = 0.75)
           
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
           mtext(side = 1, line = 1, text = "latitude", outer = T)
@@ -494,16 +496,18 @@ for (age in ages){
               lines(newDat$fixed,ci_regT[1,], col = plasma(10)[3],lty=2, lwd = i)
               lines(newDat$fixed,ci_regT[2,], col = plasma(10)[3],lty=2, lwd = i)}
             
-            labels <- c("ANPP", "BNPP", "NPP")
-            response.col = c(5, 8, 3) 
-            for (label in labels){
-              legend <- paste(label)
-              response.v.color <- response.col[which(labels %in% label)]
-              mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
-            }
+            # labels <- c("ANPP", "BNPP", "NPP")
+            # response.col = c(5, 8, 3) 
+            # for (label in labels){
+            #   legend <- paste(label)
+            #   response.v.color <- response.col[which(labels %in% label)]
+            #   mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
+            # }
             
             legend <- paste("ANPP + BNPP")
-            mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            
+            legend("topright", legend = c("ANPP", "BNPP", "NPP", "ANPP + BNPP"), col = plasma(10)[c(5, 8, 3, NA)], pch = c(5, 8, 3, NA), xpd = T, text.col = plasma(10)[c(5, 8, 3, NA)], bty = "n", xjust = 1, cex = 0.75)
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
             # mtext(side = 1, line = 3, text = "latitude", outer = T)
@@ -701,16 +705,19 @@ for (age in ages){
               lines(newDat$fixed,ci_regT[1,], col = plasma(10)[5],lty=2, lwd = i)
               lines(newDat$fixed,ci_regT[2,], col = plasma(10)[5],lty=2, lwd = i)}
             
-            labels <- c("ANPP foliage", "ANPP woody stem", "ANPP")
-            response.col = c(9, 7, 5)
-            for (label in labels){
-              legend <- paste(label)
-              response.v.color <- response.col[which(labels %in% label)]
-              mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
-            }
+            # labels <- c("ANPP foliage", "ANPP woody stem", "ANPP")
+            # response.col = c(9, 7, 5)
+            # for (label in labels){
+            #   legend <- paste(label)
+            #   response.v.color <- response.col[which(labels %in% label)]
+            #   mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
+            # }
             
             legend <- paste("ANPP foliage + ANPP woody stem")
-            mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            
+            legend("topright", legend = c("ANPP foliage", "ANPP woody stem", "ANPP", "ANPP foliage + ANPP woody stem"), col = plasma(10)[c(9, 7, 5, NA)], pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
+            
             
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
@@ -908,16 +915,18 @@ for (age in ages){
               lines(fit.3 ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = plasma(10)[6])
               lines(stacked_plot ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = i, col = "black")}
             
-            labels <- c("BNPP", "R root", "BNPP fine root")
-            response.col = c(8, 2, 6)
-            for (label in labels){
-              legend <- paste(label)
-              response.v.color <- response.col[which(labels %in% label)]
-              mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
-            }
+            # labels <- c("BNPP", "R root", "BNPP fine root")
+            # response.col = c(8, 2, 6)
+            # for (label in labels){
+            #   legend <- paste(label)
+            #   response.v.color <- response.col[which(labels %in% label)]
+            #   mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
+            # }
             
             legend <- paste("BNPP + R root")
-            mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
+            
+            legend("topright", legend = c("BNPP", "R root", "BNPP fine root", "BNPP + R root"), col = plasma(10)[c(8, 2, 6, NA)], pch = c(8, 2, 6, NA), xpd = T, text.col = plasma(10)[c(8, 2, 6, NA)], bty = "n", xjust = 1, cex = 0.75)
             
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
