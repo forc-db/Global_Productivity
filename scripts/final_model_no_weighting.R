@@ -633,10 +633,10 @@ for (age in ages){
         axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
       }
       
-      if(pannel.nb == 2){
-        legend1 <- paste(response.v)
-        mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend1, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
-      }
+      # if(pannel.nb == 2){
+      #   legend1 <- paste(response.v)
+      #   mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend1, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
+      # }
       
       first.plot <- FALSE
       
@@ -658,6 +658,7 @@ for (age in ages){
     title (paste(fixed.v), outer = F, line = 1)
     # mtext(side = 1, line = 3, text = fixed.v, outer = T)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
+    if(fixed.v == "TempSeasonality")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1)
     
   }
   
