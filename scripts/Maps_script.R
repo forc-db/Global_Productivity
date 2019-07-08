@@ -125,14 +125,19 @@ lat <- ForC_simplified$lat
 col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
 
 ForC_simplified <- merge(ForC_simplified, col.sym[, c("variable.name", "col", "sym")], by = "variable.name")
+ForC_simplified$col <- as.character(ForC_simplified$col)
+ForC_simplified$sym <- as.character(ForC_simplified$sym)
 
 ForC_simplified$variable.name <- factor(ForC_simplified$variable.name, levels = c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"))
 
 png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
-mp <- ggplot(data = ForC_simplified) +   mapWorld
-mp <- mp+ geom_point(aes(x=lon, y=lat, color = col, shape = sym), size=1) + scale_colour_viridis(discrete = T, option = "plasma") + facet_wrap(vars(variable.name)) + scale_shape_manual(values = 1:9)
+
+mp <- ggplot(data = ForC_simplified) + mapWorld + aes(x=lon, y=lat)
+mp <- mp+ geom_point(aes(color = variable.name, shape = variable.name), size=1) + facet_wrap(vars(variable.name))
+mp <- mp + scale_color_manual(values = plasma(9)[c(1,3,5,7,9,8,6,4,2)]) + scale_shape_manual(values = c(1:9)[c(1,3,5,7,9,8,6,4,2)])  + labs(color = "Variable", shape = "Variable")
+                  
 print(mp)
 
 dev.off()
@@ -141,7 +146,7 @@ dev.off()
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot(data = ForC_simplified) +   mapWorld
-mp <- mp + geom_point(aes(x=lon, y=lat, shape = sym, color = col), size=2) + scale_colour_viridis(discrete = T, option = "plasma") + scale_shape_manual(values = 1:9)
+mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_color_manual(values = plasma(9)[c(1,3,5,7,9,8,6,4,2)]) + scale_shape_manual(values = c(1:9)[c(1,3,5,7,9,8,6,4,2)]) + labs(color = "Variable", shape = "Variable")
 ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
 
