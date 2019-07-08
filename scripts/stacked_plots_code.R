@@ -109,7 +109,7 @@ sum <- c("GPP")
 
 png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
 
-par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
+par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
 
   ### mature forests only ####
   for (age in ages){
@@ -272,7 +272,7 @@ par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
           
           # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
-          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[3], pch = 3)
+          plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[3], pch = 3)
           points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[4], pch = 4)
           points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[1], pch = 1)
           
@@ -301,7 +301,7 @@ par(mfrow = c(2,2), mar = c(1,1,1,1), oma = c(3,3,0,0))
           legend("topright", legend = c("NPP", "R auto", "GPP", "NPP + R auto"), col = plasma(10)[c(3, 4, 1, NA)], pch = c(3, 4, 1, NA), xpd = T, text.col = plasma(10)[c(3, 4, 1, NA)], bty = "n", xjust = 1, cex = 0.75)
           
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
-          mtext(side = 1, line = 1, text = "latitude", outer = T)
+          mtext(side = 1, line = 1, text = "Latitude", outer = T)
           mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
           
           # dev.off()
@@ -483,7 +483,7 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[5], pch = 5)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[5], pch = 5)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[8], pch = 8)
             points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[3], pch = 3)
             
@@ -692,7 +692,7 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[9], pch = 9)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[9], pch = 9)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[7], pch = 7)
             points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[5], pch = 5)
             
@@ -904,7 +904,7 @@ for (age in ages){
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
-            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", yaxt = "n", ylim = ylim, col = plasma(10)[8], pch = 8)
+            plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[8], pch = 8)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[2], pch = 2)
             points(mean ~ fixed, data = df.sum, ylab = "", col = plasma(10)[6], pch = 6)
             
