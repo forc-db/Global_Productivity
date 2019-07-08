@@ -251,7 +251,7 @@ for(response.variables in response.variables.groups){
       
       title (paste("Effect of", fixed.v), outer = T, line = 1)
       mtext(side = 1, line = 3, text = fixed.v, outer = T)
-      mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T) 
+      mtext(side = 2, line = 3,  text = expression("Productivity (scaled values)"), outer = T) 
       dev.off()
     }
     
@@ -383,7 +383,7 @@ for (age in ages){
     if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
     if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
     mtext(side = 1, line = 2, text = fixed.v, outer = T)
-    mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T) 
+    mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = T) 
     
     
     
@@ -517,7 +517,7 @@ for (age in ages){
       if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
       if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
       mtext(side = 1, line = 2, text = fixed.v, outer = F)
-      mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = F) 
+      mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
       dev.off()
       
       
@@ -551,7 +551,7 @@ for (age in ages){
   
   png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/combined_plots.png"), width = 2255, height = 2000, units = "px", res = 300)
   
-  par(mfrow = c(2,2), mar = c(3,3,3,3))
+  par(mfrow = c(2,2), mar = c(3,3,3,3), oma = c(0,3,0,0))
   
   pannel.nb <- 1
   
@@ -621,7 +621,7 @@ for (age in ages){
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
 
-      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], yaxt = "n", ylim = ylim, pch = sym)
+      if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], ylim = ylim, pch = sym)
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
       
       for(masl in unique(newDat$masl)){
@@ -655,12 +655,19 @@ for (age in ages){
     }
     pannel.nb <- pannel.nb +1
     
-    title (paste(fixed.v), outer = F, line = 1)
+    if(fixed.v == "AnnualMeanTemp") title <- "Mean Annual Temperature"
+    if(fixed.v == "TempSeasonality") title <- "Temperature Seasonality"
+    if(fixed.v == "map") title <- "Mean Annual Precipitation"
+    if(fixed.v == "PotentialEvapotranspiration") title <- "Potential Evapotranspiration"
+
+    title (paste(title), outer = F, line = 1)
     # mtext(side = 1, line = 3, text = fixed.v, outer = T)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
     if(fixed.v == "TempSeasonality")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1)
     
   }
+  
+  mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = T)
   
   dev.off()
 }
