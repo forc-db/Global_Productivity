@@ -1,0 +1,16 @@
+fixed.v,xaxis
+mat,"expression(paste('Mean annual temperature (', degree, 'C)'))"
+map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
+lat,expression(paste('Latitude'))
+AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))"
+TempSeasonality,expression(paste('Temperature seasonality')) 
+TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))"
+AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
+AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))"
+AnnualWetDays,"expression(paste('Annual wet days (days yr'^{-1}, ')'))"
+VapourPressure,expression(paste('Vapour pressure (kPa)'))
+Aridity,expression(paste('Aridity index'))
+PotentialEvapotranspiration,"expression(paste('Potential evapotranspiration (mm yr'^{-1}, ')'))"
+VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)'))
+SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))"
+PreSeasonality,expression(paste('Precipitation seasonality'))
