@@ -94,14 +94,12 @@ library(AICcmodavg)
 all.results <- NULL
 all.aictab <- NULL
 
-fixed.variables <- c("lat")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
+set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_2")
+set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "BNPP_root")
 
-response.variables.groups <- list(c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem"))
-response.variables.1 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
-response.variables.2 <- c("GPP","NPP_1","BNPP_root","ANPP_1", "ANPP_foliage","ANPP_woody", "ANPP_woody_stem")
-
-for(response.variables in response.variables.groups){
+# for(response.variables in response.variables.groups){
   
   # if(response.variables[1] == "GPP") n <- 1
   # if(response.variables[1] == "ANPP_1") n <- 2
@@ -120,34 +118,35 @@ for(response.variables in response.variables.groups){
       print(fixed.v)
       
       ###subset ForC
-      response.variables.col <- 1:length(response.variables)
+      # response.variables.col <- 1:length(response.variables)
       
       first.plot <- TRUE
       
-      for (response.v.1 in response.variables.1){
-        for (response.v.2 in response.variables.2){
+      for (i in seq(along = set1)){
+        # for (response.v.2 in response.variables.2){
           
-          if (response.v.1 == response.v.2) {
-            next
-          }
+          # if (response.v.1 == response.v.2) {
+            # next
+          # }
           
         ################################ for response.v.1
-        if(response.v.1 %in% "NPP") responses.to.keep.1  <- c("NPP_1")
-        if(response.v.1 %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
-        if(response.v.1 %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
-        if(!response.v.1 %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- response.v.1
+        if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1")
+        if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
+        if(set1[[i]] %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
+        if(!set1[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- set1[[i]]
         
         
-        response.v.color <- response.variables.col[which(response.variables.1 %in% response.v.1)]
+        # response.v.color <- response.variables.col[which(response.variables.1 %in% set1[[i]])]
         
-        rows.with.response.1 <- ForC_simplified$variable.name %in% responses.to.keep.1
+        rows.with.response.1 <- ForC_simplified$variable.name %in% set1[[i]]
         
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
         
         df.1 <- ForC_simplified[rows.with.response.1 & ages.to.keep & fixed.no.na, ]
         
         df.1$fixed <- df.1[, fixed.v]
-        ylim.1 <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.1),]$mean)
+        ylim.1 <- range(df.1$mean)
+        # ylim.1 <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.1),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df.1, REML = F)
         mod.linear <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
@@ -172,13 +171,13 @@ for(response.variables in response.variables.groups){
         
         ########################################### for response.v.2
         
-        if(response.v.2 %in% "NPP") responses.to.keep.2  <- c("NPP_1")
-        if(response.v.2 %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
-        if(response.v.2 %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
-        if(!response.v.2 %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- response.v.2
+        if(set2[[i]] %in% "NPP") responses.to.keep.2  <- c("NPP_1")
+        if(set2[[i]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
+        if(set2[[i]] %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
+        if(!set2[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- set2[[i]]
         
         
-        response.v.color <- response.variables.col[which(response.variables.2 %in% response.v.2)]
+        # response.v.color <- response.variables.col[which(response.variables.2 %in% set2[[i]])]
         
         rows.with.response.2 <- ForC_simplified$variable.name %in% responses.to.keep.2
         
@@ -187,7 +186,8 @@ for(response.variables in response.variables.groups){
         df.2 <- ForC_simplified[rows.with.response.2 & ages.to.keep & fixed.no.na, ]
         
         df.2$fixed <- df.2[, fixed.v]
-        ylim.2 <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.2),]$mean)
+        ylim.2 <- range(df.2$mean)
+        # ylim.2 <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables.2),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df.2, REML = F)
         mod.linear <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
@@ -223,9 +223,9 @@ for(response.variables in response.variables.groups){
         
         newDat$ratio <- newDat$fit.1/newDat$fit.2
         
-        tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_plots/", response.v.1, "_to_", response.v.2, "_", fixed.v, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+        tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_plots/", set1[[i]], "_to_", set2[[i]], "_", fixed.v, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
         
-        plot(ratio ~ fixed, data = newDat, col = response.v.color, main = paste(response.v.1, response.v.2, fixed.v), xlab = fixed.v, ylab = paste(response.v.1, ":",response.v.2))
+        plot(ratio ~ fixed, data = newDat, main = paste(set1[[i]], set2[[i]], fixed.v), xlab = fixed.v, ylab = paste(set1[[i]], ":",set2[[i]]))
         # title(paste(response.v.1, response.v.2, fixed.v), outer = T, line = 1)
         # mtext(side = 1, line = 3, text = fixed.v, outer = T)
         # mtext(side = 2, line = 3,  text = paste(response.v.1, ":",response.v.2), outer = T)
@@ -237,10 +237,10 @@ for(response.variables in response.variables.groups){
         # all.results <- rbind(all.results, results)
         # all.aictab <- rbind(all.aictab, aictab)
         
-      }
+      # }
       }
       }
     
   }
   
-}
+# }
