@@ -124,6 +124,12 @@ for (i in seq(along = set1)){
         
         df$fixed <- df[, fixed.v]
         
+        ##remove extreme outliers 
+        
+        # outliers <- boxplot(df$ratio, plot=FALSE, range = 3)$out
+        
+        # if(length(outliers > 0)) df <- df[-which(df$ratio %in% outliers),]
+        
         
         mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
@@ -158,7 +164,7 @@ for (i in seq(along = set1)){
         ylim[2] <- ylim[2] + 0.25
         
         
-        plot(ratio ~ fixed, data = df, xlab = "", ylab = "", yaxt = "n", ylim = ylim)
+        plot(ratio ~ fixed, data = df, xlab = "", ylab = "", ylim = ylim)
         
         for(masl in unique(newDat$masl)){
           k <- which(unique(newDat$masl) %in% masl)
@@ -178,7 +184,12 @@ for (i in seq(along = set1)){
         legend2 <- paste("r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
+        title (paste("Effect of", fixed.v), outer = T, line = 1)
+        mtext(side = 1, line = 3, text = fixed.v, outer = T)
+        mtext(side = 2, line = 3,  text = paste("Ratio", set1[[i]], "to", set2[[i]]), outer = T)
+        
+        
         dev.off()
       }
       
-    }#}}
+}#}}
