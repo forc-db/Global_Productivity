@@ -118,7 +118,7 @@ Because the magnitude of fluxes varies significantly, in order to facilitate com
 3. ANPP = ANPP~foliage~ + ANPP~woodystem~  
 4. Total belowground carbon flux = BNPP + R~root~  
   
-*Allocation to carbon fluxes along latitudinal gradients* Variation in allocation to component carbon fluxes along latitudinal gradients was explored for a selection of paired carbon fluxes: GPP:NPP; NPP:ANPP; NPP:BNPP; ANPP:BNPP; ANPP~foliage~:ANPP~woody~; and ANPP~foliage~:ANPP~woodystem~. Three approaches were taken. Firstly, for each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together. The ratio of each pair of measurements was calculated. For each set of paired fluxes, the ratios were regressed against latitude and climate variables, using the linear model specified above. Additionally, sites were classified as "boreal", "temperate", or "tropical", using the FAO ecozone classifications from the ForC database. Non-parametric Wilcoxon t-tests were carried out to compare the ratio means between each pair of ecozone classifications.  
+*Allocation to carbon fluxes along latitudinal gradients* Variation in allocation to component carbon fluxes along latitudinal gradients was explored for three sets of paired carbon fluxes: GPP:NPP; ANPP:BNPP; and ANPP~foliage~:ANPP~woodystem~. Three approaches were taken. Firstly, for each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together. The ratio of each pair of measurements was calculated. For each set of paired fluxes, the ratios were regressed against latitude and climate variables, using the linear model specified above. Additionally, sites were classified as "boreal", "temperate", or "tropical", using the FAO ecozone classifications from the ForC database. Non-parametric Wilcoxon t-tests were carried out to compare the ratio means between each pair of ecozone classifications.  
 In addition, each carbon flux was regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each flux. For each pair of fluxes, the ratio of each point estimate was calculated and plotted, to gain an approximation of the variation of the ratio of the paired fluxes with latitude. 
   
 ###Results
@@ -150,7 +150,7 @@ Looking across all productivity components, the climate variables which explain 
 **Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
 **Temperature seasonality and annual temperature range.** These two climate variables are strongly correlated, and so only temperature seasonality is presented in figure 4. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. GPP, NPP, ANPP, and R~root~ show a polynomial relationship with both variables, and BNPP~root~ shows a polynomial relationship with annual temperature range. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woodystem~ show a linear relationship with both variables.  
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (R-squared = 0.15).
-**Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000. Between 1200 and 1700 productivity peaks, and begins to decrease at values above 1800. 
+**Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm. 
   
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?*
 
@@ -158,8 +158,24 @@ Looking across all productivity components, the climate variables which explain 
   knitr::include_graphics("boxplot_foliage_woodystem.png")
 ```
   
-*Does climate explain the same proportion of variation in different components of primary productivity?* 
+*Does climate explain the same proportion of variation in different components of primary productivity?*  
+  
+| Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration |
+|----------|----------|----------|----------|----------|
+| R~auto~ | 0.64 | 0.60 | 0.54 | 0.63 |
+| GPP | 0.66 | 0.59 | 0.75 | 0.40 |
+| NPP | 0.51 | 0.50 | 0.52 | 0.34 |
+| ANPP | 0.50 | 0.38 | 0.47 | 0.32 |
+| ANPP~foliage~ | 0.55 | 0.60 | 0.54 | 0.40 |
+| ANPP~woodystem~ | 0.25 | 0.22 | 0.20 | 0.26 |
+| BNPP~root~ | 0.31 | 0.32 | 0.31 | 0.32 |
+| BNPP~rootfine~ | 0.14 | 0.16 | 0.16 | 0.11 |
+| R~root~ | 0.25 | 0.16 | 0.29 | 0.04* |
+  
+Table: R-squared values presented for four climate variables. Values marked * are not significant. 
+  
 
+  
 ###Discussion
 
 *Challenges in estimating NPP*  
