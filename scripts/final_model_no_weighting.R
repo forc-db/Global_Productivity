@@ -146,7 +146,9 @@ for(response.variables in response.variables.groups){
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
+      fixed.v.info <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
+      xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
       ###subset ForC
       response.variables.col <- 1:length(response.variables)
@@ -250,7 +252,7 @@ for(response.variables in response.variables.groups){
       
       
       title (paste("Effect of", fixed.v), outer = T, line = 1)
-      mtext(side = 1, line = 3, text = fixed.v, outer = T)
+      mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = T)
       mtext(side = 2, line = 3,  text = expression("Productivity (scaled values)"), outer = T) 
       dev.off()
     }
@@ -283,7 +285,9 @@ for (age in ages){
     
     print(fixed.v)
     
+    fixed.v.info <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
+    xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
     for(response.variables in response.variables.groups){
       
@@ -382,8 +386,7 @@ for (age in ages){
     
     if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
     if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
-    xaxis <- ifelse(fixed.v == "lat", "Latitude", paste(fixed.v))
-    mtext(side = 1, line = 2, text = xaxis, outer = T)
+    mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = T)
     mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = T) 
     
     
@@ -419,6 +422,10 @@ for (age in ages){
   for(fixed.v in fixed.variables){
     
     print(fixed.v)
+    
+    fixed.v.info <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    
+    xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
    
     for(response.variables in response.variables.groups){
       
@@ -517,7 +524,7 @@ for (age in ages){
       
       if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
       if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
-      mtext(side = 1, line = 2, text = fixed.v, outer = F)
+      mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
       mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
       dev.off()
       
@@ -566,6 +573,9 @@ for (age in ages){
     ylim[1] <- ylim[1] - 0.25
     ylim[2] <- ylim[2] + 0.25
     
+    fixed.v.info <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    
+    xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
     ###subset ForC
     
@@ -661,8 +671,8 @@ for (age in ages){
     if(fixed.v == "map") title <- "Mean Annual Precipitation"
     if(fixed.v == "PotentialEvapotranspiration") title <- "Potential Evapotranspiration"
 
-    title (paste(title), outer = F, line = 1)
-    # mtext(side = 1, line = 3, text = fixed.v, outer = T)
+    # title (paste(title), outer = F, line = 1)
+    mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
     if(fixed.v == "TempSeasonality")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
     
