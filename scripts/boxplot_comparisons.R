@@ -62,80 +62,10 @@ for (i in seq(along = set1)){
     }
   }
 
-set1 <- c("ANPP_foliage", "ANPP_foliage")
-set2 <- c("ANPP_woody", "ANPP_woody_stem")
-
-
-for (i in seq(along = set1)){
-  for (j in seq(along = set2)){
-    if (i == j){
-      resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
-      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[j]],]
-      
-      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age", "weight")], by= c("site_plot", "date"))
-      
-      df$ratio <- df$mean.x/df$mean.y
-      
-      range <- quantile(df$ratio, 0.99)
-      
-      for (fixed.variable in fixed.variables){
-        df$fixed <- df[, fixed.variable]
-        
-        fixed.no.na <- !is.na(df[, fixed.variable]) & !is.na(df[, "masl"])
-        
-        df <- df[fixed.no.na, ]
-        
-        df$masl <- df$masl/1000
-        
-        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F, weights = weight.x)
-        
-        mod.full <- lmer(ratio ~ fixed + masl + (1|geographic.area/plot.name), data = df, REML = F, weights = weight.x)
-        
-        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-        
-        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-        significance <- signif(significance, digits=4)
-        legend1 <- paste0("p-value = ", significance)
-        
-        Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)
-        legend2 <- paste0("r-squared = ", Rsq[1])
-        
-        sample.size <- length(df$ratio)
-        
-        png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/foliage_woody_ratio/", set1[[i]], "_", set2[[j]], "_", fixed.variable, ".png"), width = 2255, height = 2000, units = "px", res = 300)
-        
-        par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,2))
-        
-        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
-        newDat$fit <- predict(mod.full, newDat, re.form = NA)
-        
-        plot <- plot(ratio ~ fixed, data = df)
-        # xlab = paste0(fixed.variable),
-        # ylab = paste0(set1[[i]], ":", set2[[j]]))
-        
-        for(masl in unique(newDat$masl)){
-          i <- which(unique(newDat$masl) %in% masl)
-          lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], col = "red", lwd = i)}
-        
-        #title(paste0("Relationship between ANPP_canopy:ANPP_woody_stem and ", fixed.variable), outer = T, line = 1)
-        mtext(side = 1, line = 3, text = paste0(fixed.variable), outer = T)
-        mtext(side = 2, text = paste0(set1[[i]], ":", set2[[j]]), line = 3, outer = T)
-        
-        legend("topright", legend=c(legend1, legend2))
-        
-        
-        dev.off()
-        
-      }
-      
-    }
-  }
-}
 #########################
 
-set1 <- "ANPP_foliage"
-set2 <- "ANPP_woody"
+set1 <- "ANPP_1"
+set2 <- "BNPP_root"
 
 
 for (i in seq(along = set1)){
@@ -148,19 +78,55 @@ for (i in seq(along = set1)){
       
       df$ratio <- df$mean.x/df$mean.y
       
+      fixed.no.na <- !is.na(df[, "lat"]) & !is.na(df[, "masl"])
+      if(length(fixed.no.na > 0))  df <- df[fixed.no.na, ]
+      
+      mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+      mod.linear <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      
+      best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+      
+      if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      if (best.model == "mod") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      
+      significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+      sample.size <- length(df$ratio)
+      
+      if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
+      
+      ########## include this section for analysis of cooks distance and subsetting ##########
+      
+      cooksd <- cooks.distance(mod.full)
+      
+      plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+      abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+      text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+      
+      influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+      
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
+      
+      df$ratio <- df$mean.x/df$mean.y
+      
+      rows.to.keep<-which(rownames(df) %in% influential)
+      if(length(influential > 0)) df <- df[-rows.to.keep,]
+      
       range <- quantile(df$ratio, 0.99)
       
       df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
       
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
-      p1 <- ggboxplot(df, x = "biomes", y = "ratio", outlier.shape = NA, ylab = "ANPP foliage: ANPP woody", xlab = "", ylim = c(0, range), order = c("boreal", "temperate", "tropical")) +
-        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(range, range - 0.25 , range - 0.5), tip.length =  0.01)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_ANPP_BNPP.png"), width = 3000, height = 2000, units = "px", res = 300)
+      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP:BNPP", xlab = "", outlier.shape = NA, ylim = c(0, 6.5), order = c("boreal", "temperate", "tropical")) +
+        stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(6.25, 6, 5.75), tip.length = 0.01)
+      print(p2)
+      dev.off()
       
     }
   }
 }
-
 
 set1 <- "ANPP_foliage"
 set2 <- "ANPP_woody_stem"
@@ -175,6 +141,40 @@ for (i in seq(along = set1)){
       df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
       
       df$ratio <- df$mean.x/df$mean.y
+      
+      fixed.no.na <- !is.na(df[, "lat"]) & !is.na(df[, "masl"])
+      if(length(fixed.no.na > 0)) df <- df[fixed.no.na, ]
+      
+      mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+      mod.linear <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      
+      best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+      
+      if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      if (best.model == "mod") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+      
+      significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+      sample.size <- length(df$ratio)
+      
+      if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
+      
+      ########## include this section for analysis of cooks distance and subsetting ##########
+      
+      cooksd <- cooks.distance(mod.full)
+      
+      plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+      abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+      text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+      
+      influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+      
+      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
+      
+      df$ratio <- df$mean.x/df$mean.y
+      
+      rows.to.keep<-which(rownames(df) %in% influential)
+      if(length(influential > 0)) df <- df[-rows.to.keep,]
       
       range <- quantile(df$ratio, 0.99)
       
