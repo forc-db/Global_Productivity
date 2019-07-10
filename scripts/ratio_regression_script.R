@@ -96,8 +96,8 @@ all.aictab <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
-set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_2")
-set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "BNPP_root")
+set1 <- c("GPP", "ANPP_1", "ANPP_foliage")
+set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem")
 
 
 for (i in seq(along = set1)){
@@ -126,7 +126,7 @@ for (i in seq(along = set1)){
         
         ##remove extreme outliers 
         
-        # outliers <- boxplot(df$ratio, plot=FALSE, range = 3)$out
+        # outliers <- boxplot(df$ratio, plot=FALSE, range = 6)$out
         
         # if(length(outliers > 0)) df <- df[-which(df$ratio %in% outliers),]
         
