@@ -162,19 +162,21 @@ Looking across all productivity components, the climate variables which explain 
   
 | Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration |
 |----------|----------|----------|----------|----------|
-| R~auto~ | 0.64 | 0.60 | 0.54 | 0.63 |
-| GPP | 0.66 | 0.59 | 0.75 | 0.40 |
-| NPP | 0.51 | 0.50 | 0.52 | 0.34 |
-| ANPP | 0.50 | 0.38 | 0.47 | 0.32 |
-| ANPP~foliage~ | 0.55 | 0.60 | 0.54 | 0.40 |
-| ANPP~woodystem~ | 0.25 | 0.22 | 0.20 | 0.26 |
-| BNPP~root~ | 0.31 | 0.32 | 0.31 | 0.32 |
-| BNPP~rootfine~ | 0.14 | 0.16 | 0.16 | 0.11 |
-| R~root~ | 0.25 | 0.16 | 0.29 | 0.04* |
+| R~auto~ | 0.64 | 0.83 | 0.54 | 0.63 |
+| GPP | 0.66 | 0.61 | 0.75 | 0.40 |
+| NPP | 0.51 | 0.49 | 0.52 | 0.34 |
+| ANPP | 0.50 | 0.45 | 0.47 | 0.32 |
+| ANPP~foliage~ | 0.55 | 0.63 | 0.54 | 0.40 |
+| ANPP~woodystem~ | 0.25 | 0.23 | 0.20 | 0.26 |
+| BNPP~root~ | 0.31 | 0.26 | 0.31 | 0.32 |
+| BNPP~rootfine~ | 0.14 | 0.11 | 0.16 | 0.11 |
+| R~root~ | 0.25 | 0.21 | 0.29 | 0.04* |
   
 Table: R-squared values presented for four climate variables. Values marked * are not significant. 
   
-
+R-squared values are generally highest in the major fluxes, and decrease in subsidiary fluxes. Of the major fluxes, R~auto~ and GPP are the most strongly explained by latitude and climate. Mean annual temperature explains 83% of variation in R~auto~, while temperature seasonality explains 75% of variation in GPP. The proportion of variation explained by climate and latitude decreases in NPP and ANPP. The climatic variables with the strongest explanatory power explain around 50% of the variation in these fluxes. Of the major fluxes, BNPP~root~ is the least well explained by climate and latitude, with climate explaining at most 32% of variation.  
+  
+With the exception of ANPP~foliage~, the proportion of variation explained by climate and latitude in subsidiary fluxes is much lower. Climate explains at most 26% of variation in ANPP~woodystem~, 17% in BNPP~rootfine~, and 32% in R~root~. In contrast, climate strongly explains variation in ANPP~foliage~, with mean annual temperature explaining 63% of variation.
   
 ###Discussion
 
