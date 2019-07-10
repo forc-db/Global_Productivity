@@ -103,8 +103,6 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
 ## prepare results table
 
@@ -545,7 +543,7 @@ for (age in ages){
 
 
 
-fixed.variables <- c("AnnualMeanTemp", "TempSeasonality", "map", "PotentialEvapotranspiration")
+fixed.variables <- c("mat", "TempSeasonality", "map", "PotentialEvapotranspiration")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP")
 
@@ -644,11 +642,6 @@ for (age in ages){
         axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
       }
       
-      # if(pannel.nb == 2){
-      #   legend1 <- paste(response.v)
-      #   mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend1, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
-      # }
-      
       first.plot <- FALSE
       
       # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
@@ -666,12 +659,6 @@ for (age in ages){
     }
     pannel.nb <- pannel.nb +1
     
-    if(fixed.v == "AnnualMeanTemp") title <- "Mean Annual Temperature"
-    if(fixed.v == "TempSeasonality") title <- "Temperature Seasonality"
-    if(fixed.v == "map") title <- "Mean Annual Precipitation"
-    if(fixed.v == "PotentialEvapotranspiration") title <- "Potential Evapotranspiration"
-
-    # title (paste(title), outer = F, line = 1)
     mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
     if(fixed.v == "TempSeasonality")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
