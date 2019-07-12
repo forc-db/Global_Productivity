@@ -15,6 +15,10 @@ ForC_simplified$stand.age <- as.numeric(ForC_simplified$stand.age)
 ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 100), ]
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[which(dist.to.keep),]
+
+# alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
+# ForC_simplified <- ForC_simplified[alt.to.keep, ]
+
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
 koeppen_prob <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/forest_area_koeppen.csv", stringsAsFactors = F)
