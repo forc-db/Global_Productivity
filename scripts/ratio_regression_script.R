@@ -61,7 +61,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[dist.to.keep, ]
 
-# alt.to.keep <- ForC_simplified$masl <= 2000 & !is.na(ForC_simplified$masl)
+# alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
 # ForC_simplified <- ForC_simplified[alt.to.keep, ]
 
 ## give leaf type
@@ -98,8 +98,8 @@ all.aictab <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
-set1 <- c("GPP", "ANPP_1", "ANPP_foliage")
-set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem")
+set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem")
+set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1")
 
 # set1 <- "ANPP_foliage"
 # set2 <- "ANPP_woody_stem"
