@@ -16,8 +16,8 @@ ForC_simplified <- ForC_simplified[which(ForC_simplified$stand.age >= 100), ]
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[which(dist.to.keep),]
 
-# alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
-# ForC_simplified <- ForC_simplified[alt.to.keep, ]
+alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
+ForC_simplified <- ForC_simplified[alt.to.keep, ]
 
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
@@ -34,8 +34,8 @@ ForC_simplified$biomes <- ifelse((grepl("Subtropical", ForC_simplified$FAO.ecozo
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "AnnualPre", "TempSeasonality", "TempRangeAnnual", "VapourPressure", "VapourPressureDeficit")
 
-set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "NPP_1", "ANPP_2")
-set2 <- c("NPP_1", "ANPP_2", "BNPP_root", "ANPP_woody", "ANPP_woody_stem", "BNPP_root", "BNPP_root")
+set1 <- c("GPP", "NPP_1", "ANPP_1", "ANPP_foliage", "NPP_1", "NPP_1", "NPP_1")
+set2 <- c("NPP_1", "ANPP_2", "BNPP_root", "ANPP_woody_stem", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem")
 
 
 for (i in seq(along = set1)){
@@ -99,23 +99,6 @@ for (i in seq(along = set1)){
       
       if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
       
-      ########## include this section for analysis of cooks distance and subsetting ##########
-      
-      cooksd <- cooks.distance(mod.full)
-      
-      plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
-      abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
-      text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
-      
-      influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
-      
-      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
-      
-      df$ratio <- df$mean.x/df$mean.y
-      
-      rows.to.keep<-which(rownames(df) %in% influential)
-      if(length(influential > 0)) df <- df[-rows.to.keep,]
-      
       range <- quantile(df$ratio, 0.99)
       
       df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
@@ -123,7 +106,7 @@ for (i in seq(along = set1)){
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
       png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_ANPP_BNPP.png"), width = 3000, height = 2000, units = "px", res = 300)
-      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP:BNPP", xlab = "", outlier.shape = NA, ylim = c(0, 6.5), order = c("boreal", "temperate", "tropical")) +
+      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP:BNPP", xlab = "", outlier.shape = NA, ylim = c(0, 6.5), order = c("boreal", "temperate", "tropical"), add = "jitter") +
         stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(6.25, 6, 5.75), tip.length = 0.01)
       print(p2)
       dev.off()
@@ -163,23 +146,6 @@ for (i in seq(along = set1)){
       
       if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(lat, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
       
-      ########## include this section for analysis of cooks distance and subsetting ##########
-      
-      cooksd <- cooks.distance(mod.full)
-      
-      plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
-      abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
-      text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
-      
-      influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
-      
-      df <- merge(resp1, resp2[, c("variable.name", "date", "start.date", "end.date", "mean", "citation.ID", "site_plot", "stand.age")], by= c("site_plot"))
-      
-      df$ratio <- df$mean.x/df$mean.y
-      
-      rows.to.keep<-which(rownames(df) %in% influential)
-      if(length(influential > 0)) df <- df[-rows.to.keep,]
-      
       range <- quantile(df$ratio, 0.99)
       
       df <- df[df$biomes %in% c("boreal", "temperate", "tropical"),]
@@ -187,7 +153,7 @@ for (i in seq(along = set1)){
       my_comparisons <- list( c("boreal", "tropical"), c("boreal", "temperate"), c("tropical", "temperate"))
       
       png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/boxplot_comparisons/boxplot_foliage_woodystem.png"), width = 3000, height = 2000, units = "px", res = 300)
-      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP foliage: ANPP woody stem", xlab = "", outlier.shape = NA, ylim = c(0, 4), order = c("boreal", "temperate", "tropical")) +
+      p2 <- ggboxplot(df, x = "biomes", y = "ratio", ylab = "ANPP foliage: ANPP woody stem", xlab = "", outlier.shape = NA, ylim = c(0, 4), order = c("boreal", "temperate", "tropical"), add = "jitter") +
         stat_compare_means(comparisons = my_comparisons, hide.ns = T, label = "p.signif", label.y = c(4, 3.75, 3.5), tip.length = 0.01)
       print(p2)
       dev.off()
