@@ -61,8 +61,8 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
 dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
 ForC_simplified <- ForC_simplified[dist.to.keep, ]
 
-# alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
-# ForC_simplified <- ForC_simplified[alt.to.keep, ]
+alt.to.keep <- ForC_simplified$masl <= 1000 & !is.na(ForC_simplified$masl)
+ForC_simplified <- ForC_simplified[alt.to.keep, ]
 
 ## give leaf type
 broadleaf_codes <- c("2TEB", "2TDB", "2TB")
@@ -98,8 +98,8 @@ all.aictab <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "PotentialEvapotranspiration", "VapourPressureDeficit")
 
-set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem")
-set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1")
+set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP_1", "BNPP_root")
+set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1", "NPP_1", "NPP_1")
 
 # set1 <- "ANPP_foliage"
 # set2 <- "ANPP_woody_stem"
@@ -151,50 +151,50 @@ for (i in seq(along = set1)){
         if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
         
         ########## include this section for analysis of cooks distance and subsetting ##########
+
+        # cooksd <- cooks.distance(mod.full)
+        # 
+        # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+        # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+        # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+        # 
+        # influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+        # rows.to.keep<-which(rownames(df) %in% influential)
+        # ifelse(length(influential > 0), dfsubset <- df[-rows.to.keep,], dfsubset <- df)
         
-        cooksd <- cooks.distance(mod.full)
-        
-        plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
-        abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
-        text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
-        
-        influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
-        rows.to.keep<-which(rownames(df) %in% influential)
-        ifelse(length(influential > 0), dfsubset <- df[-rows.to.keep,], dfsubset <- df)
-        
-        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
-        mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+        mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         
         best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
         
-        if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = dfsubset, REML = F)
-        if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+        if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-        sample.size <- length(dfsubset$ratio)
+        sample.size <- length(df)
         
-        if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = dfsubset, REML = T)
+        if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
         
-        newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100), masl = c(0.5))
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
         
         par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
         
-        ylim <- range(dfsubset$ratio)
+        ylim <- range(df$ratio)
         ylim[1] <- ylim[1] - 0.25
         ylim[2] <- ylim[2] + 0.25
         
         
-        plot(ratio ~ fixed, data = dfsubset, xlab = "", ylab = "", ylim = ylim)
+        plot(ratio ~ fixed, data = df, xlab = "", ylab = "", ylim = ylim)
         
         for(masl in unique(newDat$masl)){
           k <- which(unique(newDat$masl) %in% masl)
           lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
         
-        mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = dfsubset, REML = T)
+        mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = T)
         
         r <- round(fixef(mod.linear), 5)
         
