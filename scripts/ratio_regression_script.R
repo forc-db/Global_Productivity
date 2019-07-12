@@ -96,7 +96,7 @@ all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 all.results <- NULL
 all.aictab <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "PotentialEvapotranspiration", "VapourPressureDeficit")
+fixed.variables <- c("mat", "map", "lat", "TempSeasonality")
 
 set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP_1", "BNPP_root")
 set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1", "NPP_1", "NPP_1")
