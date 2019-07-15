@@ -15,6 +15,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 library(lme4)
 library(devtools)
 library(MuMIn)
+library(factoextra)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -47,7 +48,8 @@ ForC_simplified$lat <- abs(ForC_simplified$lat)
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
 
-dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
+dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0 
+masl.to.keep <- !is.na(ForC_simplified[, "masl"])
 
 ## keep only records with min.dbh <= 10cm
 min.dbh.to.keep <- ForC_simplified$min.dbh <= 10 ##& !is.na(ForC_simplified$min.dbh) # this doesn work great, not enough data, but maybe we can just keep the NAs?
@@ -74,12 +76,14 @@ ForC_simplified$variable.name <- gsub("(_OM|_C)", "", ForC_simplified$variable.n
 ForC_simplified$variable.name <- gsub("(_0|_1|_2)", "", ForC_simplified$variable.name)
 
 
-ForC_simplified <- ForC_simplified[dist.to.keep & min.dbh.to.keep, ]
+ForC_simplified <- ForC_simplified[dist.to.keep & min.dbh.to.keep & masl.to.keep, ]
+
+ForC_simplified$masl <- ForC_simplified$masl/1000
 ForC_simplified <- ForC_simplified[ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age),]
 ForC_simplified <- ForC_simplified[!ForC_simplified$sites.sitename %in% "Paracou B", ]
 ForC_simplified$leaf.type.phenology <- NA
 ForC_simplified$leaf.type.phenology <- paste(ForC_simplified$leaf.type, ForC_simplified$leaf.phenology, sep = "_")
-ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP_foliage", "ANPP_woody", "BNPP_root"),]
+# ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP_foliage", "ANPP_woody", "BNPP_root"),]
 
 # Prepare some variables ####
 
@@ -90,28 +94,42 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-response.variables.groups <- list(c("GPP", "NPP", "ANPP"),
-                                  c("ANPP_foliage", "ANPP_woody", "BNPP_root"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP", "ANPP_foliage"),
+                                  c("ANPP_woody", "ANPP_woody_stem"),
+                                  c("R_auto", "R_auto_root"))
 
 
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
 
-ForC_pca <- prcomp(ForC_simplified[, c(17, 38:47)], center = TRUE,scale. = TRUE)
+fixed.variables <- c("mat", "map", "TempSeasonality", "PreSeasonality", "AnnualFrostDays", "VapourPressureDeficit", "SolarRadiation", "Aridity", "PotentialEvapotranspiration")
+
+for(fixed.v in fixed.variables){
+  fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+  ForC_simplified <- ForC_simplified[fixed.no.na,]
+}
+
+ForC_variables <- ForC_simplified[, fixed.variables]
+
+ForC_pca <- prcomp(ForC_variables, center = TRUE,scale. = TRUE)
 axes <- predict(ForC_pca, newdata = ForC_simplified)
 ForC_simplified <- cbind(ForC_simplified, axes)
 
-pca <- abs(ForC_pca$rotation)
-pca <- as.data.frame(sweep(pca, 2, colSums(pca), "/")[, c(1:5)])
+# var <- get_pca_var(ForC_pca)
+# 
+# pca <- abs(ForC_pca$rotation)
+# pca <- as.data.frame(sweep(pca, 2, colSums(pca), "/")[, c(1:5)])
 
-write.csv(pca, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/comparison/pca.csv")
+write.csv(pca, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/archive/pca/comparison/pca.csv")
 
 
 for (response.v in all.response.variables){
   df <- ForC_simplified[ForC_simplified$variable.name %in% response.v,]
-  for (n in 1:5){
+  
+  for (n in 1){
     df$fixed <- df[, paste0("PC", n)]
-    mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-    mod.full <-  lmer(mean ~ fixed + (1|geographic.area/plot.name), data = df)
+    mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+    mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
     significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
     significance <- signif(significance, digits=4)
     legend1 <- paste0("p-value = ", significance)
@@ -120,14 +138,21 @@ for (response.v in all.response.variables){
     Rsq <- signif(Rsq, digits=4)
     legend2 <- paste0("r-squared = ", Rsq[1])
   
-    tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/comparison/pca_regression_", response.v, "_PC", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/archive/pca/comparison/pca_regression_", response.v, "_PC", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+    
+    newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+    newDat$fit <- predict(mod.full, newDat, re.form = NA)
+    
     plot(mean ~ fixed, data = df,
        xlab = paste0("PC", n),
        ylab = paste0(response.v),
        main = paste0(response.v))
-    abline(fixef(mod.full))
+    
+    for(masl in unique(newDat$masl)){
+      i <- which(unique(newDat$masl) %in% masl)
+      lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lwd = i)}
     legend("topleft", legend=c(legend1, legend2))
-    dev.off()
+    # dev.off()
   }
 }
 
@@ -141,7 +166,7 @@ for (n in 2:5){
 
 
 ## fixed variables list ####
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "MeanDiurnalRange", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualPET", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+fixed.variables <- c("mat", "map", "MeanDiurnalRange", "TempSeasonality", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "SolarRadiation")
 
 ## prepare results table
 
