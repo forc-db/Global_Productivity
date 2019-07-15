@@ -33,9 +33,9 @@ Globally, forests play an important role in the carbon cycle and are an importan
   
 There are two major questions to understand: firstly, how forest productivity varies globally - and specifically which areas show the greatest peaks in productivity -; and secondly, which climate variables drive this variation. On a global scale, the productivity of forests varies with latitude, with a general trend of increasing productivity towards the tropics [@beer_terrestrial_2010; @jung_global_2011]; however the exact nature of this pattern, and how it varies by component of productivity, is poorly understood. This latitudinal gradient is most likely to be explained by climatic gradients in temperature, precipitation, length of growing season, and combinations of the above. Productivity is influenced by a range of climatic drivers, including mean annual temperature (MAT) and mean annual precipitation (MAP) [@del_grosso_global_2008], but doesn't necessarily respond linearly to these drivers. Disentangling the shape of productivity responses to climate drivers will enable better predictions of future responses under climate change.  
 
-*What is primary productivity?* During photosynthesis, plants capture carbon dioxide from the atmosphere. The gross primary productivity (GPP) of an ecosystem is the gross uptake, via photosynthesis, of carbon dioxide by plants in that ecosystem. Only a fraction of the carbon captured is assimilated into plant tissue; the rest is used in autotrophic respiration (R~a~). The component of GPP that is stored as plant material is the net primary productivity (NPP) of an ecosystem. Net primary productivity can therefore be expressed as:
+*The components of forest* During photosynthesis, plants capture carbon dioxide from the atmosphere. The gross primary productivity (GPP) of an ecosystem is the gross uptake, via photosynthesis, of carbon dioxide by plants in that ecosystem. Only a fraction of the carbon captured is assimilated into plant tissue; the rest is used in autotrophic respiration (R~auto~). The component of GPP that is stored as plant material is the net primary productivity (NPP) of an ecosystem. Net primary productivity can therefore be expressed as:
 
-$$ NPP = GPP + R~a~ $$
+$$ NPP = GPP + R~auto~ $$
 
 Currently, GPP cannot be measured directly by observing total ecosystem photosynthesis. Instead field estimates of GPP have to be derived based on modelling and extrapolation of eddy-covariance studies and measurements of net ecosystem exchange (NEE) [@clark_reviews_2017].
 
@@ -99,7 +99,7 @@ As discussed above, estimates of NPP, ANPP, and BNPP are generated through summi
 | Database | Variables downloaded | Citation |
 |-----------------------|--------------------------------------------|---------------------|
 | WorldClim | Mean annual temperature; temperature seasonality; annual temperature range; mean annual precipitation | [@hijmans_very_2005] |
-| WorldClim2 | Vapour pressure; solar radiation | [@fick_worldclim_2017] |
+| WorldClim2 | Solar radiation | [@fick_worldclim_2017] |
 | Climate Research Unit (CRU) time-series dataset v 4.03 | Cloud cover; annual frost days; annual wet days; potential evapotranspiration | [@harris_updated_2014] |
 | Global Aridity Index and Potential Evapotranspiration Climate Database | Aridity; potential evapotranspiration | [@trabucco_global_2018] |
 | TerraClimate | Vapour pressure deficit | [@abatzoglou_terraclimate_2018] |
@@ -151,7 +151,7 @@ Looking across all productivity components, the climate variables which explain 
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (R-squared = 0.15).
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm. 
   
-*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, r^2^ = 0.44) and ANPP:BNPP (p<0.001, r^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions.
+*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, r^2^ = 0.44) and ANPP:BNPP (p<0.001, r^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
  
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
   
