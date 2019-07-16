@@ -94,13 +94,9 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP", "ANPP_foliage"),
-                                  c("ANPP_woody", "ANPP_woody_stem"),
-                                  c("R_auto", "R_auto_root"))
-
-
 all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
+
+all.response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto", "R_auto_root")
 
 fixed.variables <- c("mat", "map", "TempSeasonality", "PreSeasonality", "AnnualFrostDays", "VapourPressureDeficit", "SolarRadiation", "Aridity", "PotentialEvapotranspiration")
 
