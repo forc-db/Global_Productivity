@@ -115,21 +115,19 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality")
+fixed.variables <- c("mat", "map", "lat", "AnnualMeanTemp", "TempSeasonality", "TempRangeAnnual", "AnnualPre", "AnnualFrostDays", "AnnualWetDays", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality")
 
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP", "ANPP_foliage"),
-                                  c("ANPP_woody", "ANPP_woody_stem"),
+                                  c("ANPP", "ANPP_foliage", "ANPP_woody_stem"),
                                   c("R_auto", "R_auto_root"))
 
 for(response.variables in response.variables.groups){
   
   if(response.variables[1] == "GPP") n <- 1
   if(response.variables[1] == "ANPP") n <- 2
-  if(response.variables[1] == "ANPP_woody") n <- 3
-  if(response.variables[1] == "R_auto") n <- 4
+  if(response.variables[1] == "R_auto") n <- 3
   
   ### mature forests only ####
   for (age in ages){
