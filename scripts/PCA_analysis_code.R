@@ -122,16 +122,18 @@ ForC_simplified <- cbind(ForC_simplified, axes)
 
 write.csv(pca, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/archive/pca/comparison/pca.csv")
 
+all.results <- NULL
 
 for (response.v in all.response.variables){
   df <- ForC_simplified[ForC_simplified$variable.name %in% response.v,]
   
-  for (n in 1){
+  for (n in 1:2){
     df$fixed <- df[, paste0("PC", n)]
     mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
     mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = df, REML = F)
     significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
     significance <- signif(significance, digits=4)
+    significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
     legend1 <- paste0("p-value = ", significance)
   
     Rsq <- as.data.frame(r.squaredGLMM(mod.full))
@@ -143,81 +145,91 @@ for (response.v in all.response.variables){
     newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
     newDat$fit <- predict(mod.full, newDat, re.form = NA)
     
-    plot(mean ~ fixed, data = df,
+    plot(scale(mean) ~ fixed, data = df,
        xlab = paste0("PC", n),
        ylab = paste0(response.v),
        main = paste0(response.v))
     
     for(masl in unique(newDat$masl)){
       i <- which(unique(newDat$masl) %in% masl)
-      lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lwd = i)}
+      lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lwd = i, lty = ifelse(significant.effect, 1, 2))}
     legend("topleft", legend=c(legend1, legend2))
     # dev.off()
+    
+    results <- data.frame(response.variable = response.v, PC = n, significant = significant.effect, p.value = significance,  Rsq = Rsq)
+    
+    all.results <- rbind(all.results, results)
   }
 }
 
-leaf.type.phenology <- ForC_simplified$leaf.type.phenology
-
-for (n in 2:5){
-  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/comparison/pca_biplot_PC", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-  print(ggbiplot::ggbiplot(ForC_pca, choices = (n-1):(n), groups = leaf.type.phenology) + ggtitle(paste0("PCA plot for PC", n-1, "and PC", n)) + scale_x_continuous(expand = c(.3, .3)) + scale_y_continuous(expand = c(.3, .3)))
-  dev.off()
-}
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/PCA.csv", row.names = F)
 
 
-## fixed variables list ####
-fixed.variables <- c("mat", "map", "MeanDiurnalRange", "TempSeasonality", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "SolarRadiation")
+#########################################################################
 
-## prepare results table
-
-all.results <- NULL
-
-
-for(response.v in all.response.variables){
-print(response.v)
-df <- ForC_simplified[ForC_simplified$variable.name %in% response.v,]
-leaf.type <- df$leaf.type
-leaf.phenology <- df$leaf.phenology
-leaf.type.phenology <- df$leaf.type.phenology
-
-df_pca <- prcomp(df[, c(17, 20:21, 38:47)], center = TRUE,scale. = TRUE)
-for (n in 2){
-tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_biplot_", response.v, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
-print(ggbiplot::ggbiplot(df_pca, choices = (n-1):(n), groups = leaf.type.phenology) + ggtitle(paste0("PCA plot for ", response.v)) + scale_x_continuous(expand = c(.3, .3)) + scale_y_continuous(expand = c(.3, .3)))
-dev.off()
-}
-tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_screeplot_", response.v, ".tiff"))
-print(ggbiplot::ggscreeplot(df_pca, type = c("cev")) + ggtitle(paste0("PCA scree plot for ", response.v)))
-dev.off()
-
-pca <- abs(df_pca$rotation)
-pca <- as.data.frame(sweep(pca, 2, colSums(pca), "/")[, c(1:5)])
-
-write.csv(pca, file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/pca/pca_", response.v, ".csv"))
-
-axes <- predict(df_pca, newdata = df)
-df <- cbind(df, axes)
-
-#for (n in 1:2){
-  mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
-  mod.full <-  lmer(mean ~ PC1 + (1|geographic.area/plot.name), data = df)
-  significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-  significance <- signif(significance, digits=4)
-  legend1 <- paste0("p-value = ", significance)
-  
-  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-  Rsq <- signif(Rsq, digits=4)
-  legend2 <- paste0("r-squared = ", Rsq[1])
-  
-  tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_regression_", response.v, "_PC1.tiff"), width = 2255, height = 2000, units = "px", res = 300)
-  plot(mean ~ PC1, data = df,
-       xlab = "PC1",
-       ylab = paste0(response.v),
-       main = paste0(response.v))
-  abline(fixef(mod.full))
-  legend("topleft", legend=c(legend1, legend2))
-  dev.off()
-#}
-
-}
+# 
+# leaf.type.phenology <- ForC_simplified$leaf.type.phenology
+# 
+# for (n in 2:5){
+#   tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/comparison/pca_biplot_PC", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#   print(ggbiplot::ggbiplot(ForC_pca, choices = (n-1):(n), groups = leaf.type.phenology) + ggtitle(paste0("PCA plot for PC", n-1, "and PC", n)) + scale_x_continuous(expand = c(.3, .3)) + scale_y_continuous(expand = c(.3, .3)))
+#   dev.off()
+# }
+# 
+# 
+# ## fixed variables list ####
+# fixed.variables <- c("mat", "map", "MeanDiurnalRange", "TempSeasonality", "PreSeasonality", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "SolarRadiation")
+# 
+# ## prepare results table
+# 
+# all.results <- NULL
+# 
+# 
+# for(response.v in all.response.variables){
+# print(response.v)
+# df <- ForC_simplified[ForC_simplified$variable.name %in% response.v,]
+# leaf.type <- df$leaf.type
+# leaf.phenology <- df$leaf.phenology
+# leaf.type.phenology <- df$leaf.type.phenology
+# 
+# df_pca <- prcomp(df[, c(17, 20:21, 38:47)], center = TRUE,scale. = TRUE)
+# for (n in 2){
+# tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_biplot_", response.v, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+# print(ggbiplot::ggbiplot(df_pca, choices = (n-1):(n), groups = leaf.type.phenology) + ggtitle(paste0("PCA plot for ", response.v)) + scale_x_continuous(expand = c(.3, .3)) + scale_y_continuous(expand = c(.3, .3)))
+# dev.off()
+# }
+# tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_screeplot_", response.v, ".tiff"))
+# print(ggbiplot::ggscreeplot(df_pca, type = c("cev")) + ggtitle(paste0("PCA scree plot for ", response.v)))
+# dev.off()
+# 
+# pca <- abs(df_pca$rotation)
+# pca <- as.data.frame(sweep(pca, 2, colSums(pca), "/")[, c(1:5)])
+# 
+# write.csv(pca, file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/pca/pca_", response.v, ".csv"))
+# 
+# axes <- predict(df_pca, newdata = df)
+# df <- cbind(df, axes)
+# 
+# #for (n in 1:2){
+#   mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df)
+#   mod.full <-  lmer(mean ~ PC1 + (1|geographic.area/plot.name), data = df)
+#   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+#   significance <- signif(significance, digits=4)
+#   legend1 <- paste0("p-value = ", significance)
+#   
+#   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+#   Rsq <- signif(Rsq, digits=4)
+#   legend2 <- paste0("r-squared = ", Rsq[1])
+#   
+#   tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/pca/pca_regression_", response.v, "_PC1.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#   plot(mean ~ PC1, data = df,
+#        xlab = "PC1",
+#        ylab = paste0(response.v),
+#        main = paste0(response.v))
+#   abline(fixef(mod.full))
+#   legend("topleft", legend=c(legend1, legend2))
+#   dev.off()
+# #}
+# 
+# }
 
