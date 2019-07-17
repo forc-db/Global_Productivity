@@ -1,12 +1,10 @@
-,,Climate variables,,,,,,,,
-,R-squared,Mean annual temperature,Mean annual precipitation,Aridity,Annual wet days,Potential evapotranspiration,Solar radiation,Temperature seasonality,Vapour pressure deficit,Interactive effect
-GPP,0.74,-,0.004,-,-,-,-,-0.086,-,-0.0001
-NPP,0.56,0.098,-,-0.0001,-,-,-,-,-,<0.0001
-ANPP,0.49,0.238,-,-,-,-0.002,-,-,-,NA
-ANPP foliage,0.66,0.133,-,-,-,-0.001,-,-,-,NA
-ANPP woody stem,0.25,-,-,<0.0001,-,-,-,-,0.76,0.0001
-BNPP,0.36,-,-,-,-,-,-,-0.046,-1.347,0.056
-BNPP fine root,0.19,-,0.002,-,-,-,-,-,4.722,-0.002
-R auto,0.95,3.943,-,-,-,-,0.0001,-,-,<0.0001
-R root,0.47,-,0.0007,-,-,-,-,-0.006,-,<0.0001
-,,,,,,,,,,
+,Sample size,R-squared,Mean annual temperature,Temperature seasonality,Mean annual precipitation,Precipitation seasonality,Potential evapotranspiration,Vapour pressure deficit,Interactive effect
+GPP,228,0.74,-,-0.086,0.004,-,-,-,-0.0001
+NPP,98,0.56,0.372,-,-,0.036,-,-,-0.003
+ANPP,202,0.49,0.238,-,-,-,-0.002,-,NA
+ANPP foliage,69,0.66,0.101,-,-,-0.007,-,-,NA
+ANPP woody stem,263,0.26,-,-,-,-,0.002,4.286,-0.003
+BNPP,104,0.36,-,-0.046,-,-,-,-1.347,0.056
+BNPP fine root,86,0.19,-,-,0.002,-,-,4.722,-0.002
+R root,54,0.47,-,-0.006,0.0007,-,-,-,<0.0001
+,,,,,,,,,
