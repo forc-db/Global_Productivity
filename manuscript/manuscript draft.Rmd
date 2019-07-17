@@ -15,12 +15,12 @@ header-includes:  \usepackage{float}
 options(tinytex.verbose = TRUE)
 ```
 
+
 ```{r include=FALSE}
 knitr::write_bib(c(
   .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra', 'AICcmodavg'
 ), 'packages.bib')
 ```
-
 
 
 ###Abstract
@@ -150,6 +150,17 @@ Looking across all productivity components, the climate variables which explain 
   
 **Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
 **Temperature seasonality and annual temperature range.** These two climate variables are strongly correlated, and so only temperature seasonality is presented in figure 4. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. GPP, NPP, ANPP, and R~root~ show a polynomial relationship with both variables, and BNPP~root~ shows a polynomial relationship with annual temperature range. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woodystem~ show a linear relationship with both variables.  
+**Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (r-squared = 0.15).  
+**Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm.  
+  
+The best multivariate models explained similar amounts of variation to  
+  
+```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against the climate variables identified as the best predictors: mean annual temperature; temperature seasonality; annual temperature range; and vapour pressure. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+  knitr::include_graphics("combined_plots.png")
+```
+  
+**Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
+**Temperature seasonality and annual temperature range.** These two climate variables are strongly correlated, and so only temperature seasonality is presented in figure 4. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. GPP, NPP, ANPP, and R~root~ show a polynomial relationship with both variables, and BNPP~root~ shows a polynomial relationship with annual temperature range. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woodystem~ show a linear relationship with both variables.  
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (R-squared = 0.15).
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm. 
   
@@ -157,13 +168,14 @@ Looking across all productivity components, the climate variables which explain 
 library(knitr)
 library(kableExtra)
 multivariate_models <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/multivariate_models.csv", stringsAsFactors = FALSE, check.names = FALSE)
-
-kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model summary", escape = FALSE) %>%
+rownames(multivariate_models) <- c("GPP", "NPP", "ANPP", "ANPP\\textsubscript{foliage}", "ANPP\\textsubscript{woody stem}", "BNPP", "BNPP\\textsubscript{root}", "R\\textsubscript{root}")
+kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model output summary. For each carbon flux, correlation coefficients are presented for the two climate variables which explain the most variation when included in a multivariate model. If the model includes an interactive effect, correlation coefficients for the interaction are presented. Results for R\\textsubscript{auto} are not presented here due to the small sample size (n = 14).  ", escape = FALSE, row.names = TRUE) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   column_spec(1:10, width = "2cm") %>%
-  add_header_above(c(" ", " ", "Climate variables" = 7, " "))
+  add_header_above(c(" ", " ", " ", "Correlation coefficients of climate variables" = 6, " "))
 
 ```
+
   
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, r^2^ = 0.44) and ANPP:BNPP (p<0.001, r^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
  
