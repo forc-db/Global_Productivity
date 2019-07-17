@@ -99,8 +99,8 @@ library(AICcmodavg)
 all.results <- NULL
 all.aictab <- NULL
 
-fixed.variables.set1 <- c("mat", "map", "TempSeasonality", "AnnualWetDays", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
-fixed.variables.set2 <- c("mat", "map", "TempSeasonality", "AnnualWetDays", "SolarRadiation", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit")
+fixed.variables.set1 <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality")
+fixed.variables.set2 <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
