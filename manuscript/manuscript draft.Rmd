@@ -153,6 +153,18 @@ Looking across all productivity components, the climate variables which explain 
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (R-squared = 0.15).
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm. 
   
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+multivariate_models <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/multivariate_models.csv", stringsAsFactors = FALSE, check.names = FALSE)
+
+kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model summary", escape = FALSE) %>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1:10, width = "2cm") %>%
+  add_header_above(c(" ", " ", "Climate variables" = 7, " "))
+
+```
+  
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, r^2^ = 0.44) and ANPP:BNPP (p<0.001, r^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
  
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
