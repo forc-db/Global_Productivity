@@ -160,18 +160,18 @@ for(response.variables in response.variables.groups){
         ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.linear <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.poly <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        # mod.linear <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        # mod.poly <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         mod.int <- lmer(mean ~ fixed1*fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
         mod.add <- lmer(mean ~ fixed1 + fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
         
         
-        best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int, mod.add = mod.add), sort = T)$Modname[1])
-        delta.aic <- as.numeric(aictab(list(mod.linear = mod.linear, mod.poly = mod.poly, mod.int = mod.int, mod.add = mod.add), sort = T)$Delta_AICc[2])
+        best.model <- as.character(aictab(list(mod = mod, mod.int = mod.int, mod.add = mod.add), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod.int = mod.int, mod.add = mod.add), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
-        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
-        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = F)
+        # if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod.int") mod.full <- lmer(mean ~ fixed1*fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod.add") mod.full <- lmer(mean ~ fixed1 + fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = F)
@@ -180,8 +180,8 @@ for(response.variables in response.variables.groups){
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = T)
-        if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T)
+        # if (best.model == "mod.poly") mod.full <- lmer(mean ~ poly(fixed1, 2) + masl + (1|geographic.area/plot.name), data = df, REML = T)
+        # if (best.model == "mod.linear") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed1, 1) + masl + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.int") mod.full <- lmer(mean ~ fixed1*fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.add") mod.full <- lmer(mean ~ fixed1 + fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = T)
