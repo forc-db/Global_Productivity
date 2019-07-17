@@ -187,8 +187,11 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.add") mod.full <- lmer(mean ~ fixed1 + fixed2 + masl + (1|geographic.area/plot.name), data = df, REML = T)
         
                
-        r <- round(fixef(mod.full), 2)
+        r <- round(fixef(mod.full), 4)
         equation <-  paste(response.v, "=", r[1], "+", fixed.v1,  "x", r[2])
+        fixed1.coef <- ifelse(best.model %in% c("mod.int", "mod.add"), r[2], NA)
+        fixed2.coef <- ifelse(best.model %in% c("mod.int", "mod.add"), r[3], NA)
+        int.coef <- ifelse(best.model %in% "mod.int", r[5], NA)
        
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         significance <- signif(significance, digits=4)
@@ -196,7 +199,7 @@ for(response.variables in response.variables.groups){
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
         
-        results <- data.frame(response = response.v, fixed1 = fixed.v1, fixed2 = fixed.v2, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic)
+        results <- data.frame(response = response.v, fixed1 = fixed.v1, fixed2 = fixed.v2, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
         
         all.results <- rbind(all.results, results)
         
