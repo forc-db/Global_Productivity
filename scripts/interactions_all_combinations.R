@@ -106,8 +106,7 @@ all.aictab <- NULL
 effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "masl", "(1|geographic.area/plot.name)")
 
 
-# response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto_root")
-response.variables <- "GPP"
+response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto_root")
         
         for (response.v in response.variables){
           
@@ -124,17 +123,29 @@ response.variables <- "GPP"
           df$masl <- (df$masl/1000)
           
           #create all combinations of random / fixed effects
-          effects_comb <- 
+          
+          response <- "mean"
+          
+          uni_comb <-
+            unlist( sapply( seq_len(length(1)), 
+                            function(x) {
+                              apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
+                            }))
+          
+          uni_comb <- expand.grid(response, uni_comb) 
+          uni_comb <- uni_comb[grepl("1", uni_comb$Var2), ] #keep random effect
+          uni_comb <- uni_comb[grepl("masl", uni_comb$Var2), ] #keep masl
+          
+          add_comb <- 
             unlist( sapply( seq_len(length(1)), 
                             function(x) {
                               apply( combn(effects, 4), 2, function(x) paste(x, collapse = "+"))
                             }))
+         
           
-          response <- "mean"
-          
-          var_comb <- expand.grid(response, effects_comb) 
-          var_comb <- var_comb[grepl("1", var_comb$Var2), ] #keep random effect
-          var_comb <- var_comb[grepl("masl", var_comb$Var2), ] #keep masl
+          add_comb <- expand.grid(response, add_comb) 
+          add_comb <- add_comb[grepl("1", add_comb$Var2), ] #keep random effect
+          add_comb <- add_comb[grepl("masl", add_comb$Var2), ] #keep masl
           
           int_comb <-
             unlist( sapply( seq_len(length(1)), 
@@ -159,7 +170,7 @@ response.variables <- "GPP"
           int_comb <- int_comb[grepl("1", int_comb$Var2), ] #keep random effect
           int_comb <- int_comb[grepl("masl", int_comb$Var2), ] #keep masl
           
-          var_comb <- rbind(var_comb, int_comb)
+          var_comb <- rbind(uni_comb, add_comb, int_comb)
           
           formula_vec <- sprintf("%s ~ %s", var_comb$Var1, var_comb$Var2)
           
@@ -170,9 +181,19 @@ response.variables <- "GPP"
           })
           names(lmm_all) <- formula_vec
           
-          var_aic <- aictab(lmm_all, second.ord=TRUE, sort=TRUE) #rank based on AICc
+          var_aic <- aictab(lmm_all, sort = FALSE) #rank based on AICc
           rsq <- rsquared(lmm_all)
+          
+          output <- cbind(var_aic, rsq)
+          
+          output <- output[order(output$Delta_AICc),]
+          
+          results <- output[1:8, c(1, 3, 4, 12, 13)]
+          
+          results$response.variable <- response.v
+          
+          all.results <- all.results <- rbind(all.results, results)
           
         }
 
-# write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/global_trend_models_interaction.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_table.csv", row.names = F)
