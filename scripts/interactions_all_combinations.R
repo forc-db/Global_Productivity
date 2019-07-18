@@ -10,6 +10,7 @@ setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
 library(lme4)
 library(MuMIn)
 library(AICcmodavg)
+library(piecewiseSEM)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -170,6 +171,7 @@ response.variables <- "GPP"
           names(lmm_all) <- formula_vec
           
           var_aic <- aictab(lmm_all, second.ord=TRUE, sort=TRUE) #rank based on AICc
+          rsq <- rsquared(lmm_all)
           
         }
 
