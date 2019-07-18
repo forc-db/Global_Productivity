@@ -6,4 +6,5 @@
 "ANPP","mean ~ mat+PotentialEvapotranspiration+masl+(1|geographic.area/plot.name)",TRUE,2.507e-17,198,0.5048,0.843,0.239,-0.002,NA
 "ANPP_foliage","mean ~ mat+PotentialEvapotranspiration+masl+(1|geographic.area/plot.name)",TRUE,1.609e-11,68,0.6567,0.8141,0.1328,-0.0011,NA
 "ANPP_woody_stem","mean ~ mat+masl+(1|geographic.area/plot.name)",TRUE,7.646e-10,229,0.2418,0.8766,0.0713,-0.1326,NA
+"R_auto","mean ~ mat+masl+(1|geographic.area/plot.name)",TRUE,1.072e-05,14,0.8321,0.9493,0.502,-10.5145,NA
 "R_auto_root","mean ~ map*TempSeasonality+masl+(1|geographic.area/plot.name)",TRUE,0.002024,46,0.4256,0.8511,7e-04,-0.0063,0
