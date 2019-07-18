@@ -101,7 +101,7 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 ## prepare results table
 
 all.results <- NULL
-all.aictab <- NULL
+best.results <- NULL
 
 effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "masl", "(1|geographic.area/plot.name)")
 
@@ -187,13 +187,60 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           output <- cbind(var_aic, rsq)
           
           output <- output[order(output$Delta_AICc),]
+          output$Modnames <- as.character(output$Modnames)
+          output$response.variable <- response.v
           
-          results <- output[1:8, c(1, 3, 4, 12, 13)]
+          results <- output[1:8, c(1, 3, 4, 12, 13, 14)]
+          best.result <- output[1, c(1, 3, 4, 12, 13, 14)]
           
-          results$response.variable <- response.v
           
           all.results <- all.results <- rbind(all.results, results)
+          best.results <- best.results <- rbind(best.results, best.result)
+          
           
         }
 
 write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_table.csv", row.names = F)
+
+all.results = NULL
+
+for(response.v in response.variables){
+  
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+  if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+  if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+  
+  
+  rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+  
+  df <- ForC_simplified[rows.with.response, ]
+  
+  df$masl <- (df$masl/1000)
+  
+  mod <- best.results[best.results$response.variable %in% response.v,]$Modnames
+  mod.full <- lmer(mod, data = df, REML = T)
+  
+  mod.null <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = T)
+  
+  significant.effect <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2] < 0.05
+  significance <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2]
+  sample.size <- length(df$mean)
+  
+  r <- round(fixef(mod.full), 4)
+  fixed1.coef <- r[2]
+  fixed2.coef <- r[3]
+  int.coef <- r[5]
+  
+  significance <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2]
+  significance <- signif(significance, digits=4)
+  
+  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+  Rsq <- signif(Rsq, digits=4)
+  
+  results <- data.frame(response = response.v, mod = mod, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
+  
+  all.results <- all.results <- rbind(all.results, results)
+}
+
+write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_best.csv", row.names = F)
