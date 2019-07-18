@@ -106,7 +106,7 @@ best.results <- NULL
 effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "masl", "(1|geographic.area/plot.name)")
 
 
-response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "R_auto_root")
+response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
         
         for (response.v in response.variables){
           
