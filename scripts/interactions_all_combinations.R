@@ -37,6 +37,8 @@ ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$me
 ## take absolute value of latitude
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
+ForC_simplified$SolarRadiation <- ForC_simplified$SolarRadiation/1000
+
 
 # Control for some factors ####
 
