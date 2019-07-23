@@ -1,9 +1,10 @@
-Sample size,R-squared,Mean annual temperature,Temperature seasonality,Mean annual precipitation,Precipitation seasonality,Potential evapotranspiration,Vapour pressure deficit,Interactive effect
-228,0.74,-,-0.086,0.004,-,-,-,-0.0001
-98,0.56,0.372,-,-,0.036,-,-,-0.003
-202,0.49,0.238,-,-,-,-0.002,-,NA
-69,0.66,0.101,-,-,-0.007,-,-,NA
-263,0.26,-,-,-,-,0.002,4.286,-0.003
-104,0.36,-,-0.046,-,-,-,-1.347,0.056
-86,0.19,-,-,0.002,-,-,4.722,-0.002
-54,0.47,-,-0.006,0.0007,-,-,-,<0.0001
+Sample size,R-squared,Mean annual temperature,Temperature seasonality,Mean annual precipitation,Precipitation seasonality,Potential evapotranspiration,Vapour pressure deficit,Solar radiation,Interactive effect
+226,0.73,-,-0.083,0.004,-,-,-,-,-0.0001
+97,0.57,0.376,-,-,0.036,-,-,-,-0.003
+198,0.5,0.239,-,-,-,-0.002,-,-,NA
+68,0.66,0.133,-,-,-,-0.001,-,-,NA
+229,0.24,0.07,-,-,-,-,-,-,NA
+86,0.38,-,-,-,0.038,-,-,<0.0001,<0.0001
+84,0.19,-,-,0.002,-,-,4.697,-,-0.002
+14,0.83,0.5,-,-,-,-,-,-,NA
+46,0.43,-,-0.006,0.0007,-,-,-,-,<0.0001
