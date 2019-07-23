@@ -122,7 +122,7 @@ For each climate variable, three models were specified: a null model; a model wi
 
 Because the magnitude of fluxes varies significantly, in order to facilitate comparisons between regression models for each flux, data for each flux was scaled, to give the data a mean of 0 and standard deviation of 1. As each data set was scaled separately, this does not allow for statistical comparisons of slope values, but does assist in visualising the data.  
   
-To investigate the potential interactive effects of climate variables on carbon fluxes, multivariate models were also specified. Climate variables which were non-significant or poor predictors in the models with a single climate term, or which were strongly correlated with another climate term, were dropped, leaving a subset of 8 climate variables. For each possible pairing of climate variables, three models were specified: a null model; a model with the two climate variables showing an additive effect; and a model with the two climate variables showing an interactive effect. As before, altitude was included as a fixed effect, and plot nested within geographic area as a random effect. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. Slope coefficients were calculated for each of the terms, and for the interactive term if relevant. 
+To investigate the potential interactive effects of climate variables on carbon fluxes, multivariate models were also specified. Climate variables which were non-significant or poor predictors in the models with a single climate term, or which were strongly correlated with another climate term, were dropped, leaving a subset of 7 climate variables: mean annual temperature; temperature seasonality; mean annual precipitation; precipitation seasonality; potential evapotranspiration; vapour pressure deficit; and solar radiation. For each possible pairing of climate variables, two models were specified: a model with the two climate variables showing an additive effect; and a model with the two climate variables showing an interactive effect. In addition a null model, and models including each climate term as a individual (univariate) linear term were specified. As before, altitude was included as a fixed effect, and plot nested within geographic area as a random effect. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. Slope coefficients were calculated for each of the terms, and for the interactive term if relevant. 
   
 *Validating models of component fluxes.* Comparison of component fluxes is based on the assumption that components sum accurately to estimates of larger fluxes. To test this, components of larger fluxes were regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each component. The point estimates for smaller component fluxes were summed to generate new "stacked" estimates of larger fluxes, which were then compared against actual measurements of the larger flux. Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. Stacked plots were generated for:  
 1. GPP = NPP + R~auto~  
@@ -163,18 +163,18 @@ Looking across all productivity components, the climate variables which explain 
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (r-squared = 0.15).  
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~rootfine~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm.  
   
-Including a second climate term in the models didn't tend to significantly increase the explanatory power of the models. The best multivariate models for each carbon flux have r-squared values in the range of those recorded for models with a single climate term. However, the multivariate models do capture the additive and interactive effects of temperature and water availability.
+Including a second climate term in the models tended to have only a small effect on the explanatory power of the models. For ANPP~woody stem~ and R~auto~, including two climate terms did not improve the explantory power of the models: mean annual temperature alone was the best climate predictor for both of these fluxes. For all the remaining carbon fluxes, including a second climate term did improve the explanatory power of the models. ANPP and ANPP~foliage~ were best explained by an additive model, in both cases including mean annual temperature and potential evapotranspiration as the climate terms. GPP, NPP, BNPP, BNPP~fine root~, and R~root~ were all best explained by multivariate models which included an interaction term between the two climate terms. The best models for GPP, NPP, and R~root~ all included a temperature term and a precipitation term, indicating that although precipitation isn't a strong predictor for these variables, the interaction between temperature and water availability is important. 
 
   
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 multivariate_models <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/multivariate_models.csv", stringsAsFactors = FALSE, check.names = FALSE)
-rownames(multivariate_models) <- c("GPP", "NPP", "ANPP", "ANPP\\textsubscript{foliage}", "ANPP\\textsubscript{woody stem}", "BNPP", "BNPP\\textsubscript{fine root}", "R\\textsubscript{root}")
-kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model output summary. For each carbon flux, correlation coefficients are presented for the two climate variables which explain the most variation when included in a multivariate model. If the model includes an interactive effect, correlation coefficients for the interaction are presented. Results for R\\textsubscript{auto} are not presented here due to the small sample size (n = 14).  ", escape = FALSE, row.names = TRUE) %>%
+rownames(multivariate_models) <- c("GPP", "NPP", "ANPP", "ANPP\\textsubscript{foliage}", "ANPP\\textsubscript{woody stem}", "BNPP", "BNPP\\textsubscript{fine root}","R\\textsubscript{auto}", "R\\textsubscript{root}")
+kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model output summary. For each carbon flux, correlation coefficients are presented for the two climate variables which explain the most variation when included in a multivariate model. If the model includes an interactive effect, correlation coefficients for the interaction are presented. For carbon fluxes that were best predicted by a single climate term, correlation coefficients are presented for that term only.  ", escape = FALSE, row.names = TRUE) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   column_spec(1:10, width = "2cm") %>%
-  add_header_above(c(" ", " ", " ", "Correlation coefficients of climate variables" = 6, " "))
+  add_header_above(c(" ", " ", " ", "Correlation coefficients of climate variables" = 7, " "))
 
 ```
 
@@ -184,16 +184,16 @@ kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multiva
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
   
 | Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration | Multivariate model |
-|----------|----------|----------|----------|----------|----------|
+|----------|----------|----------|----------|--------------|----------|
 | R~auto~ | 0.64 | 0.83 | 0.54 | 0.63 | NA |
-| GPP | 0.66 | 0.61 | 0.75 | 0.40 | 0.74 |
-| NPP | 0.51 | 0.49 | 0.52 | 0.34 | 0.56 |
-| ANPP | 0.50 | 0.45 | 0.47 | 0.32 | 0.49 |
+| GPP | 0.66 | 0.61 | 0.75 | 0.40 | 0.73 |
+| NPP | 0.51 | 0.49 | 0.52 | 0.34 | 0.57 |
+| ANPP | 0.50 | 0.45 | 0.47 | 0.32 | 0.50 |
 | ANPP~foliage~ | 0.55 | 0.63 | 0.54 | 0.40 | 0.66 |
-| ANPP~woodystem~ | 0.25 | 0.23 | 0.20 | 0.26 | 0.26 |
-| BNPP~root~ | 0.31 | 0.26 | 0.31 | 0.32 | 0.36 |
+| ANPP~woodystem~ | 0.25 | 0.23 | 0.20 | 0.26 | NA |
+| BNPP~root~ | 0.31 | 0.26 | 0.31 | 0.32 | 0.38 |
 | BNPP~rootfine~ | 0.14 | 0.11 | 0.16 | 0.11 | 0.19 |
-| R~root~ | 0.25 | 0.21 | 0.29 | 0.04* | 0.47 |
+| R~root~ | 0.25 | 0.21 | 0.29 | 0.04* | 0.43 |
   
 Table: R-squared values presented for latitude, three climate variables, and the best multivariate model for each carbon flux. Values marked * are not significant. 
   
