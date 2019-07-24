@@ -4,6 +4,7 @@ rm(list = ls())
 library(raster)
 library(ncdf4)
 library(Hmisc)
+library(progress)
 
 ForC_simplified <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified.csv")
 
@@ -207,6 +208,8 @@ ForC_vpd <- raster::extract(vpd, ForC_simplified)
 vpd1 <- data.frame(ForC_simplified)
 vpd1 <- data.frame(measurement.ID = vpd1[,1], sites.sitename = as.character(vpd1[,2]), plot.name = as.character(vpd1[,3]), ForC_vpd)
 
+
+
 vpd1$vpd_mean <- rowSums(vpd1[, c(4:723)], na.rm = TRUE)
 vpd1$vpd_mean <- (vpd1$vpd_mean)/720
 vpd <- vpd1[, c(1:3, 724)]
@@ -215,5 +218,51 @@ ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, vpd$vpd_mean)
 names(ForC_simplified)[51] <- "VapourPressureDeficit"
+
+
+
+vpd1 <- data.frame(ForC_simplified)
+vpd1 <- data.frame(measurement.ID = vpd1[,1], sites.sitename = as.character(vpd1[,2]), plot.name = as.character(vpd1[,3]), ForC_vpd)
+
+years <- c(1958:2017)
+years <- append(years, c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
+month_year <-
+  unlist( sapply( seq_len(length(1)), 
+                  function(x) {
+                    apply( combn(years, 2), 2, function(x) paste(x, collapse = "_"))
+                  }))
+month_year <- expand.grid("1", month_year)
+month_year <- month_year[(grepl("1|2", month_year$Var2)), ]
+month_year <- month_year[(grepl("Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", month_year$Var2)), ]
+month_year_list <- as.character(month_year$Var2)
+names(vpd1)[4:723] <- month_year_list
+
+nrow(vpd1)
+
+seq <- c(1958:2017)
+
+vpd1$mean <- NA
+
+ncol(vpd1)
+
+pbtest <- progress_bar$new(total = nrow(vpd1))
+for (i in 1:nrow(vpd1)){
+  val <- 4
+  vec <- c()
+  
+  for(j in seq){
+    
+    vec <- c(vec, max(vpd1[i, c(val:(val + 11))]))
+    val <- val + 12
+    
+  }
+  
+  n <- mean(vec)
+  vpd1[i, 724] <- n
+  pbtest$tick()
+}
+
+ForC_simplified <- cbind(ForC_simplified, vpd1$mean)
+names(ForC_simplified)[52] <- "MaxVPD"
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
