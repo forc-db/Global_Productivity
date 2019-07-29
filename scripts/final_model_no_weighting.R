@@ -206,7 +206,7 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         
-        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
@@ -349,7 +349,7 @@ for (age in ages){
       if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T)
       if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
 
-      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
      
       if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, ylim = ylim, xlim = xlim)
@@ -482,7 +482,7 @@ for (age in ages){
         if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
 
-        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+        newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
@@ -619,7 +619,7 @@ for (age in ages){
       if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T)
       if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
 
-      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
+      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
 
       if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], ylim = ylim, pch = sym)
