@@ -59,6 +59,10 @@
 2019-07-29,"NPP","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",FALSE,0.07997,114,0.03528,0.8437,0.6342,0.61426,82
 2019-07-29,"BNPP_root","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.1686,104,0.02956,0.7548,0.3128,0.50065,87
 2019-07-29,"BNPP_root_fine","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.7726,96,0.001193,0.6729,2.144,0.12934,85
+2019-07-29,"GPP","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.4541,254,0.002359,0.9634,1.167,-0.01464,82
+2019-07-29,"NPP","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,0.0111,112,0.06158,0.8382,1.873,-0.0813,81
+2019-07-29,"BNPP_root","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.1837,102,0.01781,0.78,0.4454,-0.04274,85
+2019-07-29,"BNPP_root_fine","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",FALSE,0.09789,90,0.03392,0.7001,0.496,-0.05959,79
 2019-07-29,"ANPP","mat",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,4.101e-17,202,0.4561,0.8441,0.4543,0.07766,138
 2019-07-29,"ANPP_foliage","mat",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,1.585e-12,69,0.6341,0.8092,2.358,0.08448,66
 2019-07-29,"ANPP_woody_stem","mat",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,2.224e-10,232,0.2278,0.8858,0.8685,0.0644,221
@@ -104,6 +108,9 @@
 2019-07-29,"ANPP","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",TRUE,0.01732,259,0.07902,0.8651,3.402,0.475,168
 2019-07-29,"ANPP_foliage","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",TRUE,0.01558,99,0.06414,0.8259,2.573,0.77236,95
 2019-07-29,"ANPP_woody_stem","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,0.002218,263,0.07426,0.8433,0.3687,0.86323,251
+2019-07-29,"ANPP","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.5425,252,0.001569,0.8438,1.711,-0.01352,162
+2019-07-29,"ANPP_foliage","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",TRUE,0.001201,98,0.1865,0.7985,5.914,-0.07284,94
+2019-07-29,"ANPP_woody_stem","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.8618,255,0.0001252,0.8393,2.051,-0.00406,243
 2019-07-29,"R_auto","mat",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,2.512e-05,14,0.7686,0.9532,4.605,0.08287,14
 2019-07-29,"R_auto_root","mat",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,0.004346,46,0.2114,0.8429,1.985,0.06801,28
 2019-07-29,"R_auto","map",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",TRUE,5.436e-05,14,0.7856,0.9527,5.53,0.00063,14
@@ -134,3 +141,5 @@
 2019-07-29,"R_auto_root","PreSeasonality",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.2247,58,0.0705,0.8663,0.9253,-0.00779,37
 2019-07-29,"R_auto","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.5652,22,0.02334,0.9075,3.066,0.45867,22
 2019-07-29,"R_auto_root","MaxVPD",FALSE,"geographic.area/plot.name","age.greater.than.100","mod",FALSE,0.2436,58,0.07465,0.8664,1.04,-0.39567,37
+2019-07-29,"R_auto","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim",TRUE,0.01601,22,0.3091,0.9146,2.404,-0.29106,22
+2019-07-29,"R_auto_root","WaterStressMonths",FALSE,"geographic.area/plot.name","age.greater.than.100","mod.clim.poly",TRUE,0.01688,58,0.2382,0.8757,1.174,-0.14061,37
