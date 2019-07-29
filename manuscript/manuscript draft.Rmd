@@ -116,7 +116,7 @@ As discussed above, estimates of NPP, ANPP, and BNPP are generated through summi
 
 Table: Sources of climate data
   
-*Model specification.* The effects of climate and latitude on primary productivity were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_r:_2018]. The effect of each extracted climate variable on each measure of primary productivity was modelled by specifying the climate variable as a fixed effect. For each climate variable, three models were specified: a null model; a model with the climate variable as a linear term; and a model with the climate variable as a polynomial term. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. All R-squared values presented here are marginal r-squared values, and refer to the proportion of variation explained by only the fixed effects, unless otherwise specified. In addition, slope coefficients were calculated for the linear models.  
+*Model specification.* The effects of climate and latitude on primary productivity were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_r:_2018]. The effect of each extracted climate variable on each measure of primary productivity was modelled by specifying the climate variable as a fixed effect. For each climate variable, three models were specified: a null model; a model with the climate variable as a linear term; and a model with the climate variable as a polynomial term. AIC values were calculated for the models and used to select the best model. R^2^ values were calculated for the best model. All R^2^ values presented here are marginal R^2^ values, and refer to the proportion of variation explained by only the fixed effects, unless otherwise specified. In addition, slope coefficients were calculated for the linear models.  
   
 Because the magnitude of fluxes varies significantly, in order to facilitate comparisons between regression models for each flux, data for each flux was scaled, to give the data a mean of 0 and standard deviation of 1. As each data set was scaled separately, this does not allow for statistical comparisons of slope values, but does assist in visualising the data.  
   
@@ -124,7 +124,7 @@ To test for a potential influence of altitude, models were also run with site al
   
 Within the ForC database, sites within 25km^2^ of each other are clustered into geographic areas. To account for correlations in measurements between tightly clustered sites, a random effect was specified as plot nested within geographic area. Data from the temperate regions was heavily skewed towards studies from the old-growth forests of the Pacific Northwest. These forests have very high productivity, and so to ensure that results were not unduly influenced by geographic sampling bias, we tried a version of the model where data were weighted according to forested land area within each Koeppen climate zone. Results were similar between the weighted and unweighted model, so, to avoid problems of over-fitting, the weighted model was dropped, and results from this are not presented here.  
    
-To investigate the potential interactive effects of climate variables on carbon fluxes, multivariate models were also specified. Climate variables which were non-significant or poor predictors in the models with a single climate term, or which were strongly correlated with another climate term, were dropped, leaving a subset of 7 climate variables: mean annual temperature; temperature seasonality; mean annual precipitation; precipitation seasonality; potential evapotranspiration; vapour pressure deficit; and solar radiation. For each possible pairing of climate variables, two models were specified: a model with the two climate variables showing an additive effect; and a model with the two climate variables showing an interactive effect. In addition a null model, and models including each climate term as a individual (univariate) linear term were specified. As before, altitude was included as a fixed effect, and plot nested within geographic area as a random effect. AIC values were calculated for the models and used to select the best model. R-squared values were calculated for the best model. Slope coefficients were calculated for each of the terms, and for the interactive term if relevant.  
+To investigate the potential interactive effects of climate variables on carbon fluxes, multivariate models were also specified. Climate variables which were non-significant or poor predictors in the models with a single climate term, or which were strongly correlated with another climate term, were dropped, leaving a subset of 7 climate variables: mean annual temperature; temperature seasonality; mean annual precipitation; precipitation seasonality; potential evapotranspiration; vapour pressure deficit; and solar radiation. For each possible pairing of climate variables, two models were specified: a model with the two climate variables showing an additive effect; and a model with the two climate variables showing an interactive effect. In addition a null model, and models including each climate term as a individual (univariate) linear term were specified. As before, altitude was included as a fixed effect, and plot nested within geographic area as a random effect. AIC values were calculated for the models and used to select the best model. R^2^ values were calculated for the best model. Slope coefficients were calculated for each of the terms, and for the interactive term if relevant.  
   
 *Validating models of component fluxes.* Comparison of component fluxes is based on the assumption that components sum accurately to estimates of larger fluxes. To test this, components of larger fluxes were regressed against latitude, and the models used to generate a series of point estimates along lines of best fit for each component. The point estimates for smaller component fluxes were summed to generate new "stacked" estimates of larger fluxes, which were then compared against actual measurements of the larger flux. Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. Stacked plots were generated for:  
 1. GPP = NPP + R~auto~  
@@ -136,13 +136,13 @@ To investigate the potential interactive effects of climate variables on carbon 
      
 ###Results
   
-*How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). Models showed significant variation in whether they were improved by inclusion of altitude as a fixed effect. Including altitude had a very small effect on most models, with the difference in AIC values between models including and excluding altitude often being <2, suggesting the models are very similar in their explanatory power. All models presented below do not include altitude, and r-squared values refer to the proportion of variation explained by the climate variable alone.  
+*How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). Models showed significant variation in whether they were improved by inclusion of altitude as a fixed effect. Including altitude had a very small effect on most models, with the difference in AIC values between models including and excluding altitude often being <2, suggesting the models are very similar in their explanatory power. All models presented below do not include altitude, and R^2^ values refer to the proportion of variation explained by the climate variable alone.  
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("effect_of_latitude.png")
 ```
   
-Latitude is a strong predictor for many of the carbon fluxes, explaining 66% of variation in GPP (n = 254, p<0.0001), 51% in NPP (n = 116, p<0.0001) and 50% in ANPP (n = 259, p<0.0001). For all fluxes, their relationship with latitude was best predicted by the linear model. 
+Latitude is a strong predictor for many of the carbon fluxes, explaining 64% of variation in GPP (n = 254, p<0.0001), 50% in NPP (n = 114, p<0.0001) and 45% in ANPP (n = 259, p<0.0001). For all fluxes, their relationship with latitude was best predicted by the linear model. 
   
 Analysis of component fluxes indicates that measures of smaller component fluxes do approximately sum to measures of larger fluxes (fig. 3). Modelled estimates of GPP, generated from the sum of NPP and R auto; NPP, generated from the sum of ANPP and BNPP~root~; and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woody stem~, fall completely within the confidence intervals of the regressions of field estimates of GPP, NPP and ANPP respectively.  
   
@@ -162,7 +162,7 @@ Looking across all productivity components, the climate variables which explain 
   
 **Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
 **Temperature seasonality and annual temperature range.** These two climate variables are strongly correlated, and so only temperature seasonality is presented in figure 4. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. GPP, NPP, ANPP, and R~root~ show a polynomial relationship with both variables, and BNPP~root~ shows a polynomial relationship with annual temperature range. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woody stem~ show a linear relationship with both variables.  
-**Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP, which shows a significant (p<0.0001) linear increase with precipitation up to measures of nearly 6000mm annually, although the explanatory power of this model was low (r-squared = 0.15).  
+**Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP: the model indicates that GPP continues to increase with precipitation up to measures of at least 5000mm annually (p<0.0001, R^2^ = 0.33. Data above this point is not available, but the model trend indicates that the saturation point for this model is around 5000mm mean annual precipitation.  
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~fine root~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm.  
   
 Including a second climate term in the models tended to have only a small effect on the explanatory power of the models. For ANPP~woody stem~ and R~auto~, including two climate terms did not improve the explantory power of the models: mean annual temperature alone was the best climate predictor for both of these fluxes. For all the remaining carbon fluxes, including a second climate term did improve the explanatory power of the models. ANPP and ANPP~foliage~ were best explained by an additive model, in both cases including mean annual temperature and potential evapotranspiration as the climate terms. GPP, NPP, BNPP, BNPP~fine root~, and R~root~ were all best explained by multivariate models which included an interaction term between the two climate terms. The best models for GPP, NPP, and R~root~ all included a temperature term and a precipitation term, indicating that although precipitation isn't a strong predictor for these variables, the interaction between temperature and water availability is important. 
@@ -181,29 +181,29 @@ kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multiva
 ```
 
   
-*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, r^2^ = 0.44) and ANPP:BNPP (p<0.001, r^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
+*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, R^2^ = 0.44) and ANPP:BNPP (p<0.001, R^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
  
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
   
 | Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration | Multivariate model |
 |----------|----------|----------|----------|--------------|----------|
-| R~auto~ | 0.64 | 0.83 | 0.54 | 0.63 | NA |
-| GPP | 0.66 | 0.61 | 0.75 | 0.40 | 0.73 |
-| NPP | 0.51 | 0.49 | 0.52 | 0.34 | 0.57 |
-| ANPP | 0.50 | 0.45 | 0.47 | 0.32 | 0.50 |
-| ANPP~foliage~ | 0.55 | 0.63 | 0.54 | 0.40 | 0.66 |
-| ANPP~woodystem~ | 0.25 | 0.23 | 0.20 | 0.26 | NA |
-| BNPP~root~ | 0.31 | 0.26 | 0.31 | 0.32 | 0.38 |
-| BNPP~fineroot~ | 0.14 | 0.11 | 0.16 | 0.11 | 0.19 |
-| R~root~ | 0.25 | 0.21 | 0.29 | 0.04* | 0.43 |
+| R~auto~ | 0.65 | 0.77 | 0.62 | 0.63 | NA |
+| GPP | 0.64 | 0.63 | 0.72 | 0.36 | 0.73 |
+| NPP | 0.50 | 0.52 | 0.52 | 0.33 | 0.57 |
+| ANPP | 0.45 | 0.46 | 0.42 | 0.28 | 0.50 |
+| ANPP~foliage~ | 0.54 | 0.63 | 0.54 | 0.35 | 0.66 |
+| ANPP~woodystem~ | 0.17 | 0.23 | 0.12 | 0.19 | NA |
+| BNPP~root~ | 0.33 | 0.26 | 0.23 | 0.36 | 0.38 |
+| BNPP~fineroot~ | 0.15 | 0.11 | 0.16 | 0.11 | 0.19 |
+| R~root~ | 0.22 | 0.21 | 0.30 | 0.01* | 0.43 |
   
-Table: R-squared values presented for latitude, three climate variables, and the best multivariate model for each carbon flux. Values marked * are not significant. 
+Table: R^2^ values presented for latitude, three climate variables, and the best multivariate model for each carbon flux. Values marked * are not significant. 
   
-R-squared values are generally highest in the major fluxes, and decrease in subsidiary fluxes. Of the major fluxes, R~auto~ and GPP are the most strongly explained by latitude and climate. Mean annual temperature explains 83% of variation in R~auto~, while temperature seasonality explains 75% of variation in GPP. The proportion of variation explained by climate and latitude decreases in NPP and ANPP. The climatic variables with the strongest explanatory power explain around 50% of the variation in these fluxes. Of the major fluxes, BNPP~root~ is the least well explained by climate and latitude, with climate explaining at most 32% of variation.  
+R^2^ values are generally highest in the major fluxes, and decrease in subsidiary fluxes. Of the major fluxes, R~auto~ and GPP are the most strongly explained by latitude and climate. Mean annual temperature explains 77% of variation in R~auto~, while temperature seasonality explains 72% of variation in GPP. The proportion of variation explained by climate and latitude decreases in NPP and ANPP. The climatic variables with the strongest explanatory power explain around 50% of the variation in these fluxes. Of the major fluxes, BNPP~root~ is the least well explained by climate and latitude, with climate explaining at most 36% of variation.  
   
-With the exception of ANPP~foliage~, the proportion of variation explained by climate and latitude in subsidiary fluxes is much lower. Climate explains at most 26% of variation in ANPP~woody stem~, 17% in BNPP~fine root~, and 32% in R~root~. In contrast, climate strongly explains variation in ANPP~foliage~, with mean annual temperature explaining 63% of variation.
+With the exception of ANPP~foliage~, the proportion of variation explained by climate and latitude in subsidiary fluxes is much lower. Climate explains at most 23% of variation in ANPP~woody stem~, 16% in BNPP~fine root~, and 30% in R~root~. In contrast, climate strongly explains variation in ANPP~foliage~, with mean annual temperature explaining 63% of variation.
 
-This pattern is also seen in the r-squared values for multivariate models. 
+This pattern is also seen in the R^2^ values for multivariate models. 
   
 ###Discussion
 
