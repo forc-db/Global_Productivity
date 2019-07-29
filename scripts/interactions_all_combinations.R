@@ -105,7 +105,7 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 all.results <- NULL
 best.results <- NULL
 
-effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "masl", "(1|geographic.area/plot.name)")
+effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "(1|geographic.area/plot.name)")
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
@@ -131,23 +131,22 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           uni_comb <-
             unlist( sapply( seq_len(length(1)), 
                             function(x) {
-                              apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
+                              apply( combn(effects, 2), 2, function(x) paste(x, collapse = "+"))
                             }))
           
           uni_comb <- expand.grid(response, uni_comb) 
           uni_comb <- uni_comb[grepl("1", uni_comb$Var2), ] #keep random effect
-          uni_comb <- uni_comb[grepl("masl", uni_comb$Var2), ] #keep masl
+        
           
           add_comb <- 
             unlist( sapply( seq_len(length(1)), 
                             function(x) {
-                              apply( combn(effects, 4), 2, function(x) paste(x, collapse = "+"))
+                              apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
                             }))
          
           
           add_comb <- expand.grid(response, add_comb) 
           add_comb <- add_comb[grepl("1", add_comb$Var2), ] #keep random effect
-          add_comb <- add_comb[grepl("masl", add_comb$Var2), ] #keep masl
           
           int_comb <-
             unlist( sapply( seq_len(length(1)), 
@@ -155,22 +154,21 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
                               apply( combn(effects, 2), 2, function(x) paste(x, collapse = "*"))
                             }))
           int_comb <- expand.grid(response, int_comb) 
-          int_comb <- int_comb[!(grepl("1", int_comb$Var2)), ] #keep random effect
-          int_comb <- int_comb[!(grepl("masl", int_comb$Var2)), ] #keep masl
+          int_comb <- int_comb[!(grepl("1", int_comb$Var2)), ]
+          int_comb <- int_comb[!(grepl("masl", int_comb$Var2)), ]
           
           int_comb <- as.character(int_comb$Var2)
           
-          int_comb <- append(int_comb, c("masl", "(1|geographic.area/plot.name)"))
+          int_comb <- append(int_comb, c("(1|geographic.area/plot.name)"))
           
           int_comb <-
             unlist( sapply( seq_len(length(1)), 
                             function(x) {
-                              apply( combn(int_comb, 3), 2, function(x) paste(x, collapse = "+"))
+                              apply( combn(int_comb, 2), 2, function(x) paste(x, collapse = "+"))
                             }))
           
           int_comb <- expand.grid(response, int_comb) 
           int_comb <- int_comb[grepl("1", int_comb$Var2), ] #keep random effect
-          int_comb <- int_comb[grepl("masl", int_comb$Var2), ] #keep masl
           
           var_comb <- rbind(uni_comb, add_comb, int_comb)
           
