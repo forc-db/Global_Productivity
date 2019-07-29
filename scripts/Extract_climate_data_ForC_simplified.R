@@ -25,9 +25,9 @@ cld.1901.2014 <- raster::extract(r, ForC_simplified)
 r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.frs.dat.nc", varname="frs")
 frs.1901.2014 <- raster::extract(r, ForC_simplified)
 
-# # pet - r has a problem with reading this file 
-# r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pet.dat.nc", varname="pet")
-# pet.1901.2014 <- raster::extract(r, ForC_simplified)
+# pet - r has a problem with reading this file
+r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pet.dat.nc", varname="pet")
+pet.1901.2014 <- raster::extract(r, ForC_simplified)
 
 # wet
 r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.01.1901.2014.wet.dat.nc", varname="wet")
@@ -46,8 +46,8 @@ frs <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2
 write.csv(frs, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/frs.1901.2014.csv", row.names = F)
 
 # # pet
-# pet <- data.frame(ForC_simplified)
-# pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
+pet <- data.frame(ForC_simplified)
+pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
 # write.csv(pet, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/climate.data/pet.1901.2014.csv", row.names = F)
 
 # wet
@@ -72,18 +72,34 @@ wet$mean <- rowSums(wet[, c(4:1371)], na.rm = TRUE)
 wet$mean <- (wet$mean)/114
 wet <- wet[, c(1:3, 1372)]
 
-# pet_colnames <- colnames(pet)[(4:1371)]
-# pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
-# pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
-# pet_colnames <- monthDays(pet_colnames)
+pet_colnames <- colnames(pet)[(4:1371)]
+pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
+pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
+pet_colnames <- monthDays(pet_colnames)
 # ###multiply each value by days in month to get monthly total
-# pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
-# pet_month <- cbind(pet[,c(1:3)], pet_month)
+pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
+pet_month <- cbind(pet[,c(1:3)], pet_month)
 # ###sum all months (114 years)
 # pet$mean <- rowSums(pet_month[, c(4:1371)], na.rm = TRUE)
 # ###divide by 114 to get annual mean
 # pet$mean <- (pet$mean)/114
 # pet <- pet[, c(1:3, 1372)]
+
+base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+
+for(month in months){
+month_frame <- pet_month[,grep(paste0("\\.", month, "\\."), colnames(pet_month))]
+month_frame$mean <- rowSums(month_frame)
+month_frame$mean <- month_frame$mean/114
+colnames(month_frame)[colnames(month_frame)=="mean"] <- month
+base <- cbind(base, month_frame[, month])
+}
+
+names(base)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+pet_by_month <- base
 
 
 setwd("S:/Global Maps Data/WorldClim/tiff")
@@ -120,6 +136,32 @@ vapr1$vapr_mean <- rowSums(vapr1[, c(4:15)], na.rm = TRUE)
 vapr1$vapr_mean <- (vapr1$vapr_mean)/12
 vapr <- vapr1[, c(1:3, 16)]
 
+unzip("wc2.0_30s_prec.zip")
+P_filenames<- paste("wc2.0_30s_prec_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
+prec <- stack(P_filenames)
+
+month <- c("01 Jan 2010", "01 Feb 2010", "01 Mar 2010", "01 Apr 2010", "01 May 2010", "01 Jun 2010", "01 Jul 2010", "01 Aug 2010", "01 Sep 2010", "01 Oct 2010", "01 Nov 2010", "01 Dec 2010")
+
+names(prec) <- month
+
+ForC_prec <- raster::extract(prec, ForC_simplified)
+prec1 <- data.frame(ForC_simplified)
+prec1 <- data.frame(measurement.ID = prec1[,1], sites.sitename = as.character(prec1[,2]), plot.name = as.character(prec1[,3]), ForC_prec)
+
+pet_prec <- cbind(prec1, pet_by_month[,4:15])
+months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+
+for(month in months){
+  month_frame <- pet_prec[,grep(paste0(month), colnames(pet_prec))]
+  month_frame$larger <- ifelse(month_frame[,1] < month_frame[,2], TRUE, FALSE)
+  base <- cbind(base, month_frame$larger)
+}
+
+base$count <- rowSums(base == TRUE)
 
 r <- stack("S:/Global Maps Data/WorldClim/tiff/1bioclim_stacked_all.tif")
 # plot(r) 
@@ -131,8 +173,8 @@ WorldClimDF <- cbind(WorldClimDF, WorldClim)
 #rename variables
 names(WorldClimDF)[36:54] <- c("AnnualMeanTemp", "MeanDiurnalRange", "Isothermality","TempSeasonality", "MaxTWarmestMonth", "MinTColdestMonth", "TempRangeAnnual", "MeanTWetQ", "MeanTDryQ","MeanTWarmQ","MeanTColdQ", "AnnualPre","PreWetMonth", "PreDryMonth", "PreSeasonality", "PreWetQ", "PreDryQ", "PreWarmQ", "PreColdQ")
 head(WorldClimDF)
-WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, wet$mean, vapr1$vapr_mean, srad1$mean)
-names(WorldClimDF)[55:59] <- c("CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation")
+WorldClimDF <- cbind(WorldClimDF, cld$mean, frs$mean, wet$mean, vapr1$vapr_mean, srad1$mean, base$count)
+names(WorldClimDF)[55:60] <- c("CloudCover", "AnnualFrostDays", "AnnualWetDays", "VapourPressure", "SolarRadiation", "WaterStressMonths")
 head(WorldClimDF)
 
 
@@ -185,7 +227,7 @@ ForC_evap <- raster::extract(r, ForC_simplified)
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, ForC_arid, ForC_evap)
-names(ForC_simplified)[48:49] <- c("Aridity", "PotentialEvapotranspiration")
+names(ForC_simplified)[49:50] <- c("Aridity", "PotentialEvapotranspiration")
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
 
@@ -217,7 +259,7 @@ vpd <- vpd1[, c(1:3, 724)]
 ForC_simplified <- data.frame(ForC_simplified)
 
 ForC_simplified <- cbind(ForC_simplified, vpd$vpd_mean)
-names(ForC_simplified)[51] <- "VapourPressureDeficit"
+names(ForC_simplified)[52] <- "VapourPressureDeficit"
 
 
 
@@ -263,6 +305,6 @@ for (i in 1:nrow(vpd1)){
 }
 
 ForC_simplified <- cbind(ForC_simplified, vpd1$mean)
-names(ForC_simplified)[52] <- "MaxVPD"
+names(ForC_simplified)[53] <- "MaxVPD"
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
