@@ -89,11 +89,22 @@ base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,
 base$sites.sitename <- as.character(base$sites.sitename)
 base$plot.name <- as.character(base$plot.name)
 months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+years <- c(1970:2000)
+
+subset.all <- NULL
+
+for(year in years){
+  subset <- pet_month[,grepl(year, colnames(pet_month))]
+  if(year == 1970) subset.all <- subset
+  subset.all <- cbind(subset, subset.all)
+}
+
+pet_month <- cbind(base, subset.all)
 
 for(month in months){
 month_frame <- pet_month[,grep(paste0("\\.", month, "\\."), colnames(pet_month))]
 month_frame$mean <- rowSums(month_frame)
-month_frame$mean <- month_frame$mean/114
+month_frame$mean <- month_frame$mean/32
 colnames(month_frame)[colnames(month_frame)=="mean"] <- month
 base <- cbind(base, month_frame[, month])
 }
@@ -136,7 +147,7 @@ vapr1$vapr_mean <- rowSums(vapr1[, c(4:15)], na.rm = TRUE)
 vapr1$vapr_mean <- (vapr1$vapr_mean)/12
 vapr <- vapr1[, c(1:3, 16)]
 
-unzip("wc2.0_30s_prec.zip")
+# unzip("wc2.0_30s_prec.zip")
 P_filenames<- paste("wc2.0_30s_prec_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
 prec <- stack(P_filenames)
 
