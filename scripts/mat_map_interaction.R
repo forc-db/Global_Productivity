@@ -128,26 +128,31 @@ for (response.v in response.variables){
   significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
   
   if(!significant.effect.of.interaction) {
+
+    mod.full <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df, REML = F)
+    mod <- lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
     
-    mod.full <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df)
-    
+    significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+
     significant.effect.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
-    
+
     if(!significant.effect.of.additive) {
       mod.full <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df)
       significant.effect <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
-    } 
-    
+    }
+
     if(significant.effect.of.additive) { # just to know if there is a significant effect of the main fixed effect
       significant.effect <-  drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
     }
-    
+
   }
   
   if(significant.effect.of.interaction) { # just to know if there is a significant effect of the main fixed effect
     significant.effect.of.additive <- FALSE
     significant.effect <- TRUE
   }
+  
+  significant.effect.of.additive <- TRUE
   
   
   
@@ -172,7 +177,7 @@ for (response.v in response.variables){
       
       for(map in unique(newDat$map)){
         i <- which(unique(newDat$map) %in% map)
-        lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction, 1, 2), lwd = i)
+        lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
         
       }
     
