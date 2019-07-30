@@ -62,7 +62,7 @@ min.dbh.to.keep <- rep(TRUE, nrow(ForC_simplified))
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
 
-fixed.no.na <- !is.na(ForC_simplified[, "map"]) & !is.na(ForC_simplified[, "masl"]) & !is.na(ForC_simplified[, "mat"])
+fixed.no.na <- !is.na(ForC_simplified[, "map"]) & !is.na(ForC_simplified[, "masl"]) & !is.na(ForC_simplified[, "mat"]) & !is.na(ForC_simplified[, "WaterStressMonths"])
 
 
 ForC_simplified <- ForC_simplified[dist.to.keep & fixed.no.na & ages.to.keep, ]
@@ -105,7 +105,7 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 all.results <- NULL
 best.results <- NULL
 
-effects <- c("mat", "map", "TempSeasonality", "SolarRadiation", "PotentialEvapotranspiration", "VapourPressureDeficit", "PreSeasonality", "(1|geographic.area/plot.name)")
+effects <- c("mat", "map", "WaterStressMonths", "AnnualFrostDays", "(1|geographic.area/plot.name)")
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
