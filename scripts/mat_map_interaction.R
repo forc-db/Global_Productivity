@@ -110,10 +110,13 @@ effects <- c("mat", "map", "(1|geographic.area/plot.name)")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
+png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,5,2,0))
+
 for (response.v in response.variables){
   
-  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
   if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
   if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
   
@@ -160,7 +163,7 @@ for (response.v in response.variables){
   
   
   
-  par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
+  # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
   ylim = range(df$mean)
   
   if (significant.effect.of.interaction | significant.effect.of.additive) {
@@ -180,8 +183,8 @@ for (response.v in response.variables){
         lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
         
       }
-    
-    title (paste(response.v), outer = T, line = 1)
+    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1000, 2000, 3000))
+    # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
     
@@ -193,7 +196,7 @@ for (response.v in response.variables){
     # if(significant.effet.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
     # 
     # 
-    # if(!categorical) mtext(side = 3, line = -which(response.variables %in% response.v), text = equation, adj = 0.1, col = response.v.color, cex = 0.5)
+   mtext(side = 3, line = -1, text = paste(response.v), adj = 0.1, cex = 0.5)
   }
   
   #create all combinations of random / fixed effects
@@ -201,47 +204,5 @@ for (response.v in response.variables){
   
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_table.csv", row.names = F)
+dev.off()
 
-all.results = NULL
-
-for(response.v in response.variables){
-  
-  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
-  if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
-  if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
-  
-  
-  rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
-  
-  df <- ForC_simplified[rows.with.response, ]
-  
-  df$masl <- (df$masl/1000)
-  
-  mod <- best.results[best.results$response.variable %in% response.v,]$Modnames
-  mod.full <- lmer(mod, data = df, REML = T)
-  
-  mod.null <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = T)
-  
-  significant.effect <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2] < 0.05
-  significance <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2]
-  sample.size <- length(df$mean)
-  
-  r <- round(fixef(mod.full), 4)
-  fixed1.coef <- r[2]
-  fixed2.coef <- r[3]
-  int.coef <- r[5]
-  
-  significance <- anova(mod.null, mod.full)$"Pr(>Chisq)"[2]
-  significance <- signif(significance, digits=4)
-  
-  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-  Rsq <- signif(Rsq, digits=4)
-  
-  results <- data.frame(response = response.v, mod = mod, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
-  
-  all.results <- all.results <- rbind(all.results, results)
-}
-
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_best.csv", row.names = F)
