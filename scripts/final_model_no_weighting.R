@@ -158,8 +158,8 @@ for(response.variables in response.variables.groups){
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
@@ -299,8 +299,8 @@ for (age in ages){
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
       
-      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
@@ -438,8 +438,8 @@ for (age in ages){
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
         if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
         
         
@@ -573,8 +573,8 @@ for (age in ages){
     
     for (response.v in response.variables){
       
-      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
       col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
