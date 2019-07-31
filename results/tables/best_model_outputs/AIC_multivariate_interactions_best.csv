@@ -3,7 +3,7 @@
 "NPP","mean ~ mat*WaterStressMonths+(1|geographic.area/plot.name)",TRUE,2.14e-12,95,0.6268,0.8194,0.3452,0.236,NA
 "BNPP_root","mean ~ AnnualFrostDays+(1|geographic.area/plot.name)",TRUE,2.922e-05,84,0.2834,0.7789,-0.0108,NA,NA
 "BNPP_root_fine","mean ~ AnnualFrostDays+(1|geographic.area/plot.name)",TRUE,0.00713,78,0.1355,0.6918,-0.0066,NA,NA
-"ANPP","mean ~ mat+map+(1|geographic.area/plot.name)",TRUE,5.921e-20,191,0.5137,0.8564,0.2105,-3e-04,NA
+"ANPP","mean ~ mat*WaterStressMonths+(1|geographic.area/plot.name)",TRUE,1.979e-18,191,0.5373,0.8507,0.247,0.2148,NA
 "ANPP_foliage","mean ~ mat+(1|geographic.area/plot.name)",TRUE,2.603e-13,67,0.6692,0.8175,0.1005,NA,NA
 "ANPP_woody_stem","mean ~ mat+WaterStressMonths+(1|geographic.area/plot.name)",TRUE,2.35e-11,221,0.273,0.899,0.0894,0.062,NA
 "R_auto","mean ~ mat+(1|geographic.area/plot.name)",TRUE,2.512e-05,14,0.7686,0.9532,0.6441,NA,NA
