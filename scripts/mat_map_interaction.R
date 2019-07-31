@@ -190,13 +190,20 @@ for (response.v in response.variables){
     
     # add equation
     
-    # r <- round(fixef(mod.full), 2)
-    # 
+    r <- round(fixef(mod.full), 4)
+    fixed1.coef <- r[2]
+    fixed2.coef <- r[3]
+    int.coef <- r[4]
+    
     # if(significant.effet.of.interaction) equation <- paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3], "+", r[4], " x interaction" )
     # if(significant.effet.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
     # 
     # 
    mtext(side = 3, line = -1, text = paste(response.v), adj = 0.1, cex = 0.5)
+   
+   results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
+   
+   all.results <- all.results <- rbind(all.results, results)
   }
   
   #create all combinations of random / fixed effects
