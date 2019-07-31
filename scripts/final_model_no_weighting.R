@@ -172,7 +172,7 @@ for(response.variables in response.variables.groups){
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
         
-        df$masl <- df$masl/1000
+        # df$masl <- df$masl/1000
         
         df$fixed <- df[, fixed.v]
         
@@ -309,7 +309,7 @@ for (age in ages){
       
       df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
       
-      df$masl <- df$masl/1000
+      # df$masl <- df$masl/1000
       
       df$fixed <- df[, fixed.v]
       
@@ -451,7 +451,7 @@ for (age in ages){
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
         
-        df$masl <- df$masl/1000
+        # df$masl <- df$masl/1000
         
         df$fixed <- df[, fixed.v]
         
@@ -588,7 +588,7 @@ for (age in ages){
       
       df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
       
-      df$masl <- df$masl/1000
+      # df$masl <- df$masl/1000
       
       df$fixed <- df[, fixed.v]
       
