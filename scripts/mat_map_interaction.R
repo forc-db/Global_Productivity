@@ -110,7 +110,7 @@ effects <- c("mat", "map", "(1|geographic.area/plot.name)")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
-png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+# png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,5,2,0))
 
 for (response.v in response.variables){
@@ -165,24 +165,29 @@ for (response.v in response.variables){
   
   # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
   ylim = range(df$mean)
+  xlim = range(df$mat)
   
   if (significant.effect.of.interaction | significant.effect.of.additive) {
     # predict 
     
-    plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
-    
-    lower_bound <- c(0, 1001, 2001)
-    upper_bound <- c(1000, 2000, 3000)
+    # plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
+    first.plot <- TRUE
+    lower_bound <- c(0, 1001, 2001, 3001)
+    upper_bound <- c(1000, 2000, 3000, 6000)
 
     for (i in seq(along = lower_bound)){
       map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
+      if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim)
+      if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
       newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = upper_bound[[i]])
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
       for(map in unique(newDat$map)){
             j <- which(unique(newDat$map) %in% map)
-            lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
+            lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i, col = plasma(5)[i], xlim = xlim)
 
-          }
+      }
+      
+      first.plot <- FALSE
     }
     
     # newDat <- expand.grid(mat = seq(min(df$mat), max(df$mat), length.out = 100), map = c(500, 1000, 2000, 3000))
@@ -227,5 +232,5 @@ for (response.v in response.variables){
   
 }
 
-dev.off()
+# dev.off()
 
