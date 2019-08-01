@@ -1,10 +1,10 @@
 "response","mod","significant","p.value","sample.size","Rsq.R2m","Rsq.R2c","fixed1.coef","fixed2.coef","int.coef"
-"GPP","mean ~ map*AnnualFrostDays+(1|geographic.area/plot.name)",TRUE,1.133e-14,226,0.6579,0.9701,0.0063,-0.0142,NA
+"GPP","mean ~ mat*TempSeasonality+(1|geographic.area/plot.name)",TRUE,8.349e-14,226,0.7084,0.9624,0.5922,-0.0723,NA
 "NPP","mean ~ mat*WaterStressMonths+(1|geographic.area/plot.name)",TRUE,2.14e-12,95,0.6268,0.8194,0.3452,0.236,NA
-"BNPP_root","mean ~ AnnualFrostDays+(1|geographic.area/plot.name)",TRUE,2.922e-05,84,0.2834,0.7789,-0.0108,NA,NA
-"BNPP_root_fine","mean ~ AnnualFrostDays+(1|geographic.area/plot.name)",TRUE,0.00713,78,0.1355,0.6918,-0.0066,NA,NA
-"ANPP","mean ~ mat*WaterStressMonths+(1|geographic.area/plot.name)",TRUE,1.979e-18,191,0.5373,0.8507,0.247,0.2148,NA
+"BNPP_root","mean ~ mat*SolarRadiation+(1|geographic.area/plot.name)",TRUE,0.0001187,84,0.3233,0.7795,0.2601,0.011,NA
+"BNPP_root_fine","mean ~ mat+(1|geographic.area/plot.name)",TRUE,0.0129,78,0.1266,0.6527,0.0552,NA,NA
+"ANPP","mean ~ mat+PotentialEvapotranspiration+(1|geographic.area/plot.name)",TRUE,1.385e-19,191,0.5466,0.8413,0.2381,-0.0017,NA
 "ANPP_foliage","mean ~ mat+(1|geographic.area/plot.name)",TRUE,2.603e-13,67,0.6692,0.8175,0.1005,NA,NA
-"ANPP_woody_stem","mean ~ mat+WaterStressMonths+(1|geographic.area/plot.name)",TRUE,2.35e-11,221,0.273,0.899,0.0894,0.062,NA
-"R_auto","mean ~ mat+(1|geographic.area/plot.name)",TRUE,2.512e-05,14,0.7686,0.9532,0.6441,NA,NA
+"ANPP_woody_stem","mean ~ mat*Aridity+(1|geographic.area/plot.name)",TRUE,1.934e-11,221,0.2612,0.8862,0.0402,0,NA
+"R_auto","mean ~ mat+Aridity+(1|geographic.area/plot.name)",TRUE,3.774e-06,14,0.862,0.9476,0.4747,5e-04,NA
 "R_auto_root","mean ~ mat*map+(1|geographic.area/plot.name)",TRUE,0.0009635,46,0.4297,0.8532,0.0113,-7e-04,NA
