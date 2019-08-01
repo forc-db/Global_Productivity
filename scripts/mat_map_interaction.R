@@ -110,7 +110,7 @@ effects <- c("mat", "map", "(1|geographic.area/plot.name)")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
-# png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,5,2,0))
 
 for (response.v in response.variables){
@@ -173,13 +173,14 @@ for (response.v in response.variables){
     # plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
     first.plot <- TRUE
     lower_bound <- c(0, 1001, 2001, 3001)
-    upper_bound <- c(1000, 2000, 3000, 6000)
+    upper_bound <- c(1000, 2000, 3000, 7500)
 
     for (i in seq(along = lower_bound)){
       map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
       if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim)
       if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
-      newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = upper_bound[[i]])
+      if(i != 4)newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = upper_bound[[i]])
+      if(i==4)newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = 4000)
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
       for(map in unique(newDat$map)){
             j <- which(unique(newDat$map) %in% map)
@@ -204,7 +205,7 @@ for (response.v in response.variables){
     #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
     #     
     #   }
-    if(response.v == "GPP") legend("topleft", lwd = c(1:3), legend = c(1000, 2000, 3000))
+    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(1000, 2000, 3000, 4000), col = plasma(5)[1:4])
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
@@ -232,5 +233,5 @@ for (response.v in response.variables){
   
 }
 
-# dev.off()
+dev.off()
 
