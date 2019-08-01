@@ -169,20 +169,36 @@ for (response.v in response.variables){
   if (significant.effect.of.interaction | significant.effect.of.additive) {
     # predict 
     
-    newDat <- expand.grid(mat = seq(min(df$mat), max(df$mat), length.out = 100), map = c(500, 1000, 2000, 3000))
+    plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
     
-    newDat$fit <- predict(mod.full, newDat, re.form = NA)
-    
-    first.plot <- TRUE
-    # plot
-      if(first.plot) plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
-      if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
-      
+    lower_bound <- c(0, 1001, 2001)
+    upper_bound <- c(1000, 2000, 3000)
+
+    for (i in seq(along = lower_bound)){
+      map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
+      newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = upper_bound[[i]])
+      newDat$fit <- predict(mod.full, newDat, re.form = NA)
       for(map in unique(newDat$map)){
-        i <- which(unique(newDat$map) %in% map)
-        lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
-        
-      }
+            j <- which(unique(newDat$map) %in% map)
+            lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
+
+          }
+    }
+    
+    # newDat <- expand.grid(mat = seq(min(df$mat), max(df$mat), length.out = 100), map = c(500, 1000, 2000, 3000))
+    # 
+    # newDat$fit <- predict(mod.full, newDat, re.form = NA)
+    
+    # first.plot <- TRUE
+    # # plot
+    #   if(first.plot) plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
+    #   if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
+    #   
+    #   for(map in unique(newDat$map)){
+    #     i <- which(unique(newDat$map) %in% map)
+    #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
+    #     
+    #   }
     if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1000, 2000, 3000))
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
@@ -211,5 +227,5 @@ for (response.v in response.variables){
   
 }
 
-dev.off()
+# dev.off()
 
