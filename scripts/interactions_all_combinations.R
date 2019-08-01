@@ -105,15 +105,15 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 all.results <- NULL
 best.results <- NULL
 
-effects <- c("mat", "map", "WaterStressMonths", "AnnualFrostDays", "(1|geographic.area/plot.name)")
+effects <- c("mat", "map", "TempSeasonality", "AnnualFrostDays","Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "(1|geographic.area/plot.name)")
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
         
         for (response.v in response.variables){
           
-          if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
-          if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+          if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+          if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
           if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
           if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
           
@@ -136,6 +136,7 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           
           uni_comb <- expand.grid(response, uni_comb) 
           uni_comb <- uni_comb[grepl("1", uni_comb$Var2), ] #keep random effect
+          uni_comb <- uni_comb[grepl("mat", uni_comb$Var2), ] #keep mat
         
           
           add_comb <- 
@@ -147,6 +148,7 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           
           add_comb <- expand.grid(response, add_comb) 
           add_comb <- add_comb[grepl("1", add_comb$Var2), ] #keep random effect
+          add_comb <- add_comb[grepl("mat", add_comb$Var2), ] #keep mat
           
           int_comb <-
             unlist( sapply( seq_len(length(1)), 
@@ -169,6 +171,7 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           
           int_comb <- expand.grid(response, int_comb) 
           int_comb <- int_comb[grepl("1", int_comb$Var2), ] #keep random effect
+          int_comb <- int_comb[grepl("mat", int_comb$Var2), ] #keep mat
           
           var_comb <- rbind(uni_comb, add_comb, int_comb)
           
