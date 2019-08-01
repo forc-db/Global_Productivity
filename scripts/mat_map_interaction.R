@@ -199,7 +199,7 @@ for (response.v in response.variables){
     #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
     #     
     #   }
-    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1000, 2000, 3000))
+    if(response.v == "GPP") legend("topleft", lwd = c(1:3), legend = c(1000, 2000, 3000))
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
@@ -227,5 +227,5 @@ for (response.v in response.variables){
   
 }
 
-# dev.off()
+dev.off()
 
