@@ -207,6 +207,9 @@ head(WorldClimDF)
 
 write.csv(WorldClimDF,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU.csv", row.names = F)
 
+WorldClimDF$map[is.na(WorldClimDF$map)] <- WorldClimDF$AnnualPre[is.na(WorldClimDF$map)]
+WorldClimDF$mat[is.na(WorldClimDF$mat)] <- WorldClimDF$AnnualMeanTemp[is.na(WorldClimDF$mat)]
+
 WorldClimDFRefined <- WorldClimDF[,-c(38, 40:41, 43:46, 48:49, 51:54)]
 head(WorldClimDFRefined)
 write.csv(WorldClimDFRefined,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
