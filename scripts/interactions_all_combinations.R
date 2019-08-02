@@ -192,8 +192,10 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           output <- output[order(output$Delta_AICc),]
           output$Modnames <- as.character(output$Modnames)
           output$response.variable <- response.v
+          mat_map <- output[output$Modnames %in% "mean ~ mat*map+(1|geographic.area/plot.name)",]
           
           results <- output[1:8, c(1, 3, 4, 12, 13, 14)]
+          results <- rbind(results, mat_map[, c(1, 3, 4, 12, 13, 14)])
           best.result <- output[1, c(1, 3, 4, 12, 13, 14)]
           
           
