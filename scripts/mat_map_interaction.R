@@ -174,13 +174,13 @@ for (response.v in response.variables){
     first.plot <- TRUE
     lower_bound <- c(0, 1001, 2001, 3001)
     upper_bound <- c(1000, 2000, 3000, 7500)
+    midpoint <- c(500, 1500, 2500, 3500)
 
     for (i in seq(along = lower_bound)){
       map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
       if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim)
       if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
-      if(i != 4)newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = upper_bound[[i]])
-      if(i==4)newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = 4000)
+      newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = midpoint[[i]])
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
       for(map in unique(newDat$map)){
             j <- which(unique(newDat$map) %in% map)
@@ -205,7 +205,7 @@ for (response.v in response.variables){
     #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
     #     
     #   }
-    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(1000, 2000, 3000, 4000), col = plasma(5)[1:4])
+    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4])
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
