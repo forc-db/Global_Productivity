@@ -320,5 +320,6 @@ for (i in 1:nrow(vpd1)){
 
 ForC_simplified <- cbind(ForC_simplified, vpd1$mean)
 names(ForC_simplified)[53] <- "MaxVPD"
+head(ForC_simplified)
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
