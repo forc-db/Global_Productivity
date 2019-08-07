@@ -171,9 +171,10 @@ Looking across all productivity components, the climate variables which explain 
 **Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP: the model indicates that GPP continues to increase with precipitation up to measures of at least 5000mm annually (p<0.0001, R^2^ = 0.33. Data above this point is not available, but the model trend indicates that the saturation point for this model is around 5000mm mean annual precipitation.  
 **Potential evapotranspiration.** All fluxes, with the exception of BNPP~fine root~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm.  
   
-Including a second climate term in the models tended to have only a small effect on the explanatory power of the models. For ANPP~woody stem~ and R~auto~, including two climate terms did not improve the explantory power of the models: mean annual temperature alone was the best climate predictor for both of these fluxes. For all the remaining carbon fluxes, including a second climate term did improve the explanatory power of the models. ANPP and ANPP~foliage~ were best explained by an additive model, in both cases including mean annual temperature and potential evapotranspiration as the climate terms. GPP, NPP, BNPP, BNPP~fine root~, and R~root~ were all best explained by multivariate models which included an interaction term between the two climate terms. The best models for GPP, NPP, and R~root~ all included a temperature term and a precipitation term, indicating that although precipitation isn't a strong predictor for these variables, the interaction between temperature and water availability is important. 
-
+There was a significant interactive effect between MAT and MAP for GPP, BNPP~root~, BNPP~fine root~, ANPP, ANPP~woody stem~, and R~root~. There was a significant additive effect for R~auto~. NPP and ANPP~foliage~ showed no significant interactive or additive effect: including MAP as a second variable did not improve on the model including only MAT.  
   
+For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. For NPP, there was a significant interactive effect between MAT and water stress months, with this model explaining nearly 5% more variation in NPP than MAT alone. However, for ANPP~foliage~, no multivariate model improved on the univariate model including only MAT.  
+
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -212,6 +213,10 @@ With the exception of ANPP~foliage~, the proportion of variation explained by cl
 This pattern is also seen in the R^2^ values for multivariate models. 
   
 ###Discussion
+
+*The relationship between productivity and latitude*
+
+Past studies have differed in their conclusions regarding the relationship between productivity and latitude. Our findings indicate that, for all carbon fluxes studied, productivity peaks in the tropical regions. While Huston and Wolverton (2009) found no significant relationship between ANPP and latitude, we find a significant negative relationship between ANPP and latitude, with the highest levels of ANPP in the tropical regions. 
 
 *Challenges in estimating NPP*  
 The impact of excluding certain components of NPP on this analysis is unclear, primarily because these components are poorly understood and rarely measured [@clark_net_2001]. Do we want to include a section assessing how much this may or may not impact results?  
