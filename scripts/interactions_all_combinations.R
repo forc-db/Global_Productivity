@@ -105,7 +105,7 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 all.results <- NULL
 best.results <- NULL
 
-effects <- c("mat", "map", "TempSeasonality", "AnnualFrostDays","Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "(1|geographic.area/plot.name)")
+effects <- c("mat", "map", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "(1|geographic.area/plot.name)")
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
