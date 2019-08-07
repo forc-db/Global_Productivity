@@ -112,7 +112,7 @@ for (i in seq(along = set1)){
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% set1[[i]],]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[i]],]
       
-      df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot"))
+      df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID"))
       
       df$ratio <- df$mean.x/df$mean.y
       
