@@ -175,18 +175,9 @@ There was a significant interactive effect between MAT and MAP for GPP, BNPP~roo
   
 For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. For NPP, there was a significant interactive effect between MAT and water stress months, with this model explaining nearly 5% more variation in NPP than MAT alone. However, for ANPP~foliage~, no multivariate model improved on the univariate model including only MAT.  
 
-```{r eval = TRUE, echo=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-multivariate_models <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/multivariate_models.csv", stringsAsFactors = FALSE, check.names = FALSE)
-rownames(multivariate_models) <- c("GPP", "NPP", "ANPP", "ANPP\\textsubscript{foliage}", "ANPP\\textsubscript{woody stem}", "BNPP", "BNPP\\textsubscript{fine root}","R\\textsubscript{auto}", "R\\textsubscript{root}")
-kable(multivariate_models, format = "latex", booktabs = TRUE, caption = "Multivariate model output summary. For each carbon flux, correlation coefficients are presented for the two climate variables which explain the most variation when included in a multivariate model. If the model includes an interactive effect, correlation coefficients for the interaction are presented. For carbon fluxes that were best predicted by a single climate term, correlation coefficients are presented for that term only.  ", escape = FALSE, row.names = TRUE) %>%
-  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
-  column_spec(1:10, width = "2cm") %>%
-  add_header_above(c(" ", " ", " ", "Correlation coefficients of climate variables" = 7, " "))
-
+```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against mean annual precipitation. Points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+  knitr::include_graphics("mat_map_interaction.png")
 ```
-
   
 *Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, R^2^ = 0.44) and ANPP:BNPP (p<0.001, R^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
  
