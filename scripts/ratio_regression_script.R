@@ -98,11 +98,11 @@ all.aictab <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "TempSeasonality")
 
-# set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP_1", "BNPP_root")
-# set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1", "NPP_1", "NPP_1")
+set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2")
+set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1", "NPP_1", "NPP_1", "NPP_1", "BNPP_root")
 
-set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
-set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
+# set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
+# set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
 
 
 for (i in seq(along = set1)){
@@ -116,7 +116,7 @@ for (i in seq(along = set1)){
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% responses.to.keep,]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[i]],]
       
-      df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID"))
+      df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID", "date"))
       
       df$ratio <- df$mean.x/df$mean.y
       
