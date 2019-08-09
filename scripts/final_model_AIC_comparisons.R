@@ -111,7 +111,7 @@ effects <- c("poly(mat, 1, raw = T)", "poly(map, 1, raw = T)", "poly(lat, 1, raw
 
 for (response.v in response.variables){
   
-  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2")
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
   if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
   if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
   if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v

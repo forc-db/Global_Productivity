@@ -116,7 +116,7 @@ par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,5,2,0))
 for (response.v in response.variables){
   
   if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
   if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
   if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
   
