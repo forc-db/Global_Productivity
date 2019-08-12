@@ -88,15 +88,15 @@ Analyses were conducted on data contained in the open-access ForC database [@and
   
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of plots |
 |--------------|-------------------|-------------|------------------------|-------|-------|
-| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 254 | 91 |
-| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 116 | 85 |
-| ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 259 | 170 |
-| ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 100 | 96 |
-| ANPP~woodystem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 252 |
-| BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 105 | 90 |
-| BNPP~fineroot~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 96 | 88 |
+| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 257 | 80 |
+| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 93 | 78 |
+| ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 258 | 166 |
+| ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 94 |
+| ANPP~woodystem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 266 | 252 |
+| BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 107 | 87 |
+| BNPP~fineroot~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 90 | 77 |
 | R~auto~ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 22 |
-| R~root~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 57 | 38 |
+| R~root~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 65 | 43 |
   
 Table: Definitions of variables used in analysis
 
@@ -105,7 +105,7 @@ There is evidence that stand age influences patterns of primary productivity and
   
 *Methodological consistency.* The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which used a minimum diameter at breast height (DBH) measure of >10cm were excluded from analysis.  It would be preferable to standardise by minimum area sampled; however x% of plots in the database are 1 ha or under in size; excluding these plots would place significant constraints on sample size.
 
-As discussed above, estimates of NPP, ANPP, and BNPP are generated through summing measurements of their component parts. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, fine root and optionally understory. Measures of NPP which included additional components, including volatile organic compounds (VOCs), exudates, estimates of NPP lost to herbivory, and the NPP of reproductive structures, were excluded. Estimates of ANPP were selected if they included foliage, stem growth and branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis. 
+As discussed above, estimates of NPP, ANPP, and BNPP are generated through summing measurements of their component parts. Since the components included in productivity estimates vary between studies, estimates of productivity were classified within the ForC database according to their components, and then filtered for analysis. Estimates of NPP were selected if they included foliage, branch, stem, coarse root, and fine root. Measures of NPP which included additional components, including understorey, volatile organic compounds (VOCs), exudates, estimates of NPP lost to herbivory, and the NPP of reproductive structures, were excluded. Estimates of ANPP were selected if they included foliage, stem growth and optionally branch turnover. Any measures of primary productivity where components were unknown were excluded from analysis. 
   
 *Climate datasets.* Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. In addition to this data, climate data for each site was extracted from five open-access climate datasets based on site geographic co-ordinates. 
   
@@ -183,17 +183,17 @@ For the variables which showed a significant interactive or additive effect betw
  
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
   
-| Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration | Multivariate model |
+| Variable | Latitude | Mean annual temperature | Temperature seasonality | Potential evapotranspiration | MAT*MAP |
 |----------|----------|----------|----------|--------------|----------|
 | R~auto~ | 0.65 | 0.77 | 0.62 | 0.63 | NA |
-| GPP | 0.64 | 0.63 | 0.72 | 0.36 | 0.73 |
-| NPP | 0.50 | 0.52 | 0.52 | 0.33 | 0.57 |
-| ANPP | 0.45 | 0.46 | 0.42 | 0.28 | 0.50 |
-| ANPP~foliage~ | 0.54 | 0.63 | 0.54 | 0.35 | 0.66 |
-| ANPP~woodystem~ | 0.17 | 0.23 | 0.12 | 0.19 | NA |
-| BNPP~root~ | 0.33 | 0.26 | 0.23 | 0.36 | 0.38 |
+| GPP | 0.64 | 0.63 | 0.72 | 0.36 | 0.64 |
+| NPP | 0.50 | 0.52 | 0.52 | 0.33 | 0.56 |
+| ANPP | 0.45 | 0.46 | 0.42 | 0.28 | 0.48 |
+| ANPP~foliage~ | 0.54 | 0.63 | 0.54 | 0.35 | 0.64 |
+| ANPP~woodystem~ | 0.17 | 0.23 | 0.12 | 0.19 | 0.28 |
+| BNPP~root~ | 0.33 | 0.26 | 0.23 | 0.36 | 0.35 |
 | BNPP~fineroot~ | 0.15 | 0.11 | 0.16 | 0.11 | 0.19 |
-| R~root~ | 0.22 | 0.21 | 0.30 | 0.01* | 0.43 |
+| R~root~ | 0.22 | 0.21 | 0.30 | 0.01* | 0.28 |
   
 Table: R^2^ values presented for latitude, three climate variables, and the best multivariate model for each carbon flux. Values marked * are not significant. 
   
