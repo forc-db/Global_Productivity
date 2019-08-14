@@ -23,11 +23,6 @@ frs.1901.2014 <- raster::extract(r, ForC_simplified)
 frs <- data.frame(ForC_simplified)
 frs <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]), frs.1901.2014)
 
-frs_colnames <- colnames(frs)[(4:1371)]
-frs_colnames <- gsub("[a-zA-Z ]", "", frs_colnames)
-frs_colnames <- as.Date(frs_colnames, format = "%Y.%m.%d")
-frs_colnames <- monthDays(frs_colnames)
-
 base <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]))
 base$sites.sitename <- as.character(base$sites.sitename)
 base$plot.name <- as.character(base$plot.name)
@@ -114,3 +109,45 @@ for(month in months){
 names(base)[16:27] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
 tmn_months <- base[, c(1:3, 16:27)]
+
+########## mean annual temperature
+
+# tmp
+r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.tmp.dat.nc", varname="tmp")
+tmp.1901.2014 <- raster::extract(r, ForC_simplified)
+
+tmp <- data.frame(ForC_simplified)
+tmp <- data.frame(measurement.ID = tmp[,1], sites.sitename = as.character(tmp[,2]), plot.name = as.character(tmp[,3]), tmp.1901.2014)
+
+base <- data.frame(measurement.ID = tmp[,1], sites.sitename = as.character(tmp[,2]), plot.name = as.character(tmp[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+years <- c(1901:2014)
+
+subset.all <- NULL
+
+for(year in years){
+  subset <- tmp[,grepl(year, colnames(tmp))]
+  if(year == 1901) subset.all <- subset
+  subset.all <- cbind(subset, subset.all)
+}
+
+tmp_month <- cbind(base, subset.all)
+
+for(month in months){
+  month_frame <- tmp_month[,grep(paste0("\\.", month, "\\."), colnames(tmp_month))]
+  month_frame$mean <- rowSums(month_frame)
+  month_frame$mean <- month_frame$mean/114
+  colnames(month_frame)[colnames(month_frame)=="mean"] <- month
+  base <- cbind(base, month_frame[, month])
+}
+
+names(base)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+tmp_by_month <- base
+
+########## merge datasets
+
+tmp <- data.frame(tmn_months, tmp_by_month[, c(4:15)])
+
+                  
