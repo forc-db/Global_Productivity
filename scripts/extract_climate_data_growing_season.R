@@ -18,52 +18,6 @@ plot(ForC_simplified)
 as.data.frame(ForC_simplified)
 ForC <- as.data.frame(ForC_simplified)
 
-# frs
-r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.frs.dat.nc", varname="frs")
-frs.1901.2014 <- raster::extract(r, ForC_simplified)
-
-frs <- data.frame(ForC_simplified)
-frs <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]), frs.1901.2014)
-
-base <- data.frame(measurement.ID = frs[,1], sites.sitename = as.character(frs[,2]), plot.name = as.character(frs[,3]))
-base$sites.sitename <- as.character(base$sites.sitename)
-base$plot.name <- as.character(base$plot.name)
-months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
-years <- c(1901:2014)
-
-subset.all <- NULL
-
-for(year in years){
-  subset <- frs[,grepl(year, colnames(frs))]
-  if(year == 1901) subset.all <- subset
-  subset.all <- cbind(subset, subset.all)
-}
-
-frs_month <- cbind(base, subset.all)
-
-for(month in months){
-  month_frame <- frs_month[,grep(paste0("\\.", month, "\\."), colnames(frs_month))]
-  month_frame$mean <- rowSums(month_frame)
-  month_frame$mean <- month_frame$mean/114
-  colnames(month_frame)[colnames(month_frame)=="mean"] <- month
-  base <- cbind(base, month_frame[, month])
-}
-
-names(base)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-frs_by_month <- base
-
-months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-
-for(month in months){
-  month_frame <- frs_by_month[,paste(month)]
-  month_frame <- ifelse(month_frame < 1, TRUE, FALSE)
-  base <- cbind(base, month_frame)
-}
-
-names(base)[16:27] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-
-frs_months <- base[, c(1:3, 16:27)]
-
 ###### monthly average daily minimum temperature
 
 # tmn
@@ -183,8 +137,9 @@ ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC
 ForC <- cbind(ForC, tmn_months$count)
 
 ForC$monthly_mean <- ForC$mean/ForC$`tmn_months$count`
+ForC$length_growing_season <- ForC$`tmn_months$count`
 
-ForC <- ForC[, c(1:39, 41)]
+ForC <- ForC[, c(1:39, 41, 42)]
 
 write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", row.names = F)
 
@@ -220,8 +175,8 @@ ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC
 ForC <- cbind(ForC, var$mean)
 ForC <- cbind(ForC, var$sum)
 
-names(ForC)[41] <- "solarradiationmonthly"
-names(ForC)[42] <- "solarradiationtotal"
+names(ForC)[42] <- "solarradiationmonthly"
+names(ForC)[43] <- "solarradiationtotal"
 write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", row.names = F)
 
 
