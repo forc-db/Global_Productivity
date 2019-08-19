@@ -105,7 +105,7 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 all.results <- NULL
 best.results <- NULL
 
-effects <- c("mat", "map", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "(1|geographic.area/plot.name)")
+effects <- c("mat", "length_growing_season", "map", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "(1|geographic.area/plot.name)")
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
@@ -174,6 +174,53 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           int_comb <- int_comb[grepl("mat", int_comb$Var2), ] #keep mat
           
           var_comb <- rbind(uni_comb, add_comb, int_comb)
+          
+          uni_comb <-
+            unlist( sapply( seq_len(length(1)), 
+                            function(x) {
+                              apply( combn(effects, 2), 2, function(x) paste(x, collapse = "+"))
+                            }))
+          
+          uni_comb <- expand.grid(response, uni_comb) 
+          uni_comb <- uni_comb[grepl("1", uni_comb$Var2), ] #keep random effect
+          uni_comb <- uni_comb[grepl("length_growing_season", uni_comb$Var2), ] #keep mat
+          
+          
+          add_comb <- 
+            unlist( sapply( seq_len(length(1)), 
+                            function(x) {
+                              apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
+                            }))
+          
+          
+          add_comb <- expand.grid(response, add_comb) 
+          add_comb <- add_comb[grepl("1", add_comb$Var2), ] #keep random effect
+          add_comb <- add_comb[grepl("length_growing_season", add_comb$Var2), ] #keep mat
+          
+          int_comb <-
+            unlist( sapply( seq_len(length(1)), 
+                            function(x) {
+                              apply( combn(effects, 2), 2, function(x) paste(x, collapse = "*"))
+                            }))
+          int_comb <- expand.grid(response, int_comb) 
+          int_comb <- int_comb[!(grepl("1", int_comb$Var2)), ]
+          int_comb <- int_comb[!(grepl("masl", int_comb$Var2)), ]
+          
+          int_comb <- as.character(int_comb$Var2)
+          
+          int_comb <- append(int_comb, c("(1|geographic.area/plot.name)"))
+          
+          int_comb <-
+            unlist( sapply( seq_len(length(1)), 
+                            function(x) {
+                              apply( combn(int_comb, 2), 2, function(x) paste(x, collapse = "+"))
+                            }))
+          
+          int_comb <- expand.grid(response, int_comb) 
+          int_comb <- int_comb[grepl("1", int_comb$Var2), ] #keep random effect
+          int_comb <- int_comb[grepl("length_growing_season", int_comb$Var2), ] #keep mat
+          
+          var_comb <- rbind(var_comb, uni_comb, add_comb, int_comb)
           
           formula_vec <- sprintf("%s ~ %s", var_comb$Var1, var_comb$Var2)
           
