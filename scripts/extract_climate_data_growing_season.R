@@ -213,12 +213,15 @@ for(month in months){
 var <- var[, c(28:39)]
 names(var) <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 var$mean <- rowMeans(var, na.rm = TRUE)
+var$sum <- rowSums(var, na.rm = TRUE)
 
 ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", stringsAsFactors = FALSE)
 
 ForC <- cbind(ForC, var$mean)
+ForC <- cbind(ForC, var$sum)
 
-names(ForC)[41] <- "solarradiation"
+names(ForC)[41] <- "solarradiationmonthly"
+names(ForC)[42] <- "solarradiationtotal"
 write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", row.names = F)
 
 
