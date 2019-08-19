@@ -1,5 +1,5 @@
 "response","mod","significant","p.value","sample.size","Rsq.R2m","Rsq.R2c","fixed1.coef","fixed2.coef","int.coef"
-"GPP","mean ~ mat*map+(1|geographic.area/plot.name)",TRUE,4.922e-15,257,0.6251,0.9579,0.397,3e-04,NA
+"GPP","mean ~ length_growing_season*map+(1|geographic.area/plot.name)",TRUE,2.144e-15,257,0.5925,0.9656,0.7151,-0.0062,NA
 "NPP","mean ~ mat*WaterStressMonths+(1|geographic.area/plot.name)",TRUE,1.497e-13,113,0.5992,0.7834,0.3462,0.1763,NA
 "BNPP_root","mean ~ mat*SolarRadiation+(1|geographic.area/plot.name)",TRUE,6.813e-06,105,0.3318,0.6826,0.2262,0.0076,NA
 "BNPP_root_fine","mean ~ mat+(1|geographic.area/plot.name)",TRUE,0.001433,90,0.1684,0.6141,0.0662,NA,NA
@@ -7,4 +7,4 @@
 "ANPP_foliage","mean ~ mat+(1|geographic.area/plot.name)",TRUE,1.283e-14,97,0.6139,0.7977,0.0959,NA,NA
 "ANPP_woody_stem","mean ~ mat*Aridity+(1|geographic.area/plot.name)",TRUE,3.316e-11,258,0.2543,0.8258,0.035,0,NA
 "R_auto","mean ~ mat*PreSeasonality+(1|geographic.area/plot.name)",TRUE,2.417e-05,22,0.7352,0.9132,1.5301,0.333,NA
-"R_auto_root","mean ~ mat+MaxVPD+(1|geographic.area/plot.name)",TRUE,2.408e-05,65,0.4003,0.6691,0.1529,-1.8359,NA
+"R_auto_root","mean ~ length_growing_season*PreSeasonality+(1|geographic.area/plot.name)",TRUE,2.264e-06,65,0.4981,0.699,1.25,0.1125,NA
