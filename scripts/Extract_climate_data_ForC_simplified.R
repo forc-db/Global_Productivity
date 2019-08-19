@@ -323,3 +323,13 @@ names(ForC_simplified)[53] <- "MaxVPD"
 head(ForC_simplified)
 
 write.csv(ForC_simplified,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
+
+source("C:\Users\banburymorganr\Dropbox (Smithsonian)\GitHub\Global_Productivity\scripts/extract_climate_data_growing_season.R")
+
+ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = FALSE)
+growing_season <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", stringsAsFactors = FALSE)
+
+ForC <- cbind(ForC, growing_season$length_growing_season)
+names(ForC)[54] <- "length_growing_season"
+
+write.csv(ForC,"C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", row.names = F)
