@@ -164,6 +164,15 @@ for(month in months){
 
 names(water_months)[4:15] <- c("Jan.1", "Feb.1", "Mar.1", "Apr.1", "May.1", "Jun.1", "Jul.1", "Aug.1", "Sep.1", "Oct.1", "Nov.1", "Dec.1")
 
+for(month in months){
+  month_frame <- pet_prec[,grep(paste0(month), colnames(pet_prec))]
+  month_frame$index <- (month_frame[,1] - month_frame[,2])/month_frame[,2]
+  base <- cbind(base, month_frame$index)
+  moisture_index <- base
+}
+
+names(moisture_index)[4:15] <- c("Jan.1", "Feb.1", "Mar.1", "Apr.1", "May.1", "Jun.1", "Jul.1", "Aug.1", "Sep.1", "Oct.1", "Nov.1", "Dec.1")
+
 ##################### combine temperature and water criteria
 
 var <- cbind(tmn_months, water_months[,4:15])
