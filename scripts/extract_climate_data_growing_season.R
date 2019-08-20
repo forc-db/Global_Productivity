@@ -66,7 +66,120 @@ names(base)[16:27] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", 
 
 tmn_months <- base[, c(1:3, 16:27)]
 
-########## mean annual temperature
+########################## monthly PET
+
+r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pet.dat.nc", varname="pet")
+pet.1901.2014 <- raster::extract(r, ForC_simplified)
+
+# # pet
+pet <- data.frame(ForC_simplified)
+pet <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]), pet.1901.2014)
+
+pet_colnames <- colnames(pet)[(4:1371)]
+pet_colnames <- gsub("[a-zA-Z ]", "", pet_colnames)
+pet_colnames <- as.Date(pet_colnames, format = "%Y.%m.%d")
+pet_colnames <- monthDays(pet_colnames)
+
+pet_month <- pet[, c(4:1371)]*matrix(rep(pet_colnames, nrow(pet)), nrow = nrow(pet), byrow = T)
+pet_month <- cbind(pet[,c(1:3)], pet_month)
+
+base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+years <- c(1901:2014)
+
+subset.all <- NULL
+
+for(year in years){
+  subset <- pet_month[,grepl(year, colnames(pet_month))]
+  if(year == 1901) subset.all <- subset
+  subset.all <- cbind(subset, subset.all)
+}
+
+pet_month <- cbind(base, subset.all)
+
+for(month in months){
+  month_frame <- pet_month[,grep(paste0("\\.", month, "\\."), colnames(pet_month))]
+  month_frame$mean <- rowSums(month_frame)
+  month_frame$mean <- month_frame$mean/114
+  month_frame$mean <- month_frame$mean*0.5 ################## because we are comparing pre > 0.5*pet
+  colnames(month_frame)[colnames(month_frame)=="mean"] <- month
+  base <- cbind(base, month_frame[, month])
+}
+
+names(base)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+pet_by_month <- base
+
+############## monthly pre
+
+r <- brick("S:/Global Maps Data/CRU/v3.23/ncfiles/cru_ts3.23.1901.2014.pre.dat.nc", varname="pre")
+pre.1901.2014 <- raster::extract(r, ForC_simplified)
+
+pre <- data.frame(ForC_simplified)
+pre <- data.frame(measurement.ID = pre[,1], sites.sitename = as.character(pre[,2]), plot.name = as.character(pre[,3]), pre.1901.2014)
+
+base <- data.frame(measurement.ID = pre[,1], sites.sitename = as.character(pre[,2]), plot.name = as.character(pre[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+months <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+years <- c(1901:2014)
+
+subset.all <- NULL
+
+for(year in years){
+  subset <- pre[,grepl(year, colnames(pre))]
+  if(year == 1901) subset.all <- subset
+  subset.all <- cbind(subset, subset.all)
+}
+
+pre_month <- cbind(base, subset.all)
+
+for(month in months){
+  month_frame <- pre_month[,grep(paste0("\\.", month, "\\."), colnames(pre_month))]
+  month_frame$mean <- rowSums(month_frame)
+  month_frame$mean <- month_frame$mean/114
+  colnames(month_frame)[colnames(month_frame)=="mean"] <- month
+  base <- cbind(base, month_frame[, month])
+}
+
+names(base)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+pre_by_month <- base
+
+############### pet and pre
+
+pet_prec <- cbind(pre_by_month, pet_by_month[,4:15])
+months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+
+for(month in months){
+  month_frame <- pet_prec[,grep(paste0(month), colnames(pet_prec))]
+  month_frame$larger <- ifelse(month_frame[,1] > month_frame[,2], TRUE, FALSE)
+  base <- cbind(base, month_frame$larger)
+  water_months <- base
+}
+
+names(water_months)[4:15] <- c("Jan.1", "Feb.1", "Mar.1", "Apr.1", "May.1", "Jun.1", "Jul.1", "Aug.1", "Sep.1", "Oct.1", "Nov.1", "Dec.1")
+
+##################### combine temperature and water criteria
+
+var <- cbind(tmn_months, water_months[,4:15])
+
+months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+for(month in months){
+  x <- ifelse(var[, month] == TRUE & var[, paste0(month, ".1")] == TRUE, TRUE, FALSE)
+  var <- cbind(var, x)
+}
+
+var <- var[, c(1:3, 28:39)]
+names(var)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+growing_season <- var
+
+########## climate variables
 
 climate <- c("cld", "pet", "pre", "tmp", "vap")
 
@@ -108,7 +221,7 @@ var_by_month <- base
 
 ########## merge datasets
 
-var <- data.frame(tmn_months, var_by_month[, c(4:15)])
+var <- data.frame(growing_season, var_by_month[, c(4:15)])
 
 months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
@@ -130,14 +243,14 @@ write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_
 
 ##### count length of growing season
 
-tmn_months$count <- rowSums(tmn_months == TRUE)
+growing_season$count <- rowSums(growing_season == TRUE)
 
 ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", stringsAsFactors = FALSE)
 
-ForC <- cbind(ForC, tmn_months$count)
+ForC <- cbind(ForC, growing_season$count)
 
-ForC$monthly_mean <- ForC$mean/ForC$`tmn_months$count`
-ForC$length_growing_season <- ForC$`tmn_months$count`
+ForC$monthly_mean <- ForC$mean/ForC$`growing_season$count`
+ForC$length_growing_season <- ForC$`growing_season$count`
 
 ForC <- ForC[, c(1:39, 41, 42)]
 
@@ -156,7 +269,7 @@ ForC_srad <- raster::extract(srad, ForC_simplified)
 srad1 <- data.frame(ForC_simplified)
 srad1 <- data.frame(measurement.ID = srad1[,1], sites.sitename = as.character(srad1[,2]), plot.name = as.character(srad1[,3]), ForC_srad)
 
-var <- data.frame(tmn_months, srad1[, c(4:15)])
+var <- data.frame(growing_season, srad1[, c(4:15)])
 
 months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
