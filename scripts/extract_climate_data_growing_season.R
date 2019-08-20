@@ -392,6 +392,10 @@ ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% everg
 ### exclude Tura due to extreme high latitude
 ForC_simplified <- ForC_simplified[!(ForC_simplified$sites.sitename %in% "Tura"),]
 
+mean.not.na <- !is.na(ForC_simplified[, "monthly_mean"]) & !is.infinite(ForC_simplified[, "monthly_mean"])
+
+ForC_simplified <- ForC_simplified[mean.not.na, ]
+
 
 ## prepare results table
 
@@ -404,7 +408,7 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("cld", "pet", "pre", "tmp", "vap", "solarradiation")
+fixed.variables <- c("cld", "pet", "pre", "tmp", "vap", "solarradiationmonthly", "solarradiationtotal")
 
 
 
@@ -460,6 +464,7 @@ for(response.variables in response.variables.groups){
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+        
         
         # df$masl <- df$masl/1000
         
