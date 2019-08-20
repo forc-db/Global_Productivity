@@ -171,7 +171,20 @@ for(month in months){
   moisture_index <- base
 }
 
-names(moisture_index)[4:15] <- c("Jan.1", "Feb.1", "Mar.1", "Apr.1", "May.1", "Jun.1", "Jul.1", "Aug.1", "Sep.1", "Oct.1", "Nov.1", "Dec.1")
+names(moisture_index)[4:15] <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+base <- data.frame(measurement.ID = pet[,1], sites.sitename = as.character(pet[,2]), plot.name = as.character(pet[,3]))
+base$sites.sitename <- as.character(base$sites.sitename)
+base$plot.name <- as.character(base$plot.name)
+
+for(month in months){
+  month_frame <- moisture_index[,paste(month)]
+  month_frame <- ifelse(month_frame > -0.95, TRUE, FALSE)
+  base <- cbind(base, month_frame)
+  water_months <- base
+}
+
+names(water_months)[4:15] <- c("Jan.1", "Feb.1", "Mar.1", "Apr.1", "May.1", "Jun.1", "Jul.1", "Aug.1", "Sep.1", "Oct.1", "Nov.1", "Dec.1")
 
 ##################### combine temperature and water criteria
 
