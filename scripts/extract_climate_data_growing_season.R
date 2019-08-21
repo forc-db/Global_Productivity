@@ -482,25 +482,22 @@ for(response.variables in response.variables.groups){
         
         mod <-  lmer(scale(monthly_mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.clim <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.clim.poly <- lmer(scale(monthly_mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
         
-        aictab <- aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)
+        aictab <- aictab(list(mod.clim = mod.clim), sort = T)
         
-        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
-        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Delta_AICc[2])
+        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
         
         
         if (best.model == "mod") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
         if (best.model == "mod.clim") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-        if (best.model == "mod.clim.poly") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$monthly_mean)
         
         if (best.model == "mod.clim") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
-        if (best.model == "mod.clim.poly") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
