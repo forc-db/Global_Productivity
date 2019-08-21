@@ -107,7 +107,7 @@ best.results <- NULL
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
-effects <- c("poly(mat, 1, raw = T)", "poly(map, 1, raw = T)", "poly(lat, 1, raw = T)", "poly(TempSeasonality, 1, raw = T)", "poly(TempRangeAnnual, 1, raw = T)", "poly(AnnualFrostDays, 1, raw = T)", "poly(AnnualWetDays, 1, raw = T)", "poly(Aridity, 1, raw = T)", "poly(PotentialEvapotranspiration, 1, raw = T)", "poly(VapourPressureDeficit, 1, raw = T)", "poly(SolarRadiation, 1, raw = T)", "poly(PreSeasonality, 1, raw = T)", "poly(mat, 2, raw = T)", "poly(map, 2, raw = T)", "poly(lat, 2, raw = T)", "poly(TempSeasonality, 2, raw = T)", "poly(TempRangeAnnual, 2, raw = T)", "poly(AnnualFrostDays, 2, raw = T)", "poly(AnnualWetDays, 2, raw = T)", "poly(Aridity, 2, raw = T)", "poly(PotentialEvapotranspiration, 2, raw = T)", "poly(VapourPressureDeficit, 2, raw = T)", "poly(SolarRadiation, 2, raw = T)", "poly(PreSeasonality, 2, raw = T)", "masl", "(1|geographic.area/plot.name)")
+effects <- c("poly(mat, 1, raw = T)", "poly(map, 1, raw = T)", "poly(lat, 1, raw = T)", "poly(TempSeasonality, 1, raw = T)", "poly(TempRangeAnnual, 1, raw = T)", "poly(AnnualFrostDays, 1, raw = T)", "poly(AnnualWetDays, 1, raw = T)", "poly(Aridity, 1, raw = T)", "poly(PotentialEvapotranspiration, 1, raw = T)", "poly(VapourPressureDeficit, 1, raw = T)", "poly(SolarRadiation, 1, raw = T)", "poly(PreSeasonality, 1, raw = T)", "poly(mat, 2, raw = T)", "poly(map, 2, raw = T)", "poly(lat, 2, raw = T)", "poly(TempSeasonality, 2, raw = T)", "poly(TempRangeAnnual, 2, raw = T)", "poly(AnnualFrostDays, 2, raw = T)", "poly(AnnualWetDays, 2, raw = T)", "poly(Aridity, 2, raw = T)", "poly(PotentialEvapotranspiration, 2, raw = T)", "poly(VapourPressureDeficit, 2, raw = T)", "poly(SolarRadiation, 2, raw = T)", "poly(PreSeasonality, 2, raw = T)", "(1|geographic.area/plot.name)")
 
 for (response.v in response.variables){
   
@@ -127,15 +127,15 @@ for (response.v in response.variables){
   
   response <- "mean"
   
-  uni_comb <-
-    unlist( sapply( seq_len(length(1)), 
-                    function(x) {
-                      apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
-                    }))
-  
-  uni_comb <- expand.grid(response, uni_comb) 
-  uni_comb <- uni_comb[grepl("geographic", uni_comb$Var2), ] #keep random effect
-  uni_comb <- uni_comb[grepl("masl", uni_comb$Var2), ] #keep masl
+  # uni_comb <-
+  #   unlist( sapply( seq_len(length(1)), 
+  #                   function(x) {
+  #                     apply( combn(effects, 3), 2, function(x) paste(x, collapse = "+"))
+  #                   }))
+  # 
+  # uni_comb <- expand.grid(response, uni_comb) 
+  # uni_comb <- uni_comb[grepl("geographic", uni_comb$Var2), ] #keep random effect
+  # uni_comb <- uni_comb[grepl("masl", uni_comb$Var2), ] #keep masl
   
   comb <-
     unlist( sapply( seq_len(length(1)), 
@@ -149,7 +149,7 @@ for (response.v in response.variables){
   null <- "1 + (1|geographic.area/plot.name)"
   null <- expand.grid(response, null)
   
-  var_comb <- rbind(uni_comb, comb, null)
+  var_comb <- rbind(comb, null)
   
   formula_vec <- sprintf("%s ~ %s", var_comb$Var1, var_comb$Var2)
   
