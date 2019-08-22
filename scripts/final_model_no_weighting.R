@@ -184,7 +184,7 @@ for(response.variables in response.variables.groups){
         ylim[1] <- ylim[1] - 0.25
         ylim[2] <- ylim[2] + 0.25
         
-        if(!fixed.v %in% c("mat", "lat")){
+        if(!fixed.v %in% c("mat", "lat", "PreSeasonality")){
         
         mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
@@ -209,7 +209,7 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         }
         
-        if(fixed.v %in% c("mat", "lat")){
+        if(fixed.v %in% c("mat", "lat", "PreSeasonality")){
           
           mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
           mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
