@@ -130,7 +130,7 @@ Monthly data for PET, precipitation, and temperature was downloaded from the Cli
   
 Because the magnitude of fluxes varies significantly, in order to facilitate comparisons between regression models for each flux, data for each flux was scaled, to give the data a mean of 0 and standard deviation of 1. As each data set was scaled separately, this does not allow for statistical comparisons of slope values, but does assist in visualising the data.  
   
-To test for a potential influence of altitude, models were also run with site altitude included as a second fixed effect. These models were compared against models with no altitude term, and AIC values calculated to identify whether inclusion of altitude as a term improved the models.  
+To test for a potential influence of altitude, models were also run with site altitude included as a second fixed effect. These models were compared against models with no altitude term, and AIC values calculated to identify whether inclusion of altitude as a term improved the models. Including altitude had a very small effect on most models, with the difference in AIC values between models including and excluding altitude often being <2, suggesting the models are very similar in their explanatory power. As a result, it was decided to present results only from models do not include altitude as a fixed term.
   
 Within the ForC database, sites within 25km^2^ of each other are clustered into geographic areas. To account for correlations in measurements between tightly clustered sites, a random effect was specified as plot nested within geographic area. Data from the temperate regions was heavily skewed towards studies from the old-growth forests of the Pacific Northwest. These forests have very high productivity, and so to ensure that results were not unduly influenced by geographic sampling bias, we tried a version of the model where data were weighted according to forested land area within each Koeppen climate zone. Results were similar between the weighted and unweighted model, so, to avoid problems of over-fitting, the weighted model was dropped, and results from this are not presented here.  
   
@@ -150,7 +150,7 @@ To investigate the potential interactive effects of climate variables on carbon 
      
 ###Results
   
-*How do carbon fluxes vary with latitude?* All major carbon fluxes increase with decreasing latitude (fig. 2). Models showed significant variation in whether they were improved by inclusion of altitude as a fixed effect. Including altitude had a very small effect on most models, with the difference in AIC values between models including and excluding altitude often being <2, suggesting the models are very similar in their explanatory power. All models presented below do not include altitude, and R^2^ values refer to the proportion of variation explained by the climate variable alone.  
+*How do carbon fluxes vary with latitude?* All major carbon fluxes increase linearly with decreasing latitude (fig. 2).   
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("effect_of_latitude.png")
@@ -164,21 +164,13 @@ Analysis of component fluxes indicates that measures of smaller component fluxes
 
   knitr::include_graphics("combined_stacked.png")
 ```
+  
+We find no evidence that allocation between fluxes varies with latitude or climate. 
    
-*Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity, explaining less than 20% of the variation in each of the carbon fluxes.
-We found that both measures of mean annual precipitation used were significant (p<0.05) but poor predictors of productivity, explaining, with the exception of R~auto~, at most 37% of variation in carbon flux.   
+*How does productivity relate to MAT and MAP?* MAT is a significant (p<0.05) and strong predictor of productivity for all carbon fluxes tested, with all fluxes showing a linear increase with temperature. We found no support for a saturation point of productivity with temperature.  
   
-Looking across all productivity components, the climate variables which explain the highest amount of variation in carbon fluxes are temperature seasonality, mean annual temperature, annual temperature range, and annual frost days. Vapour pressure deficit came out as a strong predictor for ANPP~woody stem~, and potential evapotranspiration was a good predictor for BNPP~root~ and ANPP~woody stem~. 
+MAP was found to be a significant (p<0.05) but poor predictor of productivity, explaining, with the exception of R~auto~, at most 37% of variation in carbon flux. For the majority of fluxes productivity is best predicted by a polynomial model. Productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP: the model indicates that GPP continues to increase with precipitation up to measures of at least 5000mm annually (p<0.0001, R^2^ = 0.33. Data above this point is not available, but the model trend indicates that the saturation point for this model is around 5000mm mean annual precipitation. 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against the climate variables identified as the best predictors: mean annual temperature; temperature seasonality; annual temperature range; and vapour pressure. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
-  knitr::include_graphics("combined_plots.png")
-```
-  
-**Mean annual temperature.** All carbon fluxes show a linear increase with temperature.  
-**Temperature seasonality and annual temperature range.** These two climate variables are strongly correlated, and so only temperature seasonality is presented in figure 4. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. GPP, NPP, ANPP, and R~root~ show a polynomial relationship with both variables, and BNPP~root~ shows a polynomial relationship with annual temperature range. As seasonality increases, these variables show a more rapid decrease in productivity. ANPP~foliage~ and ANPP~woody stem~ show a linear relationship with both variables.  
-**Mean annual precipitation.** Despite being a poor predictor of productivity, the results indicate that, for the majority of fluxes, productivity increases with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which productivity starts to decrease. The notable exception to this is GPP: the model indicates that GPP continues to increase with precipitation up to measures of at least 5000mm annually (p<0.0001, R^2^ = 0.33. Data above this point is not available, but the model trend indicates that the saturation point for this model is around 5000mm mean annual precipitation.  
-**Potential evapotranspiration.** All fluxes, with the exception of BNPP~fine root~ and R~root~ show a strong increase with potential evapotranspiration at values below 1000mm. Between 1200 and 1700mm productivity peaks, and begins to decrease at values above 1800mm.  
-  
 There was a significant interactive effect between MAT and MAP for GPP, BNPP~root~, BNPP~fine root~, ANPP, ANPP~woody stem~, and R~root~. There was a significant additive effect for R~auto~. NPP and ANPP~foliage~ showed no significant interactive or additive effect: including MAP as a second variable did not improve on the model including only MAT.  
   
 For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. For NPP, there was a significant interactive effect between MAT and water stress months, with this model explaining nearly 5% more variation in NPP than MAT alone. However, for ANPP~foliage~, no multivariate model improved on the univariate model including only MAT.  
@@ -186,8 +178,17 @@ For the variables which showed a significant interactive or additive effect betw
 ```{r echo=FALSE, out.width='100%', fig.cap = "Plots of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against mean annual precipitation. Points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("mat_map_interaction.png")
 ```
+
+*How does productivity relate to other climate variables?* Our results indicate that productivity is most strongly explained by temperature, with temperature-related climate variables coming out as strong predictors of productivity. In addition to MAT, temperature seasonality, annual temperature range, and annual frost days were consistently identified as good predictors of productivity across fluxes.  
   
-*Do carbon fluxes vary in their responses to climate, particularly with regards to allocation between fluxes?* Of all the flux pairings tested, the only ones to show a significant relationship with latitude were ANPP:NPP (p<0.01, R^2^ = 0.44) and ANPP:BNPP (p<0.001, R^2^ = 0.33). In both cases, allocation to ANPP increased with latitude, with the lowest allocation to ANPP in the tropical regions. BNPP:NPP decreased with latitude, though this relationship was non-significant. 
+We found a significant relationship between productivity and potential evapotranspiration for all fluxes. ANPP~foliage~, BNPP~fine root~ and R~root~ increased linearly with PET, however all other fluxes showed a polynomial relationship with PET. We find strong evidence for a saturation point or peak with PET: productivity tends to increase at values below 1000mm, before saturating between 1200 and 1700mm. There is evidence that productivity begins to decrease at values above 1800mm PET.
+
+Solar radiation
+Vapour pressure deficit?
+  
+Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range, precipitation seasonality, maximum vapour pressure deficit and water stress months were poor or non-significant explainers of variation in productivity, explaining less than 20% of the variation in each of the carbon fluxes.
+
+*What is the role of seasonality in explaining productivity?*
  
 *Does climate explain the same proportion of variation in different components of primary productivity?*  
   
@@ -214,6 +215,10 @@ This pattern is also seen in the R^2^ values for multivariate models.
 ###Discussion
 
 *The relationship between productivity and latitude*
+
+Begin discussion by emphasising that this these conclusions are based on analyses of an unprecedented amount of data across many fluxes, limited to mature undisturbed forests.
+
+We are no longer explicity testing whether climate explains a higher proportion of variability in major fluxes, so mention this, and the implications of it in the discussion.
 
 Past studies have differed in their conclusions regarding the relationship between productivity and latitude. Our findings indicate that, for all carbon fluxes studied, productivity peaks in the tropical regions. While Huston and Wolverton (2009) found no significant relationship between ANPP and latitude, we find a significant negative relationship between ANPP and latitude, with the highest levels of ANPP in the tropical regions. 
 
