@@ -563,7 +563,7 @@ for (age in ages){
 
 
 
-fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "SolarRadiation", "TempSeasonality", "length_growing_season")
+fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP")
 
