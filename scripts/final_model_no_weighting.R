@@ -542,6 +542,8 @@ for (age in ages){
       if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
       mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
       mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
+      
+      
       dev.off()
       
       
@@ -714,7 +716,7 @@ for (age in ages){
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
       
-      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent.png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(3,3,3,3))
       
@@ -726,6 +728,7 @@ for (age in ages){
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
+        lty <- col.sym$lty[which(col.sym$variable %in% response.v)]
         
         if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
         if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
@@ -771,11 +774,11 @@ for (age in ages){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
-        # if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.4)[col], pch = sym, yaxt = "n", ylim = ylim)
-        # if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.4)[col], pch = sym) 
+        # if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
+        if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
         
-        lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2))
+        lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = lty)
         
         first.plot <- FALSE
         
@@ -784,12 +787,12 @@ for (age in ages){
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
-        legend1 = "R-squared values"
-        legend2 <- paste(response.v, " = ", Rsq[1])
-        # legend3 <- paste(response.v, "p-value = ", significance)
-        legend1 <- paste(response.v)
-        mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
-        
+        # legend1 = "R-squared values"
+        # legend2 <- paste(response.v, " = ", Rsq[1])
+        # # legend3 <- paste(response.v, "p-value = ", significance)
+        # legend1 <- paste(response.v)
+        # mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
+        # 
         
         
         results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
@@ -799,10 +802,14 @@ for (age in ages){
       }
       
       
-      if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
-      if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
-      mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
+      # if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
+      # if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
+      # mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
       mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
+      
+      legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root_fine", "R_auto", "R_auto_root"), col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], pch = c(1, 3, 5, 8, 9, 7, 6, 4, 2), xpd = T, lty = c(1, 6, 5, 1, 6, 5, 6, 1, 5), text.col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], bty = "n", title.col = "black")
+
+      
       dev.off()
       
       
