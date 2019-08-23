@@ -317,6 +317,39 @@ names(ForC)[43] <- "solarradiationtotal"
 write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", row.names = F)
 
 
+setwd("S:/Global Maps Data/WorldClim/tiff")
+unzip("wc2.0_30s_tavg.zip")
+S_filenames<- paste("wc2.0_30s_tavg_", c(paste(0,1:9, sep=""), 10, 11, 12), ".tif",sep="")
+tavg <- stack(S_filenames) 
+
+month <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+names(tavg) <- month
+
+ForC_tavg <- raster::extract(tavg, ForC_simplified)
+tavg1 <- data.frame(ForC_simplified)
+tavg1 <- data.frame(measurement.ID = tavg1[,1], sites.sitename = as.character(tavg1[,2]), plot.name = as.character(tavg1[,3]), ForC_tavg)
+
+var <- data.frame(growing_season, tavg1[, c(4:15)])
+
+months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+for(month in months){
+  x <- ifelse(var[, month] == TRUE, var[, paste0(month, ".1")], NA)
+  var <- cbind(var, x)
+}
+
+var <- var[, c(28:39)]
+names(var) <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+var$mean <- rowMeans(var, na.rm = TRUE)
+
+ForC <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", stringsAsFactors = FALSE)
+
+ForC <- cbind(ForC, var$mean)
+names(ForC)[44] <- "tempWC"
+
+write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_simplified/ForC_simplified_growing_season_climate.csv", row.names = F)
+
 
 # Clean environment ####
 rm(list = ls())
@@ -410,7 +443,7 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("cld", "pet", "pre", "tmp", "vap", "solarradiationmonthly", "solarradiationtotal")
+fixed.variables <- c("cld", "pet", "pre", "tmp", "vap", "solarradiationmonthly", "solarradiationtotal", "tempWC")
 
 
 
