@@ -184,7 +184,7 @@ for(response.variables in response.variables.groups){
         ylim[1] <- ylim[1] - 0.25
         ylim[2] <- ylim[2] + 0.25
         
-        if(!fixed.v %in% c("mat", "lat", "PreSeasonality")){
+        if(!fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
         
         mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
         mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
@@ -209,7 +209,7 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         }
         
-        if(fixed.v %in% c("mat", "lat", "PreSeasonality")){
+        if(fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
           
           mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
           mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
@@ -563,7 +563,7 @@ for (age in ages){
 
 
 
-fixed.variables <- c("mat", "TempSeasonality", "map", "PotentialEvapotranspiration")
+fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "TempSeasonality", "SolarRadiation", "length_growing_season")
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "ANPP")
 
@@ -575,9 +575,9 @@ for (age in ages){
   if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
-  png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/combined_plots.png"), width = 2255, height = 2000, units = "px", res = 300)
+  png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/combined_plots.png"), width = 2255, height = 3000, units = "px", res = 300)
   
-  par(mfrow = c(2,2), mar = c(4,2,2,2), oma = c(0,3,0,0))
+  par(mfrow = c(3,2), mar = c(4,2,2,2), oma = c(0,3,0,0))
   
   pannel.nb <- 1
   
@@ -620,33 +620,57 @@ for (age in ages){
       
       df$fixed <- df[, fixed.v]
       
-      mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
-      mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
-      mod.poly <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F)
-      
       a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
       ylim <- range(tapply(a$mean, a$variable.name, scale))
       ylim[1] <- ylim[1] - 0.25
       ylim[2] <- ylim[2] + 0.25
       
-      aictab <- aictab(list(mod.linear = mod.linear, mod.poly = mod.poly), sort = T)
+      if(!fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
+        
+        mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim.poly <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        aictab <- aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)
+        
+        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Delta_AICc[2])
+        delta.aic <- signif(delta.aic, digits=4)
+        
+        
+        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        sample.size <- length(df$mean)
+        
+        if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+      }
       
-      best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Modname[1])
-      delta.aic <- as.numeric(aictab(list(mod = mod, mod.linear = mod.linear, mod.poly = mod.poly), sort = T)$Delta_AICc[2])
-      delta.aic <- signif(delta.aic, digits=4)
-      
-      if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = F)
-      if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
-      if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
-
-      
-      significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-      sample.size <- length(df$mean)
-      
-      if (best.model == "mod.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df, REML = T)
-      if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
-
+      if(fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
+        
+        mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        aictab <- aictab(list(mod = mod, mod.clim = mod.clim), sort = T)
+        
+        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Delta_AICc[2])
+        delta.aic <- signif(delta.aic, digits=4)
+        
+        
+        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        sample.size <- length(df$mean)
+        
+        if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+      }
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
 
@@ -679,7 +703,7 @@ for (age in ages){
     
     mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
-    if(fixed.v == "TempSeasonality")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
+    if(fixed.v == "map")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
     
   }
   
@@ -716,7 +740,7 @@ for (age in ages){
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
       
-      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent.png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent_notscaled.png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(3,3,3,3))
       
@@ -749,12 +773,13 @@ for (age in ages){
         
         a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
         ylim <- range(tapply(a$mean, a$variable.name, scale))
+        ylim <- range(a$mean)
         ylim[1] <- ylim[1] - 0.25
         ylim[2] <- ylim[2] + 0.25
         
         
-        mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod <-  lmer((mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.linear <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
         
         aictab <- aictab(list(mod = mod, mod.linear = mod.linear), sort = T)
         
@@ -762,21 +787,21 @@ for (age in ages){
         delta.aic <- as.numeric(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
 
-        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
-        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.linear") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.linear") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        # if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
-        if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
+        # if(first.plot) plot((mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
+        if(first.plot) plot((mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
+        if(!first.plot) points((mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
         
         lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = lty)
         
