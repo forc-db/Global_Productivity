@@ -246,6 +246,13 @@ By testing a wide selection of carbon fluxes, we have been able to explore the r
 - Allocation to fluxes does not vary with climate on a global scale. This suggests that the pressures that require individuals to shift allocation between fluxes occur on much more local scales. We expect that allocation varies with factors such as altitude, stand age, disturbance regime, micro-climate, and is likely to show seasonal responses to climate variables, such as showing short-term responses to water availability.
 - Climate more strongly explains variation in the major fluxes, with lower levels of variation explained in subsidiary fluxes. This indicates that factors other than climate influence subsidiary fluxes. This links to the results we find for allocation: although climate has a significant effect on these fluxes, there are a number of other factors which can influence the way that carbon is allocated to them, which masks the effect of climate to some extent. 
 
+Limitations: 
+- We have only considered mature forests; there is a lot more work to go towards understanding the effect of stand age on productivity. In part, understanding these patterns will be reliant on acquiring more data at all stand ages.
+- We have standardised data as far as possible; however there are still challenges with ensuring data quality is as high as possible. For example, there are inherent challenges with measuring stand-level productivity, particularly for certain components. Standardising BNPP in particular is challenging, as it is often sampled to insufficient depth/extrapolated from measures of ANPP. This means that, although we have been careful to control data selection within the database, we cannot entirely control the quality of data going into the database. As a result, our results are likely to be affected by this.
+- As above, we are looking at climate data at a coarse scale; these are generalisations about large-scale patterns. Stand-level studies will help to improve our understanding of the effect of climate on productivity on smaller spatial and temporal scales.
+
+Our findings support a lot of previous work that has been done, but we are doing this with a much larger and more comprehensive dataset, with better standardisation of available data.
+
 
 *The relationship between productivity and latitude*
 
