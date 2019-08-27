@@ -227,6 +227,10 @@ This pattern is also seen in the R^2^ values for multivariate models.
 
 In this analysis we use a comprehensive global database, standardised to account for differences in methodology across studies, and stand age and level of disturbance across sites. The database provides us with an unprecedented amount of data, representing all (?) global forest ecosystems and all significant forest carbon fluxes. This breadth of data allows us to comprehensively explore the relationships between climate and productivity on a global scale. 
 
+Our results show that productivity decreases linearly with latitude. Climate explains a significant proportion of variation in all carbon fluxes, with temperature variables being the best predictors of productivity. While other climate variables are significant predictors of productivity, none of them improve on the explanatory power of temperature-related variables. Water availability is an important factor in explaining productivity on a global scale: we find a positive influence of precipitation at low MAP, with saturation at higher levels of MAP. There is a significant interaction between MAT and MAP. 
+
+We find that seasonality is an important factor in understanding patterns in productivity on a global scale: temperature seasonality and growing season length are strong predictors of productivity, though growing season length doesn't improve on MAT as a predictor. Within the growing season we find the influence of climate on productivity is smaller, but still significant for a number of carbon fluxes.
+
 Past studies have differed in their conclusions regarding the relationship between productivity and latitude. Our findings indicate that, for all carbon fluxes studied, productivity peaks in the tropical regions.
 
 There is strong evidence from our analyses that this increase in productivity towards the tropical regions is driven primarily by temperature-related effects. We find that temperature-related climate variables explain the highest proportion of variability in productivity.
