@@ -231,6 +231,12 @@ Our results show that productivity decreases linearly with latitude. Climate exp
 
 We find that seasonality is an important factor in understanding patterns in productivity on a global scale: temperature seasonality and growing season length are strong predictors of productivity, though growing season length doesn't improve on MAT as a predictor. Within the growing season we find the influence of climate on productivity is smaller, but still significant for a number of carbon fluxes.
 
+Many of our findings support and clarify previously published work; however we use a much larger and more comprehensive database than has previously been available, allowing for higher quality control and standardisation of data. This enalbed us to control for factors not previously controlled for - such as stand age, methodology, flux components, and disturbance regime - to gain a stronger understanding of latitudinal and climatic effects on productivity.
+
+Despite the high standard of data quality in the ForC database, there are still significant limitations on our analyses. We standardised methodologies as far as possible, ensuring that there was consistency in the components included for each carbon flux. However, field techniques for estimating components of primary productivity are variable in their accuracy. This is particularly true for measures of BNPP, which are often estimated by extrapolating measures of ANPP. Even where BNPP is calculated through direct soil sampling, measures are often taken to insufficient depth, leading to underestimation of the flux. It is challenging to account for this type of variability in quality of field data, and our analyses largely assume good faith in data quality. While we have strong confidence in our analyses of well-understood fluxes, such as GPP, ANPP, and ANPP~woody stem~, we recommend caution in drawing firm conclusions from our analyses of BNPP, BNPP~fine root~, and, to some extent, NPP. We expect that, as field techniques improve the accuracy of estimates of these fluxes in the future, our understanding of the relationship of BNPP with climate variables will change. It is possible that the low R^2^ values for BNPP that we find are a result of lower accuracy in field measures of these fluxes.
+
+
+
 Past studies have differed in their conclusions regarding the relationship between productivity and latitude. Our findings indicate that, for all carbon fluxes studied, productivity peaks in the tropical regions.
 
 There is strong evidence from our analyses that this increase in productivity towards the tropical regions is driven primarily by temperature-related effects. We find that temperature-related climate variables explain the highest proportion of variability in productivity.
@@ -255,7 +261,7 @@ Limitations:
 - We have standardised data as far as possible; however there are still challenges with ensuring data quality is as high as possible. For example, there are inherent challenges with measuring stand-level productivity, particularly for certain components. Standardising BNPP in particular is challenging, as it is often sampled to insufficient depth/extrapolated from measures of ANPP. This means that, although we have been careful to control data selection within the database, we cannot entirely control the quality of data going into the database. As a result, our results are likely to be affected by this.
 - As above, we are looking at climate data at a coarse scale; these are generalisations about large-scale patterns. Stand-level studies will help to improve our understanding of the effect of climate on productivity on smaller spatial and temporal scales.
 
-Our findings support a lot of previous work that has been done, but we are doing this with a much larger and more comprehensive dataset, with better standardisation of available data.
+
 
 
 *The relationship between productivity and latitude*
