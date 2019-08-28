@@ -699,11 +699,14 @@ for (age in ages){
       all.results <- rbind(all.results, results)
       
     }
-    pannel.nb <- pannel.nb +1
     
+    
+    mtext(paste0("(", letters[pannel.nb], ")"), side = 3, line = -1.5, adj = 0.05)
     mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
     if(fixed.v == "map")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
+    
+    pannel.nb <- pannel.nb +1
     
   }
   
@@ -719,6 +722,7 @@ response.variables.groups <- list(c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_fol
 fixed.variables <- "lat"
 
 all.results = NULL
+all.legends = NULL
 
 
 ### mature forests only ####
@@ -740,7 +744,7 @@ for (age in ages){
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
       
-      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent_notscaled.png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent.png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(3,3,3,3))
       
@@ -773,13 +777,12 @@ for (age in ages){
         
         a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
         ylim <- range(tapply(a$mean, a$variable.name, scale))
-        ylim <- range(a$mean)
         ylim[1] <- ylim[1] - 0.25
         ylim[2] <- ylim[2] + 0.25
         
         
-        mod <-  lmer((mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.linear <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.linear <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
         
         aictab <- aictab(list(mod = mod, mod.linear = mod.linear), sort = T)
         
@@ -787,21 +790,21 @@ for (age in ages){
         delta.aic <- as.numeric(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Delta_AICc[2])
         delta.aic <- signif(delta.aic, digits=4)
 
-        if (best.model == "mod.linear") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
-        if (best.model == "mod") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = F)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$mean)
         
-        if (best.model == "mod.linear") mod.full <- lmer((mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.linear") mod.full <- lmer(scale(mean) ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df, REML = T)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         # if(first.plot) plot((mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
-        if(first.plot) plot((mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
-        if(!first.plot) points((mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
+        if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
         
         lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = lty)
         
@@ -819,20 +822,22 @@ for (age in ages){
         # mtext(side = 3, line = -(which(response.variables %in% response.v)), text = legend2, adj = 0.95, col = plasma(10)[col], cex = 0.5, outer = F)
         # 
         
+        legend <- paste0(response.v, "; Rsq = ", Rsq[1])
         
         results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
         
         all.results <- rbind(all.results, results)
+        all.legends <- rbind(all.legends, legend)
         
       }
-      
+      all.legends <- as.character(all.legends)
       
       # if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
       # if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
       # mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
       mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
       
-      legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root_fine", "R_auto", "R_auto_root"), col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], pch = c(1, 3, 5, 8, 9, 7, 6, 4, 2), xpd = T, lty = c(1, 6, 5, 1, 6, 5, 6, 1, 5), text.col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], bty = "n", title.col = "black")
+      legend("topright", legend = all.legends, col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], pch = c(1, 3, 5, 8, 9, 7, 6, 4, 2), xpd = T, lty = c(1, 6, 5, 1, 6, 5, 6, 1, 5), text.col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], bty = "n", title.col = "black", cex = 0.75)
 
       
       dev.off()
