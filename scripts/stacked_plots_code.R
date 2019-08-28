@@ -268,7 +268,7 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           
           ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
           ylim[1] <- ylim[1] - 0.25
-          ylim[2] <- ylim[2] + 0.25
+          ylim[2] <- ylim[2] + 5
           
           # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
@@ -303,6 +303,7 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
           mtext(side = 1, line = 1, text = "Latitude", outer = T)
           mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
+          mtext(paste0("(", letters[1], ")"), side = 3, line = -1.5, adj = 0.05)
           
           # dev.off()
           
@@ -479,7 +480,7 @@ for (age in ages){
             
             ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
             ylim[1] <- ylim[1] - 0.25
-            ylim[2] <- ylim[2] + 0.25
+            ylim[2] <- ylim[2] + 2
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
@@ -508,6 +509,7 @@ for (age in ages){
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
             legend("topright", legend = c("ANPP", "BNPP", "NPP", "ANPP + BNPP"), col = plasma(10)[c(5, 8, 3, NA)], pch = c(5, 8, 3, NA), xpd = T, text.col = plasma(10)[c(5, 8, 3, NA)], bty = "n", xjust = 1, cex = 0.75)
+            mtext(paste0("(", letters[2], ")"), side = 3, line = -1.5, adj = 0.05)
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
             # mtext(side = 1, line = 3, text = "latitude", outer = T)
@@ -688,7 +690,7 @@ for (age in ages){
             
             ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
             ylim[1] <- ylim[1] - 0.25
-            ylim[2] <- ylim[2] + 0.25
+            ylim[2] <- ylim[2] + 2
             
             # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
@@ -717,7 +719,7 @@ for (age in ages){
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
             legend("topright", legend = c("ANPP foliage", "ANPP woody stem", "ANPP", "ANPP foliage + ANPP woody stem"), col = plasma(10)[c(9, 7, 5, NA)], pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
-            
+            mtext(paste0("(", letters[3], ")"), side = 3, line = -1.5, adj = 0.05)
             
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
@@ -927,7 +929,7 @@ for (age in ages){
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
             legend("topright", legend = c("BNPP", "R root", "BNPP fine root", "BNPP + R root"), col = plasma(10)[c(8, 2, 6, NA)], pch = c(8, 2, 6, NA), xpd = T, text.col = plasma(10)[c(8, 2, 6, NA)], bty = "n", xjust = 1, cex = 0.75)
-            
+            mtext(paste0("(", letters[4], ")"), side = 3, line = -1.5, adj = 0.05)
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
             # mtext(side = 1, line = 3, text = "latitude", outer = T)
