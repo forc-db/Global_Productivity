@@ -3,6 +3,16 @@ title: "manuscript_removed_text"
 output: pdf_document
 ---
 
+
+1. **Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?** To date, the majority of studies have focussed on productivity responses to precipitation and temperature, while the influence of other climate variables on productivity remains under-explored. We utilise global climate datasets to investigate the relationships between productivity and a range of climate variables.  
+2. **Do the components of primary productivity show variation in their responses to these climatic drivers?** Allocation to components of primary productivity appears to show some variation across climate and latitudinal gradients. We use global datasets of a range of primary productivity components to explore how significant this variation in allocation is.  
+3. **Does climate explain the same proportion of variation in different components of primary productivity?** Review of current research shows that, while the relationship between GPP and latitude is consistent, NPP and ANPP show weaker relationships with latitude. This may be a result of varying sensitivities to climate drivers. We use mixed models to estimate the proportion of variation explained by climate for different components of productivity, to investigate how the relative importance of climatic drivers varies across components.  
+
+
+
+
+
+
 *Which climatic variables are the most important drivers behind the latitudinal pattern in primary productivity?* All major carbon fluxes show similar responses to climate variables. Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range and precipitation seasonality were poor explainers of variation in primary productivity, explaining less than 20% of the variation in each of the carbon fluxes.
 We found that both measures of mean annual precipitation used were significant (p<0.05) but poor predictors of productivity, explaining, with the exception of R~auto~, at most 37% of variation in carbon flux.   
   
