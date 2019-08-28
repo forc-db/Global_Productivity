@@ -106,12 +106,13 @@ all.results <- NULL
 best.results <- NULL
 
 effects <- c("mat", "map", "(1|geographic.area/plot.name)")
+pannel.nb <- 1
 
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
 png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
-par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,5,2,0))
+par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,7,2,0), xpd = T)
 
 for (response.v in response.variables){
   
@@ -205,7 +206,7 @@ for (response.v in response.variables){
     #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
     #     
     #   }
-    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4])
+    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
@@ -221,11 +222,14 @@ for (response.v in response.variables){
     # if(significant.effet.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
     # 
     # 
-   mtext(side = 3, line = -1, text = paste(response.v), adj = 0.1, cex = 0.5)
+    
+  
+   mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", response.v), adj = 0.1, cex = 0.5)
    
    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
    
    all.results <- all.results <- rbind(all.results, results)
+   pannel.nb <- pannel.nb +1
   }
   
   #create all combinations of random / fixed effects
