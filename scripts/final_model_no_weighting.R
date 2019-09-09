@@ -803,7 +803,7 @@ for (age in ages){
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
         # if(first.plot) plot((mean) ~ fixed, data = df, xlab = "", ylab = "", col = "white", pch = sym, yaxt = "n", ylim = ylim)
-        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, yaxt = "n", ylim = ylim)
+        if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym, ylim = ylim)
         if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10, alpha = 0.3)[col], pch = sym)
         
         lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = lty)
@@ -835,7 +835,7 @@ for (age in ages){
       # if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
       # if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
       mtext(side = 1, line = 2, text = "Latitude", outer = F)
-      mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
+      mtext(side = 2, line = 2,  text = expression("Productivity (scaled values)"), outer = F) 
       
       legend("topright", legend = all.legends, col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], pch = c(1, 3, 5, 8, 9, 7, 6, 4, 2), xpd = T, lty = c(1, 6, 5, 1, 6, 5, 6, 1, 5), text.col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], bty = "n", title.col = "black", cex = 0.75)
 
