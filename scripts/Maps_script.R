@@ -146,7 +146,7 @@ dev.off()
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot(data = ForC_simplified) +   mapWorld
-mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_color_manual(values = plasma(10)[c(1,3,5,7,9,8,6,4,2)]) + scale_shape_manual(values = c(1:9)[c(1,3,5,7,9,8,6,4,2)]) + labs(color = "Variable", shape = "Variable")
+mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_color_manual(values = plasma(10)[c(1,3,5,7,9,8,6,4,2)]) + scale_shape_manual(values = c(1:9)[c(1,3,5,7,9,8,6,4,2)]) + labs(color = "Variable", shape = "Variable") + theme(axis.title.x = element_blank(), axis.title.y = element_blank(), legend.position = c(0.1, 0.35), legend.text = element_text(size = 12))
 ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
 
