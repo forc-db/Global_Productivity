@@ -834,7 +834,7 @@ for (age in ages){
       
       # if(n == 1) title(paste("Major fluxes"), outer = F, line = 1)
       # if(n == 2) title(paste("Subsidiary fluxes"), outer = F, line = 1)
-      # mtext(side = 1, line = 2, text = eval(parse(text = xaxis)), outer = F)
+      mtext(side = 1, line = 2, text = "Latitude", outer = F)
       mtext(side = 2, line = 1,  text = expression("Productivity (scaled values)"), outer = F) 
       
       legend("topright", legend = all.legends, col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], pch = c(1, 3, 5, 8, 9, 7, 6, 4, 2), xpd = T, lty = c(1, 6, 5, 1, 6, 5, 6, 1, 5), text.col = plasma(10)[c(1, 3, 5, 8, 9, 7, 6, 4, 2)], bty = "n", title.col = "black", cex = 0.75)
