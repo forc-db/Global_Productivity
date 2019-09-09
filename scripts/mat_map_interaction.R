@@ -112,7 +112,7 @@ pannel.nb <- 1
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
 png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
-par(mfrow = c(3,3), mar = c(0,0,0,0), oma = c(5,7,2,0), xpd = T)
+par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
 
 for (response.v in response.variables){
   
@@ -166,7 +166,7 @@ for (response.v in response.variables){
   
   # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
   ylim = range(df$mean)
-  xlim = range(df$mat)
+  xlim = c(-10, 28)# range(df$mat)
   
   if (significant.effect.of.interaction | significant.effect.of.additive) {
     # predict 
@@ -179,7 +179,7 @@ for (response.v in response.variables){
 
     for (i in seq(along = lower_bound)){
       map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
-      if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim)
+      if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, xaxt = "n", las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
       if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
       newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = midpoint[[i]])
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
@@ -206,7 +206,7 @@ for (response.v in response.variables){
     #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
     #     
     #   }
-    if(response.v == "GPP") legend("topleft", lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
+    if(response.v == "GPP") legend(x = -33, y = 43, lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
     mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
@@ -223,13 +223,16 @@ for (response.v in response.variables){
     # 
     # 
     
-  
-   mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", response.v), adj = 0.1, cex = 0.5)
-   
-   results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
-   
-   all.results <- all.results <- rbind(all.results, results)
-   pannel.nb <- pannel.nb +1
+    if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
+    if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
+    
+    
+    mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", response.v), adj = 0.1, cex = 0.5)
+    
+    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
+    
+    all.results <- all.results <- rbind(all.results, results)
+    pannel.nb <- pannel.nb +1
   }
   
   #create all combinations of random / fixed effects
