@@ -1,5 +1,6 @@
 ---
-title: "Manuscript draft"
+title: "Global patterns in forest productivity"
+author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene Muller-Landau, [MORE??-CHECK], Kristina J. Anderson-Teixeira"
 output:
   pdf_document:
     citation_package: natbib
@@ -43,9 +44,7 @@ Globally, forests are a significant carbon sink, showing high levels of producti
 
 ### Introduction
 
-Globally, forests play an important role in the carbon cycle and are a major component of global carbon dioxide budgets [@luyssaert_old-growth_2008]. They show higher levels of productivity than non-forest terrestrial ecosystems [@del_grosso_global_2008], and as a result achieve significant carbon sequestration and storage. Estimating the total role of forests in the carbon cycle is challenging, but studies indicate that old growth forests alone sequester up to 1.4 GtCyr^-1^ [@malhi_carbon_1999], while the total sequestration of carbon by established forests globally could be up to 2.4 GtCyr^-1^, with the largest sinks being in old-growth tropical forests [@pan_large_2011]. As atmospheric carbon dioxide levels continue to rise, with consequences for global climate, there is increasing recognition that proper protection and management of forest resources will have an important role to play in mitigating climate change. Understanding the patterns of forest productivity on a global scale, and the drivers behind them, is therefore a priority in forest research.  
-  
-There are two key components to this question: firstly, we want to understand how forest productivity varies on a global scale, and, in particular, we want to know which regions show the highest forest productivity; and secondly, we want to understand the factors driving these patterns in productivity.  
+Globally, forests play an important role in the carbon cycle and are a major component of global carbon dioxide budgets [@luyssaert_old-growth_2008]. They show higher levels of productivity than non-forest terrestrial ecosystems [@del_grosso_global_2008], and as a result achieve significant carbon sequestration and storage. Estimating the total role of forests in the carbon cycle is challenging, but studies indicate that old growth forests alone sequester up to 1.4 GtCyr^-1^ [@malhi_carbon_1999], while the total sequestration of carbon by established forests globally could be up to 2.4 GtCyr^-1^, with the largest sinks being in old-growth tropical forests [@pan_large_2011]. As atmospheric carbon dioxide levels continue to rise, with consequences for global climate, there is increasing recognition that proper protection and management of forest resources will have an important role to play in mitigating climate change. Understanding the patterns of forest productivity on a global scale, and the drivers behind them, is therefore a priority in forest research.  [**KAT-work on this; consider shifting top focus from global C cycle to centrality of forest productivity to ecology & climate science.** ] Given the importance of understanding broad-scale patterns in forest productivity, there have been many meta-analyses on the theme. However, our ability to draw general macroscopic conclusions regarding global variation in multiple productivity variables with respect to climate has been limited in that these analyses often mix forests that vary in stand age, disturbance history, and/or management status; do not always sufficiently parse related variables (*e.g.*, combining net primary productivity records with and without belowground components); and typically consider only one or a few variables at a time. The recent development of a global forest carbon database synthesizing multiple variables and including records of stand history (ForC; [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]) opens up the possibility for a standardized analysis of global scale variation in multiple components of forest productivity and the principle climatic drivers of these patterns.  
   
 On a global scale, the productivity of forests varies with latitude, showing a general trend of decreasing productivity with latitude [@beer_terrestrial_2010; @jung_global_2011]. Studies agree that productivity is lowest in the boreal regions, and increases into the temperate regions [@luyssaert_co2_2007; @huston_global_2009; @beer_terrestrial_2010; @jung_global_2011]. However, evidence is inconclusive on whether productivity continues to increase into the tropics, or whether it plateaus in temperate regions. Evidence for this is further complicated by the fact that different studies use different measures of productivity to explore these relationships. For example, modelling of global terrestrial ecosystem gross primary productivity (GPP) through upscaling and calibration of eddy flux measurements indicates that GPP peaks in tropical forests [@beer_terrestrial_2010; @jung_global_2011]. This is corroborated by analysis of site-level GPP measurements, which appear to reach their highest levels in tropical forests [@luyssaert_co2_2007]. In contrast, there is evidence that the highest values of net primary productivity (NPP) may be found in temperate forests [@luyssaert_co2_2007; @huston_global_2009], although other studies find NPP is highest in the tropics, showing a decrease with latitude [@simova_enigma_2017]. Other studies have chosen to focus exclusively on above-ground net primary productivity (ANPP), finding evidence of a weak negative relationship between ANPP and latitude [@huston_global_2009; @gillman_latitude_2015].
 An understanding of the global patterns of productivity is important; however elucidating the drivers of these patterns will be even more valuable in expanding our understanding of global carbon cycling. Primary productivity can be influenced by many factors, which often act across a range of scales, and may show interactive effects with each other. On a local scale, stand age [@litton_carbon_2007; @gillman_latitude_2015], management [@simova_enigma_2017]; nutrient availability [@aragao_above-_2009]; and altitude [@girardin_net_2010; @malhi_variation_2017] all impact forest productivity. On a global scale, we expect that productivity is most strongly influenced by broad climatic gradients.  
@@ -58,7 +57,7 @@ While MAT and MAP are important climate variables, they do not capture all aspec
   
 Furthermore, MAT and MAP are very coarse measures of climate, and so fail to capture much variation in climate on an intra-annual scale, including the effects of factors such as growing season length, number of frost-free days, temperature seasonality, and dry season length. Some studies have suggested that the apparently strong relationship between MAT and productivity is actually a factor of the correlation between MAT and growing season length [@kerkhoff_plant_2005; @malhi_productivity_2012; @michaletz_convergence_2014; @michaletz_drivers_2018]. Kerkhoff et al. [-@kerkhoff_plant_2005] and Michaletz et al. [-@michaletz_convergence_2014] find that, within the growing season, there is no significant relationship between productivity and MAT, indicating that the effect of temperature is due to increased length of growing season, rather than an inherent influence of temperature on productivity.  
   
-In order to approach these broad and complex issues, we simplify the major gaps in our knowledge to five key questions, presented in greater detail in Table 1:  
+In order to approach these broad and complex issues, we simplify the major gaps in our knowledge to five key questions and corresponding specific predictions (Table 1):  
 1.	How do carbon fluxes vary with latitude? 
 2.	How do carbon fluxes relate to MAT and MAP?  
 3.	How do carbon fluxes relate to other annual climate variables?  
@@ -67,9 +66,9 @@ In order to approach these broad and complex issues, we simplify the major gaps 
    
 To resolve these questions, we require data that, firstly, control for variables influencing productivity, including stand age, disturbance regime, elevation, and methodology; and secondly includes all major carbon fluxes. Here we use a comprehensive global database of forest carbon fluxes to explore the above questions for nine carbon fluxes, allowing for an in-depth exploration of the effect of climate on global productivity.  
   
-### Methods  
+### Materials and Methods  
   
-Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. For each site, site geographic co-ordinates were used to extract the Koeppen-Geiger zone from the ESRI Koeppen-Geiger map [cite], and the FAO Global Ecological Zone from the ???. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on old-growth forests in temperate and boreal regions. ForC currently contains 29768 records from 5227 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones.
+Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc_2018] through integration with the Global Database of Soil Respiration (SRDB; **Bond-Lamberty, DOI: 10.5194/bg-7-1915-2010**). Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on mature forests in temperate and boreal regions. ForC currently contains **UPDATE STATS** 29768 records from 5227 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v.XX, archived on Zenodo with DOI XXX.
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables.png")
@@ -140,22 +139,29 @@ To investigate the potential interactive effects of climate variables on carbon 
      
 ###Results
 
-*Closure of fluxes* Analysis of component fluxes indicates that measures of smaller component fluxes do approximately sum to measures of larger fluxes (fig. 2). Modelled estimates of GPP, generated from the sum of NPP and R auto; NPP, generated from the sum of ANPP and BNPP~root~; and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woody stem~, fall completely within the confidence intervals of the regressions of field estimates of GPP, NPP and ANPP respectively.  
+In total, we analyzed ## records from ## C flux variables taken from forests that had experienced no major anthropogenic disturbances within the past 100 years from # distinct geographic areas (Fig. 1, Table 2). [**Add a bit about geographic representation**] 
+
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots 1 - 3 show two component fluxes; a larger flux, defined as the combination of the two component fluxes; and a modelled estimate of the sum of the two component fluxes. 95\\% confidence intervals are plotted for the larger flux. Plot 4 shows three belowground fluxes, and a modelled estimate of the total belowground carbon flux", fig.pos='H'}
 
   knitr::include_graphics("combined_stacked.png")
 ```
   
-*How do carbon fluxes vary with latitude?* All major carbon fluxes increase linearly with decreasing latitude (fig. 3).   
+*How do carbon fluxes vary with latitude?* 
+
+All major carbon fluxes increase linearly with decreasing latitude (fig. 3).   
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs to show primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("effect_of_lat_transparent.png")
 ```
   
 Latitude is a strong predictor for many of the carbon fluxes, explaining 64% of variation in GPP (n = 254, p<0.0001), 50% in NPP (n = 114, p<0.0001) and 45% in ANPP (n = 259, p<0.0001). For all fluxes, their relationship with latitude was best predicted by the linear model. 
-  
-We find no evidence that allocation between fluxes varies with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.
+
+[*Relationships and differences among fluxes- *] In general, smaller component fluxes summed approximately to  larger fluxes across the latitudinal gradient (fig. 2). That is, modelled estimates of GPP, generated from the sum of NPP and R auto; NPP, generated from the sum of ANPP and BNPP~root~; and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woody stem~, fall completely within the confidence intervals of the regressions of field estimates of GPP, NPP and ANPP respectively.  
+
+We find no evidence that allocation between fluxes varies substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.
+
+[**move differences among R2s here?**]
    
 *How does productivity relate to MAT and MAP?* We focus first on considering the relationship between productivity and MAT and MAP. MAT and MAP are the most commonly reported site-level climate variables, and much previous research into the effect of climate on forest productivity has focused on these as key climate variables. MAT is a significant (p<0.05) and strong predictor of productivity for all carbon fluxes tested, with all fluxes showing a linear increase with temperature (fig. 5). We found no support for a saturation point of productivity with temperature.  
   
@@ -169,9 +175,9 @@ For the variables which showed a significant interactive or additive effect betw
   knitr::include_graphics("mat_map_interaction.png")
 ```
 
-*How does productivity relate to other climate variables?* Our results indicate that productivity is most strongly explained by temperature, with temperature-related climate variables coming out as strong predictors of productivity. In addition to MAT, temperature seasonality, annual temperature range, and annual frost days were consistently identified as good predictors of productivity across fluxes.  
+*How does productivity relate to other climate variables?* Our results indicate that productivity is most strongly explained by temperature at the global scale, with temperature-related climate variables coming out as strong predictors of productivity. In addition to MAT, temperature seasonality, annual temperature range, and annual frost days were consistently identified as good predictors of productivity across fluxes.  
   
-We found a significant relationship between productivity and potential evapotranspiration for all fluxes. ANPP~foliage~, BNPP~fine root~ and R~root~ increased linearly with PET, however all other fluxes showed a polynomial relationship with PET (fig. 5). We find strong evidence for a saturation point or peak with PET: productivity tends to increase at values below 1000mm, before saturating between 1200 and 1700mm. There is evidence that productivity begins to decrease at values above 1800mm PET.
+We found a significant relationship between productivity and potential evapotranspiration for all fluxes. ANPP~foliage~, BNPP~fine root~ and R~root~ increased linearly with PET; however, all other fluxes showed a polynomial relationship with PET (fig. 5). We find strong evidence for a saturation point or peak with PET: productivity tends to increase at values below 1000mm, before saturating between 1200 and 1700mm. There is evidence that productivity begins to decrease at values above 1800mm PET.
 
 Vapour pressure deficit was a significant predictor of productivity for all fluxes. BNPP~fine root~ showed a linear relationship with vapour pressure deficit (R^2^ = 0.07, p<0.05), but all other fluxes showed a polynomial relationship (fig. 5). Productivity initially increased with vapour pressure deficit, before saturating at around 0.8 kPa. At values above 0.8 kPa, productivity began to decrease.
 
@@ -183,9 +189,9 @@ Of the climate variables tested, annual wet days, aridity, cloud cover, mean diu
   knitr::include_graphics("combined_plots.png")
 ```
 
-*What is the role of seasonality in explaining productivity?* Temperature seasonality is a significant predictor of productivity. We found a polynomial relationship with productivity for GPP, NPP, ANPP, and R~root~. Productivity decreases rapidly as seasonality increases, with the rate of decrease slowing as seasonality increases (fig. 5). ANPP~foliage~, ANPP~woody stem~ and R~auto~ decrease linearly with temperature seasonality. Temperature seasonality is strongly correlated with annual temperature range, and, as expected, all fluxes show almost identical responses to it. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. 
+*What is the role of seasonality in explaining productivity?* Temperature seasonality was a significant predictor of productivity. We found a polynomial relationship with productivity for GPP, NPP, ANPP, and R~root~. Productivity decreases rapidly as seasonality increases, with the rate of decrease slowing as seasonality increases (fig. 5). ANPP~foliage~, ANPP~woody stem~ and R~auto~ decrease linearly with temperature seasonality. Temperature seasonality is strongly correlated with annual temperature range, and, as expected, all fluxes show almost identical responses to it. Productivity is highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. 
 
-In contrast, there is no significant effect of precipitation seasonality on productivity.
+In contrast, there was no significant effect of precipitation seasonality on productivity.
 
 We find a significant relationship between length of growing season and productivity, with all fluxes showing a linear increase in productivity with length of growing season (fig. 5). Length of growing season is a strong predictor of productivity, explaining 51% of variation in GPP, 39% of variation in NPP, and 34% of variation in ANPP, but it is not identified as a stronger predictor than MAT for any of the fluxes analysed.
 
@@ -217,7 +223,7 @@ This pattern is also seen in the R^2^ values for multivariate models.
 
 In this analysis we use a comprehensive global database, containing an unprecedented amount of data and representing all global forest ecosystems and all significant forest carbon fluxes, to comprehensively explore the relationships between climate and productivity on a global scale. Many of our findings support and clarify previously published work; however we use a much larger and more complete database than has previously been available, allowing for higher quality control and standardisation of data. This enabled us to control for factors not previously controlled for - such as stand age, methodology, flux components, and disturbance regime - to gain a stronger understanding of latitudinal and climatic effects on productivity.
 
-Our results show that productivity decreases linearly with latitude. Climate explains a significant proportion of variation in all carbon fluxes, with temperature variables being the best predictors of productivity. While other climate variables are significant predictors of productivity, none of them improve on the explanatory power of temperature-related variables. Water availability is an important factor in explaining productivity on a global scale: we find a positive influence of precipitation at low MAP, with saturation at higher levels of MAP. There is a significant interaction between MAT and MAP.  We note that climate tends to explain a higher amount of variation in the major fluxes, with the amount of variation explained decreasing in smaller component fluxes.  
+Our results show that productivity decreases linearly with latitude. Climate explains a significant proportion of variation in all carbon fluxes, with temperature variables being the best predictors of productivity on this global scale. While other climate variables are significant predictors of productivity, none of them improve on the explanatory power of temperature-related variables in general or MAT specifically. Water availability is an important factor in explaining productivity on a global scale: we find a positive influence of precipitation at low MAP, with saturation at higher levels of MAP. There is a significant interaction between MAT and MAP.  We note that climate tends to explain a higher amount of variation in the major fluxes, with the amount of variation explained decreasing in smaller component fluxes.  
 
 We find that seasonality is an important factor in understanding patterns in productivity on a global scale: temperature seasonality and growing season length are strong predictors of productivity, though growing season length doesn't improve on MAT as a predictor. Within the growing season we find the influence of climate on productivity is smaller, but still significant for a number of carbon fluxes.
 
@@ -239,6 +245,8 @@ By including multiple fluxes in our analysis, we are able to explore the relatio
 
 Related to this, we find that climate more strongly explains variation in the major fluxes, with lower levels of variation explained in subsidiary fluxes. Although this could in part be related to a lack of standardisation in methodology across studies, as discussed above, it could also indicate that factors other than climate have significant influence over subsidiary fluxes. This is consistent with the results we find for allocation between fluxes: although climate has a significant influence on subsidiary fluxes, it is not the only factor that is important, and many other local- and regional-scale factors  influence the way carbon is allocated between subsidiary fluxes. We would expect that this would reduce the strength of the effect of climate on subsidiary fluxes.
 
+**[needs strong concluding paragraph]**
 
+### Acknowledgements
 
   
