@@ -261,11 +261,12 @@ for(response.variables in response.variables.groups){
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
         number_plots <- length(unique(df$site_plot))
+        geog_area <- length(unique(df$geographic.area))
         
         date = Sys.Date()
         altitude = FALSE
         
-        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, number.plots = number_plots)
+        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, number.plots = number_plots, geographic.areas = geog_area)
         
         all.results <- rbind(all.results, results)
         all.aictab <- rbind(all.aictab, aictab)
