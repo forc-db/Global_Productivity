@@ -64,26 +64,26 @@ To resolve these questions, we require data that, firstly, control for variables
   
 ### Materials and Methods  
   
-Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc:_2018] through integration with the Global Database of Soil Respiration [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on mature forests in temperate and boreal regions. ForC currently contains **UPDATE STATS** 29768 records from 5227 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v.XX, archived on Zenodo with DOI XXX.
+Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc:_2018] through integration with the Global Database of Soil Respiration [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on mature forests in temperate and boreal regions. ForC currently contains 29730 records from 4979 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v3.0, archived on Zenodo with DOI 10.5281/zenodo.3403855.
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables.png")
 ```
 *Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis.  
   
-| Variable | Definition | Components included | Methodologies used | Number of records | Number of plots |
+| Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
-| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 257 | 80 |
-| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 93 | 78 |
-| ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 258 | 166 |
-| ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 94 |
-| ANPP~woody~ ~stem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 266 | 252 |
-| BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 107 | 87 |
-| BNPP~fine~ ~root~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 90 | 77 |
-| R~auto~ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 22 |
-| R~root~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 65 | 43 |
+| GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 243 | 49 |
+| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 92 | 42 |
+| ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 256 | 80 |
+| ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
+| ANPP~woody~ ~stem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 96 |
+| BNPP~root~ | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 101 | 48 |
+| BNPP~fine~ ~root~ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 88 | 41 |
+| R~auto~ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 13 |
+| R~root~ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 64 | 26 |
   
-Table: Definitions and sample sizes of variables used in analysis
+Table: Definitions and sample sizes of variables used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
 
 A subset of the ForC database was generated for the purposes of this analysis, in order to control for data quality and remove biasing factors. Since management can alter observed patterns of primary productivity [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
 There is evidence that stand age influences patterns of primary productivity and carbon allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@de_lucia_forest_2007; @gillman_latitude_2015]. To reduce any biasing effects of stand age, stands under 100 years of age were excluded from analysis. Sites for which stand age was unknown were excluded from analysis.
@@ -124,7 +124,7 @@ To investigate the potential interactive effects of climate variables on carbon 
      
 ###Results
 
-In total, we analyzed ## records from ## C flux variables taken from forests that had experienced no major anthropogenic disturbances within the past 100 years from # distinct geographic areas (Fig. 1, Table 2). [**Add a bit about geographic representation**] 
+In total, we analyzed 1228 records from 9 C flux variables taken from forests that had experienced no major anthropogenic disturbances within the past 100 years. These records represented a total of 154 distinct geographic areas (Fig. 1, Table 2), across all forested biogeographic and climate zones. 
 
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots 1 - 3 show two component fluxes; a larger flux, defined as the combination of the two component fluxes; and a modelled estimate of the sum of the two component fluxes. 95\\% confidence intervals are plotted for the larger flux. Plot 4 shows three belowground fluxes, and a modelled estimate of the total belowground carbon flux", fig.pos='H'}
