@@ -112,7 +112,7 @@ As discussed above, estimates of NPP, ANPP, and BNPP are generated through summi
   
 Additionally, two climate variables were derived from the above datasets: maximum vapour pressure deficit, defined as the vapour pressure deficit of the month with the largest deficit; and water stress months, defined as the number of months annually where precipitation was lower than potential evapotranspiration.
 
-*Length of growing season.* Growing season months were defined as months with mean minimum temperature > 0.5. Growing season months were initially calculated following methods used by Kerkhoff et al. (2005), which additionally required that growing season months had a moisture index, defined as (MAT - PET)/PET, > -0.95. Michaletz et al. (2014) included an equivalent requirement in their calculation of growing season length. However, we found that including this requirement had no effect on the estimates of growing season length, and so chose to exclude it.
+*Length of growing season.* Growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. Growing season months were initially calculated following methods used by Kerkhoff et al. (2005), which additionally required that growing season months had a moisture index, defined as (MAT - PET)/PET, > -0.95. Michaletz et al. (2014) included an equivalent requirement in their calculation of growing season length. However, we found that including this requirement had no effect on the estimates of growing season length, and so chose to exclude it.
 
 Monthly data for PET, precipitation, and temperature was downloaded from the Climate Research Unit (CRU) time-series dataset v 4.03 [@harris_updated_2014], and for solar radiation from WorldClim2 [@fick_worldclim_2017], and used to calculate mean monthly PET, precipitation, temperature and solar radiation during the growing season. Total growing season precipitation and solar radiation were also calculated. 
   
@@ -230,4 +230,12 @@ Related to this, we find that climate more strongly explains variation in the ma
 
 ### Acknowledgements
 
+### Supporting Information
+
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S1 <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/S1.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S1, booktabs = TRUE, caption = "Hypothesis table", escape = F)
+```
   
