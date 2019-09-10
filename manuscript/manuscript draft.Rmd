@@ -236,6 +236,7 @@ Related to this, we find that climate more strongly explains variation in the ma
 library(knitr)
 library(kableExtra)
 S1 <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/S1.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S1, booktabs = TRUE, caption = "Hypothesis table", escape = F)
+kable(S1, booktabs = TRUE, caption = "Hypothesis table", escape = F) %>%
+  kable_styling(latex_options = c("scale_down", "hold_position"))
 ```
   
