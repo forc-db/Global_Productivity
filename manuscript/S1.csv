@@ -1,0 +1,16 @@
+Climate variable,Units,Definition,Source
+Mean annual temperature (MAT),$^\circ$C,,Primary literature; WorldClim
+Mean annual precipitation (MAP),mm yr^-1^,,Primary literature; WorldClim
+Temperature seasonality,,,WorldClim
+Precipitation seasonality,,,WorldClim
+Annual temperature range,$^\circ$C,,WorldClim
+Solar radiation,kJ m^-2^ yr^-1^,,WorldClim2
+Cloud cover,,,CRU time-series dataset v 4.03
+Annual frost days,days yr^-1^,,CRU time-series dataset v 4.03
+Annual wet days,days yr^-1^,,CRU time-series dataset v 4.03
+Potential evapotranspiration (PET),mm yr^-1^,,Global Aridity Index and Potential Evapotranspiration Climate Database
+Aridity,,,Global Aridity Index and Potential Evapotranspiration Climate Database
+Vapour pressure deficit (VPD),kPa,,TerraClimate
+Maximum vapour pressure deficit (Max VPD),kPa,,Derived
+Water stress months,months yr^-1^,Number of months annually with MAP < PET,Derived
+Length of growing season,months yr^-1^,Number of months annually with mean minimum temperature > 0.5$^\circ$C,Derived
