@@ -5,6 +5,8 @@ output:
   pdf_document:
     citation_package: natbib
     fig_caption: yes
+    includes:
+      after_body: appendix.md
 bibliography: [library.bib,  packages.bib]
 biblio-style: apalike
 csl: apa.csl
@@ -237,6 +239,10 @@ Related to this, we find that climate more strongly explains variation in the ma
 library(knitr)
 library(kableExtra)
 S1 <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/S1.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S1, booktabs = TRUE, caption = "Hypothesis table", escape = F)
+kable(S1, format = "latex", booktabs = TRUE, caption = "Supporting Information Table 1 (S1): ", escape = F)%>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1, width = "5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3:4, width = "7cm") 
 ```
   
