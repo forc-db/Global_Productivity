@@ -5,7 +5,7 @@ Temperature seasonality,,Standard deviation of MAT *100,WorldClim
 Precipitation seasonality,,Coefficient of variation of MAP,WorldClim
 Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,WorldClim
 Solar radiation,kJ m^-2^ yr^-1^,,WorldClim2
-Cloud cover,%,Cloud percentage cover,CRU time-series dataset v 4.03
+Cloud cover,percentage,Cloud percentage cover,CRU time-series dataset v 4.03
 Annual frost days,days yr^-1^,Number of freeze days annually,CRU time-series dataset v 4.03
 Annual wet days,days yr^-1^,Number of days with precipitation >0.1 mm annually,CRU time-series dataset v 4.03
 Potential evapotranspiration (PET),mm yr^-1^,Mean annual potential evapotranspiration,Global Aridity Index and Potential Evapotranspiration Climate Database
