@@ -1,0 +1,27 @@
+---
+title: "appendix"
+output: 
+  pdf_document:
+    fig_caption: yes
+    
+header-includes:  \usepackage{float}
+                  \usepackage{caption}
+                  \captionsetup[table]{font=footnotesize}
+                  \captionsetup[figure]{font=footnotesize}
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+options(knitr.table.format = "latex")
+```
+
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S1 <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/S1.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S1, format = "latex", booktabs = TRUE, caption = "Supporting Information Table 1 (S1): ", escape = F)%>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1, width = "5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3:4, width = "7cm") 
+```
