@@ -95,7 +95,7 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
 | GPP | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 243 | 49 |
-| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root, fine root and optionally understory | Direct measurement of annual increments of components | 92 | 42 |
+| NPP | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 92 | 42 |
 | ANPP | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 256 | 80 |
 | ANPP~foliage~ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
 | ANPP~woody~ ~stem~ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 96 |
