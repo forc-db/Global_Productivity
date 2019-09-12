@@ -71,11 +71,11 @@ library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(hypothesis_table, booktabs = TRUE, caption = "Hypothesis table") %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("1. How do FACF vary with latitude?", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("2. How do FACF relate to MAT and MAP?", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("3. How do FACF relate to other annual climate variables?", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("4. What is the role of seasonality?", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("5. Per month of the growing seaon, how do FACF vary with climate?", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("H1. FACF decreases linearly with latitude.", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("H2. FACF increases with MAT, with an interactive effect of MAP.", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("H3. FACF are strongly correlated with other annual climate variables.", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("H4. FACF is reduced under seasonal climates.", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("H5. Considering only growing season months, FACF correlates with climatic drivers.", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
   add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
   column_spec(1, width = "10cm") %>%
   column_spec(2, width = "5cm") %>%
@@ -96,14 +96,14 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
 | $GPP$ | Annual gross primary production; annual uptake of carbon dioxide by an ecosystem | NA | Flux partitioning of eddy covariance | 243 | 49 |
-| $NPP$ | Annual net primary production; the component of GPP that is stored in plant tissue; GPP minus ecosystem respiration | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 92 | 42 |
+| $NPP$ | Annual net primary production; the component of GPP that is stored in plant tissue; $GPP - R_{auto}$ | Foliage, branch, stem, coarse root and fine root | Direct measurement of annual increments of components | 92 | 42 |
 | $ANPP$ | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 256 | 80 |
 | $ANPP_{foliage}$ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
 | $ANPP_{woody-stem}$ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 96 |
 | $BNPP_{root}$  | Belowground net primary production | Coarse and fine roots | Direct measurement of one or more of: fine root turnover, soil cores, root ingrowth cores, minirhizotrons; indirect estimates of coarse roots using allometries based on aboveground stem increment measures | 101 | 48 |
 | $BNPP_{fine.root}$ | Net primary production of fine roots | Fine roots | Direct measurement of one or more of: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 88 | 41 |
 | $R_{auto}$ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 13 |
-| $R_{root}$ | Annual root respiration | Coarse and fine roots | Measurement of root gas exchange | 64 | 26 |
+| $R_{root}$ | Annual root respiration | Coarse and fine roots | *Measurement of root gas exchange, root exclusion from soil respiration chambers* | 64 | 26 |
   
 Table: Definitions and sample sizes of variables used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
 
@@ -226,5 +226,5 @@ Our analysis clarifies the big picture of how FACF varies with latitude and clim
 ### Acknowledgements
 Scholarly Studies
 ForestGEO
-Compilatin of the ForC database was originally funded by DOE
+Compilation of the ForC database was originally funded by DOE
 
