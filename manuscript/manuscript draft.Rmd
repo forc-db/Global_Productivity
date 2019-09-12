@@ -46,7 +46,7 @@ caption {
 
 ###Abstract
   
-Globally, forests are a significant carbon sink, showing high levels of productivity and representing an important component of the carbon cycle. Current knowledge indicates that forest productivity decreases with latitude; however, there is evidence that this relationship varies across different fluxes. Furthermore, the climate variables that drive this relationship are poorly understood. Here, we use a comprehensive global database of forest carbon fluxes to show that, while all major carbon fluxes decrease with latitude, allocation to woody productivity increases with latitude, and allocation to root productivity declines. The best predictors of global patterns of productivity are temperature variables, including mean annual temperature, annual temperature range, and temperature seasonality, with the exception of woody productivity, which is most strongly influenced by potential evapotranspiration and vapour pressure deficit. Climate variables explain a large proportion of the variation in major carbon fluxes, but are a less significant predictor of subsidiary components. Our results illustrate the strong influence of climate on primary productivity, and particularly the importance of temperature in determining forest productivity. However, they also indicate that effects of climate are complex: fluxes show non-linear responses to climate variables, and many factors other than climate interact to determine allocation to subsidiary components. Knowledge of the relative influence of climate variables on forest carbon fluxes is an important component of understanding the responses of primary productivity to climate change.
+
 
 ### Introduction
 
