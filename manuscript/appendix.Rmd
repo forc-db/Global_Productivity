@@ -1,5 +1,5 @@
 ---
-title: "appendix"
+title: "Supporting Information"
 output: 
   pdf_document:
     fig_caption: yes
