@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 SEP 2019 13:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 SEP 2019 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,175 +823,9 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 126.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
+) [1
 
-Package natbib Warning: Citation `pan_large_2011' on page 1 undefined on input 
-line 129.
-
-
-Package natbib Warning: Citation `anderson-teixeira_carbon_2016' on page 1 unde
-fined on input line 145.
-
-
-Package natbib Warning: Citation `anderson-teixeira_forc:_2018' on page 1 undef
-ined on input line 145.
-
-
-Package natbib Warning: Citation `beer_terrestrial_2010' on page 1 undefined on
- input line 152.
-
-
-Package natbib Warning: Citation `jung_global_2011' on page 1 undefined on inpu
-t line 152.
-
-
-Package natbib Warning: Citation `luyssaert_co_2007' on page 1 undefined on inp
-ut line 155.
-
-
-Package natbib Warning: Citation `huston_global_2009' on page 1 undefined on in
-put line 155.
-
-
-Package natbib Warning: Citation `beer_terrestrial_2010' on page 1 undefined on
- input line 155.
-
-
-Package natbib Warning: Citation `jung_global_2011' on page 1 undefined on inpu
-t line 155.
-
-
-Package natbib Warning: Citation `beer_terrestrial_2010' on page 1 undefined on
- input line 163.
-
-
-Package natbib Warning: Citation `jung_global_2011' on page 1 undefined on inpu
-t line 163.
-
-
-Package natbib Warning: Citation `luyssaert_co_2007' on page 1 undefined on inp
-ut line 166.
-
-
-Package natbib Warning: Citation `luyssaert_co_2007' on page 1 undefined on inp
-ut line 168.
-
-
-Package natbib Warning: Citation `huston_global_2009' on page 1 undefined on in
-put line 168.
-
-
-Package natbib Warning: Citation `simova_enigma_2017' on page 1 undefined on in
-put line 170.
-
-
-Package natbib Warning: Citation `huston_global_2009' on page 1 undefined on in
-put line 173.
-
-
-Package natbib Warning: Citation `gillman_latitude_2015' on page 1 undefined on
- input line 173.
-
-
-Package natbib Warning: Citation `litton_carbon_2007' on page 1 undefined on in
-put line 180.
-
-
-Package natbib Warning: Citation `gillman_latitude_2015' on page 1 undefined on
- input line 180.
-
-
-Package natbib Warning: Citation `simova_enigma_2017' on page 1 undefined on in
-put line 181.
-
-
-Package natbib Warning: Citation `aragao_above-_2009' on page 1 undefined on in
-put line 182.
-
-
-Package natbib Warning: Citation `girardin_net_2010' on page 1 undefined on inp
-ut line 183.
-
-
-Package natbib Warning: Citation `malhi_variation_2017' on page 1 undefined on 
-input line 183.
-
-
-Package natbib Warning: Citation `cleveland_relationships_2011' on page 1 undef
-ined on input line 189.
-
-
-Package natbib Warning: Citation `chu_does_2016' on page 1 undefined on input l
-ine 197.
-
-
-Package natbib Warning: Citation `luyssaert_co_2007' on page 1 undefined on inp
-ut line 202.
-
-
-Package natbib Warning: Citation `schuur_productivity_2003' on page 1 undefined
- on input line 203.
-
-
-Package natbib Warning: Citation `luyssaert_co_2007' on page 1 undefined on inp
-ut line 205.
-
-
-Package natbib Warning: Citation `larjavaara_temperature_2012' on page 1 undefi
-ned on input line 208.
-
-
-Package natbib Warning: Citation `schuur_productivity_2003' on page 1 undefined
- on input line 210.
-
-
-Package natbib Warning: Citation `taylor_temperature_2017' on page 1 undefined 
-on input line 214.
-
-[1
-
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `cleveland_relationships_2011' on page 2 undef
-ined on input line 222.
-
-
-Package natbib Warning: Citation `taylor_temperature_2017' on page 2 undefined 
-on input line 224.
-
-
-Package natbib Warning: Citation `fyllas_solar_2017' on page 2 undefined on inp
-ut line 225.
-
-
-Package natbib Warning: Citation `kerkhoff_plant_2005' on page 2 undefined on i
-nput line 226.
-
-
-Package natbib Warning: Citation `kerkhoff_plant_2005' on page 2 undefined on i
-nput line 234.
-
-
-Package natbib Warning: Citation `malhi_productivity_2012' on page 2 undefined 
-on input line 234.
-
-
-Package natbib Warning: Citation `michaletz_convergence_2014' on page 2 undefin
-ed on input line 234.
-
-
-Package natbib Warning: Citation `michaletz_drivers_2018' on page 2 undefined o
-n input line 234.
-
-
-Package natbib Warning: Citation `kerkhoff_plant_2005' on page 2 undefined on i
-nput line 235.
-
-
-Package natbib Warning: Citation `michaletz_convergence_2014' on page 2 undefin
-ed on input line 236.
-
-[2]
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <12> on input line 307.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -999,34 +833,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 307.
 
-Overfull \hbox (45.93056pt too wide) in paragraph at lines 307--307
-[]|\T1/lmr/m/n/12 (-20) $ANPP_{foliage}$|  
- []
-
-
 LaTeX Warning: Float too large for page by 22.95963pt on input line 308.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3]
-
-Package natbib Warning: Citation `anderson-teixeira_carbon_2016' on page 4 unde
-fined on input line 315.
-
-
-Package natbib Warning: Citation `anderson-teixeira_forc:_2018' on page 4 undef
-ined on input line 315.
-
-
-Package natbib Warning: Citation `anderson-teixeira_forc:_2018' on page 4 undef
-ined on input line 321.
-
-
-Package natbib Warning: Citation `bond-lamberty_global_2010' on page 4 undefine
-d on input line 322.
-
-<distribution_all_variables.png, id=50, 1011.78pt x 505.89pt>
+<distribution_all_variables.png, id=161, 1011.78pt x 505.89pt>
 File: distribution_all_variables.png Graphic file (type png)
 <use distribution_all_variables.png>
 Package pdftex.def Info: distribution_all_variables.png  used on input line 331
@@ -1052,146 +865,85 @@ Overfull \hbox (1.51277pt too wide) in paragraph at lines 371--373
 []|\T1/lmr/m/n/10 (-20) Number 
  []
 
+
+Overfull \hbox (11.86162pt too wide) in paragraph at lines 431--433
+[]|$\OML/lmm/m/it/10 ANPP[]$|  
+ []
+
 [4
 
 
- <./distribution_all_variables.png>]
-
-Package natbib Warning: Citation `simova_enigma_2017' on page 5 undefined on in
-put line 506.
-
-
-Package natbib Warning: Citation `de_lucia_forest_2007' on page 5 undefined on 
-input line 517.
-
-
-Package natbib Warning: Citation `gillman_latitude_2015' on page 5 undefined on
- input line 517.
-
-[5]
-
-Package natbib Warning: Citation `hijmans_very_2005' on page 6 undefined on inp
-ut line 551.
-
-
-Package natbib Warning: Citation `fick_worldclim_2017' on page 6 undefined on i
-nput line 552.
-
-
-Package natbib Warning: Citation `harris_updated_2014' on page 6 undefined on i
-nput line 553.
-
-
-Package natbib Warning: Citation `trabucco_global_2018' on page 6 undefined on 
-input line 555.
-
-
-Package natbib Warning: Citation `abatzoglou_terraclimate_2018' on page 6 undef
-ined on input line 556.
-
-
-Package natbib Warning: Citation `harris_updated_2014' on page 6 undefined on i
-nput line 579.
-
-
-Package natbib Warning: Citation `fick_worldclim_2017' on page 6 undefined on i
-nput line 580.
-
-
-Package natbib Warning: Citation `bates_fitting_2015' on page 6 undefined on in
-put line 587.
-
-
-Package natbib Warning: Citation `r_core_team_r:_2018' on page 6 undefined on i
-nput line 588.
-
-[6]
-
-Package natbib Warning: Citation `bates_fitting_2015' on page 7 undefined on in
-put line 680.
-
-[7]
-<effect_of_lat_transparent.png, id=71, 543.2295pt x 481.8pt>
+ <./distribution_all_variables.png>] [5] [6] [7]
+<effect_of_lat_transparent.png, id=220, 543.2295pt x 481.8pt>
 File: effect_of_lat_transparent.png Graphic file (type png)
 <use effect_of_lat_transparent.png>
-Package pdftex.def Info: effect_of_lat_transparent.png  used on input line 717.
+Package pdftex.def Info: effect_of_lat_transparent.png  used on input line 716.
 
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [8]
-<combined_stacked.png, id=77, 543.2295pt x 481.8pt>
+<combined_stacked.png, id=226, 543.2295pt x 481.8pt>
 File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
-Package pdftex.def Info: combined_stacked.png  used on input line 736.
+Package pdftex.def Info: combined_stacked.png  used on input line 735.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9 <./effect_of_lat_transparent.png (PNG copy)>] [10 <./combined_stacked.png (P
 NG copy)>]
-<mat_map_interaction.png, id=91, 543.2295pt x 481.8pt>
+<mat_map_interaction.png, id=240, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
-Package pdftex.def Info: mat_map_interaction.png  used on input line 805.
+Package pdftex.def Info: mat_map_interaction.png  used on input line 804.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
-<combined_plots.png, id=102, 543.2295pt x 722.7pt>
+<combined_plots.png, id=251, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
-Package pdftex.def Info: combined_plots.png  used on input line 848.
+Package pdftex.def Info: combined_plots.png  used on input line 847.
 (pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
 [13]
 Overfull \vbox (13.03815pt too high) has occurred while \output is active []
 
-[14 <./combined_plots.png (PNG copy)>] [15]
+[14 <./combined_plots.png (PNG copy)>] [15] [16] (./manuscript-draft.bbl [17] [
+18] [19])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1104.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1104.
+(./manuscript-draft.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1104.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1104.
 
-Package natbib Warning: Citation `moser_elevation_2011' on page 16 undefined on
- input line 970.
-
-
-Package natbib Warning: Citation `newman_above-_2006' on page 16 undefined on i
-nput line 971.
-
-
-Package natbib Warning: Citation `litton_carbon_2007' on page 16 undefined on i
-nput line 972.
-
-
-Package natbib Warning: Citation `litton_carbon_2007' on page 16 undefined on i
-nput line 973.
-
-
-Package natbib Warning: Citation `gill_belowground_2016' on page 16 undefined o
-n input line 973.
-
-
-Package natbib Warning: Citation `taylor_greater_2019' on page 16 undefined on 
-input line 974.
-
-
-Package natbib Warning: Citation `de_lucia_forest_2007' on page 16 undefined on
- input line 989.
-
-
-Package natbib Warning: Citation `anderson-teixeira_carbon_2016' on page 16 und
-efined on input line 989.
-
-
-Package natbib Warning: Citation `de_lucia_forest_2007' on page 16 undefined on
- input line 993.
-
-
-Package natbib Warning: Citation `litton_carbon_2007' on page 16 undefined on i
-nput line 994.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1003 \$R\^{}2 \ge
-                   \$48\%) than in subsidiary fluxes (latitude 
+Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
+(rerunfilecheck)             Checksum: C9A0E0A53C82F7D1F6C94B36340DE93C;642.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1104.
+ ) 
 Here is how much of TeX's memory you used:
- 15791 strings out of 492616
- 231459 string characters out of 6129482
- 404456 words of memory out of 5000000
- 19298 multiletter control sequences out of 15000+600000
- 64661 words of font info for 126 fonts, out of 8000000 for 9000
+ 15972 strings out of 492616
+ 235947 string characters out of 6129482
+ 405755 words of memory out of 5000000
+ 19414 multiletter control sequences out of 15000+600000
+ 74632 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,49p,979b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,49p,979b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
+cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
+e/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/lm/lmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
+m/lmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/lm/lmsy7.pfb>
+Output written on manuscript-draft.pdf (20 pages, 1445067 bytes).
+PDF statistics:
+ 387 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 16458 words of extra memory for PDF output out of 17280 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!
