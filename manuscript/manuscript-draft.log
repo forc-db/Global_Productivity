@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 SEP 2019 18:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 SEP 2019 06:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -827,13 +827,13 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 325.
+(Font)              <12> on input line 327.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 325.
+(Font)              <8> on input line 327.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 325.
+(Font)              <6> on input line 327.
 
-LaTeX Warning: Float too large for page by 0.51743pt on input line 326.
+LaTeX Warning: Float too large for page by 0.51743pt on input line 328.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -842,21 +842,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <distribution_all_variables.png, id=166, 1011.78pt x 505.89pt>
 File: distribution_all_variables.png Graphic file (type png)
 <use distribution_all_variables.png>
-Package pdftex.def Info: distribution_all_variables.png  used on input line 350
+Package pdftex.def Info: distribution_all_variables.png  used on input line 352
 .
 (pdftex.def)             Requested size: 469.76266pt x 234.88132pt.
-
-Overfull \hbox (1.51277pt too wide) in paragraph at lines 372--374
-[]|\T1/lmr/m/n/10 (-20) Number 
- []
-
 
 Overfull \hbox (1.51277pt too wide) in paragraph at lines 374--376
 []|\T1/lmr/m/n/10 (-20) Number 
  []
 
 
-Overfull \hbox (1.51277pt too wide) in paragraph at lines 388--390
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 376--378
 []|\T1/lmr/m/n/10 (-20) Number 
  []
 
@@ -866,7 +861,12 @@ Overfull \hbox (1.51277pt too wide) in paragraph at lines 390--392
  []
 
 
-Overfull \hbox (11.86162pt too wide) in paragraph at lines 450--452
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 392--394
+[]|\T1/lmr/m/n/10 (-20) Number 
+ []
+
+
+Overfull \hbox (11.86162pt too wide) in paragraph at lines 452--454
 []|$\OML/lmm/m/it/10 ANPP[]$|  
  []
 
@@ -877,27 +877,27 @@ Overfull \hbox (11.86162pt too wide) in paragraph at lines 450--452
 <effect_of_lat_transparent.png, id=226, 543.2295pt x 481.8pt>
 File: effect_of_lat_transparent.png Graphic file (type png)
 <use effect_of_lat_transparent.png>
-Package pdftex.def Info: effect_of_lat_transparent.png  used on input line 736.
+Package pdftex.def Info: effect_of_lat_transparent.png  used on input line 738.
 
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9]
 <combined_stacked.png, id=231, 543.2295pt x 481.8pt>
 File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
-Package pdftex.def Info: combined_stacked.png  used on input line 755.
+Package pdftex.def Info: combined_stacked.png  used on input line 761.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [10 <./effect_of_lat_transparent.png (PNG copy)>] [11 <./combined_stacked.png (
 PNG copy)>]
 <mat_map_interaction.png, id=245, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
-Package pdftex.def Info: mat_map_interaction.png  used on input line 824.
+Package pdftex.def Info: mat_map_interaction.png  used on input line 828.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [12] [13 <./mat_map_interaction.png>]
 <combined_plots.png, id=257, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
-Package pdftex.def Info: combined_plots.png  used on input line 867.
+Package pdftex.def Info: combined_plots.png  used on input line 871.
 (pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
 [14]
 Overfull \vbox (13.03815pt too high) has occurred while \output is active []
@@ -916,11 +916,11 @@ Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1133.
  ) 
 Here is how much of TeX's memory you used:
- 15983 strings out of 492616
- 236070 string characters out of 6129482
+ 15985 strings out of 492616
+ 236092 string characters out of 6129482
  407020 words of memory out of 5000000
  19414 multiletter control sequences out of 15000+600000
- 75236 words of font info for 142 fonts, out of 8000000 for 9000
+ 75366 words of font info for 143 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,12n,49p,979b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
@@ -940,7 +940,7 @@ ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texli
 ve/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/te
 xmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fo
 nts/type1/public/lm/lmsy7.pfb>
-Output written on manuscript-draft.pdf (21 pages, 1451233 bytes).
+Output written on manuscript-draft.pdf (21 pages, 1451490 bytes).
 PDF statistics:
  395 PDF objects out of 1000 (max. 8388607)
  346 compressed objects within 4 object streams
