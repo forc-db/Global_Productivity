@@ -99,7 +99,7 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 | $ANPP$ | Aboveground net primary production | Foliage, stem, and optionally branch | Direct measurement of annual increments of components | 256 | 80 |
 | $ANPP_{foliage}$ | Net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
 | $ANPP_{woody-stem}$ | Net primary production of woody stems | Woody stems | Direct measurement of stem growth increment | 264 | 96 |
-| $BNPP_{root}$  | Belowground net primary production | Coarse and fine roots |  indirect estimates of coarse roots using allometries based on aboveground stem increment measures ; see below for fine roots | 101 | 48 |
+| $BNPP_{root}$  | Belowground net primary production | Coarse and fine roots |  Coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
 | $BNPP_{fine.root}$ | Net primary production of fine roots | Fine roots | Measurements combined one or more of the following: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 88 | 41 |
 | $R_{auto}$ | Annual autotrophic respiration, including above- and belowground components | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 13 |
 | $R_{root}$ | Annual root respiration | Coarse and fine roots | *Measurement of root gas exchange, root exclusion from soil respiration chambers* | 64 | 26 |
