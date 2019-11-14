@@ -1,6 +1,6 @@
 ---
 title: "Global patterns of forest autotrophic carbon fluxes"
-author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene Muller-Landau, Kristina J. Anderson-Teixeira"
+author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene C. Muller-Landau, Kristina J. Anderson-Teixeira"
 output:
   pdf_document:
     citation_package: natbib
