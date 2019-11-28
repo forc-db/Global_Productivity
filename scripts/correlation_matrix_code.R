@@ -1,0 +1,53 @@
+# Clean environment ####
+rm(list = ls())
+
+# Set working directory as ForC main folder ####
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
+
+# Load data ####
+ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
+
+VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
+
+variables.to.keep <- ForC_simplified$variable.name %in% c("GPP", "NPP_1", "ANPP_1", "ANPP_2", "BNPP_root", "BNPP_root_fine", "ANPP_foliage", "ANPP_woody_stem", "R_auto", "R_auto_root")
+ForC_simplified <- ForC_simplified[variables.to.keep,]
+
+dist.to.keep <- ForC_simplified$managed %in% 0 & ForC_simplified$disturbed %in% 0
+ForC_simplified <- ForC_simplified[dist.to.keep, ]
+
+age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+ForC_simplified <- ForC_simplified[age.greater.than.100, ]
+
+fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
+
+ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")]
+
+variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+panel.number <- 1
+par(mfrow = c(7,7), mar = c(3,3,2,2), oma = c(0,0,0,0))
+for (i in seq(along = variables1)){
+  for (j in seq(along = variables2)){
+   # if (i == j){ next }
+  print(i)
+  print(j)
+  
+  ForC_simplified$var1 <- ForC_simplified[, variables1[[i]]]
+  ForC_simplified$var2 <- ForC_simplified[, variables2[[j]]]
+  
+  if(i!=j) fit <- lm(var1 ~ var2 , data = ForC_simplified)
+  significant.effect <- summary(fit)$coefficients[2,4] < 0.05
+  # significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+
+
+  if (i == j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
+  if (i != j) plot(var1 ~ var2, data = ForC_simplified, yaxt = ifelse(panel.number == c(1, 8, 15, 22, 29, 36, 43), "", "n"), xaxt = ifelse(panel.number == c(43:49), "", "n"))
+  # if(panel.number == c(43:49))
+  
+  if (i != j) abline(var1 ~ var2, data = ForC_simplified, lty = ifelse(significant.effect, 1, 2))
+  if (panel.number == c(1, 8, 15, 22, 29, 36, 43)) mtext(side = 2, line = 2, text = paste(variables1[[i]]), outer = F, cex = 0.5)
+  if (panel.number == c(43:49)) mtext(side = 1, line = 2,  text = paste(variables2[[j]]), outer = F, cex = 0.5) 
+  
+  panel.number <- panel.number +1
+  
+  }}
