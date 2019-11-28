@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -854,3 +854,166 @@ for (age in ages){
     
   }
 }
+
+
+################################ graph grid one plot one variable
+
+
+
+fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+
+response.variables <- c("GPP", "NPP", "ANPP", "BNPP_root")
+
+all.results = NULL
+
+### mature forests only ####
+for (age in ages){
+  
+  if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+  if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
+  
+  png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/grid_plots.png"), width = 3500, height = 2200, units = "px", res = 300)
+  
+  par(mfcol = c(4,6), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  
+  pannel.nb <- 1
+  
+  for(fixed.v in fixed.variables){
+    
+    
+    print(fixed.v)
+    
+    # a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+    # ylim <- range(tapply(a$mean, a$variable.name, scale))
+    # ylim[1] <- ylim[1] - 0.25
+    # ylim[2] <- ylim[2] + 0.25
+    
+    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    
+    xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
+    
+    ###subset ForC
+    
+    first.plot <- TRUE
+    
+    for (response.v in response.variables){
+      
+      if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
+      if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+      if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
+      
+      col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      
+      col <- col.sym$col[which(col.sym$variable %in% response.v)]
+      sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
+      
+      rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+      
+      fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
+      
+      df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
+      
+      # df$masl <- df$masl/1000
+      
+      df$fixed <- df[, fixed.v]
+      
+      # a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+      # ylim <- range(tapply(a$mean, a$variable.name, scale))
+      # ylim[1] <- ylim[1] - 0.25
+      # ylim[2] <- ylim[2] + 0.25
+      
+      if(!fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
+        
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim.poly <- lmer(mean ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        aictab <- aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)
+        
+        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Delta_AICc[2])
+        delta.aic <- signif(delta.aic, digits=4)
+        
+        
+        if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim.poly") mod.full <- lmer(mean ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        sample.size <- length(df$mean)
+        
+        if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.clim.poly") mod.full <- lmer(mean ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+      }
+      
+      if(fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
+        
+        mod <-  lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        aictab <- aictab(list(mod = mod, mod.clim = mod.clim), sort = T)
+        
+        best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Modname[1])
+        delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim), sort = T)$Delta_AICc[2])
+        delta.aic <- signif(delta.aic, digits=4)
+        
+        
+        if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
+        significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+        sample.size <- length(df$mean)
+        
+        if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+      }
+      newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
+      newDat$fit <- predict(mod.full, newDat, re.form = NA)
+      
+      ylim = range(df$mean)
+      ylim[1] <- ylim[1] - 2
+      ylim[2] <- ylim[2] + 2
+      
+      plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], ylim = ylim, pch = sym)
+      
+      lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2))
+      
+      axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
+      axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
+      
+      
+      # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
+      
+      significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+      significance <- signif(significance, digits=4)
+      
+      Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+      Rsq <- signif(Rsq, digits=4)
+      
+      results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+      
+      all.results <- rbind(all.results, results)
+      if(fixed.v == "mat")mtext(paste0("(", letters[pannel.nb], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+      
+      pannel.nb <- pannel.nb +1
+      
+      # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
+      if(response.v == "BNPP_root") mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6)
+    }
+    
+    
+   
+    ##mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
+    # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
+    ##if(fixed.v == "mat")legend(x = -10, y = 0, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75, inset = c(-0.4, 0))
+    
+    
+    
+  }
+  
+  mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
+  
+  dev.off()
+}
+
