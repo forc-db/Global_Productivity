@@ -18,6 +18,9 @@ ForC_simplified <- ForC_simplified[dist.to.keep, ]
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 ForC_simplified <- ForC_simplified[age.greater.than.100, ]
 
+## take absolute value of latitude
+ForC_simplified$lat <- abs(ForC_simplified$lat)
+
 
 ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")]
 
