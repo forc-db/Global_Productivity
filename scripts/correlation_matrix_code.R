@@ -18,36 +18,50 @@ ForC_simplified <- ForC_simplified[dist.to.keep, ]
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 ForC_simplified <- ForC_simplified[age.greater.than.100, ]
 
-fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
 
 ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")]
 
 variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+
+
+
 panel.number <- 1
-par(mfrow = c(7,7), mar = c(3,3,2,2), oma = c(0,0,0,0))
+
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/climate_regressions.png"), width = 3500, height = 3000, units = "px", res = 300)
+
+par(mfrow = c(7,7), mar = c(3,3,0.5,0.5), oma = c(0,0,0,0))
+
 for (i in seq(along = variables1)){
   for (j in seq(along = variables2)){
-   # if (i == j){ next }
   print(i)
   print(j)
   
-  ForC_simplified$var1 <- ForC_simplified[, variables1[[i]]]
-  ForC_simplified$var2 <- ForC_simplified[, variables2[[j]]]
-  
-  if(i!=j) fit <- lm(var1 ~ var2 , data = ForC_simplified)
-  significant.effect <- summary(fit)$coefficients[2,4] < 0.05
-  # significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-
-
+  df <- ForC_simplified
+  # 
+  df$var1 <- df[, variables1[[i]]]
+  df$var2 <- df[, variables2[[j]]]
+  # 
+  fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+  xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% variables2[[j]])]
+  yaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% variables1[[i]])]
+  # 
+  if(i!=j) fit <- lm(var1 ~ var2 , data = df)
+  if(i!=j) significant.effect <- summary(fit)$coefficients[2,4] < 0.05
+  # # significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+  # 
+  # 
+  print(panel.number)
   if (i == j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
-  if (i != j) plot(var1 ~ var2, data = ForC_simplified, yaxt = ifelse(panel.number == c(1, 8, 15, 22, 29, 36, 43), "", "n"), xaxt = ifelse(panel.number == c(43:49), "", "n"))
-  # if(panel.number == c(43:49))
-  
-  if (i != j) abline(var1 ~ var2, data = ForC_simplified, lty = ifelse(significant.effect, 1, 2))
-  if (panel.number == c(1, 8, 15, 22, 29, 36, 43)) mtext(side = 2, line = 2, text = paste(variables1[[i]]), outer = F, cex = 0.5)
-  if (panel.number == c(43:49)) mtext(side = 1, line = 2,  text = paste(variables2[[j]]), outer = F, cex = 0.5) 
-  
+  if (i != j) plot(var1 ~ var2, data = df, yaxt = ifelse(panel.number %in% c(1, 8, 15, 22, 29, 36, 43), "s", "n"), xaxt = ifelse(panel.number %in% c(43:49), "s", "n"), cex= 0.5)
+  # # if(panel.number == c(43:49))
+  # 
+  if (i != j) abline(fit, lty = ifelse(significant.effect, 1, 2))
+  if (panel.number %in% c(1, 8, 15, 22, 29, 36, 43)) mtext(side = 2, line = 2, text = eval(parse(text = yaxis)), outer = F, cex = 0.5)
+  if (panel.number %in% c(43:49)) mtext(side = 1, line = 2,  text = eval(parse(text = xaxis)), outer = F, cex = 0.5)
+  # 
   panel.number <- panel.number +1
   
   }}
+
+dev.off()
