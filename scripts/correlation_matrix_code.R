@@ -27,6 +27,9 @@ ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotrans
 variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 
+fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+labels <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% For)]
+pairs(ForC_simplified[,1:7], cex = 0.5, lower.panel = NULL, na.action = na.omit, labels = c("Latitude", expression(paste('Mean annual \n temperature \n (', degree, 'C)')), expression(paste('Mean annual \n precipitation \n (mm yr'^{-1}, ')')), expression(paste('Potential \n evapotranspiration (mm yr'^{-1}, ')')), expression(paste('Vapour pressure \n (kPa)')),expression(paste('Temperature \n seasonality')) , expression(paste('Length of growing \n season (months)'))))
 
 
 panel.number <- 1
