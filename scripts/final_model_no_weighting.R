@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/Github/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -872,7 +872,7 @@ for (age in ages){
   if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
-  png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/grid_plots.png"), width = 3500, height = 2200, units = "px", res = 300)
+  png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots.png"), width = 3500, height = 2200, units = "px", res = 300)
   
   par(mfcol = c(4,6), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
   
@@ -888,7 +888,7 @@ for (age in ages){
     # ylim[1] <- ylim[1] - 0.25
     # ylim[2] <- ylim[2] + 0.25
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -902,7 +902,7 @@ for (age in ages){
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
-      col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
       
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
