@@ -2,7 +2,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 library(MuMIn)
 
 # Load data ####
@@ -28,7 +28,7 @@ ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotrans
 variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 
-fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
 labels <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v.info)]
 
 # pairs(ForC_simplified[,1:7], cex = 0.5, upper.panel = panel.cor,
@@ -38,7 +38,7 @@ labels <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v.info)]
 
 panel.number <- 1
 
-png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/climate_regressions.png"), width = 3500, height = 3000, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/results/figures/final_figures/supporting_information/climate_regressions.png"), width = 3500, height = 3000, units = "px", res = 300)
 
 par(mfrow = c(7,7), mar = c(3,3,0.5,0.5), oma = c(0,0,0,0))
 
@@ -52,12 +52,15 @@ for (i in seq(along = variables1)){
   df$var1 <- df[, variables1[[i]]]
   df$var2 <- df[, variables2[[j]]]
   # 
-  fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+  fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
   xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% variables2[[j]])]
   yaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% variables1[[i]])]
   # 
   if(i!=j) fit <- lm(var1 ~ var2 , data = df)
   if(i!=j) significant.effect <- summary(fit)$coefficients[2,4] < 0.05
+  ### this tests whether any correlations are non-significant; if they are non-significant they can be filtered out when graphed
+  ifelse(i==j, NA, 
+         ifelse(significant.effect == FALSE, print("significant effect false"), NA))
   if(i!=j) Rsq <- as.data.frame(r.squaredGLMM(fit))
   if(i!=j) Rsq <- signif(Rsq, digits=4)
   if(i!=j) legend <- Rsq[1]
@@ -67,7 +70,7 @@ for (i in seq(along = variables1)){
   print(panel.number)
   if (i == j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
   if (i < j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
-  if (i < j) legend("center", legend = legend, cex = 0.8, bty = "n")
+  if (i < j) legend("center", legend = legend, cex = 2, bty = "n")
   if (i > j) plot(var1 ~ var2, data = df, yaxt = ifelse(panel.number %in% c(1, 8, 15, 22, 29, 36, 43), "s", "n"), xaxt = ifelse(panel.number %in% c(43:49), "s", "n"), cex= 0.5)
   # # if(panel.number == c(43:49))
   # if (i < j) mtext(text = legend, side = 3, adj = 0.5, line = -5, cex = 1)
