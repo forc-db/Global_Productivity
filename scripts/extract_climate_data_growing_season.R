@@ -684,22 +684,21 @@ all.koeppen <- NULL
 fixed.variables <- c("pet", "pre", "tmp", "solarradiationmonthly")
 
 
+response.variables <- c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem")
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody_stem"))
+# response.variables <- "ANPP_foliage"
 
-par(mfcol = c(2,4), mar = c(2,2,2,2), oma = c(5,5,2,0))
+
 
   ### mature forests only ####
-  for (age in ages){
-    
-    if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
-    if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
-    panel.number <- 1
+
+panel.number <- 1
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/gridded_growing_season.png"), width = 2500, height = 3000, units = "px", res = 300)
+
+par(mfcol = c(6,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+
     for(fixed.v in fixed.variables){
-      
-      # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/growing_season/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
-      
       
       print(fixed.v)
       
@@ -708,16 +707,7 @@ par(mfcol = c(2,4), mar = c(2,2,2,2), oma = c(5,5,2,0))
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
       ###subset ForC
-      
-      
-     
-      
-      for(response.variables in response.variables.groups){
-      
-        response.variables.col <- 1:length(response.variables)
-      
-      if(response.variables[1] == "GPP") n <- 1
-      if(response.variables[1] == "ANPP") n <- 2
+    
       
       first.plot <- TRUE
         
@@ -733,30 +723,21 @@ par(mfcol = c(2,4), mar = c(2,2,2,2), oma = c(5,5,2,0))
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
-        
-        response.v.color <- response.variables.col[which(response.variables %in% response.v)]
-        
         rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
         
         fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
         
         df <- ForC_simplified[rows.with.response & ages.to.keep & fixed.no.na, ]
-        
-        
-        # df$masl <- df$masl/1000
-        
+
         df$fixed <- df[, fixed.v]
+
+        # a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
+        # ylim <- range(tapply(a$monthly_mean, a$variable.name, scale))
+        # ylim[1] <- ylim[1] - 0.25
+        # ylim[2] <- ylim[2] + 0.25
         
-        if(fixed.v == "AnnualPET") df <- df[df$fixed != 0,]
-        # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
-        
-        a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
-        ylim <- range(tapply(a$monthly_mean, a$variable.name, scale))
-        ylim[1] <- ylim[1] - 0.25
-        ylim[2] <- ylim[2] + 0.25
-        
-        mod <-  lmer(scale(monthly_mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
-        mod.clim <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        mod <-  lmer(monthly_mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
+        mod.clim <- lmer(monthly_mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
         
         aictab <- aictab(list(mod.clim = mod.clim), sort = T)
         
@@ -765,27 +746,25 @@ par(mfcol = c(2,4), mar = c(2,2,2,2), oma = c(5,5,2,0))
         delta.aic <- signif(delta.aic, digits=4)
         
         
-        if (best.model == "mod") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-        if (best.model == "mod.clim") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod") mod.full <- lmer(monthly_mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        if (best.model == "mod.clim") mod.full <- lmer(monthly_mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
         
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
         sample.size <- length(df$monthly_mean)
         
-        if (best.model == "mod.clim") mod.full <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+        if (best.model == "mod.clim") mod.full <- lmer(monthly_mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        if(first.plot) plot(scale(monthly_mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], pch = sym, yaxt = "n", ylim = ylim)
-        if(!first.plot) points(scale(monthly_mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
-        
+        plot(monthly_mean ~ fixed, data = df, xlab = "", ylab = "", col = ifelse(significant.effect, plasma(10)[col], plasma(10, alpha = 0.3)[col]), pch = sym)
         
         lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2))
         
         first.plot <- FALSE
         
-        mod.linear <- lmer(scale(monthly_mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
+        mod.linear <- lmer(monthly_mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         
         r <- round(fixef(mod.linear), 5)
         slope <- r[2]
@@ -807,21 +786,19 @@ par(mfcol = c(2,4), mar = c(2,2,2,2), oma = c(5,5,2,0))
         date = Sys.Date()
         altitude = FALSE
         
-        results <- data.frame(date.run = date, response = response.v, fixed = fixed.v, altitude_included = altitude, random = "geographic.area/plot.name", Age.filter = age, best.model = best.model, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq, delta.aic = delta.aic, linear.slope = slope, number.plots = number_plots)
         
-        all.results <- rbind(all.results, results)
-        all.aictab <- rbind(all.aictab, aictab)
-        
+        if(fixed.v == "pet")mtext(paste0("(", letters[panel.number], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         panel.number <- panel.number +1 
-        if (panel.number %in% c(2,4,6,8)) mtext(side = 1, line = 1, text = eval(parse(text = xaxis)), outer = F)
+        if(response.v == "ANPP_woody_stem") mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6, padj = 0.5, adj = 0.5)
+        mtext(side = 2, line = 3,  text = expression("Monthly mean productivity during growing season Mg C "~ha^-1~yr^-1), outer = T) 
+        mtext(side = 1, line = 3,  text = "Growing season climate", outer = T) 
       }}
       
       
       
-      mtext(side = 2, line = 3,  text = expression("Productivity (scaled values)"), outer = T) 
-      # dev.off()
-    }
+      
+dev.off()
+
     
-  }
   
 
