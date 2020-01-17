@@ -155,13 +155,13 @@ Latitude was a strong predictor for many of the carbon fluxes, explaining 64% of
 
 *Relationships and differences among fluxes.* In general, smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (fig. 2). That is, modelled estimates of GPP, generated from the sum of NPP and R auto; NPP, generated from the sum of ANPP and BNPP~root~; and ANPP, generated from the sum of ANPP~foliage~ and ANPP~woody~ ~stem~, fell completely within the confidence intervals of the regressions of field estimates of GPP, NPP and ANPP respectively.
 
-bbl: here or in the discussion, note that this is a fairly stringent test: it's easy for sub-fluxes not to sum up! (Extensive citations from EC literature for example.)
+bbl: here or in the discussion, note that this is a fairly stringent test: it's easy for sub-fluxes not to sum up! (Extensive citations from EC literature for example.). HML: yes and no. confidence intervals are pretty large. 
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Graphs of primary productivity $(MgC~ha^-1~yr^-1)$ regressed against latitude. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Plots 1 - 3 show two component fluxes; a larger flux, defined as the combination of the two component fluxes; and a modelled estimate of the sum of the two component fluxes. 95\\% confidence intervals are plotted for the larger flux. Plot 4 shows three belowground fluxes, and a modelled estimate of the total belowground carbon flux", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d),  which shows three belowground fluxes, the major flux, total belowground carbon flux, is one for which we have no data", fig.pos='H'}
 
   knitr::include_graphics("combined_stacked.png")
 ```
-  
+
 We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.  
   
 $R^2$ values were generally highest in the major fluxes, and decreased in subsidiary fluxes (Supporting Information S2). Of the major fluxes, R~auto~ and GPP were the most strongly explained by latitude and climate, with climate explaining at most 71% of variation in GPP, and 65% in R~auto~. The proportion of variation explained by climate and latitude decreased in NPP and ANPP, with climate explaining at most 51% of variation in NPP and 44% in ANPP. Of the major fluxes, BNPP~root~ was the least well explained by climate and latitude, with climate explaining at most 36% of variation.  
