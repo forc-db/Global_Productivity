@@ -149,7 +149,7 @@ In total, we analyzed 1228 records from 9 C flux variables taken from forests th
   
 *How does productivity vary with latitude?* 
 
-All major carbon fluxes increased linearly with decreasing latitude (fig. 2).   
+All major carbon fluxes decreased linearly with latitude (Fig. 2).   
   
 Latitude was a strong predictor for many of the carbon fluxes, explaining 64% of variation in GPP (n = 254, p<0.0001), 50% in NPP (n = 114, p<0.0001) and 45% in ANPP (n = 259, p<0.0001). For all fluxes, their relationship with latitude was best predicted by the linear model. 
 

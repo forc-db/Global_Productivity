@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 JAN 2020 08:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 JAN 2020 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -880,7 +880,7 @@ File: combined_stacked.png Graphic file (type png)
 Package pdftex.def Info: combined_stacked.png  used on input line 760.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9] [10 <./combined_stacked.png (PNG copy)>]
-<mat_map_interaction.png, id=243, 543.2295pt x 481.8pt>
+<mat_map_interaction.png, id=242, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
 Package pdftex.def Info: mat_map_interaction.png  used on input line 827.
@@ -908,11 +908,11 @@ Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1137.
  ) 
 Here is how much of TeX's memory you used:
- 15984 strings out of 492616
- 236032 string characters out of 6129482
- 406849 words of memory out of 5000000
+ 15980 strings out of 492616
+ 235994 string characters out of 6129482
+ 406869 words of memory out of 5000000
  19413 multiletter control sequences out of 15000+600000
- 82678 words of font info for 145 fonts, out of 8000000 for 9000
+ 82513 words of font info for 143 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,12n,49p,979b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
@@ -934,7 +934,7 @@ xmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /public/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
 lmsy7.pfb>
-Output written on manuscript-draft.pdf (20 pages, 1144852 bytes).
+Output written on manuscript-draft.pdf (20 pages, 1145273 bytes).
 PDF statistics:
  401 PDF objects out of 1000 (max. 8388607)
  352 compressed objects within 4 object streams
