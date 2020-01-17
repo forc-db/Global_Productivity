@@ -87,8 +87,8 @@ kable(hypothesis_table, booktabs = TRUE, caption = "**Summary of hypotheses, cor
   
 Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc:_2018] through integration with the Global Soil Respiration Database [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on mature forests in temperate and boreal regions. ForC currently contains 29730 records from 4979 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v3.0, archived on Zenodo with DOI 10.5281/zenodo.3403855.
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable", fig.pos='H'}
-  knitr::include_graphics("distribution_all_variables.png")
+```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
+  knitr::include_graphics("distribution_all_variables_cropped.png")
 ```
 *Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focussed on measures of primary productivity. Table 1 contains details of the variables selected for analysis.  
   
