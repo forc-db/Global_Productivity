@@ -15,3 +15,7 @@ VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)'))
 SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))"
 PreSeasonality,expression(paste('Precipitation seasonality'))
 length_growing_season,expression(paste('Length of growing season (months)'))
+pet,"expression(paste('Mean growing season potential evapotranspiration (mm month'^{-1}, ')'))"
+pre,"expression(paste('Mean growing season monthly precipitation (mm month'^{-1}, ')'))"
+tmp,"expression(paste('Mean growing season temperature (', degree, 'C)'))"
+solarradiationmonthly,"expression(paste('Solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))"
