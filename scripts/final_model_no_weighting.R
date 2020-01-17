@@ -991,7 +991,7 @@ for (age in ages){
       
       axis(1 ,labels = ifelse(pannel.nb %in% c(3,4), TRUE, FALSE))
       axis(2 ,labels = ifelse(pannel.nb %in% c(1,3), TRUE, FALSE))
-      
+        
       
       # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
       
