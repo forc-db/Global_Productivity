@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 JAN 2020 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 JAN 2020 07:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,47 +877,47 @@ Overfull \hbox (11.86162pt too wide) in paragraph at lines 461--463
 <combined_stacked.png, id=232, 543.2295pt x 481.8pt>
 File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
-Package pdftex.def Info: combined_stacked.png  used on input line 765.
+Package pdftex.def Info: combined_stacked.png  used on input line 778.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9] [10 <./combined_stacked.png (PNG copy)>]
 <mat_map_interaction.png, id=244, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
-Package pdftex.def Info: mat_map_interaction.png  used on input line 832.
+Package pdftex.def Info: mat_map_interaction.png  used on input line 847.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
-<combined_plots.png, id=256, 543.2295pt x 722.7pt>
+<combined_plots.png, id=255, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
-Package pdftex.def Info: combined_plots.png  used on input line 875.
+Package pdftex.def Info: combined_plots.png  used on input line 891.
 (pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
 [13]
 Overfull \vbox (22.53146pt too high) has occurred while \output is active []
 
 [14 <./combined_plots.png (PNG copy)>] [15] [16] (./manuscript-draft.bbl [17] [
 18] [19])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1142.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1160.
 [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1142.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1160.
 (./manuscript-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1142.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1142.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1160.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1160.
 
 Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 (rerunfilecheck)             Checksum: 09E54CD3E8E33FE787FD597A0DC6B4B6;642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1142.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1160.
  ) 
 Here is how much of TeX's memory you used:
- 15974 strings out of 492616
- 235928 string characters out of 6129482
- 406957 words of memory out of 5000000
+ 15968 strings out of 492616
+ 235862 string characters out of 6129482
+ 406992 words of memory out of 5000000
  19413 multiletter control sequences out of 15000+600000
- 82171 words of font info for 140 fonts, out of 8000000 for 9000
+ 81830 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,12n,49p,979b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
-cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
-e/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-d
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
+cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/20
+19/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-d
 ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2019/texmf-dist/fonts/type
 1/public/lm/lmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
 m/lmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx7.pf
@@ -932,12 +932,11 @@ blic/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
 ve/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/te
 xmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
-lmsy7.pfb>
-Output written on manuscript-draft.pdf (20 pages, 1146567 bytes).
+/public/lm/lmsy7.pfb>
+Output written on manuscript-draft.pdf (20 pages, 1144961 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
- 354 compressed objects within 4 object streams
+ 399 PDF objects out of 1000 (max. 8388607)
+ 351 compressed objects within 4 object streams
  70 named destinations out of 1000 (max. 500000)
  16453 words of extra memory for PDF output out of 17280 (max. 10000000)
 
