@@ -16,32 +16,14 @@ header-includes:  \usepackage{float}
 
 ---
 
-```{r, include=FALSE}
-options(tinytex.verbose = TRUE)
-options(knitr.table.format = "latex")
-```
 
 
-```{r include=FALSE}
-knitr::write_bib(c(
-  .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra', 'AICcmodavg'
-), 'packages.bib')
-```
 
-```{r setup, include = FALSE}
-#knitr::opts_knit$set(root.dir = 'C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
-knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
-```
 
-```{r results="asis", include=FALSE}
-cat("
-<style>
-caption {
-      font-size: 0.75em;
-    }
-</style>
-")
-```
+
+
+
+
 
 
 ###Abstract
@@ -66,32 +48,64 @@ caption {
 **The recent development of a global forest carbon database synthesizing multiple variables and including records of stand history (ForC; [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]) opens up the possibility for a standardized analysis of global scale variation** in multiple components of forest productivity and the principle climatic drivers of these patterns.  In order to approach these broad and complex issues, we simplify the major gaps in our knowledge to five broad hypotheses and corresponding specific predictions (Table 1). ** see [issue #48 ](https://github.com/forc-db/Global_Productivity/issues/48)** First, we ask how forest autotrophic carbon fluxes (FACF) vary with latitude. We then test how these fluxes relate to MAT and MAP, and additionally how they respond to other, less well studied, climate variables. Finally, we consider the relationship between FACF and seasonality, considering the role of seasonality in explaining variation in carbon fluxes, and the influence of climate on FACF standardized by growing season length. We use a comprehensive global database of forest carbon fluxes to address the above questions for nine carbon fluxes, allowing for an in-depth exploration of the effect of climate on global productivity.  
 
 \renewcommand{\arraystretch}{2}
-```{r eval = TRUE, echo=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(hypothesis_table, booktabs = TRUE, caption = "**Summary of hypotheses, corresponding specific predictions, and results.** Direction of significant relationships is indicated by '+' and '-', and  shape is summarized as linear (L), concave up (CU), and concave down (CD). 'n.s.' indicates that the relationship is not signficant.") %>%
-  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("H1. FACFs decrease linearly with latitude, and in constant proportion.", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H2. FACFs increase with MAT, with an interactive effect of MAP.", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H3. FACFs are strongly correlated with other annual climate variables.", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H4. FACFs are reduced under seasonal climates.", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H5. Considering only growing season months, FACF correlates with climatic drivers.", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
-  column_spec(1, width = "10cm") %>%
-  column_spec(2, width = "5cm") %>%
-  column_spec(3:13, width = "1.8cm") %>%
-  kableExtra::landscape()
-```
+
+\begin{landscape}\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-4}**Summary of hypotheses, corresponding specific predictions, and results.** Direction of significant relationships is indicated by '+' and '-', and  shape is summarized as linear (L), concave up (CU), and concave down (CD). 'n.s.' indicates that the relationship is not signficant.}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}{>{\raggedright\arraybackslash}p{10cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.8cm}}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{9}{c}{Forest autotrophic carbon fluxes (FACF)} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){4-12}
+Hypotheses \& Specific Predictions & Related references & Overall & GPP & NPP & ANPP & BNPP & ANPP foliage & ANPP woody stem & BNPP fine root & R auto root & R auto & Support\\
+\midrule
+\addlinespace[1em]
+\hline
+\multicolumn{1}{l}{\textbf{H1. FACFs decrease linearly with latitude, and in constant proportion.}}\\
+\hspace{1em}1.1. FACFs decrease linearly with latitude (L-) & Luyssaert et al. (2007) & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Fig. 2\\
+\hspace{1em}1.1.alt. FACFs are similar in tropical and temperate forests, but lower in boreal regions (CD-) & Gillman et al. (2015); Simova and Storch (2017) & no & no & no & no & no & no & no & no & no & no & Fig. 2\\
+\hspace{1em}1.2. Allocation of GPP to subsidiary fluxes varies with latitude & Litton et al. (2007); DeLucia et al. (2007) & no & - & no & no & no & no & no & no & - & - & \\
+\addlinespace[1em]
+\hline
+\multicolumn{1}{l}{\textbf{H2. FACFs increase with MAT, with an interactive effect of MAP.}}\\
+\hspace{1em}2.1. FACFs increase linearly with MAT (L+) & Schuur (2003) & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Fig. 4\\
+\hspace{1em}2.2. FACFs increase with precipitation but saturate or decrease at very high levels (CD+) & Luyssaert et al. (2007); Schuur (2003) & yes & yes & yes & yes & yes & yes & n.s. & L+ & L+ & yes & Fig. 4\\
+\hspace{1em}2.3. There is a postive interaction between temperature and precipitation (I+) & Taylor et al. (2016) & (yes) & yes & L+ & yes & L- & L+ & yes & L- & yes & yes & Fig. 3\\
+\addlinespace[1em]
+\hline
+\multicolumn{1}{l}{\textbf{H3. FACFs are strongly correlated with other annual climate variables.}}\\
+\hspace{1em}3.1. FACFs increases with PET, but saturates or decreases at high levels (CD+) &  & (yes) & yes & yes & yes & yes & L+ & yes & L+ & yes & L+ & Fig. 4\\
+\hspace{1em}3.2. FACFs increase with vapour pressure deficit, but saturate or decrease at high levels (CD+) &  & (yes) & yes & yes & yes & yes & yes & yes & L+ & yes & yes & Fig. 4\\
+\hspace{1em}3.3. FACFs increase linearly with solar radiation (L+) &  & (yes) & yes & yes & yes & CD+ & yes & CD+ & yes & n.s. & yes & \\
+\addlinespace[1em]
+\hline
+\multicolumn{1}{l}{\textbf{H4. FACFs are reduced under seasonal climates.}}\\
+\hspace{1em}4.1. FACFs decrease linearly with temperature seasonality (L-) &  & yes & CU+ & CU+ & CU+ & yes & yes & yes & yes & CU+ & CU+ & Fig. 4\\
+\hspace{1em}4.2. FACFs decrease linearly with  precipitation seasonality (L-) &  & no & n.s. & n.s. & n.s. & n.s. & n.s. & n.s. & n.s. & n.s. & n.s. & \\
+\hspace{1em}4.3. FACFs increase linearly with growing season length (L+) & Malhi (2012); Michaletz et al. (2014); Chu et al. (2016) & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Fig. 4\\
+\hspace{1em}4.4. Growing season length is a better predictor of FACFs than MAT & Michaletz et al. (2014); Chu et al. (2016) & no & no & no & no & no & no & no & no & no & no & \\
+\addlinespace[1em]
+\hline
+\multicolumn{1}{l}{\textbf{H5. Considering only growing season months, FACF correlates with climatic drivers.}}\\
+\hspace{1em}5.1. Increase with temperature (L+) & Michaletz et al. (2014) & (mixed) & n.s. & n.s. & yes & n.s. & yes & n.s. & n.s. & n.s. & n.s. & \\
+\hspace{1em}5.2. Increase with PET (L+) &  & (yes) & yes & yes & n.s. & yes & n.s. & yes & yes & n.s. & n.s. & \\
+\hspace{1em}5.3. Increase with precipitation (L+) &  & no & n.s. & n.s. & yes & n.s. & yes & n.s. & n.s. & n.s. & n.s. & \\
+\hspace{1em}5.4. Increase with solar radiation (L+) &  & (mixed) & yes & yes & n.s. & yes & n.s. & n.s. & yes & n.s. & n.s. & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+\end{landscape}
 
 
 ### Materials and Methods  
   
 Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc:_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc:_2018] through integration with the Global Soil Respiration Database [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on primary productivity, with particular focus on mature forests in temperate and boreal regions. ForC currently contains 29730 records from 4979 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v3.0, archived on Zenodo with DOI 10.5281/zenodo.3403855.
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
-  knitr::include_graphics("distribution_all_variables_cropped.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{distribution_all_variables_cropped} \caption{Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. }\label{fig:unnamed-chunk-5}
+\end{figure}
 *Data selection.* Over 50 variables of forest carbon stocks and annual fluxes are represented in the ForC database; this analysis focused on autotrophic carbon fluxes. Focal variables of this analysis are listed in Table 2. 
 
 A subset of the ForC database was generated for the purposes of this analysis, in order to control for data quality and remove biasing factors. Since management can alter observed patterns of primary productivity [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
@@ -165,10 +179,9 @@ Latitude was a strong predictor for many of the carbon fluxes, explaining 64% of
 
 bbl: here or in the discussion, note that this is a fairly stringent test: it's easy for sub-fluxes not to sum up! (Extensive citations from EC literature for example.). HML: yes and no. confidence intervals are pretty large. 
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d),  which shows three belowground fluxes, the major flux, total belowground carbon flux, is one for which we have no data", fig.pos='H'}
-
-  knitr::include_graphics("combined_stacked.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{combined_stacked} \caption{Latitudinal trends in forest autotropic carbon flux. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$. Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d),  which shows three belowground fluxes, the major flux, total belowground carbon flux, is one for which we have no data}\label{fig:unnamed-chunk-6}
+\end{figure}
 
 We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.  
   
@@ -184,9 +197,9 @@ There was a significant interactive effect between MAT and MAP for GPP, BNPP~roo
   
 For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. For NPP, there was a significant interactive effect between MAT and water stress months, with this model explaining nearly 5% more variation in NPP than MAT alone {**Helene: but less than MATxMAP? if so, why bother mentioning?**}. However, for ANPP~foliage~, no multivariate model improved on the univariate model including only MAT.  
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and mean annual precipitation on FACF. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
-  knitr::include_graphics("mat_map_interaction.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{mat_map_interaction} \caption{Interactive effects of mean annual temperature and mean annual precipitation on FACF. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.}\label{fig:unnamed-chunk-7}
+\end{figure}
 
 *How does productivity relate to other climate variables?* {**Here, maybe add some statement about covariation among climate variables, site SI figure**} Our results indicated that productivity was most strongly explained by temperature at the global scale, with temperature-related climate variables coming out as strong predictors of productivity. In addition to MAT, temperature seasonality, annual temperature range, and annual frost days were consistently identified as strong univariate predictors of FACF.  {**cite some table/ SI?**}
   
@@ -198,9 +211,9 @@ All fluxes, with the exception of R~root~, showed a positive linear relationship
   
 Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range, precipitation seasonality, maximum vapour pressure deficit and water stress months were poor or non-significant explainers of variation in productivity, explaining less than 20% of the variation in each of the carbon fluxes.
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis (**see issue 47**). All regressions are significant $(p<0.05)$.", fig.pos='H'}
-  knitr::include_graphics("combined_plots.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{combined_plots} \caption{Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis (**see issue 47**). All regressions are significant $(p<0.05)$.}\label{fig:unnamed-chunk-8}
+\end{figure}
 
 *What is the role of seasonality in explaining FACF?* Temperature seasonality was a significant predictor of FACF. GPP, NPP, ANPP, and R~root~ exhibited a polynomial relationship with seasonality (Fig. 4) {**give statistic on signficiance**}. ANPP~foliage~, ANPP~woody~ ~stem~ and R~auto~ decreased linearly with temperature seasonality. Temperature seasonality was strongly correlated with annual temperature range, and, as expected, all fluxes showed almost identical responses to it {**meaning unclear**}. Productivity was highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. In contrast, there was no significant effect of precipitation seasonality on FACF.
 
