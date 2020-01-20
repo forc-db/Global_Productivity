@@ -100,17 +100,17 @@ There is evidence that stand age influences patterns of primary productivity and
 \newpage  
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
-| $GPP$ | Annual gross primary production | NA | Flux partitioning of eddy-covariance; $NPP$+$R_{auto}$; scaling chamber measurements of photosynthesis | 243 | 49 |
-| $NPP$ | Annual net primary production | Foliage, branch, stem, coarse root and fine root | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$; eddy-covariance measures of net ecosystem exchange + heterotrophic respiration  | 92 | 42 |
-| $ANPP$ | Annual aboveground net primary production | Foliage, stem, and optionally branch (**issues [52](https://github.com/forc-db/Global_Productivity/issues/52), [54](https://github.com/forc-db/Global_Productivity/issues/54)**) | Summing components | 256 | 80 |
-| $ANPP_{foliage}$ | Annual net primary production of foliage | Foliage | Direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
-| $ANPP_{woody-stem}$ | Annual net primary production of woody stems | Woody stems (no branch turnover) | Direct measurement of stem growth increment (**with recruitment?**) | 264 | 96 |
-| $BNPP_{root}$  | Annual belowground net primary production | Coarse and fine roots |  Coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
-| $BNPP_{fine.root}$ | Annual net primary production of fine roots | Fine roots | Measurements combined one or more of the following: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 88 | 41 |
-| $R_{auto}$ | Annual autotrophic respiration | Foliage, stem, and root | Chamber measurements of component gas exchange | 22 | 13 |
-| $R_{root}$ | Annual root respiration | Coarse and fine roots | *Measurement of root gas exchange, root exclusion from soil respiration chambers* | 64 | 26 |
+| $GPP$ | Gross Primary Production | NA | flux partitioning of eddy-covariance; $NPP$+$R_{auto}$; scaling chamber measurements of photosynthesis | 243 | 49 |
+| $NPP$ | Net Primary Production | stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$; eddy-covariance measures of net ecosystem exchange + heterotrophic respiration  | 92 | 42 |
+| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) (**issues [52](https://github.com/forc-db/Global_Productivity/issues/52), [54](https://github.com/forc-db/Global_Productivity/issues/54)**) | $ANPP_{foliage}$ + $ANPP_{woody-stem}$ (+ others) | 256 | 80 |
+| $ANPP_{woody-stem}$ | Net Primary Production of woody stems | woody stems down to DBH $\le$ 10cm (no branch turnover) | direct measurement of stem growth increment (**with recruitment?**) | 264 | 96 |
+| $ANPP_{foliage}$ | Net Primary Production of foliage | foliage | direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
+| $BNPP_{root}$  | Belowground Net Primary Production | coarse and fine roots |  coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
+| $BNPP_{fine.root}$ | Net Primary Production of fine roots | fine roots | measurements combined one or more of the following: minirhizotrons, fine root turnover, soil cores, root ingrowth cores | 88 | 41 |
+| $R_{root}$ | Root Respiration | **coarse** and fine roots | *Measurement of root gas exchange, root exclusion from soil respiration chambers* | 64 | 26 |
+| $R_{auto}$ | Autotrophic Respiration | foliage, stem, and root | chamber measurements of component gas exchange | 22 | 13 |
   
-Table: Definitions and sample sizes of variables used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
+Table: Definitions and sample sizes of variables (all annual) used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
 
 
   
@@ -206,7 +206,7 @@ Of the climate variables tested, annual wet days, aridity, cloud cover, mean diu
 
 We found a significant relationship between length of growing season and FACF, with all fluxes showing a linear increase in productivity with length of growing season (Fig. 4). Length of growing season was a strong predictor of FACF, explaining 51% of variation in GPP, 39% of variation in NPP, and 34% of variation in ANPP, but it was a weaker predictor than MAT for all fluxes analysed.
 
-*Within the growing season, how does FACF vary with climate?* When FACF was standardized by growing season length, correlations with climate variables were much weaker. Temperature, precipitation, PET, and solar radiation each had a small effect on one or more FACF (Fig. **S#**). Specifically, there was a small increase in productivity with temperature and precipitation for ANPP (with temperature $R^2$ = 0.10, p<0.001; with precipitation $R^2$ = 0.04, p<0.05) and ANPP~foliage~ (with temperature $R^2$ = 0.16, p<0.01; with precipitation $R^2$ = 0.09, p<0.05). Productivity increased with solar radiation for GPP ($R^2$ = 0.21, p<0.001), NPP ($R^2$ = 0.21, p<0.001), BNPP ($R^2$ = 0.16, p<0.001) and BNPP~fine~ ~root~ ($R^2$ = 0.12, p<0.01), and with PET for GPP ($R^2$ = 0.15, p<0.01), NPP ($R^2$ = 0.18, p<0.01), BNPP ($R^2$ = 0.23, p<0.0001), BNPP~fine~ ~root~ ($R^2$ = 0.11, p<0.05), and ANPP~woody~ ~stem~ ($R^2$ = 0.06, p<0.05).  {**site SI figure, stats might work better in a table**}  {**did we look at respiration in this anlaysis?**}
+*Within the growing season, how does FACF vary with climate?* When FACF was standardized by growing season length, correlations with climate variables were much weaker. Growing season temperature, precipitation, solar radiation, and PET each had a small effect on one or more of the nine FACF analyzed (Table 2; Fig. **S#**). Speficifally, $ANPP$ increased with growing season temperature ($R^2$ = 0.10, p<0.001) and precipitation ($R^2$ = 0.04, p<0.05). Similaryly, $ANPP_{foliage}$ increased slightly with growing season temperature ($R^2$ = 0.16, p<0.01) and precipitation ($R^2$ = 0.09, p<0.05). Growing season solar radiation had a positive influence on $GPP$ ($R^2$ = 0.21, p<0.001), $NPP$ ($R^2$ = 0.21, p<0.001), $BNPP$ ($R^2$ = 0.16, p<0.001) and $BNPP_{fine.root}$ ($R^2$ = 0.12, p<0.01). Growing season PET had a positive influence on $GPP$ ($R^2$ = 0.15, p<0.01), $NPP$ ($R^2$ = 0.18, p<0.01), $BNPP$ ($R^2$ = 0.23, p<0.0001), $BNPP_{fine.root}$ ($R^2$ = 0.11, p<0.05), and $ANPP_{woody-stem}$ ($R^2$ = 0.06, p<0.05). {**Becky, please verify/ edit the following:** There were no other signifcant correlations between growing season length-standardized FACF (9 variables in Table 2) and growing season climate (**which variables?**)}. 
   
 ###Discussion  
 
