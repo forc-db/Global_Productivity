@@ -102,7 +102,7 @@ There is evidence that stand age influences patterns of primary productivity and
 |--------------|-------------------|-------------|------------------------|-------|-------|
 | $GPP$ | Gross Primary Production | NA | flux partitioning of eddy-covariance; $NPP$+$R_{auto}$ | 243 | 49 |
 | $NPP$ | Net Primary Production | stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$ | 92 | 42 |
-| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) (**issues [52](https://github.com/forc-db/Global_Productivity/issues/52), [54](https://github.com/forc-db/Global_Productivity/issues/54)**) | $ANPP_{foliage}$ + $ANPP_{woody-stem}$ (+ others) | 256 | 80 |
+| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) (**issues [52](https://github.com/forc-db/Global_Productivity/issues/52), [54](https://github.com/forc-db/Global_Productivity/issues/54)**) |$ANPP_{woody-stem}$ + $ANPP_{foliage}$ (+ others) | 256 | 80 |
 | $ANPP_{woody-stem}$ | Net Primary Production of woody stems | woody stems down to DBH $\le$ 10cm (no branch turnover) | direct measurement of stem growth increment (**with recruitment?**) | 264 | 96 |
 | $ANPP_{foliage}$ | Net Primary Production of foliage | foliage | direct measurement of litterfall, correcting for changes in leaf biomass when measured | 98 | 49 |
 | $BNPP_{root}$  | Belowground Net Primary Production | coarse and fine roots |  coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
