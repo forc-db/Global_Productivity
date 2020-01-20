@@ -684,7 +684,7 @@ all.koeppen <- NULL
 fixed.variables <- c("pet", "pre", "tmp", "solarradiationmonthly")
 
 
-response.variables <- c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem")
+response.variables <- c("GPP", "R_auto", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem")
 
 # response.variables <- "ANPP_foliage"
 
@@ -695,7 +695,7 @@ response.variables <- c("GPP", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP
 panel.number <- 1
 png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/gridded_growing_season.png"), width = 2500, height = 3000, units = "px", res = 300)
 
-par(mfcol = c(6,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+par(mfcol = c(7,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
     for(fixed.v in fixed.variables){
