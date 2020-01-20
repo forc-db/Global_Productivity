@@ -791,4 +791,152 @@ LaTeX Font Info:    Try loading font information for OT1+lmr on input line 125.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 125.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 125
+.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 125
+.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 125.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 125.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 125.
+LaTeX Font Info:    Try loading font information for U+msa on input line 125.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 125.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 337.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 337.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 337.
+
+LaTeX Warning: Float too large for page by 0.51743pt on input line 338.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4]
+<distribution_all_variables_cropped.png, id=171, 922.4061pt x 390.258pt>
+File: distribution_all_variables_cropped.png Graphic file (type png)
+<use distribution_all_variables_cropped.png>
+Package pdftex.def Info: distribution_all_variables_cropped.png  used on input 
+line 361.
+(pdftex.def)             Requested size: 469.75938pt x 198.74905pt.
+[5
+
+
+ <./distribution_all_variables_cropped.png>]
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 404--406
+[]|\T1/lmr/m/n/10 (-20) Number 
+ []
+
+
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 406--408
+[]|\T1/lmr/m/n/10 (-20) Number 
+ []
+
+
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 420--422
+[]|\T1/lmr/m/n/10 (-20) Number 
+ []
+
+
+Overfull \hbox (1.51277pt too wide) in paragraph at lines 422--424
+[]|\T1/lmr/m/n/10 (-20) Number 
+ []
+
+
+Overfull \hbox (11.86162pt too wide) in paragraph at lines 470--472
+[]|$\OML/lmm/m/it/10 ANPP[]$|  
+ []
+
+[6] [7] [8]
+<combined_stacked.png, id=234, 543.2295pt x 481.8pt>
+File: combined_stacked.png Graphic file (type png)
+<use combined_stacked.png>
+Package pdftex.def Info: combined_stacked.png  used on input line 782.
+(pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
+[9] [10 <./combined_stacked.png (PNG copy)>]
+<mat_map_interaction.png, id=246, 543.2295pt x 481.8pt>
+File: mat_map_interaction.png Graphic file (type png)
+<use mat_map_interaction.png>
+Package pdftex.def Info: mat_map_interaction.png  used on input line 851.
+(pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
+[11] [12 <./mat_map_interaction.png>]
+<combined_plots.png, id=257, 543.2295pt x 722.7pt>
+File: combined_plots.png Graphic file (type png)
+<use combined_plots.png>
+Package pdftex.def Info: combined_plots.png  used on input line 895.
+(pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
+[13]
+Overfull \vbox (22.53146pt too high) has occurred while \output is active []
+
+[14 <./combined_plots.png (PNG copy)>] [15] [16] (./manuscript-draft.bbl [17] [
+18] [19])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1167.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1167.
+(./manuscript-draft.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1167.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1167.
+
+Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
+(rerunfilecheck)             Checksum: 09E54CD3E8E33FE787FD597A0DC6B4B6;642.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1167.
+ ) 
+Here is how much of TeX's memory you used:
+ 15970 strings out of 492616
+ 235886 string characters out of 6129482
+ 406992 words of memory out of 5000000
+ 19413 multiletter control sequences out of 15000+600000
+ 81960 words of font info for 138 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 37i,12n,49p,979b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
+cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/20
+19/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/lm/lmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
+m/lmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx7.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
+blic/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
+17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/lm/lmsy7.pfb>
+Output written on manuscript-draft.pdf (20 pages, 1145543 bytes).
+PDF statistics:
+ 401 PDF objects out of 1000 (max. 8388607)
+ 353 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 16453 words of extra memory for PDF output out of 17280 (max. 10000000)
+
