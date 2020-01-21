@@ -469,12 +469,12 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/growing_season/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/growing_season/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
-      fixed.v.info <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+      fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
@@ -485,13 +485,13 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
@@ -718,8 +718,8 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
         
-        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+        if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+        if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
         if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
         if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
         
