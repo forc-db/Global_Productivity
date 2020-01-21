@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -98,8 +98,8 @@ all.aictab <- NULL
 
 fixed.variables <- c("mat", "map", "lat", "TempSeasonality")
 
-set1 <- c("GPP", "ANPP_1", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2")
-set2 <- c("NPP_1", "BNPP_root", "ANPP_woody_stem", "NPP_1", "NPP_1", "NPP_1", "NPP_1", "NPP_1", "BNPP_root")
+set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
+set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 
 # set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
 # set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
@@ -110,11 +110,16 @@ for (i in seq(along = set1)){
     # if (i == j){
       print(i)
   
-  if(set1[[i]] %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
-  if(!set1[[i]] %in% c("ANPP")) responses.to.keep  <- set1[[i]]
+  if(set1[[i]] %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
+  if(set1[[i]] %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+  if(!set1[[i]] %in% c("ANPP", "NPP")) responses.to.keep  <- set1[[i]]
+  
+  if(set2[[i]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1", "ANPP_2", "ANPP_0")
+  if(set2[[i]] %in% "NPP") responses.to.keep.2  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+  if(!set2[[i]] %in% c("ANPP", "NPP")) responses.to.keep.2  <- set2[[i]]
   
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% responses.to.keep,]
-      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% set2[[i]],]
+      resp2 <- ForC_simplified[ForC_simplified$variable.name %in% responses.to.keep.2,]
       
       df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID", "date"))
       
@@ -183,7 +188,7 @@ for (i in seq(along = set1)){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
+        png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
         
         par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
         
