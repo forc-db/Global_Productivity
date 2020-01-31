@@ -2,7 +2,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -107,7 +107,7 @@ set2 <- c("R_auto")
 sum <- c("GPP")
   
 
-png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
 
@@ -169,8 +169,8 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           if (i == j){
           
           ################################ for response.v.1
-          if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1")
-          if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
+          if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+          if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1", "ANPP_2", "ANPP_0")
           if(set1[[i]] %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
           if(!set1[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- set1[[i]]
           
@@ -209,8 +209,8 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           
           ########################################### for response.v.2
           
-          if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1")
-          if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
+          if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+          if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1", "ANPP_2", "ANPP_0")
           if(set2[[j]] %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
           if(!set2[[j]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- set2[[j]]
           
@@ -270,7 +270,7 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           ylim[1] <- ylim[1] - 0.25
           ylim[2] <- ylim[2] + 5
           
-          # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+          # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
           
           plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[3], pch = 3)
           points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[4], pch = 4)
@@ -319,9 +319,9 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
     }
   }
 
-set1 <- c("ANPP_2")
+set1 <- c("ANPP")
 set2 <- c("BNPP_root")
-sum <- c("NPP_1")
+sum <- c("NPP")
 
 ### mature forests only ####
 for (age in ages){
@@ -343,6 +343,7 @@ for (age in ages){
     
     for(s in sum){
       
+      if(s %in% "NPP") s  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
       sum.response <- ForC_simplified$variable.name %in% s
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
@@ -381,8 +382,8 @@ for (age in ages){
           if (i == j){
             
             ################################ for response.v.1
-            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1")
-            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
+            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set1[[i]] %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
             if(!set1[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- set1[[i]]
             
@@ -421,8 +422,8 @@ for (age in ages){
             
             ########################################### for response.v.2
             
-            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1")
-            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
+            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set2[[j]] %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
             if(!set2[[j]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- set2[[j]]
             
@@ -482,7 +483,7 @@ for (age in ages){
             ylim[1] <- ylim[1] - 0.25
             ylim[2] <- ylim[2] + 2
             
-            # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+            # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
             plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[5], pch = 5)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[8], pch = 8)
@@ -531,7 +532,7 @@ for (age in ages){
 
 set1 <- c("ANPP_foliage")
 set2 <- c("ANPP_woody_stem")
-sum <- c("ANPP_1")
+sum <- c("ANPP")
 
 ### mature forests only ####
 for (age in ages){
@@ -553,6 +554,7 @@ for (age in ages){
     
     for(s in sum){
       
+      if(s %in% "ANPP") s  <- c("ANPP_1", "ANPP_2", "ANPP_0")
       sum.response <- ForC_simplified$variable.name %in% s
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
@@ -591,8 +593,8 @@ for (age in ages){
           if (i == j){
             
             ################################ for response.v.1
-            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1")
-            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
+            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set1[[i]] %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
             if(!set1[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- set1[[i]]
             
@@ -631,8 +633,8 @@ for (age in ages){
             
             ########################################### for response.v.2
             
-            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1")
-            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
+            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set2[[j]] %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
             if(!set2[[j]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- set2[[j]]
             
@@ -692,7 +694,7 @@ for (age in ages){
             ylim[1] <- ylim[1] - 0.25
             ylim[2] <- ylim[2] + 2
             
-            # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+            # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
             plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[9], pch = 9)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[7], pch = 7)
@@ -803,8 +805,8 @@ for (age in ages){
           if (i == j){
             
             ################################ for response.v.1
-            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1")
-            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1")
+            if(set1[[i]] %in% "NPP") responses.to.keep.1  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set1[[i]] %in% "ANPP") responses.to.keep.1  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set1[[i]] %in% "ANPP_litterfall") responses.to.keep.1  <- c("ANPP_litterfall_1")
             if(!set1[[i]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.1  <- set1[[i]]
             
@@ -843,8 +845,8 @@ for (age in ages){
             
             ########################################### for response.v.2
             
-            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1")
-            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1")
+            if(set2[[j]] %in% "NPP") responses.to.keep.2  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+            if(set2[[j]] %in% "ANPP") responses.to.keep.2  <- c("ANPP_1", "ANPP_2", "ANPP_0")
             if(set2[[j]] %in% "ANPP_litterfall") responses.to.keep.2  <- c("ANPP_litterfall_1")
             if(!set2[[j]] %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep.2  <- set2[[j]]
             
@@ -904,7 +906,7 @@ for (age in ages){
             ylim[1] <- ylim[1] - 0.25
             ylim[2] <- ylim[2] + 0.25
             
-            # png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+            # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
             plot(mean ~ fixed, data = df.1, xlab = "", ylab = "", ylim = ylim, col = plasma(10)[8], pch = 8)
             points(mean ~ fixed, data = df.2, ylab = "", col = plasma(10)[2], pch = 2)
