@@ -156,7 +156,7 @@ for (response.v in response.variables){
     significant.effect <- TRUE
   }
   
-  significant.effect.of.additive <- TRUE
+  # significant.effect.of.additive <- TRUE
   
   
   
@@ -168,7 +168,7 @@ for (response.v in response.variables){
   ylim = range(df$mean)
   xlim = c(-10, 28)# range(df$mat)
   
-  if (significant.effect.of.interaction | significant.effect.of.additive) {
+  if (significant.effect.of.interaction | significant.effect.of.additive | significant.effect) {
     # predict 
     
     # plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
@@ -208,8 +208,8 @@ for (response.v in response.variables){
     #   }
     if(response.v == "GPP") legend(x = -33, y = 43, lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
     # title (paste(response.v), outer = T, line = 1)
-    mtext(side = 1, line = 3, text = "Mean Annual Temperature", outer = T)
-    mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = T)
+    mtext(side = 1, line = 3, text = expression(paste("Mean Annual Temperature (", degrees, ")")), outer = T)
+    mtext(side = 2, line = 3,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1,")")), outer = T)
     
     # add equation
     
@@ -228,6 +228,9 @@ for (response.v in response.variables){
     
     
     mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", response.v), adj = 0.1, cex = 0.5)
+    if(significant.effect.of.interaction) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
+    if(!significant.effect.of.interaction & significant.effect.of.additive) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
+    if(!significant.effect.of.interaction & !significant.effect.of.additive & significant.effect) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
     
     results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
     
