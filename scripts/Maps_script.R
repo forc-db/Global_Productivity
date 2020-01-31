@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -95,7 +95,7 @@ all.response.variables <- all.response.variables[all.response.variables %in% For
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP_1", "ANPP_foliage", "ANPP_repro"),
+                                  c("ANPP", "ANPP_foliage", "ANPP_repro"),
                                   c("ANPP_woody", "ANPP_woody_stem", "ANPP_woody_branch"))
 
 # response.variables.groups <- list(c("ANPP_1"))
@@ -109,7 +109,7 @@ fixed.variables <- c("AnnualMeanTemp")
 
 all.results <- NULL
 
-ForC_simplified$variable.name <- gsub("(_1|_2)", "", ForC_simplified$variable.name)
+ForC_simplified$variable.name <- gsub("(_0|_1|_2|_3|_4|_5)", "", ForC_simplified$variable.name)
 
 ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"),]
 
@@ -122,7 +122,7 @@ ForC_simplified <- ForC_simplified[ages.to.keep & fixed.no.na, ]
 lon <- ForC_simplified$lon
 lat <- ForC_simplified$lat
 
-col.sym <- read.csv("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
 
 ForC_simplified <- merge(ForC_simplified, col.sym[, c("variable.name", "col", "sym")], by = "variable.name")
 ForC_simplified$col <- as.character(ForC_simplified$col)
@@ -130,7 +130,7 @@ ForC_simplified$sym <- as.character(ForC_simplified$sym)
 
 ForC_simplified$variable.name <- factor(ForC_simplified$variable.name, levels = c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"))
 
-png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 
@@ -147,7 +147,7 @@ dev.off()
 mapWorld <- borders("world", colour="gray50", fill="gray50")
 mp <- ggplot(data = ForC_simplified) +   mapWorld
 mp <- mp + geom_point(aes(x=lon, y=lat, shape = variable.name, color = variable.name), size=2) + scale_color_manual(values = plasma(10)[c(1,3,5,7,9,8,6,4,2)]) + scale_shape_manual(values = c(1:9)[c(1,3,5,7,9,8,6,4,2)]) + labs(color = "Variable", shape = "Variable") + theme(axis.title.x = element_blank(), axis.title.y = element_blank(), legend.position = c(0.1, 0.35), legend.text = element_text(size = 12))
-ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
+ggsave("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/maps/distribution_all_variables.png", plot = mp, width = 14, height = 7)
 
 
 
@@ -172,7 +172,7 @@ ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity
 #     
 #     for(fixed.v in fixed.variables){
 #       
-#       # tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#       # tiff(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/test/best_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".tiff"), width = 2255, height = 2000, units = "px", res = 300)
 #       
 #       print(fixed.v)
 #       
@@ -202,7 +202,7 @@ ggsave("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity
 #         lon <- df$lon
 #         lat <- df$lat
 #         # 
-#         tiff(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
+#         tiff(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/maps/distribution_", response.v, "_sample.tiff"), width = 2255, height = 2000, units = "px", res = 300)
 #         
 #         mapWorld <- borders("world", colour="gray50", fill="gray50")
 #         mp <- ggplot() +   mapWorld
