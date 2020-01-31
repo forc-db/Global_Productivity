@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -111,13 +111,13 @@ pannel.nb <- 1
 
 response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "ANPP_foliage", "ANPP_woody_stem","R_auto", "R_auto_root")
 
-png(file = paste0("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
 
 for (response.v in response.variables){
   
-  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1")
-  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2")
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
   if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
   if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
   
