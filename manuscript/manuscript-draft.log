@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 JAN 2020 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  31 JAN 2020 07:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -879,14 +879,14 @@ File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
 Package pdftex.def Info: combined_stacked.png  used on input line 781.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
-[9] [10 <./combined_stacked.png (PNG copy)>]
-<mat_map_interaction.png, id=241, 543.2295pt x 481.8pt>
+[9] [10 <./combined_stacked.png>]
+<mat_map_interaction.png, id=242, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
 Package pdftex.def Info: mat_map_interaction.png  used on input line 848.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
-<combined_plots.png, id=252, 543.2295pt x 722.7pt>
+<combined_plots.png, id=253, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
 Package pdftex.def Info: combined_plots.png  used on input line 890.
@@ -894,8 +894,7 @@ Package pdftex.def Info: combined_plots.png  used on input line 890.
 [13]
 Overfull \vbox (22.53146pt too high) has occurred while \output is active []
 
-[14 <./combined_plots.png (PNG copy)>] [15] [16] (./manuscript-draft.bbl [17] [
-18] [19])
+[14 <./combined_plots.png>] [15] [16] (./manuscript-draft.bbl [17] [18] [19])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1160.
 [20]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1160.
@@ -933,9 +932,9 @@ ve/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/te
 xmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /public/lm/lmsy7.pfb>
-Output written on manuscript-draft.pdf (20 pages, 1145206 bytes).
+Output written on manuscript-draft.pdf (20 pages, 930830 bytes).
 PDF statistics:
- 396 PDF objects out of 1000 (max. 8388607)
+ 398 PDF objects out of 1000 (max. 8388607)
  348 compressed objects within 4 object streams
  70 named destinations out of 1000 (max. 500000)
  16453 words of extra memory for PDF output out of 17280 (max. 10000000)
