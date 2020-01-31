@@ -298,11 +298,14 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
           legend <- paste(set1, "+ R auto")
           # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
           
-          legend("topright", legend = c("NPP", "R auto", "GPP", "NPP + R auto"), col = plasma(10)[c(3, 4, 1, NA)], pch = c(3, 4, 1, NA), xpd = T, text.col = plasma(10)[c(3, 4, 1, NA)], bty = "n", xjust = 1, cex = 0.75)
+          legend("topright", legend = c("NPP", "R auto", "GPP", "NPP + R auto"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(3, 4, 1, NA), xpd = T, text.col = plasma(10)[c(3, 4, 1, NA)], bty = "n", xjust = 1, cex = 0.75)
           
+          # xaxis <- expression(paste("Absolute latitude (", degree, ")"))
+          # yaxis = expression(paste("Productivity (Mg C"~ha^-1~yr^-1, ")"))
+        
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
-          mtext(side = 1, line = 1, text = "Latitude", outer = T)
-          mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
+          mtext(side = 1, line = 1, text = expression(paste("Absolute latitude (", degree, ")")), outer = T)
+          mtext(side = 2, line = 1,  text = expression(paste("Productivity (Mg C"~ha^-1~yr^-1, ")")), outer = T)
           mtext(paste0("(", letters[1], ")"), side = 3, line = -1.5, adj = 0.05)
           
           # dev.off()
@@ -509,7 +512,7 @@ for (age in ages){
             legend <- paste("ANPP + BNPP")
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
-            legend("topright", legend = c("ANPP", "BNPP", "NPP", "ANPP + BNPP"), col = plasma(10)[c(5, 8, 3, NA)], pch = c(5, 8, 3, NA), xpd = T, text.col = plasma(10)[c(5, 8, 3, NA)], bty = "n", xjust = 1, cex = 0.75)
+            legend("topright", legend = c("ANPP", "BNPP", "NPP", "ANPP + BNPP"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(5, 8, 3, NA), xpd = T, text.col = plasma(10)[c(5, 8, 3, NA)], bty = "n", xjust = 1, cex = 0.75)
             mtext(paste0("(", letters[2], ")"), side = 3, line = -1.5, adj = 0.05)
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
@@ -720,7 +723,7 @@ for (age in ages){
             legend <- paste("ANPP foliage + ANPP woody stem")
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
-            legend("topright", legend = c("ANPP foliage", "ANPP woody stem", "ANPP", "ANPP foliage + ANPP woody stem"), col = plasma(10)[c(9, 7, 5, NA)], pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
+            legend("topright", legend = c("ANPP foliage", "ANPP woody stem", "ANPP", "ANPP foliage + ANPP woody stem"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
             mtext(paste0("(", letters[3], ")"), side = 3, line = -1.5, adj = 0.05)
             
             
@@ -930,7 +933,7 @@ for (age in ages){
             legend <- paste("BNPP + R root")
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
-            legend("topright", legend = c("BNPP", "R root", "BNPP fine root", "BNPP + R root"), col = plasma(10)[c(8, 2, 6, NA)], pch = c(8, 2, 6, NA), xpd = T, text.col = plasma(10)[c(8, 2, 6, NA)], bty = "n", xjust = 1, cex = 0.75)
+            legend("topright", legend = c("BNPP", "R root", "BNPP fine root", "BNPP + R root"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(8, 2, 6, NA), xpd = T, text.col = plasma(10)[c(8, 2, 6, NA)], bty = "n", xjust = 1, cex = 0.75)
             mtext(paste0("(", letters[4], ")"), side = 3, line = -1.5, adj = 0.05)
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
