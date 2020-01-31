@@ -29,7 +29,7 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-#knitr::opts_knit$set(root.dir = 'C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
 knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
@@ -101,8 +101,8 @@ There is evidence that stand age influences patterns of FACF and carbon allocati
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
 | $GPP$ | Gross Primary Production | NA | flux partitioning of eddy-covariance; $NPP$+$R_{auto}$ | 243 | 49 |
-| $NPP$ | Net Primary Production | stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$ | 92 | 42 |
-| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) |$ANPP_{woody-stem}$ + $ANPP_{foliage}$ (+ others) | 256 | 80 |
+| $NPP$ | Net Primary Production | stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$ | 161 | 56 |
+| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) |$ANPP_{woody-stem}$ + $ANPP_{foliage}$ (+ others) | 278 | 86 |
 | $ANPP_{woody-stem}$ | Woody stem growth component of $ANPP$ | woody stems down to DBH $\le$ 10cm (no branch turnover) | stem growth measurements scaled to biomass using allometries | 264 | 96 |
 | $ANPP_{foliage}$ | Foliage component of $ANPP$ | foliage | litterfall collection (separated into components) | 98 | 49 |
 | $BNPP$  | Belowground Net Primary Production | coarse and fine roots |  coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
