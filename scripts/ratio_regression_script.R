@@ -104,7 +104,8 @@ set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 # set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
 # set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
 
-
+par(mfrow = c(7,4), mar = c(2,2,0,0), oma = c(5,5,2,0))
+panel.number <- 1
 for (i in seq(along = set1)){
   # for (j in seq(along = set2)){
     # if (i == j){
@@ -188,9 +189,9 @@ for (i in seq(along = set1)){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
+        # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
         
-        par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
+       
         
         ylim <- range(df$ratio)
         ylim[1] <- ylim[1] - 0.25
@@ -212,15 +213,16 @@ for (i in seq(along = set1)){
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
         Rsq <- signif(Rsq, digits=4)
-        legend2 <- paste("r-squared = ", Rsq[1], "p-value = ", significance)
-        mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
+        # legend2 <- paste("r-squared = ", Rsq[1], "p-value = ", significance)
+        # mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
-        title (paste("Effect of", fixed.v), outer = T, line = 1)
-        mtext(side = 1, line = 3, text = fixed.v, outer = T)
-        mtext(side = 2, line = 3,  text = paste("Ratio", set1[[i]], "to", set2[[i]]), outer = T)
+        # title (paste("Effect of", fixed.v), outer = T, line = 1)
+        if(fixed.v %in% "mat")mtext(paste0("(", letters[panel.number], ") Ratio", set1[[i]], "to", set2[[i]]), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 2, text = fixed.v)
+        # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+        panel.number <- panel.number + 1
         
-        
-        dev.off()
+        # dev.off()
       }
       
 }#}}
