@@ -104,7 +104,10 @@ set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 # set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
 # set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
 
-par(mfrow = c(7,4), mar = c(2,2,0,0), oma = c(5,5,2,0))
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/ratio_grid_plots.png"), width = 3000, height = 3500, units = "px", res = 300)
+
+
+par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,14,2,0))
 panel.number <- 1
 for (i in seq(along = set1)){
   # for (j in seq(along = set2)){
@@ -129,6 +132,16 @@ for (i in seq(along = set1)){
       df$masl <- df$masl/1000
       
       for(fixed.v in fixed.variables){
+        
+        response.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+        
+        set1_name <- response.v.info$name[which(response.v.info$response.v %in% set1[[i]])]
+        set2_name <- response.v.info$name[which(response.v.info$response.v %in% set2[[i]])]
+        
+        
+        fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+        
+        xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
         
         print(fixed.v)
         
@@ -217,8 +230,8 @@ for (i in seq(along = set1)){
         # mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
         # title (paste("Effect of", fixed.v), outer = T, line = 1)
-        if(fixed.v %in% "mat")mtext(paste0("(", letters[panel.number], ") Ratio", set1[[i]], "to", set2[[i]]), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
-        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 2, text = fixed.v)
+        if(fixed.v %in% "mat")mtext(paste("(", letters[panel.number], ") Ratio", set1_name, "to", set2_name), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
         # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
         panel.number <- panel.number + 1
         
@@ -226,3 +239,7 @@ for (i in seq(along = set1)){
       }
       
 }#}}
+
+mtext(side = 2, line = 3, text = "Ratio", outer = T)
+legend(x = -775, y = 13, lty = c(1,2), legend = c("Significant effect", "No significant effect"), inset = c(-0.4, 0), xpd = NA)
+dev.off()
