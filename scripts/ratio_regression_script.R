@@ -230,6 +230,7 @@ for (i in seq(along = set1)){
         # mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
         # title (paste("Effect of", fixed.v), outer = T, line = 1)
+        if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
         if(fixed.v %in% "mat")mtext(paste("(", letters[panel.number], ") Ratio", set1_name, "to", set2_name), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
         # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
