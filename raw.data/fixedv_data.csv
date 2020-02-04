@@ -3,7 +3,7 @@ mat,"expression(paste('Mean annual temperature (', degree, 'C)'))"
 map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
 lat,expression(paste('Latitude'))
 AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))"
-TempSeasonality,expression(paste('Temperature seasonality')) 
+TempSeasonality,"expression(paste('Temperature seasonality (', degree, 'C)')) "
 TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))"
 AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
 AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))"
