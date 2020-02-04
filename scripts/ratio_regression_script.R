@@ -225,7 +225,7 @@ for (i in seq(along = set1)){
         significance <- signif(significance, digits=4)
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)
+        Rsq <- signif(Rsq, digits=4)[1]
         # legend2 <- paste("r-squared = ", Rsq[1], "p-value = ", significance)
         # mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
