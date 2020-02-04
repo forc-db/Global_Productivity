@@ -1,0 +1,10 @@
+response.v,name
+GPP,GPP
+NPP,NPP
+ANPP,ANPP
+ANPP_foliage,ANPP foliage
+ANPP_woody_stem,ANPP woody stem
+BNPP_root,BNPP root
+BNPP_root_fine,BNPP fine root
+R_auto,Autotrophic respiration
+R_auto_root,Root respiration
