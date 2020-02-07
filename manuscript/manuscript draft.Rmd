@@ -174,7 +174,7 @@ bbl: here or in the discussion, note that this is a fairly stringent test: it's 
   knitr::include_graphics("combined_stacked.png")
 ```
 
-We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.  
+*We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.* **THIS HAS CHANGED: [issue #51](https://github.com/forc-db/Global_Productivity/issues/51#issuecomment-581892186)
   
 $R^2$ values were generally highest in the major fluxes, and decreased in subsidiary fluxes (Supporting Information S2). Of the major fluxes, R~auto~ and GPP were the most strongly explained by latitude and climate, with climate explaining at most 71% of variation in GPP, and 65% in R~auto~. The proportion of variation explained by climate and latitude decreased in NPP and ANPP, with climate explaining at most 51% of variation in NPP and 44% in ANPP. Of the major fluxes, BNPP~root~ was the least well explained by climate and latitude, with climate explaining at most 36% of variation.  
   
