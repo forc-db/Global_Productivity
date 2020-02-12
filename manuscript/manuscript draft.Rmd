@@ -78,7 +78,7 @@ kable(hypothesis_table, booktabs = TRUE, caption = "Summary of hypotheses, corre
   pack_rows("Q4. How does seasonality influence FACFs?", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
   pack_rows("Q5. When standardised by growing season length, how do FACFs vary with climate?", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
   add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
-  column_spec(1, width = "10cm") %>%
+  #column_spec(1, width = "15cm") %>%
   column_spec(2, width = "5cm") %>%
   column_spec(3:13, width = "1.8cm") %>%
   kableExtra::landscape()

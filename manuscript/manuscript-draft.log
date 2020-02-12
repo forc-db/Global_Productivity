@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  7 FEB 2020 07:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 FEB 2020 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -832,13 +832,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 336.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 336.
+[4
 
-LaTeX Warning: Float too large for page by 0.51743pt on input line 337.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4]
+]
 <distribution_all_variables_cropped.png, id=167, 922.4061pt x 390.258pt>
 File: distribution_all_variables_cropped.png Graphic file (type png)
 <use distribution_all_variables_cropped.png>
@@ -850,7 +846,6 @@ Package natbib Warning: Citation `anderson-teixeira_forc_2018' on page 5 undefi
 ned on input line 371.
 
 [5
-
 
  <./distribution_all_variables_cropped.png>]
 Overfull \hbox (1.51277pt too wide) in paragraph at lines 408--410
@@ -914,11 +909,11 @@ Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1156.
  ) 
 Here is how much of TeX's memory you used:
- 15970 strings out of 492616
- 235886 string characters out of 6129482
- 406992 words of memory out of 5000000
+ 15968 strings out of 492616
+ 235864 string characters out of 6129482
+ 403988 words of memory out of 5000000
  19413 multiletter control sequences out of 15000+600000
- 81960 words of font info for 138 fonts, out of 8000000 for 9000
+ 81869 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,12n,49p,979b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
@@ -939,7 +934,7 @@ ve/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/te
 xmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /public/lm/lmsy7.pfb>
-Output written on manuscript-draft.pdf (20 pages, 938420 bytes).
+Output written on manuscript-draft.pdf (20 pages, 938804 bytes).
 PDF statistics:
  399 PDF objects out of 1000 (max. 8388607)
  349 compressed objects within 4 object streams
