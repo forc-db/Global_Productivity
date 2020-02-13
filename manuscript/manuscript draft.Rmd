@@ -70,15 +70,15 @@ caption {
 library(knitr)
 library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(hypothesis_table, booktabs = TRUE, caption = "**Summary of hypotheses, corresponding specific predictions, and results.** Direction of significant relationships is indicated by '+' and '-', and  shape is summarized as linear (L), concave up (CU), and concave down (CD). 'n.s.' indicates that the relationship is not signficant.") %>%
+kable(hypothesis_table, booktabs = TRUE, caption = "Summary of hypotheses, corresponding specific predictions, and results. Direction of significant relationships is indicated by '+' and '-', and  shape is summarized as linear (L), concave up (CU), and concave down (CD). 'n.s.' indicates that the relationship is not signficant.") %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("H1. FACFs decrease linearly with latitude, and in constant proportion.", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H2. FACFs increase with MAT, with an interactive effect of MAP.", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H3. FACFs are strongly correlated with other annual climate variables.", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H4. FACFs are reduced under seasonal climates.", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("H5. Considering only growing season months, FACF correlates with climatic drivers.", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q1. How do FACFs vary with latitude?", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
+  pack_rows("Q2. How do FACFs vary with MAT and MAP?", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q3. How are FACFs related to climate variables, other than MAT and MAP?", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q4. How does seasonality influence FACFs?", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q5. When standardised by growing season length, how do FACFs vary with climate?", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
   add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
-  column_spec(1, width = "10cm") %>%
+  #column_spec(1, width = "15cm") %>%
   column_spec(2, width = "5cm") %>%
   column_spec(3:13, width = "1.8cm") %>%
   kableExtra::landscape()
@@ -174,7 +174,7 @@ bbl: here or in the discussion, note that this is a fairly stringent test: it's 
   knitr::include_graphics("combined_stacked.png")
 ```
 
-We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.  
+*We found no evidence that allocation between fluxes varied substantially with latitude or climate. There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables.* **THIS HAS CHANGED: [issue #51](https://github.com/forc-db/Global_Productivity/issues/51#issuecomment-581892186)
   
 $R^2$ values were generally highest in the major fluxes, and decreased in subsidiary fluxes (Supporting Information S2). Of the major fluxes, R~auto~ and GPP were the most strongly explained by latitude and climate, with climate explaining at most 71% of variation in GPP, and 65% in R~auto~. The proportion of variation explained by climate and latitude decreased in NPP and ANPP, with climate explaining at most 51% of variation in NPP and 44% in ANPP. Of the major fluxes, BNPP~root~ was the least well explained by climate and latitude, with climate explaining at most 36% of variation.  
   
