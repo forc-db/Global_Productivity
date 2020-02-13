@@ -72,11 +72,11 @@ library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(hypothesis_table, booktabs = TRUE, caption = "Summary of hypotheses, corresponding specific predictions, and results. Direction of significant relationships is indicated by '+' and '-', and  shape is summarized as linear (L), concave up (CU), and concave down (CD). 'n.s.' indicates that the relationship is not signficant.") %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("Q1. How do FACFs vary with latitude?", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
-  pack_rows("Q2. How do FACFs vary with MAT and MAP?", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q3. How are FACFs related to climate variables, other than MAT and MAP?", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q4. How does seasonality influence FACFs?", 10, 13, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q5. When standardised by growing season length, how do FACFs vary with climate?", 14, 17, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q1. How do FACFs vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
+  pack_rows("Q2. How do FACFs vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q3. How are FACFs related to climate variables, other than MAT and MAP?", 5, 7, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q4. How does seasonality influence FACFs?", 8, 11, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Q5. When standardised by growing season length, how do FACFs vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
   add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
   #column_spec(1, width = "15cm") %>%
   column_spec(2, width = "5cm") %>%
