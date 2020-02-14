@@ -97,6 +97,8 @@ Analyses were conducted on data contained in the open-access ForC database [@and
 A subset of the ForC database was generated for the purposes of this analysis, in order to control for data quality and remove biasing factors. Since management can alter observed patterns of FACF [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
 There is evidence that stand age influences patterns of FACF and carbon allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@de_lucia_forest_2007; @gillman_latitude_2015]. To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth". 
 
+- excluded alkali absoption and soda lime methods for estimating soil / root respiration
+
 \newpage  
 | Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
 |--------------|-------------------|-------------|------------------------|-------|-------|
@@ -112,11 +114,6 @@ There is evidence that stand age influences patterns of FACF and carbon allocati
   
 Table: Definitions and sample sizes of variables (all annual) used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
   
-*Methodological consistency.* 
-{**This whole section needs to be re-written.**} 
-The data in ForC is derived from a range of studies, often employing different methods. For this reason, criteria were introduced to standardise for differences in methodology. Where data was based on forest plot census measurements, studies which used a minimum diameter at breast height (DBH) measure of >10cm were excluded from analysis.  It would be preferable to standardise by minimum area sampled; however x% of plots in the database are 1 ha or under in size; excluding these plots would place significant constraints on sample size. (**really, we didn't exclude any studies based on methodology (except soil respiration. all studies measured min DBH 10 or less... ), so this paragraph needs revision. Also, address whether we standardize for inclusion/ exclusion of recruitment.**)
-- recruitment preferred when an option, did not review whether all included recruitment
-- excluded alkali absoption and soda lime methods for estimating soil / root respiration
   
 *Climate datasets.* Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. Based on the geographic co-ordinates for each site, data on a further 11 climate variables was extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit (CRU) time-series dataset v. 4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2018], and TerraClimate [@abatzoglou_terraclimate_2018] (see Supplementary Information S1 for details of climate variables). Where site-level data was missing for mean annual temperature and/or mean annual precipitation, data was extracted from the WorldClim dataset.
   
