@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -96,15 +96,18 @@ all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 all.results <- NULL
 all.aictab <- NULL
 
-fixed.variables <- c("mat", "map", "lat", "TempSeasonality")
+fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
-set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
+# set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
+# set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
+
+set1 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
+set2 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
 
 # set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
 # set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
 
-png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/ratio_grid_plots.png"), width = 3000, height = 3500, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/ratio_grid_plots_1.png"), width = 3000, height = 3500, units = "px", res = 300)
 
 
 par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,14,2,0))
@@ -133,13 +136,13 @@ for (i in seq(along = set1)){
       
       for(fixed.v in fixed.variables){
         
-        response.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+        response.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
         
         set1_name <- response.v.info$name[which(response.v.info$response.v %in% set1[[i]])]
         set2_name <- response.v.info$name[which(response.v.info$response.v %in% set2[[i]])]
         
         
-        fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+        fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
         
         xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
         
@@ -202,7 +205,7 @@ for (i in seq(along = set1)){
         newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100), masl = c(0.5))
         newDat$fit <- predict(mod.full, newDat, re.form = NA)
         
-        # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
+        # png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/Effect_of_", fixed.v, "_MATURE_only_", set1[[i]], "_", set2[[i]], ".png"), width = 2255, height = 2000, units = "px", res = 300)
         
        
         
@@ -231,8 +234,8 @@ for (i in seq(along = set1)){
         
         # title (paste("Effect of", fixed.v), outer = T, line = 1)
         if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-        if(fixed.v %in% "mat")mtext(paste("(", letters[panel.number], ") Ratio", set1_name, "to", set2_name), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
-        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
+        if(fixed.v %in% "lat")mtext(paste("(", letters[panel.number], ") Ratio", set1_name, "to", set2_name), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+        if(set2[[i]] %in% "R_auto") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
         # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
         panel.number <- panel.number + 1
         
