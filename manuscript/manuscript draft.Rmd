@@ -29,8 +29,8 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-# knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
-knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 ```{r results="asis", include=FALSE}
@@ -67,7 +67,14 @@ Here, we drew upon # records from the Global Forest Carbon Database (ForC), repr
 library(knitr)
 library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', parentheses indicate partial overall support/rejection of hypotheses across all FACF, and '-' indicates no significant relationship.") %>%
+hypothesis_table[1,2] <- paste0(footnote_marker_number(1)," , ",footnote_marker_number(2)," , ", footnote_marker_number(3))
+hypothesis_table[2,2] <- paste0(footnote_marker_number(4))
+hypothesis_table[3,2] <- paste0(footnote_marker_number(1)," , ",footnote_marker_number(4))
+hypothesis_table[4,2] <- paste0(footnote_marker_number(5))
+hypothesis_table[10,2] <- paste0(footnote_marker_number(6)," , ",footnote_marker_number(7)," , ", footnote_marker_number(8))
+hypothesis_table[11,2] <- paste0(footnote_marker_number(7)," , ", footnote_marker_number(8))
+hypothesis_table[12,2] <- paste0(footnote_marker_number(8))
+kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', parentheses indicate partial overall support/rejection of hypotheses across all FACF, and '-' indicates no significant relationship.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
   pack_rows("Q1. How do FACF vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
   pack_rows("Q2. How do FACF vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
@@ -78,7 +85,8 @@ kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research question
   #column_spec(1, width = "15cm") %>%
   column_spec(2, width = "5cm") %>%
   column_spec(3:13, width = "1.8cm") %>%
-  kableExtra::landscape()
+  kableExtra::landscape() %>%
+  kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)"), footnote_as_chunk = TRUE)
 ```
 
 
@@ -106,8 +114,9 @@ There is evidence that stand age influences patterns of FACF and carbon allocati
 | $ANPP_{foliage}$ | Foliage component of $ANPP$ | foliage | litterfall collection (separated into components) | 98 | 49 |
 | $BNPP$  | Belowground Net Primary Production | coarse and fine roots |  coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
 | $BNPP_{fine root}$ | Fine root component of $BNPP$ | fine roots | measurements combined one or more of the following: soil cores, minirhizotrons, turnover estimates,  root ingrowth cores | 88 | 41 |
-| $R_{root}$ | Root Respiration | coarse and fine roots | partitioning of total soil respiration (e.g., through root exclusion), scaling of root gas exchange | 64 | 26 |
 | $R_{auto}$ | Autotrophic Respiration | foliage, stem, and root | chamber measurements of component gas exchange | 22 | 13 |
+| $R_{root}$ | Root Respiration | coarse and fine roots | partitioning of total soil respiration (e.g., through root exclusion), scaling of root gas exchange | 64 | 26 |
+
   
 Table: Definitions and sample sizes of variables (all annual) used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
   
