@@ -67,7 +67,7 @@ Here, we drew upon # records from the Global Forest Carbon Database (ForC), repr
 library(knitr)
 library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results.'yes' indicates the hypothesis is supported, 'no' indicates the hypothesis is not supported, and 'n.s.' indicates that the relationship is not signficant.") %>%
+kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', parentheses indicate partial overall support/rejection of hypotheses across all FACF, and '-' indicates no significant relationship.") %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
   pack_rows("Q1. How do FACF vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
   pack_rows("Q2. How do FACF vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
