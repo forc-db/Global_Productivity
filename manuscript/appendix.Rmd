@@ -42,5 +42,9 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "", escape = F)%>%
 see [issue #58](https://github.com/forc-db/Global_Productivity/issues/58).
 
 \newpage
-# Figure S1. 
+# Figure S1. Maps showing distrinution of samples for the nine FACF analyzed here.
 ![](tables_figures/distribution_all_samples.png)
+
+\newpage
+# Figure S2. Correlations among latitude and climate variables analyzed here
+![](tables_figures/climate_regressions.png)
