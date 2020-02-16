@@ -359,7 +359,7 @@ write.csv(ForC, "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC/ForC_
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -469,12 +469,12 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/growing_season/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/growing_season/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
-      fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+      fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
@@ -485,7 +485,7 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -593,7 +593,7 @@ for(response.variables in response.variables.groups){
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -684,25 +684,31 @@ all.koeppen <- NULL
 fixed.variables <- c("pet", "pre", "tmp", "solarradiationmonthly")
 
 
-response.variables <- c("GPP", "R_auto", "NPP", "ANPP", "BNPP_root", "ANPP_foliage", "ANPP_woody_stem")
+response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
+response.variables.groups <- list(c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage"),
+                                  c("BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"))
 
 # response.variables <- "ANPP_foliage"
 
 
-
-  ### mature forests only ####
-
 panel.number <- 1
-png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/gridded_growing_season.png"), width = 2500, height = 3000, units = "px", res = 300)
+number <-1
+  ### mature forests only ####
+for (response.variables.group in response.variables.groups){
 
-par(mfcol = c(7,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/gridded_growing_season", number, ".png"), width = 2500, height = 3000, units = "px", res = 300)
+
+if(number == 1) par(mfcol = c(5,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+if(number == 2) par(mfcol = c(4,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+  
+number <- number + 1
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
     for(fixed.v in fixed.variables){
       
       print(fixed.v)
       
-      fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+      fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
@@ -711,9 +717,9 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
       
       first.plot <- TRUE
         
-      for (response.v in response.variables){
+      for (response.v in response.variables.group){
         
-        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -789,7 +795,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         
         if(fixed.v == "pet")mtext(paste0("(", letters[panel.number], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         panel.number <- panel.number +1 
-        if(response.v == "ANPP_woody_stem") mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6, padj = 0.5, adj = 0.5)
+        if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6, padj = 0.5, adj = 0.5)
         mtext(side = 2, line = 3,  text = expression("Monthly mean productivity during growing season Mg C "~ha^-1~yr^-1), outer = T) 
         mtext(side = 1, line = 3,  text = "Growing season climate", outer = T) 
       }}
@@ -799,6 +805,6 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
       
 dev.off()
 
-    
+}   
   
 
