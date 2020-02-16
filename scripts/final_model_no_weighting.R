@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -137,12 +137,12 @@ for(response.variables in response.variables.groups){
     
     for(fixed.v in fixed.variables){
       
-      png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, "_MATURE_only_", age, "_", n, ".png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
-      fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+      fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
@@ -153,7 +153,7 @@ for(response.variables in response.variables.groups){
       
       for (response.v in response.variables){
         
-        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -285,7 +285,7 @@ for(response.variables in response.variables.groups){
 }
 
 
-write.csv(all.results, file = "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_unweighted.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_model_scaled_unweighted.csv", row.names = F)
 
 
 ### for graph with two plots, latitude only, saved to supporting information mature forests only ####
@@ -304,14 +304,14 @@ for (age in ages){
   
   for(fixed.v in fixed.variables){
     
-    png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/latitude unscaled.png"), width = 5000, height = 2000, units = "px", res = 300)
+    png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/latitude unscaled.png"), width = 5000, height = 2000, units = "px", res = 300)
     
     layout(matrix(1:3, nrow = 1), widths = c(1,1,0.25))
     par(mar = c(3,3,3,0), oma = c(3,3,0,7))
     
     print(fixed.v)
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -324,7 +324,7 @@ for (age in ages){
       
     for (response.v in response.variables){
       
-      col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
       
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -453,7 +453,7 @@ for (age in ages){
     
     print(fixed.v)
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
    
@@ -462,7 +462,7 @@ for (age in ages){
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
       
-      png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, n, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/Effect_of_", fixed.v, n, "_MATURE_only_poly_all.png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(3,3,3,3))
       
@@ -470,7 +470,7 @@ for (age in ages){
       
       for (response.v in response.variables){
         
-        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -586,7 +586,7 @@ for (age in ages){
   if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
-  png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/combined_plots.png"), width = 2255, height = 3000, units = "px", res = 300)
+  png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/combined_plots.png"), width = 2255, height = 3000, units = "px", res = 300)
   
   par(mfrow = c(3,2), mar = c(4,2,2,2), oma = c(0,3,0,0))
   
@@ -602,7 +602,7 @@ for (age in ages){
     ylim[1] <- ylim[1] - 0.25
     ylim[2] <- ylim[2] + 0.25
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -616,7 +616,7 @@ for (age in ages){
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
-      col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
       
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -746,7 +746,7 @@ for (age in ages){
     
     print(fixed.v)
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -755,7 +755,7 @@ for (age in ages){
       if(response.variables[1] == "GPP") n <- 1
       if(response.variables[1] == "ANPP_foliage") n <- 2
       
-      png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent.png"), width = 2255, height = 2000, units = "px", res = 300)
+      png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/unweighted_model/effect_of_", fixed.v, "_transparent.png"), width = 2255, height = 2000, units = "px", res = 300)
       
       par(mfrow = c(1,1), mar = c(3,3,3,3))
       
@@ -763,7 +763,7 @@ for (age in ages){
       
       for (response.v in response.variables){
         
-        col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+        col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
         col <- col.sym$col[which(col.sym$variable %in% response.v)]
         sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -866,29 +866,46 @@ for (age in ages){
 }
 
 
-################################ graph grid one plot one variable
+################################ graph grid one plot one variable climate and seasonality
 
 
 
-fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "TempSeasonality", "PreSeasonality", "length_growing_season")
+fixed.variables.groups <- list(c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation"),
+                               c("TempSeasonality", "PreSeasonality", "length_growing_season"))
 
-response.variables <- c("GPP", "NPP", "ANPP", "BNPP_root")
+response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
+response.variables.groups <- list(c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage"),
+                                  c("BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root"))
 
 all.results = NULL
+number = 1
+
 
 ### mature forests only ####
+for (fixed.variables.group in fixed.variables.groups){
+  
+  type <- ifelse(fixed.variables.group %in% "mat", "climate", "seasonality")
+  
 for (age in ages){
+  for (response.variables.group in response.variables.groups){
   
   if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
-  png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots.png"), width = 3500, height = 2200, units = "px", res = 300)
   
-  par(mfcol = c(4,6), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(type == "climate") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots_", type, number, ".png"), width = 3000, height = 2000, units = "px", res = 300)
+  if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots_", type, number, ".png"), width = 2000, height = 2000, units = "px", res = 300)
   
+  
+  if(number == 1) par(mfcol = c(5,5), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 2) par(mfcol = c(4,5), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 3) par(mfcol = c(5,3), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 4) par(mfcol = c(4,3), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  number = number + 1
   pannel.nb <- 1
   
-  for(fixed.v in fixed.variables){
+  for(fixed.v in fixed.variables.group){
     
     
     print(fixed.v)
@@ -898,7 +915,7 @@ for (age in ages){
     # ylim[1] <- ylim[1] - 0.25
     # ylim[2] <- ylim[2] + 0.25
     
-    fixed.v.info <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -906,13 +923,13 @@ for (age in ages){
     
     first.plot <- TRUE
     
-    for (response.v in response.variables){
+    for (response.v in response.variables.group){
       
       if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
-      col.sym <- read.csv("C:/Users/gyrcbm/Dropbox/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
+      col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
       
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
@@ -985,7 +1002,7 @@ for (age in ages){
       ylim[1] <- ylim[1] - 2
       ylim[2] <- ylim[2] + 2
       
-      plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], ylim = ylim, pch = sym)
+      plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.4)[col], ylim = ylim, pch = sym)
       
       lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2))
       
@@ -1004,12 +1021,12 @@ for (age in ages){
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
       all.results <- rbind(all.results, results)
-      if(fixed.v == "mat")mtext(paste0("(", letters[pannel.nb], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+      if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0("(", letters[pannel.nb], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
       
       pannel.nb <- pannel.nb +1
       
       # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
-      if(response.v == "BNPP_root") mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6)
+      if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6)
     }
     
     
@@ -1025,5 +1042,5 @@ for (age in ages){
   mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
   
   dev.off()
-}
+}}}
 
