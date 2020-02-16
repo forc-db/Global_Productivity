@@ -46,5 +46,5 @@ see [issue #58](https://github.com/forc-db/Global_Productivity/issues/58).
 ![](tables_figures/distribution_all_samples.png)
 
 \newpage
-# Figure S2. Correlations among latitude and climate variables analyzed here
+# Figure S2. Correlations among latitude and climate variables
 ![](tables_figures/climate_regressions.png)
