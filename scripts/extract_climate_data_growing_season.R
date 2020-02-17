@@ -696,7 +696,7 @@ number <-1
   ### mature forests only ####
 for (response.variables.group in response.variables.groups){
 
-png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/gridded_growing_season", number, ".png"), width = 2500, height = 3000, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/gridded_growing_season", number, ".png"), width = 2500, height = 3000, units = "px", res = 300)
 
 if(number == 1) par(mfcol = c(5,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
 if(number == 2) par(mfcol = c(4,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
@@ -710,7 +710,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
       
       fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
-      xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
+      xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
       
       ###subset ForC
     
@@ -793,10 +793,13 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         altitude = FALSE
         
         
-        if(fixed.v == "pet")mtext(paste0("(", letters[panel.number], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+        if(fixed.v == "pet")mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         panel.number <- panel.number +1 
-        if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6, padj = 0.5, adj = 0.5)
-        mtext(side = 2, line = 3,  text = expression("Monthly mean productivity during growing season Mg C "~ha^-1~yr^-1), outer = T) 
+        if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6, padj = 0.5, adj = 0.5)
+        
+        y_outer <- "expression(paste('Monthly mean carbon flux during growing season (Mg C ha'^{-1}, 'yr'^{-1}, ')'))"
+        
+        mtext(side = 2, line = 3,  text = eval(parse(text = y_outer)), outer = T) 
         mtext(side = 1, line = 3,  text = "Growing season climate", outer = T) 
       }}
       

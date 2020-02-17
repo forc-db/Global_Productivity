@@ -898,10 +898,10 @@ for (age in ages){
   if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 2000, height = 3000, units = "px", res = 300)
   
   
-  if(number == 1) par(mfcol = c(5,5), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 2) par(mfcol = c(4,5), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 3) par(mfcol = c(5,3), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 4) par(mfcol = c(4,3), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 1) par(mfcol = c(5,5), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 2) par(mfcol = c(4,5), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 3) par(mfcol = c(5,3), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 4) par(mfcol = c(4,3), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
   number = number + 1
   pannel.nb <- 1
   
@@ -917,7 +917,7 @@ for (age in ages){
     
     fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
     
-    xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
+    xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
     
     ###subset ForC
     
@@ -1021,12 +1021,12 @@ for (age in ages){
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
       all.results <- rbind(all.results, results)
-      if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0("(", letters[pannel.nb], ") ", response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+      if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
       
       pannel.nb <- pannel.nb +1
       
       # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
-      if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6)
+      if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6)
     }
     
     
@@ -1038,8 +1038,11 @@ for (age in ages){
     
     
   }
+
   
-  mtext(side = 2, line = 1,  text = expression("Productivity Mg C"~ha^-1~yr^-1), outer = T)
+  y_outer <- "expression(paste('Carbon flux (Mg C ha'^{-1}, 'yr'^{-1}, ')'))"
+  
+  mtext(side = 2, line = 1,  text = eval(parse(text = y_outer)), outer = T)
   
   dev.off()
 }}}
