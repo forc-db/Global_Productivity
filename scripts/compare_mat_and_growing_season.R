@@ -134,6 +134,9 @@ for (response.v in response.variables){
   aictab$Variable <- response.v
   
   
+  Rsq <- c((r.squaredGLMM(mod.mat))[1], (r.squaredGLMM(mod.growing))[1], (r.squaredGLMM(mod))[1])
+  aictab <- cbind(aictab, Rsq)
+  
   all.aictab <- rbind(all.aictab, aictab)
   # all.results <- all.results <- rbind(all.results, results)
  
