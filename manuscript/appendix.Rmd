@@ -1,8 +1,6 @@
 ---
 title: "Supplementary Information: Global patterns of forest autotrophic carbon fluxes"
 author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene C. Muller-Landau, Kristina J. Anderson-Teixeira"
-toc: true
-toc_depth: 1
 output: 
   pdf_document:
     fig_caption: yes
@@ -11,6 +9,8 @@ header-includes:  \usepackage{float}
                   \usepackage{caption}
                   \captionsetup[table]{font=footnotesize}
                   \captionsetup[figure]{font=footnotesize}
+                  \captionsetup[table]{labelformat=empty}
+                  \captionsetup[figure]{labelformat=empty}
 ---
 
 ```{r, include=FALSE}
@@ -24,13 +24,15 @@ options(knitr.table.format = "latex")
 knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
+\listoftables
+\listoffigures
+
 \newpage
-# Table S1. Climate variable definitions and sources
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 S1 <- read.csv("tables_figures/climate_variables.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S1, format = "latex", booktabs = TRUE, caption = "", escape = F)%>%
+kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variable definitions and sources", escape = F)%>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   column_spec(1, width = "5cm") %>%
   column_spec(2, width = "2cm") %>%
@@ -42,9 +44,7 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "", escape = F)%>%
 see [issue #58](https://github.com/forc-db/Global_Productivity/issues/58).
 
 \newpage
-# Figure S1. Maps showing distrinution of samples for the nine FACF analyzed here.
-![](tables_figures/distribution_all_samples.png)
+![Figure S1. Geographic distribution of samples for each of the nine FACF analyzed here.](tables_figures/distribution_all_samples.png)
 
 \newpage
-# Figure S2. Correlations among latitude and climate variables
-![](tables_figures/climate_regressions.png)
+![Figure S2. Correlations among latitude and climate variables](tables_figures/climate_regressions.png)
