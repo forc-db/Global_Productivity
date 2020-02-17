@@ -6,11 +6,7 @@ output:
     fig_caption: yes
     
 header-includes:  \usepackage{float}
-                  \usepackage{caption}
-                  \captionsetup[table]{font=footnotesize}
-                  \captionsetup[figure]{font=footnotesize}
-                  \captionsetup[table]{labelformat=empty}
-                  \captionsetup[figure]{labelformat=empty}
+                  \usepackage[font=normalsize,format=plain,justification=raggedright, labelformat=empty]{caption}
 ---
 
 ```{r, include=FALSE}
@@ -48,3 +44,25 @@ see [issue #58](https://github.com/forc-db/Global_Productivity/issues/58).
 
 \newpage
 ![Figure S2. Correlations among latitude and climate variables](tables_figures/climate_regressions.png)
+
+\newpage
+![Figure S3. Ratios among FACF as a function of latitude and climate variables](tables_figures/ratio_grid_plots.png)
+
+\newpage
+![Figure S4. Individual plots of FACF in relation to mean annual climate, part 1.](tables_figures/grid_plots_climate1.png)
+
+\newpage
+![Figure S5. Individual plots of FACF in relation to mean annual climate, part 2.](tables_figures/grid_plots_climate2.png)
+
+\newpage
+![Figure S6. Individual plots of FACF in relation to mean climate seasonality, part 1.](tables_figures/grid_plots_seasonality3.png)
+
+\newpage
+![Figure S7. Individual plots of FACF in relation to mean climate seasonality, part 2.](tables_figures/grid_plots_seasonality4.png)
+
+\newpage
+![Figure S8. Growing season length-standardized FACF in relation to mean growing season climate, part 1.](tables_figures/gridded_growing_season1.png)
+
+
+\newpage
+![Figure S9. Growing season length-standardized FACF in relation to mean growing season climate, part 2.](tables_figures/gridded_growing_season2.png)

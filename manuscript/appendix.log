@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 FEB 2020 06:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 FEB 2020 07:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -825,40 +825,86 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<tables_figures/distribution_all_samples.png, id=38, 481.8pt x 722.7pt>
+<tables_figures/distribution_all_samples.png, id=53, 462.2871pt x 705.5961pt>
 File: tables_figures/distribution_all_samples.png Graphic file (type png)
 <use tables_figures/distribution_all_samples.png>
 Package pdftex.def Info: tables_figures/distribution_all_samples.png  used on i
 nput line 157.
-(pdftex.def)             Requested size: 433.62334pt x 650.43501pt.
+(pdftex.def)             Requested size: 426.1628pt x 650.45905pt.
 
-LaTeX Warning: Float too large for page by 19.50499pt on input line 160.
+LaTeX Warning: Float too large for page by 22.02904pt on input line 160.
 
-<tables_figures/climate_regressions.png, id=39, 843.15pt x 722.7pt>
+<tables_figures/climate_regressions.png, id=55, 843.15pt x 722.7pt>
 File: tables_figures/climate_regressions.png Graphic file (type png)
 <use tables_figures/climate_regressions.png>
 Package pdftex.def Info: tables_figures/climate_regressions.png  used on input 
 line 166.
 (pdftex.def)             Requested size: 469.75494pt x 402.6471pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
+<tables_figures/ratio_grid_plots.png, id=56, 722.7pt x 843.15pt>
+File: tables_figures/ratio_grid_plots.png Graphic file (type png)
+<use tables_figures/ratio_grid_plots.png>
+Package pdftex.def Info: tables_figures/ratio_grid_plots.png  used on input lin
+e 174.
+(pdftex.def)             Requested size: 469.76045pt x 548.05386pt.
+<tables_figures/grid_plots_climate1.png, id=57, 722.7pt x 481.8pt>
+File: tables_figures/grid_plots_climate1.png Graphic file (type png)
+<use tables_figures/grid_plots_climate1.png>
+Package pdftex.def Info: tables_figures/grid_plots_climate1.png  used on input 
+line 183.
+(pdftex.def)             Requested size: 469.76045pt x 313.17363pt.
+<tables_figures/grid_plots_climate2.png, id=58, 722.7pt x 481.8pt>
+File: tables_figures/grid_plots_climate2.png Graphic file (type png)
+<use tables_figures/grid_plots_climate2.png>
+Package pdftex.def Info: tables_figures/grid_plots_climate2.png  used on input 
+line 192.
+(pdftex.def)             Requested size: 469.76045pt x 313.17363pt.
+<tables_figures/grid_plots_seasonality3.png, id=59, 481.8pt x 481.8pt>
+File: tables_figures/grid_plots_seasonality3.png Graphic file (type png)
+<use tables_figures/grid_plots_seasonality3.png>
+Package pdftex.def Info: tables_figures/grid_plots_seasonality3.png  used on in
+put line 201.
+(pdftex.def)             Requested size: 469.77148pt x 469.77148pt.
+<tables_figures/grid_plots_seasonality4.png, id=60, 481.8pt x 481.8pt>
+File: tables_figures/grid_plots_seasonality4.png Graphic file (type png)
+<use tables_figures/grid_plots_seasonality4.png>
+Package pdftex.def Info: tables_figures/grid_plots_seasonality4.png  used on in
+put line 210.
+(pdftex.def)             Requested size: 469.77148pt x 469.77148pt.
+<tables_figures/gridded_growing_season1.png, id=61, 602.25pt x 722.7pt>
+File: tables_figures/gridded_growing_season1.png Graphic file (type png)
+<use tables_figures/gridded_growing_season1.png>
+Package pdftex.def Info: tables_figures/gridded_growing_season1.png  used on in
+put line 219.
+(pdftex.def)             Requested size: 469.77148pt x 563.72578pt.
+<tables_figures/gridded_growing_season2.png, id=62, 602.25pt x 722.7pt>
+File: tables_figures/gridded_growing_season2.png Graphic file (type png)
+<use tables_figures/gridded_growing_season2.png>
+Package pdftex.def Info: tables_figures/gridded_growing_season2.png  used on in
+put line 228.
+(pdftex.def)             Requested size: 469.77148pt x 563.72578pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
 [4 <./tables_figures/distribution_all_samples.png>] [5 <./tables_figures/climat
-e_regressions.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
+e_regressions.png>] [6 <./tables_figures/ratio_grid_plots.png>] [7 <./tables_fi
+gures/grid_plots_climate1.png>] [8 <./tables_figures/grid_plots_climate2.png>] 
+[9 <./tables_figures/grid_plots_seasonality3.png>] [10 <./tables_figures/grid_p
+lots_seasonality4.png>] [11 <./tables_figures/gridded_growing_season1.png>] [12
+ <./tables_figures/gridded_growing_season2.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
 (./appendix.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
 Package rerunfilecheck Info: File `appendix.out' has not changed.
 (rerunfilecheck)             Checksum: 23660EA927751BE479E3F00DC84ADC35;569.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 234.
  ) 
 Here is how much of TeX's memory you used:
- 15266 strings out of 492616
- 225124 string characters out of 6129482
- 361230 words of memory out of 5000000
- 18917 multiletter control sequences out of 15000+600000
- 39959 words of font info for 49 fonts, out of 8000000 for 9000
+ 15299 strings out of 492616
+ 226433 string characters out of 6129482
+ 361165 words of memory out of 5000000
+ 18941 multiletter control sequences out of 15000+600000
+ 36799 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,14n,41p,971b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,14n,39p,971b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
 cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/20
 19/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-d
@@ -867,13 +913,12 @@ ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2019/texmf-dist/fonts/type
 m/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr10.pf
 b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/loc
 al/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/lm/lmsy7.pfb>
-Output written on appendix.pdf (5 pages, 407897 bytes).
+019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/lm/lmsy7.pfb>
+Output written on appendix.pdf (12 pages, 1438046 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
- 10259 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 8246 words of extra memory for PDF output out of 10000 (max. 10000000)
 
