@@ -11,6 +11,11 @@ header-includes:  \usepackage{float}
                   \usepackage{caption}
                   \captionsetup[table]{font=footnotesize}
                   \captionsetup[figure]{font=footnotesize}
+                  \captionsetup[figure]{labelformat=empty}
+                  \usepackage{pdflscape}
+                  \newcommand{\blandscape}{\begin{landscape}}
+                  \newcommand{\elandscape}{\end{landscape}}
+
 ---
 
 ```{r, include=FALSE}
@@ -20,8 +25,17 @@ options(knitr.table.format = "latex")
 
 
 ```{r setup, include = FALSE}
-# knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
-knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+```
+
+
+```{r, include=F}
+library(captioner)
+tables <- captioner(prefix = "Table S", auto_space = FALSE)
+figures <- captioner(prefix = "Figure S", auto_space = FALSE)
+
+figures("Maps", "Maps showing distribution of samples for the nine FACF analyzed here.", display=FALSE)
 ```
 
 \newpage
@@ -38,13 +52,70 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "", escape = F)%>%
 ```
 
 \newpage
-# Table S_. Comparison of growing season length and mean annual temperature as predictors of FACF.
-see [issue #58](https://github.com/forc-db/Global_Productivity/issues/58).
+# Table S2. Comparison of growing season length and mean annual temperature as predictors of FACF.
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S1 <- read.csv("tables_figures/mat_growing_season.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S1, format = "latex", booktabs = TRUE, caption = "", escape = F)%>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1, width = "5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3:4, width = "7cm") %>%
+  pack_rows("GPP", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
+  pack_rows("NPP", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP woody stem", 10, 12, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP foliage", 13, 15, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("BNPP root", 16, 18, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("BNPP fine root", 19, 21, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Autotrophic respiration", 22, 24, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Root respiration", 25, 27, latex_gap_space = "1em", colnum = 1, hline_before = TRUE)
+```
 
 \newpage
-# Figure S1. Maps showing distrinution of samples for the nine FACF analyzed here.
-![](tables_figures/distribution_all_samples.png)
+# Figure S1. Maps showing distribution of samples for the nine FACF analyzed here.
+```{r echo=FALSE, fig.cap = figures("Maps"), out.width='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/distribution_all_samples.png")
+```
 
 \newpage
-# Figure S2. Correlations among latitude and climate variables
-![](tables_figures/climate_regressions.png)
+
+\blandscape
+
+# Figure S2. 
+
+
+```{r echo=FALSE, fig.cap = "Individual plots of FACF in relation to mean annual climate, part 1.", out.width='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/grid_plots_climate1.png")
+```
+```{r echo=FALSE, fig.cap = "Individual plots of FACF in relation to mean annual climate, part 2.", out.width='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/grid_plots_climate2.png")
+```
+\elandscape
+
+\newpage
+# Figure S3. 
+
+```{r echo=FALSE, fig.cap = "Individual plots of FACF in relation to mean climate seasonality, part 1.", out.width ='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/grid_plots_seasonality3.png")
+```
+```{r echo=FALSE, fig.cap = "Individual plots of FACF in relation to mean climate seasonality, part 2.", out.width ='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/grid_plots_seasonality4.png")
+```
+
+
+\newpage
+\blandscape
+
+# Figure S_. Correlations among latitude and climate variables
+```{r echo=FALSE, fig.cap = "Correlations among latitude and climate variables. Variable names and units given in Table S1", out.width='100%', fig.pos='H'}
+
+  knitr::include_graphics("tables_figures/climate_regressions.png")
+```
+\elandscape
