@@ -894,8 +894,8 @@ for (age in ages){
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
   
-  if(type == "climate") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots_", type, number, ".png"), width = 3000, height = 2000, units = "px", res = 300)
-  if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/supporting_information/grid_plots_", type, number, ".png"), width = 2000, height = 2000, units = "px", res = 300)
+  if(type == "climate") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 3000, height = 2000, units = "px", res = 300)
+  if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 2000, height = 3000, units = "px", res = 300)
   
   
   if(number == 1) par(mfcol = c(5,5), mar = c(2.5,2,2,2), oma = c(2,8,0,0), xpd = T)
