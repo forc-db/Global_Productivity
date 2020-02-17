@@ -1,21 +1,21 @@
-fixed.v,xaxis
-mat,"expression(paste('Mean annual temperature (', degree, 'C)'))"
-map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
-lat,expression(paste('Latitude'))
-AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))"
-TempSeasonality,"expression(paste('Temperature seasonality (', degree, 'C)')) "
-TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))"
-AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))"
-AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))"
-AnnualWetDays,"expression(paste('Annual wet days (days yr'^{-1}, ')'))"
-VapourPressure,expression(paste('Vapour pressure (kPa)'))
-Aridity,expression(paste('Aridity index'))
-PotentialEvapotranspiration,"expression(paste('Potential evapotranspiration (mm yr'^{-1}, ')'))"
-VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)'))
-SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))"
-PreSeasonality,"expression(paste('Precipitation seasonality (mm yr'^{-1}, ')'))"
-length_growing_season,expression(paste('Length of growing season (months)'))
-pet,"expression(paste('Mean monthly PET (mm month'^{-1}, ')'))"
-pre,"expression(paste('Mean monthly precipitation (mm month'^{-1}, ')'))"
-tmp,"expression(paste('Mean temperature (', degree, 'C)'))"
-solarradiationmonthly,"expression(paste('Mean monthly solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))"
+fixed.v,xaxis,xaxis_simple
+mat,"expression(paste('Mean annual temperature (', degree, 'C)'))",MAT
+map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))",MAP
+lat,expression(paste('Latitude')),Latitude
+AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))",MAT
+TempSeasonality,"expression(paste('Temperature seasonality (', degree, 'C)')) ",T Seas
+TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))",TRA
+AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))",MAP
+AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))",AFD
+AnnualWetDays,"expression(paste('Annual wet days (days yr'^{-1}, ')'))",AWD
+VapourPressure,expression(paste('Vapour pressure (kPa)')),VP
+Aridity,expression(paste('Aridity index')),AI
+PotentialEvapotranspiration,"expression(paste('Potential evapotranspiration (mm yr'^{-1}, ')'))",PET
+VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)')),VPD
+SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))",Solar R
+PreSeasonality,"expression(paste('Precipitation seasonality (mm yr'^{-1}, ')'))",P Seas
+length_growing_season,expression(paste('Length of growing season (months)')),LGS
+pet,"expression(paste('Mean monthly PET (mm month'^{-1}, ')'))",PET
+pre,"expression(paste('Mean monthly precipitation (mm month'^{-1}, ')'))",MAP
+tmp,"expression(paste('Mean temperature (', degree, 'C)'))",MAT
+solarradiationmonthly,"expression(paste('Mean monthly solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))",Solar R Monthly
