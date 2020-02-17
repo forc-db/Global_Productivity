@@ -1,8 +1,6 @@
 ---
 title: "Supplementary Information: Global patterns of forest autotrophic carbon fluxes"
 author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene C. Muller-Landau, Kristina J. Anderson-Teixeira"
-toc: true
-toc_depth: 1
 output: 
   pdf_document:
     fig_caption: yes
@@ -16,8 +14,6 @@ header-includes:  \usepackage{float}
                   \usepackage{pdflscape}
                   \newcommand{\blandscape}{\begin{landscape}}
                   \newcommand{\elandscape}{\end{landscape}}
-
----
 
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
