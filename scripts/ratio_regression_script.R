@@ -107,7 +107,7 @@ set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/ratio_grid_plots.png"), width = 1800, height = 3000, units = "px", res = 300)
 
 
-par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,3,5,0))
+par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,4,5,0))
 panel.number <- 1
 for (i in seq(along = set1)){
   # for (j in seq(along = set2)){
