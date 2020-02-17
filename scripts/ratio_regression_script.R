@@ -98,19 +98,16 @@ all.aictab <- NULL
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-# set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
-# set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
+set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
+set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 
-set1 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
-set2 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
+# set1 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
+# set2 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
 
-# set1 <- c("ANPP_1", "ANPP_1", "BNPP_root", "ANPP_2", "ANPP_2", "ANPP", "ANPP")
-# set2 <- c("BNPP_root", "NPP_1", "NPP_1", "BNPP_root", "NPP_1", "BNPP_root", "NPP_1")
-
-png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/ratio_grid_plots_1.png"), width = 3000, height = 3500, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/ratio_grid_plots.png"), width = 1800, height = 3000, units = "px", res = 300)
 
 
-par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,14,2,0))
+par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,3,5,0))
 panel.number <- 1
 for (i in seq(along = set1)){
   # for (j in seq(along = set2)){
@@ -144,7 +141,7 @@ for (i in seq(along = set1)){
         
         fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
         
-        xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
+        xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
         
         print(fixed.v)
         
@@ -234,8 +231,8 @@ for (i in seq(along = set1)){
         
         # title (paste("Effect of", fixed.v), outer = T, line = 1)
         if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-        if(fixed.v %in% "lat")mtext(paste("(", letters[panel.number], ") Ratio", set1_name, "to", set2_name), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
-        if(set2[[i]] %in% "R_auto") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
+        if(fixed.v %in% "lat")mtext(paste(set1_name, ":", set2_name), side = 3, line = 0.5, adj = 0, cex = 0.6)
+        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 3, text = xaxis, cex = 0.75)
         # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
         panel.number <- panel.number + 1
         
@@ -245,5 +242,5 @@ for (i in seq(along = set1)){
 }#}}
 
 mtext(side = 2, line = 3, text = "Ratio", outer = T)
-legend(x = -775, y = 13, lty = c(1,2), legend = c("Significant effect", "No significant effect"), inset = c(-0.4, 0), xpd = NA)
+legend(x = -100, y = 15.5, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
 dev.off()
