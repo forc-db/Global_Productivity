@@ -241,6 +241,6 @@ for (i in seq(along = set1)){
       
 }#}}
 
-mtext(side = 2, line = 3, text = "Ratio", outer = T)
+mtext(side = 2, line = 2.5, text = "Ratio", outer = T)
 legend(x = -100, y = 15.5, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
 dev.off()
