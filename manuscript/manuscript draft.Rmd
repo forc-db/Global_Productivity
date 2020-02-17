@@ -199,7 +199,7 @@ Vapour pressure deficit was a significant predictor of C flux for all FACF. BNPP
 
 All fluxes, with the exception of R~root~, showed a positive linear relationship with solar radiation. Solar radiation explained a low proportion of variability in all FACF, explaining less than 20% of the variation in each flux, with the exception of R~auto~ ($R^2$ = 0.26, p<0.05).
   
-Of the climate variables tested, annual wet days, aridity, cloud cover, mean diurnal temperature range, precipitation seasonality, maximum vapour pressure deficit and water stress months were poor or non-significant explainers of variation in FACF, explaining less than 20% of the variation in each of the carbon fluxes.
+Of the climate variables tested, annual wet days, aridity, cloud cover, precipitation seasonality, maximum vapour pressure deficit and water stress months were poor or non-significant explainers of variation in FACF, explaining less than 20% of the variation in each of the carbon fluxes.
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis (**see issue 47**). All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("combined_plots.png")
