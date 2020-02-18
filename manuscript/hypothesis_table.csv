@@ -1,16 +1,16 @@
 Questions and related hypotheses,Related references,Overall,GPP,NPP,ANPP,ANPP woody stem,ANPP foliage,BNPP ,BNPP fine root,R auto,R auto root,Support
 H1.1. FACF decrease linearly with latitude,Luyssaert et al. (2007); Gillman et al. (2015); Simova and Storch (2017),yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,Fig. 2
-H2.1. FACF increase linearly with MAT,Schuur (2003),yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S2, S3"
-H2.2. FACF increase with precipitation,Luyssaert et al. (2007); Schuur (2003),(yes),yes,yes,yes,-,yes,yes,yes,yes,yes,"Figs. 4, S2, S3"
+H2.1. FACF increase linearly with MAT,Schuur (2003),yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S3, S4"
+H2.2. FACF increase with precipitation,Luyssaert et al. (2007); Schuur (2003),(yes),yes,yes,yes,-,yes,yes,yes,yes,yes,"Figs. 4, S3, S4"
 H2.3. Temperature and precipitation interactively shape FACF,Taylor et al. (2016),(yes),yes,yes,-,yes,-,yes,yes,yes,-,Fig. 3
-H3.1. FACF increase with PET,,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S2, S3"
-H3.2. FACF increase with vapour pressure deficit,,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S2, S3"
-H3.3. FACF increase with solar radiation,,(yes),yes,yes,yes,yes,yes,yes,yes,yes,-,"Figs. S2, S3"
-H4.1. FACF decrease with temperature seasonality,,yes,yes ,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S4, S5"
-H4.2. FACF decrease with precipitation seasonality,,-,-,-,-,-,-,-,-,-,-,"Figs. S4, S5"
-H4.3. FACF increase with growing season length,Malhi (2012); Michaletz et al. (2014); Chu et al. (2016),yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Fig. 4, S4, S5"
+H3.1. FACF increase with PET,,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S3, S4"
+H3.2. FACF increase with vapour pressure deficit,,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S3, S4"
+H3.3. FACF increase with solar radiation,,(yes),yes,yes,yes,yes,yes,yes,yes,yes,-,"Figs. S3, S4"
+H4.1. FACF decrease with temperature seasonality,,yes,yes ,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S5, S6"
+H4.2. FACF decrease with precipitation seasonality,,-,-,-,-,-,-,-,-,-,-,"Figs. S5, S6"
+H4.3. FACF increase with growing season length,Malhi (2012); Michaletz et al. (2014); Chu et al. (2016),yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S5, S6"
 H4.4. Growing season length is a better predictor of FACF than MAT,Michaletz et al. (2014); Chu et al. (2016),(no),no,no,no,no,no,no,-,no,no,Table S2
-H5.1. Growing season FACF increase with temperature ,Michaletz et al. (2014),(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S6, S7"
-H5.2. Growing season FACF increase with PET,,(yes),yes,yes,-,yes,-,yes,yes,-,-,"Figs. S6, S7"
-H5.3. Growing season FACF increase with precipitation,,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S6, S7"
-H5.4. Growing season FACF increase with solar radiation ,,(yes),yes,yes,-,-,-,yes,yes,-,-,"Figs. S6, S7"
+H5.1. Growing season FACF increase with temperature ,Michaletz et al. (2014),(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S7, S8"
+H5.2. Growing season FACF increase with PET,,(yes),yes,yes,-,yes,-,yes,yes,-,-,"Figs. S7, S8"
+H5.3. Growing season FACF increase with precipitation,,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S7, S8"
+H5.4. Growing season FACF increase with solar radiation ,,(yes),yes,yes,-,-,-,yes,yes,-,-,"Figs. S7, S8"
