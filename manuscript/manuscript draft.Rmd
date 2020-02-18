@@ -185,7 +185,7 @@ MAP was found to be a significant (p<0.05) but poor predictor of FACF, explainin
 
 There was a significant interactive effect between MAT and MAP for GPP, BNPP~root~, BNPP~fine~ ~root~, ANPP, ANPP~woody~ ~stem~, and R~root~ (fig.3). There was a significant additive effect for R~auto~. NPP and ANPP~foliage~ showed no significant interactive or additive effect.  {**NEED SI TABLE GIVING FITTED COEFFICIENTS & STATS**}
   
-For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. For NPP, there was a significant interactive effect between MAT and water stress months, with this model explaining nearly 5% more variation in NPP than MAT alone {**Helene: but less than MATxMAP? if so, why bother mentioning?**}. However, for ANPP~foliage~, no multivariate model improved on the univariate model including only MAT.  
+For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model.
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and mean annual precipitation on FACF. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("mat_map_interaction.png")
