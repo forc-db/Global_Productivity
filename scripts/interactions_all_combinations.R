@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -252,7 +252,7 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           
         }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_table.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_table.csv", row.names = F)
 
 all.results = NULL
 
@@ -295,4 +295,4 @@ for(response.v in response.variables){
   all.results <- all.results <- rbind(all.results, results)
 }
 
-write.csv(all.results, file = "C:/Users/banburymorganr/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_best.csv", row.names = F)
+write.csv(all.results, file = "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/AIC_multivariate_interactions_best.csv", row.names = F)
