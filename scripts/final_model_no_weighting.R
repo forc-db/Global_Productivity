@@ -894,7 +894,7 @@ for (age in ages){
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
   
-  if(type == "climate") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 3000, height = 2000, units = "px", res = 300)
+  if(type == "climate") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 3000, height = 2250, units = "px", res = 300)
   if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 2000, height = 3000, units = "px", res = 300)
   
   
@@ -1016,7 +1016,7 @@ for (age in ages){
       significance <- signif(significance, digits=4)
       
       Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-      Rsq <- signif(Rsq, digits=4)
+      Rsq <- signif(Rsq, digits=4)[1]
       
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
@@ -1024,6 +1024,7 @@ for (age in ages){
       if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
       
       pannel.nb <- pannel.nb +1
+      if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
       
       # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
       if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6)

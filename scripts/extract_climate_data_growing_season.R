@@ -783,7 +783,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         significance <- signif(significance, digits=4)
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)
+        Rsq <- signif(Rsq, digits=4)[1]
         ##legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         ##mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
@@ -792,7 +792,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         date = Sys.Date()
         altitude = FALSE
         
-        
+        if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.7)
         if(fixed.v == "pet")mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         panel.number <- panel.number +1 
         if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6, padj = 0.5, adj = 0.5)
