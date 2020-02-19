@@ -1,6 +1,12 @@
 ---
 title: "Supplementary Information: Global patterns of forest autotrophic carbon fluxes"
-author: "Rebecca Banbury Morgan, Valentine Herrmann, Norbert Kunert, Ben Bond-Lamberty, Helene C. Muller-Landau, Kristina J. Anderson-Teixeira"
+author:
+ - Rebecca Banbury Morgan
+ - Valentine Herrmann
+ - Norbert Kunert
+ - Ben Bond-Lamberty
+ - Helene C. Muller-Landau
+ - Kristina J. Anderson-Teixeira
 output: 
   pdf_document:
     fig_caption: yes
@@ -14,6 +20,7 @@ header-includes:  \usepackage{float}
                   \usepackage{pdflscape}
                   \newcommand{\blandscape}{\begin{landscape}}
                   \newcommand{\elandscape}{\end{landscape}}
+---
 
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
@@ -30,17 +37,21 @@ knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Glo
 \listoffigures
 
 \newpage
+
+\blandscape
+
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 S1 <- read.csv("tables_figures/climate_variables.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variable definitions, sources, and abbreviations", escape = F)%>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  column_spec(1, width = "5cm") %>%
-  column_spec(2:3, width = "2cm") %>%
-  column_spec(4, width = "7cm") 
+  column_spec(1, width = "6cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "7cm") %>%
+  column_spec(4, width = "2cm")
 ```
-
+\elandscape
 \newpage
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
@@ -63,14 +74,13 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of 
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine FACF analyzed here.", out.width='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine FACF analyzed here.", out.height ='100%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
 
 \blandscape
-
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Correlations among latitude and climate variables. Variable names and units given in Table S1", out.width='100%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Correlations among latitude and climate variables. Variable names and units given in Table S1", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/climate_regressions.png")
 ```
@@ -78,44 +88,44 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of 
 
 \blandscape
 
-```{r echo=FALSE, fig.cap = "Figure S2: Individual plots of FACF in relation to mean annual climate, part 1.", out.width='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S3: Individual plots of FACF in relation to mean annual climate, part 1.", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate1.png")
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S3: Individual plots of FACF in relation to mean annual climate, part 2.", out.width='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of FACF in relation to mean annual climate, part 2.", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate2.png")
 ```
 \elandscape
 
 
-```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of FACF in relation to mean climate seasonality, part 1.", out.width ='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of FACF in relation to mean climate seasonality, part 1.", out.height ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality3.png")
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of FACF in relation to mean climate seasonality, part 2.", out.width ='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S6: Individual plots of FACF in relation to mean climate seasonality, part 2.", out.width ='100%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality4.png")
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S6: Growing season length-standardized FACF in relation to mean growing season climate, part 1.", out.width ='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S7: Growing season length-standardized FACF in relation to mean growing season climate, part 1.", out.width ='100%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season1.png")
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S7: Growing season length-standardized FACF in relation to mean growing season climate, part 2.", out.width ='100%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S8: Growing season length-standardized FACF in relation to mean growing season climate, part 2.", out.width ='100%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season2.png")
 ```
 
 \newpage
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S8: Ratios among FACF as a function of latitude and climate variables", out.width ='100%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S9: Ratios among FACF as a function of latitude and climate variables", out.width ='100%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
 ```
