@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("C:/Users/gyrcbm/Dropbox/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -112,7 +112,7 @@ pannel.nb <- 1
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 
-png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+# png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
 
 for (response.v in response.variables){
@@ -131,6 +131,7 @@ for (response.v in response.variables){
   
   mod.full <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
   significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
+  if(significant.effect.of.interaction) dAIC <- drop1(mod.full)$AIC[2] - drop1(mod.full)$AIC[1]
   
   if(!significant.effect.of.interaction) {
 
@@ -140,10 +141,12 @@ for (response.v in response.variables){
     significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
 
     significant.effect.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
+    dAIC <- drop1(mod.full)$AIC[3] - drop1(mod.full)$AIC[1]
 
     if(!significant.effect.of.additive) {
       mod.full <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df)
       significant.effect <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
+      dAIC <- drop1(mod.full)$AIC[2] - drop1(mod.full)$AIC[1]
     }
 
     if(significant.effect.of.additive) { # just to know if there is a significant effect of the main fixed effect
@@ -213,6 +216,8 @@ for (response.v in response.variables){
     mtext(side = 2, line = 3,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1,")")), outer = T)
     
     # add equation
+    Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+    Rsq <- signif(Rsq, digits=4)[1]
     
     r <- round(fixef(mod.full), 4)
     fixed1.coef <- r[2]
@@ -233,7 +238,7 @@ for (response.v in response.variables){
     if(!significant.effect.of.interaction & significant.effect.of.additive) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & !significant.effect.of.additive & significant.effect) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
     
-    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef)
+    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef, Rsq = Rsq, dAIC = dAIC)
     
     all.results <- all.results <- rbind(all.results, results)
     pannel.nb <- pannel.nb +1
@@ -244,5 +249,5 @@ for (response.v in response.variables){
   
 }
 
-dev.off()
-
+# dev.off()
+write.csv(all.results, "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")

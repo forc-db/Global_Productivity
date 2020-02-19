@@ -29,7 +29,8 @@ options(knitr.table.format = "latex")
 
 
 ```{r setup, include = FALSE}
-knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
 # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
@@ -94,11 +95,13 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of 
 ```
 
 \newpage
+
 ```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of FACF in relation to mean annual climate, part 2.", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate2.png")
 ```
 \elandscape
+
 
 
 ```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of FACF in relation to mean climate seasonality, part 1.", out.height ='95%', fig.pos='H'}
