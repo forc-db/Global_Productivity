@@ -12,6 +12,7 @@ library(MuMIn)
 library(AICcmodavg)
 library(piecewiseSEM)
 library(viridis)
+library(mgcv)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -105,12 +106,15 @@ all.response.variables[!all.response.variables %in% unlist(response.variables.gr
 
 all.results <- NULL
 best.results <- NULL
+outputs <- NULL
 
 effects <- c("mat", "map", "(1|geographic.area/plot.name)")
 pannel.nb <- 1
 
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
+response.variables <- "GPP"
+
 
 # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
@@ -129,7 +133,34 @@ for (response.v in response.variables){
   df <- ForC_simplified[rows.with.response & fixed.no.na, ]
   df$masl <- (df$masl/1000)
   
+  mod.single <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df, REML = F)
+  mod.add <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df, REML = F)
+  mod.int <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
+  aictab <- aictab(list(mod.single = mod.single, mod.add = mod.add, mod.int = mod.int), sort = F)
+  Rsq.s <- as.data.frame(r.squaredGLMM(mod.single))
+  Rsq.s <- signif(Rsq.s, digits=4)[1]
+  Rsq.a <- as.data.frame(r.squaredGLMM(mod.add))
+  Rsq.a <- signif(Rsq.a, digits=4)[1]
+  Rsq.i <- as.data.frame(r.squaredGLMM(mod.int))
+  Rsq.i <- signif(Rsq.i, digits=4)[1]
+  BIC <- BIC(mod.single, mod.add, mod.int)
+  best.model <- as.character(aictab(list(mod.single = mod.single, mod.add = mod.add, mod.int = mod.int), sort = T)$Modname[1])
+  
+  
+  aictab$Rsq <- c(Rsq.s, Rsq.a, Rsq.i)
+  
+  aictab <- cbind(aictab, BIC)
+  
+  significance <- anova(mod.add, mod.int)$"Pr(>Chisq)"[2]
+  significance <- signif(significance, digits=4)
+  
+  
   mod.full <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
+  
+#   mod.full <- gam(mean ~ te(mat, map, bs = "tp") + geographic.area, data = df, method = "REML")
+#   print(summary(mod.full))
+#   plot(mod.full, scheme = 2)
+# }
   significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
   if(significant.effect.of.interaction) dAIC <- drop1(mod.full)$AIC[2] - drop1(mod.full)$AIC[1]
   
@@ -238,9 +269,10 @@ for (response.v in response.variables){
     if(!significant.effect.of.interaction & significant.effect.of.additive) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & !significant.effect.of.additive & significant.effect) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
     
-    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef, Rsq = Rsq, dAIC = dAIC)
+    results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef, Rsq = Rsq, dAIC = dAIC, significance = significance, best.model = best.model)
     
     all.results <- all.results <- rbind(all.results, results)
+    outputs <- rbind(outputs, aictab)
     pannel.nb <- pannel.nb +1
   }
   
