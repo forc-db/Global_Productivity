@@ -57,8 +57,8 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
-S1 <- read.csv("tables_figures/mat_growing_season.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S1, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of growing season length and mean annual temperature as predictors of FACF", escape = F)%>%
+S2 <- read.csv("tables_figures/mat_growing_season.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S2, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of growing season length and mean annual temperature as predictors of FACF", escape = F)%>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   column_spec(1, width = "5cm") %>%
   column_spec(2, width = "2cm") %>%
@@ -75,7 +75,31 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of 
 ```
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine FACF analyzed here.", out.height ='100%', fig.pos='H'}
+
+\blandscape
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S3 <- read.csv("tables_figures/r2_table1.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S3, format = "latex", booktabs = TRUE, caption = "Table S3. Model details and R2 values for all climate variables tested") %>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  add_header_above(c(" ", "Latitude"=2, "MAT"=2, "MAP"=2, "T Seas"=2, "P Seas"=2, "ATR"=2, "Solar R"=2, "AI"=2))
+```
+
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S4 <- read.csv("tables_figures/r2_table2.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S4, format = "latex", booktabs = TRUE) %>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  add_header_above(c(" ", "Cloud"=2, "AFD"=2, "AWD"=2, "PET"=2, "VPD"=2, "Max VPD"=2, "WSM"=2, "LGS"=2))
+```
+\elandscape
+
+
+
+\newpage
+```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine FACF analyzed here.", out.height ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
