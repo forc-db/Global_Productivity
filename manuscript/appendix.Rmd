@@ -96,7 +96,19 @@ kable(S4, format = "latex", booktabs = TRUE) %>%
 ```
 \elandscape
 
-
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S5 <- read.csv("tables_figures/mat_map.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S5, format = "latex", booktabs = TRUE, caption = "Table S4. Results of analysis of interactions effects between MAT and MAP, for all FACF", escape = F)%>%
+  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
+  column_spec(1, width = "4cm") %>%
+  column_spec(2, width = "6cm") %>%
+  column_spec(3, width = "6cm") %>%
+  column_spec(4, width = "6cm")%>%
+  column_spec(5, width = "2cm")%>%
+  column_spec(6, width = "2cm")
+```
 
 \newpage
 ```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine FACF analyzed here.", out.height ='95%', fig.pos='H'}
