@@ -133,6 +133,7 @@ for (response.v in response.variables){
   df <- ForC_simplified[rows.with.response & fixed.no.na, ]
   df$masl <- (df$masl/1000)
   
+  mod.null <- lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
   mod.single <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df, REML = F)
   mod.add <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df, REML = F)
   mod.int <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F) 
@@ -150,7 +151,7 @@ for (response.v in response.variables){
   aictab$Rsq <- c(Rsq.s, Rsq.a, Rsq.i)
   
   aictab <- cbind(aictab, BIC)
-  anova <- as.data.frame(anova(mod.single, mod.add, mod.int))
+  anova <- as.data.frame(anova(mod.null, mod.single, mod.add, mod.int))
   anova$flux <- response.v
   significance <- anova(mod.single, mod.add, mod.int)$"Pr(>Chisq)"[2]
   significance <- signif(significance, digits=4)
@@ -286,7 +287,7 @@ for (response.v in response.variables){
 write.csv(all.results, "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
 
 ########################################## code to correctly plot
-
+Rsqs = NULL
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
@@ -355,7 +356,7 @@ for (response.v in response.variables){
   if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
   if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
   if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
-
+  Rsqs <- rbind(Rsqs, Rsq)
   pannel.nb <- pannel.nb +1
 }
 
