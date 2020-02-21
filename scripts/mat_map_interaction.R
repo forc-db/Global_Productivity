@@ -113,10 +113,10 @@ pannel.nb <- 1
 
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-response.variables <- "GPP"
+# response.variables <- "GPP"
+############################## this section of code is useful in determining whether there are significant interactive effects or not
+####################it is necessary to look at both the AIC and Pvalues
 
-
-# png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
 
 for (response.v in response.variables){
@@ -135,7 +135,7 @@ for (response.v in response.variables){
   
   mod.single <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df, REML = F)
   mod.add <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df, REML = F)
-  mod.int <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
+  mod.int <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F) 
   aictab <- aictab(list(mod.single = mod.single, mod.add = mod.add, mod.int = mod.int), sort = F)
   Rsq.s <- as.data.frame(r.squaredGLMM(mod.single))
   Rsq.s <- signif(Rsq.s, digits=4)[1]
@@ -150,8 +150,9 @@ for (response.v in response.variables){
   aictab$Rsq <- c(Rsq.s, Rsq.a, Rsq.i)
   
   aictab <- cbind(aictab, BIC)
-  
-  significance <- anova(mod.add, mod.int)$"Pr(>Chisq)"[2]
+  anova <- as.data.frame(anova(mod.single, mod.add, mod.int))
+  anova$flux <- response.v
+  significance <- anova(mod.single, mod.add, mod.int)$"Pr(>Chisq)"[2]
   significance <- signif(significance, digits=4)
   
   
@@ -272,7 +273,7 @@ for (response.v in response.variables){
     results <- data.frame(response = response.v, fixed1.coef = fixed1.coef, fixed2.coef = fixed2.coef, int.coef = int.coef, Rsq = Rsq, dAIC = dAIC, significance = significance, best.model = best.model)
     
     all.results <- all.results <- rbind(all.results, results)
-    outputs <- rbind(outputs, aictab)
+    outputs <- rbind(outputs, anova)
     pannel.nb <- pannel.nb +1
   }
   
@@ -283,3 +284,79 @@ for (response.v in response.variables){
 
 # dev.off()
 write.csv(all.results, "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
+
+########################################## code to correctly plot
+
+
+response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
+png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+
+par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
+
+for (response.v in response.variables){
+  
+  if(response.v %in% "NPP") responses.to.keep  <- c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0")
+  if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
+  if(response.v %in% "ANPP_litterfall") responses.to.keep  <- c("ANPP_litterfall_1")
+  if(!response.v %in% c("NPP", "ANPP", "ANPP_litterfall")) responses.to.keep  <- response.v
+  
+  
+  rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
+  
+  fixed.no.na <- !is.na(ForC_simplified[, "map"]) & !is.na(ForC_simplified[, "mat"])
+  df <- ForC_simplified[rows.with.response & fixed.no.na, ]
+  df$masl <- (df$masl/1000)
+  
+  if(response.v %in% c("NPP", "ANPP_woody_stem")) mod.full <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
+  if(response.v %in% c("GPP", "ANPP", "R_auto")) mod.full <- lmer(mean ~ mat + map + (1|geographic.area/plot.name), data = df, REML = F)
+  if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mod.full <- lmer(mean ~ mat + (1|geographic.area/plot.name), data = df, REML = F)
+
+  ylim = range(df$mean)
+  xlim = c(-10, 28)
+  
+  first.plot <- TRUE
+  lower_bound <- c(0, 1001, 2001, 3001)
+  upper_bound <- c(1000, 2000, 3000, 7500)
+  midpoint <- c(500, 1500, 2500, 3500)
+  
+  for (i in seq(along = lower_bound)){
+    map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
+    if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, xaxt = "n", las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
+    if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
+    newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = midpoint[[i]])
+    newDat$fit <- predict(mod.full, newDat, re.form = NA)
+    for(map in unique(newDat$map)){
+      j <- which(unique(newDat$map) %in% map)
+      lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i, col = plasma(5)[i], xlim = xlim)
+    }
+    first.plot <- FALSE
+  }
+  
+  if(response.v == "GPP") legend(x = -33, y = 43, lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
+  # title (paste(response.v), outer = T, line = 1)
+  mtext(side = 1, line = 3, text = expression(paste("Mean Annual Temperature (", degrees, ")")), outer = T)
+  mtext(side = 2, line = 3,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1,")")), outer = T)
+  
+  # add equation
+  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+  Rsq <- signif(Rsq, digits=4)[1]
+  
+  r <- round(fixef(mod.full), 4)
+  fixed1.coef <- r[2]
+  fixed2.coef <- r[3]
+  int.coef <- r[4]
+  
+
+  if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
+  if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
+  
+  
+  mtext(side = 3, line = -1, text = paste0(response.v), adj = 0.1, cex = 0.5)
+  if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
+  if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
+  if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
+
+  pannel.nb <- pannel.nb +1
+}
+
+dev.off()
