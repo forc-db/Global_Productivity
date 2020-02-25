@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 FEB 2020 11:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  25 FEB 2020 06:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -906,23 +906,23 @@ Overfull \vbox (22.53146pt too high) has occurred while \output is active []
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1166.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1179.
 [22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1166.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1179.
 (./manuscript-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1166.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1166.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1179.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1179.
 
 Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 (rerunfilecheck)             Checksum: 09E54CD3E8E33FE787FD597A0DC6B4B6;642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1166.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1179.
  ) 
 Here is how much of TeX's memory you used:
- 16022 strings out of 492616
- 237207 string characters out of 6129482
+ 16024 strings out of 492616
+ 237229 string characters out of 6129482
  399885 words of memory out of 5000000
  19452 multiletter control sequences out of 15000+600000
- 75135 words of font info for 137 fonts, out of 8000000 for 9000
+ 75265 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,16n,49p,979b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
@@ -942,10 +942,10 @@ ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive
 /2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/texm
 f-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/public/lm/lmsy7.pfb>
-Output written on manuscript-draft.pdf (22 pages, 889003 bytes).
+Output written on manuscript-draft.pdf (22 pages, 890305 bytes).
 PDF statistics:
- 435 PDF objects out of 1000 (max. 8388607)
- 385 compressed objects within 4 object streams
+ 441 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
  81 named destinations out of 1000 (max. 500000)
  14405 words of extra memory for PDF output out of 17280 (max. 10000000)
 
