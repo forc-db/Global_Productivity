@@ -135,41 +135,44 @@ kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of
 
 
 ### Materials and Methods  
-  
-Analyses were conducted on data contained in the open-access ForC database [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]. This database contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of [@anderson-teixeira_forc_2018] through integration with the Global Soil Respiration Database [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on FACF, with particular focus on mature forests in temperate and boreal regions. ForC currently contains 29730 records from 4979 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones. We used ForC v3.0, archived on Zenodo with DOI 10.5281/zenodo.3403855.
+
+*FACF data* 
+
+This analysis focused on nine FACF included in the open-access ForC database (Table 2) [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]. ForC contains records of field-based measurements of forest carbon stocks and annual fluxes, compiled from original publications and existing data compilations and databases. Associated data, such as stand age, measurement methodologies, and disturbance history, are also included. The database was significantly expanded since the publication of @anderson-teixeira_forc_2018 through integration with the Global Soil Respiration Database [@bond-lamberty_global_2010]. Additional targeted literature searches were conducted to identify any further available data on the FACF analyzed here, with particular focus on mature forests in temperate and boreal regions, which were not included in the review of @anderson-teixeira_carbon_2016. We used ForC v3.0, archived on Zenodo with DOI 10.5281/zenodo.3403855.This version contained 29,730 records from 4,979 plots, representing 20 distinct ecozones across all forested biogeographic and climate zones.
+
+This analysis focused on mature forests with no known history of signficant disturbance or management. 
+There is evidence that stand age influences patterns of FACF and carbon allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@delucia_forest_2007; @gillman_latitude_2015]. To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth". 
+Since management can alter observed patterns of FACF [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. 
+Sites that had experienced significant disturbance within the past 100 years were also excluded. Disturbances that qualified sites for exclusion included major cutting or harvesting, burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
+
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+FACF_table <- read.csv("FACF_variables.csv", stringsAsFactors = FALSE, check.names = FALSE)
+names(FACF_table) [6]  <- paste0(names(FACF_table) [6], footnote_marker_symbol(1))
+kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and sample sizes of FACF variables used in analysis. All variables are in units of Mg C ha$^{-1}$ yr$^{-1}$. ", escape = F) %>%
+  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
+  column_spec(2, width = "4cm") %>%
+  column_spec(3, width = "7cm") %>%
+  column_spec(4, width = "10cm") %>%
+  column_spec(5:6, width = "1.5cm") %>%
+  add_header_above(c(" ",  " "," ",  " ", "Sample size" = 2)) %>%
+  kableExtra::footnote(symbol = c("Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km"), footnote_as_chunk = FALSE) 
+```
+
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables_cropped.png")
 ```
-*Data selection.* This analysis focused on nine autotrophic carbon fluxes included in the ForC database (Table 2). These were selected based on *...*. The ForC database contains annual flux estimates, associated to plots, each with associated data on stand age and known history of disturbance and management, and, more broadly, sites (**Define**). Geographically proximate sites are clustered into geographic areas, with proximity defined using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018].
-
-A subset of the ForC database was generated for the purposes of this analysis, in order to control for data quality and remove biasing factors. Since management can alter observed patterns of FACF [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or including the term "managed" in their site description. Sites that had experienced significant disturbance were also excluded. Disturbances that justified site exclusion were major cutting or harvesting, and/or burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
-There is evidence that stand age influences patterns of FACF and carbon allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@delucia_forest_2007; @gillman_latitude_2015]. To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth". 
-
-- excluded alkali absoption and soda lime methods for estimating soil / root respiration
-
-\newpage  
-| Variable | Definition | Components included | Methodologies used | Number of records | Number of geographic areas |
-|--------------|-------------------|-------------|------------------------|-------|-------|
-| $GPP$ | Gross Primary Production | NA | flux partitioning of eddy-covariance; $NPP$+$R_{auto}$ | 243 | 49 |
-| $NPP$ | Net Primary Production | stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) | $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$ | 161 | 56 |
-| $ANPP$ | Aboveground Net Primary Production | stem, foliage, optionally others (e.g., branch, reproductive, understory) |$ANPP_{woody-stem}$ + $ANPP_{foliage}$ (+ others) | 278 | 86 |
-| $ANPP_{woody stem}$ | Woody stem growth component of $ANPP$ | woody stems down to DBH $\le$ 10cm (no branch turnover) | stem growth measurements scaled to biomass using allometries | 264 | 96 |
-| $ANPP_{foliage}$ | Foliage component of $ANPP$ | foliage | litterfall collection (separated into components) | 98 | 49 |
-| $BNPP$  | Belowground Net Primary Production | coarse and fine roots |  coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below | 101 | 48 |
-| $BNPP_{fine root}$ | Fine root component of $BNPP$ | fine roots | measurements combined one or more of the following: soil cores, minirhizotrons, turnover estimates,  root ingrowth cores | 88 | 41 |
-| $R_{auto}$ | Autotrophic Respiration | foliage, stem, and root | chamber measurements of component gas exchange | 22 | 13 |
-| $R_{root}$ | Root Respiration | coarse and fine roots | partitioning of total soil respiration (e.g., through root exclusion), scaling of root gas exchange | 64 | 26 |
-
-  
-Table: Definitions and sample sizes of variables (all annual) used in analysis. Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km.
   
   
-*Climate datasets.* Where site-level data on mean annual temperature, mean annual precipitation, and latitude were available in the primary literature, this data was compiled and entered directly into the ForC database. Based on the geographic co-ordinates for each site, data on a further 11 climate variables was extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit (CRU) time-series dataset v. 4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2019], and TerraClimate [@abatzoglou_terraclimate_2018] (see Supplementary Information S1 for details of climate variables). Where site-level data was missing for mean annual temperature and/or mean annual precipitation, data was extracted from the WorldClim dataset.
+*Climate data* 
+
+ForC contains geographic coordinates associated with each measurement record and, when available, mean annual temperature and mean annual precipitation as reported in the primary literature [@anderson-teixeira_forc_2018]. Based on the geographic co-ordinates for each site, data on a further 11 climate variables was extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit (CRU) time-series dataset v. 4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2019], and TerraClimate [@abatzoglou_terraclimate_2018] (see Supplementary Information S1 for details of climate variables). Where site-level data was missing for mean annual temperature or mean annual precipitation, data was extracted from the WorldClim dataset.
   
 Additionally, two climate variables were derived from the above datasets: maximum vapour pressure deficit, defined as the vapour pressure deficit of the month with the largest deficit; and water stress months, defined as the number of months annually where precipitation was lower than potential evapotranspiration (PET; **HML:defined how?**).
 
-*Length of growing season.* Growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. Growing season months were initially calculated following methods used by Kerkhoff et al. (2005), which additionally required that growing season months had a moisture index, defined as (MAT - PET)/PET, > -0.95. Michaletz et al. (2014) included an equivalent requirement in their calculation of growing season length. However, we found that including this requirement had no effect on the estimates of growing season length, and so chose to exclude it.
+Growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. Growing season months were initially calculated following methods used by Kerkhoff et al. (2005), which additionally required that growing season months had a moisture index, defined as (MAT - PET)/PET, > -0.95. Michaletz et al. (2014) included an equivalent requirement in their calculation of growing season length. However, we found that including this requirement had no effect on the estimates of growing season length, and so chose to exclude it.
 
 Monthly data for PET, precipitation, and temperature was downloaded from the Climate Research Unit (CRU) time-series dataset v 4.03 [@harris_updated_2014], and for solar radiation from WorldClim2 [@fick_worldclim_2017], and used to calculate mean monthly PET, precipitation, temperature and solar radiation during the growing season. Total growing season precipitation and solar radiation were also calculated. 
   
@@ -181,7 +184,7 @@ The effects of climate and latitude on FACF were analysed using mixed effects mo
   
 To test for a potential influence of altitude, models were also run with site altitude included as a second fixed effect. These multivariate models were compared against univariate models with no altitude term, and AIC values calculated to identify whether inclusion of altitude as a term improved the models. Including altitude had a very small effect on most models, with the difference in AIC values between models including and excluding altitude often being <2, suggesting the models are very similar in their explanatory power. As a result, it was decided not to include altitude as a fixed term in the final models.
   
-To account for correlations in measurements between tightly clustered sites, a random effect was specified as plot nested within geographic area. 
+To account for correlations in measurements between tightly clustered sites, a random effect was specified as plot nested within geographic area. Geographically proximate sites are clustered into geographic areas, with proximity defined using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018].
   
 Models were run for total annual flux against annual climate variables, and for fluxes standardized by growing season length, defined as annual flux/length of growing season, against growing season climate variables. For analyses on data within the growing season, only linear models were specified.  
 
