@@ -106,31 +106,29 @@ Here, we drew upon # records from the Global Forest Carbon Database (ForC), repr
 
 **FACF can be influenced by many other factors as well**, which often act across a range of scales, and may show interactive effects with each other [@cleveland_relationships_2011]. On a local scale, stand age [@litton_carbon_2007; @gillman_latitude_2015], biodiversity [@liang_positive_2016], management [@simova_enigma_2017]; nutrient availability [@aragao_above_2009]; and altitude [@girardin_net_2010; @malhi_variation_2017] all impact FACF. On a global scale, we expect that FACF are most strongly influenced by broad climatic gradients. There is evidence that FACFs also respond to variables such as cloud cover [@taylor_temperature_2017], solar radiation [@fyllas_solar_2017], and potential evapotranspiration [@kerkhoff_plant_2005] in potentially significant ways. Furthermore, MAT and MAP are very coarse measures of climate, and so fail to capture much variation in climate on an intra-annual scale, including the effects of factors such as growing season length, number of frost-free days, temperature seasonality, and dry season length. Some studies have suggested that the apparently strong relationship between MAT and FACFs is actually a consequence of the correlation between MAT and growing season length [@kerkhoff_plant_2005; @malhi_productivity_2012; @michaletz_convergence_2014; @michaletz_drivers_2018]. Kerkhoff et al. [-@kerkhoff_plant_2005] and Michaletz et al. [-@michaletz_convergence_2014] find that, within the growing season, there is no significant relationship between primary productivity and MAT, suggesting that the effect of temperature is due to increased length of growing season, rather than an inherent influence of temperature on FACF.  
   
-**The recent development of a global forest carbon database synthesizing multiple variables and including records of stand history (ForC; [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]) opens up the possibility for a standardized analysis of global scale variation** in multiple FACF and the principle climatic drivers of these patterns. In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad questions and corresponding hypotheses (Table 1). ** see [issue #48 ](https://github.com/forc-db/Global_Productivity/issues/48)** First, we ask how forest autotrophic carbon fluxes (FACF) vary with latitude. We then test how these fluxes relate to MAT and MAP, and additionally how they respond to other, less well-studied, climate variables. Finally, we consider the relationship between FACF and seasonality, considering the role of seasonality in explaining variation in carbon fluxes, and the influence of climate on FACF standardized by growing season length. We use a comprehensive global database of forest carbon fluxes to address the above questions for nine carbon fluxes, allowing for an in-depth exploration of the effect of climate on FACF globally.  
+**The recent development of a global forest carbon database synthesizing multiple variables and including records of stand history (ForC; [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018]) opens up the possibility for a standardized analysis of global scale variation** in multiple FACF and the principle climatic drivers of these patterns. In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad questions and corresponding hypotheses (Table 1). ** see [issue #48 ](https://github.com/forc-db/Global_Productivity/issues/48)** First, we ask how forest autotrophic carbon fluxes (FACF) vary with latitude. We then test how these fluxes relate to MAT and MAP, and additionally how they respond to other, less well-studied, climate variables. Finally, we consider the relationship between FACF and seasonality, considering the role of seasonality in explaining variation in carbon fluxes, and the influence of climate on FACF standardized by growing season length. We use a comprehensive global database of forest carbon fluxes to address the above questions for nine carbon fluxes, allowing for an in-depth exploration of the effect of climate on FACF globally.
 
 \renewcommand{\arraystretch}{2}
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-hypothesis_table[1,2] <- paste0(footnote_marker_number(1)," , ",footnote_marker_number(2)," , ", footnote_marker_number(3))
-hypothesis_table[2,2] <- paste0(footnote_marker_number(4))
-hypothesis_table[3,2] <- paste0(footnote_marker_number(1)," , ",footnote_marker_number(4))
-hypothesis_table[4,2] <- paste0(footnote_marker_number(5))
-hypothesis_table[10,2] <- paste0(footnote_marker_number(6)," , ",footnote_marker_number(7)," , ", footnote_marker_number(8))
-hypothesis_table[11,2] <- paste0(footnote_marker_number(7)," , ", footnote_marker_number(8))
-hypothesis_table[12,2] <- paste0(footnote_marker_number(8))
-kable(hypothesis_table, booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', parentheses indicate partial overall support/rejection of hypotheses across all FACF, and '-' indicates no significant relationship.", escape = F) %>%
+hypothesis_table[1,1] <- paste0(hypothesis_table[1,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(2),"$^{,}$", footnote_marker_number(3))
+hypothesis_table[2,1] <- paste0(hypothesis_table[2,1], footnote_marker_number(4))
+hypothesis_table[3,1] <- paste0(hypothesis_table[3,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4))
+hypothesis_table[4,1] <- paste0(hypothesis_table[4,1], footnote_marker_number(5))
+hypothesis_table[10,1] <- paste0(hypothesis_table[10,1], footnote_marker_number(6),"$^{,}$",footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
+hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
+hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(8))
+kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', parentheses indicate partial overall support/rejection of hypotheses across all FACF, and '-' indicates no significant relationship.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("Q1. How do FACF vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
-  pack_rows("Q2. How do FACF vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q3. How are FACF related to other climate variables?", 5, 7, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q4. How does seasonality influence FACF?", 8, 11, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Q5. When standardised by growing season length, how do FACF vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  add_header_above(c(" ", " ", " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
-  #column_spec(1, width = "15cm") %>%
-  column_spec(2, width = "5cm") %>%
-  column_spec(3:13, width = "1.8cm") %>%
+  pack_rows("Q1. How do FACF vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 5, hline_before = FALSE) %>%
+  pack_rows("Q2. How do FACF vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q3. How are FACF related to other climate variables?", 5, 7, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q4. How does seasonality influence FACF?", 8, 11, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q5. When standardised by growing season length, how do FACF vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
+  #column_spec(2:11, width = "1.8cm") %>%
   kableExtra::landscape() %>%
   kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)"), footnote_as_chunk = TRUE)
 ```
