@@ -30,8 +30,8 @@ options(knitr.table.format = "latex")
 
 ```{r setup, include = FALSE}
 # knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
-knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
-# knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
+ knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 \listoftables
@@ -54,34 +54,13 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
 ```
 \elandscape
 \newpage
-```{r eval = TRUE, echo=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-S2 <- read.csv("tables_figures/mat_growing_season.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S2, format = "latex", booktabs = TRUE, caption = "Table S2. Comparison of growing season length and mean annual temperature as predictors of FACF", escape = F)%>%
-  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
-  column_spec(1, width = "5cm") %>%
-  column_spec(2, width = "2cm") %>%
-  column_spec(3:4, width = "7cm") %>%
-  pack_rows("GPP", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
-  pack_rows("NPP", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("ANPP", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("ANPP woody stem", 10, 12, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("ANPP foliage", 13, 15, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("BNPP root", 16, 18, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("BNPP fine root", 19, 21, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Autotrophic respiration", 22, 24, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
-  pack_rows("Root respiration", 25, 27, latex_gap_space = "1em", colnum = 1, hline_before = TRUE)
-```
-
-\newpage
 
 \blandscape
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 S3 <- read.csv("tables_figures/r2_table1.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S3, format = "latex", booktabs = TRUE, caption = "Table S3. Model details and R2 values for all climate variables tested") %>%
+kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model details and R2 values for all climate variables tested") %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   add_header_above(c(" ", "Latitude"=2, "MAT"=2, "MAP"=2, "T Seas"=2, "P Seas"=2, "ATR"=2, "Solar R"=2, "AI"=2))
 ```
@@ -100,7 +79,7 @@ kable(S4, format = "latex", booktabs = TRUE) %>%
 library(knitr)
 library(kableExtra)
 S5 <- read.csv("tables_figures/mat_map.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S5, format = "latex", booktabs = TRUE, caption = "Table S4. Results of analysis of interactions effects between MAT and MAP, for all FACF", escape = F)%>%
+kable(S5, format = "latex", booktabs = TRUE, caption = "Table S3. Results of analysis of interactions effects between MAT and MAP, for all FACF", escape = F)%>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
   column_spec(1, width = "4cm") %>%
   column_spec(2, width = "6cm") %>%
@@ -108,6 +87,27 @@ kable(S5, format = "latex", booktabs = TRUE, caption = "Table S4. Results of ana
   column_spec(4, width = "6cm")%>%
   column_spec(5, width = "2cm")%>%
   column_spec(6, width = "2cm")
+```
+
+\newpage
+```{r eval = TRUE, echo=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+S2 <- read.csv("tables_figures/mat_growing_season.csv", stringsAsFactors = FALSE, check.names = FALSE)
+kable(S2, format = "latex", booktabs = TRUE, caption = "Table S4. Comparison of growing season length and mean annual temperature as predictors of FACF", escape = F)%>%
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1, width = "5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3:4, width = "7cm") %>%
+  pack_rows("GPP", 1, 3, latex_gap_space = "1em", colnum = 1, hline_before = FALSE) %>%
+  pack_rows("NPP", 4, 6, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP", 7, 9, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP woody stem", 10, 12, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("ANPP foliage", 13, 15, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("BNPP root", 16, 18, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("BNPP fine root", 19, 21, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Autotrophic respiration", 22, 24, latex_gap_space = "1em", colnum = 1, hline_before = TRUE) %>%
+  pack_rows("Root respiration", 25, 27, latex_gap_space = "1em", colnum = 1, hline_before = TRUE)
 ```
 
 \newpage

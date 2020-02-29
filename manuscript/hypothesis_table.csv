@@ -9,7 +9,7 @@ H3.3. FACF increase with solar radiation.,(yes),yes,yes,yes,yes,yes,yes,yes,yes,
 H4.1. FACF decrease with temperature seasonality.,yes,yes ,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S5, S6"
 H4.2. FACF decrease with precipitation seasonality.,-,-,-,-,-,-,-,-,-,-,"Figs. S5, S6"
 H4.3. FACF increase with growing season length.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S5, S6"
-H4.4. Growing season length is a better predictor of FACF than MAT.,(no),no,no,no,no,no,no,-,no,no,Table S2
+H4.4. Growing season length is a better predictor of FACF than MAT.,(no),no,no,no,no,no,no,-,no,no,Table S4
 H5.1. Growing season FACF increase with temperature.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S7, S8"
 H5.2. Growing season FACF increase with PET.,(yes),yes,yes,-,yes,-,yes,yes,-,-,"Figs. S7, S8"
 H5.3. Growing season FACF increase with precipitation.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S7, S8"

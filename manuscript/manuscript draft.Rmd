@@ -227,7 +227,7 @@ With the exception of ANPP~foliage~, the proportion of variation explained by cl
   
 MAP was found to be a significant (p<0.05) but poor predictor of FACF, explaining, with the exception of R~auto~, at most 37% of variation in carbon flux. For the majority FACF, a polynomial model was the best fit. FACF increased with precipitation, up until a saturation point at between 3000 and 4000mm annual precipitation, above which FACF started to decrease (Fig. 4). The notable exception to this was GPP: the model indicated that GPP continued to increase with precipitation up to measures of at least 5000mm annually (p<0.0001, $R^2$ = 0.33. Data above this point was not available, but the model trend indicated that the saturation point for this model would be around 5000mm MAP. 
 
-There was a significant interactive effect between MAT and MAP for NPP and ANPP~woody~ ~stem~ (fig.3). There was a significant additive effect for GPP, ANPP and autotrophic respiration. ANPP~foliage~, BNPP, BNPP~fine~ ~root~, and root respiration showed no significant interactive or additive effect (see table S4).
+There was a significant interactive effect between MAT and MAP for NPP and ANPP~woody~ ~stem~ (fig.3). There was a significant additive effect for GPP, ANPP and autotrophic respiration. ANPP~foliage~, BNPP, BNPP~fine~ ~root~, and root respiration showed no significant interactive or additive effect (see table S3).
   
 For the variables which showed a significant interactive or additive effect between MAT and MAP, no other climate variable, in combination with MAT, significantly improved on that model. {**need to confirm this given changes in MAT MAP results**}
 
