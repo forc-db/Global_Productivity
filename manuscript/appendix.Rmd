@@ -46,11 +46,12 @@ library(knitr)
 library(kableExtra)
 S1 <- read.csv("tables_figures/climate_variables.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variable definitions, sources, and abbreviations", escape = F)%>%
-  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  column_spec(1, width = "6cm") %>%
-  column_spec(2, width = "2cm") %>%
-  column_spec(3, width = "7cm") %>%
-  column_spec(4, width = "2cm")
+  kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+  column_spec(1, width = "2.5cm") %>%
+  column_spec(2, width = "5cm") %>%
+  column_spec(3, width = "2cm") %>%
+  column_spec(4, width = "7cm") %>%
+  column_spec(5, width = "5cm")
 ```
 \elandscape
 \newpage
