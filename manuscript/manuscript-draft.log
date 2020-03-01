@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 MAR 2020 14:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 MAR 2020 18:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -865,13 +865,13 @@ Package pdftex.def Info: combined_stacked.png  used on input line 605.
 <mat_map_interaction.png, id=275, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
-Package pdftex.def Info: mat_map_interaction.png  used on input line 688.
+Package pdftex.def Info: mat_map_interaction.png  used on input line 668.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [10] [11 <./mat_map_interaction.png>]
 <combined_plots.png, id=286, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
-Package pdftex.def Info: combined_plots.png  used on input line 730.
+Package pdftex.def Info: combined_plots.png  used on input line 709.
 (pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
 [12]
 Overfull \vbox (22.53146pt too high) has occurred while \output is active []
@@ -881,23 +881,22 @@ Overfull \vbox (22.53146pt too high) has occurred while \output is active []
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1013.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 991.
 [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1013.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 991.
 (./manuscript-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1013.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1013.
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 991.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 991.
 Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 (rerunfilecheck)             Checksum: FAD7EA99B461CA3B1ED9205CEA85C1A9;642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1013.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 991.
  ) 
 Here is how much of TeX's memory you used:
- 15996 strings out of 492616
- 236430 string characters out of 6129482
+ 15994 strings out of 492616
+ 236406 string characters out of 6129482
  376934 words of memory out of 5000000
  19423 multiletter control sequences out of 15000+600000
- 75107 words of font info for 141 fonts, out of 8000000 for 9000
+ 74977 words of font info for 140 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,16n,41p,979b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -919,7 +918,7 @@ mf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/texmf-dist/fo
 nts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 public/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
 msy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on manuscript-draft.pdf (20 pages, 919581 bytes).
+Output written on manuscript-draft.pdf (20 pages, 915125 bytes).
 PDF statistics:
  456 PDF objects out of 1000 (max. 8388607)
  403 compressed objects within 5 object streams
