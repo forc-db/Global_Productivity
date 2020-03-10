@@ -123,7 +123,10 @@ kable(S2, format = "latex", booktabs = TRUE, caption = "Table S4. Comparison of 
   knitr::include_graphics("tables_figures/climate_regressions.png")
 ```
 \elandscape
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among FACF as a function of latitude and climate variables", out.width ='100%', fig.pos='H'}
+
+
+
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among FACF as a function of latitude and climate variables", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
 ```
