@@ -193,8 +193,6 @@ for(response.variables in response.variables.groups){
 
         best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
         
-        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-        
         if (best.model == "mod.clim.poly"){ 
           
           test.delta.aic <- as.numeric(aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly))$Delta_AICc[2])
@@ -202,7 +200,17 @@ for(response.variables in response.variables.groups){
           best.model <- ifelse(test.delta.aic > 2, "mod.clim.poly", "mod.clim")
         }
         
+        if (best.model == "mod.clim"){ 
+          
+          test.delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim))$Delta_AICc[2])
+          
+          best.model <- ifelse(test.delta.aic > 2, "mod.clim", "mod")
+        }
+        
+        if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
         if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+        
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
        
         delta.aic <- as.numeric(aictab(list(mod = mod, mod.full = mod.full))$Delta_AICc[2])
@@ -372,8 +380,6 @@ for (age in ages){
       
       best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
       
-      if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-      
       if (best.model == "mod.clim.poly"){ 
         
         test.delta.aic <- as.numeric(aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly))$Delta_AICc[2])
@@ -381,6 +387,14 @@ for (age in ages){
         best.model <- ifelse(test.delta.aic > 2, "mod.clim.poly", "mod.clim")
       }
       
+      if (best.model == "mod.clim"){ 
+        
+        test.delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim))$Delta_AICc[2])
+        
+        best.model <- ifelse(test.delta.aic > 2, "mod.clim", "mod")
+      }
+      
+      if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       
@@ -555,8 +569,6 @@ for (age in ages){
       
       best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
       
-      if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-      
       if (best.model == "mod.clim.poly"){ 
         
         test.delta.aic <- as.numeric(aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly))$Delta_AICc[2])
@@ -564,6 +576,14 @@ for (age in ages){
         best.model <- ifelse(test.delta.aic > 2, "mod.clim.poly", "mod.clim")
       }
       
+      if (best.model == "mod.clim"){ 
+        
+        test.delta.aic <- as.numeric(aictab(list(mod = mod, mod.clim = mod.clim))$Delta_AICc[2])
+        
+        best.model <- ifelse(test.delta.aic > 2, "mod.clim", "mod")
+      }
+      
+      if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       
