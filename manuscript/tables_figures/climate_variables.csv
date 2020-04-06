@@ -1,11 +1,11 @@
 Abbreviation,Climate variable,Units,Definition,Source
 MAT,Mean annual temperature ,$^\circ$C,,Primary literature; WorldClim$^{1}$
 MAP,Mean annual precipitation ,mm $yr^{-1}$,,Primary literature; WorldClim$^{1}$
-T Seas,Temperature seasonality,,Standard deviation of MAT *100,WorldClim$^{1}$
-P Seas,Precipitation seasonality,,Coefficient of variation of MAP,WorldClim$^{1}$
+T Seas,Temperature seasonality,$^\circ$C,Standard deviation of MAT *100,WorldClim$^{1}$
+P Seas,Precipitation seasonality,percent,Coefficient of variation of MAP,WorldClim$^{1}$
 ART,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,WorldClim$^{1}$
 Solar R,Solar radiation,kJ $m^{-2} yr^{-1}$,,WorldClim2$^{2}$
-Cloud,Cloud cover,percentage,Cloud percentage cover,CRU time-series dataset v 4.03$^{3}$
+Cloud,Cloud cover,percent,Cloud percentage cover,CRU time-series dataset v 4.03$^{3}$
 AFD,Annual frost days,days $yr^{-1}$,Number of freeze days annually,CRU time-series dataset v 4.03$^{3}$
 AWD,Annual wet days,days $yr^{-1}$,Number of days with precipitation >0.1 mm annually,CRU time-series dataset v 4.03$^{3}$
 PET,Potential evapotranspiration ,mm $yr^{-1}$,Mean annual potential evapotranspiration,Global Aridity Index and Potential Evapotranspiration Climate Database$^{4}$
