@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -216,7 +216,7 @@ for (response.v in response.variables){
 
     for (i in seq(along = lower_bound)){
       map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
-      if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, xaxt = "n", las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
+      if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
       if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
       newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = midpoint[[i]])
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
@@ -283,16 +283,16 @@ for (response.v in response.variables){
   
 }
 
-# dev.off()
+dev.off()
 write.csv(all.results, "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
 
 ########################################## code to correctly plot
 Rsqs = NULL
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
 
-par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
+par(mfrow = c(3,3), mar = c(2,0,0,2), oma = c(5,8,2,0), xpd = T)
 
 for (response.v in response.variables){
   
@@ -322,7 +322,7 @@ for (response.v in response.variables){
   
   for (i in seq(along = lower_bound)){
     map.in.bin <- df[df$map > lower_bound[[i]] & df$map < upper_bound[[i]], ]
-    if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, xaxt = "n", las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
+    if(first.plot) plot(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", ylim = ylim, col = plasma(5)[i], xlim = xlim, las = 1, tck = 0.02, mgp = c(3, 0.5, 0))
     if(!first.plot) points(mean ~ mat, data = map.in.bin, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim, col = plasma(5)[i], xlim = xlim) 
     newDat <- expand.grid(mat = seq(min(map.in.bin$mat), max(map.in.bin$mat), length.out = 100), map = midpoint[[i]])
     newDat$fit <- predict(mod.full, newDat, re.form = NA)
