@@ -214,7 +214,7 @@ All major carbon fluxes decreased linearly with latitude (Fig. 2; Table S2). Lat
 
 In general, smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (Fig. 2). That is, modelled estimates of $GPP$, generated from the sum of $NPP$ and $R_{auto}$; $NPP$, generated from the sum of $ANPP$ and $BNPP$; and $ANPP$, generated from the sum of $ANPP_{foliage}$ and $ANPP_{woody-stem}$, fell completely within the confidence intervals of the regressions of field estimates of $GPP$, $NPP$, and $ANPP$, respectively.
 
-We found little evidence that allocation between fluxes varied substantially with latitude or climate (Fig. S3). Of the 7 FACF ratios regressed against latitude and three climate variables (MAT, MAP, temperature seasonality), there were only four signficant relationships, all with $R^2 \le 0.2$ (Fig. S3). Specifically, the proportion of NPP allocated to $ANPP_{foliage}$ increased weakly with MAT ($R^2=0.20$), and the proportion of $NPP$ allocated aboveground ($ANPP$) decreased weakly with latitude ($R^2=0.11$) and temperature seasonality ($R^2=0.17$), while increasing with MAT ($R^2=0.11$).  There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables. 
+We found little evidence that allocation between fluxes varied substantially with latitude or climate (Fig. S3). Of the 7 FACF ratios regressed against latitude and three climate variables (MAT, MAP, temperature seasonality), there were only five signficant relationships, all with $R^2 \le 0.4$ (Fig. S3). Specifically, the proportion of NPP allocated to $ANPP_{foliage}$ decreased with latitude ($R^2=0.32$) and increased with MAT ($R^2=0.37$), and the proportion of $NPP$ allocated aboveground ($ANPP$) decreased weakly with latitude ($R^2=0.11$) and temperature seasonality ($R^2=0.17$), while increasing with MAT ($R^2=0.11$).  There were no significant results from regressing ratios of carbon fluxes against latitude, or against any of the climate variables. 
    
 *How do FACF relate to MAT and MAP?* 
 
@@ -268,13 +268,14 @@ We show that, with the exception of some differences in MAT-MAP interactions (Fi
 *reworking the above paragraph:*
 We show that FACF are broadly consistent in their responses to climate drivers on the global scale, with at most modest trends in C allocation among the variable pairs tested (Figs. 2, S3). 
 This parallels the observation that C allocation across multiple FACF varies little with respect to climate along a tropical elevational gradient [@malhi_variation_2017], 
-but contrasts with observed variation in allocation along gradients of elevation [@moser_elevation_2011] and water availability [@newman_above-_2006]
+but contrasts with observed variation in allocation along gradients of elevation [@moser_elevation_2011] 
 - @gill_belowground_2016 ?
 - (others in list below?)
 Several trends in allocation--or lack thereof--warrant discussion.
 1. CUE
 2. We found a slight tendency for warmer sites to have higher aboveground allocation (Fig. S3). This is consistent with:
 - [@hofhansl_new_2015] (**verify**) 
+- @moser_elevation_2011 (tropical elevation gradient)
 - Chen et al. 2019 (doi: 10.1111/ele.13193) - find lower partitioning belowground at higher productivity (fine root NPP scales against ANPP_foliage with a slope of ~ 0.8)
 - @gill_belowground_2016
 - @litton_carbon_2007 - (verify)
