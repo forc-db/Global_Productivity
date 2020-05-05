@@ -25,6 +25,7 @@ ForC_simplified$lat <- abs(ForC_simplified$lat)
 
 ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")]
 
+##two groups of variables, needs to be identical + in the same order
 variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 
@@ -40,8 +41,11 @@ panel.number <- 1
 
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/manuscript/tables_figures/climate_regressions.png"), width = 3500, height = 3000, units = "px", res = 300)
 
+##creates grid of plots, mfrow should equal number of variables
 par(mfrow = c(7,7), mar = c(3,3,0.5,0.5), oma = c(1,1,0,0))
 
+
+##loops through variables, pairs each variable with each other variable, but skips if they're the same
 for (i in seq(along = variables1)){
   for (j in seq(along = variables2)){
   print(i)
