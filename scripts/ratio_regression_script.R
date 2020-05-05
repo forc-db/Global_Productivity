@@ -101,8 +101,9 @@ fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
 set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
 
-# set1 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
-# set2 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
+
+# set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
+# set2 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
 
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/ratio_grid_plots.png"), width = 1800, height = 3000, units = "px", res = 300)
 
@@ -154,9 +155,9 @@ for (i in seq(along = set1)){
         
         ##remove extreme outliers 
         
-        # outliers <- boxplot(df$ratio, plot=FALSE, range = 3)$out
-        # 
-        # if(length(outliers > 0)) df <- df[-which(df$ratio %in% outliers),]
+        outliers <- boxplot(df$ratio, plot=FALSE, range = 3)$out
+
+        if(length(outliers > 0)) df <- df[-which(df$ratio %in% outliers),]
         
         
         mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
