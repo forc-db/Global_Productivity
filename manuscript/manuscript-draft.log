@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  10 MAY 2020 09:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  11 MAY 2020 07:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -857,10 +857,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 365.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 365.
+[5
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5]
+]
 Overfull \hbox (11.05745pt too wide) in paragraph at lines 432--432
  []|\T1/lmr/m/n/12 (-20) geographic
  []
@@ -868,7 +867,7 @@ Overfull \hbox (11.05745pt too wide) in paragraph at lines 432--432
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<distribution_all_variables_cropped.png, id=209, 936.1374pt x 387.849pt>
+<distribution_all_variables_cropped.png, id=212, 936.1374pt x 387.849pt>
 File: distribution_all_variables_cropped.png Graphic file (type png)
 <use distribution_all_variables_cropped.png>
 Package pdftex.def Info: distribution_all_variables_cropped.png  used on input 
@@ -876,26 +875,25 @@ line 436.
 (pdftex.def)             Requested size: 469.7531pt x 194.62234pt.
 [6
 
-
  <./distribution_all_variables_cropped.png>] [7]
 
 Package natbib Warning: Citation `r_core_team_r:_2018' on page 8 undefined on i
 nput line 482.
 
 [8]
-<combined_stacked.png, id=271, 543.2295pt x 481.8pt>
+<combined_stacked.png, id=274, 543.2295pt x 481.8pt>
 File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
 Package pdftex.def Info: combined_stacked.png  used on input line 595.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9] [10 <./combined_stacked.png>]
-<mat_map_interaction.png, id=283, 543.2295pt x 481.8pt>
+<mat_map_interaction.png, id=286, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
 Package pdftex.def Info: mat_map_interaction.png  used on input line 658.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
-<combined_plots.png, id=295, 543.2295pt x 722.7pt>
+<combined_plots.png, id=298, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
 Package pdftex.def Info: combined_plots.png  used on input line 698.
@@ -954,10 +952,10 @@ dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
 ic/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy7
 .pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on manuscript-draft.pdf (23 pages, 1061582 bytes).
+Output written on manuscript-draft.pdf (23 pages, 1062123 bytes).
 PDF statistics:
- 520 PDF objects out of 1000 (max. 8388607)
- 466 compressed objects within 5 object streams
+ 524 PDF objects out of 1000 (max. 8388607)
+ 470 compressed objects within 5 object streams
  93 named destinations out of 1000 (max. 500000)
  14405 words of extra memory for PDF output out of 17280 (max. 10000000)
 
