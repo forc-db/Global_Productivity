@@ -170,6 +170,8 @@ number = 1
         
         first.plot <- TRUE
         
+        png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/pairwise_comparisons/pairwise_comparisons_", number, ".png"), width = 3000, height = 2000, units = "px", res = 300)
+        
         par(mfrow = c(1,2), mar = c(2,2,2,2), oma = c(5,4,5,0))
         
         for (response.v in response.variables.group){
@@ -280,17 +282,22 @@ number = 1
           results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
           
           all.results <- rbind(all.results, results)
-          if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+          mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
           
           
           if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
           
-          mtext(side = 3, text = Rsq)
+          # mtext(side = 3, text = Rsq, line = 1.5, adj = 0.05, cex = 0.6)
           
           # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
-          if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6)
+          # mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6)
         }
         
+        mtext(side = 3, text = xaxis, outer = T)
+        
+        dev.off()
+        
+        number <- number + 1
         
         
         ##mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
