@@ -98,8 +98,8 @@ all.aictab <- NULL
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-set1 <- c("GPP", "ANPP", "ANPP_foliage", "ANPP_foliage", "ANPP_woody_stem", "ANPP", "BNPP_root")
-set2 <- c("NPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP", "NPP", "NPP")
+set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
+set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
 
 
 # set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
