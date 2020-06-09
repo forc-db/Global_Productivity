@@ -145,7 +145,7 @@ number = 1
       names(df)[60] <- paste(response.variables.group[2])
       fixed.comparison <- NULL
 
-      fixed.comparisons <- setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("flux", paste(response.variables.group[1]), paste(response.variables.group[2]), "larger flux"))
+      fixed.comparisons <- setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("flux", paste(response.variables.group[1]), paste(response.variables.group[2]), "larger Rsq"))
       
       
       for(fixed.v in fixed.variables){
@@ -324,3 +324,4 @@ number = 1
       
     }}
 
+write.csv(all.comparisons,  file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/pairwise_comparisons.csv", row.names = F)
