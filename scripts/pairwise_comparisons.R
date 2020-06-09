@@ -115,7 +115,7 @@ all.results <- NULL
 all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
-fixed.variables <- c("mat", "lat")
+fixed.variables <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 response.variables.groups <- list(c("GPP", "NPP"),
@@ -125,10 +125,12 @@ response.variables.groups <- list(c("GPP", "NPP"),
                                   c("ANPP", "ANPP_woody_stem"))
 
 all.results = NULL
+comparisons = NULL
 number = 1
 
 
   for (age in ages){
+    all.comparisons <- data.frame(matrix(ncol = 0, nrow = 7))
     for (response.variables.group in response.variables.groups){
       
       
@@ -141,6 +143,10 @@ number = 1
       
       names(df)[13] <- paste(response.variables.group[1])
       names(df)[60] <- paste(response.variables.group[2])
+      fixed.comparison <- NULL
+
+      fixed.comparisons <- setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("flux", paste(response.variables.group[1]), paste(response.variables.group[2]), "larger flux"))
+      
       
       for(fixed.v in fixed.variables){
         
@@ -174,6 +180,9 @@ number = 1
         
         par(mfrow = c(1,2), mar = c(2,2,2,2), oma = c(5,4,5,0))
         
+        save.output <- setNames(data.frame(matrix(ncol = 2, nrow = 1)), c(paste(response.variables.group[1]), paste(response.variables.group[2])))
+        rep <- 2
+        
         for (response.v in response.variables.group){
           
           col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
@@ -194,20 +203,20 @@ number = 1
           
           mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
           mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-          mod.clim.poly <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+          # mod.clim.poly <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
           mod.clim.log <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
           
           
-          aictab <- aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly, mod.clim.log = mod.clim.log), sort = T)
+          aictab <- aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.log = mod.clim.log), sort = T)
           
-          best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly, mod.clim.log = mod.clim.log), sort = T)$Modname[1])
+          best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.log = mod.clim.log), sort = T)$Modname[1])
           
-          if (best.model == "mod.clim.poly"){ 
-            
-            test.delta.aic <- as.numeric(aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly))$Delta_AICc[2])
-            
-            best.model <- ifelse(test.delta.aic > 2, "mod.clim.poly", "mod.clim")
-          }
+          # if (best.model == "mod.clim.poly"){ 
+          #   
+          #   test.delta.aic <- as.numeric(aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly))$Delta_AICc[2])
+          #   
+          #   best.model <- ifelse(test.delta.aic > 2, "mod.clim.poly", "mod.clim")
+          # }
           
           if (best.model == "mod.clim"){ 
             
@@ -218,7 +227,6 @@ number = 1
           
           if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
           if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
-          if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
           if (best.model == "mod.clim.log") mod.full <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
           
           delta.aic <- as.numeric(aictab(list(mod = mod, mod.full = mod.full))$Delta_AICc[2])
@@ -230,7 +238,6 @@ number = 1
           
           if (best.model == "mod") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
           if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
-          if (best.model == "mod.clim.poly") mod.full <- lmer(mean ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
           if (best.model == "mod.clim.log") mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = T)
           
           # }
@@ -279,7 +286,10 @@ number = 1
           Rsq <- as.data.frame(r.squaredGLMM(mod.full))
           Rsq <- signif(Rsq, digits=4)[1]
           
-          results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+          results <- data.frame(response = response.v, fixed = fixed.v, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+          fixed.comparisons[1] <- fixed.v
+          fixed.comparisons[rep] <- Rsq
+          rep <- rep + 1
           
           all.results <- rbind(all.results, results)
           mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
@@ -298,6 +308,8 @@ number = 1
         dev.off()
         
         number <- number + 1
+        fixed.comparisons[4] <- ifelse(fixed.comparisons[2] > fixed.comparisons[3], paste(names(fixed.comparisons[2])), paste(names(fixed.comparisons[3])))
+        fixed.comparison <- rbind(fixed.comparison, fixed.comparisons)
         
         
         ##mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
@@ -307,6 +319,8 @@ number = 1
         
         
       }
+      
+    all.comparisons <- cbind(all.comparisons, fixed.comparison)  
       
     }}
 
