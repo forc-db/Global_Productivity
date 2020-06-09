@@ -131,10 +131,7 @@ for(response.variables in response.variables.groups){
   
   ### mature forests only ####
   for (age in ages){
-    
-    if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
-    if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
-      
+
       for (response.v in response.variables){
         
         col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
@@ -154,6 +151,8 @@ for(response.variables in response.variables.groups){
         
         df <- ForC_simplified[rows.with.response, ]
         
+        df$mat <- df$mat + 11
+        
         for(fixed.v in fixed.variables){
           ages.to.keep <- df$stand.age >= 100 & !is.na(df$stand.age)
           fixed.no.na <- !is.na(df[, fixed.v]) & !is.na(df[, "masl"])
@@ -163,8 +162,7 @@ for(response.variables in response.variables.groups){
         
         df$fixed <- df[, fixed.v]
         
-        if(fixed.v == "AnnualPET") df <- df[df$fixed != 0,]
-        if(fixed.v == "mat") df$fixed <- df$fixed + 11
+        
         # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
@@ -211,7 +209,6 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.clim.log") mod.full <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = T)
 
-        str(mod.full)
         mod.linear <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         
         r <- round(fixef(mod.linear), 5)
