@@ -1,0 +1,9 @@
+"","Modnames","K","AICc","Delta_AICc","ModelLik","AICcWt","LL","Cum.Wt"
+"1","scale(mean) ~ poly(mat, 1, raw = T) + (1 | geographic.area/plot.name)",5,523.635976159704,0,1,0.999981083231417,-256.707693962205,0.999981083231417
+"6","scale(mean) ~ log(TempSeasonality) + (1 | geographic.area/plot.name)",5,545.388135626013,21.7521594663092,1.89050829452414e-05,1.89047253221623e-05,-267.583773695359,0.999999987956739
+"8","scale(mean) ~ poly(length_growing_season, 1, raw = T) + (1 | geographic.area/plot.name)",5,560.10560883005,36.4696326703461,1.20425896236428e-08,1.20423618167618e-08,-274.942510297378,0.999999999999101
+"3","scale(mean) ~ poly(PotentialEvapotranspiration, 2, raw = T) + (1 | geographic.area/plot.name)",6,579.656077493283,56.0201013335794,6.84525384052808e-13,6.84512435044528e-13,-283.673057196826,0.999999999999785
+"4","scale(mean) ~ poly(VapourPressureDeficit, 2, raw = T) + (1 | geographic.area/plot.name)",6,582.687570140165,59.0515939804607,1.50352029023899e-13,1.5034918484936e-13,-285.188803520267,0.999999999999936
+"2","scale(mean) ~ poly(map, 2, raw = T) + (1 | geographic.area/plot.name)",6,584.4377476491,60.8017714893962,6.26704879490164e-14,6.26693024258989e-14,-286.063892274735,0.999999999999998
+"5","scale(mean) ~ poly(SolarRadiation, 1, raw = T) + (1 | geographic.area/plot.name)",5,591.795466580637,68.1594904209328,1.58254005264516e-15,1.58251011610121e-15,-290.787439172671,1
+"7","scale(mean) ~ poly(PreSeasonality, 1, raw = T) + (1 | geographic.area/plot.name)",5,606.048472461783,82.4124963020791,1.27160962960734e-18,1.27158557486224e-18,-297.913942113244,1
