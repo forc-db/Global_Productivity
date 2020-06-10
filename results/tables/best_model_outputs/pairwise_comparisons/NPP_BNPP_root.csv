@@ -1,0 +1,8 @@
+"Flux","Rsq NPP","Rsq BNPP","Model type NPP","Model type BNPP","Number of plots","Variable with higher Rsq"
+"lat",0.49,0.34,"Logarithmic","Linear",116,"NPP"
+"mat",0.41,0.22,"Logarithmic","Logarithmic",116,"NPP"
+"map",0.003,0.13,"Null","Logarithmic",116,"BNPP"
+"PotentialEvapotranspiration",0.15,0.21,"Logarithmic","Logarithmic",116,"BNPP"
+"VapourPressureDeficit",0.11,0.095,"Logarithmic","Logarithmic",116,"NPP"
+"TempSeasonality",0.49,0.41,"Logarithmic","Logarithmic",116,"NPP"
+"length_growing_season",0.4,0.24,"Logarithmic","Linear",116,"NPP"

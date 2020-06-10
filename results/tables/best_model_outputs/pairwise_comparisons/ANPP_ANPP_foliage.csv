@@ -1,0 +1,8 @@
+"Flux","Rsq ANPP","Rsq ANPP foliage","Model type ANPP","Model type ANPP foliage","Number of plots","Variable with higher Rsq"
+"lat",0.32,0.45,"Logarithmic","Logarithmic",96,"ANPP foliage"
+"mat",0.36,0.5,"Linear","Linear",96,"ANPP foliage"
+"map",0.028,0.088,"Null","Linear",96,"ANPP foliage"
+"PotentialEvapotranspiration",0.2,0.25,"Linear","Linear",96,"ANPP foliage"
+"VapourPressureDeficit",0.22,0.28,"Logarithmic","Logarithmic",96,"ANPP foliage"
+"TempSeasonality",0.27,0.42,"Linear","Linear",96,"ANPP foliage"
+"length_growing_season",0.23,0.39,"Logarithmic","Logarithmic",96,"ANPP foliage"

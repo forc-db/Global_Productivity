@@ -1,0 +1,8 @@
+"Flux","Rsq BNPP","Rsq R root","Model type BNPP","Model type R root","Number of plots","Variable with higher Rsq"
+"lat",0.013,0.39,"Null","Null",9,"R root"
+"mat",0.083,0.35,"Null","Null",9,"R root"
+"map",0.095,0.79,"Null","Null",9,"R root"
+"PotentialEvapotranspiration",0.0086,0.47,"Null","Null",9,"R root"
+"VapourPressureDeficit",0.013,0.0036,"Null","Null",9,"BNPP"
+"TempSeasonality",0.0093,0.63,"Null","Null",9,"R root"
+"length_growing_season",0.012,0.63,"Null","Null",9,"R root"
