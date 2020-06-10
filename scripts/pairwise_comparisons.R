@@ -122,7 +122,9 @@ response.variables.groups <- list(c("GPP", "NPP"),
                                   c("NPP", "ANPP"),
                                   c("NPP", "BNPP_root"),
                                   c("ANPP", "ANPP_foliage"),
-                                  c("ANPP", "ANPP_woody_stem"))
+                                  c("ANPP", "ANPP_woody_stem"),
+                                  c("GPP", "R_auto"),
+                                  c("BNPP_root", "R_auto_root"))
 
 all.results = NULL
 comparisons = NULL
@@ -139,13 +141,18 @@ number = 1
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% response.variables.group[1],]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% response.variables.group[2],]
       
+      resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+      respv1 <- resp.v.info$name[which(resp.v.info$response.v %in% response.variables.group[1])]
+      respv2 <- resp.v.info$name[which(resp.v.info$response.v %in% response.variables.group[2])]
+      
+      
       df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID", "date"))
       
       names(df)[13] <- paste(response.variables.group[1])
       names(df)[60] <- paste(response.variables.group[2])
       fixed.comparison <- NULL
 
-      fixed.comparisons <- setNames(data.frame(matrix(ncol = 4, nrow = 1)), c("flux", paste(response.variables.group[1]), paste(response.variables.group[2]), "larger Rsq"))
+      fixed.comparisons <- setNames(data.frame(matrix(ncol = 7, nrow = 1)), c("Flux", paste("Rsq", respv1), paste("Rsq", respv2), paste("Model type", respv1), paste("Model type", respv2), "Number of plots", "Variable with higher Rsq"))
       
       
       for(fixed.v in fixed.variables){
@@ -190,7 +197,8 @@ number = 1
           col <- col.sym$col[which(col.sym$variable %in% response.v)]
           sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
 
-          
+          resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+          respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
           
           df$mean <- df[, response.v]
           
@@ -240,6 +248,10 @@ number = 1
           if (best.model == "mod.clim") mod.full <- lmer(mean ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
           if (best.model == "mod.clim.log") mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = T)
           
+          if (best.model == "mod") model <- "Null"
+          if (best.model == "mod.clim") model <- "Linear"
+          if (best.model == "mod.clim.log") model <- "Logarithmic"
+          
           # }
           
           # if(fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
@@ -281,14 +293,15 @@ number = 1
           # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
           
           significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-          significance <- signif(significance, digits=4)
+          significance <- signif(significance, digits=2)
           
           Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-          Rsq <- signif(Rsq, digits=4)[1]
+          Rsq <- signif(Rsq, digits=2)[1]
           
-          results <- data.frame(response = response.v, fixed = fixed.v, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
+          results <- data.frame(response = respv, fixed = fixed.v, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
           fixed.comparisons[1] <- fixed.v
           fixed.comparisons[rep] <- Rsq
+          fixed.comparisons[rep + 2] <- model
           rep <- rep + 1
           
           all.results <- rbind(all.results, results)
@@ -308,9 +321,12 @@ number = 1
         dev.off()
         
         number <- number + 1
-        fixed.comparisons[4] <- ifelse(fixed.comparisons[2] > fixed.comparisons[3], paste(names(fixed.comparisons[2])), paste(names(fixed.comparisons[3])))
-        fixed.comparison <- rbind(fixed.comparison, fixed.comparisons)
+        fixed.comparisons[7] <- ifelse(fixed.comparisons[2] > fixed.comparisons[3], paste(respv1), paste(respv2))
+        fixed.comparisons[6] <- length(df$mean)
         
+
+        fixed.comparison <- rbind(fixed.comparison, fixed.comparisons)
+        write.csv(fixed.comparison,  file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/pairwise_comparisons/",response.variables.group[1], "_", response.variables.group[2], ".csv"), row.names = F)
         
         ##mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
         # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
