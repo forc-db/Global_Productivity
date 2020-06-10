@@ -6,5 +6,5 @@ ANPP_foliage,ANPP foliage
 ANPP_woody_stem,ANPP stem
 BNPP_root,BNPP
 BNPP_root_fine,BNPP fine root
-R_auto,Autotrophic respiration
-R_auto_root,Root respiration
+R_auto,R auto
+R_auto_root,R root
