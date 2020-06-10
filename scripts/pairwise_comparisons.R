@@ -305,7 +305,7 @@ number = 1
           rep <- rep + 1
           
           all.results <- rbind(all.results, results)
-          mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+          mtext(paste0(respv), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
           
           
           if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
