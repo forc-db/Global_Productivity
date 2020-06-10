@@ -1,10 +1,10 @@
 Variable,Definition,Components included,Methodologies ,records,geographic areas
 $GPP$,Gross Primary Production ,full ecosystem,flux partitioning of eddy-covariance; $NPP$+$R_{auto}$,243,49
 $NPP$,Net Primary Production,"stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory)",$ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$,161,56
-$ANPP$,Aboveground $NPP$,"stem, foliage, optionally others (e.g., branch, reproductive, understory)",$ANPP_{woody-stem}$ + $ANPP_{foliage}$ (+ others) ,278,86
+$ANPP$,Aboveground $NPP$,"stem, foliage, optionally others (e.g., branch, reproductive, understory)",$ANPP_{stem}$ + $ANPP_{foliage}$ (+ others) ,278,86
 $ANPP_{stem}$,Stem growth component of $ANPP$,woody stems down to DBH $\le$ 10cm (no branch turnover),stem growth measurements scaled to biomass using allometries,264,96
 $ANPP_{foliage}$,Foliage component of $ANPP$,foliage,"litterfall collection, with separation into components",98,49
 $BNPP$,Belowground $NPP$,coarse and fine roots,coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below,101,48
 $BNPP_{fine.root}$,Fine root component of $BNPP$,fine roots,"measurements combined one or more of the following: soil cores, minirhizotrons, turnover estimates,  root ingrowth cores",88,41
-$R_{auto}$,Autotrophic respiration,"foliage, stem, and root ",chamber measurements of foliage and stem gas exchange +  $R_{auto-root}$ (as below),22,13
+$R_{auto}$,Autotrophic respiration,"foliage, stem, and root ",chamber measurements of foliage and stem gas exchange +  $R_{root}$ (as below),22,13
 $R_{root}$,Root respiration,(coarse and) fine roots,"partitioning of total soil respiration (e.g., through root exclusion), scaling of root gas exchange; excluded alkali absoption and soda lime methods for measuring soil respiration",64,26
