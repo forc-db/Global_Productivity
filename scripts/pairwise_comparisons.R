@@ -152,7 +152,7 @@ number = 1
       names(df)[60] <- paste(response.variables.group[2])
       fixed.comparison <- NULL
 
-      fixed.comparisons <- setNames(data.frame(matrix(ncol = 7, nrow = 1)), c("Flux", paste("Rsq", respv1), paste("Rsq", respv2), paste("Model type", respv1), paste("Model type", respv2), "Number of plots", "Variable with higher Rsq"))
+      fixed.comparisons <- setNames(data.frame(matrix(ncol = 7, nrow = 1)), c("Climate variable", paste("Rsq", respv1), paste("Rsq", respv2), paste("Model type", respv1), paste("Model type", respv2), "Number of plots", "Variable with higher Rsq"))
       
       
       for(fixed.v in fixed.variables){
@@ -299,7 +299,7 @@ number = 1
           Rsq <- signif(Rsq, digits=2)[1]
           
           results <- data.frame(response = respv, fixed = fixed.v, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
-          fixed.comparisons[1] <- fixed.v
+          fixed.comparisons[1] <- xaxis
           fixed.comparisons[rep] <- Rsq
           fixed.comparisons[rep + 2] <- model
           rep <- rep + 1
