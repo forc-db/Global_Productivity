@@ -1,0 +1,8 @@
+"Climate variable","Rsq ANPP","Rsq ANPP foliage","Model type ANPP","Model type ANPP foliage","Number of plots","Variable with higher Rsq"
+"Latitude",0.32,0.45,"Logarithmic","Logarithmic",96,"ANPP foliage"
+"MAT",0.36,0.5,"Linear","Linear",96,"ANPP foliage"
+"MAP",0.028,0.088,"Null","Linear",96,"ANPP foliage"
+"PET",0.2,0.25,"Linear","Linear",96,"ANPP foliage"
+"VPD",0.22,0.28,"Logarithmic","Logarithmic",96,"ANPP foliage"
+"T Seas",0.27,0.42,"Linear","Linear",96,"ANPP foliage"
+"LGS",0.23,0.39,"Logarithmic","Logarithmic",96,"ANPP foliage"

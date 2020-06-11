@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -223,7 +223,7 @@ response.variables <- c("GPP", "NPP", "BNPP_root", "BNPP_root_fine", "ANPP", "AN
           var_comb <- rbind(var_comb, uni_comb, add_comb, int_comb)
           
           formula_vec <- sprintf("%s ~ %s", var_comb$Var1, var_comb$Var2)
-          
+          ###"mean ~ length_growing_season*WaterStressMonths+(1|geographic.area/plot.name)"
           # create list of model outputs
           lmm_all <- lapply(formula_vec, function(x){
             fit1 <- lmer(x, data = df, REML=FALSE)

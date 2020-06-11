@@ -550,6 +550,9 @@ for (age in ages){
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]
       
+      resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+      respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
+      
       rows.with.response <- ForC_simplified$variable.name %in% responses.to.keep
       
       fixed.no.na <- !is.na(ForC_simplified[, fixed.v]) & !is.na(ForC_simplified[, "masl"])
@@ -658,7 +661,7 @@ for (age in ages){
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
       all.results <- rbind(all.results, results)
-      if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+      if(fixed.v %in% c("mat", "TempSeasonality"))mtext(paste0(respv), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
       
       pannel.nb <- pannel.nb +1
       if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
