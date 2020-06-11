@@ -7,7 +7,7 @@ output:
     fig_caption: yes
 bibliography: [library.bib,  packages.bib]
 biblio-style: apalike
-csl: apa.csl
+csl: global-change-biology.csl
 header-includes:  \usepackage{float}
                   \usepackage{caption}
                   \captionsetup[table]{font=footnotesize}
