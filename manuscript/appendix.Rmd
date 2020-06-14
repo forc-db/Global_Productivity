@@ -11,6 +11,11 @@ output:
   pdf_document:
     fig_caption: yes
     
+bibliography: appendix_library.bib
+csl: global-change-biology.csl
+nocite: | 
+  @hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
+    
 header-includes:  \usepackage{float}
                   \usepackage{caption}
                   \captionsetup[table]{font=footnotesize}
@@ -53,7 +58,9 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
   column_spec(4, width = "7cm") %>%
   column_spec(5, width = "2cm") %>%
   column_spec(6, width = "5cm") %>%
-  kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick et al. (2017)", "Harris et al. (2017)", "Trabucco and Zomer (2019)", "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE)
+  kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick et al. (2017)", "Harris et al. (2017)", "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE)
+
+#@hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
 ```
 \elandscape
 \newpage
@@ -172,4 +179,7 @@ kable(S2, format = "latex", booktabs = TRUE, caption = "Table S4. Comparison of 
 
   knitr::include_graphics("tables_figures/gridded_growing_season2.png")
 ```
+
+\newpage
+# References
 
