@@ -63,7 +63,7 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
 library(knitr)
 library(kableExtra)
 S3 <- read.csv("tables_figures/r2_table1.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model details and R2 values for all climate variables tested") %>%
+kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model form, delta AIC, and R2 for each climate variables as a single fixed effect in models for each C flux. Model forms include first-order linear (Lin), second-order polynomial (Poly), and logarithmic (Log).") %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   add_header_above(c(" ", "Latitude"=2, "MAT"=2, "MAP"=2, "T Seas"=2, "P Seas"=2, "ATR"=2, "Solar R"=2, "AI"=2))
 ```
