@@ -154,6 +154,10 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(5,4,5,0))
 
 for(fixed.v in fixed.variables){
   
+  fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
+  xaxis_simple <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
+  xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
+  
 final_sheet$fixed <- final_sheet[, fixed.v]
 
 mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
@@ -178,6 +182,30 @@ ylim[1] <- ylim[1] - 0.25
 ylim[2] <- ylim[2] + 0.25
 
 
-plot(ratio ~ fixed, data = final_sheet, xlab = "", ylab = "", ylim = ylim)
+plot(ratio ~ fixed, data = final_sheet, xlab = xaxis, ylab = "", ylim = ylim)
+
+
+for(masl in unique(newDat$masl)){
+  k <- which(unique(newDat$masl) %in% masl)
+  lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
+
+mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+
+r <- round(fixef(mod.linear), 5)
+
+significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+significance <- signif(significance, digits=4)
+
+Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+Rsq <- signif(Rsq, digits=2)[1]
+
+if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
+
+mtext(text = eval(parse(text = xaxis)), side = 1, line = 2, cex = 0.6)
+
+# if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+# panel.number <- panel.number + 1
 
 }
+
+mtext(text = "Log(ANPP:BNPP)", side = 2, outer = T, line = 1)
