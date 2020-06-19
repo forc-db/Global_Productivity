@@ -653,10 +653,10 @@ for (age in ages){
       # equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
       
       significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-      significance <- signif(significance, digits=4)
+      significance <- signif(significance, digits=2)
       
       Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-      Rsq <- signif(Rsq, digits=4)[1]
+      Rsq <- signif(Rsq, digits=2)[1]
       
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
