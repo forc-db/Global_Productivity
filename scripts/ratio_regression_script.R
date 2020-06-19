@@ -101,21 +101,22 @@ all.results <- NULL
 all.aictab <- NULL
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
+# fixed.variables <- "lat"
 
-# set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
-# set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
+set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
+set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
 
-set1 <- "ANPP"
-set2 <- "NPP"
+# set1 <- "ANPP"
+# set2 <- "NPP"
 
 
 # set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
 # set2 <- c("GPP", "GPP", "GPP", "GPP", "GPP", "GPP", "GPP")
 
-png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/ratio_grid_plots.png"), width = 1800, height = 3000, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/ratio_grid_plots.png"), width = 2200, height = 3000, units = "px", res = 300)
 
 
-par(mfrow = c(7,4), mar = c(2,2,2,2), oma = c(5,4,5,0))
+par(mfrow = c(5,4), mar = c(2,2,2,2), oma = c(5,4,5,0))
 panel.number <- 1
 for (i in seq(along = set1)){
   # for (j in seq(along = set2)){
@@ -133,9 +134,38 @@ for (i in seq(along = set1)){
       resp1 <- ForC_simplified[ForC_simplified$variable.name %in% responses.to.keep,]
       resp2 <- ForC_simplified[ForC_simplified$variable.name %in% responses.to.keep.2,]
       
+      if(set1[[i]] %in% "ANPP") resp1 <- resp1 %>%
+        mutate_at("variable.name", factor, levels = c("ANPP_0", "ANPP_1", "ANPP_2")) %>%
+        arrange(desc(variable.name)) %>%
+        group_by(site_plot_year) %>%
+        filter(variable.name == variable.name[1]) %>%
+        ungroup()
+
+      if(set2[[i]] %in% "ANPP") resp2 <- resp2 %>%
+        mutate_at("variable.name", factor, levels = c("ANPP_0", "ANPP_1", "ANPP_2")) %>%
+        arrange(desc(variable.name)) %>%
+        group_by(site_plot_year) %>%
+        filter(variable.name == variable.name[1]) %>%
+        ungroup()
+
+      if(set1[[i]] %in% "NPP") resp1 <- resp1 %>%
+        mutate_at("variable.name", factor, levels = c("NPP_0", "NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5")) %>%
+        arrange(desc(variable.name)) %>%
+        group_by(site_plot_year) %>%
+        filter(variable.name == variable.name[1]) %>%
+        ungroup()
+
+      if(set2[[i]] %in% "NPP") resp2 <- resp2 %>%
+        mutate_at("variable.name", factor, levels = c("NPP_0", "NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5")) %>%
+        arrange(desc(variable.name)) %>%
+        group_by(site_plot_year) %>%
+        filter(variable.name == variable.name[1]) %>%
+        ungroup()
+      
       df <- merge(resp1, resp2[, c("variable.name", "date", "mean", "citation.ID", "site_plot")], by= c("site_plot", "citation.ID", "date"))
       
       df$ratio <- df$mean.x/df$mean.y
+      print(length(df$ratio))
       
       df$masl <- df$masl/1000
       
@@ -249,5 +279,5 @@ for (i in seq(along = set1)){
 }#}}
 
 mtext(side = 2, line = 2.5, text = "Ratio", outer = T)
-legend(x = -100, y = 15.5, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
+legend(x = -30, y = 9, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
 dev.off()
