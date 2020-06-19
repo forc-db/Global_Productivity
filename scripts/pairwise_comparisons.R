@@ -115,7 +115,9 @@ all.results <- NULL
 all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
-fixed.variables <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+# fixed.variables <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+fixed.variables <- c("lat", "mat", "TempSeasonality")
+
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 response.variables.groups <- list(c("GPP", "NPP"),
@@ -132,7 +134,7 @@ number = 1
 
 
   for (age in ages){
-    all.comparisons <- data.frame(matrix(ncol = 0, nrow = 7))
+    all.comparisons <- NULL
     for (response.variables.group in response.variables.groups){
       
       
@@ -152,7 +154,7 @@ number = 1
       names(df)[60] <- paste(response.variables.group[2])
       fixed.comparison <- NULL
 
-      fixed.comparisons <- setNames(data.frame(matrix(ncol = 7, nrow = 1)), c("Climate variable", paste("Rsq", respv1), paste("Rsq", respv2), paste("Model type", respv1), paste("Model type", respv2), "Number of plots", "Variable with higher Rsq"))
+      fixed.comparisons <- setNames(data.frame(matrix(ncol = 9, nrow = 1)), c("C flux variable 1", "C flux variable 2", "Climate variable", "Rsq variable 1", "Rsq variable 2", "Model type variable 1", "Model type variable 2", "Number of plots", "Variable with higher Rsq"))
       
       
       for(fixed.v in fixed.variables){
@@ -188,7 +190,7 @@ number = 1
         par(mfrow = c(1,2), mar = c(2,2,2,2), oma = c(5,4,5,0))
         
         save.output <- setNames(data.frame(matrix(ncol = 2, nrow = 1)), c(paste(response.variables.group[1]), paste(response.variables.group[2])))
-        rep <- 2
+        rep <- 1
         
         for (response.v in response.variables.group){
           
@@ -299,9 +301,10 @@ number = 1
           Rsq <- signif(Rsq, digits=2)[1]
           
           results <- data.frame(response = respv, fixed = fixed.v, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
-          fixed.comparisons[1] <- xaxis
-          fixed.comparisons[rep] <- Rsq
-          fixed.comparisons[rep + 2] <- model
+          fixed.comparisons[3] <- xaxis
+          fixed.comparisons[rep] <- respv
+          fixed.comparisons[rep + 3] <- Rsq
+          fixed.comparisons[rep + 5] <- model
           rep <- rep + 1
           
           all.results <- rbind(all.results, results)
@@ -321,12 +324,12 @@ number = 1
         dev.off()
         
         number <- number + 1
-        fixed.comparisons[7] <- ifelse(fixed.comparisons[2] > fixed.comparisons[3], paste(respv1), paste(respv2))
-        fixed.comparisons[6] <- length(df$mean)
+        fixed.comparisons[9] <- ifelse(fixed.comparisons[4] > fixed.comparisons[5], paste(respv1), paste(respv2))
+        fixed.comparisons[8] <- length(df$mean)
         
 
         fixed.comparison <- rbind(fixed.comparison, fixed.comparisons)
-        write.csv(fixed.comparison,  file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/pairwise_comparisons/",response.variables.group[1], "_", response.variables.group[2], ".csv"), row.names = F)
+        # write.csv(fixed.comparison,  file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/pairwise_comparisons/",response.variables.group[1], "_", response.variables.group[2], ".csv"), row.names = F)
         
         ##mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
         # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
@@ -336,7 +339,7 @@ number = 1
         
       }
       
-    all.comparisons <- cbind(all.comparisons, fixed.comparison)  
+    all.comparisons <- rbind(all.comparisons, fixed.comparison)  
       
     }}
 
