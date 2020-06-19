@@ -44,6 +44,7 @@ ForC_simplified[grepl("NEE", ForC_simplified$variable.name,ignore.case = F),]$me
 ForC_simplified$lat <- abs(ForC_simplified$lat)
 
 ForC_simplified$site_plot <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name)
+ForC_simplified$site_plot_year <- paste0(ForC_simplified$sites.sitename," ", ForC_simplified$plot.name, " ", ForC_simplified$stand.age)
 
 
 # Control for some factors ####
@@ -84,6 +85,9 @@ ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% everg
 ### exclude Tura due to extreme high latitude
 ForC_simplified <- ForC_simplified[!(ForC_simplified$sites.sitename %in% "Tura"),]
 
+ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
+ForC_simplified <- ForC_simplified[ages.to.keep, ]
+
 # Prepare some variables ####
 
 ## response variable list (fluxes) ####
@@ -98,8 +102,11 @@ all.aictab <- NULL
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
-set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
+# set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
+# set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
+
+set1 <- "ANPP"
+set2 <- "NPP"
 
 
 # set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP_woody_stem", "BNPP_root", "BNPP_root_fine", "R_auto")
@@ -147,9 +154,8 @@ for (i in seq(along = set1)){
         print(fixed.v)
         
         fixed.no.na <- !is.na(df[, fixed.v]) & !is.na(df[, "masl"])
-        ages.to.keep <- df$stand.age >= 100 & !is.na(df$stand.age)
         
-        df <- df[fixed.no.na & ages.to.keep, ]
+        df <- df[fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
         
