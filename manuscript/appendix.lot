@@ -1,4 +1,4 @@
 \contentsline {table}{\numberline {1}{\ignorespaces Table S1. Climate variable definitions, sources, and abbreviations\relax }}{2}{table.caption.3}% 
-\contentsline {table}{\numberline {2}{\ignorespaces Table S2. Model details and R2 values for all climate variables tested\relax }}{3}{table.caption.4}% 
-\contentsline {table}{\numberline {3}{\ignorespaces Table S3. Results of analysis of interactions effects between MAT and MAP, for all FACF\relax }}{4}{table.caption.6}% 
-\contentsline {table}{\numberline {4}{\ignorespaces Table S4. Comparison of growing season length and mean annual temperature as predictors of FACF\relax }}{5}{table.caption.7}% 
+\contentsline {table}{\numberline {2}{\ignorespaces Table S2. Model form, delta AIC, and R2 for each climate variables as a single fixed effect in models for each C flux. Model forms include first-order linear (Lin), second-order polynomial (Poly), and logarithmic (Log).\relax }}{3}{table.caption.4}% 
+\contentsline {table}{\numberline {3}{\ignorespaces Table S3. Joint effects of MAT and MAP on forest C fluxes\relax }}{4}{table.caption.6}% 
+\contentsline {table}{\numberline {4}{\ignorespaces Table S4. Comparison of growing season length and MAT as predictors of forest C fluxes\relax }}{5}{table.caption.7}% 
