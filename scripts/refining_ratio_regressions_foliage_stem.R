@@ -96,43 +96,28 @@ all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 all.results <- NULL
 all.aictab <- NULL
 
-ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0","ANPP_1", "ANPP_2", "ANPP_0", "BNPP_root"),]
+ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_1", "ANPP_woody_stem", "ANPP_foliage"),]
 
-ANPP <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_1", "ANPP_2", "ANPP_0"),]
-ANPP <- ANPP %>%
-  mutate_at("variable.name", factor, levels = c("ANPP_0", "ANPP_1", "ANPP_2")) %>%
-  arrange(desc(variable.name)) %>%
-  group_by(site_plot_year_cite) %>%
-  filter(variable.name == variable.name[1]) %>%
-  ungroup()
+ANPP <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_1"),]
 
-NPP <- ForC_simplified[ForC_simplified$variable.name %in% c("NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5", "NPP_0"),]
-NPP <- NPP %>%
-  mutate_at("variable.name", factor, levels = c("NPP_0", "NPP_1", "NPP_2", "NPP_3", "NPP_4", "NPP_5")) %>%
-  arrange(desc(variable.name)) %>%
-  group_by(site_plot_year_cite) %>%
-  filter(variable.name == variable.name[1]) %>%
-  ungroup()
+ANPP_stem <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_woody_stem"),]
 
-BNPP <- ForC_simplified[ForC_simplified$variable.name %in% c("BNPP_root"),]
+ANPP_foliage <- ForC_simplified[ForC_simplified$variable.name %in% c("ANPP_foliage"),]
 
-merge1 <- merge(NPP[, c("plot.name", "variable.name", "mean", "site_plot_year_cite", "lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")], ANPP[, c("plot.name", "variable.name", "mean", "site_plot_year_cite", "lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")], by= c("plot.name", "site_plot_year_cite"), all.x = TRUE, all.y = TRUE)
-merge2 <- merge(merge1, BNPP[, c("variable.name", "mean", "site_plot_year_cite")], by= c("site_plot_year_cite"), all = TRUE)
+merge1 <- merge(ANPP[, c("plot.name", "variable.name", "mean", "site_plot_year_cite", "lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")], ANPP_stem[, c("plot.name", "variable.name", "mean", "site_plot_year_cite", "lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")], by= c("plot.name", "site_plot_year_cite"), all.x = TRUE, all.y = TRUE)
+merge2 <- merge(merge1, ANPP_foliage[, c("variable.name", "mean", "site_plot_year_cite")], by= c("site_plot_year_cite"), all = TRUE)
 
-names(merge2)[c(3:4, 11:12, 19:20)] <- c("NPP", "NPP_mean", "ANPP", "ANPP_mean", "BNPP", "BNPP_mean")
+names(merge2)[c(3:4, 11:12, 19:20)] <- c("ANPP", "ANPP_mean", "stem", "stem_mean", "foliage", "foliage_mean")
 
-merge2$BNPP_mean[is.na(merge2$BNPP_mean)] <- (merge2$NPP_mean - merge2$ANPP_mean)[is.na(merge2$BNPP_mean)]
-merge2$ANPP_mean[is.na(merge2$ANPP_mean)] <- (merge2$NPP_mean - merge2$BNPP_mean)[is.na(merge2$ANPP_mean)]
-merge2$NPP_mean[is.na(merge2$NPP_mean)] <- (merge2$ANPP_mean + merge2$BNPP_mean)[is.na(merge2$NPP_mean)]
+merge2$stem_mean[is.na(merge2$stem_mean)] <- (merge2$ANPP_mean - merge2$foliage_mean)[is.na(merge2$stem_mean)]
+merge2$foliage_mean[is.na(merge2$foliage_mean)] <- (merge2$ANPP_mean - merge2$stem_mean)[is.na(merge2$foliage_mean)]
+merge2$ANPP_mean[is.na(merge2$ANPP_mean)] <- (merge2$foliage_mean + merge2$stem_mean)[is.na(merge2$ANPP_mean)]
 
-final_sheet <- merge2[!is.na(merge2$ANPP_mean) & !is.na(merge2$BNPP_mean) & !is.na(merge2$NPP_mean),]
+final_sheet <- merge2[!is.na(merge2$ANPP_mean) & !is.na(merge2$foliage_mean) & !is.na(merge2$stem_mean),]
 
-final_sheet$ANPP <- as.character(final_sheet$ANPP)
-final_sheet$NPP <- as.character(final_sheet$NPP)
-
-final_sheet$BNPP[is.na(final_sheet$BNPP)] <- "BNPP_derived"
 final_sheet$ANPP[is.na(final_sheet$ANPP)] <- "ANPP_derived"
-final_sheet$NPP[is.na(final_sheet$NPP)] <- "NPP_derived"
+final_sheet$stem[is.na(final_sheet$stem)] <- "stem_derived"
+final_sheet$foliage[is.na(final_sheet$foliage)] <- "foliage_derived"
 
 final_sheet$lat.x[is.na(final_sheet$lat.x)] <- (final_sheet$lat.y)[is.na(final_sheet$lat.x)]
 final_sheet$mat.x[is.na(final_sheet$mat.x)] <- (final_sheet$mat.y)[is.na(final_sheet$mat.x)]
@@ -146,9 +131,11 @@ final_sheet$masl.x[is.na(final_sheet$masl.x)] <- (final_sheet$masl.y)[is.na(fina
 final_sheet <- final_sheet[-(13:18)]
 names(final_sheet)[5:10] <- c("lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")
 
-final_sheet$ratio <- log(final_sheet$ANPP_mean/final_sheet$BNPP_mean)
+final_sheet$ratio <- log(final_sheet$stem_mean/final_sheet$foliage_mean)
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
+
+png(file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/log ratios/foliage_stem.png", width = 3000, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(5,4,5,0))
 
@@ -158,54 +145,56 @@ for(fixed.v in fixed.variables){
   xaxis_simple <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
   xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
   
-final_sheet$fixed <- final_sheet[, fixed.v]
-
-mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-
-best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
-
-if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-
-significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
-significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-sample.size <- length(final_sheet$ratio)
-
-if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
-
-newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
-newDat$fit <- predict(mod.full, newDat, re.form = NA)
-
-ylim <- range(final_sheet$ratio)
-ylim[1] <- ylim[1] - 0.25
-ylim[2] <- ylim[2] + 0.25
-
-
-plot(ratio ~ fixed, data = final_sheet, xlab = xaxis, ylab = "", ylim = ylim)
-
-
-for(masl in unique(newDat$masl)){
-  k <- which(unique(newDat$masl) %in% masl)
-  lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
-
-mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
-
-r <- round(fixef(mod.linear), 5)
-
-significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-significance <- signif(significance, digits=4)
-
-Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-Rsq <- signif(Rsq, digits=2)[1]
-
-if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-
-mtext(text = eval(parse(text = xaxis)), side = 1, line = 2, cex = 0.6)
-
-# if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
-# panel.number <- panel.number + 1
-
+  final_sheet$fixed <- final_sheet[, fixed.v]
+  
+  mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  
+  best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+  
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  
+  significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+  significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+  sample.size <- length(final_sheet$ratio)
+  
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  
+  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
+  newDat$fit <- predict(mod.full, newDat, re.form = NA)
+  
+  ylim <- range(final_sheet$ratio)
+  ylim[1] <- ylim[1] - 0.25
+  ylim[2] <- ylim[2] + 0.25
+  
+  
+  plot(ratio ~ fixed, data = final_sheet, xlab = xaxis, ylab = "", ylim = ylim)
+  
+  
+  for(masl in unique(newDat$masl)){
+    k <- which(unique(newDat$masl) %in% masl)
+    lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
+  
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  
+  r <- round(fixef(mod.linear), 5)
+  
+  significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+  significance <- signif(significance, digits=4)
+  
+  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+  Rsq <- signif(Rsq, digits=2)[1]
+  
+  if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
+  
+  mtext(text = eval(parse(text = xaxis)), side = 1, line = 2, cex = 0.6)
+  
+  # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+  # panel.number <- panel.number + 1
+  
 }
 
-mtext(text = "Log(ANPP:BNPP)", side = 2, outer = T, line = 1)
+mtext(text = "Log(ANPP stem/ANPP foliage)", side = 2, outer = T, line = 1)
+
+dev.off()
