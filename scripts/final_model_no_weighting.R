@@ -115,7 +115,7 @@ all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
 
-fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "TempSeasonality", "PreSeasonality", "length_growing_season")
+fixed.variables <- c("mat", "map", "lat", "TempSeasonality", "TempRangeAnnual", "AnnualFrostDays", "AnnualWetDays", "Aridity", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "PreSeasonality", "MaxVPD", "WaterStressMonths", "length_growing_season", "CloudCover")
 
 
 response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
@@ -177,6 +177,11 @@ for(response.variables in response.variables.groups){
         
         if(fixed.v == "AnnualPET") df <- df[df$fixed != 0,]
         if(fixed.v == "mat") df$fixed <- df$fixed + 11
+        if(fixed.v == "AnnualFrostDays") df$fixed <- df$fixed + 0.1
+        if(fixed.v == "WaterStressMonths") df$fixed <- df$fixed + 0.1
+        if(fixed.v == "lat") df$fixed <- df$fixed + 0.1
+        if(fixed.v == "AnnualWetDays") df$fixed <- df$fixed + 0.1
+        if(fixed.v == "VapourPressure") df$fixed <- df$fixed + 0.1
         # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
@@ -218,7 +223,7 @@ for(response.variables in response.variables.groups){
         if (best.model == "mod.clim.log") mod.full <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
         
         delta.aic <- as.numeric(aictab(list(mod = mod, mod.full = mod.full))$Delta_AICc[2])
-        delta.aic <- signif(delta.aic, digits=4)
+        delta.aic <- round(delta.aic, digits=1)
 
         significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
         significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
@@ -277,7 +282,7 @@ for(response.variables in response.variables.groups){
         significance <- signif(significance, digits=4)
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)
+        Rsq <- round(Rsq, digits =2)
         legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
@@ -514,10 +519,10 @@ for (age in ages){
   if(type == "seasonality") png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/grid_plots_", type, number, ".png"), width = 2000, height = 3000, units = "px", res = 300)
   
   
-  if(number == 1) par(mfcol = c(5,5), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 2) par(mfcol = c(4,5), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 3) par(mfcol = c(5,3), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
-  if(number == 4) par(mfcol = c(4,3), mar = c(2.5,3,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 1) par(mfcol = c(5,5), mar = c(2,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 2) par(mfcol = c(4,5), mar = c(2,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 3) par(mfcol = c(5,3), mar = c(2,2,2,2), oma = c(2,8,0,0), xpd = T)
+  if(number == 4) par(mfcol = c(4,3), mar = c(2,2,2,2), oma = c(2,8,0,0), xpd = T)
   number = number + 1
   pannel.nb <- 1
   
@@ -642,6 +647,9 @@ for (age in ages){
       ylim[1] <- ylim[1] - 2
       ylim[2] <- ylim[2] + 2
       
+      if(fixed.v == "mat") df$fixed <- df$fixed - 11
+      if(fixed.v == "mat") newDat$fixed <- newDat$fixed - 11
+      
       plot(mean ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10, alpha = 0.4)[col], ylim = ylim, pch = sym)
       
       lines(fit ~ fixed, data = newDat, col = plasma(10)[col], lty = ifelse(significant.effect, 1, 2))
@@ -656,7 +664,7 @@ for (age in ages){
       significance <- signif(significance, digits=2)
       
       Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-      Rsq <- signif(Rsq, digits=2)[1]
+      Rsq <- round(Rsq, digits=2)[1]
       
       results <- data.frame(response = response.v, fixed = fixed.v, random = "geographic.area/plot.name", Age.filter = age, significant = significant.effect, p.value = significance, sample.size = sample.size, Rsq = Rsq)
       
@@ -667,7 +675,7 @@ for (age in ages){
       if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
       
       # if(fixed.v == "mat" & response.v == "GPP")legend(x = -15, y = 5, legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = NA, text.col = plasma(10)[c(1, 3, 5, 8)], xjust = 1, cex = 0.75, inset = c(-0.4, 0), title = "Flux variables", title.col = "black")
-      if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6)
+      if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6)
     }
     
     
