@@ -1,10 +1,10 @@
-Carbon flux,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared
-GPP,Linear,0.6387,Linear,0.6094,Linear,0.1764,Polynomial,0.7076,-,-,Polynomial,0.6879,Linear,0.1554,-,-
-NPP,Linear,0.5108,Linear,0.4171,Polynomial,0.2138,Polynomial,0.4905,-,-,Polynomial,0.4798,Polynomial,0.1634,Linear,0.03795
-ANPP,Linear,0.4351,Linear,0.4444,Polynomial,0.1625,Polynomial,0.4126,-,-,Polynomial,0.374,Linear,0.1061,Linear,0.04851
-ANPP woody stem,Linear,0.1773,Linear,0.2396,-,-,Linear,0.1416,Polynomial,0.0538,Linear,0.1157,Linear,0.05048,Linear,0.06607
-ANPP foliage,Linear,0.4999,Linear,0.5826,Polynomial,0.2509,Linear,0.4823,-,-,Linear,0.5033,Linear,0.172,Linear,0.1084
-BNPP root,Linear,0.3373,Linear,0.2833,Polynomial,0.1452,Linear,0.33,-,-,Polynomial,0.3185,Polynomial,0.2886,-,-
-BNPP fine root,Linear,0.1704,Linear,0.1477,Linear,0.08935,Linear,0.1721,-,-,Linear,0.179,Linear,0.1393,-,-
-Autotrophic respiration,Linear,0.6534,Linear,0.5909,Polynomial,0.604,Linear,0.4873,-,-,Linear,0.49,Linear,0.26,Polynomial,0.4804
-Root respiration,Linear,0.2612,Linear,0.2418,Linear,0.1493,Linear,0.151,-,-,Polynomial,0.2371,-,-,Linear,0.1567
+Carbon Flux,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC
+GPP,Lin,0.64,54.9,Lin,0.61,52.5,Lin,0.18,33.3,Poly,0.71,69.5,-,-,-,Poly,0.69,63,Log,0.16,8.9,-,-,-
+NPP,Log,0.5,44.3,Lin,0.42,41.5,Poly,0.21,16.7,Log,0.52,44.3,-,-,-,Log,0.49,42.3,Poly,0.16,12.5,Lin,0.04,2.8
+ANPP,Lin,0.44,63.4,Lin,0.44,80.5,Poly,0.16,19.7,Log,0.41,58.7,-,-,-,Log,0.37,51.9,Lin,0.11,12.3,Lin,0.05,2.1
+ANPP stem,Lin,0.18,22.2,Lin,0.24,38.5,Log,0.05,7.3,Lin,0.14,17.6,Poly,0.05,5,Lin,0.12,13.6,Log,0.06,6.8,Lin,0.07,4
+ANPP foliage,Lin,0.5,37.7,Lin,0.58,52.9,Poly,0.25,13.3,Lin,0.48,34.1,-,-,-,Lin,0.5,36.1,Log,0.17,10.1,Lin,0.11,6.8
+BNPP root,Lin,0.34,22.9,Log,0.31,21,Poly,0.15,6.2,Log,0.36,26.6,-,-,-,Log,0.33,23.6,Poly,0.29,18.8,-,-,-
+BNPP fine root,Lin,0.17,8,Lin,0.15,7.2,Log,0.11,5.4,Lin,0.17,8.4,-,-,-,Log,0.19,10.9,Log,0.14,7.2,Log,0.06,2.4
+Autotrophic respiration,Lin,0.65,13.1,Lin,0.59,10.9,Poly,0.6,8.6,Log,0.65,13.1,-,-,-,Log,0.6,11.5,Log,0.27,2.4,Poly,0.48,3.7
+Root respiration,Log,0.22,8.8,Lin,0.24,8.3,Lin,0.15,6.8,Log,0.24,9.5,-,-,-,Log,0.22,8.8,-,-,-,Lin,0.16,7.3
