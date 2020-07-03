@@ -1,0 +1,10 @@
+Carbon flux,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared,Model,R-squared
+GPP,-,-,Linear,0.5498,Linear,0.11,Polynomial,0.3602,Polynomial,0.3076,-,-,-,-,Linear,0.5312
+NPP,Linear,0.0634,Linear,0.4036,Linear,0.1118,Polynomial,0.3165,Polynomial,0.178,-,-,Linear,0.03561,Linear,0.3782
+ANPP,Polynomial,0.0906,Linear,0.3668,Linear,0.1732,Polynomial,0.2672,Polynomial,0.2294,Polynomial,0.0632,Polynomial,0.06269,Linear,0.3425
+ANPP woody stem,Polynomial,0.0904,Linear,0.138,-,-,Polynomial,0.2024,Polynomial,0.2146,Linear,0.07403,-,-,Linear,0.1041
+ANPP foliage,-,-,Linear,0.5306,Linear,0.1469,Linear,0.3076,Polynomial,0.3751,Polynomial,0.07489,Polynomial,0.1724,Linear,0.4552
+BNPP root,-,-,Linear,0.2799,Polynomial,0.1113,Polynomial,0.3601,Polynomial,0.2584,-,-,-,-,Linear,0.255
+BNPP fine root,-,-,Linear,0.1631,Linear,0.08161,Linear,0.1376,-,-,-,-,-,-,Linear,0.1335
+Autotrophic respiration,-,-,Linear,0.5502,Linear,0.226,Linear,0.3298,Linear,0.2807,-,-,Linear,0.2613,Linear,0.4664
+Root respiration,Linear,0.1578,Linear,0.1647,Linear,0.1698,Polynomial,0.1905,Polynomial,0.272,-,-,Linear,0.1388,Linear,0.1889
