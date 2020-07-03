@@ -172,6 +172,9 @@ for (response.v in response.variables){
     mod <- lmer(mean ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
     
     significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+    
+    p.add <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+    p.add <- signif(p.add, digits = 2)
 
     significant.effect.of.additive <- drop1(mod.full)$AIC[3] > drop1(mod.full)$AIC[1]
     dAIC <- drop1(mod.full)$AIC[3] - drop1(mod.full)$AIC[1]
