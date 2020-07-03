@@ -587,6 +587,8 @@ for(response.variables in response.variables.groups){
   
 }
 
+#############################################################################################################
+#############################################################################################################
 ###################### gridded plots of climate with growing season
 
 # Clean environment ####
@@ -698,8 +700,8 @@ for (response.variables.group in response.variables.groups){
 
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/gridded_growing_season", number, ".png"), width = 2500, height = 3000, units = "px", res = 300)
 
-if(number == 1) par(mfcol = c(5,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
-if(number == 2) par(mfcol = c(4,4), mar = c(2.5,2,2,2.5), oma = c(8,8,0,2), xpd = T)
+if(number == 1) par(mfcol = c(5,4), mar = c(2,1.5,2,2), oma = c(8,8,0,2), xpd = T)
+if(number == 2) par(mfcol = c(4,4), mar = c(2,1.5,2,2), oma = c(8,8,0,2), xpd = T)
   
 number <- number + 1
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
@@ -710,7 +712,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
       
       fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
-      xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
+      xaxis <- fixed.v.info$xaxis_GS[which(fixed.v.info$fixed.v %in% fixed.v)]
       
       ###subset ForC
     
@@ -718,6 +720,10 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
       first.plot <- TRUE
         
       for (response.v in response.variables.group){
+        
+        resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+        
+        respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
         
         col.sym <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/colsym.csv", stringsAsFactors = F)
         
@@ -783,7 +789,7 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         significance <- signif(significance, digits=4)
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)[1]
+        Rsq <- round(Rsq, digits=2)[1]
         ##legend2 <- paste(response.v, "r-squared = ", Rsq[1], "p-value = ", significance)
         ##mtext(side = 3, line = -which(response.variables %in% response.v), text = legend2, adj = 0.9, col = plasma(10)[col], cex = 0.5)
         
@@ -793,9 +799,9 @@ ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.
         altitude = FALSE
         
         if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.7)
-        if(fixed.v == "pet")mtext(paste0(response.v), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
+        if(fixed.v == "pet")mtext(paste0(respv), side = 3, line = 0.5, adj = 0.05, cex = 0.6)
         panel.number <- panel.number +1 
-        if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = xaxis, cex = 0.6, padj = 0.5, adj = 0.5)
+        if(response.v %in% c("ANPP_foliage", "R_auto_root")) mtext(side = 1, line = 2.5, text = eval(parse(text = xaxis)), cex = 0.6, padj = 0.5, adj = 0.5)
         
         y_outer <- "expression(paste('Monthly mean carbon flux during growing season (Mg C ha'^{-1}, 'yr'^{-1}, ')'))"
         
