@@ -1,21 +1,21 @@
-fixed.v,xaxis,xaxis_simple,xaxis_GS
-mat,"expression(paste('Mean annual temperature (', degree, 'C)'))",MAT,gsT
-map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))",MAP,gsP
-lat,expression(paste('Latitude')),Latitude,
-AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))",MAT,
-TempSeasonality,"expression(paste('Temperature seasonality (', degree, 'C)')) ",T Seas,
-TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))",TRA,
-AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))",MAP,
-AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))",AFD,
-AnnualWetDays,"expression(paste('Annual wet days (days yr'^{-1}, ')'))",AWD,
-VapourPressure,expression(paste('Vapour pressure (kPa)')),VP,
-Aridity,expression(paste('Aridity index')),AI,
-PotentialEvapotranspiration,"expression(paste('Potential evapotranspiration (mm yr'^{-1}, ')'))",PET,gsPET
-VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)')),VPD,
-SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))",Solar R,gsR
-PreSeasonality,"expression(paste('Precipitation seasonality (mm yr'^{-1}, ')'))",P Seas,
-length_growing_season,expression(paste('Length of growing season (months)')),LGS,
-pet,"expression(paste('Mean monthly PET (mm month'^{-1}, ')'))",PET,"expression(paste('gsPET (mm month'^{-1}, ')'))"
-pre,"expression(paste('Mean monthly precipitation (mm month'^{-1}, ')'))",MAP,"expression(paste('gsP (mm month'^{-1}, ')'))"
-tmp,"expression(paste('Mean temperature (', degree, 'C)'))",MAT,"expression(paste('gsT (', degree, 'C)'))"
-solarradiationmonthly,"expression(paste('Mean monthly solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))",Solar R Monthly,"expression(paste('gsR (kJ m'^{-2}, 'month'^{-1}, ')'))"
+fixed.v,xaxis,xaxis_simple,xaxis_GS,abbrev
+mat,"expression(paste('Mean annual temperature (', degree, 'C)'))","expression(paste('MAT (', degree, 'C)'))",gsT,MAT
+map,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))","expression(paste('MAP (mm yr'^{-1}, ')'))",gsP,MAP
+lat,expression(paste('Latitude')),expression(paste('Latitude')),,Latitude
+AnnualMeanTemp,"expression(paste('Mean annual temperature (', degree, 'C)'))","expression(paste('MAT (', degree, 'C)'))",,MAT
+TempSeasonality,"expression(paste('Temperature seasonality (', degree, 'C)')) ","expression(paste('T Seas (', degree, 'C)')) ",,T Seas
+TempRangeAnnual,"expression(paste('Annual temperature range (', degree, 'C)'))","expression(paste('TRA (', degree, 'C)'))",,TRA
+AnnualPre,"expression(paste('Mean annual precipitation (mm yr'^{-1}, ')'))","expression(paste('MAP (mm yr'^{-1}, ')'))",,MAP
+AnnualFrostDays,"expression(paste('Annual frost days (days yr'^{-1}, ')'))","expression(paste('AFD (days yr'^{-1}, ')'))",,AFD
+AnnualWetDays,"expression(paste('Annual wet days (days yr'^{-1}, ')'))","expression(paste('AWD (days yr'^{-1}, ')'))",,AWD
+VapourPressure,expression(paste('Vapour pressure (kPa)')),expression(paste('VP (kPa)')),,VP
+Aridity,expression(paste('Aridity index')),expression(paste('AI')),,AI
+PotentialEvapotranspiration,"expression(paste('Potential evapotranspiration (mm yr'^{-1}, ')'))","expression(paste('PET (mm yr'^{-1}, ')'))",gsPET,PET
+VapourPressureDeficit,expression(paste('Vapour pressure deficit (kPa)')),expression(paste('VPD (kPa)')),,VPD
+SolarRadiation,"expression(paste('Solar radiation (kJ m'^{-2}, 'yr'^{-1}, ')'))","expression(paste('Solar R (kJ m'^{-2}, 'yr'^{-1}, ')'))",gsR,Solar R
+PreSeasonality,"expression(paste('Precipitation seasonality (mm yr'^{-1}, ')'))","expression(paste('P Seas (mm yr'^{-1}, ')'))",,P Seas
+length_growing_season,expression(paste('Length of growing season (months)')),expression(paste('LGS (months)')),,LGS
+pet,"expression(paste('Mean monthly PET (mm month'^{-1}, ')'))","expression(paste('Mean monthly PET (mm month'^{-1}, ')'))","expression(paste('gsPET (mm month'^{-1}, ')'))",PET
+pre,"expression(paste('Mean monthly precipitation (mm month'^{-1}, ')'))","expression(paste('Mean monthly precipitation (mm month'^{-1}, ')'))","expression(paste('gsP (mm month'^{-1}, ')'))",MAP
+tmp,"expression(paste('Mean temperature (', degree, 'C)'))","expression(paste('Mean temperature (', degree, 'C)'))","expression(paste('gsT (', degree, 'C)'))",MAT
+solarradiationmonthly,"expression(paste('Mean monthly solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))","expression(paste('Mean monthly solar radiation (kJ m'^{-2}, 'month'^{-1}, ')'))","expression(paste('gsR (kJ m'^{-2}, 'month'^{-1}, ')'))",Solar R Monthly
