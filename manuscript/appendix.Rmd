@@ -34,9 +34,9 @@ options(knitr.table.format = "latex")
 
 
 ```{r setup, include = FALSE}
-# knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
 # knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
- knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+ # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 \listoftables
@@ -72,7 +72,7 @@ library(kableExtra)
 S3 <- read.csv("tables_figures/r2_table1.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model form, delta AIC, and R2 for each climate variables as a single fixed effect in models for each C flux. Model forms include first-order linear (Lin), second-order polynomial (Poly), and logarithmic (Log).") %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
-  add_header_above(c(" ", "Latitude"=2, "MAT"=2, "MAP"=2, "T Seas"=2, "P Seas"=2, "ATR"=2, "Solar R"=2, "AI"=2))
+  add_header_above(c(" ", "Latitude"=3, "MAT"=3, "MAP"=3, "T Seas"=3, "P Seas"=3, "ATR"=3, "Solar R"=3, "AI"=3))
 ```
 
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
@@ -81,7 +81,7 @@ library(kableExtra)
 S4 <- read.csv("tables_figures/r2_table2.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(S4, format = "latex", booktabs = TRUE) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
-  add_header_above(c(" ", "Cloud"=2, "AFD"=2, "AWD"=2, "PET"=2, "VPD"=2, "Max VPD"=2, "WSM"=2, "LGS"=2))
+  add_header_above(c(" ", "Cloud"=3, "AFD"=3, "AWD"=3, "PET"=3, "VPD"=3, "Max VPD"=3, "WSM"=3, "LGS"=3))
 ```
 \elandscape
 
