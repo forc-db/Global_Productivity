@@ -115,13 +115,16 @@ all.results <- NULL
 all.results <- NULL
 all.aictab <- NULL
 all.koeppen <- NULL
+aictab.top <- NULL
 
 fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "TempSeasonality", "PreSeasonality", "length_growing_season", "TempRangeAnnual", "Aridity", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "MaxVPD", "WaterStressMonths")
 
 
-response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-                                  c("ANPP", "ANPP_foliage", "ANPP_woody_stem"),
-                                  c("R_auto", "R_auto_root"))
+# response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+#                                   c("ANPP", "ANPP_foliage", "ANPP_woody_stem"),
+#                                   c("R_auto", "R_auto_root"))
+
+response.variables.groups <- list(c("NPP"))
 
 for(response.variables in response.variables.groups){
   
@@ -249,6 +252,11 @@ for(response.variables in response.variables.groups){
           return(fit1)
         })
        aictab.list <- aictab(all_models, sort = T, modnames = model_list)
+       aictab.best <- aictab.list[aictab.list$Delta_AICc <= 2,]
+       aictab.best <- aictab.best[, c(1,4)]
+       aictab.best$flux <- paste(response.v)
+       aictab.top <- rbind(aictab.top, aictab.best)
+
       write.csv(aictab.list, file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_models_AIC/", response.v, "_AIC.csv"))
       }
       
@@ -261,3 +269,4 @@ for(response.variables in response.variables.groups){
 }
 
 
+write.csv(aictab.top, file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/best_models_AIC/top_aic.csv")
