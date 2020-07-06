@@ -155,20 +155,20 @@ for(fixed.v in fixed.variables){
   final_sheet$fixed <- final_sheet[, fixed.v]
   
   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
   sample.size <- length(final_sheet$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
-  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
+  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
   ylim <- range(final_sheet$ratio)
@@ -179,12 +179,9 @@ for(fixed.v in fixed.variables){
   if(n == 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
   if(n != 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  for(masl in unique(newDat$masl)){
-    k <- which(unique(newDat$masl) %in% masl)
-    lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
-  
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
@@ -266,20 +263,20 @@ for(fixed.v in fixed.variables){
   final_sheet$fixed <- final_sheet[, fixed.v]
   
   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
   sample.size <- length(final_sheet$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
-  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
+  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
   ylim <- range(final_sheet$ratio)
@@ -291,11 +288,9 @@ for(fixed.v in fixed.variables){
   if(n != 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
   
-  for(masl in unique(newDat$masl)){
-    k <- which(unique(newDat$masl) %in% masl)
-    lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
@@ -367,18 +362,18 @@ for(fixed.v in fixed.variables){
   final_sheet$fixed <- final_sheet[, fixed.v]
   
   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
-  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
   sample.size <- length(final_sheet$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
   newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
@@ -392,11 +387,9 @@ for(fixed.v in fixed.variables){
   if(n != 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
   
-  for(masl in unique(newDat$masl)){
-    k <- which(unique(newDat$masl) %in% masl)
-    lines(fit ~ fixed, data = newDat[newDat$masl %in% masl,], lty = ifelse(significant.effect, 1, 2), lwd = k)}
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + masl + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
@@ -407,7 +400,7 @@ for(fixed.v in fixed.variables){
   Rsq <- signif(Rsq, digits=2)[1]
   
   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-  if(fixed.v %in% "lat") mtext("ANPP foliage:ANPP stem", side = 3, line = 0.5, adj = 0, cex = 0.6)
+  if(fixed.v %in% "lat") mtext("ANPP stem:ANPP foliage", side = 3, line = 0.5, adj = 0, cex = 0.6)
   
   
   mtext(text = eval(parse(text = xaxis_simple)), side = 1, line = 2.5, cex = 0.6)
