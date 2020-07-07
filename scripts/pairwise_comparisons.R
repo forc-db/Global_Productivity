@@ -169,7 +169,7 @@ number = 1
         
         fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
         
-        xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% fixed.v)]
+        xaxis <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% fixed.v)]
         
         fixed.no.na <- !is.na(df[, fixed.v]) & !is.na(df[, "masl"])
         if (age %in% "age.greater.than.100") ages.to.keep <- df$stand.age >= 100 & !is.na(df$stand.age)
@@ -251,8 +251,8 @@ number = 1
           if (best.model == "mod.clim.log") mod.full <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = T)
           
           if (best.model == "mod") model <- "Null"
-          if (best.model == "mod.clim") model <- "Linear"
-          if (best.model == "mod.clim.log") model <- "Logarithmic"
+          if (best.model == "mod.clim") model <- "Lin"
+          if (best.model == "mod.clim.log") model <- "Log"
           
           # }
           
@@ -344,3 +344,4 @@ number = 1
     }}
 
 write.csv(all.comparisons,  file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/pairwise_comparisons.csv", row.names = F)
+write.csv(all.comparisons,  file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/tables_figures/pairwise_comparisons.csv", row.names = F)
