@@ -1,22 +1,22 @@
-"C flux variable 1","C flux variable 2","Climate variable","Rsq variable 1","Rsq variable 2","Model type variable 1","Model type variable 2","Number of plots","Variable with higher Rsq"
-"GPP","NPP","Latitude",0.62,0.66,"Lin","Lin",37,"NPP"
-"GPP","NPP","MAT",0.62,0.7,"Log","Lin",37,"NPP"
-"GPP","NPP","T Seas",0.65,0.7,"Log","Log",37,"NPP"
-"NPP","ANPP","Latitude",0.52,0.48,"Log","Log",158,"NPP"
-"NPP","ANPP","MAT",0.3,0.44,"Log","Lin",158,"ANPP"
-"NPP","ANPP","T Seas",0.47,0.43,"Lin","Lin",158,"NPP"
-"NPP","BNPP","Latitude",0.49,0.34,"Log","Lin",116,"NPP"
-"NPP","BNPP","MAT",0.41,0.22,"Log","Log",116,"NPP"
-"NPP","BNPP","T Seas",0.49,0.41,"Log","Log",116,"NPP"
-"ANPP","ANPP foliage","Latitude",0.32,0.45,"Log","Log",96,"ANPP foliage"
-"ANPP","ANPP foliage","MAT",0.36,0.5,"Lin","Lin",96,"ANPP foliage"
-"ANPP","ANPP foliage","T Seas",0.27,0.42,"Lin","Lin",96,"ANPP foliage"
-"ANPP","ANPP stem","Latitude",0.35,0.13,"Lin","Lin",176,"ANPP"
-"ANPP","ANPP stem","MAT",0.42,0.17,"Lin","Lin",176,"ANPP"
-"ANPP","ANPP stem","T Seas",0.29,0.089,"Lin","Lin",176,"ANPP"
-"GPP","R auto","Latitude",0.64,0.34,"Null","Null",11,"GPP"
-"GPP","R auto","MAT",0.69,0.34,"Null","Null",11,"GPP"
-"GPP","R auto","T Seas",0.64,0.32,"Null","Null",11,"GPP"
-"BNPP","R root","Latitude",0.013,0.39,"Null","Null",9,"R root"
-"BNPP","R root","MAT",0.083,0.35,"Null","Null",9,"R root"
-"BNPP","R root","T Seas",0.0093,0.63,"Null","Null",9,"R root"
+C flux variable 1,C flux variable 2,Climate variable,Rsq variable 1,Rsq variable 2,Model type variable 1,Model type variable 2,Number of plots,Variable with higher Rsq
+GPP,NPP,Latitude,0.62,0.66,Lin,Lin,37,NPP
+GPP,NPP,MAT,0.62,0.70,Log,Lin,37,NPP
+GPP,NPP,T Seas,0.65,0.70,Log,Log,37,NPP
+NPP,ANPP,Latitude,0.52,0.48,Log,Log,158,NPP
+NPP,ANPP,MAT,0.30,0.44,Log,Lin,158,ANPP
+NPP,ANPP,T Seas,0.47,0.43,Lin,Lin,158,NPP
+NPP,BNPP,Latitude,0.49,0.34,Log,Lin,116,NPP
+NPP,BNPP,MAT,0.41,0.22,Log,Log,116,NPP
+NPP,BNPP,T Seas,0.49,0.41,Log,Log,116,NPP
+ANPP,ANPP foliage,Latitude,0.32,0.45,Log,Log,96,ANPP foliage
+ANPP,ANPP foliage,MAT,0.36,0.50,Lin,Lin,96,ANPP foliage
+ANPP,ANPP foliage,T Seas,0.27,0.42,Lin,Lin,96,ANPP foliage
+ANPP,ANPP stem,Latitude,0.35,0.13,Lin,Lin,176,ANPP
+ANPP,ANPP stem,MAT,0.42,0.17,Lin,Lin,176,ANPP
+ANPP,ANPP stem,T Seas,0.29,0.09,Lin,Lin,176,ANPP
+GPP,R auto,Latitude,0.64,0.34,Null,Null,11,GPP
+GPP,R auto,MAT,0.69,0.34,Null,Null,11,GPP
+GPP,R auto,T Seas,0.64,0.32,Null,Null,11,GPP
+BNPP,R root,Latitude,0.01,0.39,Null,Null,9,R root
+BNPP,R root,MAT,0.08,0.35,Null,Null,9,R root
+BNPP,R root,T Seas,0.01,0.63,Null,Null,9,R root
