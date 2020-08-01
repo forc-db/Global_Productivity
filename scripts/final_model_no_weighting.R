@@ -474,7 +474,7 @@ for (age in ages){
     mtext(paste0("(", letters[pannel.nb], ")"), side = 3, line = -1.5, adj = 0.05)
     mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), outer = F)
     # mtext(side = 2, line = 3,  text = expression("Mg C"~ha^-1~yr^-1), outer = F) 
-    if(fixed.v == "map")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP_root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
+    if(fixed.v == "map")legend("topright", legend = c("GPP", "NPP", "ANPP", "BNPP root"), col = plasma(10)[c(1, 3, 5, 8)], pch = c(1, 3, 5, 8), xpd = T, text.col = plasma(10)[c(1, 3, 5, 8)], bty = "n", xjust = 1, cex = 0.75)
     
     pannel.nb <- pannel.nb +1
     
