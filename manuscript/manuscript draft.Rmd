@@ -31,8 +31,8 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
-# knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+ knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 ```{r results="asis", include=FALSE}
@@ -94,7 +94,7 @@ email: teixeirak@si.edu
 ###Abstract
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
 However, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
-Here, we draw upon # records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
+Here, we draw upon **#** records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
 We show that, across all flux variables analyzed, C cycling decreases linearly with absolute latitude -- a finding that confirms multiple previous studies but contradicts the idea that net primary productivity ($NPP$) of temperate forests rivals that of tropical forests. 
 C flux variables generally displayed similar trends across latitude and multiple climate variables, with few differences in allocation detectable at this global scale.
 **Climate explained a significant proportion (#-#%) of variation in all C fluxes analyzed**, with temperature variables in general and mean annual temperature (MAT) in particular being the best predictors of C flux on this global scale. 
@@ -102,7 +102,7 @@ The effects of temperature were modified by moisture availability, with C flux r
 FACF declined with temperature seasonality, but growing season length did not improve upon MAT as a predictor.  
 Within the growing season, the influence of climate on C cycling was small but significant for a number of flux variables. 
 These findings clarify how forest C flux varies with latitude and climate on a global scale. 
-As we enter a period of accelerating climatic change, understanding of the fundamental climatic controls on forest C cycling sets a foundation for understanding patterns of change. 
+In a period of accelerating climatic change, understanding of the fundamental climatic controls on forest C cycling sets a foundation for understanding patterns of change. 
 
 \newpage
 ### Introduction
@@ -115,7 +115,7 @@ FACF decrease with latitude, but it remains unclear whether and how the shape of
 
 The latitudinal gradient in FACF, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is primarily driven by climate, which is a significant driver of FACF across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @hursh_sensitivity_2017]. The majority of studies have focused on exploring the relationships of FACF to mean annual temperature (MAT) and mean annual precipitation (MAP), as the most commonly reported site-level climate variables. There is strong evidence that both MAT and MAP show significant positive relationships with FACF [@chu_does_2016]. However, as with latitude, the shape of those relationships is not always clear, and, again, is complicated by the use of different measures of FACF across studies. Various measures of primary productivity {**FACF?**} saturate at high levels of MAP, though the saturation points identified vary from 1500mm [@luyssaert_co_2007] up to 2445mm MAP [@schuur_productivity_2003]. Studies of the influence of MAT on productivity {**FACF?**} are less conclusive. Luyssaert et al. [-@luyssaert_co_2007] examined GPP and NPP and found that, while $GPP$ increases linearly with MAT, NPP saturates at around 10$^\circ$C MAT. In contrast, Larjavaara and Muller-Landau [-@larjavaara_temperature_2012], find that increases in $GPP$ saturate at approximately 25$^\circ$C MAT, while Schuur [-@schuur_productivity_2003] finds that $NPP$ increases linearly with temperature. Taylor et al. [-@taylor_temperature_2017] showed a positive interaction between MAT and MAP in shaping tropical forest productivity, such that high rainfall had a negative effect on productivity in cooler climates, compared to a positive effect in warmer climates. Such complicated dynamics play out with belowground fluxes as well, with typically dominant soil temperature mediated by moisture and carbon supply [@hursh_sensitivity_2017; @xu_contribution_2016].
 
-MAT and MAP are very coarse measures of climate, and so fail to capture much variation in climate on an intra-annual scale, including the effects of factors such as growing season length, number of frost-free days, temperature seasonality, and dry season length. Some studies have suggested that the apparently strong relationship between MAT and FACFs is actually a consequence of the correlation between MAT and growing season length [@kerkhoff_plant_2005; @malhi_productivity_2012; @michaletz_convergence_2014; @michaletz_drivers_2018]. Kerkhoff et al. [-@kerkhoff_plant_2005] and Michaletz et al. [-@michaletz_convergence_2014] find that, within the growing season, there is no significant relationship between net primary productivity (loosely defined) and MAT, suggesting that the influence of temperature may be limited to determining the length of the frost-free growing season.  
+MAT and MAP are very coarse measures of climate, and so fail to capture much variation in climate on an intra-annual scale, including the effects of factors such as growing season length, number of frost-free days, temperature seasonality, and dry season length. Some studies have suggested that the apparently strong relationship between MAT and FACFs is actually a consequence of the correlation between MAT and growing season length [@kerkhoff_plant_2005; @michaletz_convergence_2014; @michaletz_drivers_2018]. Kerkhoff et al. [-@kerkhoff_plant_2005] and Michaletz et al. [-@michaletz_convergence_2014] find that, within the growing season, there is no significant relationship between net primary productivity (loosely defined) and MAT, suggesting that the influence of temperature may be limited to determining the length of the frost-free growing season.  
 
 **the following doesn't fit very well...**  
 In addition, FACF can be influenced by other, often interactive, factors across a range of scales [@cleveland_relationships_2011]. On a local scale, stand age [@litton_carbon_2007; @gillman_latitude_2015], biodiversity [@liang_positive_2016], management [@simova_enigma_2017], and nutrient availability [@aragao_above_2009]. There is evidence that FACFs also respond to variables such as cloud cover [@taylor_temperature_2017], solar radiation [@fyllas_solar_2017], and potential evapotranspiration [@kerkhoff_plant_2005]. 
@@ -136,12 +136,12 @@ hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(
 hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(8))
 kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("Q1. How do FACF vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 5, hline_before = FALSE) %>%
-  pack_rows("Q2. How do FACF vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q3. How are FACF related to other climate variables?", 5, 7, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q4. How does seasonality influence FACF?", 8, 11, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q5. When standardised by growing season length, how do FACF vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes (FACF)" = 9, " ")) %>%
+  pack_rows("Q1. How do C fluxes vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 5, hline_before = FALSE) %>%
+  pack_rows("Q2. How do C fluxes vary with MAT and MAP?", 2, 4, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q3. How are C fluxes related to other climate variables?", 5, 7, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q4. How does seasonality influence C fluxes?", 8, 11, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q5. When standardised by growing season length, how do C fluxes vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes" = 9, " ")) %>%
   #column_spec(2:11, width = "1.8cm") %>%
   kableExtra::landscape() %>%
   kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Piao et al. (2010)", "Huston & Wolverton (2009)"), footnote_as_chunk = TRUE)
