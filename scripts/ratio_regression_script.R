@@ -15,6 +15,7 @@ library(r2glmm)
 library(nlme)
 library(viridis)
 library(AICcmodavg)
+library(dplyr)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
@@ -103,8 +104,8 @@ all.aictab <- NULL
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 # fixed.variables <- "lat"
 
-set1 <- c("NPP", "ANPP", "ANPP_foliage", "ANPP", "BNPP_root")
-set2 <- c("GPP", "BNPP_root", "ANPP_woody_stem", "NPP", "NPP")
+set1 <- c("NPP", "ANPP", "ANPP", "BNPP_root", "ANPP_foliage")
+set2 <- c("GPP", "BNPP_root", "NPP", "NPP", "ANPP_woody_stem")
 
 # set1 <- "ANPP"
 # set2 <- "NPP"
@@ -188,6 +189,7 @@ for (i in seq(along = set1)){
         df <- df[fixed.no.na, ]
         
         df$fixed <- df[, fixed.v]
+        if(fixed.v == "TempSeasonality") df$fixed <- df$fixed/100
         
         ##remove extreme outliers 
         
@@ -262,14 +264,16 @@ for (i in seq(along = set1)){
         significance <- signif(significance, digits=4)
         
         Rsq <- as.data.frame(r.squaredGLMM(mod.full))
-        Rsq <- signif(Rsq, digits=4)[1]
+        Rsq <- signif(Rsq, digits=2)[1]
         # legend2 <- paste("r-squared = ", Rsq[1], "p-value = ", significance)
         # mtext(side = 3, text = legend2, adj = 0.9, cex = 0.5)
         
+        nsites <- as.character(length(unique(df$site_plot)))
+        
         # title (paste("Effect of", fixed.v), outer = T, line = 1)
         if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-        if(fixed.v %in% "lat")mtext(paste(set1_name, ":", set2_name), side = 3, line = 0.5, adj = 0, cex = 0.6)
-        if(set1[[i]] %in% "BNPP_root") mtext(side = 1, line = 3, text = xaxis, cex = 0.75)
+        if(fixed.v %in% "lat")mtext(paste(set1_name, ":", set2_name, ", n = ", nsites), side = 3, line = 0.5, adj = 0, cex = 0.6)
+        if(set1[[i]] %in% "ANPP_foliage") mtext(side = 1, line = 3, text = eval(parse(text = xaxis)), cex = 0.75)
         # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
         panel.number <- panel.number + 1
         
@@ -279,5 +283,5 @@ for (i in seq(along = set1)){
 }#}}
 
 mtext(side = 2, line = 2.5, text = "Ratio", outer = T)
-legend(x = -30, y = 9, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
+legend(x = -27, y = 15.5, lty = c(1,2), legend = c("Significant effect", "No significant effect"), xpd = NA)
 dev.off()

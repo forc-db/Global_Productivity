@@ -182,6 +182,7 @@ for(response.variables in response.variables.groups){
         if(fixed.v == "lat") df$fixed <- df$fixed + 0.1
         if(fixed.v == "AnnualWetDays") df$fixed <- df$fixed + 0.1
         if(fixed.v == "VapourPressure") df$fixed <- df$fixed + 0.1
+        if(fixed.v == "TempSeasonality") df$fixed <- df$fixed/100
         # ylim <- range(ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]$mean)
         
         a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
@@ -375,6 +376,8 @@ for (age in ages){
       # df$masl <- df$masl/1000
       
       df$fixed <- df[, fixed.v]
+      if(fixed.v == "mat") df$fixed <- df$fixed + 11
+      if(fixed.v == "TempSeasonality") df$fixed <- df$fixed/100
       
       a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
       ylim <- range(tapply(a$mean, a$variable.name, scale))
@@ -382,14 +385,14 @@ for (age in ages){
       ylim[2] <- ylim[2] + 0.25
       
       # if(!fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
-        
       mod <-  lmer(scale(mean) ~ 1 + (1|geographic.area/plot.name), data = df, REML = F)
       mod.clim <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       mod.clim.poly <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+      mod.clim.log <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
       
-      aictab <- aictab(list(mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)
+      aictab <- aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly, mod.clim.log = mod.clim.log), sort = T)
       
-      best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly), sort = T)$Modname[1])
+      best.model <- as.character(aictab(list(mod = mod, mod.clim = mod.clim, mod.clim.poly = mod.clim.poly, mod.clim.log = mod.clim.log), sort = T)$Modname[1])
       
       if (best.model == "mod.clim.poly"){ 
         
@@ -408,6 +411,8 @@ for (age in ages){
       if (best.model == "mod") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
       if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = F)
+      if (best.model == "mod.clim.log") mod.full <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = F)
+      
       
       delta.aic <- as.numeric(aictab(list(mod = mod, mod.full = mod.full))$Delta_AICc[2])
       delta.aic <- signif(delta.aic, digits=4)
@@ -418,7 +423,9 @@ for (age in ages){
         
         if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
         if (best.model == "mod.clim.poly") mod.full <- lmer(scale(mean) ~ poly(fixed, 2, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
-      # }
+        if (best.model == "mod.clim.log") mod.full <- lmer(scale(mean) ~ log(fixed) + (1|geographic.area/plot.name), data = df, REML = T)
+        
+        # }
       
       # if(fixed.v %in% c("mat", "lat", "PreSeasonality", "SolarRadiation")){
       #   
@@ -441,8 +448,13 @@ for (age in ages){
       #   
       #   if (best.model == "mod.clim") mod.full <- lmer(scale(mean) ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = df, REML = T)
       # }
+        
+        
       newDat <- expand.grid(fixed = seq(min(df$fixed), max(df$fixed), length.out = 100))
       newDat$fit <- predict(mod.full, newDat, re.form = NA)
+      
+      if(fixed.v == "mat") df$fixed <- df$fixed - 11
+      if(fixed.v == "mat") newDat$fixed <- newDat$fixed - 11
 
       if(first.plot) plot(scale(mean) ~ fixed, data = df, xlab = "", ylab = "", col = plasma(10)[col], ylim = ylim, pch = sym)
       if(!first.plot) points(scale(mean) ~ fixed, data = df, ylab = "", col = plasma(10)[col], pch = sym) 
@@ -568,6 +580,7 @@ for (age in ages){
       
       df$fixed <- df[, fixed.v]
       if(fixed.v == "mat") df$fixed <- df$fixed + 11
+      if(fixed.v == "TempSeasonality") df$fixed <- df$fixed/100
       
       # a <- ForC_simplified[ForC_simplified$variable.name %in% unlist(response.variables),]
       # ylim <- range(tapply(a$mean, a$variable.name, scale))
