@@ -1,28 +1,28 @@
-Fixed effect,AIC value,Delta AICc,Marginal R squared
-MAT,126.43,0.00,0.62
+Fixed effect,AIC value,$\Delta$ AIC,Marginal R$^{2}$
+MAT,126.43,0,0.62
 Growing season length,140.81,14.38,0.54
-None ,178.96,52.54,0.00
-MAT,174.88,0.00,0.52
-Growing season length,191.54,16.65,0.40
-None ,216.17,41.29,0.00
-MAT,249.51,0.00,0.29
-Growing season length,254.21,4.70,0.26
-None ,268.94,19.43,0.00
-MAT,235.96,0.00,0.15
+None ,178.96,52.54,0
+MAT,174.88,0,0.52
+Growing season length,191.54,16.65,0.4
+None ,216.17,41.29,0
+MAT,249.51,0,0.29
+Growing season length,254.21,4.7,0.26
+None ,268.94,19.43,0
+MAT,235.96,0,0.15
 Growing season length,237.29,1.33,0.14
-None ,243.14,7.18,0.00
-MAT,484.88,0.00,0.45
+None ,243.14,7.18,0
+MAT,484.88,0,0.45
 Growing season length,520.96,36.09,0.35
-None ,560.35,75.47,0.00
-MAT,184.54,0.00,0.59
+None ,560.35,75.47,0
+MAT,184.54,0,0.59
 Growing season length,204.93,20.38,0.46
-None ,237.47,52.92,0.00
-MAT,540.19,0.00,0.24
+None ,237.47,52.92,0
+MAT,540.19,0,0.24
 Growing season length,566.37,26.18,0.11
-None ,578.66,38.46,0.00
-MAT,45.26,0.00,0.63
-Growing season length,50.36,5.10,0.50
-None ,56.17,10.91,0.00
-MAT,133.54,0.00,0.25
-Growing season length,135.93,2.39,0.20
-None ,141.79,8.25,0.00
+None ,578.66,38.46,0
+MAT,45.26,0,0.63
+Growing season length,50.36,5.1,0.5
+None ,56.17,10.91,0
+MAT,133.54,0,0.25
+Growing season length,135.93,2.39,0.2
+None ,141.79,8.25,0

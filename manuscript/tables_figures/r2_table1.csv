@@ -1,4 +1,4 @@
-Carbon Flux,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC,Model,R-sq,dAIC
+Carbon Flux,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R$^{2}$,$\Delta$ AIC,Model,R-sq,dAIC
 GPP,Lin,0.64,54.9,Lin,0.61,52.5,Lin,0.18,33.3,Poly,0.71,69.5,-,-,-,Poly,0.69,63,Log,0.16,8.9,-,-,-
 NPP,Log,0.5,44.3,Lin,0.42,41.5,Poly,0.21,16.7,Log,0.52,44.3,-,-,-,Log,0.49,42.3,Poly,0.16,12.5,Lin,0.04,2.8
 ANPP,Lin,0.44,63.4,Lin,0.44,80.5,Poly,0.16,19.7,Log,0.41,58.7,-,-,-,Log,0.37,51.9,Lin,0.11,12.3,Lin,0.05,2.1
