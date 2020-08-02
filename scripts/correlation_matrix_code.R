@@ -57,8 +57,8 @@ for (i in seq(along = variables1)){
   df$var2 <- df[, variables2[[j]]]
   # 
   fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
-  xaxis <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% variables2[[j]])]
-  yaxis <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% variables1[[i]])]
+  xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables2[[j]])]
+  yaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables1[[i]])]
   # 
   if(i!=j) fit <- lm(var1 ~ var2 , data = df)
   if(i!=j) significant.effect <- summary(fit)$coefficients[2,4] < 0.05
@@ -79,8 +79,8 @@ for (i in seq(along = variables1)){
   # # if(panel.number == c(43:49))
   # if (i < j) mtext(text = legend, side = 3, adj = 0.5, line = -5, cex = 1)
   if (i > j) abline(fit, lty = ifelse(significant.effect, 1, 2))
-  if (panel.number %in% c(1, 8, 15, 22, 29, 36, 43)) mtext(side = 2, line = 2.5, text = yaxis, outer = F, cex = 0.75)
-  if (panel.number %in% c(43:49)) mtext(side = 1, line = 2.5,  text = xaxis, outer = F, cex = 0.75)
+  if (panel.number %in% c(1, 8, 15, 22, 29, 36, 43)) mtext(side = 2, line = 2.5, text = eval(parse(text = yaxis)), outer = F, cex = 0.75)
+  if (panel.number %in% c(43:49)) mtext(side = 1, line = 2.5,  text = eval(parse(text = xaxis)), outer = F, cex = 0.75)
   # 
   panel.number <- panel.number +1
   
