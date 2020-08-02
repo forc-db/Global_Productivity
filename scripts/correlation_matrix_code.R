@@ -26,8 +26,8 @@ ForC_simplified$lat <- abs(ForC_simplified$lat)
 ForC_simplified <- ForC_simplified[, c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")]
 
 ##two groups of variables, needs to be identical + in the same order
-variables1 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
-variables2 <- c("lat", "mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "TempSeasonality", "length_growing_season")
+variables1 <- c("lat", "mat", "TempSeasonality", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "length_growing_season")
+variables2 <- c("lat", "mat", "TempSeasonality", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "length_growing_season")
 
 fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
 labels <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v.info)]
@@ -59,8 +59,13 @@ for (i in seq(along = variables1)){
   fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
   xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables2[[j]])]
   yaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables1[[i]])]
+  centre <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% variables2[[j]])]
   # 
   if(i!=j) fit <- lm(var1 ~ var2 , data = df)
+  
+  if(i!=j) pearsons.r <- rcorr(df$var1, df$var2)
+  if(i!=j) pearsons.r <- pearsons.r$r[2]
+  if(i!=j) pearsons.r <- round(pearsons.r, digits = 2)
   if(i!=j) significant.effect <- summary(fit)$coefficients[2,4] < 0.05
   ### this tests whether any correlations are non-significant; if they are non-significant they can be filtered out when graphed
   ifelse(i==j, NA, 
@@ -73,9 +78,10 @@ for (i in seq(along = variables1)){
   # 
   print(panel.number)
   if (i == j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
+  if (i == j) legend("center", legend = centre, cex = 2, bty = "n")
   if (i < j) plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt = "n", yaxt = "n")
-  if (i < j) legend("center", legend = legend, cex = 2, bty = "n")
-  if (i > j) plot(var1 ~ var2, data = df, yaxt = ifelse(panel.number %in% c(1, 8, 15, 22, 29, 36, 43), "s", "n"), xaxt = ifelse(panel.number %in% c(43:49), "s", "n"), cex= 0.5)
+  if (i < j) legend("center", legend = pearsons.r, cex = 2, bty = "n")
+  if (i > j) plot(var1 ~ var2, data = df, yaxt = ifelse(panel.number %in% c(1, 8, 15, 22, 29, 36, 43), "s", "n"), xaxt = ifelse(panel.number %in% c(43:49), "s", "n"), cex= 0.5, col = rgb(red = 0, green = 0, blue = 0, alpha = 0.1))
   # # if(panel.number == c(43:49))
   # if (i < j) mtext(text = legend, side = 3, adj = 0.5, line = -5, cex = 1)
   if (i > j) abline(fit, lty = ifelse(significant.effect, 1, 2))
