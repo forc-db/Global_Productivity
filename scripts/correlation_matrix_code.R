@@ -66,7 +66,7 @@ for (i in seq(along = variables1)){
   ifelse(i==j, NA, 
          ifelse(significant.effect == FALSE, print("significant effect false"), NA))
   if(i!=j) Rsq <- as.data.frame(r.squaredGLMM(fit))
-  if(i!=j) Rsq <- signif(Rsq, digits=2)
+  if(i!=j) Rsq <- round(Rsq, digits=2)
   if(i!=j) legend <- Rsq[1]
   # # significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   # 
