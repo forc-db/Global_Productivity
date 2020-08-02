@@ -110,6 +110,7 @@ outputs <- NULL
 
 effects <- c("mat", "map", "(1|geographic.area/plot.name)")
 pannel.nb <- 1
+p.table <- NULL
 
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
@@ -146,6 +147,19 @@ for (response.v in response.variables){
   Rsq.i <- signif(Rsq.i, digits=4)[1]
   BIC <- BIC(mod.single, mod.add, mod.int)
   best.model <- as.character(aictab(list(mod.single = mod.single, mod.add = mod.add, mod.int = mod.int), sort = T)$Modname[1])
+  
+  p.sing <- anova(mod.null, mod.single)$"Pr(>Chisq)"[2]
+  p.sing <- signif(p.sing, digits = 2)
+  
+  p.addi <- anova(mod.add, mod.single)$"Pr(>Chisq)"[2]
+  p.addi <- signif(p.addi, digits = 2)
+  
+  p.int <- anova(mod.int, mod.add)$"Pr(>Chisq)"[2]
+  p.int <- signif(p.int, digits = 2)
+  
+  p.values <- data.frame(response.v = response.v, p.sing = p.sing, p.addi = p.addi, p.int = p.int)
+  
+  p.table <- rbind(p.table, p.values)
   
   
   aictab$Rsq <- c(Rsq.s, Rsq.a, Rsq.i)
@@ -290,8 +304,8 @@ for (response.v in response.variables){
 }
 
 dev.off()
-write.csv(all.results, "C:/Users/gyrcbm/Dropbox/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
-
+write.csv(all.results, "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
+write.csv(p.table, "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction_pvalues.csv")
 ########################################## code to correctly plot
 Rsqs = NULL
 

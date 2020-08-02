@@ -180,6 +180,7 @@ number = 1
         
         df$fixed <- df[, fixed.v]
         if(fixed.v == "mat") df$fixed <- df$fixed + 11
+        if(fixed.v == "TempSeasonality") df$fixed <- df$fixed/100
         
         ###subset ForC
         

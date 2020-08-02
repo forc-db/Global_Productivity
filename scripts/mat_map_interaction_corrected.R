@@ -114,7 +114,7 @@ best.models <- NULL
 
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-response.variables <- "NPP"
+# response.variables <- "NPP"
 
 par(mfrow = c(3,3), mar = c(1,0,0,2), oma = c(5,8,2,0), xpd = T)
 
@@ -165,8 +165,10 @@ for (response.v in response.variables){
     }}
     }}
   
+  p.int <- anova(mod.int, mod.add)$"Pr(>Chisq)"[2]
+  
   best.mod <- as.character(best.model@call)[2]
-  table <- data.frame(response.v = response.v, best.mod = best.mod)
+  table <- data.frame(response.v = response.v, best.mod = best.mod, p.int = p.int)
   best.models <- rbind(best.models, table)
 
 }
