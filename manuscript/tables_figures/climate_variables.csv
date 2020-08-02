@@ -1,20 +1,20 @@
 Abbreviation,Climate variable,Units,Definition,Time span,Source
-MAT,Mean annual temperature ,$^\circ$C,"Annual mean temperature, from primary literature or WorldClim if not reported",,Primary literature; WorldClim$^{1}$
-MAP,Mean annual precipitation ,mm $yr^{-1}$,"Annual mean precipitation, from primary literature or WorldClim if not reported",,Primary literature; WorldClim$^{1}$
-T Seas,Temperature seasonality,$^\circ$C,Standard deviation (variation) of monthly temperature averages,,WorldClim$^{1}$
-P Seas,Precipitation seasonality,$\%$,Coefficient of variation of mean monthly precipitation x 100,,WorldClim$^{1}$
-ART,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,,WorldClim$^{1}$
-Solar R,Solar radiation,kJ $m^{-2} yr^{-1}$,Solar radiation,,WorldClim2$^{2}$
-Cloud,Cloud cover,$\%$,Cloud percentage cover,,CRU time-series dataset v 4.03$^{3}$
-AFD,Annual frost days,days $yr^{-1}$,Number of freeze days annually,,CRU time-series dataset v 4.03$^{3}$
-AWD,Annual wet days,days $yr^{-1}$,Number of days with precipitation >0.1 mm annually,,CRU time-series dataset v 4.03$^{3}$
-PET,Potential evapotranspiration ,mm $yr^{-1}$,Mean annual potential evapotranspiration,,Global Aridity Index and Potential Evapotranspiration Climate Database$^{4}$
-AI,Aridity,,MAP/mean annual PET,,Global Aridity Index and Potential Evapotranspiration Climate Database$^{4}$
-VPD,Vapour pressure deficit ,kPa,Vapour pressure deficit ,,TerraClimate$^{5}$
-Max VPD,Maximum vapour pressure deficit ,kPa,Maximum vapour pressure deficit ,,Derived
-WSM,Water stress months,months $yr^{-1}$,Number of months annually with MAP < PET,,Derived
-LGS,Length of growing season,months $yr^{-1}$,Number of months annually with mean minimum temperature > 0.5$^\circ$C,,Derived
-gsT,growing season temperature,$^\circ$C,,,Derived
-gsP,growing season precipitation,,,,Derived
-gsPET,growing season PET,,,,Derived
-gsR,growing season solar radiation,,,,Derived
+MAT,Mean annual temperature ,$^\circ$C,"Annual mean temperature, from primary literature or WorldClim if not reported",1970 - 2000,Primary literature; WorldClim$^{1}$
+MAP,Mean annual precipitation ,mm yr$^{-1}$,"Annual mean precipitation, from primary literature or WorldClim if not reported",1970 - 2000,Primary literature; WorldClim$^{1}$
+T Seas,Temperature seasonality,$^\circ$C,Standard deviation (variation) of monthly temperature averages,1970 - 2000,WorldClim$^{1}$
+P Seas,Precipitation seasonality,$\%$,Coefficient of variation of mean monthly precipitation x 100,1970 - 2000,WorldClim$^{1}$
+ART,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,1970 - 2000,WorldClim$^{1}$
+Solar R,Solar radiation,kJ m$^{-2}$ yr$^{-1}$,Solar radiation,1970 - 2000,WorldClim2$^{2}$
+Cloud,Cloud cover,$\%$,Cloud percentage cover,1901 - 2014,CRU time-series dataset v 4.03$^{3}$
+AFD,Annual frost days,days yr$^{-1}$,Number of freeze days annually,1901 - 2014,CRU time-series dataset v 4.03$^{3}$
+AWD,Annual wet days,days yr$^{-1}$,Number of days with precipitation >0.1 mm annually,1901 - 2014,CRU time-series dataset v 4.03$^{3}$
+PET,Potential evapotranspiration ,mm yr$^{-1}$,Mean annual potential evapotranspiration,1950 - 2000,Global Aridity Index and Potential Evapotranspiration Climate Database$^{4}$
+AI,Aridity,,MAP/mean annual PET,1950 - 2000,Global Aridity Index and Potential Evapotranspiration Climate Database$^{4}$
+VPD,Vapour pressure deficit ,kPa,Mean monthly vapour pressure deficit ,1958 - 2015,TerraClimate$^{5}$
+Max VPD,Maximum vapour pressure deficit ,kPa,Maximum monthly vapour pressure deficit ,1958 - 2017,Derived from TerraClimate data
+WSM,Water stress months,months yr$^{-1}$,Number of months annually with MAP < PET,1970 - 2000,Derived from WorldClim data
+LGS,Length of growing season,months yr$^{-1}$,Number of months annually with mean minimum temperature > 0.5$^\circ$C,1901 - 2014,Derived from CRU data
+gsT,Growing season temperature,$^\circ$C,Mean growing season temperature,1901 - 2014,Derived from CRU data
+gsP,Growing season precipitation,mm month$^{-1}$,Mean monthly precipitation during growing season months,1901 - 2014,Derived from CRU data
+gsPET,Growing season PET,mm month$^{-1}$,Mean monthly potential evapotranspiration during growing season months,1901 - 2014,Derived from CRU data
+gsR,Growing season solar radiation,mm month$^{-1}$,Mean monthly solar radiation during growing season,1901 - 2014,Derived from CRU data
