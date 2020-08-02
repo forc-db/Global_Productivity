@@ -1,7 +1,7 @@
 Abbreviation,Climate variable,Units,Definition,Time span,Source
 MAT,Mean annual temperature ,$^\circ$C,"Annual mean temperature, from primary literature or WorldClim if not reported",,Primary literature; WorldClim$^{1}$
 MAP,Mean annual precipitation ,mm $yr^{-1}$,"Annual mean precipitation, from primary literature or WorldClim if not reported",,Primary literature; WorldClim$^{1}$
-T Seas,Temperature seasonality,$^\circ$C x 100,Standard deviation (variation) of monthly temperature averages,,WorldClim$^{1}$
+T Seas,Temperature seasonality,$^\circ$C,Standard deviation (variation) of monthly temperature averages,,WorldClim$^{1}$
 P Seas,Precipitation seasonality,$\%$,Coefficient of variation of mean monthly precipitation x 100,,WorldClim$^{1}$
 ART,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,,WorldClim$^{1}$
 Solar R,Solar radiation,kJ $m^{-2} yr^{-1}$,Solar radiation,,WorldClim2$^{2}$
