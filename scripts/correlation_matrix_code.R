@@ -42,7 +42,7 @@ panel.number <- 1
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/manuscript/tables_figures/climate_regressions.png"), width = 3500, height = 3000, units = "px", res = 300)
 
 ##creates grid of plots, mfrow should equal number of variables
-par(mfrow = c(7,7), mar = c(3,3,0.5,0.5), oma = c(1,1,0,0))
+par(mfrow = c(7,7), mar = c(2.5,2.5,0,0), oma = c(1,1,0,0))
 
 
 ##loops through variables, pairs each variable with each other variable, but skips if they're the same
@@ -57,8 +57,8 @@ for (i in seq(along = variables1)){
   df$var2 <- df[, variables2[[j]]]
   # 
   fixed.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/Github/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
-  xaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables2[[j]])]
-  yaxis <- fixed.v.info$xaxis_simple[which(fixed.v.info$fixed.v %in% variables1[[i]])]
+  xaxis <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% variables2[[j]])]
+  yaxis <- fixed.v.info$abbrev[which(fixed.v.info$fixed.v %in% variables1[[i]])]
   # 
   if(i!=j) fit <- lm(var1 ~ var2 , data = df)
   if(i!=j) significant.effect <- summary(fit)$coefficients[2,4] < 0.05
@@ -66,7 +66,7 @@ for (i in seq(along = variables1)){
   ifelse(i==j, NA, 
          ifelse(significant.effect == FALSE, print("significant effect false"), NA))
   if(i!=j) Rsq <- as.data.frame(r.squaredGLMM(fit))
-  if(i!=j) Rsq <- signif(Rsq, digits=4)
+  if(i!=j) Rsq <- signif(Rsq, digits=2)
   if(i!=j) legend <- Rsq[1]
   # # significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   # 

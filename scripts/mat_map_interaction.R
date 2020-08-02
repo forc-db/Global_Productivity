@@ -268,8 +268,11 @@ for (response.v in response.variables){
     if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
     if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
     
+    resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+    respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
     
-    mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", response.v), adj = 0.1, cex = 0.5)
+    
+    mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", respv), adj = 0.1, cex = 0.5)
     if(significant.effect.of.interaction) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & significant.effect.of.additive) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & !significant.effect.of.additive & significant.effect) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
@@ -354,8 +357,11 @@ for (response.v in response.variables){
   if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
   if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
   
+  resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+  respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
   
-  mtext(side = 3, line = -1, text = paste0(response.v), adj = 0.1, cex = 0.5)
+  
+  mtext(side = 3, line = -1, text = paste0(respv), adj = 0.1, cex = 0.5)
   if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
   if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
   if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)

@@ -107,7 +107,7 @@ set2 <- c("R_auto")
 sum <- c("GPP")
   
 
-png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
 
@@ -720,10 +720,10 @@ for (age in ages){
             #   mtext(side = 3, line = -which(labels %in% label), text = legend, adj = 0.95, col = plasma(10)[response.v.color], cex = 0.5, outer = F)
             # }
             
-            legend <- paste("ANPP foliage + ANPP woody stem")
+            legend <- paste("ANPP foliage + ANPP stem")
             # mtext(side = 3, line = -4, text = legend, adj = 0.95, col = "black", cex = 0.5, outer = F)
             
-            legend("topright", legend = c("ANPP foliage", "ANPP woody stem", "ANPP", "ANPP foliage + ANPP woody stem"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
+            legend("topright", legend = c("ANPP foliage", "ANPP stem", "ANPP", "ANPP foliage + ANPP stem"), lty = 1, col = c(plasma(10)[c(3, 4, 1)], "black"), pch = c(9, 7, 5, NA), xpd = T, text.col = plasma(10)[c(9, 7, 5, NA)], bty = "n", xjust = 1, cex = 0.75)
             mtext(paste0("(", letters[3], ")"), side = 3, line = -1.5, adj = 0.05)
             
             
