@@ -152,7 +152,7 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 ```
 
 \blandscape
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Correlations among latitude and climate variables", out.height='95%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Scatterplots and Pearson's R values for relationships between latitude and climate variables", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/climate_regressions.png")
 ```
