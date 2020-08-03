@@ -59,7 +59,7 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
   column_spec(5, width = "2cm") %>%
   column_spec(6, width = "5cm") %>%
   kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick et al. (2017)", "Harris et al. (2017)", "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE) %>%
-  kableExtra::footnote(symbol = "The WorldClim version used was up-to-date at the time of analysis", footnote_as_chunk = TRUE)
+  kableExtra::footnote(symbol = "The WorldClim version used was the most recent available at the time of analysis", footnote_as_chunk = TRUE)
 
 #@hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
 ```
