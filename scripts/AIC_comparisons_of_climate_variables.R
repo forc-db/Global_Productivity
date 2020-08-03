@@ -120,11 +120,11 @@ aictab.top <- NULL
 fixed.variables <- c("mat", "map", "PotentialEvapotranspiration", "VapourPressureDeficit", "SolarRadiation", "TempSeasonality", "PreSeasonality", "length_growing_season", "TempRangeAnnual", "Aridity", "CloudCover", "AnnualFrostDays", "AnnualWetDays", "MaxVPD", "WaterStressMonths")
 
 
-# response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
-#                                   c("ANPP", "ANPP_foliage", "ANPP_woody_stem"),
-#                                   c("R_auto", "R_auto_root"))
+response.variables.groups <- list(c("GPP", "NPP", "BNPP_root", "BNPP_root_fine"),
+                                  c("ANPP", "ANPP_foliage", "ANPP_woody_stem"),
+                                  c("R_auto", "R_auto_root"))
 
-response.variables.groups <- list(c("NPP"))
+# response.variables.groups <- list(c("NPP"))
 
 for(response.variables in response.variables.groups){
   
@@ -223,7 +223,9 @@ for(response.variables in response.variables.groups){
         
         final.model <- gsub("fixed", fixed.v, final.model, fixed = T)
         
-        model_list <- append(model_list, final.model)
+        is.sig <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+        
+        if(is.sig) model_list <- append(model_list, final.model)
         
         
         equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2])
