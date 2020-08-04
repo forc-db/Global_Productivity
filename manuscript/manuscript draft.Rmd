@@ -15,7 +15,8 @@ header-includes:  \usepackage{float}
                   \usepackage{setspace}\onehalfspacing
                   \usepackage{lineno}\linenumbers
 
-
+nocite: | 
+  @chu_does_2016
 ---
 
 ```{r, include=FALSE}
@@ -122,10 +123,10 @@ However, accurately comparing relationships of multiple forest C fluxes across l
 
 The latitudinal gradient in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @hursh_sensitivity_2017].
 The majority of studies have focused on exploring the relationships of C fluxes to mean annual temperature (MAT) and mean annual precipitation (MAP), as the most commonly reported site-level climate variables. 
-There is strong evidence that both MAT and MAP show significant positive relationships with C fluxes [@chu_does_2016]; however, as with latitude, we lack synthetic understanding of how these relationships vary across climate fluxes. 
-C flux increases strongly with $MAT$ on the global scale, but whether they saturate or potentially decrease at higher temperatures remains disputed.
+C fluxes increase strongly with $MAT$ on the global scale, but whether they saturate or potentially decrease at higher temperatures remains disputed. (**This part could use some work.**)
 In the global data compilation of Luyssaert et al. [-@luyssaert_co_2007], $GPP$ increased linearly with MAT, whereas $NPP$ saturated at around 10$^\circ$C MAT. 
 In contrast, Larjavaara and Muller-Landau [-@larjavaara_temperature_2012], find that increases in $GPP$ saturate at approximately 25$^\circ$C MAT, while Schuur [-@schuur_productivity_2003] finds that $NPP$ increases continuously with temperature. 
+@sullivan_sensitivity_2020 found that, within the tropics, $ANPP_{stem}$ decreases at the highest maximum temperatures.
 Various measures of primary productivity saturate at high levels of MAP, though the saturation points identified vary from 1500mm [@luyssaert_co_2007] up to 2,445 mm MAP [@schuur_productivity_2003]. 
 Interactions between MAT and MAP are also possible; within the tropics, there is a positive interaction between MAT and MAP in shaping $ANPP$, such that high rainfall has a negative effect on productivity in cooler climates, compared to a positive effect in warmer climates [@taylor_temperature_2017]. 
 Such complicated dynamics play out with belowground fluxes as well, with typically dominant soil temperature mediated by moisture and C supply [@hursh_sensitivity_2017; @xu_contribution_2016]. 
@@ -237,7 +238,7 @@ In total, we analyzed 1228 records from nine forest autotrophic C flux variables
 
 All major carbon fluxes decreased linearly with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes--particularly the larger fluxes (Table S2). Specifically, latitude explained 64% of variation in GPP (n = 254, p<0.0001), 50% in NPP (n = 114, p<0.0001) and 45% in ANPP (n = 259, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ ($R^2$=0.17) and $ANPP_{stem}$ ($R^2$=0.18). For all C fluxes, the relationship with latitude was better fit by the first-order linear model than by second-order polynomial or logarithmic models.
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and within dAIC=2 of the best model (for three fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and had AIC values within 2.0 of the best model (for three fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression", fig.pos='H'}
 
   knitr::include_graphics("combined_stacked.png")
 ```
@@ -327,8 +328,8 @@ Our analysis clarifies how forest autotrophic carbon fluxes vary with latitude a
 Our findings show that higher temperatures with similar moisture availability result in a generalized acceleration of forest C cycling (Figs. 2-3).
 This is consistent with observations of continental- to global-scale increases over time in $GPP$ [@li_mapping_2019] and $ANPP_{stem}$ [@brienen_long-term_2015; @hubau_asynchronous_2020], along with some C cycle components not considered here--tree mortality [@brienen_long-term_2015; @mcdowell_drivers_2018], soil respiration [@bond-lamberty_global_2010], and heterotrophic soil respiration [@bond-lamberty_globally_2018]. 
 **DISCUSS/CITE [Wu et al. 2020]** [@wu_accelerated_2020] 
-However, increasing C flux rates are by no means universal [e.g., @rutishauser_testing_2020; @hubau_asynchronous_2020], likely because other factors are at play, including changes to other aspects of climate, atmospheric pollution (CO~2~, SO~2~, NO~x~), and local disturbances. 
-Carbon cycling is also likely to **(discuss new Sullivan paper that finds higher max temperatures associated to lower ANPP_stem)** [@sullivan_sensitivity_2020]
+However, increasing C flux rates are by no means universal [e.g., @rutishauser_testing_2020; @hubau_asynchronous_2020], likely because other factors are at play, including changes to other aspects of climate, atmospheric pollution (CO~2~, SO~2~, NO~x~), and local disturbances.  
+**(discuss new Sullivan paper that finds higher max temperatures associated to lower ANPP_stem)** [@sullivan_sensitivity_2020]
 Moreover, forest ecosystem responses to climatic changes outside the temperature range to which forest communities are adapted and acclimatized will not necessarily parallel responses across geographic gradients in climate. 
 Nevertheless, understanding of the fundamental climatic controls on C cycling sets a firmer foundation for understanding forest C cycle responses to accellerating climate change. 
 
