@@ -32,8 +32,8 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-# knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
- knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+ # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 ```{r results="asis", include=FALSE}
@@ -95,10 +95,10 @@ email: teixeirak@si.edu
 ###Abstract
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
 However, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
-Here, we draw upon **#** records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
+Here, we draw upon 1319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
 We show that, across all flux variables analyzed, C cycling decreases linearly with absolute latitude -- a finding that confirms multiple previous studies but contradicts the idea that net primary productivity ($NPP$) of temperate forests rivals that of tropical forests. 
 C flux variables generally displayed similar trends across latitude and multiple climate variables, with few differences in allocation detectable at this global scale.
-**Climate explained a significant proportion (#-#%) of variation in all C fluxes analyzed**, with temperature variables in general and mean annual temperature (MAT) in particular being the best predictors of C flux on this global scale. 
+**Climate explained a significant proportion (24 - 71%) of variation in all C fluxes analyzed**, with temperature variables in general and mean annual temperature (MAT) in particular being the best predictors of C flux on this global scale. 
 The effects of temperature were modified by moisture availability, with C flux reduced under hot and dry conditions and sometimes under very high precipitation. 
 C fluxes declined with temperature seasonality, but growing season length did not improve upon MAT as a predictor.
 Within the growing season, the influence of climate on C cycling was small but significant for a number of flux variables. 
@@ -203,7 +203,7 @@ kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and 
   
 *Climate data* 
 
-ForC contains geographic coordinates associated with each measurement record and, when available, mean annual temperature (MAT) and mean annual precipitation (MAP) as reported in the primary literature [@anderson-teixeira_forc_2018]. Based on the geographic co-ordinates for each site, data on twelve climate variables--including MAT, MAP, temperature and precipitation seasonality, annual temperature range, solar radiation, cloud cover, annual frost and wet days, potential evapotranspiration (PET), aridity (MAP/PET), and vapor pressure deficit (VPD)--were extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit time-series dataset (CRU TS v4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2019], and TerraClimate [@abatzoglou_terraclimate_2018] (Table S1). From these data, we derived maximum VPD, defined as the VPD of the month with the largest deficit, and the number of water stress months, defined as the number of months annually where precipitation was lower than PET. Where site-level data was missing for MAT or MAP, we used values from the WorldClim (**[2?](https://github.com/forc-db/Global_Productivity/issues/89)**) dataset.
+ForC contains geographic coordinates associated with each measurement record and, when available, mean annual temperature (MAT) and mean annual precipitation (MAP) as reported in the primary literature [@anderson-teixeira_forc_2018]. Based on the geographic co-ordinates for each site, data on twelve climate variables--including MAT, MAP, temperature and precipitation seasonality, annual temperature range, solar radiation, cloud cover, annual frost and wet days, potential evapotranspiration (PET), aridity (MAP/PET), and vapor pressure deficit (VPD)--were extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit time-series dataset (CRU TS v4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2019], and TerraClimate [@abatzoglou_terraclimate_2018] (Table S1). From these data, we derived maximum VPD, defined as the VPD of the month with the largest deficit, and the number of water stress months, defined as the number of months annually where precipitation was lower than PET. Where site-level data was missing for MAT or MAP, we used values from the WorldClim dataset.
 
 **For consistency with previous studies (Table 1, *H5*),** length of the growing season was estimated to the nearest month, where growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. We experimented with a definition of growing season months including a moisture index, defined as (MAT - PET)/PET, > -0.95 [@kerkhoff_plant_2005; see also @michaletz_convergence_2014]. However, we found that including a moisture index had minimal effect on the estimates of growing season length, and so chose to exclude it. Monthly data for PET, precipitation, and temperature from  CRU v 4.03 [@harris_updated_2014] and solar radiation from WorldClim2 [@fick_worldclim_2017] were used to calculate mean monthly PET, precipitation, temperature and solar radiation during the growing season. Total growing season precipitation and solar radiation were also calculated. 
   
@@ -218,7 +218,7 @@ We then determined whether these summed predictions fell within the **95%** CI f
 Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. **(Helene asks for more details here: what does the function do? are CIs just based on uncertainty in regression?)**
 This analysis was applied to the following sets of fluxes: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. In addition, we estimated total belowground C flux (TBCF, not analyzed due to limited data) as $TBCF = BNPP + R_{root}$. 
  
-Variation in allocation to component carbon fluxes along latitudinal gradients was explored for the following pairings: $NPP:GPP$, $ANPP:BNPP$, $ANPP_{foliage}:ANPP_{stem}$, $ANPP_{foliage}:NPP$, $ANPP_{stem}:NPP$, $ANPP:NPP$, and $BNPP:NPP$. **[issue 91](https://github.com/forc-db/Global_Productivity/issues/91)**
+Variation in allocation to component carbon fluxes along latitudinal gradients was explored for the following pairings: $NPP:GPP$, $ANPP:BNPP$, $ANPP:NPP$, $BNPP:NPP$, and $ANPP_{foliage}:ANPP_{stem}$. **[issue 91](https://github.com/forc-db/Global_Productivity/issues/91)**
 For each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together, and the ratio of each pair of measurements calculated. The ratios were regressed against latitude and climate variables, using the linear model specified above. 
 Cook's distance analyses were carried out for each of the models, and indicated that data from a few high-elevation sites were having a disproportionate influence on the regressions. Thus, models were re-run using only data from sites $\le$ 1000m.
 
