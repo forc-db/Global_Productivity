@@ -223,6 +223,7 @@ For brevity, we henceforth refer to first-order linear models as "linear" and se
 We selected as the best model that with the highest $\Delta AIC$ relative to a null model with no fixed term, with the qualification that a polynomial model was considered an improvement over a linear model only if it reduced $\DeltaAIC$ by 2.0 or more.
 
 To test whether trends in component fluxes across latitude sum to match those of larger fluxes, regression lines for smaller component fluxes were summed to generate new estimates of larger fluxes. 
+Because no fluxes were signficantly better predicted by a logarithmic or polynomial fit than by a linear fit, we used linear fits for all fluxes.
 We then determined whether these summed predictions fell within the **95%** CI for the larger flux across the entire range included latitude. **(Becky, is 95% the correct number)**
 Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. **(Helene asks for more details here: what does the function do? are CIs just based on uncertainty in regression?)**
 This analysis was applied to the following sets of fluxes: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. In addition, we estimated total belowground C flux (TBCF, not analyzed due to limited data) as $TBCF = BNPP + R_{root}$. 
