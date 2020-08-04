@@ -127,7 +127,7 @@ kable(S2, format = "latex", booktabs = TRUE, caption = "Table S4. Comparison of 
 library(knitr)
 library(kableExtra)
 S3 <- read.csv("tables_figures/best_models_each_flux.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S3, format = "latex", booktabs = TRUE, caption = "Table S5. Best models by carbon flux. Models where $\\Delta$AIC </= 2 are presented", caption.short = "Table S5. Best models by carbon flux", escape = F) %>%
+kable(S3, format = "latex", booktabs = TRUE, caption = "Table S5. Best models by carbon flux. Where $\\Delta$AIC values </= 2 all models with a $\\Delta$AIC value </= 2 are presented", caption.short = "Table S5. Best models by carbon flux", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   collapse_rows(columns = 1, latex_hline = "major")
 ```
