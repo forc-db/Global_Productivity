@@ -492,7 +492,7 @@ for (age in ages){
     
   }
   
-  mtext(side = 2, line = 1,  text = expression("Carbon flux (scaled values)"), outer = T)
+  mtext(side = 2, line = 1,  text = expression("Carbon flux (standard normal deviates)"), outer = T)
   
   dev.off()
 }
