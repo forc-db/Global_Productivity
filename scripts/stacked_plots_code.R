@@ -2,7 +2,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/gyrcbm/Dropbox/ForC")
+setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
 
 # Load libaries ####
 library(lme4)
@@ -305,7 +305,7 @@ par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
         
           # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
           mtext(side = 1, line = 1, text = expression(paste("Absolute latitude (", degree, ")")), outer = T)
-          mtext(side = 2, line = 1,  text = expression(paste("Productivity (Mg C"~ha^-1~yr^-1, ")")), outer = T)
+          mtext(side = 2, line = 1,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1, ")")), outer = T)
           mtext(paste0("(", letters[1], ")"), side = 3, line = -1.5, adj = 0.05)
           
           # dev.off()
