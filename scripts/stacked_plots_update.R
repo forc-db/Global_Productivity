@@ -320,7 +320,7 @@ for (age in ages){
             
             # title(paste("Stacked graphs by latitude"), outer = F, line = 1)
             mtext(side = 1, line = 1, text = expression(paste("Absolute latitude (", degree, ")")), outer = T)
-            mtext(side = 2, line = 1,  text = expression(paste("Productivity (Mg C"~ha^-1~yr^-1, ")")), outer = T)
+            mtext(side = 2, line = 1,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1, ")")), outer = T)
             mtext(paste0("(", letters[1], ")"), side = 3, line = -1.5, adj = 0.05)
             
             # dev.off()
