@@ -140,18 +140,18 @@ final_sheet$masl.x[is.na(final_sheet$masl.x)] <- (final_sheet$masl.y)[is.na(fina
 final_sheet <- final_sheet[-(13:18)]
 names(final_sheet)[5:10] <- c("lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")
 
-final_sheet$ratio <- log(final_sheet$NPP_mean/final_sheet$R_mean)
+final_sheet$ratio <- final_sheet$NPP_mean/final_sheet$GPP_mean
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-png(file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/log ratios/all.png", width = 3000, height = 2000, units = "px", res = 300)
+png(file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/log ratios/all.png", width = 2000, height = 3000, units = "px", res = 300)
 
-par(mfrow = c(3,4), mar = c(1,1,3,0.5), oma = c(5,4,5,0))
+par(mfrow = c(5,4), mar = c(1,1,3,0.5), oma = c(5,4,5,0))
 
 n <- 1
 
 for(fixed.v in fixed.variables){
-
+  
   final_sheet$fixed <- final_sheet[, fixed.v]
   
   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
@@ -171,15 +171,15 @@ for(fixed.v in fixed.variables){
   newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
-  ylim <- range(exp(final_sheet$ratio))
+  ylim <- range(final_sheet$ratio)
   ylim[1] <- ylim[1] - 0.25
   ylim[2] <- ylim[2] + 0.25
   
   
-  if(n == 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
-  if(n != 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
+  if(n == 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
+  if(n != 1) plot(ratio ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
-  lines(exp(fit) ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
   
@@ -191,8 +191,10 @@ for(fixed.v in fixed.variables){
   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
   Rsq <- signif(Rsq, digits=2)[1]
   
+  samples = length(final_sheet$ratio)
+  
   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-  if(fixed.v %in% "lat")mtext("NPP:Autotrophic respiration", side = 3, line = 0.5, adj = 0, cex = 0.6)
+  if(fixed.v %in% "lat")mtext(paste("NPP:GPP, n =", samples), side = 3, line = 0.5, adj = 0, cex = 0.6)
   
   
   # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
@@ -254,6 +256,9 @@ names(final_sheet)[5:10] <- c("lat", "mat", "map", "TempSeasonality", "geographi
 
 final_sheet$ratio <- log(final_sheet$ANPP_mean/final_sheet$BNPP_mean)
 
+# x <- final_sheet[final_sheet$ratio <= 10,]
+# final_sheet <- x
+
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
 n <- 1
@@ -270,27 +275,48 @@ for(fixed.v in fixed.variables){
   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
+  # cooksd <- cooks.distance(mod.full)
+  # 
+  # # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+  # # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+  # # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+  # 
+  # influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+  # rows.to.keep<-which(rownames(final_sheet) %in% influential)
+  # ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+  
+  dfsubset <- final_sheet
+  
+  mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
+  best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+  
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-  sample.size <- length(final_sheet$ratio)
+  sample.size <- length(dfsubset$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
-  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
+  newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
-  ylim <- range(exp(final_sheet$ratio))
+  # dfsubset$ratio <- dfsubset$ANPP_mean/dfsubset$BNPP_mean
+  
+  ylim <- range(dfsubset$ratio)
   ylim[1] <- ylim[1] - 0.25
   ylim[2] <- ylim[2] + 0.25
   
+  if(n == 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim)
+  if(n != 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim, yaxt = "n")
   
-  if(n == 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
-  if(n != 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  lines(exp(fit) ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
-  
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
@@ -300,8 +326,10 @@ for(fixed.v in fixed.variables){
   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
   Rsq <- signif(Rsq, digits=2)[1]
   
+  samples = length(dfsubset$ratio)
+  
   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-  if(fixed.v %in% "lat")mtext("ANPP:BNPP", side = 3, line = 0.5, adj = 0, cex = 0.6)
+  if(fixed.v %in% "lat")mtext(paste("log(ANPP:BNPP), n =", samples), side = 3, line = 0.5, adj = 0, cex = 0.6)
   
   
   # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
@@ -309,6 +337,169 @@ for(fixed.v in fixed.variables){
   
   n <- n + 1
 }
+
+# 
+# 
+# final_sheet$ratio <- final_sheet$ANPP_mean/final_sheet$NPP_mean
+# 
+# fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
+# 
+# n <- 1
+# 
+# for(fixed.v in fixed.variables){
+#   
+#   final_sheet$fixed <- final_sheet[, fixed.v]
+#   
+#   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   
+#   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   
+#   # cooksd <- cooks.distance(mod.full)
+#   # 
+#   # # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+#   # # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+#   # # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+#   # 
+#   # influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+#   # rows.to.keep<-which(rownames(final_sheet) %in% influential)
+#   # ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+#   
+#   dfsubset <- final_sheet
+#   
+#   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   
+#   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   
+#   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+#   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+#   sample.size <- length(dfsubset$ratio)
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = dfsubset, REML = T)
+#   
+#   newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100))
+#   newDat$fit <- predict(mod.full, newDat, re.form = NA)
+#   
+#   # dfsubset$ratio <- dfsubset$ANPP_mean/dfsubset$BNPP_mean
+#   
+#   ylim <- range(dfsubset$ratio)
+#   ylim[1] <- ylim[1] - 0.25
+#   ylim[2] <- ylim[2] + 0.25
+#   
+#   if(n == 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim)
+#   if(n != 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim, yaxt = "n")
+#   
+#   
+#   lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
+#   
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = T)
+#   
+#   r <- round(fixef(mod.linear), 5)
+#   
+#   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+#   significance <- signif(significance, digits=4)
+#   
+#   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+#   Rsq <- signif(Rsq, digits=2)[1]
+#   
+#   samples = length(dfsubset$ratio)
+#   
+#   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
+#   if(fixed.v %in% "lat")mtext(paste("ANPP:NPP, n =", samples), side = 3, line = 0.5, adj = 0, cex = 0.6)
+#   
+#   
+#   # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+#   # panel.number <- panel.number + 1
+#   
+#   n <- n + 1
+# }
+# 
+# 
+# final_sheet$ratio <- final_sheet$BNPP_mean/final_sheet$NPP_mean
+# 
+# fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
+# 
+# n <- 1
+# 
+# for(fixed.v in fixed.variables){
+#   
+#   final_sheet$fixed <- final_sheet[, fixed.v]
+#   
+#   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   
+#   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+#   # cooksd <- cooks.distance(mod.full)
+#   # 
+#   # # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+#   # # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+#   # # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+#   # 
+#   # influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+#   # rows.to.keep<-which(rownames(final_sheet) %in% influential)
+#   # ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+#   # 
+#   dfsubset <- final_sheet
+#   
+#   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   
+#   best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+#   
+#   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+#   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+#   sample.size <- length(dfsubset$ratio)
+#   
+#   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = dfsubset, REML = T)
+#   
+#   newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100))
+#   newDat$fit <- predict(mod.full, newDat, re.form = NA)
+#   
+#   # dfsubset$ratio <- dfsubset$ANPP_mean/dfsubset$BNPP_mean
+#   
+#   ylim <- range(dfsubset$ratio)
+#   ylim[1] <- ylim[1] - 0.25
+#   ylim[2] <- ylim[2] + 0.25
+#   
+#   if(n == 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim)
+#   if(n != 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim, yaxt = "n")
+#   
+#   
+#   lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
+#   
+#   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = T)
+#   
+#   r <- round(fixef(mod.linear), 5)
+#   
+#   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+#   significance <- signif(significance, digits=4)
+#   
+#   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+#   Rsq <- signif(Rsq, digits=2)[1]
+#   
+#   samples = length(dfsubset$ratio)
+#   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
+#   if(fixed.v %in% "lat")mtext(paste("BNPP:NPP, n =", samples), side = 3, line = 0.5, adj = 0, cex = 0.6)
+#   
+#   
+#   # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+#   # panel.number <- panel.number + 1
+#   
+#   n <- n + 1
+# }
 
 
 #######################################################################################################
@@ -369,27 +560,48 @@ for(fixed.v in fixed.variables){
   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
+  # cooksd <- cooks.distance(mod.full)
+  # 
+  # # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+  # # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+  # # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+  # 
+  # influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+  # rows.to.keep<-which(rownames(final_sheet) %in% influential)
+  # ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+  # 
+  dfsubset <- final_sheet
+  
+  mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
+  best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+  
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-  sample.size <- length(final_sheet$ratio)
+  sample.size <- length(dfsubset$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
-  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100), masl = c(0.5))
+  newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
-  ylim <- range(exp(final_sheet$ratio))
+  # dfsubset$ratio <- dfsubset$ANPP_mean/dfsubset$BNPP_mean
+  
+  ylim <- range(dfsubset$ratio)
   ylim[1] <- ylim[1] - 0.25
   ylim[2] <- ylim[2] + 0.25
   
+  if(n == 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim)
+  if(n != 1) plot(ratio ~ fixed, data = dfsubset, ylab = "", ylim = ylim, yaxt = "n")
   
-  if(n == 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
-  if(n != 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
   
+  lines(fit ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  lines(exp(fit) ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
-  
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
@@ -399,8 +611,10 @@ for(fixed.v in fixed.variables){
   Rsq <- as.data.frame(r.squaredGLMM(mod.full))
   Rsq <- signif(Rsq, digits=2)[1]
   
+  samples = length(dfsubset$ratio)
+  
   if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
-  if(fixed.v %in% "lat") mtext("ANPP stem:ANPP foliage", side = 3, line = 0.5, adj = 0, cex = 0.6)
+  if(fixed.v %in% "lat") mtext(paste("log(ANPP stem:ANPP foliage), n =", samples), side = 3, line = 0.5, adj = 0, cex = 0.6)
   
   
   mtext(text = eval(parse(text = xaxis_simple)), side = 1, line = 2.5, cex = 0.6)
@@ -411,6 +625,6 @@ for(fixed.v in fixed.variables){
   n <- n+1
 }
 
-mtext(text = "Flux ratio", side = 2, outer= T, line = 2)
+mtext(text = "Flux ratios", side = 2, outer= T, line = 2)
 
 dev.off()
