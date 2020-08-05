@@ -32,8 +32,8 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
- # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
+#knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+  knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
 ```{r results="asis", include=FALSE}
@@ -223,7 +223,7 @@ For brevity, we henceforth refer to first-order linear models as "linear" and se
 We selected as the best model that with the highest $\Delta$ AIC relative to a null model with no fixed term, with the qualification that a polynomial model was considered an improvement over a linear model only if it reduced the AIC value by 2.0 or more.
 
 To test whether trends in component fluxes across latitude sum to match those of larger fluxes, regression lines for smaller component fluxes were summed to generate new estimates of larger fluxes. 
-Because no fluxes were signficantly better predicted by a logarithmic or polynomial fit than by a linear fit, we used linear fits for all fluxes.
+Because no fluxes were significantly better predicted by a logarithmic or polynomial fit than by a linear fit, we used linear fits for all fluxes.
 We then determined whether these summed predictions fell within the 95% CI for the larger flux across the entire latitudinal range.
 Confidence intervals for the line of best fit for the larger flux were estimated using the 'bootMer' function, a parametric bootstrapping method for mixed models [@bates_fitting_2015]. We carried out 2000 simulations estimating the line of best fit, and took quantiles at 0.025 and 0.975 to estimate 95% CIs. **Krista please read this + confirm explanation is clear!**
 This analysis was applied to the following sets of fluxes: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. In addition, we estimated total belowground C flux (TBCF, not analyzed due to limited data) as $TBCF = BNPP + R_{root}$. 
