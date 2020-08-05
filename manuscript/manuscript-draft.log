@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.6)  4 AUG 2020 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.6)  5 AUG 2020 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -798,19 +798,19 @@ Package natbib Warning: Citation `r_core_team_r:_2018' on page 8 undefined on i
 nput line 451.
 
 [8]
-<combined_stacked.png, id=284, 543.2295pt x 481.8pt>
+<combined_stacked.png, id=283, 543.2295pt x 481.8pt>
 File: combined_stacked.png Graphic file (type png)
 <use combined_stacked.png>
-Package pdftex.def Info: combined_stacked.png  used on input line 555.
+Package pdftex.def Info: combined_stacked.png  used on input line 561.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [9] [10 <./combined_stacked.png (PNG copy)>]
-<mat_map_interaction.png, id=295, 543.2295pt x 481.8pt>
+<mat_map_interaction.png, id=294, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
 Package pdftex.def Info: mat_map_interaction.png  used on input line 615.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
-<combined_plots.png, id=306, 543.2295pt x 722.7pt>
+<combined_plots.png, id=305, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
 Package pdftex.def Info: combined_plots.png  used on input line 655.
@@ -886,10 +886,10 @@ b><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy
 6.pfb><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmsy7.pfb><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /lm/lmsy8.pfb>
-Output written on manuscript-draft.pdf (24 pages, 1588756 bytes).
+Output written on manuscript-draft.pdf (24 pages, 1588335 bytes).
 PDF statistics:
- 573 PDF objects out of 1000 (max. 8388607)
- 518 compressed objects within 6 object streams
+ 572 PDF objects out of 1000 (max. 8388607)
+ 517 compressed objects within 6 object streams
  105 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

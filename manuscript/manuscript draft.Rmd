@@ -212,32 +212,30 @@ ForC contains geographic coordinates associated with each measurement record and
 The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_r:_2018]. 
 The basic model for all analyses included a fixed effect of latitude or climate and a random effect of plot nested within geographic area. 
 Geographic areas--*i.e.*, spatially clustered sites--are defined within ForC using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018]. 
-We experimented with inclusion of altitude as a fixed effect, but excluded it from the final models because it added very little explanatory power--that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
-Effects were considered significant when inclusion of the fixed of interest resulted in $\Delta AIC \ge 2.0$ relative to a corresponding null model. 
+We experimented with inclusion of altitude as a fixed effect, but excluded it from the final models because it added very little explanatory power--that is, the difference in AIC ($\Delta$ AIC) relative to models excluding altitude was generally small (often $\Delta$ AIC<2). 
+Effects were considered significant when inclusion of the fixed of interest resulted in $\Delta$ AIC $\ge$ 2.0 relative to a corresponding null model. 
 All $R^2$ values presented here are marginal $R^2$ values, and refer to the proportion of variation explained by only the fixed effects. 
 Specific analyses are as described below.
 
 We first examined the relationship between latitude and C fluxes (*Q1*; Table 1). 
 We tested models with latitude as a  first-order linear, second-order polynomial, and logarithmic term. 
 For brevity, we henceforth refer to first-order linear models as "linear" and second-order polynomial models as "polynomial".
-We selected as the best model that with the highest $\Delta AIC$ relative to a null model with no fixed term, with the qualification that a polynomial model was considered an improvement over a linear model only if it reduced $\DeltaAIC$ by 2.0 or more.
+We selected as the best model that with the highest $\Delta$ AIC relative to a null model with no fixed term, with the qualification that a polynomial model was considered an improvement over a linear model only if it reduced $\Delta$ AIC by 2.0 or more.
 
 To test whether trends in component fluxes across latitude sum to match those of larger fluxes, regression lines for smaller component fluxes were summed to generate new estimates of larger fluxes. 
 Because no fluxes were signficantly better predicted by a logarithmic or polynomial fit than by a linear fit, we used linear fits for all fluxes.
 We then determined whether these summed predictions fell within the **95%** CI for the larger flux across the entire range included latitude. **(Becky, is 95% the correct number)**
 Confidence intervals for the larger flux were calculated using the 'bootMer' function from the lme4 package [@bates_fitting_2015]. **(Helene asks for more details here: what does the function do? are CIs just based on uncertainty in regression?)**
 This analysis was applied to the following sets of fluxes: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. In addition, we estimated total belowground C flux (TBCF, not analyzed due to limited data) as $TBCF = BNPP + R_{root}$. 
- 
-Variation in allocation to component carbon fluxes along latitudinal gradients was explored for the following pairings: $NPP:GPP$, $ANPP:BNPP$, $ANPP:NPP$, $BNPP:NPP$, and $ANPP_{foliage}:ANPP_{stem}$. **[issue 91](https://github.com/forc-db/Global_Productivity/issues/91)**
-For each set of paired fluxes, measurements taken at the same site and plot, and in the same year, were paired together, and the ratio of each pair of measurements calculated. The ratios were regressed against latitude and climate variables, using the linear model specified above. 
-Cook's distance analyses were carried out for each of the models, and indicated that data from a few high-elevation sites were having a disproportionate influence on the regressions. Thus, models were re-run using only data from sites $\le$ 1000m.
+
+Variation in allocation to component carbon fluxes was explored for three groupings: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. For each group, measurements taken at the same site and plot, an in the same year were grouped together. For groups (1) and (2), where 2 of the 3 flux measurements were available for a given site, plot, and year, these measurements were used to calculate the third. The ratio of each pair of component fluxes was calculated. The log of these ratios were regressed against latitude and climate variables, using the linear model specified above. Cook's distance analyses were carried out for each of the models, and extreme outliers removed,
 
 We next examined the relationships of C fluxes to climate variables (Q2-Q4; Table 1). 
 We tested first-order linear, second-order polynomial, and logarithmic fits for each climate variable. 
-Again, polynomial fits were considered superior to first-order linear fits only if inclusion of a second-order polynomial term resulted in $\Delta AIC \ge 2.0$ relative to a first-order linear model.
+Again, polynomial fits were considered superior to first-order linear fits only if inclusion of a second-order polynomial term resulted in $\Delta$ AIC $\ge$ 2.0 relative to a first-order linear model.
 We tested relationships of each C flux (Table 2) against each climate variable (Table S1), but focus presentation--including focal hypotheses (Table 1)--on climate variables that explained >20% of variation in C fluxes. **Becky, please make this more specific. I drafted this based on the results, but its not very clear.** **BBL: I agree, not clear and might trigger reviewer concerns about tailoring hypotheses to significance.**
 
-Multivariate models were used to investigate the potential joint and interactive effects of MAT and MAP on carbon fluxes. An additive model including MAP in addition to MAT was accepted when $\Delta AIC$ >2 relative to a null including only MAT as a fixed effect. An interactive model including an MAT x MAP interaction was accepted when $\Delta$AIC >2 relative to a null including MAT and MAP as fixed effects. 
+Multivariate models were used to investigate the potential joint and interactive effects of MAT and MAP on carbon fluxes. An additive model including MAP in addition to MAT was accepted when $\Delta$ AIC >2 relative to a null including only MAT as a fixed effect. An interactive model including an MAT x MAP interaction was accepted when $\Delta$AIC >2 relative to a null including MAT and MAP as fixed effects. 
 
 To test whether and how C flux varied with climate when standardised by growing season length (Q5), we first standardized annual C flux by dividing by growing season length (as defined above). We then tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
@@ -258,7 +256,7 @@ All major carbon fluxes decreased linearly with latitude (Fig. 2; Table S2). Lat
 
 In general, smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (Fig. 2). That is, modelled estimates of $GPP$, generated from the sum of $NPP$ and $R_{auto}$; $NPP$, generated from the sum of $ANPP$ and $BNPP$; and $ANPP$, generated from the sum of $ANPP_{foliage}$ and $ANPP_{stem}$, fell completely within the confidence intervals of the regressions of field estimates of $GPP$, $NPP$, and $ANPP$, respectively.
 
-There was little evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 28 relationships tested (7 ratios among C flux variables regressed against latitude, MAT, MAP, and temperature seasonality), there were only five significant relationships, all with $R^2 \le 0.4$ (Fig. S3). **The proportion of NPP allocated to $ANPP_{foliage}$ decreased with latitude ($R^2=0.32$) and increased with MAT ($R^2=0.37$). The proportion of $NPP$ allocated aboveground ($ANPP$) decreased weakly with latitude ($R^2=0.11$) and temperature seasonality ($R^2=0.17$), while increasing with MAT ($R^2=0.11$).   **
+We found no evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 12 relationships tested (3 ratios among C flux variables regressed against latitude, MAT, MAP and temperature seasonality), none were significant.
    
 *How does C flux relate to MAT and MAP?* 
 
