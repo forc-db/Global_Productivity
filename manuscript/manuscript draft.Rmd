@@ -233,9 +233,7 @@ Variation in allocation to component carbon fluxes was explored for three groupi
 We next examined the relationships of C fluxes to climate variables (Q2-Q4; Table 1). 
 We tested first-order linear, second-order polynomial, and logarithmic fits for each climate variable. 
 Again, polynomial fits were considered superior to first-order linear fits only if inclusion of a second-order polynomial term resulted in $\Delta$ AIC $\ge$ 2.0 relative to a first-order linear model.
-We tested relationships of each C flux (Table 2) against each climate variable (Table S1), but focus presentation--including focal hypotheses (Table 1)--on climate variables that explained >20% of variation in C fluxes.
-
-**Becky, please make this more specific. I drafted this based on the results, but its not very clear.** **BBL: I agree, not clear and might trigger reviewer concerns about tailoring hypotheses to significance.**
+We tested relationships of each C flux (Table 2) against each climate variable (Table S1). Variables which were not significant explanatory variables or which explained <20% of variation in C fluxes are only presented in SI.
 
 Multivariate models were used to investigate the potential joint and interactive effects of MAT and MAP on carbon fluxes. An additive model including MAP in addition to MAT was accepted when $\Delta$ AIC >2 relative to a null including only MAT as a fixed effect. An interactive model including an MAT x MAP interaction was accepted when $\Delta$AIC >2 relative to a null including MAT and MAP as fixed effects.
 
@@ -265,11 +263,11 @@ We found no evidence of systematic variation in C allocation with latitude or cl
 All fluxes increased with MAT (all p<0.05; Figs. 3-4, S4-S5, Table S2). 
 For eight of the nine fluxes, this relationship was linear.
 For only one variable, $BNPP$, did a lognormal fit provide signficant improvement over a first-order linear relationship. 
-*As with latitude, MAT tended to explain more variation in the larger flux ($GPP$, $NPP$, $ANPP$, $R_{auto}$) and $ANPP_{foliage}$ (all $R^2$> 0.4) than in subsidiary and belowground fluxes ($ANPP_{stem}$, $R_{root}$, $BNPP_{fine.root}$; all $R^2$< 0.25).* **update this NB these values are correct**
+*As with latitude, MAT tended to explain more variation in the larger flux ($GPP$, $NPP$, $ANPP$, $R_{auto}$) and $ANPP_{foliage}$ (all $R^2$> 0.4) than in subsidiary and belowground fluxes ($ANPP_{stem}$, $R_{root}$, $BNPP_{fine.root}$; all $R^2$< 0.25).* **update this -- NB these values are correct**
   
 MAP was a significant (p<0.05) predictor of all fluxes (Figs. 4a, S4-S5; Table S2). 
 However, it explained little variation: with the exception of $R_{auto}$, MAP explained at most 25% of variation in C flux. 
-For five of the nine fluxes, a second-order polynomial model provided the best fit, while first-order linear and lognormal relationships provided each provided the best fit for two flxues. 
+For five of the nine fluxes, a second-order polynomial model provided the best fit, while first-order linear and lognormal relationships each provided the best fit for two flxues. 
 All fluxes increased with MAP up to at least 2000 mm, above which responses were variable (Figs. 4, S4-S5). 
 
 There was a significant additive effect of MAT and MAP on $GPP$, $ANPP$ and $R_{auto}$ (Fig. 3, Table S3), and a significant interactive effect between MAT and MAP for $NPP$ and $ANPP_{stem}$ (Fig. 3, Table S3). The interaction was negative for $NPP$ and positive for $ANPP_{stem}$. For $ANPP_{foliage}$, $BNPP$, $BNPP_{fine.root}$, and $R_{root}$, MAP did not have a signficant effect when accounting for MAT (Fig. 3, Table S3). 
@@ -282,14 +280,14 @@ There was a significant additive effect of MAT and MAP on $GPP$, $ANPP$ and $R_{
 
 Our results indicated that annual forest C fluxes were most strongly explained by temperature at the global scale, with temperature-related climate variables coming out as strong predictors of C fluxes. In addition to MAT, several of its correlates (Fig. S2) were consistently identified as strong univariate predictors of C fluxes: temperature seasonality, annual temperature range, annual frost days, PET, and length of growing season (Figs. 4, S4-S7).  
   
-All C flux variables were significantly related to potential evapotranspiration. $ANPP_{foliage}$, $BNPP_{fine.root}$ and $R_{root}$ increased linearly with PET; however, all other fluxes showed a polynomial relationship with PET (Fig. 4c, S4-5; Table S2). We found strong evidence for a saturation point or peak with PET: C fluxes tended to increase at values below 1000mm, before saturating between 1200 and 1700mm. There was also evidence that some C fluxes begin to decrease at values above 1800mm PET.
+All C flux variables were significantly related to potential evapotranspiration. $ANPP_{foliage}$, $BNPP_{fine.root}$ and $R_{root}$ showed a logarithmic relationship with PET; however, all other fluxes showed a polynomial relationship with PET (Fig. 4c, S4-5; Table S2). We found strong evidence for a saturation point or peak with PET: C fluxes tended to increase at values below 1000mm, before saturating between 1200 and 1700mm. There was also evidence that some C fluxes begin to decrease at values above 1800mm PET.
 
-Vapour pressure deficit was a significant predictor of all C fluxes. $BNPP_{fine.root}$ showed a linear relationship with vapour pressure deficit ($R^2$ = 0.07, p<0.05), but all other fluxes showed a polynomial relationship (Figs. 4d, S4-5; Table S2). 
+Vapour pressure deficit was a significant predictor of all C fluxes. $ANPP_{foliage}$, $BNPP_{fine.root}$ and $R_{root}$ showed a logarithmic relationship with vapour pressure deficit, but all other fluxes showed a polynomial relationship (Figs. 4d, S4-5; Table S2). 
 C fluxes initially increased with vapour pressure deficit, before saturating at around 0.8 kPa, after which point they began to decrease.
 
-All fluxes, with the exception of $R_{root}$, showed a positive linear relationship with solar radiation (Figs. S4-S5, Table S2). Solar radiation explained a low proportion of variability in all C fluxes, explaining less than 20% of the variation in each flux, with the exception of $R_{auto}$ ($R^2$ = 0.26, p<0.05).
+All fluxes, with the exception of $R_{root}$, showed a significant positive relationship with solar radiation (Figs. S4-S5, Table S2). Solar radiation explained a low proportion of variability in all C fluxes, explaining less than 30% of the variation in each flux
   
-Annual wet days, cloud cover, and aridity were poor or non-significant explainers of variation in C fluxes, explaining less than 20% of the variation in each of the carbon fluxes (Figs. S4-S5; Table S2).
+Annual wet days, cloud cover, aridity, and water stress months were poor or non-significant explainers of variation in C fluxes, explaining less than 20% of the variation in each of the carbon fluxes (Figs. S4-S5; Table S2).
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis (**see issue 47**). All regressions are significant $(p<0.05)$.", fig.pos='H'}
   knitr::include_graphics("combined_plots.png")
@@ -297,8 +295,7 @@ Annual wet days, cloud cover, and aridity were poor or non-significant explainer
 
 *What is the role of seasonality in explaining C fluxes?* 
 
-Temperature seasonality was a strong predictor of annual C fluxes. $GPP$ showed a polynomial relationship with seasonality **(update this paragraph based on new results)**
-$GPP$, $NPP$, $ANPP$, and $R_{root}$ exhibited a polynomial relationship with seasonality (all p<0.05; Figs. 4e, S6-7; Table S2). $ANPP_{foliage}$, $ANPP_{stem}$ and $R_{auto}$ decreased linearly with temperature seasonality (all p<0.05; Figs. 4e, S6-S7; Table S2). Temperature seasonality was strongly correlated with annual temperature range, which was likewise a similarly strong predictor of C fluxes (Table S2). 
+Temperature seasonality was a strong predictor of annual C fluxes. All fluxes decrease with increasing seasonality, though the shape of this relationship varies (all p<0.05; Figs. 4e, S6-7; Table S2). Temperature seasonality was strongly correlated with annual temperature range, which was likewise a similarly strong predictor of C fluxes (Table S2). 
 C fluxes were highest where temperature seasonality = 0, and at an annual temperature range of 15$^\circ$C or lower. **BBL: perhaps put this into an ecosystem context; what are these? Aseasonal subtropical places?**
 
 In contrast, there was no significant effect of precipitation seasonality on C fluxes, and both maximum vapour pressure deficit, and water stress months were poor or non-significant predictors of variation in C fluxes (Figs. S6-S7; Table S2).
