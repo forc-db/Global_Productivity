@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.6)  5 AUG 2020 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.6)  5 AUG 2020 16:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -807,13 +807,13 @@ Package pdftex.def Info: combined_stacked.png  used on input line 559.
 <mat_map_interaction.png, id=294, 543.2295pt x 481.8pt>
 File: mat_map_interaction.png Graphic file (type png)
 <use mat_map_interaction.png>
-Package pdftex.def Info: mat_map_interaction.png  used on input line 607.
+Package pdftex.def Info: mat_map_interaction.png  used on input line 603.
 (pdftex.def)             Requested size: 469.76271pt x 416.64099pt.
 [11] [12 <./mat_map_interaction.png>]
 <combined_plots.png, id=305, 543.2295pt x 722.7pt>
 File: combined_plots.png Graphic file (type png)
 <use combined_plots.png>
-Package pdftex.def Info: combined_plots.png  used on input line 647.
+Package pdftex.def Info: combined_plots.png  used on input line 642.
 (pdftex.def)             Requested size: 469.76271pt x 624.96149pt.
 [13]
 Overfull \vbox (22.53146pt too high) has occurred while \output is active []
@@ -821,15 +821,15 @@ Overfull \vbox (22.53146pt too high) has occurred while \output is active []
 [14 <./combined_plots.png (PNG copy)>] [15] [16]
 
 Package natbib Warning: Citation `sullivan_sensitivity_2020' on page 17 undefin
-ed on input line 844.
+ed on input line 838.
 
 [17]
 
 Package natbib Warning: Citation `sullivan_sensitivity_2020' on page 18 undefin
-ed on input line 901.
+ed on input line 895.
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 881--908
+Underfull \hbox (badness 1158) in paragraph at lines 875--902
 \T1/lmr/bx/n/10 (discuss new Sul-li-van pa-per that finds higher max tem-per-a-
 tures as-so-ci-ated to lower
  []
@@ -843,15 +843,15 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 916.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 910.
 [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 916.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 910.
 (./manuscript-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 916.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 916.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 910.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 910.
 Package rerunfilecheck Info: File `manuscript-draft.out' has not changed.
 (rerunfilecheck)             Checksum: FAD7EA99B461CA3B1ED9205CEA85C1A9;642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 916.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 910.
  ) 
 Here is how much of TeX's memory you used:
  13965 strings out of 482938
@@ -860,7 +860,7 @@ Here is how much of TeX's memory you used:
  28845 multiletter control sequences out of 15000+600000
  595349 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,16n,42p,806b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,16n,42p,806b,544s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.
 enc}{c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm
 .enc}{c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-e
@@ -886,7 +886,7 @@ b><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy
 6.pfb><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmsy7.pfb><c:/Users/becky/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /lm/lmsy8.pfb>
-Output written on manuscript-draft.pdf (24 pages, 1585770 bytes).
+Output written on manuscript-draft.pdf (24 pages, 1585312 bytes).
 PDF statistics:
  572 PDF objects out of 1000 (max. 8388607)
  517 compressed objects within 6 object streams
