@@ -7,10 +7,10 @@ H3.1. C fluxes display a decelerating increase or unimodal relationship with PET
 H3.2. C fluxes display a decelerating increase or unimodal relationship with vapour pressure deficit.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S4, S5"
 H3.3. C fluxes increase with solar radiation.,(yes),yes,yes,yes,yes,yes,yes,yes,yes,-,"Figs. S4, S5"
 H4.1. C fluxes decrease with temperature seasonality.,yes,yes ,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S6, S7"
-H4.2. C fluxes decrease with precipitation seasonality.,-,-,-,-,-,-,-,-,-,-,"Figs. S6, S7"
+H4.2. C fluxes decrease with precipitation seasonality.,-,-,-,-,no,-,-,-,-,-,"Figs. S6, S7"
 H4.3. C fluxes increase with growing season length.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S6, S7"
-H4.4. Growing season length is a better predictor of C fluxes than MAT.,(no),no,no,no,no,no,no,-,no,no,Table S4
+H4.4. Growing season length is a better predictor of C fluxes than MAT.,(no),no,no,no,-,no,no,no,no,no,Table S4
 H5.1. Growing season C fluxes increase with temperature.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S8, S9"
 H5.2. Growing season C fluxes increase with PET.,(yes),yes,yes,-,yes,-,yes,yes,-,-,"Figs. S8, S9"
 H5.3. Growing season C fluxes increase with precipitation.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S8, S9"
-H5.4. Growing season C fluxes increase with solar radiation.,(yes),yes,yes,-,-,-,yes,yes,-,-,"Figs. S8, S9"
+H5.4. Growing season C fluxes increase with solar radiation.,(yes),-,-,-,-,-,yes,yes,-,-,"Figs. S8, S9"
