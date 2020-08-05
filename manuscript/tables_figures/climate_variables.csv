@@ -3,7 +3,7 @@ MAT,Mean annual temperature ,$^\circ$C,"Annual mean temperature, from primary li
 MAP,Mean annual precipitation ,mm yr$^{-1}$,"Annual mean precipitation, from primary literature or WorldClim if not reported",1970 - 2000,Primary literature; WorldClim$^{1}$
 T Seas,Temperature seasonality,$^\circ$C,Standard deviation (variation) of monthly temperature averages,1970 - 2000,WorldClim$^{1}$
 P Seas,Precipitation seasonality,$\%$,Coefficient of variation of mean monthly precipitation x 100,1970 - 2000,WorldClim$^{1}$
-ART,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,1970 - 2000,WorldClim$^{1}$
+ATR,Annual temperature range,$^\circ$C,Maximum temperature of warmest month - minimum temperature of coldest month,1970 - 2000,WorldClim$^{1}$
 Solar R,Solar radiation,kJ m$^{-2}$ yr$^{-1}$,Solar radiation,1970 - 2000,WorldClim2$^{2}$
 Cloud,Cloud cover,$\%$,Cloud percentage cover,1901 - 2014,CRU time-series dataset v 4.03$^{3}$
 AFD,Annual frost days,days yr$^{-1}$,Number of freeze days annually,1901 - 2014,CRU time-series dataset v 4.03$^{3}$
