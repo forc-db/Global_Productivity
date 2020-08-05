@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 AUG 2020 15:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 AUG 2020 15:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -907,7 +907,7 @@ tures as-so-ci-ated to lower
  []
 
 (./manuscript-draft.bbl [18] [19] [20] [21] [22]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 448.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 446.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -950,7 +950,7 @@ s/type1/public/lm/lmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
 lic/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lms
 y6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on manuscript-draft.pdf (24 pages, 1592303 bytes).
+Output written on manuscript-draft.pdf (24 pages, 1592185 bytes).
 PDF statistics:
  572 PDF objects out of 1000 (max. 8388607)
  517 compressed objects within 6 object streams
