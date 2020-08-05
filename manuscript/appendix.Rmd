@@ -160,12 +160,12 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 \elandscape
 
 
-
+\blandscape
 ```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
 ```
-
+\elandscape
 
 \blandscape
 ```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of forest C fluxes in relation to mean annual climate, part 1.", out.height='95%', fig.pos='H'}
