@@ -270,27 +270,46 @@ for(fixed.v in fixed.variables){
   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
+  cooksd <- cooks.distance(mod.full)
+
+  # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+  # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+  # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
+
+  influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
+  rows.to.keep<-which(rownames(final_sheet) %in% influential)
+  ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+  
+  mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
+  best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+  
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
+  
+  
   significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
   significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
-  sample.size <- length(final_sheet$ratio)
+  sample.size <- length(dfsubset$ratio)
   
-  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T)+ (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
-  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
+  newDat <- expand.grid(fixed = seq(min(dfsubset$fixed), max(dfsubset$fixed), length.out = 100))
   newDat$fit <- predict(mod.full, newDat, re.form = NA)
   
-  ylim <- range(exp(final_sheet$ratio))
+  ylim <- range(exp(dfsubset$ratio))
   ylim[1] <- ylim[1] - 0.25
   ylim[2] <- ylim[2] + 0.25
   
   
-  if(n == 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
-  if(n != 1) plot(exp(ratio) ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
+  if(n == 1) plot(exp(ratio) ~ fixed, data = dfsubset, ylab = "", ylim = ylim)
+  if(n != 1) plot(exp(ratio) ~ fixed, data = dfsubset, ylab = "", ylim = ylim, yaxt = "n")
   
   
   lines(exp(fit) ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
   
-  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = T)
   
   r <- round(fixef(mod.linear), 5)
   
