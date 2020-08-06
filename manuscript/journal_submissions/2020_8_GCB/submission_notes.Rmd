@@ -7,6 +7,9 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+[*author instructions*](https://onlinelibrary-wiley-com.smithsonian.idm.oclc.org/page/journal/13652486/homepage/forauthors.html)
+
+
 # submission questions
 
 
