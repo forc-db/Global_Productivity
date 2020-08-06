@@ -1,0 +1,18 @@
+---
+title: "GCB submission notes"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# submission questions
+
+
+## What is the scientific question you are addressing?
+## What is/are the key finding(s) that answers this question?
+##    Why is this work important and timely?
+##    Does your paper fall within the scope of GCB; what biological AND global change aspects does it address?
+##    What are the three most recently published papers that are relevant to this question? This information will assist the Editors in selecting reviewers.
+
