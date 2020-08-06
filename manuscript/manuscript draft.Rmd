@@ -368,7 +368,6 @@ Furthermore, in the tropics, climate change will push forests beyond any contemp
 Thus, while further research is required to understand the extent to which forest responses to climate change will track global gradients, and the time scale on which they will do so, understanding the fundamental climatic controls on annual C cycling in Earth's forests sets a firmer foundation for understanding forest C cycle responses to accelerating climate change. 
 
 
-
 ### Acknowledgements
 We gratefully acknowledge all researchers who originally collected the data used in this analysis. 
 This study was funded by a Smithsonian Scholarly Studies grant to KJAT and HCML and by Smithsonian's Forest Global Earth Observatory (ForestGEO). 
