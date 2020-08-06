@@ -4,7 +4,7 @@ NPP,3,3,6,NPP
 ANPP,5,5,5,ANPP
 ANPP_woody_stem,7,7,1,ANPP stem
 ANPP_foliage,9,9,6,ANPP foliage
-BNPP_root,8,8,5,BNPP root
+BNPP_root,8,8,5,BNPP
 BNPP_root_fine,6,6,6,BNPP fine root
 R_auto,4,4,1,R auto
 R_auto_root,2,2,5,R root
