@@ -198,7 +198,7 @@ kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and 
 
 
 ```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
-  knitr::include_graphics("distribution_all_variables_cropped.png")
+  knitr::include_graphics("distribution_all_variables_cropped.jpg")
 ```
   
   
