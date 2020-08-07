@@ -1,6 +1,7 @@
 ---
 title: "GCB submission notes"
 output: pdf_document
+
 ---
 
 ```{r setup, include=FALSE}
@@ -9,13 +10,37 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [*author instructions*](https://onlinelibrary-wiley-com.smithsonian.idm.oclc.org/page/journal/13652486/homepage/forauthors.html)
 
+# ORCHIDs
+
+Ben: 0000-0001-9525-4633
+
+Valentine: 0000-0002-4519-481X
+
 
 # submission questions
 
 
 ## What is the scientific question you are addressing?
-## What is/are the key finding(s) that answers this question?
+
+How do nine major annual autotrophic carbon fluxes in forests vary globally with respect to latitude and climate?
+
+## What is/are the key finding(s) that answers this question
+
+Nine major carbon fluxes decreases linearly and roughly in proportion to one another across latitudes. Temperature variables are the best univariate climate predictors, with additional effects of moisture availability. The influence of climate on carbon fluxes within the growing season was small but significant for a number of fluxes.
+
 ##    Why is this work important and timely?
+
+Forests will strongly influence climate change, and cohesive understanding of their carbon fluxes vary with respect to climate is foundational to predicting how they will change in coming decades.  
+
 ##    Does your paper fall within the scope of GCB; what biological AND global change aspects does it address?
+
+The paper falls within the scope of GCB addressing how forest carbon fluxes (biological aspect) relate to climate (global change aspect).
+
 ##    What are the three most recently published papers that are relevant to this question? This information will assist the Editors in selecting reviewers.
+
+Li, & Xiao. (2019). Mapping Photosynthesis Solely from Solar-Induced Chlorophyll Fluorescence: A Global, Fine-Resolution Dataset of Gross Primary Production Derived from OCO-2. Remote Sensing, 11(21), 2563.
+
+Collalti, A., & Prentice, I. C. (2019). Is NPP proportional to GPP? Waring’s hypothesis 20 years on. Tree Physiology, 39(8), 1473–1483. 
+
+Sullivan et al (2020). Long-term thermal sensitivity of Earth’s tropical forests. Science, 368(6493), 869–874. 
 
