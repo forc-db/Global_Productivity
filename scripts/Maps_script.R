@@ -94,7 +94,7 @@ all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables
 all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
 all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
 
-ForC_simplified$variable.name[ForC_simplified$variable.name %in% "BNPP_root"] <- "BNPP root"
+ForC_simplified$variable.name[ForC_simplified$variable.name %in% "BNPP_root"] <- "BNPP"
 ForC_simplified$variable.name[ForC_simplified$variable.name %in% "ANPP_foliage"] <- "ANPP foliage"
 ForC_simplified$variable.name[ForC_simplified$variable.name %in% "ANPP_woody_stem"] <- "ANPP stem"
 ForC_simplified$variable.name[ForC_simplified$variable.name %in% "BNPP_root_fine"] <- "BNPP fine root"
@@ -118,7 +118,7 @@ all.results <- NULL
 
 ForC_simplified$variable.name <- gsub("(_0|_1|_2|_3|_4|_5)", "", ForC_simplified$variable.name)
 
-ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP stem", "ANPP foliage", "BNPP root", "BNPP fine root", "R auto", "R root"),]
+ForC_simplified <- ForC_simplified[ForC_simplified$variable.name %in% c("GPP", "NPP", "ANPP", "ANPP stem", "ANPP foliage", "BNPP", "BNPP fine root", "R auto", "R root"),]
 
 fixed.v <- c("AnnualMeanTemp")
 fixed.no.na <- !is.na(ForC_simplified[, fixed.v])
@@ -135,7 +135,7 @@ ForC_simplified <- merge(ForC_simplified, col.sym[, c("maps.name", "col", "sym")
 ForC_simplified$col <- as.character(ForC_simplified$col)
 ForC_simplified$sym <- as.character(ForC_simplified$sym)
 
-ForC_simplified$variable.name <- factor(ForC_simplified$variable.name, levels = c("GPP", "NPP", "ANPP", "ANPP stem", "ANPP foliage", "BNPP root", "BNPP fine root", "R auto", "R root"))
+ForC_simplified$variable.name <- factor(ForC_simplified$variable.name, levels = c("GPP", "NPP", "ANPP", "ANPP stem", "ANPP foliage", "BNPP", "BNPP fine root", "R auto", "R root"))
 
 png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/maps/distribution_all_samples.png"), width = 2000, height = 3000, units = "px", res = 300)
 
