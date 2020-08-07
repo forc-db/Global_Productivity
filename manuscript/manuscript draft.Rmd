@@ -330,7 +330,7 @@ Water availability is also influential, but of secondary importance across the c
 Contrary to prior suggestions that the majority of variation in C cycling is driven primarily by the length of the growing season [@kerkhoff_plant_2005; @enquist_adaptive_2007; @michaletz_convergence_2014], we find modest explanatory power of growing season length and small but sometimes significant influence of climate within the growing season (Figs. 4f,S6-S9).
 Together, these findings yield a unified understanding of climate's influence on forest C cycling.
 
-Our findings indicate that, among mature, undisturbed stands, forest C fluxes are unambiguously highest in the tropical regions, and the relationship with both latitude and $MAT$ is approximately linear (Figs. 2, 4).
+Our findings indicate that, among mature, undisturbed stands, forest C fluxes are unambiguously highest in the tropical regions, and the relationship with both latitude and $MAT$ is approximately linear (Table 1, *Q1*,*Q2*; Figs. 2, 4).
 This contrasts with the suggestion that C fluxes (e.g., $NPP$, $ANPP$, $ANPP_{stem}$) of temperate forests are similar to or even greater than that of tropical forests [@luyssaert_co_2007; @huston_global_2009]. 
 Previous indications of such a pattern may have been an artifact of differences in stand age across biomes.
 Compared to tropical forests, the temperate forest biome has experienced more widespread anthropogenic disturbance and has a larger fraction of secondary stands [@potapov_mapping_2008; @poulter_global_2018], so analyses comparing across latitudinal gradients without controlling for stand age risk confounding age with biome effects. 
@@ -356,14 +356,14 @@ However, methodological variation and uncertainty affect all of fluxes considere
 Second, differences among variables in the proportion of variation explained by climate may be attributable to more direct climatic control over $GPP$ than subsidiary fluxes. 
 That is, subsidiary fluxes may be shaped by climate both indirectly through its influence on $GPP$ and respiration and directly through any climatic influence on C allocation, as well as many other local- and regional-scale factors [e.g., @moser_elevation_2011].
 
-Temperature and its seasonality were the primary drivers of C flux on the global scale (Figs. 2-4), consistent with a long legacy of research identifying temperature as a primary driver of forest ecosystem C cycling [e.g., @lieth_primary_1973; @luyssaert_co_2007; @wei_forest_2010].
+Temperature and its seasonality were the primary drivers of C flux on the global scale (Table 1, *Q2*,*Q4*; Figs. 2-4), consistent with a long legacy of research identifying temperature as a primary driver of forest ecosystem C cycling [e.g., @lieth_primary_1973; @luyssaert_co_2007; @wei_forest_2010].
 We find little evidence of any non-linearity in temperature's influence on C flux.
 The relationship of all fluxes to $MAT$ as an individual driver were best described by a linear function (Table S2) -- with the exception of $BNPP$, whose response to $MAT$ was close to linear (Fig. 4a).
 This result contrasts with the idea that fluxes saturate with $MAT$ below approximately 25$^\circ$C $MAT$ [@luyssaert_co_2007; @huston_global_2009].
 It remains possible that flux declines above this threshold [@larjavaara_temperature_2012; @sullivan_long-term_2020], as is also consistent with tree-ring records indicating that tropical tree growth declines at high temperatures [e.g., @vlam_temperature_2014].
 However, these higher temperatures also tend to be associated with high $PET$ and $VPD$, both of which are associated with reduced C fluxes (Figs. 4c-d, S4-S5).
 
-Indeed, while temperature responses dominate at this global scale and within the climate space occupied by forests, the effects of temperature are moderated by moisture availability (Table 1; Figs 3-4).
+Indeed, while temperature responses dominate at this global scale and within the climate space occupied by forests, the effects of temperature are moderated by moisture availability (Table 1, *Q2*,*Q3*; Figs 3-4).
 Specifically, C fluxes are reduced under relatively dry conditions (*i.e.*, low $MAP$; high $VPD$) and sometimes under very high precipitation (Figs. 3-4). 
 The observed positive interaction between $MAT$ and $MAP$ for $ANPP_{stem}$ on the global scale (Fig. 3) is consistent with an analysis showing a similar interaction for $ANPP$ in tropical forests, also with a cross-over point at ~20^$\circ$C [@taylor_temperature_2017].  
 However, we detect no such interaction for $ANPP$ or most other C fluxes, and we find a contrasting negative interaction for $NPP$ (Fig. 3), suggesting that more data are required to sort out potential differences in the interactive effects of $MAT$ and $MAP$ on C fluxes in the tropics.
