@@ -1,4 +1,4 @@
-Fixed effect,AIC value,$\Delta$ AIC,Marginal R$^{2}$
+Fixed effect,AIC value,$\Delta$AIC relative to best model,Marginal R$^{2}$
 MAT,126.43,0,0.62
 Growing season length,140.81,14.38,0.54
 None ,178.96,52.54,0
