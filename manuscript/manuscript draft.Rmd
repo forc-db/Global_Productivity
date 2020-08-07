@@ -47,7 +47,7 @@ caption {
 ```
 **Title:** Global patterns of forest autotrophic carbon fluxes
 
-**Running head:** 
+**Running head:** Global patterns of forest carbon fluxes
 
 
 **Authors:** 
@@ -65,7 +65,7 @@ Helene C. Muller-Landau^3^
 Kristina J. Anderson-Teixeira^1,3^*
 
 
-**Author Affiliations:**
+**Institutional Affiliations:**
 
 1. Conservation Ecology Center; Smithsonian Conservation Biology Institute; Front Royal, VA, USA
 
@@ -92,7 +92,7 @@ email: teixeirak@si.edu
 **Paper type:** Primary Research Article
 
 \newpage
-###Abstract
+### Abstract
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
 However, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
 Here, we draw upon 1319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
@@ -104,6 +104,8 @@ C fluxes increased with growing season length, but this was never the best univa
 Within the growing season, the influence of climate on C cycling was small but significant for a number of flux variables. 
 These findings clarify how forest C flux varies with latitude and climate on a global scale. 
 In a period of accelerating climatic change, this improved understanding of the fundamental climatic controls on forest C cycling sets a foundation for understanding patterns of change. 
+
+**Keywords:**  carbon fluxes; climate; forest; productivity; respiration; latitude
 
 \newpage
 ### Introduction
@@ -133,8 +135,8 @@ There is also evidence that C fluxes also respond to climate variables such as t
 
 As metrics of annual climate, MAT and MAP fail to capture variation in climate on an intra-annual scale, including temperature and precipitation seasonality and growing season length. 
 Some studies have suggested that the apparently strong relationship between MAT and C fluxes is actually a consequence of the correlation between MAT and growing season length [@kerkhoff_plant_2005; @michaletz_convergence_2014; @michaletz_drivers_2018]. 
-Kerkhoff et al. [-@kerkhoff_plant_2005] and Michaletz et al. [-@michaletz_convergence_2014] found no significant relationship between growing season temperature and net primary productivity (loosely defined to include a mix of **VARIABLES**) standardized to growing season length.
-While this suggests that the influence of temperature may be limited to determining the length of the frost-free growing season, analysis with clearly defined variables and standardized forest ages would be necessary to test the the veracity and generality of this hypothesis.  
+@kerkhoff_plant_2005 and @michaletz_convergence_2014 found no significant relationship between growing season temperature and $ANPP$ or $NPP$ standardized to growing season length [but see @chu_does_2016].
+While this suggests that the influence of temperature may be limited to determining the length of the frost-free growing season, analysis with carefully standardized variables and forest ages would be necessary to test the the veracity and generality of this hypothesis.  
 
 The recent development of the Global Forest Carbon database (ForC), which synthesizes multiple variables and including records of stand history [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018], opens up the possibility for a standardized analysis of global scale variation in multiple C fluxes and the principle climatic drivers of these patterns.
 In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad questions and corresponding hypotheses (Table 1).
@@ -204,7 +206,11 @@ kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and 
 
 ForC contains geographic coordinates associated with each measurement record and, when available, mean annual temperature (MAT) and mean annual precipitation (MAP) as reported in the primary literature [@anderson-teixeira_forc_2018]. Based on the geographic co-ordinates for each site, data on twelve climate variables--including MAT, MAP, temperature and precipitation seasonality, annual temperature range, solar radiation, cloud cover, annual frost and wet days, potential evapotranspiration (PET), aridity (MAP/PET), and vapor pressure deficit (VPD)--were extracted from five open-access climate datasets: WorldClim [@hijmans_very_2005], WorldClim2 [@fick_worldclim_2017], the Climate Research Unit time-series dataset (CRU TS v4.03 [@harris_updated_2014], the Global Aridity Index and Potential Evapotranspiration Climate Database [@trabucco_global_2019], and TerraClimate [@abatzoglou_terraclimate_2018] (Table S1). From these data, we derived maximum VPD, defined as the VPD of the month with the largest deficit, and the number of water stress months, defined as the number of months annually where precipitation was lower than PET. Where site-level data was missing for MAT or MAP, we used values from the WorldClim dataset.
 
-**For consistency with previous studies (Table 1, *H5*),** length of the growing season was estimated to the nearest month, where growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. We experimented with a definition of growing season months including a moisture index, defined as (MAT - PET)/PET, > -0.95 [@kerkhoff_plant_2005; see also @michaletz_convergence_2014]. However, we found that including a moisture index had minimal effect on the estimates of growing season length, and so chose to exclude it. Monthly data for PET, precipitation, and temperature from  CRU v 4.03 [@harris_updated_2014] and solar radiation from WorldClim2 [@fick_worldclim_2017] were used to calculate mean monthly PET, precipitation, temperature and solar radiation during the growing season. Total growing season precipitation and solar radiation were also calculated. 
+Following the previous studies whose hypothesis we were evaluating [@kerkhoff_plant_2005; @michaletz_convergence_2014], length of the growing season was estimated to the nearest month, where growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. 
+We experimented with a definition of growing season months including a moisture index, defined as (MAT - PET)/PET, > -0.95 [@kerkhoff_plant_2005; see also @michaletz_convergence_2014]. 
+However, we found that including a moisture index had minimal effect on the estimates of growing season length for the sites included here, and so chose to exclude it. 
+Monthly data for PET, precipitation, and temperature from  CRU v 4.03 [@harris_updated_2014] and solar radiation from WorldClim2 [@fick_worldclim_2017] were used to calculate mean monthly PET, precipitation, temperature and solar radiation during the growing season. 
+Total growing season precipitation and solar radiation were also calculated. 
   
 *Analyses*
 
@@ -229,18 +235,18 @@ This analysis was applied to the following sets of fluxes: (1) $GPP = NPP + R_{a
 
 Variation in allocation to component carbon fluxes was explored for three groupings: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. For each group, measurements taken at the same site and plot, an in the same year were grouped together. For groups (1) and (2), where 2 of the 3 flux measurements were available for a given site, plot, and year, these measurements were used to calculate the third. The ratio of each pair of component fluxes was calculated. The log of these ratios were regressed against latitude and climate variables, using the linear model specified above. Cook's distance analyses were carried out for each of the models, and extreme outliers removed,
 
-We next examined the relationships of C fluxes to climate variables (Q2-Q4; Table 1). 
+We next examined the relationships of C fluxes to climate variables (*Q2-Q4*; Table 1). 
 We tested first-order linear, second-order polynomial, and logarithmic fits for each climate variable. 
 Again, polynomial fits were considered superior to first-order linear fits only if inclusion of a second-order polynomial term resulted in $\Delta$ AIC $\ge$ 2.0 relative to a first-order linear model.
 We tested relationships of each C flux (Table 2) against each climate variable (Table S1). Variables which were not significant explanatory variables or which explained <20% of variation in C fluxes are only presented in SI.
 
 Multivariate models were used to investigate the potential joint and interactive effects of MAT and MAP on carbon fluxes. An additive model including MAP in addition to MAT was accepted when $\Delta$ AIC >2 relative to a null including only MAT as a fixed effect. An interactive model including an MAT x MAP interaction was accepted when $\Delta$AIC >2 relative to a null including MAT and MAP as fixed effects.
 
-To test whether and how C flux varied with climate when standardised by growing season length (Q5), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate, specifically growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
+To test whether and how C flux varied with climate when standardised by growing season length (*Q5*), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate, specifically growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
 **All analyses were conducted in R (**Version**). Code and data necessary to reproduce all results are archived on GitHub....**
 
-###Results
+### Results
 
 In total, we analyzed 1319 records from nine forest autotrophic C flux variables taken from forests that had experienced no major anthropogenic disturbances within the past 100 years. These records represented a total of 255 plots in 154 distinct geographic areas across all forested biogeographic and climate zones (Fig. 1, Table 2). 
   
@@ -302,14 +308,14 @@ We found a significant relationship between length of growing season and C fluxe
 
 When annual C fluxes were standardized by growing season length (in monthly increments), correlations with growing season climate were generally weak (Figs. S8-S9). $ANPP$ increased with growing season temperature ($R^2$ = 0.09, p<0.001) and precipitation ($R^2$ = 0.04, p<0.05). Similarly, $ANPP_{foliage}$ increased slightly with growing season temperature ($R^2$ = 0.16, p<0.01) and precipitation ($R^2$ = 0.09, p<0.05). Growing season solar radiation had a positive influence on $BNPP$ ($R^2$ = 0.17, p<0.001) and $BNPP_{fine.root}$ ($R^2$ = 0.13, p<0.01). Growing season PET had a positive influence on $GPP$ ($R^2$ = 0.15, p<0.01), $NPP$ ($R^2$ = 0.07, p<0.01), $BNPP$ ($R^2$ = 0.23, p<0.0001), $BNPP_{fine.root}$ ($R^2$ = 0.10, p<0.05), and $ANPP_{stem}$ ($R^2$ = 0.06, p<0.05). All other relationships were non-significant.
   
-###Discussion  
+### Discussion  
 
 Our analysis of a large global database (ForC) clarifies how autotrophic C fluxes in mature forests vary with latitude and climate on a global scale.
 We show that, across all nine variables analyzed, annual C flux decreases continually with latitude (Fig. 2)--a finding that confirms multiple previous studies but contradicts the idea that productivity of temperate forests rivals or even exceeds that of tropical forests [@luyssaert_co_2007; @huston_global_2009]. 
 At this global scale, C fluxes increase approximately in proportion to one another, with component fluxes summing appropriately to larger fluxes and no detectable differences in allocation across latitude or climates (Figs. 2, 4, S3). 
 Similarly, we show broad - *albeit* not complete - consistency of climate responses across C fluxes, with the observed latitudinal variation primarily attributable to temperature and its seasonality (Figs. 3-4).
 Water availability is also influential, but of secondary importance across the climate space occupied by forests (Figs. 3-4). 
-Contrary to prior suggestions that the majority of variation in C cycling is driven by the length of the growing season (**REFS**), we find modest explanatory power of growing season length and small but sometimes significant influence of climate within the growing season (Figs. 4f,S6-S9).
+Contrary to prior suggestions that the majority of variation in C cycling is driven primarily by the length of the growing season [@kerkhoff_plant_2005; @enquist_adaptive_2007; @michaletz_convergence_2014], we find modest explanatory power of growing season length and small but sometimes significant influence of climate within the growing season (Figs. 4f,S6-S9).
 Together, these findings yield a unified understanding of climate's influence on forest C cycling.
 
 Our findings indicate that, among mature, undisturbed stands, forest C fluxes are unambiguously highest in the tropical regions, and the relationship with both latitude and $MAT$ is approximately linear (Figs. 2, 4).
@@ -356,7 +362,7 @@ We found that a temperature-defined growing season length had strong positive co
 Dividing annual fluxes by growing season length to yield average flux per growing season month removed the majority of climate-related variation, supporting the idea that the latitudinal gradient in carbon flux is attributable more to shorter growing seasons at high latitudes than to inherently lower rates of photosynthesis or respiration by high-latitude forests [@enquist_adaptive_2007]. 
 However, there remained a number of significant correlations with growing season climatic conditions, indicating that climatic conditions remain influential within the growing season (Figs. S8-S9). 
 We conclude that while correcting for growing season length takes analyses a step closer to mechanistic linkage of instantaneous C flux rates to environmental conditions, it remains crude relative to the timescales on which climate affects plant metabolism, and does not advance statistical predictive power. 
-Mechanistic accounting for climatic effects on global forest carbon flux patterns instead requires models representing physiologically meaningful timescales [e.g., @medvigy_mechanistic_2009; @longo_biophysics_2019].
+Rather, mechanistic accounting for climatic effects on global forest carbon flux patterns requires models representing physiologically meaningful timescales [e.g., @medvigy_mechanistic_2009; @longo_biophysics_2019].
 
 Our analysis clarifies how forest autotrophic carbon fluxes vary with latitude and climate on a global scale, with some important implications for how forest carbon cycling relates to climate and, by extension, how it is likely to respond to climatic warming. 
 To the extend that patterns across broad scale climatic gradients can foretell how ecosystem responses to climate change, our findings suggest that higher temperatures with similar moisture availability result in a generalized acceleration of forest C cycling (Figs. 2-3).
@@ -373,3 +379,4 @@ We gratefully acknowledge all researchers who originally collected the data used
 This study was funded by a Smithsonian Scholarly Studies grant to KJAT and HCML and by Smithsonian's Forest Global Earth Observatory (ForestGEO). 
 Original compilation of the ForC database was funded by **DOE grant to KAT**.
 
+### References
