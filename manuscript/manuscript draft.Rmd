@@ -3,10 +3,8 @@ title: ""
 author: ""
 output:
   pdf_document:
-    citation_package: natbib
     fig_caption: yes
-bibliography: [library.bib,  packages.bib]
-biblio-style: apalike
+bibliography: library.bib
 csl: global-change-biology.csl
 header-includes:  \usepackage{float}
                   \usepackage{caption}
@@ -32,7 +30,7 @@ knitr::write_bib(c(
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+#knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
   # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
 
@@ -106,7 +104,7 @@ In a period of accelerating climatic change, this improved understanding of the 
 \newpage
 ### Introduction
 
-Carbon (C) cycling in Earth's forests provides the energetic basis for sustaining the majority of Earth's terrestrial biodiversity and many human populations [Millenium Ecosystem @millennium_ecosystem_assessment_ecosystems_2005], while strongly influencing atmospheric carbon dioxide (CO~2~) and climate [@bonan_forests_2008]. 
+Carbon (C) cycling in Earth's forests provides the energetic basis for sustaining the majority of Earth's terrestrial biodiversity and many human populations [@millennium_ecosystem_assessment_ecosystems_2005], while strongly influencing atmospheric carbon dioxide (CO~2~) and climate [@bonan_forests_2008]. 
 Forests' autotrophic carbon fluxes -- that is, carbon fixation, allocation, and metabolism by trees and other primary producers -- sets the energy ultimately available to heterotrophic organisms (including microbes), in turn influencing their abundance [@zak_plant_1994; @niedzialkowska_species_2010] and possibly diversity [@waide_relationship_1999; @chu_direct_2018]. 
 They are linked to cycling of energy, water, and nutrients and, critically, influence all C stocks and define forest interactions with Earth's changing climate. 
 Each year, over 69 Gt of C cycle through Earth's forests [@badgley_terrestrial_2019] -- a flux more than seven times greater than that of recent anthropogenic fossil fuel emissions [9.5 Gt C yr^-1^; @friedlingstein_global_2019]. 
@@ -216,7 +214,7 @@ Monthly data for $PET$, precipitation, and temperature from  CRU v 4.03 [@harris
   
 *Analyses*
 
-The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_r:_2018]. 
+The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_2018]. 
 The basic model for all analyses included a fixed effect of latitude or climate and a random effect of plot nested within geographic area. 
 Geographic areas--*i.e.*, spatially clustered sites--were defined within ForC using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018]. 
 We experimented with inclusion of altitude as a fixed effect, but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
@@ -246,7 +244,7 @@ Multivariate models were used to investigate the potential joint and interactive
 
 To test whether and how C fluxes varied with climate when standardised by growing season length (*Q5*; Table 1), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate, specifically growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
-All analyses were conducted in R v.3.5.1 [@r_core_team_r:_2018]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
+All analyses were conducted in R v.3.5.1 [@r_core_team_2018]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
 
 ### Results
 
