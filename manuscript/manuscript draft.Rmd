@@ -226,6 +226,7 @@ We first examined the relationship between latitude and C fluxes (*Q1*; Table 1)
 We tested models with latitude as a first-order linear, second-order polynomial, and logarithmic term. 
 For brevity, we henceforth refer to first-order linear models as "linear" and second-order polynomial models as "polynomial".
 We selected as the best model that with the highest $\Delta$ AIC relative to a null model with no fixed term, with the qualification that a polynomial model was considered an improvement over a linear model only if it reduced the AIC value by 2.0 or more.
+In addition, pairwise comparisons of $R^2$ values were carried out for a selection of pairs of C fluxes to test for differences among variables in the proportion of variation explained by latitude and climate. Models were run on data from sets of sites that were common to each pair, in order to account for variation in the number of data points included.
 
 To test whether trends in component fluxes across latitude sum to match those of larger fluxes, regression lines for smaller component fluxes were summed to generate new estimates of larger fluxes. 
 Because no fluxes were significantly better predicted by a logarithmic or polynomial fit than by a linear fit, we used linear fits for all fluxes in this analysis.
@@ -252,7 +253,7 @@ In total, we analyzed 1,319 records from nine forest autotrophic C flux variable
   
 *Q1. How does C flux vary with latitude?* 
 
-All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2). Specifically, latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ ($R^2$=0.17) and $ANPP_{stem}$ ($R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
+All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2, S6). Specifically, latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ ($R^2$=0.17) and $ANPP_{stem}$ ($R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression", fig.pos='H'}
 
@@ -268,7 +269,7 @@ We found no evidence of systematic variation in C allocation with latitude or cl
 All fluxes increased with $MAT$ (all p<0.05; Figs. 3-4, S4-S5, Table S2). 
 For eight of the nine fluxes, this relationship was linear.
 For only one variable, $BNPP$, did a lognormal fit provide an improvement over a first-order linear relationship, though this was not significant ($\Delta$AIC <2).
-As with latitude, $MAT$ tended to explain more variation in the larger fluxes ($GPP$, $NPP$, $ANPP$, $R_{auto}$) and $ANPP_{foliage}$ (all $R^2$> 0.4) than in subsidiary and belowground fluxes ($ANPP_{stem}$, $R_{root}$, $BNPP_{fine.root}$; all $R^2$< 0.25).
+As with latitude, $MAT$ tended to explain more variation in the larger fluxes ($GPP$, $NPP$, $ANPP$, $R_{auto}$) and $ANPP_{foliage}$ (all $R^2$> 0.4) than in subsidiary and belowground fluxes ($ANPP_{stem}$, $R_{root}$, $BNPP_{fine.root}$; all $R^2$< 0.25; Table S6).
   
 $MAP$ was a significant (p<0.05) predictor of all fluxes (Figs. 4a, S4-S5; Table S2). 
 However, it explained little variation: with the exception of $R_{auto}$, $MAP$ explained at most 25% of variation in C flux. All fluxes increased with $MAP$ up to at least 2000 mm, above which responses were variable (Figs. 4, S4-S5).   
