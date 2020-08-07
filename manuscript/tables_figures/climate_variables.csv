@@ -17,4 +17,4 @@ LGS,Length of growing season,months yr$^{-1}$,Number of months annually with mea
 gsT,Growing season temperature,$^\circ$C,Mean growing season temperature,1901 - 2014,Derived from CRU data
 gsP,Growing season precipitation,mm month$^{-1}$,Mean monthly precipitation during growing season months,1901 - 2014,Derived from CRU data
 gsPET,Growing season PET,mm month$^{-1}$,Mean monthly potential evapotranspiration during growing season months,1901 - 2014,Derived from CRU data
-gsR,Growing season solar radiation,mm month$^{-1}$,Mean monthly solar radiation during growing season,1901 - 2014,Derived from CRU data
+gsR,Growing season solar radiation,mm month$^{-1}$,Mean monthly solar radiation during growing season,1901 - 2014,Derived from WorldClim2 data
