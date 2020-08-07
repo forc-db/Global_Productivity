@@ -14,7 +14,7 @@ output:
 bibliography: appendix_library.bib
 csl: global-change-biology.csl
 nocite: | 
-  @hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
+  @hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018; @trabucco_global_2019
     
 header-includes:  \usepackage{float}
                   \usepackage{caption}
@@ -58,7 +58,7 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
   column_spec(4, width = "7cm") %>%
   column_spec(5, width = "2cm") %>%
   column_spec(6, width = "5cm") %>%
-  kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick et al. (2017)", "Harris et al. (2017)", "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE) %>%
+  kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick and Hijmans. (2017)", "Harris et al. (2017)", "Trabucco and Zomer (2019)" , "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE) %>%
   kableExtra::footnote(symbol = "The WorldClim version used was the most recent available at the time of analysis", footnote_as_chunk = TRUE)
 
 #@hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
@@ -71,7 +71,7 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
 library(knitr)
 library(kableExtra)
 S3 <- read.csv("tables_figures/r2_table1.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model form, $\\Delta$AIC, and R$^{2}$ for each climate variable as a single fixed effect in models for each C flux.", caption.short = "Table S2. Model form, $\\Delta$AIC and R$^{2}$ for each climate variables as a single fixed effect in models for each C flux", escape = F) %>%
+kable(S3, format = "latex", booktabs = TRUE, caption = "Table S2. Model form, $\\Delta$AIC, and R$^{2}$ for each climate variable as a single fixed effect in models for each C flux.", caption.short = "Table S2. Model form, $\\Delta$AIC and R$^{2}$ for each climate variable as a single fixed effect in models for each C flux", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   add_header_above(c(" ", "Latitude"=3, "MAT"=3, "MAP"=3, "T Seas"=3, "P Seas"=3, "ATR"=3, "Solar R"=3, "AI"=3))
 ```
@@ -84,7 +84,7 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   add_header_above(c(" ", "Cloud"=3, "AFD"=3, "AWD"=3, "PET"=3, "VPD"=3, "Max VPD"=3, "WSM"=3, "LGS"=3))
 ```
-Model forms tested include first-order linear (Lin), second-order polynomial (Poly), and logarithmic (Log). Shown are models with lowest $\Delta AIC$.
+Model forms tested include first-order linear (Lin), second-order polynomial (Poly), and logarithmic (Log). Shown are models with lowest AIC value. $\Delta$AIC value is calculated with respect to the null.
 
 \elandscape
 
@@ -141,7 +141,7 @@ Table includes all models within $\Delta$AIC $\le$ 2.0 of the best model
 library(knitr)
 library(kableExtra)
 S4 <- read.csv("tables_figures/pairwise_comparisons.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise comparisons of correlations with climate variables between C fluxes, with all analyses including a common set of sites.", escape = F) %>%
+kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise comparisons of correlations with climate variables between C fluxes, with all analyses conducted on a set of sites common to each pair.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   collapse_rows(columns = c(1,2), latex_hline = "custom", custom_latex_hline = c(1,2))
   
@@ -150,7 +150,7 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 
 
 \newpage
-```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed here", out.height ='95%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed", out.height ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
