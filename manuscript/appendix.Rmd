@@ -133,7 +133,7 @@ kable(S3, format = "latex", booktabs = TRUE, caption = "Table S5. Best (lowest $
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   collapse_rows(columns = 1, latex_hline = "major")
 ```
-Table includes all models within $\Delta$AIC $\le$2.0 of the best model
+Table includes all models within $\Delta$AIC $\le$ 2.0 of the best model
 
 \newpage
 \blandscape
