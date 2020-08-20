@@ -234,13 +234,13 @@ for(fixed.v in fixed.variables){
         all.results <- rbind(all.results, results)
       }
       
-    }
+    } # for (response.v in response.variables)
     
     
     pannel.nb <- pannel.nb +1
     
     
-  }
+  } # for(response.variables in response.variables.groups)
   
   if(!categorical)  legend("topright", lty = c(1,2), legend = c("significant effet", "non-significant effect"), bty = "n")
   if(categorical)  legend("topright", pch = c(24, 24, NA, NA), col= c("grey", "grey", NA, NA), pt.bg = c("grey", "white", NA, NA), fill = c(NA, NA, rgb(t(col2rgb(c("black", "black"))), maxColorValue = 255, alpha = c(255, 100))), border = c(NA, NA, "black", NA) , legend = c("significant effet", "non-significant effect", categories), bty = "n")
@@ -253,7 +253,7 @@ for(fixed.v in fixed.variables){
   
   
   
-}
+} #for(fixed.v in fixed.variables)
 
 #### age as an interaction ####
 for(fixed.v in fixed.variables[! fixed.variables %in% "stand.age"]) {
