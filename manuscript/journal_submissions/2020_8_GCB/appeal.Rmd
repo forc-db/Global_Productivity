@@ -1,0 +1,104 @@
+---
+title: "Appeal of rejection of GCB-20-1713"
+output: pdf_document
+bibliography: library.bib
+csl: global-change-biology.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+  
+Dear Editor:
+
+We would like to appeal the reject decision of our manuscript "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713). 
+
+As far as we can tell from the comments to the authors, reviewer 2 was supportive, and her/his comments could easily be addressed. We therefore assume the reject decision was based on the feedback of reviewer 1, which we believe was off-base for several reasons:
+
+* The reviewer states, "...the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data..." and "the analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago." These statements betray a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, our considers nine. The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, includes much less data, does not control for effects of stand age/ disturbance history, and examines latitudinal/ global climatic trends in only # variables. This study has been cited >580 times and was highlighted as a noteworthy publication within *GCB* ([Long, 2020](https://doi.org/10.1111/gcb.14921)). It would seem that something along these lines, but with an expanded database and a more carefully controlled analysis, would have high potential to become a "classic" reference in global forest carbon cycling.
+
+* The reviewer objects that the results are not surprising--e.g., that it is not a new finding that C flux declines with latitude and increases with MAT. We agree that the results are not surprising, and we recognize that surprising results tend to produce high-impact publications. However, there is also a place for high-quality synthesis that clarifies current understanding, which is the goal of this publication. Such syntheses are often published as review papers, but given that our analysis entails original analysis, we submitted it as a Primary Research Article. Perhaps it would be better suited, and reviewed with more appropriate expectations, as a Research Review [*sensu* @anderson-teixeira_carbon_2016].
+
+* The reviewer objects to the fact that the study does not "reveal the biological mechanisms lead to the detected pattern", and states, "Our contemporary knowledge on forest carbon cycling has moved well beyond using mean climatic variable to extrapolate or guess the response of forest carbon cycling to climate change. The spatial gradient do not necessarily represent the response of forests to climate change." We agree, and fully acknowledge in the paper, that this study does not reveal the biological mechanisms. Further, we do not argue that the spatial gradient represents the response of forests to climate change, as clearly discussed in the final paragraph of the discussion. However, we do argue that broad-scale patterns in C cycling across climatic gradients remain--and should remain--one of the important approaches for inferring how forests might respond to climate change. We note that studies using this approach have been published this year in *Science* [@sullivan_long-term_2020]... *(add some more examples)*. While we fully recognize the limitations to such studies for inferring how forests will respond to climate change, we argue that this approach is one of several important, complementary approaches to addressing a challenging problem (Anderson-Teixeira et al. 2013, GCB). The reviewer's apparent wholesale rejection of this approach seems short-sighted, and the expectation that a single study attempt to explain mechanisms behind global patterns in nine flux variables seems naïve. Getting at mechanisms (well) would require integration of ForC with modeling efforts on a scale that is not currently feasible, but lies within the vision of leaders in the modeling community, as stated in an opinion piece that I recently reviewed a paper for *GCB* (give citation/ number). (This piece lays out a vision for improvement of community infrastructure for modeling, including one *stated the goal of linking with leading databases, specifically citing ForC*.)
+
+* The reviewer suggested (twice) that we "consider a data journal like ESSD". This suggestion is completely inappropriate for two reasons. First, the hypothesis-testing analyses presented here would be completely inappropriate for a data journal. Second, the ForC database is already published [tropical portion only in @anderson-teixeira_carbon_2016, *GCB*; full database as a data paper in @anderson-teixeira_forc_2018, *Ecology*]. Many qualified reviewers would already be aware of this, and an even semi-careful review would not miss this fact, which was prominently cited in the last paragraph of the introduction and the first sentence of the methods. Thus, this suggestion betrays carelessness of review and/or limited understanding of appropriate standards for judging where scientific work should be published. Either way, it does not seem appropriate that *GCB* should put much stake in this review. 
+
+
+If, despite these arguments, the *GCB* Editorial Board does not feel that the paper is sufficiently competitive for publication in *GCB*, we will accept the decision and publish elsewhere. However, we believe that this manuscript has potential to become a "classic" reference on the subject of carbon cycling in forests globally, and that *GCB* would be an excellent fit, given the legacy of publishing important analyses on this theme [e.g., @luyssaert_co_2007; @anderson-teixeira_carbon_2016; MORE]. We would like to be confident that the decision reflects a careful assessment of this manuscript's potential.
+
+thank you,
+
+Kristina Anderson-Teixeira (on behalf of all coauthors)
+
+\newpage
+    
+  
+
+Dear Dr. Anderson-Teixeira,
+
+We write to you in regards to manuscript "Global patterns of forest autotrophic carbon fluxes". Based on points raised by the referees, the Subject Editor has denied publication of your paper in Global Change Biology.
+
+As you may know, we decline a substantial proportion of manuscripts. These editorial judgments are based on such considerations as the degree of advance provided, the breadth of potential interest to researchers and timeliness.
+
+Please be assured that this editorial decision does not represent a criticism of the quality of your work, nor are we questioning its value to others working in this area
+
+Thank you for considering Global Change Biology for the publication of your research.  We hope the outcome of this specific submission will not discourage you from the submission of future manuscripts.
+
+Sincerely,
+Global Change Biology Editorial Office
+
+
+
+Reviewer(s)' Comments to Author:
+
+Reviewer: 1
+
+Comments to the Author
+
+
+Using 1,319 records from the Global Forest Carbon Database (ForC), authors of this manuscript explored the spatial pattern of several carbon flux. They found forest C fluxes decreases with absolute latitude. Among climatic variables, mean annual temperature and temperature seasonality were found to be the best univariate climatic predictors. They suggest their findings could improve understanding of forest carbon cycling under climate change. Overall, the manuscript is well written, but the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data, which did not reveal the biological mechanisms lead to the detected pattern. Thus, I cannot recommend publishing this paper in GCB, but suggest the authors to consider a data journal like ESSD.
+
+The analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago. Forest C fluxes decreasing with latitude was also not a new finding. The author suggest that it contradicts with some previous studies finding that “net primary productivity of temperate forests rivals that of tropical forests”. However, those high NPP in temperate forests could result from high rates of nitrogen deposition or forest plantation (Yu et al., 2014), which are in different context with the mature, undisturbed forests studied in this manuscript.
+
+It is not surprising that MAT was found to be the good climate variables explaining forest C fluxes, since MAT has strong correlation with latitudes. Our contemporary knowledge on forest carbon cycling has moved well beyond using mean climatic variable to extrapolate or guess the response of forest carbon cycling to climate change. The spatial gradient do not necessarily represent the response of forests to climate change. The main implications highlighted in the Abstract is not well supported by the results presented.
+
+While I commend the authors’ efforts to harmonize the dataset, I found the paper lacks the novelty and significance to be published in GCB. A data-oriented journal is a more suitable place for this paper.
+
+
+Reviewer: 2
+
+Comments to the Author
+    
+In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Morgan et al. examined the latitudinal and climatic dependences of various autotrophic fluxes of global mature and undisturbed forests, using a recent release of the ForC database. They reported that latitude and temperature are the best univariate predictor of mature forest carbon cycling, while the effect of temperature is modified by precipitation. Overall, I appreciate this thorough analysis of the novel ForC database (great work in making data publicly available!) and see no major flaws in the study, thus most of my comments below are meant to further improve the manuscript. My comments are below:
+
+1. How does the result compare with previous studies based on eddy covariance (EC) measurements? Throughout reading the manuscript, I have been trying to reconcile what’s been reported based on EC data and what is presented in the ms. Though EC cannot tell us much about NPP and other small fluxes, it did have a better (perhaps just marginally) spatial and temporal representation of forests. In particular, EC data has suggested that net carbon uptake is primarily dependent on carbon uptake period (Churkina et al. 2005, but see Fu et al. 2019 and Zhou et al. 2016), and increasing temperature can lengthen the growing season to enhance GPP and NEP (Keenan et al., 2014). The current study suggests that “growing season length is never the best predictor”. What do you think cause the difference between the two streams of evidence, and why MAT and latitude serves as a better predictor than growing season length? I do not ask for further analysis necessarily, but just feel the discussion could be expanded a bit on previous EC studies about the dominant control of forest carbon flux.
+
+2. A key conclusion is “no detectable differences in allocation across latitude or climates”, however, I do not see a strong evidence for that presented in the main text – Fig.S3 does show several allocation indicators though no statistics are provided. Fig. 2 shows that C fluxes increase approximately in proportion to one another, but that does not necessarily mean allocation is unchanged across latitude or climates.
+
+3. Implication for models. I think it is nice for the authors to report that carbon flux of mature forest is primarily dependent on MAT or latitude. But how much could this advanced knowledge help us improve global simulation of forest carbon cycling. I’d be very curious to see if the state-of-the-art models demonstrate a similar or different functional response of carbon flux to MAT/latitude, and what is the possible reason for that. I think by tapping into this question (even just in discussion) will make the study be of interest to a wider audience.
+
+
+Minor comments:
+
+1. it is unclear in the method about how to calculate “temperature/precipitation seasonality”. Is it the standard deviation of monthly temperature/precipitation in a year?
+
+2. In Table S3, does the R2 come from the univariate linear model or the multivariate model?
+
+3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
+
+4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MAT*MAP as three predictors in a multivariate model or just MAT*MAP in a linear model?
+
+5. I am also wondering about the representation of tropical and extra-tropical forests in the samples. One solution is to add a biome basemap in figure 1. If tropical forest stands are generally older than the extra-tropical forest stands (according to “Histogram_of_Stand_age” in the ForC database), then perhaps there is a need to standardize samples by stand ages when studying allocation.
+
+6. Fig. S6. Spell out “T seas” and “P seas” in the caption.
+
+Churkina, G., Schimel, D., Braswell, B. H., & Xiao, X. (2005). Spatial analysis of growing season length control over net ecosystem exchange. Global Change Biology, 11(10), 1777–1787. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1111%2Fj.1365-2486.2005.001012.x&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=fDBebq%2B1eqPsq2NDNe6zmEveEmfKtHpioWsoJn9yT%2BM%3D&reserved=0
+
+Fu, Z., Stoy, P. C., Poulter, B., Gerken, T., Zhang, Z., Wakbulcho, G., & Niu, S. (2019). Maximum carbon uptake rate dominates the interannual variability of global net ecosystem exchange. Global Change Biology, gcb.14731. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1111%2Fgcb.14731&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=aves%2BnxrjhGzFBzrXmb0c%2FXrEk0uku%2BwjHJJZqrF9v0%3D&reserved=0
+
+Keenan, T. F., Gray, J., Friedl, M. A., Toomey, M., Bohrer, G., Hollinger, D. Y., … Richardson, A. D. (2014). Net carbon uptake has increased through warming-induced changes in temperate forest phenology. Nature Climate Change, 4(7), 598–604. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1038%2Fnclimate2253&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=905OIXZQpS%2BRJ7xNVE1dakWAtdPrEl2gIk1PeTxWO%2Bk%3D&reserved=0
+    
+Zhou, S., Zhang, Y., Caylor, K. K., Luo, Y., Xiao, X., Ciais, P., … Wang, G. (2016). Explaining inter-annual variability of gross primary productivity from plant phenology and physiology. Agricultural and Forest Meteorology, 226–227(October), 246–256. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1016%2Fj.agrformet.2016.06.010&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=UBxrEMtqh3Qo7%2B45xA9%2Fz6lqQIXD3LGvdMyVCNGOwSA%3D&reserved=0
+
+\newpage
+## References
