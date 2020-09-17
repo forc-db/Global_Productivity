@@ -1,6 +1,6 @@
 ---
 title: "Appeal of rejection of GCB-20-1713"
-output: pdf_document
+output: word_document
 bibliography: library.bib
 csl: global-change-biology.csl
 ---
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 Dear Editor:
 
-We would like to appeal the reject decision of our manuscript "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713) on the grounds that Reviewer 1 (of 2) was off-base in (1) providing an inaccurate assessment of the scope of our analysis relative to previous studies, (2) under-valuing high-quality synthesis that produces unsurprising results, (3) setting expectations for this type of analysis that are out of line with the state of the field, and (4) recommending a completely inappropriate alternate venue. We detail these objections below:
+We would like to appeal the reject decision of our manuscript "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713) on the grounds that Reviewer 1 (of 2) was off-base in (1) providing an inaccurate assessment of the scope of our analysis relative to previous studies, (2) under-valuing high-quality synthesis that produces unsurprising results, (3) setting expectations for this type of analysis that are out of line with the state of the field, and (4) recommending a completely inappropriate alternate venue. We detail these objections below. We note that Reviewer 2 was supportive, and her/his comments could easily be addressed. 
 
 **(1) Reviewer 1 provided an inaccurate assessment of the scope of our analysis relative to previous studies.**  The reviewer states, "...the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data..." and "the analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago." These statements betray a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, our considers nine. The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, includes much less data, does not control for effects of stand age/ disturbance history, and examines latitudinal/ global climatic trends in only 3 variables. This study has been cited >580 times and was highlighted as a noteworthy publication within *GCB* ([Long, 2020](https://doi.org/10.1111/gcb.14921)). It would seem that something along these lines, but with an expanded database and a more carefully controlled treatment of forest age and management/disturbance history, would have high potential to become a "classic" reference in global forest carbon cycling.
 
