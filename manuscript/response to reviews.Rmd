@@ -13,7 +13,7 @@ Dear Editor:
 
  "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713). 
 
-
+.....
 
 thank you,
 
@@ -22,6 +22,17 @@ Kristina Anderson-Teixeira (on behalf of all coauthors)
 \newpage
     
   
+Dear Kristina,
+ 
+Your appeal regarding the decision on your manuscript GCB-20-1713 has been safely received. The editor is in principle willing to consider a revised version of your manuscript. If you do consider to submit a revised manuscript, we want to stress the importance of fully addressing all the comments raised by both reviewers, including those concerns about the novelty and the lack of mechanistic advancement of your paper. Your revised manuscript, along with the point-to-point response to reviewer comments, will be sent out for evaluation. We will make a decision based on reviewers' assessment, and no acceptance can be guaranteed.   
+ 
+Please let me know if this is agreeable to you. 
+
+All the best,
+
+Rhea Bruno   
+
+~~~ 
 
 Dear Dr. Anderson-Teixeira,
 
@@ -36,7 +47,7 @@ Thank you for considering Global Change Biology for the publication of your rese
 Sincerely,
 Global Change Biology Editorial Office
 
-
+\newpage
 
 Reviewer(s)' Comments to Author:
 
