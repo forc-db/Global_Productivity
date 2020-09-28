@@ -82,7 +82,11 @@ Minor comments:
 
 1. it is unclear in the method about how to calculate “temperature/precipitation seasonality”. Is it the standard deviation of monthly temperature/precipitation in a year?
 
+*Stated in methods section that this information is available in table S1*
+
 2. In Table S3, does the R2 come from the univariate linear model or the multivariate model?
+
+*Clarifed in table*
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
