@@ -58,13 +58,17 @@ Comments to the Author
 
 Using 1,319 records from the Global Forest Carbon Database (ForC), authors of this manuscript explored the spatial pattern of several carbon flux. They found forest C fluxes decreases with absolute latitude. Among climatic variables, mean annual temperature and temperature seasonality were found to be the best univariate climatic predictors. They suggest their findings could improve understanding of forest carbon cycling under climate change. Overall, the manuscript is well written, but the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data, which did not reveal the biological mechanisms lead to the detected pattern. Thus, I cannot recommend publishing this paper in GCB, but suggest the authors to consider a data journal like ESSD.
 
+*Potentially we need a response to the "simple statistical analyses" point? - these analyses are valuable for clarifying relationships between carbon fluxes and climate. Although analyses are simple, they are powerful thanks to the coverage and extent of the dataset, and the range of fluxes examined.*
+
 The analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago.
 
 *This statement suggests a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, ours considers nine.The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, was based on a database <25% the size of the ForC version used here, did not control for effects of stand age/ disturbance history, and examined latitudinal/ global climatic trends in only three variables. Thus, the current analysis will be at the clear forefront of studies examining correlations between forest carbon flux and climate at the global scale.*
 
 Forest C fluxes decreasing with latitude was also not a new finding. The author suggest that it contradicts with some previous studies finding that “net primary productivity of temperate forests rivals that of tropical forests”. However, those high NPP in temperate forests could result from high rates of nitrogen deposition or forest plantation (Yu et al., 2014), which are in different context with the mature, undisturbed forests studied in this manuscript.
 
-*We agree that these results are not surprising, however a crucial part of sciencne is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships. This review under-values high-quality synthesis that produces unsurprising results.*
+*We agree that these results are not surprising, however a crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships. This review under-values high-quality synthesis that produces unsurprising results.*
+
+*As the review identifies, results from previous studies were complicated by other effects. The power of this synthesis is in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships.* 
 
 It is not surprising that MAT was found to be the good climate variables explaining forest C fluxes, since MAT has strong correlation with latitudes. Our contemporary knowledge on forest carbon cycling has moved well beyond using mean climatic variable to extrapolate or guess the response of forest carbon cycling to climate change. The spatial gradient do not necessarily represent the response of forests to climate change. The main implications highlighted in the Abstract is not well supported by the results presented.
 
@@ -102,7 +106,11 @@ Minor comments:
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
-4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MAT*MAP as three predictors in a multivariate model or just MAT*MAP in a linear model?
+*Added CUE and legend to show none of the fits are significant (because of this no statistics presented)*
+
+4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MATxMAP as three predictors in a multivariate model or just MATxMAP in a linear model?
+
+*We use MATxMAP in a linear model - clarified this in the text*
 
 5. I am also wondering about the representation of tropical and extra-tropical forests in the samples. One solution is to add a biome basemap in figure 1. If tropical forest stands are generally older than the extra-tropical forest stands (according to “Histogram_of_Stand_age” in the ForC database), then perhaps there is a need to standardize samples by stand ages when studying allocation.
 
