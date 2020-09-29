@@ -141,12 +141,70 @@ final_sheet <- final_sheet[-(13:18)]
 names(final_sheet)[5:10] <- c("lat", "mat", "map", "TempSeasonality", "geographic.area", "masl")
 
 final_sheet$ratio <- log(final_sheet$NPP_mean/final_sheet$R_mean)
+final_sheet$CUE <- log(final_sheet$NPP_mean/final_sheet$GPP_mean)
 
 fixed.variables <- c("lat", "mat", "map", "TempSeasonality")
 
-png(file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/log ratios/all.png", width = 3000, height = 2000, units = "px", res = 300)
+png(file = "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/ratio_regressions/log ratios/all.png", width = 3000, height = 3000, units = "px", res = 300)
 
-par(mfrow = c(3,4), mar = c(1,1,3,0.5), oma = c(5,4,5,0))
+par(mfrow = c(4,4), mar = c(1,1,3,0.5), oma = c(5,4,5,1), xpd = F)
+
+##### CUE
+
+n <- 1
+
+for(fixed.v in fixed.variables){
+  
+  final_sheet$fixed <- final_sheet[, fixed.v]
+  
+  mod <-  lmer(CUE ~ 1 + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  mod.linear <- lmer(CUE ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  
+  best.model <- as.character(aictab(list(mod = mod, mod.linear = mod.linear), sort = T)$Modname[1])
+  
+  if (best.model == "mod.linear") mod.full <- lmer(CUE ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  if (best.model == "mod") mod.full <- lmer(CUE ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
+  
+  significant.effect <- anova(mod, mod.full)$"Pr(>Chisq)"[2] < 0.05
+  significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+  sample.size <- length(final_sheet$CUE)
+  
+  if (best.model == "mod.linear") mod.full <- lmer(CUE ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  
+  newDat <- expand.grid(fixed = seq(min(final_sheet$fixed), max(final_sheet$fixed), length.out = 100))
+  newDat$fit <- predict(mod.full, newDat, re.form = NA)
+  
+  ylim <- range(exp(final_sheet$CUE))
+  ylim[1] <- ylim[1] - 0.25
+  ylim[2] <- ylim[2] + 0.25
+  
+  
+  if(n == 1) plot(exp(CUE) ~ fixed, data = final_sheet, ylab = "", ylim = ylim)
+  if(n != 1) plot(exp(CUE) ~ fixed, data = final_sheet, ylab = "", ylim = ylim, yaxt = "n")
+  
+  lines(exp(fit) ~ fixed, data = newDat, lty = ifelse(significant.effect, 1, 2))
+  
+  mod.linear <- lmer(CUE ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = T)
+  
+  r <- round(fixef(mod.linear), 5)
+  
+  significance <- anova(mod, mod.full)$"Pr(>Chisq)"[2]
+  significance <- signif(significance, digits=4)
+  
+  Rsq <- as.data.frame(r.squaredGLMM(mod.full))
+  Rsq <- signif(Rsq, digits=2)[1]
+  
+  if(significant.effect) mtext(paste("R-sq =", Rsq), side = 3, line = -1.5, adj = 0.1, cex = 0.6)
+  if(fixed.v %in% "lat")mtext("NPP:GPP (CUE)", side = 3, line = 0.5, adj = 0, cex = 0.6)
+  
+  
+  # if(fixed.v %in% "mat") mtext(side = 2, line = 2,  text = paste("Ratio", set1[[i]], "to", set2[[i]]))
+  # panel.number <- panel.number + 1
+  n <- n + 1
+  
+}
+
+##NPP:R
 
 n <- 1
 
@@ -199,6 +257,8 @@ for(fixed.v in fixed.variables){
   # panel.number <- panel.number + 1
   n <- n + 1
 }
+
+
 
 #######################################################################################################
 
@@ -431,5 +491,11 @@ for(fixed.v in fixed.variables){
 }
 
 mtext(text = "Flux ratio", side = 2, outer= T, line = 2)
+
+par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
+# legend("top", c("IM", "IBD", "1R", "2R"), xpd = TRUE, horiz = TRUE, inset = c(0, 
+                                                                                 # 0), bty = "n", pch = c(4, 2, 15, 19), col = 1:4, cex = 2)
+legend("topright", legend=c("Significant", "Non-significant"), lty=1:2, inset = c(0.02, 0.02), cex = 1.5)
 
 dev.off()
