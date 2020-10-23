@@ -34,7 +34,7 @@ options(knitr.table.format = "latex")
 
 
 ```{r setup, include = FALSE}
-#knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
 # knitr::opts_knit$set(root.dir = 'C:/Users/gyrcbm/Dropbox/Global_Productivity/manuscript/')
   #knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
 ```
@@ -164,7 +164,7 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 
 
 \blandscape
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables", out.width ='80%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables.", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
 ```
