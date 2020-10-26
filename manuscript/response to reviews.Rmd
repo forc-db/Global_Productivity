@@ -49,9 +49,16 @@ Global Change Biology Editorial Office
 
 \newpage
 
+**bold- responses**
+
+*italic- tentative responses/ comments*
+
+
 Reviewer(s)' Comments to Author:
 
 Reviewer: 1
+
+*Becky, we probably want to reword some of these responses to R1 a bit, as it's possible that this will go back to R1. Also, it could be good to modify the manuscript in response to some of the comments to ensure that other readers don't come up with the same mis-conceptions.*
 
 Comments to the Author
 
@@ -62,23 +69,29 @@ Using 1,319 records from the Global Forest Carbon Database (ForC), authors of th
 
 The analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago.
 
-*This statement suggests a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, ours considers nine.The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, was based on a database <25% the size of the ForC version used here, did not control for effects of stand age/ disturbance history, and examined latitudinal/ global climatic trends in only three variables. Thus, the current analysis will be at the clear forefront of studies examining correlations between forest carbon flux and climate at the global scale.*
+**This statement suggests a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, ours considers nine.The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, was based on a database <25% the size of the ForC version used here, did not control for effects of stand age/ disturbance history, and examined latitudinal/ global climatic trends in only three variables. Thus, the current analysis will be at the clear forefront of studies examining correlations between forest carbon flux and climate at the global scale.**
+
+**To help clarify the scope of this analysis to readers, we have....**
+
+*(let's add a few statements to emphasize how greatly the scope differs from previous studies.)*
 
 Forest C fluxes decreasing with latitude was also not a new finding. The author suggest that it contradicts with some previous studies finding that “net primary productivity of temperate forests rivals that of tropical forests”. However, those high NPP in temperate forests could result from high rates of nitrogen deposition or forest plantation (Yu et al., 2014), which are in different context with the mature, undisturbed forests studied in this manuscript.
 
-*We agree that these results are not surprising, however a crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships. This review under-values high-quality synthesis that produces unsurprising results.*
+**We agree that these results are not surprising, however a crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships.**
 
-*As the review identifies, results from previous studies were complicated by other effects. The power of this synthesis is in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships.* 
+**As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships.**
+
+*(again, maybe make some modest change to the text that we can point to as a "response" to this review. Cite Yu.)*
 
 It is not surprising that MAT was found to be the good climate variables explaining forest C fluxes, since MAT has strong correlation with latitudes. Our contemporary knowledge on forest carbon cycling has moved well beyond using mean climatic variable to extrapolate or guess the response of forest carbon cycling to climate change. The spatial gradient do not necessarily represent the response of forests to climate change. The main implications highlighted in the Abstract is not well supported by the results presented.
 
-*We agree, and fully acknowledge in the paper, that this study does not reveal the biological mechanisms. Further, we do not argue that the spatial gradient represents the response of forests to climate change, as clearly discussed in the final paragraph of the discussion. However, we do argue that elucidating broad-scale patterns in C cycling across climatic gradients is a complementary approach to addressing a challenging problem [*sensu* @andersonteixeira_altered_2013, *GCB*]. We note that studies using this approach have been published recently in *Science* [@sullivan_long-term_2020],  *GCB* [@trugman_climate_2019], *JGR* [@li_dissimilatory_2019], and *Scientific Reports* [@chen_spatial_2019].*
+**We agree, and fully acknowledge in the paper, that this study does not reveal the biological mechanisms. Further, we do not argue that the spatial gradient represents the response of forests to climate change, as clearly discussed in the final paragraph of the discussion. However, we do argue that elucidating broad-scale patterns in C cycling across climatic gradients is a complementary approach to addressing a challenging problem [*sensu* @andersonteixeira_altered_2013, *GCB*]. We note that studies using this approach have been published recently in *Nature* [@cook-patton_mapping_2020], *Science* [@sullivan_long-term_2020],  *GCB* [@trugman_climate_2019], *JGR* [@li_dissimilatory_2019], and *Scientific Reports* [@chen_spatial_2019].**
 
 *The reviewer's apparent wholesale rejection of this approach seems short-sighted, and the expectation that a single study attempt to explain mechanisms behind global patterns in nine flux variables seems naïve. The implied standard that studies of this type should "reveal the biological mechanisms" could be interpreted in various ways, but the best way of getting at underlying biological mechanisms would be through modeling. Until databases such as ForC are fully integrated with mechanistic ecosystem models, our ability to provide truly mechanistic explanations of the observed patterns remains limited, but the observed correlations provide important insights into the broad-scale constraints of climate on forest carbon cycling.*
 
 While I commend the authors’ efforts to harmonize the dataset, I found the paper lacks the novelty and significance to be published in GCB. A data-oriented journal is a more suitable place for this paper.
 
-*This suggestion indicates carelessness of review and/or limited understanding of appropriate publishing standards. The suggestion is completely inappropriate for two reasons.First, the hypothesis-testing analyses presented here would be unsuitable for a data journal. Second, the ForC database is already published [tropical portion only in @anderson-teixeira_carbon_2016, *GCB*; full database as a data paper in Anderson-Teixeira et al. @anderson-teixeira_forc_2018, *Ecology*]. Even a semi-careful review would not have missed this fact, which was prominently cited in the last paragraph of the introduction and the first sentence of the methods. Thus, this suggestion betrays carelessness of review and/or limited understanding of appropriate standards for judging where scientific work should be published.*
+**This suggestion is inappropriate for two reasons. First, the hypothesis-testing analyses presented here would be unsuitable for a data journal. Second, the ForC database is already published [tropical portion only in @anderson-teixeira_carbon_2016, *GCB*; full database as a data paper in Anderson-Teixeira et al. @anderson-teixeira_forc_2018, *Ecology*]. This fact is prominently cited in the last paragraph of the introduction and the first sentence of the methods.**
 
 
 Reviewer: 2
@@ -89,32 +102,41 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 
 1. How does the result compare with previous studies based on eddy covariance (EC) measurements? Throughout reading the manuscript, I have been trying to reconcile what’s been reported based on EC data and what is presented in the ms. Though EC cannot tell us much about NPP and other small fluxes, it did have a better (perhaps just marginally) spatial and temporal representation of forests. In particular, EC data has suggested that net carbon uptake is primarily dependent on carbon uptake period (Churkina et al. 2005, but see Fu et al. 2019 and Zhou et al. 2016), and increasing temperature can lengthen the growing season to enhance GPP and NEP (Keenan et al., 2014). The current study suggests that “growing season length is never the best predictor”. What do you think cause the difference between the two streams of evidence, and why MAT and latitude serves as a better predictor than growing season length? I do not ask for further analysis necessarily, but just feel the discussion could be expanded a bit on previous EC studies about the dominant control of forest carbon flux.
 
+*(This is an interesting comment, and points to some more robust work on the subject of productivity and growing season length. I'm going to look up these papers. Interestingly, this links to another paper that current intern Cameron Dow is working on, which uses dendrobands to show that warmer springs shift growth earlier in the year but have at most modest effect on total productivity.)*
+
 2. A key conclusion is “no detectable differences in allocation across latitude or climates”, however, I do not see a strong evidence for that presented in the main text – Fig.S3 does show several allocation indicators though no statistics are provided. Fig. 2 shows that C fluxes increase approximately in proportion to one another, but that does not necessarily mean allocation is unchanged across latitude or climates.
+
+*(requires response)*
 
 3. Implication for models. I think it is nice for the authors to report that carbon flux of mature forest is primarily dependent on MAT or latitude. But how much could this advanced knowledge help us improve global simulation of forest carbon cycling. I’d be very curious to see if the state-of-the-art models demonstrate a similar or different functional response of carbon flux to MAT/latitude, and what is the possible reason for that. I think by tapping into this question (even just in discussion) will make the study be of interest to a wider audience.
 
+*(add something on this to the discussion, at the same time addressing R1's 3rd comment)*
 
 Minor comments:
 
 1. it is unclear in the method about how to calculate “temperature/precipitation seasonality”. Is it the standard deviation of monthly temperature/precipitation in a year?
 
-*Stated in methods section that this information is available in table S1*
+**We have added brief definitions of these in the text (methods section), and refer readers to Table S1 for detailed information.**
 
 2. In Table S3, does the R2 come from the univariate linear model or the multivariate model?
 
-*Clarifed in table*
+**We have clarified this in the table caption.**
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
-*Added CUE and legend to show none of the fits are significant (because of this no statistics presented)*
+**We have added CUE as requested. We also added a legend to clarify that none of the fits are significant (and therefore no statistics presented).**
 
 4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MATxMAP as three predictors in a multivariate model or just MATxMAP in a linear model?
 
-*We use MATxMAP in a linear model - clarified this in the text*
+**We used MATxMAP in a linear model, which we have clarified this in the text.**
 
 5. I am also wondering about the representation of tropical and extra-tropical forests in the samples. One solution is to add a biome basemap in figure 1. If tropical forest stands are generally older than the extra-tropical forest stands (according to “Histogram_of_Stand_age” in the ForC database), then perhaps there is a need to standardize samples by stand ages when studying allocation.
 
+*(requires response)*
+
 6. Fig. S6. Spell out “T seas” and “P seas” in the caption.
+
+*(requires response)*
 
 Churkina, G., Schimel, D., Braswell, B. H., & Xiao, X. (2005). Spatial analysis of growing season length control over net ecosystem exchange. Global Change Biology, 11(10), 1777–1787. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1111%2Fj.1365-2486.2005.001012.x&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=fDBebq%2B1eqPsq2NDNe6zmEveEmfKtHpioWsoJn9yT%2BM%3D&reserved=0
 

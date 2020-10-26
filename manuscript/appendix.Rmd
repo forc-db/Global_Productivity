@@ -92,7 +92,7 @@ Model forms tested include first-order linear (Lin), second-order polynomial (Po
 library(knitr)
 library(kableExtra)
 S5 <- read.csv("tables_figures/mat_map.csv", stringsAsFactors = FALSE, check.names = FALSE)
-kable(S5, format = "latex", booktabs = TRUE, caption = "Table S3. Signficance of relationships of forest C fluxes to MAT alone and in combination with MAP. $R^{2}$ values refer to the best model.", escape = F)%>%
+kable(S5, format = "latex", booktabs = TRUE, caption = "Table S3. Signficance of relationships of forest C fluxes to MAT alone and in combination with MAP. $R^{2}$ values refer to the best model.",  caption.short = "Table S3. Signficance of relationships of forest C fluxes to MAT alone and in combination with MAP.", escape = F)%>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
   column_spec(1, width = "4cm") %>%
   column_spec(2, width = "6cm") %>%
