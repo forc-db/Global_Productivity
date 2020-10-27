@@ -73,7 +73,11 @@ The analyses performed were too conventional that similar analyses with a smalle
 
 **To help clarify the scope of this analysis to readers, we have....**
 
+
+
 *(let's add a few statements to emphasize how greatly the scope differs from previous studies.)*
+
+RE Luyssaert et al : *We note in particular that mean stand age was extremely variable across biomes, and while mean stand age in tropical forests was >100 years (old growth) in all but one extra-tropical biome, mean stand age was >100. This is likely to elevate productivity estimates for extra-tropical biomes, highlighting the need for a comprehensive, standardised dataset for analysis.*
 
 Forest C fluxes decreasing with latitude was also not a new finding. The author suggest that it contradicts with some previous studies finding that “net primary productivity of temperate forests rivals that of tropical forests”. However, those high NPP in temperate forests could result from high rates of nitrogen deposition or forest plantation (Yu et al., 2014), which are in different context with the mature, undisturbed forests studied in this manuscript.
 
