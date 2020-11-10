@@ -345,6 +345,8 @@ Rather, differences in $CUE$ between old-growth tropical forests relative to (mo
 Another previously observed pattern for which we find no support is a tendency for belowground C allocation to decrease with increasing temperature  [@moser_elevation_2011; @gill_belowground_2016]; rather, we observe no trends in allocation between $ANPP$ and $BNPP$ across latitudes.
 Failure to detect significant tends in C allocation with respect to climate in this analysis does not imply that none exist; rather, it suggests that, at this global scale, differences are subtle and/or that more careful methodological standardization is required to detect them.
 
+**in the paragraph above, discuss/ cite @collati_forest_2020**
+
 Despite the broad consistency of climate responses across C fluxes, climate explains lower proportions of variability among some of the subsidiary C fluxes (*e.g.*, $ANPP_{stem}$, $BNPP$,  $BNPP_{fine.root}$; Fig. 2; Tables S2, S6). 
 There are two, non-exclusive, potential explanations for this. 
 First, it may be that methodological variation is larger relative to flux magnitude for some of the subsidiary fluxes. 
