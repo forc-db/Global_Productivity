@@ -375,6 +375,8 @@ However, there remained a number of significant correlations with growing season
 We conclude that while correcting for growing season length takes analyses a step closer to mechanistic linkage of instantaneous C flux rates to environmental conditions, it remains crude relative to the timescales on which climate affects plant metabolism, and does not advance statistical predictive power. 
 Rather, mechanistic accounting for climatic effects on global forest carbon flux patterns requires models representing physiologically meaningful timescales [e.g., @medvigy_mechanistic_2009; @longo_biophysics_2019].
 
+**In the paragraph above, cite @keenan_net_2014, @fu_maximum_2019, @churkina_spatial_2005, @zhou_explaining_2016.** 
+
 Our analysis clarifies how annual forest autotrophic C fluxes vary with latitude and climate on a global scale, with some important implications for how forest C cycling relates to climate and, by extension, how it is likely to respond to climatic warming. 
 To the extent that patterns across broad scale climatic gradients can foretell how ecosystem responses to climate change, our findings suggest that higher temperatures with similar moisture availability would result in a generalized acceleration of forest C cycling (Figs. 2-3).
 This is consistent with observations of continental- to global-scale increases over time in $GPP$ [@li_mapping_2019] and $ANPP_{stem}$ [@brienen_long-term_2015; @hubau_asynchronous_2020], along with some C cycle components not considered here--tree mortality [@brienen_long-term_2015; @mcdowell_drivers_2018], soil respiration [@bond-lamberty_global_2010], and heterotrophic soil respiration [@bond-lamberty_globally_2018]. 
