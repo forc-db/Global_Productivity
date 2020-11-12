@@ -13,8 +13,6 @@ header-includes:  \usepackage{float}
                   \usepackage{setspace}\doublespacing
                   \usepackage{lineno}\linenumbers
 
-nocite: | 
-  @chu_does_2016
 ---
 
 ```{r, include=FALSE}
