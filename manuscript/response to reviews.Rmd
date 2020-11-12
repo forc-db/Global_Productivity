@@ -65,17 +65,26 @@ Comments to the Author
 
 Using 1,319 records from the Global Forest Carbon Database (ForC), authors of this manuscript explored the spatial pattern of several carbon flux. They found forest C fluxes decreases with absolute latitude. Among climatic variables, mean annual temperature and temperature seasonality were found to be the best univariate climatic predictors. They suggest their findings could improve understanding of forest carbon cycling under climate change. Overall, the manuscript is well written, but the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data, which did not reveal the biological mechanisms lead to the detected pattern. Thus, I cannot recommend publishing this paper in GCB, but suggest the authors to consider a data journal like ESSD.
 
-*Potentially we need a response to the "simple statistical analyses" point? - these analyses are valuable for clarifying relationships between carbon fluxes and climate. Although analyses are simple, they are powerful thanks to the coverage and extent of the dataset, and the range of fluxes examined.*
+
+**Most of the points raised here are covered by more specific comments below, and our responses to these points follow those comments. The one criticism here that is not addressed below is that we present "simple statistical analyses". While we concur that the analyses are relatively simple, that does not preclude their being appropriate, informative, and sufficient. They represent several substantive advances over past analyses of this type:**
+
+**1. They are underlain by a large, standardized database that accounts for factors such as stand age and management, which have not always been accounted for.**
+
+**2. We use mixed effects model to account for random effects of location (plot nested within geographic area), thereby accounting for potential pseudoreplication, which has not always been done in the past.**
+
+**3. We examined nine carbon fluxes and relationships among them--more than has been concurrently analyzed in the past.**
+
+**4. For each flux variable, we tested a wide range of models: univariate responses to 12 climate variables (3 functional fit types for each), along with multivariate models (MAT x MAP for all, along with other combinations not presented).** 
+
+**Thus, although the analyses are simple, we believe them to be appropriate and sufficient, with their novelty arising not from the analysis method itself but from the coverage and extent of the dataset.**
 
 The analyses performed were too conventional that similar analyses with a smaller size of similar datasets have been performed a decade ago.
 
-**This statement suggests a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, ours considers nine.The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, was based on a database <25% the size of the ForC version used here, did not control for effects of stand age/ disturbance history, and examined latitudinal/ global climatic trends in only three variables. Thus, the current analysis will be at the clear forefront of studies examining correlations between forest carbon flux and climate at the global scale.**
+**This statement suggests a lack of perspective on the scope of our analysis relative to previous studies. Whereas most studies consider at most a few flux variables, ours considers nine. The most comprehensive similar study is @luyssaert_co_2007, which was published in *GCB* more than a decade ago, was based on a database <25% the size of the ForC version used here, did not control for effects of stand age/ disturbance history, and examined latitudinal/ global climatic trends in only three variables. Thus, the current analysis will be at the clear forefront of studies examining correlations between forest carbon flux and climate at the global scale.**
 
-**To help clarify the scope of this analysis to readers, we have....**
+**To help clarify the scope of this analysis to readers, we added the following statement to the last paragraph of the introduction: "The most comprehensive analysis of this type was @luyssaert_co_2007, which was based on a database <25% the size of the ForC version used here, did not control for effects of stand age, and examined global climatic trends in only three variables."**
 
-
-
-*(let's add a few statements to emphasize how greatly the scope differs from previous studies.)*
+*(Do we like this response??)*
 
 RE Luyssaert et al : *We note in particular that mean stand age was extremely variable across biomes, and while mean stand age in tropical forests was >100 years (old growth) in all but one extra-tropical biome, mean stand age was >100. This is likely to elevate productivity estimates for extra-tropical biomes, highlighting the need for a comprehensive, standardised dataset for analysis.*
 

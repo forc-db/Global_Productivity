@@ -17,32 +17,14 @@ nocite: |
   @chu_does_2016
 ---
 
-```{r, include=FALSE}
-options(tinytex.verbose = TRUE)
-options(knitr.table.format = "latex")
-```
 
 
-```{r include=FALSE}
-knitr::write_bib(c(
-  .packages(), 'knitr', 'rmarkdown', 'lme4', 'MuMIn', 'plyr', 'raster', 'ncdf4', 'Hmisc', 'plyr', 'merTools', 'visreg', 'r2glmm', 'nlme', 'viridis', 'ggplot2', 'ggpubr', 'gridExtra', 'AICcmodavg'
-), 'packages.bib')
-```
 
-```{r setup, include = FALSE}
-#knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
-  # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
-```
 
-```{r results="asis", include=FALSE}
-cat("
-<style>
-caption {
-      font-size: 0.75em;
-    }
-</style>
-")
-```
+
+
+
+
 **Title:** Global patterns of forest autotrophic carbon fluxes
 
 **Running head:** Global patterns of forest carbon fluxes
@@ -147,29 +129,52 @@ We then test how these fluxes relate to $MAT$ and $MAP$ (*Q2*), and additionally
 Finally, we consider the relationship between C flux and seasonality, considering the role of seasonality in explaining variation in carbon fluxes (*Q4*), and the influence of climate on C flux standardized by growing season length (*Q5*).
 
 \renewcommand{\arraystretch}{2}
-```{r eval = TRUE, echo=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
-#hypothesis_table[1,1] <- paste0(hypothesis_table[1,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(2),"$^{,}$", footnote_marker_number(3),"$^{,}$", footnote_marker_number(10))
-#hypothesis_table[2,1] <- paste0(hypothesis_table[2,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4),"$^{,}$",footnote_marker_number(9))
-#hypothesis_table[3,1] <- paste0(hypothesis_table[3,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4))
-#hypothesis_table[4,1] <- paste0(hypothesis_table[4,1], footnote_marker_number(5))
-#hypothesis_table[10,1] <- paste0(hypothesis_table[10,1], footnote_marker_number(6),"$^{,}$",footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
-#hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
-#hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(8))
-kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered.", escape = F) %>%
-  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("Q1. How do C fluxes vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 5, hline_before = FALSE) %>%
-  pack_rows("Q2. How do C fluxes vary with mean annual temperature (MAT) and precipitation (MAP)?", 2, 4, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q3. How are C fluxes related to other annual climate variables?", 5, 7, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q4. How does seasonality influence annual C fluxes?", 8, 11, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q5. When standardised by growing season length, how do annual C fluxes still vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes" = 9, " ")) %>%
-  #column_spec(2:11, width = "1.8cm") %>%
-  kableExtra::landscape() 
- # kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Piao et al. (2010)", "Huston & Wolverton (2009)"), footnote_as_chunk = TRUE)
-```
+
+\begin{landscape}\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-4}Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered.}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{llllllllllll}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{9}{c}{Forest autotrophic carbon fluxes} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){3-11}
+Questions and hypotheses & Overall & $GPP$ & $NPP$ & $ANPP$ & $ANPP_{stem}$ & $ANPP_{foliage}$ & $BNPP$ & $BNPP_{fine.root}$ & $R_{auto}$ & $R_{root}$ & Support\\
+\midrule
+\addlinespace[1em]
+\multicolumn{5}{l}{\textbf{Q1. How do C fluxes vary with latitude?}}\\
+\hspace{1em}C fluxes decrease continuously with latitude. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Fig. 2\\
+\addlinespace[1em]
+\hline
+\multicolumn{5}{l}{\textbf{Q2. How do C fluxes vary with mean annual temperature (MAT) and precipitation (MAP)?}}\\
+\hspace{1em}C fluxes increase continuously with MAT. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 3, 4, S4, S5\\
+\hspace{1em}C fluxes increase with precipitation up to at least 2000 mm yr$^{-1}$. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 4, S4, S5\\
+\hspace{1em}Temperature and precipitation jointly shape C fluxes. & (yes) & yes & yes & yes & yes & - & - & - & yes & - & Fig. 3, Table S3\\
+\addlinespace[1em]
+\hline
+\multicolumn{5}{l}{\textbf{Q3. How are C fluxes related to other annual climate variables?}}\\
+\hspace{1em}C fluxes display a decelerating increase or unimodal relationship with PET. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 4, S4, S5\\
+\hspace{1em}C fluxes display a decelerating increase or unimodal relationship with vapour pressure deficit. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 4, S4, S5\\
+\hspace{1em}C fluxes increase with solar radiation. & (yes) & yes & yes & yes & yes & yes & yes & yes & yes & - & Figs. S4, S5\\
+\addlinespace[1em]
+\hline
+\multicolumn{5}{l}{\textbf{Q4. How does seasonality influence annual C fluxes?}}\\
+\hspace{1em}C fluxes decrease with temperature seasonality. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 4, S6, S7\\
+\hspace{1em}C fluxes decrease with precipitation seasonality. & - & - & - & - & no & - & - & - & - & - & Figs. S6, S7\\
+\hspace{1em}C fluxes increase with growing season length. & yes & yes & yes & yes & yes & yes & yes & yes & yes & yes & Figs. 4, S6, S7\\
+\hspace{1em}Growing season length is a better predictor of C fluxes than MAT. & (no) & no & no & no & - & no & no & no & no & no & Table S4\\
+\addlinespace[1em]
+\hline
+\multicolumn{5}{l}{\textbf{Q5. When standardised by growing season length, how do annual C fluxes still vary with climate?}}\\
+\hspace{1em}Growing season-standardized C fluxes increase with growing season temperature. & (yes) & - & - & yes & - & yes & - & - & - & - & Figs. S8, S9\\
+\hspace{1em}Growing season-standardized C fluxes increase with growing season PET. & (yes) & yes & yes & - & yes & - & yes & yes & - & - & Figs. S8, S9\\
+\hspace{1em}Growing season-standardized C fluxes increase with growing season precipitation. & (yes) & - & - & yes & - & yes & - & - & - & - & Figs. S8, S9\\
+\hspace{1em}Growing season-standardized C fluxes increase with growing season solar radiation. & (yes) & - & - & - & - & - & yes & yes & - & - & Figs. S8, S9\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\end{landscape}
 
 
 ### Materials and Methods  
@@ -189,25 +194,37 @@ There is evidence that stand age influences patterns of C flux and allocation in
 Since management can alter observed patterns of C cycling [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or included the term "managed" in their site description. 
 Sites that had experienced significant disturbance within the past 100 years were also excluded. Disturbances that qualified sites for exclusion included major cutting or harvesting, burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
 
-```{r eval = TRUE, echo=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-FACF_table <- read.csv("FACF_variables.csv", stringsAsFactors = FALSE, check.names = FALSE)
-names(FACF_table) [6]  <- paste0(names(FACF_table) [6], footnote_marker_symbol(1))
-kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and sample sizes of carbon flux variables used in analysis. All variables are in units of Mg C ha$^{-1}$ yr$^{-1}$. ", escape = F) %>%
-  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  column_spec(2, width = "4cm") %>%
-  column_spec(3, width = "7cm") %>%
-  column_spec(4, width = "10cm") %>%
-  column_spec(5:6, width = "1.5cm") %>%
-  add_header_above(c(" ",  " "," ",  " ", "Sample size" = 2)) %>%
-  kableExtra::footnote(symbol = c("Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km"), footnote_as_chunk = FALSE) 
-```
+\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-5}Definitions and sample sizes of carbon flux variables used in analysis. All variables are in units of Mg C ha$^{-1}$ yr$^{-1}$. }
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{7cm}>{\raggedright\arraybackslash}p{10cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Sample size} \\
+\cmidrule(l{3pt}r{3pt}){5-6}
+Variable & Definition & Components included & Methodologies & records & geographic areas\textsuperscript{*}\\
+\midrule
+$GPP$ & Gross Primary Production & full ecosystem & flux partitioning of eddy-covariance; $NPP$+$R_{auto}$ & 243 & 49\\
+$NPP$ & Net Primary Production & stem, foliage, coarse root, fine root, optionally others (e.g., branch, reproductive, understory) & $ANPP$ + $BNPP$ (majority); $GPP$-$R_{auto}$ & 161 & 56\\
+$ANPP$ & Aboveground $NPP$ & stem, foliage, optionally others (e.g., branch, reproductive, understory) & $ANPP_{stem}$ + $ANPP_{foliage}$ (+ others) & 278 & 86\\
+$ANPP_{stem}$ & Stem growth component of $ANPP$ & woody stems down to DBH $\le$ 10cm (no branch turnover) & stem growth measurements scaled to biomass using allometries & 264 & 96\\
+$ANPP_{foliage}$ & Foliage component of $ANPP$ & foliage & litterfall collection, with separation into components & 98 & 49\\
+\addlinespace
+$BNPP$ & Belowground $NPP$ & coarse and fine roots & coarse roots estimated indirectly using allometries based on aboveground stem increment measures ; fine roots as below & 101 & 48\\
+$BNPP_{fine.root}$ & Fine root component of $BNPP$ & fine roots & measurements combined one or more of the following: soil cores, minirhizotrons, turnover estimates,  root ingrowth cores & 88 & 41\\
+$R_{auto}$ & Autotrophic respiration & foliage, stem, and root & chamber measurements of foliage and stem gas exchange +  $R_{root}$ (as below) & 22 & 13\\
+$R_{root}$ & Root respiration & (coarse and) fine roots & partitioning of total soil respiration (e.g., through root exclusion), scaling of root gas exchange; excluded alkali absoption and soda lime methods for measuring soil respiration & 64 & 26\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{*} Geographic areas group geographically proximate sites, defined using a hierarchical cluster analysis on the distance matrix of the sites, and a cutoff of 25km}\\
+\end{tabular}}
+\end{table}
 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
-  knitr::include_graphics("distribution_all_variables_cropped.jpg")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{distribution_all_variables_cropped} \caption{Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. }\label{fig:unnamed-chunk-6}
+\end{figure}
   
 \newpage  
 *Climate data* 
@@ -262,10 +279,9 @@ In total, we analyzed 1,319 records from nine forest autotrophic C flux variable
 
 All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2, S6). Specifically, latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ ($R^2$=0.17) and $ANPP_{stem}$ ($R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression", fig.pos='H'}
-
-  knitr::include_graphics("combined_stacked.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{combined_stacked} \caption{Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression}\label{fig:unnamed-chunk-7}
+\end{figure}
 
 Smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (Fig. 2). That is, modeled estimates of $GPP$, generated from the sum of $NPP$ and $R_{auto}$; $NPP$, generated from the sum of $ANPP$ and $BNPP$; and $ANPP$, generated from the sum of $ANPP_{foliage}$ and $ANPP_{stem}$, fell almost completely within the confidence intervals of the regressions of field estimates of $GPP$, $NPP$, and $ANPP$, respectively.
 
@@ -283,9 +299,9 @@ However, it explained little variation: with the exception of $R_{auto}$, $MAP$ 
 
 There was a significant additive effect of $MAT$ and $MAP$ on $GPP$, $ANPP$ and $R_{auto}$ (Fig. 3, Table S3), and a significant interactive effect between $MAT$ and $MAP$ for $NPP$ and $ANPP_{stem}$ (Fig. 3, Table S3). The interaction was negative for $NPP$ and positive for $ANPP_{stem}$. For $ANPP_{foliage}$, $BNPP$, $BNPP_{fine.root}$, and $R_{root}$, $MAP$ did not have a significant effect when accounting for $MAT$ (Fig. 3, Table S3). 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
-  knitr::include_graphics("mat_map_interaction.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{mat_map_interaction} \caption{Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.}\label{fig:unnamed-chunk-8}
+\end{figure}
 
 *Q3. How does C flux relate to other annual climate variables?* 
   
@@ -299,9 +315,9 @@ Solar radiation explained a low proportion of variability (<30%) in all C fluxes
   
 Annual wet days, cloud cover, and aridity were poor or non-significant predictors of variation in C fluxes, explaining less than 20% of the variation in each of the carbon fluxes (Figs. S4-S5; Table S2).
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.", fig.pos='H'}
-  knitr::include_graphics("combined_plots.png")
-```
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{combined_plots} \caption{Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant $(p<0.05)$.}\label{fig:unnamed-chunk-9}
+\end{figure}
 
 *Q4. What is the role of seasonality in explaining C fluxes?* 
 
