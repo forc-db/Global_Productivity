@@ -1,16 +1,17 @@
-Questions and hypotheses ,Overall,$GPP$,$NPP$,$ANPP$,$ANPP_{stem}$,$ANPP_{foliage}$,$BNPP$,$BNPP_{fine.root}$,$R_{auto}$,$R_{root}$,Support
-C fluxes decrease continuously with latitude.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,Fig. 2
-C fluxes increase continuously with MAT.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 3, 4, S4, S5"
-C fluxes increase with precipitation up to at least 2000 mm yr$^{-1}$.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S4, S5"
-Temperature and precipitation jointly shape C fluxes.,(yes),yes,yes,yes,yes,-,-,-,yes,-,"Fig. 3, Table S3"
-C fluxes display a decelerating increase or unimodal relationship with PET.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S4, S5"
-C fluxes display a decelerating increase or unimodal relationship with vapour pressure deficit.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S4, S5"
-C fluxes increase with solar radiation.,(yes),yes,yes,yes,yes,yes,yes,yes,yes,-,"Figs. S4, S5"
-C fluxes decrease with temperature seasonality.,yes,yes ,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S6, S7"
-C fluxes decrease with precipitation seasonality.,-,-,-,-,no,-,-,-,-,-,"Figs. S6, S7"
-C fluxes increase with growing season length.,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,"Figs. 4, S6, S7"
-Growing season length is a better predictor of C fluxes than MAT.,(no),no,no,no,-,no,no,no,no,no,Table S4
-Growing season-standardized C fluxes increase with growing season temperature.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S8, S9"
-Growing season-standardized C fluxes increase with growing season PET.,(yes),yes,yes,-,yes,-,yes,yes,-,-,"Figs. S8, S9"
-Growing season-standardized C fluxes increase with growing season precipitation.,(yes),-,-,yes,-,yes,-,-,-,-,"Figs. S8, S9"
-Growing season-standardized C fluxes increase with growing season solar radiation.,(yes),-,-,-,-,-,yes,yes,-,-,"Figs. S8, S9"
+Review questions and hypothesized relationships ,Overall,$GPP$,$NPP$,$ANPP$,$ANPP_{stem}$,$ANPP_{foliage}$,$BNPP$,$BNPP_{fine.root}$,$R_{auto}$,$R_{root}$,Support
+continuous increase with decreasing latitude,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,Fig. 2
+signficantly decelerating increase with decreasing latitude,$\times$,$\times$,$\times$,$\times$,$\times$,$\times$,$\times$,$\times$,$\times$,$\times$,Fig. 2
+continuous increase with MAT,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 3, 4, S4, S5"
+increase with MAP up to $\ge$ 2000 mm yr$^{-1}$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 4, S4, S5"
+*Temperature and precipitation jointly shape C fluxes.*,($\checkmark$),$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,-,-,-,$\checkmark$,-,"Fig. 3, Table S3"
+decelerating increase or unimodal relationship with PET,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 4, S4, S5"
+decelerating increase or unimodal relationship with vapour pressure deficit.,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 4, S4, S5"
+increase with solar radiation,($\checkmark$),$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,-,"Figs. S4, S5"
+decrease with temperature seasonality,$\checkmark$,$\checkmark$ ,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 4, S6, S7"
+decrease with precipitation seasonality,-,-,-,-,$\times$,-,-,-,-,-,"Figs. S6, S7"
+increase with growing season length,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,$\checkmark$,"Figs. 4, S6, S7"
+Growing season length is a better predictor of C fluxes than MAT.,($\times$),$\times$,$\times$,$\times$,-,$\times$,$\times$,$\times$,$\times$,$\times$,Table S4
+Growing season-standardized C fluxes increase with growing season temperature.,($\checkmark$),-,-,$\checkmark$,-,$\checkmark$,-,-,-,-,"Figs. S8, S9"
+Growing season-standardized C fluxes increase with growing season PET.,($\checkmark$),$\checkmark$,$\checkmark$,-,$\checkmark$,-,$\checkmark$,$\checkmark$,-,-,"Figs. S8, S9"
+Growing season-standardized C fluxes increase with growing season precipitation.,($\checkmark$),-,-,$\checkmark$,-,$\checkmark$,-,-,-,-,"Figs. S8, S9"
+Growing season-standardized C fluxes increase with growing season solar radiation.,($\checkmark$),-,-,-,-,-,$\checkmark$,$\checkmark$,-,-,"Figs. S8, S9"

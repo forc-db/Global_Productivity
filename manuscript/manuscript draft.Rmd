@@ -158,13 +158,13 @@ hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, c
 #hypothesis_table[10,1] <- paste0(hypothesis_table[10,1], footnote_marker_number(6),"$^{,}$",footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
 #hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
 #hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(8))
-kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of research questions, corresponding hypotheses, and results. Statistically signficant support for/ rejection of hypotheses is indicated with 'yes'/'no', and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered. Flux variables are defined in Table 2.", escape = F) %>%
+kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of review questions, corresponding expectations based on previous studies (when applicable), and results. Statistically signficant support for/ rejection of hypotheses is indicated by checkmarks/ X's, and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered. Flux variables are defined in Table 2.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  pack_rows("Q1. How do C fluxes vary with latitude?", 1, 1, latex_gap_space = "1em", colnum = 5, hline_before = FALSE) %>%
-  pack_rows("Q2. How do C fluxes vary with mean annual temperature (MAT) and precipitation (MAP)?", 2, 4, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q3. How are C fluxes related to other annual climate variables?", 5, 7, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q4. How does seasonality influence annual C fluxes?", 8, 11, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
-  pack_rows("Q5. When standardised by growing season length, how do annual C fluxes still vary with climate?", 12, 15, latex_gap_space = "1em", colnum = 5, hline_before = TRUE) %>%
+  pack_rows("Q1. How do C fluxes vary with latitude?", 1, 2, latex_gap_space = "1em", colnum =7, hline_before = FALSE) %>%
+  pack_rows("Q2. How do C fluxes vary with mean annual temperature (MAT) and precipitation (MAP)?", 3, 5, latex_gap_space = "1em", colnum = 7, hline_before = TRUE) %>%
+  pack_rows("Q3. How are C fluxes related to other annual climate variables?", 6, 8, latex_gap_space = "1em", colnum = 7, hline_before = TRUE) %>%
+  pack_rows("Q4. How does seasonality influence annual C fluxes?", 9, 12, latex_gap_space = "1em", colnum = 7, hline_before = TRUE) %>%
+  pack_rows("Q5. When standardised by growing season length, how do annual C fluxes still vary with climate?", 13, 16, latex_gap_space = "1em", colnum = 7, hline_before = TRUE) %>%
   add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes" = 9, " ")) %>%
   #column_spec(2:11, width = "1.8cm") %>%
   kableExtra::landscape() 
