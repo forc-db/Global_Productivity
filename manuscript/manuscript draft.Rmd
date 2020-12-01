@@ -90,11 +90,11 @@ email: teixeirak@si.edu
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
 However, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
 Here, we draw upon 1,319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
-We show that, across all flux variables analyzed, C cycling decreases continuously with absolute latitude -- a finding that confirms multiple previous studies but contradicts the idea that net primary productivity of temperate forests rivals that of tropical forests. 
+We show that, across all flux variables analyzed, C cycling decreases continuously with absolute latitude -- a finding that confirms multiple previous studies and contradicts the idea that net primary productivity of temperate forests rivals that of tropical forests. 
 C flux variables generally displayed similar trends across latitude and multiple climate variables, with no differences in allocation detected at this global scale.
-Temperature variables in general, and mean annual temperature and temperature seasonality in particular, were the best univariate predictors of C flux, explaining 19 - 71% of variation in the C fluxes analyzed. 
+Temperature variables in general, and mean annual temperature or temperature seasonality in particular, were the single best predictors of C flux, explaining 19 - 71% of variation in the C fluxes analyzed. 
 The effects of temperature were modified by moisture availability, with C flux reduced under hot and dry conditions and sometimes under very high precipitation. 
-C fluxes increased with growing season length, but this was never the best univariate predictor.
+C fluxes increased with growing season length, but significant climate-related variation persisted after accounting for this variable.
 Within the growing season, the influence of climate on C cycling was small but significant for a number of flux variables. 
 These findings clarify how forest C flux varies with latitude and climate on a global scale. 
 In a period of accelerating climatic change, this improved understanding of the fundamental climatic controls on forest C cycling sets a foundation for understanding patterns of change. 
@@ -112,7 +112,8 @@ As atmospheric CO~2~ continues to rise, driving climate change, forests will pla
 However, our understanding of the climate dependence of forest C cycling on a global scale has been limited by analyses typically considering only one or a few variables at a time, insufficient parsing of related variables, and the mixing of data from forests that vary in stand age, disturbance history, and management status, all of which affect C cycling [@litton_carbon_2007; @gillman_latitude_2015; @simova_enigma_2017]. 
 
 Forest C fluxes decrease with latitude [e.g., @luyssaert_co_2007;  @gillman_latitude_2015; @li_mapping_2019]. 
-However, studies have differed in their conclusions regarding the shape of this relationship -- quite possibly because of lack of standardization with respect to methodology and stand history. *Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset. [???]*
+However, studies have differed in their conclusions regarding the shape of this relationship -- quite possibly because of lack of standardization with respect to methodology and stand history. 
+*Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset. [???]*
 For instance, studies agree that gross primary productivity ($GPP$) increases continuously with decreasing latitude and is indisputably highest in tropical forests [@luyssaert_co_2007; @beer_terrestrial_2010; @jung_global_2011; @badgley_terrestrial_2019; @li_mapping_2019]. 
 In contrast, some studies have suggested that net primary productivity ($NPP$), or its aboveground portion ($ANPP$), exhibits a less distinct increase from temperate to tropical forests [@luyssaert_co_2007] -- or even a decrease [@huston_global_2009, but see @gillman_latitude_2015].
 A shallower increase in $NPP$ than in $GPP$ with decreasing latitude would align with the suggestion that tropical forests tend to have low carbon use efficiency [$CUE$= $NPP$/$GPP$; @de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016].
@@ -391,9 +392,14 @@ However, increasing C flux rates are by no means universal [e.g., @rutishauser_t
 Moreover, forest ecosystem responses to climatic changes outside the temperature range to which forest communities are adapted and acclimatized will not necessarily parallel responses across geographic gradients in climate.
 Indeed, tree-ring studies from forests around the world indicate that tree growth rates -- along with $ANPP_{stem}$ and possibly other ecosystem C fluxes -- respond negatively to temperature [@sniderhan_growth_2016;@helcoski_growing_2019].
 Furthermore, in the tropics, climate change will push forests beyond any contemporary climate, and there are some indications that this could reduce C flux rates  [@mau_temperate_2018; @sullivan_long-term_2020].
+(*but discuss @smith_empirical_2020*)
 Further research is required to understand the extent to which forest responses to climate change will track the observed global gradients, and the time scale on which they will do so.
 In the meantime, understanding the fundamental climatic controls on annual C cycling in Earth's forests sets a firmer foundation for understanding forest C cycle responses to accelerating climate change. 
 
+**CITATIONS TO ADD**:
+
+@mullerlandau_patterns_2020
+@zani_increased_2020
 
 ### Acknowledgements
 We gratefully acknowledge all authors of the original studies and data compilations included in this analysis, their funding agencies, and the various networks that support ground-based measurements of C fluxes. 
