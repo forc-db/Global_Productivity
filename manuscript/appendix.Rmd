@@ -13,9 +13,7 @@ output:
     
 bibliography: library.bib
 csl: global-change-biology.csl
-nocite: | 
-  @hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018; @trabucco_global_2019
-    
+
 header-includes:  \usepackage{float}
                   \usepackage{caption}
                   \captionsetup[table]{font=footnotesize}
@@ -61,12 +59,13 @@ kable(S1, format = "latex", booktabs = TRUE, caption = "Table S1. Climate variab
   kableExtra::footnote(number = c("Hijmans et al. (2005)", "Fick and Hijmans. (2017)", "Harris et al. (2017)", "Trabucco and Zomer (2019)" , "Abatzoglou et al. (2018)"), footnote_as_chunk = TRUE) %>%
   kableExtra::footnote(symbol = "The WorldClim version used was the most recent available at the time of analysis", footnote_as_chunk = TRUE)
 
-#@hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018
 ```
-\elandscape
-\newpage
 
-\blandscape
+---
+nocite: | 
+  @hijmans_very_2005; @fick_worldclim_2017; @harris_updated_2014;  @abatzoglou_terraclimate_2018; @trabucco_global_2019
+---
+    
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -154,16 +153,13 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
-
+\newpage 
 \blandscape
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Scatterplots and Pearson's R values for relationships between latitude and climate variables", out.height='95%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Scatterplots and Pearson's R values for relationships among climate variables and latitude", out.height='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/climate_regressions.png")
 ```
-\elandscape
 
-
-\blandscape
 ```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables.", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
