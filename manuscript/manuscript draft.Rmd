@@ -172,6 +172,10 @@ kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of
   #kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Piao et al. (2010)", "Huston & Wolverton (2009)"), footnote_as_chunk = TRUE)
 ```
 
+---
+nocite: | 
+  @gillman_latitude_2015
+---
 
 ### Materials and Methods  
 
