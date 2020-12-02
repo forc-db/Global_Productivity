@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 DEC 2020 18:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 DEC 2020 19:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -833,6 +833,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 367.
 
+LaTeX Warning: Float too large for page by 49.32416pt on input line 368.
+
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [6]
@@ -890,7 +893,7 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1475.
 Here is how much of TeX's memory you used:
  16053 strings out of 492616
  237688 string characters out of 6129482
- 379814 words of memory out of 5000000
+ 378814 words of memory out of 5000000
  19396 multiletter control sequences out of 15000+600000
  72766 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -916,7 +919,7 @@ lic/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lms
 y6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on manuscript-draft.pdf (30 pages, 1587452 bytes).
+Output written on manuscript-draft.pdf (30 pages, 1587154 bytes).
 PDF statistics:
  480 PDF objects out of 1000 (max. 8388607)
  419 compressed objects within 5 object streams
