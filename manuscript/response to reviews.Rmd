@@ -66,7 +66,17 @@ Comments to the Author
 Using 1,319 records from the Global Forest Carbon Database (ForC), authors of this manuscript explored the spatial pattern of several carbon flux. They found forest C fluxes decreases with absolute latitude. Among climatic variables, mean annual temperature and temperature seasonality were found to be the best univariate climatic predictors. They suggest their findings could improve understanding of forest carbon cycling under climate change. Overall, the manuscript is well written, but the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data, which did not reveal the biological mechanisms lead to the detected pattern. Thus, I cannot recommend publishing this paper in GCB, but suggest the authors to consider a data journal like ESSD.
 
 
-**Most of the points raised here are covered by more specific comments below, and our responses to these points follow those comments. The one criticism here that is not addressed below is that we present "simple statistical analyses". While we concur that the analyses are relatively simple, that does not preclude their being appropriate, informative, and sufficient. They represent several substantive advances over past analyses of this type:**
+**Most of the points raised here are covered by more specific comments below, and our responses to these points follow those comments.** 
+
+**We believe that one general problem may have been that the previous manuscript version didn't clearly communicate our intentions, which were not to pose novel hypotheses but to conduct a quantitative review of the subject using a vastly expanded and standardized dataset. While we feel that the text of the introduction made it clear that we weren't intending to present the hypotheses as novel, we have realized that a quick review of Table 1 in isolation would give the false impression that we intended these analyses as novel hypothesis tests. We have taken some steps to improve this aspect:**
+
+**1. We modified Table 1, labeling the questions as "review questions" and clarifying that many of the hypotheses have been previously tested, citing relevant publications.**
+
+**2.**  *(we should add some very clear statements to the abstract, intro, maybe discussion) ...*
+
+
+
+**One point above that is not addressed below is that we present "simple statistical analyses". While we concur that the analyses are relatively simple, that does not preclude their being appropriate, informative, and sufficient. They represent several substantive advances over past analyses of this type:**
 
 **1. They are underlain by a large, standardized database that accounts for factors such as stand age and management, which have not always been accounted for.**
 
@@ -90,7 +100,7 @@ RE Luyssaert et al : *We note in particular that mean stand age was extremely va
 
 Forest C fluxes decreasing with latitude was also not a new finding. The author suggest that it contradicts with some previous studies finding that “net primary productivity of temperate forests rivals that of tropical forests”. However, those high NPP in temperate forests could result from high rates of nitrogen deposition or forest plantation (Yu et al., 2014), which are in different context with the mature, undisturbed forests studied in this manuscript.
 
-**We agree that these results are not surprising, however a crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships.**
+**We agree that these results are not surprising to many of us, and state in the introduction that productivity decreases with latitude. Yet, as also noted in the introduction, the form of this relationship is less clear, and contradictory papers have been published in high-profile journals in the last 15 years [@luyssaert_co_2007; @huston_global_2009;  @gillman_latitude_2015]. A crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships, which is the goal here-- as opposed to testing this as a novel hypothesis.** 
 
 **As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships.**
 
@@ -124,6 +134,8 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 2. A key conclusion is “no detectable differences in allocation across latitude or climates”, however, I do not see a strong evidence for that presented in the main text – Fig.S3 does show several allocation indicators though no statistics are provided. Fig. 2 shows that C fluxes increase approximately in proportion to one another, but that does not necessarily mean allocation is unchanged across latitude or climates.
 
 **We found no significant relationships between flux ratios (allocation to fluxes) across latitude and three climate variables tested, and as a result have not presented figures illustrating this in the text. We state that these results were non-significant in the results section. We have updated Fig. S3 to clarify that none of the fits are significant (and therefore no statistics are presented).**
+
+*from Helene: maybe we should also address statistical power*
 
 *(requires response)*
 
