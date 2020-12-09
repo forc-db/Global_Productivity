@@ -264,9 +264,9 @@ All analyses were conducted in R v.3.5.1 [@r_core_team_2018]. Code and data nece
 
 In total, we analyzed 1,319 records from nine forest autotrophic C flux variables taken from forests that had experienced no major anthropogenic disturbances within the past 100 years. These records represented a total of 255 plots in 154 distinct geographic areas across all forested biogeographic and climate zones (Figs. 1, S1;  Table 2). 
   
-*Q1. How does C flux vary with latitude?* 
+*Q1. How do C fluxes vary with latitude?* 
 
-All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2, S6). Specifically, latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ ($R^2$=0.17) and $ANPP_{stem}$ ($R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
+All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2, S6). Latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ (n = 88, p< .01, $R^2$=0.17) and $ANPP_{stem}$ (n = 264, p<0.0001, $R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
   
 ```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant $(p<0.05)$ and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression", fig.pos='H'}
 
@@ -275,9 +275,9 @@ All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was
 
 Smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (Fig. 2). That is, modeled estimates of $GPP$, generated from the sum of $NPP$ and $R_{auto}$; $NPP$, generated from the sum of $ANPP$ and $BNPP$; and $ANPP$, generated from the sum of $ANPP_{foliage}$ and $ANPP_{stem}$, fell almost completely within the confidence intervals of the regressions of field estimates of $GPP$, $NPP$, and $ANPP$, respectively.
 
-We found no evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 16 relationships tested (4 ratios among C flux variables regressed against latitude, $MAT$, $MAP$ and temperature seasonality), none were significant.
+We found no evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 12 relationships tested (3 ratios among C flux variables regressed against latitude, $MAT$, $MAP$ and temperature seasonality), none were significant.
    
-*Q2. How does C flux relate to $MAT$ and $MAP$?* 
+*Q2. How do C fluxes relate to $MAT$ and $MAP$?* 
 
 All fluxes increased with $MAT$ (all p<0.05; Figs. 3-4, S4-S5, Table S2). 
 For eight of the nine fluxes, this relationship was linear.
@@ -289,11 +289,11 @@ However, it explained little variation: with the exception of $R_{auto}$, $MAP$ 
 
 There was a significant additive effect of $MAT$ and $MAP$ on $GPP$, $ANPP$ and $R_{auto}$ (Fig. 3, Table S3), and a significant interactive effect between $MAT$ and $MAP$ for $NPP$ and $ANPP_{stem}$ (Fig. 3, Table S3). The interaction was negative for $NPP$ and positive for $ANPP_{stem}$. For $ANPP_{foliage}$, $BNPP$, $BNPP_{fine.root}$, and $R_{root}$, $MAP$ did not have a significant effect when accounting for $MAT$ (Fig. 3, Table S3). 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. All regressions are significant $(p<0.05)$.", fig.pos='H'}
+```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. Significance is defined as p < 0.05.", fig.pos='H'}
   knitr::include_graphics("mat_map_interaction.png")
 ```
 
-*Q3. How does C flux relate to other annual climate variables?* 
+*Q3. How do C fluxes relate to other annual climate variables?* 
   
 All C flux variables showed a significant relationship with annual $PET$. The relationship was logarithmic for $ANPP_{foliage}$, $BNPP_{fine.root}$ and $R_{root}$, and polynomial for all other fluxes (Fig. 4c, S4-5; Table S2). We found strong evidence for a saturation point or peak with $PET$: C fluxes tended to increase at values below 1000mm, before saturating between 1200 and 1700mm. There was also evidence that some C fluxes begin to decrease at values above 1800mm PET.
 
@@ -324,7 +324,7 @@ We found a significant relationship between length of growing season and C fluxe
 
 *Q5. Within the growing season, how do C fluxes vary with climate?* 
 
-When annual C fluxes were standardized by growing season length (in monthly increments), correlations with growing season climate were generally weak (Figs. S8-S9).
+When annual C fluxes were standardized by growing season length (in integer number of months), correlations with growing season climate were generally weak (Figs. S8-S9).
 $ANPP$ increased with growing season temperature ($R^2$ = 0.09, p<0.001) and precipitation ($R^2$ = 0.04, p<0.05). 
 Similarly, $ANPP_{foliage}$ increased slightly with growing season temperature ($R^2$ = 0.16, p<0.01) and precipitation ($R^2$ = 0.09, p<0.05). 
 Growing season solar radiation was positively correlated with on $BNPP$ ($R^2$ = 0.17, p<0.001) and $BNPP_{fine.root}$ ($R^2$ = 0.13, p<0.01). 
