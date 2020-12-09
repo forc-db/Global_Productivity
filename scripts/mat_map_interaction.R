@@ -377,8 +377,8 @@ for (response.v in response.variables){
   
   mtext(side = 3, line = -1, text = paste0(respv), adj = 0.1, cex = 0.5)
   if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
-  if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
-  if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
+  if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect only", adj = 0.1, cex = 0.5)
+  if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT only", adj = 0.1, cex = 0.5)
   Rsqs <- rbind(Rsqs, Rsq)
   pannel.nb <- pannel.nb +1
 }
