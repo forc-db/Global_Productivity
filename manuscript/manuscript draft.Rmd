@@ -118,7 +118,7 @@ In contrast, some studies have suggested that net primary productivity ($NPP$), 
 A shallower increase in $NPP$ than in $GPP$ with decreasing latitude would align with the suggestion that tropical forests tend to have low carbon use efficiency [$CUE$= $NPP$/$GPP$; @de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016].
 Such differences among C fluxes in their relationship to latitude could have profound implications for our understanding of the C cycle and its climate sensitivity. However, until recently the potential to compare latitudinal trends across C fluxes has been limited by lack of a large database with standardization for methodology, stand history, and management [@anderson-teixeira_forc_2018].
 
-The latitudinal gradient in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010].
+The latitudinal gradient in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010; @muller-landau_patterns_2020].
 However, there is little consensus as to the shapes of these relationships or the best predictor variables.
 The majority of studies have focused on exploring the relationships of C fluxes to mean annual temperature ($MAT$) and mean annual precipitation ($MAP$), as the most commonly reported site-level climate variables. 
 C fluxes increase strongly with $MAT$ on the global scale, but whether they saturate or potentially decrease at higher temperatures remains disputed. 
@@ -230,7 +230,7 @@ Monthly data for $PET$, precipitation, and temperature from  CRU v 4.03 [@harris
 The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_2018]. 
 The basic model for all analyses included a fixed effect of latitude or climate and a random effect of plot nested within geographic area. 
 Geographic areas--*i.e.*, spatially clustered sites--were defined within ForC using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018]. 
-We experimented with inclusion of altitude as a fixed effect, but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
+We experimented with inclusion of altitude as a fixed effect, as productivity is known to decline with elevation [@muller-landau_patterns_2020], but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
 Effects were considered significant when inclusion of the fixed effect of interest resulted in p $\le$ 0.05 under an ANOVA test, and $\Delta AIC$ $\ge$ 2.0 relative to a corresponding null model. 
 All $R^2$ values presented here are marginal $R^2$ values, and refer to the proportion of variation explained by only the fixed effects. 
 Specific analyses are as described below.
@@ -402,7 +402,6 @@ In the meantime, understanding the fundamental climatic controls on annual C cyc
 
 **CITATIONS TO ADD**:
 
-@mullerlandau_patterns_2020
 @zani_increased_2020
 
 ### Acknowledgements
