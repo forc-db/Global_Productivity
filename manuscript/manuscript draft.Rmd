@@ -88,7 +88,7 @@ email: teixeirak@si.edu
 \newpage
 ### Abstract
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
-However, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
+However, while many studies have considered variation in productivity with latitude and climate, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
 Here, we draw upon 1,319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively explore how annual C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
 We show that, across all flux variables analyzed, C cycling decreases continuously with absolute latitude -- a finding that confirms multiple previous studies and contradicts the idea that net primary productivity of temperate forests rivals that of tropical forests. 
 C flux variables generally displayed similar trends across latitude and multiple climate variables, with no differences in allocation detected at this global scale.
@@ -108,13 +108,12 @@ Forests' autotrophic carbon fluxes -- that is, carbon fixation, allocation, and 
 They are linked to cycling of energy, water, and nutrients and, critically, influence all C stocks and define forest interactions with Earth's changing climate. 
 Each year, over 69 Gt of C cycle through Earth's forests [@badgley_terrestrial_2019] -- a flux more than seven times greater than that of recent anthropogenic fossil fuel emissions [9.5 Gt C yr^-1^; @friedlingstein_global_2019]. 
 As atmospheric CO~2~ continues to rise, driving climate change, forests will play a critical role in shaping the future of Earth's climate [@cavaleri_urgent_2015; @rogelj_mitigation_2018]. 
-However, our understanding of global-scale variation in forest C cycling remains incomplete, in large part because it is pieced together from numerous studies, most considering only one or a few variables at a time, with various approaches for handling influential factors such as stand age, disturbance history, and management status [@litton_carbon_2007; @gillman_latitude_2015; @simova_enigma_2017]. 
+However, our understanding of global-scale variation in forest C cycling remains incomplete, in large part because it is pieced together from numerous studies, most considering only one or a few variables at a time, with various approaches for handling influential factors such as stand age, disturbance history, and management status [@litton_carbon_2007; @gillman_latitude_2015; @simova_enigma_2017].
 
 Forest C fluxes decrease with latitude [e.g., @luyssaert_co_2007;  @gillman_latitude_2015; @li_mapping_2019]. 
 However, studies have differed in their conclusions regarding the shape of this relationship -- quite possibly because of lack of standardization with respect to methodology and stand history. 
-*Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset. [???]*
-For instance, studies agree that gross primary productivity ($GPP$) increases continuously with decreasing latitude and is indisputably highest in tropical forests [@luyssaert_co_2007; @beer_terrestrial_2010; @jung_global_2011; @badgley_terrestrial_2019; @li_mapping_2019]. 
-In contrast, some studies have suggested that net primary productivity ($NPP$), or its aboveground portion ($ANPP$), exhibits a less distinct increase from temperate to tropical forests [@luyssaert_co_2007] -- or even a decrease [@huston_global_2009, but see @gillman_latitude_2015].
+Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset.
+Studies agree that gross primary productivity ($GPP$) increases continuously with decreasing latitude and is indisputably highest in tropical forests [@luyssaert_co_2007; @beer_terrestrial_2010; @jung_global_2011; @badgley_terrestrial_2019; @li_mapping_2019]. However, this relationship is more ambiguous in subsidiary fluxes. Some studies have suggested that net primary productivity ($NPP$), or its aboveground portion ($ANPP$), exhibits a less distinct increase from temperate to tropical forests [@luyssaert_co_2007] -- or even a decrease [@huston_global_2009, but see Gillman et al., 2015].
 A shallower increase in $NPP$ than in $GPP$ with decreasing latitude would align with the suggestion that tropical forests tend to have low carbon use efficiency [$CUE$= $NPP$/$GPP$; @de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016].
 Such differences among C fluxes in their relationship to latitude could have profound implications for our understanding of the C cycle and its climate sensitivity. However, until recently the potential to compare latitudinal trends across C fluxes has been limited by lack of a large database with standardization for methodology, stand history, and management [@anderson-teixeira_forc_2018].
 
@@ -141,7 +140,7 @@ Thus, the extent to which growing season length controls global-scale variation 
 
 The recent development of the Global Forest Carbon database (ForC), which synthesizes multiple variables and includes records of stand history [@anderson-teixeira_carbon_2016; @anderson-teixeira_forc_2018], opens up the possibility for a standardized analysis of global scale variation in multiple C fluxes and the principle climatic drivers of these patterns.
 Our analyses represent a major step forward in relation to previous work. The most comprehensive previous analysis of this type was @luyssaert_co_2007, which was based on a database <25% the size of the ForC version used here, did not control for effects of stand age, and examined global climatic trends in only three variables.
-In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad questions and corresponding predictions (Table 1).
+In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad review questions and corresponding predictions (Table 1).
 First, we ask how nine forest autotrophic carbon fluxes in ForC vary with latitude (*Q1*).
 We then test how these fluxes relate to $MAT$ and $MAP$ (*Q2*), and additionally how they respond to other, less well-studied, climate variables (*Q3*).
 Finally, we consider the relationship between C flux and seasonality, considering the role of seasonality in explaining variation in carbon fluxes (*Q4*), and the influence of climate on C flux standardized by growing season length (*Q5*).
@@ -153,9 +152,10 @@ library(kableExtra)
 hypothesis_table <- read.csv("hypothesis_table.csv", stringsAsFactors = FALSE, check.names = FALSE)
 hypothesis_table[1,1] <- paste0(hypothesis_table[1,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(2),"$^{,}$", footnote_marker_number(3)) #Luyssaert, Gillman et al. (2015)", "Simova and Storch (2017)"
 hypothesis_table[2,1] <- paste0(hypothesis_table[2,1], footnote_marker_number(1),"$^{,}$", footnote_marker_number(10)) #Luyssaert, Huston & Wolverton
-hypothesis_table[3,1] <- paste0(hypothesis_table[3,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4),"$^{,}$",footnote_marker_number(9))
-hypothesis_table[4,1] <- paste0(hypothesis_table[4,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4))
-hypothesis_table[5,1] <- paste0(hypothesis_table[5,1], footnote_marker_number(5))
+hypothesis_table[3,1] <- paste0(hypothesis_table[3,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4),"$^{,}$",footnote_marker_number(9)) ## Luyssaert, Schuur, Piao, Wei
+hypothesis_table[4,1] <- paste0(hypothesis_table[4,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4)) ## Luyssaert, Schuur, Wei
+hypothesis_table[5,1] <- paste0(hypothesis_table[5,1], footnote_marker_number(5)) ### Taylor, muller Landau
+hypothesis_table[8,1] <- paste0(hypothesis_table[8,1], footnote_marker_number()) ### fyllas
 hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(6),"$^{,}$",footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
 hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(7),"$^{,}$", footnote_marker_number(8))
 hypothesis_table[13,1] <- paste0(hypothesis_table[13,1], footnote_marker_number(8))
@@ -169,7 +169,7 @@ kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of
   add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes" = 9, " ")) %>%
   #column_spec(2:11, width = "1.8cm") %>%
   kableExtra::landscape() 
-  #kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Piao et al. (2010)", "Huston & Wolverton (2009)"), footnote_as_chunk = TRUE)
+  #kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Schuur (2003)", "Taylor et al. (2017)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Piao et al. (2010)", "Huston & Wolverton (2009)", "Wei et al. (2010)), footnote_as_chunk = TRUE)
 ```
 
 ---

@@ -72,7 +72,7 @@ Using 1,319 records from the Global Forest Carbon Database (ForC), authors of th
 
 **1. We modified Table 1, labeling the questions as "review questions" and clarifying that many of the hypotheses have been previously tested, citing relevant publications.**
 
-**2.**  *(we should add some very clear statements to the abstract, intro, maybe discussion) ...*
+**2. We have added and clarified statements in the abstract, introduction, and discussion, to make it clear that our intention is to clarify uncertainty in these relationships.**  *(we should add some very clear statements to the abstract, intro, maybe discussion) ...*
 
 
 
@@ -102,11 +102,9 @@ Forest C fluxes decreasing with latitude was also not a new finding. The author 
 
 **We agree that these results are not surprising to many of us, and state in the introduction that productivity decreases with latitude. Yet, as also noted in the introduction, the form of this relationship is less clear, and contradictory papers have been published in high-profile journals in the last 15 years [@luyssaert_co_2007; @huston_global_2009;  @gillman_latitude_2015]. A crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships, which is the goal here-- as opposed to testing this as a novel hypothesis.** 
 
-**As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships.**
+**As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships. We have added text to the introduction to highlight the importance of standardisation of the dataset.**
 
-*(again, maybe make some modest change to the text that we can point to as a "response" to this review. Cite Yu.)*
-
-*have cited Yu in intro + discussion. In intro added following : "Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset.". I haven't edited discussion text other than adding citations to existing points - it seems to me to be covered well?*
+**Thankyou for highlighting the paper by Yu et al. (2014). We have cited this at several points in the text.**
 
 It is not surprising that MAT was found to be the good climate variables explaining forest C fluxes, since MAT has strong correlation with latitudes. Our contemporary knowledge on forest carbon cycling has moved well beyond using mean climatic variable to extrapolate or guess the response of forest carbon cycling to climate change. The spatial gradient do not necessarily represent the response of forests to climate change. The main implications highlighted in the Abstract is not well supported by the results presented.
 
@@ -155,7 +153,7 @@ Minor comments:
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
-**We have added CUE as requested. We also added a legend to clarify that none of the fits are significant (and therefore no statistics presented).**
+**We have added a legend to clarify that none of the fits are significant (and therefore no statistics presented). We have chosen not to add CUE to the figure, as we have focused on analysis of allocation within ratios. However, we have added text below Fig. S3 to clarify that we interpret these results in terms of variation in CUE.**
 
 4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MATxMAP as three predictors in a multivariate model or just MATxMAP in a linear model?
 

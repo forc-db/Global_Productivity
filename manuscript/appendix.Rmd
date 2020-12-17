@@ -164,6 +164,8 @@ kable(S4, format = "latex", booktabs = TRUE, caption = "Table S6. Pairwise compa
 
   knitr::include_graphics("tables_figures/ratio_grid_plots.png")
 ```
+Regressions test variation in allocation to component fluxes for three relationships: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. We interpret analysis of variation in $NPP:R_{auto}$ in the context of CUE (GPP/NPP), as variation in CUE will be directly related to variation in $NPP:R_{auto}$.
+
 \elandscape
 
 \blandscape
