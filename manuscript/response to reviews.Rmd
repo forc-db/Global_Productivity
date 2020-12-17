@@ -72,9 +72,12 @@ Using 1,319 records from the Global Forest Carbon Database (ForC), authors of th
 
 **1. We modified Table 1, labeling the questions as "review questions" and clarifying that many of the hypotheses have been previously tested, citing relevant publications.**
 
-**2. We have added and clarified statements in the abstract, introduction, and discussion, to make it clear that our intention is to clarify uncertainty in these relationships.**  *(we should add some very clear statements to the abstract, intro, maybe discussion) ...*
+**2. We have made the following revisions to the language in the abstract, introduction, and discussion to make it clear that our intention is to provide a quantitative review that clarifies uncertainty in these relationships:**  
 
+- **Abstract: "Here, we draw upon 1,319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively ~~explore~~ *review* how annual C cycling in mature, undisturbed forests varies with latitude and climate on a global scale."** 
+- **Introduction: "In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad *review questions* and corresponding predictions (Table 1)."**
 
+-
 
 **One point above that is not addressed below is that we present "simple statistical analyses". While we concur that the analyses are relatively simple, that does not preclude their being appropriate, informative, and sufficient. They represent several substantive advances over past analyses of this type:**
 
