@@ -117,7 +117,7 @@ Studies agree that gross primary productivity ($GPP$) increases continuously wit
 A shallower increase in $NPP$ than in $GPP$ with decreasing latitude would align with the suggestion that tropical forests tend to have low carbon use efficiency [$CUE$= $NPP$/$GPP$; @de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016].
 Such differences among C fluxes in their relationship to latitude could have profound implications for our understanding of the C cycle and its climate sensitivity. However, until recently the potential to compare latitudinal trends across C fluxes has been limited by lack of a large database with standardization for methodology, stand history, and management [@anderson-teixeira_forc_2018].
 
-The latitudinal gradient in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010; @muller-landau_patterns_2020].
+The latitudinal gradient in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017], is driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010; @mullerlandau_patterns_2020].
 However, there is little consensus as to the shapes of these relationships or the best predictor variables.
 The majority of studies have focused on exploring the relationships of C fluxes to mean annual temperature ($MAT$) and mean annual precipitation ($MAP$), as the most commonly reported site-level climate variables. 
 C fluxes increase strongly with $MAT$ on the global scale, but whether they saturate or potentially decrease at higher temperatures remains disputed. 
@@ -155,11 +155,13 @@ hypothesis_table[2,1] <- paste0(hypothesis_table[2,1], footnote_marker_number(1)
 hypothesis_table[3,1] <- paste0(hypothesis_table[3,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(5),"$^{,}$",footnote_marker_number(6),"$^{,}$",footnote_marker_number(7)) ## Luyssaert, Schuur, Piao, Wei
 hypothesis_table[4,1] <- paste0(hypothesis_table[4,1], footnote_marker_number(1),"$^{,}$",footnote_marker_number(4),"$^{,}$",footnote_marker_number(7)) ## Luyssaert, Schuur, Wei
 hypothesis_table[5,1] <- paste0(hypothesis_table[5,1], footnote_marker_number(8),"$^{,}$",footnote_marker_number(9)) ### Taylor, muller Landau
-hypothesis_table[8,1] <- paste0(hypothesis_table[8,1], footnote_marker_number(10),"$^{,}$",footnote_marker_number(11)) ### fyllas nemani
-hypothesis_table[10,1] <- paste0(hypothesis_table[10,1], footnote_marker_number(12),"$^{,}$",footnote_marker_number(13)) ## wagner 2016 + 2014
-hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(14),"$^{,}$",footnote_marker_number(15),"$^{,}$", footnote_marker_number(16))
-hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(15),"$^{,}$", footnote_marker_number(16))
-hypothesis_table[13,1] <- paste0(hypothesis_table[13,1], footnote_marker_number(16))
+hypothesis_table[7,1] <- paste0(hypothesis_table[7,1], footnote_marker_number(10)) ## smith et al. 2020
+hypothesis_table[8,1] <- paste0(hypothesis_table[8,1], footnote_marker_number(11),"$^{,}$",footnote_marker_number(12)) ### fyllas nemani
+hypothesis_table[10,1] <- paste0(hypothesis_table[10,1], footnote_marker_number(13),"$^{,}$",footnote_marker_number(14)) ## wagner 2016 + 2014
+hypothesis_table[11,1] <- paste0(hypothesis_table[11,1], footnote_marker_number(15),"$^{,}$",footnote_marker_number(16),"$^{,}$", footnote_marker_number(17),"$^{,}$", footnote_marker_number(18)) ## and fernandez martinez
+hypothesis_table[12,1] <- paste0(hypothesis_table[12,1], footnote_marker_number(16),"$^{,}$", footnote_marker_number(17))
+hypothesis_table[13,1] <- paste0(hypothesis_table[13,1], footnote_marker_number(17))
+hypothesis_table[15,1] <-paste0(hypothesis_table[15,1], footnote_marker_number(18)) ##fernandez martinez
 kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of review questions, corresponding expectations based on previous studies (when applicable), and results. Statistically signficant support for/ rejection of hypotheses is indicated by checkmarks/ X's, and '-' indicates no significant relationship. Parentheses indicate partial overall support or rejection of hypotheses across all fluxes considered. Flux variables are defined in Table 2.", escape = F) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
   pack_rows("Q1. How do C fluxes vary with latitude?", 1, 2,  colnum =7, hline_before = FALSE) %>%
@@ -170,12 +172,13 @@ kable(hypothesis_table, format = "latex", booktabs = TRUE, caption = "Summary of
   add_header_above(c(" ",  " ", "Forest autotrophic carbon fluxes" = 9, " ")) %>%
   #column_spec(2:11, width = "1.8cm") %>%
   kableExtra::landscape() %>%
-  kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Huston & Wolverton (2009)", "Schuur (2003)", "Piao et al. (2010)", "Wei et al. (2010)", "Taylor et al. (2017)", "Muller-Landau et al. (2020)", "Fyllas et al. (2017)", "Nemani et al. (2003)", "Wagner et al. (2014)" , "Wagner et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)"), footnote_as_chunk = TRUE)
+  kableExtra::footnote(number = c("Luyssaert et al. (2007)", "Gillman et al. (2015)", "Simova and Storch (2017)", "Huston & Wolverton (2009)", "Schuur (2003)", "Piao et al. (2010)", "Wei et al. (2010)", "Taylor et al. (2017)", "Muller-Landau et al. (2020)", "Smith et al. (2020)", "Fyllas et al. (2017)", "Nemani et al. (2003)", "Wagner et al. (2014)" , "Wagner et al. (2016)", "Malhi (2012)", "Michaletz et al. (2014)", "Chu et al. (2016)", "Fernandez-Martinez et al. (2014)"), threeparttable = TRUE, footnote_as_chunk = TRUE)
 ```
 
 ---
 nocite: | 
   @gillman_latitude_2015
+  @fernandez-martinez_spatial_2014
 ---
 
 ### Materials and Methods  
@@ -228,10 +231,10 @@ Monthly data for $PET$, precipitation, and temperature from  CRU v 4.03 [@harris
   
 *Analyses*
 
-The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_core_team_2018]. 
+The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_2020]. 
 The basic model for all analyses included a fixed effect of latitude or climate and a random effect of plot nested within geographic area. 
 Geographic areas--*i.e.*, spatially clustered sites--were defined within ForC using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018]. 
-We experimented with inclusion of altitude as a fixed effect, as productivity is known to decline with elevation [@muller-landau_patterns_2020], but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
+We experimented with inclusion of altitude as a fixed effect, as productivity is known to decline with elevation [@mullerlandau_patterns_2020], but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
 Effects were considered significant when inclusion of the fixed effect of interest resulted in p $\le$ 0.05 under an ANOVA test, and $\Delta AIC$ $\ge$ 2.0 relative to a corresponding null model. 
 All $R^2$ values presented here are marginal $R^2$ values, and refer to the proportion of variation explained by only the fixed effects. 
 Specific analyses are as described below.
@@ -259,7 +262,7 @@ Variation in allocation to component carbon fluxes was explored for three groupi
 
 To test whether and how C fluxes varied with climate when standardised by growing season length (*Q5*; Table 1), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate, specifically growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
-All analyses were conducted in R v.3.5.1 [@r_core_team_2018]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
+All analyses were conducted in R v.3.5.1 [@r_2020]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
 
 ### Results
 
