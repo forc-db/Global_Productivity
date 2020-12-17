@@ -143,7 +143,7 @@ In order to approach this broad topic, we simplify the major gaps in our knowled
 First, we ask how nine forest autotrophic carbon fluxes in ForC vary with latitude (*Q1*).
 We then test how these fluxes relate to $MAT$ and $MAP$ (*Q2*), and additionally how they respond to other, less well-studied, climate variables (*Q3*).
 Finally, we consider the relationship between C flux and seasonality, considering the role of seasonality in explaining variation in carbon fluxes (*Q4*), and the influence of climate on C flux standardized by growing season length (*Q5*).
-Our analyses represent a major step forward in relation to previous work [@luyssaert_co_2007] in that we examine global climatic trends in more variables (9 vs. $\le$ 3), draw from a much larger database (>4 times more records analyzed), and control for the effects of stand age, disturbance, and management (not consistenly done previously).
+Our analyses represent a major step forward in relation to previous work [e.g., @luyssaert_co_2007] in that we examine global climatic trends in more variables (9 vs. $\le$ 3), draw from a much larger database (>4 times more records analyzed), and control for the effects of stand age, disturbance, and management.
 
 \renewcommand{\arraystretch}{2}
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
