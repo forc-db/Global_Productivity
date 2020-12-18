@@ -144,15 +144,15 @@ Minor comments:
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
-**We have added a legend to clarify that none of the fits are significant (and therefore no statistics presented). We have chosen not to add CUE to the figure, as we have focused on analysis of allocation within ratios. However, we have added text below Fig. S3 to clarify that we interpret these results in terms of variation in CUE.**
+**We have added a legend to clarify that none of the fits are significant (and therefore no statistics presented). We have chosen not to add CUE to the figure, as analysis of proportions (NPP/GPP) would require a different statistical approach than analysis of ratios. However, we have added text to the Fig. S3 legend to clarify that we interpret these results in terms of variation in CUE.**
 
 4. L201 - To study the interactive effect of MAT and MAP, do you use MAT, MAP and MATxMAP as three predictors in a multivariate model or just MATxMAP in a linear model?
 
-**We used MATxMAP in a linear model, which we have clarified this in the text.**
+**We have clarified this in the text: "An interactive model containing a $MAT$ x $MAP$ interaction was accepted when $\Delta$AIC >2 relative to a null including $MAT$ and $MAP$ as fixed effects."**
 
 5. I am also wondering about the representation of tropical and extra-tropical forests in the samples. One solution is to add a biome basemap in figure 1. If tropical forest stands are generally older than the extra-tropical forest stands (according to “Histogram_of_Stand_age” in the ForC database), then perhaps there is a need to standardize samples by stand ages when studying allocation.
 
-**While ForC contains information on precise stand ages for many temperate forests, this information is typically unavailable for tropical forests, and so these forests are often recorded simply as 'old-growth' or 'undisturbed'. This means that they are known to be older than 100 years of age, but the precise age is unknown. As a result, standardising this dataset by age is a challenge, and so we treat all forests in the analysis as mature forests, assuming minimal effect of age beyond 100 years.** 
+**While ForC contains information on precise stand ages for many temperate forests (typically estimated from tree-rings), this information is typically unavailable for tropical forests, and so these forests are often recorded simply as 'old-growth' or 'undisturbed'. This means that they are believed to be older than 100 years of age, but the precise age is unknown. As a result, it is unfortunately not possible to standardise this dataset by age beyond 100 years, and so we treat all forests in the analysis as mature forests, assuming minimal effect of age beyond 100 years.** 
 
 6. Fig. S6. Spell out “T seas” and “P seas” in the caption.
 
