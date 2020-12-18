@@ -150,7 +150,7 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
 ```
 \elandscape
 ## Figure S1. Sample distribution maps for the nine forest C fluxes analyzed
-```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed. Variables are defined in Table 2.", out.height ='90%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed. Variables are defined in Table 2.", out.height ='85%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
