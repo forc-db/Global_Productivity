@@ -197,8 +197,9 @@ This version contained 29,730 records from 4,979 plots, representing 20 distinct
 From this, we drew 1,319 records that met our criteria, as outlined below (Fig. 1).
 
 This analysis focused on mature forests with no known history of significant disturbance or management. 
-There is evidence that stand age influences patterns of C flux and allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@de_lucia_forest_2007; @gillman_latitude_2015]. To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth". 
-Since management can alter observed patterns of C cycling [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or included the term "managed" in their site description. 
+There is evidence that stand age influences patterns of C flux and allocation in forest ecosystems, and can confound relationships between latitude and primary productivity [@de_lucia_forest_2007; @gillman_latitude_2015]. 
+To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth", noting that ages of mature tropical forests are typically unknown because most tropical trees cannot be easily dated using tree-rings. 
+Since management can alter C cycling [@simova_enigma_2017], sites were excluded from analysis if they were managed, defined as plots that were planted, managed as plantations, irrigated, fertilised or included the term "managed" in their site description. 
 Sites that had experienced significant disturbance within the past 100 years were also excluded. Disturbances that qualified sites for exclusion included major cutting or harvesting, burning, flooding, drought and storm events with site mortality >10% of trees. Grazed sites were retained.  
 
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
@@ -229,7 +230,7 @@ ForC contains geographic coordinates associated with each measurement record and
 Length of the growing season was estimated to the nearest month, where growing season months were defined as months with mean minimum temperature > 0.5$^\circ$C. 
 This is consistent with the previous studies whose hypothesis we were evaluating [@kerkhoff_plant_2005; @michaletz_convergence_2014].
 We experimented with a definition of growing season months including a moisture index, defined as $(MAT - PET)/PET > -0.95$ [@kerkhoff_plant_2005; see also @michaletz_convergence_2014]. 
-However, we found that including a moisture index had minimal effect on the estimates of growing season length for the sites included here, and so chose to exclude it. 
+However, we found that including a moisture index had minimal effect on the estimates of growing season length for the sites included here and that the approach performed poorly at defining growing seasons for sites with signficant reliance on snow-melt or groundwater, and so chose to exclude this criterion. 
 Monthly data for $PET$, precipitation, and temperature from  CRU v 4.03 [@harris_updated_2014] and solar radiation from WorldClim2 [@fick_worldclim_2017] were used to calculate mean monthly $PET$, precipitation, temperature and solar radiation during the growing season. 
   
 *Analyses*
@@ -237,7 +238,7 @@ Monthly data for $PET$, precipitation, and temperature from  CRU v 4.03 [@harris
 The effects of latitude and climate on C fluxes were analysed using mixed effects models using the package 'lme4' [@bates_fitting_2015] in R v.3.5.1 [@r_2020]. 
 The basic model for all analyses included a fixed effect of latitude or climate and a random effect of plot nested within geographic area. 
 Geographic areas--*i.e.*, spatially clustered sites--were defined within ForC using a hierarchical cluster analysis on the distance matrix of the sites and a cutoff of 25km [@anderson-teixeira_forc_2018]. 
-We experimented with inclusion of altitude as a fixed effect, as productivity is known to decline with elevation [@mullerlandau_patterns_2020], but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
+We experimented with inclusion of altitude as a fixed effect, as productivity is known to decline with elevation in mesic regions [@mullerlandau_patterns_2020], but excluded it from the final models because it added very little explanatory power -- that is, the difference in AIC ($\Delta AIC$) relative to models excluding altitude was generally small (often $\Delta AIC$<2). 
 Effects were considered significant when inclusion of the fixed effect of interest resulted in p $\le$ 0.05 under an ANOVA test, and $\Delta AIC$ $\ge$ 2.0 relative to a corresponding null model. 
 All $R^2$ values presented here are marginal $R^2$ values, and refer to the proportion of variation explained by only the fixed effects. 
 Specific analyses are as described below.
@@ -265,7 +266,7 @@ An interactive model containing a $MAT$ x $MAP$ interaction was accepted when $\
 
 Variation in allocation to component carbon fluxes was explored for three groupings: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. For each group, measurements taken at the same site and plot, and in the same year, were grouped together. For groups (1) and (2), where 2 of the 3 flux measurements were available for a given site, plot, and year, these measurements were used to calculate the third. We then calculated the ratio of each pair of component fluxes ($NPP: R_{auto}$; $ANPP:BNPP$; $ANPP_{foliage}:ANPP_{stem}$). The logs of these ratios were regressed against latitude, $MAT$, $MAP$, and temperature seasonality, using the linear models specified above. Cook's distance analyses were carried out for each of the models, and extreme outliers removed.
 
-To test whether and how C fluxes varied with climate when standardised by growing season length (*Q5*; Table 1), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate, specifically growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
+To test whether and how C fluxes varied with climate when standardised by growing season length (*Q5*; Table 1), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate (defined to the nearest month): growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
 All analyses were conducted in R v.3.5.1 [@r_2020]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
 

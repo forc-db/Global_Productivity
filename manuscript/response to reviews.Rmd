@@ -133,6 +133,8 @@ Minor comments:
 
 **While ForC contains information on precise stand ages for many temperate forests (typically estimated from tree-rings), this information is typically unavailable for tropical forests, and so these forests are often recorded simply as 'old-growth' or 'undisturbed'. This means that they are believed to be older than 100 years of age, but the precise age is unknown. As a result, it is unfortunately not possible to standardise this dataset by age beyond 100 years, and so we treat all forests in the analysis as mature forests, assuming minimal effect of age beyond 100 years.** 
 
+**To clarify this to readers, we have added the following statement: "To reduce any biasing effects of stand age, we included only stands of known age $\ge$ 100 years and those described by terms such as "mature", "intact", or "old-growth", *noting that ages of mature tropical forests are typically unknown because most tropical trees cannot be easily dated using tree-rings*."**
+
 6. Fig. S6. Spell out “T seas” and “P seas” in the caption.
 
 **We have made this edit.**
