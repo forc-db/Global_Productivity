@@ -349,7 +349,7 @@ All other relationships were non-significant (p > 0.05).
   
 ### Discussion  
 
-Our analysis of a large global database (ForC) clarifies how autotrophic C fluxes in mature forests vary with latitude and climate on a global scale.
+Our analysis of a large global database (ForC) clarifies how autotrophic C fluxes in mature forests vary with latitude and climate on a global scale (Table 1).
 We show that, across all nine variables analyzed, annual C flux decreases continually with latitude (Fig. 2), a finding that confirms multiple previous studies and contradicts the idea that productivity of temperate forests rivals or even exceeds that of tropical forests [@luyssaert_co_2007; @huston_global_2009]. 
 At this global scale, C fluxes increase approximately in proportion to one another, with component fluxes summing appropriately to larger fluxes and no detectable differences in allocation across latitude or climates (Figs. 2, 4, S3). 
 Similarly, we show broad - *albeit* not complete - consistency of climate responses across C fluxes, with the observed latitudinal variation primarily attributable to temperature and its seasonality (Figs. 3-4).
