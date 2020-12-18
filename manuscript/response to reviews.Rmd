@@ -1,5 +1,5 @@
 ---
-title: "Appeal of rejection of GCB-20-1713"
+title: "Response to reviews"
 output: pdf_document
 bibliography: library.bib
 csl: global-change-biology.csl
@@ -11,50 +11,29 @@ knitr::opts_chunk$set(echo = TRUE)
   
 Dear Editor:
 
-We are please to submit a revised version of our manuscript, "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713), for consideration for publication in *Global Change Biology*. 
+We are please to submit a revised version of our manuscript, "Global patterns of forest autotrophic carbon fluxes" (GCB-20-1713), for consideration for publication in *Global Change Biology*. We have addressed all points raised by the reviewers, as detailed below. The most significant changes include:
 
-.....
+- We modified the presentation to clarify that this is intended as a high-quality quantitative review using a vastly expanded and standardized dataset, noting that it was never our intention to claim to be posing novel hypotheses. 
 
-thank you,
+- We added some statements clarifying how our analysis improves upon previous similar analyses. Major improvements include sized of database, number of variables considered, and standardization of stand age, history, and management.
+
+- We added discussion relating our results to the eddy-covariance literature and highlighting some modeling implications.
+
+Thank you for considering this revised version, and we look forward to your response.
+
+Sincerely,
 
 Kristina Anderson-Teixeira (on behalf of all coauthors)
 
 \newpage
     
   
-Dear Kristina,
- 
-Your appeal regarding the decision on your manuscript GCB-20-1713 has been safely received. The editor is in principle willing to consider a revised version of your manuscript. If you do consider to submit a revised manuscript, we want to stress the importance of fully addressing all the comments raised by both reviewers, including those concerns about the novelty and the lack of mechanistic advancement of your paper. Your revised manuscript, along with the point-to-point response to reviewer comments, will be sent out for evaluation. We will make a decision based on reviewers' assessment, and no acceptance can be guaranteed.   
- 
-Please let me know if this is agreeable to you. 
 
-All the best,
+# Reviewer(s)' Comments to Author:
 
-Rhea Bruno   
+## Reviewer: 1
 
-~~~ 
-
-Dear Dr. Anderson-Teixeira,
-
-We write to you in regards to manuscript "Global patterns of forest autotrophic carbon fluxes". Based on points raised by the referees, the Subject Editor has denied publication of your paper in Global Change Biology.
-
-As you may know, we decline a substantial proportion of manuscripts. These editorial judgments are based on such considerations as the degree of advance provided, the breadth of potential interest to researchers and timeliness.
-
-Please be assured that this editorial decision does not represent a criticism of the quality of your work, nor are we questioning its value to others working in this area
-
-Thank you for considering Global Change Biology for the publication of your research.  We hope the outcome of this specific submission will not discourage you from the submission of future manuscripts.
-
-Sincerely,
-Global Change Biology Editorial Office
-
-\newpage
-
-
-Reviewer(s)' Comments to Author:
-
-Reviewer: 1
-
-Comments to the Author
+### Comments to the Author
 
 
 Using 1,319 records from the Global Forest Carbon Database (ForC), authors of this manuscript explored the spatial pattern of several carbon flux. They found forest C fluxes decreases with absolute latitude. Among climatic variables, mean annual temperature and temperature seasonality were found to be the best univariate climatic predictors. They suggest their findings could improve understanding of forest carbon cycling under climate change. Overall, the manuscript is well written, but the findings seem not improving contemporary knowledge of forest carbon cycling, and the study appears to be a simple statistical analyses of literature data, which did not reveal the biological mechanisms lead to the detected pattern. Thus, I cannot recommend publishing this paper in GCB, but suggest the authors to consider a data journal like ESSD.
@@ -111,9 +90,9 @@ While I commend the authors’ efforts to harmonize the dataset, I found the pap
 **This suggestion is inappropriate for two reasons. First, the hypothesis-testing analyses presented here would be unsuitable for a data journal. Second, the ForC database is already published [tropical portion only in @anderson-teixeira_carbon_2016, *GCB*; full database as a data paper in Anderson-Teixeira et al. @anderson-teixeira_forc_2018, *Ecology*]. This fact is prominently cited in the last paragraph of the introduction and the first sentence of the methods.**
 
 
-Reviewer: 2
+## Reviewer: 2
 
-Comments to the Author
+### Comments to the Author
     
 In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Morgan et al. examined the latitudinal and climatic dependences of various autotrophic fluxes of global mature and undisturbed forests, using a recent release of the ForC database. They reported that latitude and temperature are the best univariate predictor of mature forest carbon cycling, while the effect of temperature is modified by precipitation. Overall, I appreciate this thorough analysis of the novel ForC database (great work in making data publicly available!) and see no major flaws in the study, thus most of my comments below are meant to further improve the manuscript. My comments are below:
 
@@ -128,7 +107,7 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 3. Implication for models. I think it is nice for the authors to report that carbon flux of mature forest is primarily dependent on MAT or latitude. But how much could this advanced knowledge help us improve global simulation of forest carbon cycling. I’d be very curious to see if the state-of-the-art models demonstrate a similar or different functional response of carbon flux to MAT/latitude, and what is the possible reason for that. I think by tapping into this question (even just in discussion) will make the study be of interest to a wider audience.
 
 **We have added the following comments on models to the discussion:**
-- **We find no significant trend in the allocation of $GPP$ between production and respiration across latitude or climate ($NPP$:$R_{auto}$; Fig. S3), counter to the idea that tropical forests have anomalously low $CUE$ [@de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016], *which is predicted by most models [@collalti_forest_2020]*. In contrast, @collalti_forest_2020 found that forest production efficiency increased with temperature--a finding that is consistent in direction with the insignificant trends observed here (Fig. S3).** 
+- **We find no significant trend in the allocation of $GPP$ between production and respiration across latitude or climate ($NPP$:$R_{auto}$; Fig. S3), counter to the idea that tropical forests have anomalously low $CUE$ [@de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016], *which is predicted by most models* [@collalti_forest_2020]. In contrast, @collalti_forest_2020 found that forest production efficiency increased with temperature--a finding that is consistent in direction with the insignificant trends observed here (Fig. S3).** 
 
 *(NEED MORE HERE!!!)*
 
@@ -167,4 +146,4 @@ Keenan, T. F., Gray, J., Friedl, M. A., Toomey, M., Bohrer, G., Hollinger, D. Y.
 Zhou, S., Zhang, Y., Caylor, K. K., Luo, Y., Xiao, X., Ciais, P., … Wang, G. (2016). Explaining inter-annual variability of gross primary productivity from plant phenology and physiology. Agricultural and Forest Meteorology, 226–227(October), 246–256. https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1016%2Fj.agrformet.2016.06.010&data=02%7C01%7Cmullerh%40si.edu%7C95d13ecc18f5461cbe2408d858c4b0a9%7C989b5e2a14e44efe93b78cdd5fc5d11c%7C0%7C0%7C637356949086641203&sdata=UBxrEMtqh3Qo7%2B45xA9%2Fz6lqQIXD3LGvdMyVCNGOwSA%3D&reserved=0
 
 \newpage
-## References
+# References
