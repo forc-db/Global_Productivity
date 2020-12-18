@@ -170,14 +170,14 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
 
 \blandscape
 ## Figure S4. Individual plots of forest C fluxes in relation to mean annual climate, part 1
-```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of forest C fluxes in relation to mean annual climate, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of forest C fluxes in relation to mean annual climate, part 1. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate1.png")
 ```
 
 \newpage
 ## Figure S5. Individual plots of forest C fluxes in relation to mean annual climate, part 2
-```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of forest C fluxes in relation to mean annual climate, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of forest C fluxes in relation to mean annual climate, part 2. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate2.png")
 ```
@@ -185,28 +185,28 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
 
 
 ## Figure S6. Individual plots of forest C fluxes in relation to mean climate seasonality, part 1
-```{r echo=FALSE, fig.cap = "Figure S6: Individual plots of forest C fluxes in relation to mean climate seasonality, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height ='80%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S6: Individual plots of forest C fluxes in relation to mean climate seasonality, part 1. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality3.png")
 ```
 
 \newpage
 ## Figure S7. Individual plots of forest C fluxes in relation to mean climate seasonality, part 2
-```{r echo=FALSE, fig.cap = "Figure S7: Individual plots of forest C fluxes in relation to mean climate seasonality, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.width ='80%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S7: Individual plots of forest C fluxes in relation to mean climate seasonality, part 2. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality4.png")
 ```
 
 \newpage
 ## Figure S8. Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1
-```{r echo=FALSE, fig.cap = "Figure S8: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S8: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season1.png")
 ```
 
 \newpage
 ## Figure S9. Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2
-```{r echo=FALSE, fig.cap = "Figure S9: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S9: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2. Statistical signficance is indicated by solid (p $\\le$ 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season2.png")
 ```
