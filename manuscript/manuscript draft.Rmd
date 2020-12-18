@@ -110,7 +110,7 @@ Each year, over 69 Gt of C cycle through Earth's forests [@badgley_terrestrial_2
 As atmospheric CO~2~ continues to rise, driving climate change, forests will play a critical role in shaping the future of Earth's climate [@cavaleri_urgent_2015; @rogelj_mitigation_2018]. 
 However, our understanding of global-scale variation in forest C cycling remains incomplete, in large part because it is pieced together from numerous studies, most considering only one or a few variables at a time, with various approaches for handling influential factors such as stand age, disturbance history, and management status [@litton_carbon_2007; @gillman_latitude_2015; @simova_enigma_2017].
 
-Forest C fluxes decrease with latitude [e.g., @luyssaert_co_2007;  @gillman_latitude_2015; @li_mapping_2019]. 
+Forest C fluxes decrease with latitude [e.g., @cramer_comparing_1999; @zhao_improvements_2005; @luyssaert_co_2007; @gillman_latitude_2015; @li_mapping_2019]. 
 However, studies have differed in their conclusions regarding the shape of this relationship -- quite possibly because of lack of standardization with respect to methodology and stand history. 
 C flux and allocation vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset.
 Studies agree that gross primary productivity ($GPP$) increases continuously with decreasing latitude and is indisputably highest in tropical forests [@luyssaert_co_2007; @beer_terrestrial_2010; @jung_global_2011; @badgley_terrestrial_2019; @li_mapping_2019]. 
@@ -120,7 +120,7 @@ A shallower increase in $NPP$ than in $GPP$ with decreasing latitude would align
 Such differences among C fluxes in their relationship to latitude have profound implications for our understanding of the C cycle and its climate sensitivity [e.g., @collalti_forest_2020].
 However, until recently the potential to compare latitudinal trends across C fluxes has been limited by lack of a large database with standardization for methodology, stand history, and management [@anderson-teixeira_forc_2018].
 
-Latitudinal gradients in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017; @mullerlandau_patterns_2020], are driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010; @mullerlandau_patterns_2020].
+Latitudinal gradients in forest C flux rates, along with altitudinal gradients [@girardin_net_2010; @malhi_variation_2017; @mullerlandau_patterns_2020], are driven primarily by climate, which is a significant driver of C fluxes across broad spatial scales [@cramer_comparing_1999; @luyssaert_co_2007; @cleveland_relationships_2011; @wei_forest_2010; @mullerlandau_patterns_2020].
 However, there is little consensus as to the shapes of these relationships or the best predictor variables.
 The majority of studies have focused on exploring the relationships of C fluxes to mean annual temperature ($MAT$) and precipitation ($MAP$), which are the most commonly reported site-level climate variables. 
 C fluxes increase strongly with $MAT$ on the global scale, but whether they saturate or potentially decrease at higher temperatures remains disputed. 
@@ -364,13 +364,7 @@ Compared to tropical forests, the temperate forest biome has experienced more wi
 Because carbon allocation varies with stand age [@de_lucia_forest_2007; @anderson-teixeira_altered_2013;  @doughty_what_2018], age differences may introduce systematic biases into analyses of C fluxes across latitude or global climatic gradients. 
 For example, woody productivity tends to be higher in rapidly aggrading secondary stands than in old-growth forests, where proportionally more C is allocated to respiration and non-woody productivity [@de_lucia_forest_2007; @piao_forest_2010; @doughty_what_2018; @kunert_understanding_2019].
 Thus, findings that temperate forest productivity rivals that of tropical forests are likely an artifact of different forest ages across biomes.
-The significant variation in carbon fluxes with stand age has implications for ecosystem models. Ecosystem modelling approaches may neglect age-related effects, or assume stand equilibrium [see e.g. @yu_high_2014; @collalti_forest_2020]. Our results highlight the importance of incorporating stand age into ecosystem models.
-
-*As many dynamic global vegetation models lack age effects, such biases may be imbued in models *
-
-**PERHAPS WE CAN BRING IN MODELING COMMENT HERE**
-
-**Several papers note that many DVGMs don't include effects of age/assume stand equilibrium (e.g. Collalti 2020, Yu 2014) - perhaps we can note that you would expect discrepancies in model outputs if age is not accounted for?**
+The significant variation in C fluxes as a function of stand age has implications for ecosystem models. Ecosystem modelling approaches may neglect age-related effects, or assume stand equilibrium [see e.g. @yu_high_2014; @collalti_forest_2020]. Our results highlight the importance of incorporating stand age into ecosystem models; without this, models are likely to be vulnerable to bias in global C flux projections.
 
 We show that C fluxes are broadly consistent in their responses to climate drivers on the global scale, with no signficant trends in C allocation among the variable pairs tested (Figs. 2, S3).
 This parallels the observation that C allocation across multiple C fluxes varies little with respect to climate along a steep tropical elevational gradient [@malhi_variation_2017; but see @moser_elevation_2011], 
@@ -388,7 +382,7 @@ Belowground fluxes in particular are difficult to quantify, and measurement meth
 $ANPP_{stem}$, which is also poorly explained by latitude or climate, is more straightforward to estimate but subject to variability introduced by methodological differences including minimum plant size sampled and choice of biomass allometries [@clark_measuring_2001]. 
 That said, methodological variation and uncertainty affect all of fluxes considered here, and some of the larger fluxes that vary more strongly with respect to climate ($ANPP$, $NPP$) are estimated by summing uncertain component fluxes. 
 Second, differences among variables in the proportion of variation explained by climate may be attributable to more direct climatic control over $GPP$ than subsidiary fluxes. 
-That is, subsidiary fluxes may be shaped by climate both through its influence on $GPP$ and through its influence on $CUE$ and C allocation (**REF**), as is imbued in the structure of most models [@simova_enigma_2017] **REF**.
+That is, subsidiary fluxes may be shaped by climate both through its influence on $GPP$ and through its influence on $CUE$ and C allocation, as is imbued in the structure of most models [@cramer_comparing_1999; @simova_enigma_2017].
 
 Temperature and its seasonality were the primary drivers of C fluxes on the global scale (Table 1, *Q2*, *Q4*; Figs. 2-4), consistent with a long legacy of research identifying temperature as a primary driver of forest ecosystem C cycling [e.g., @lieth_primary_1973; @luyssaert_co_2007; @wei_forest_2010].
 We find little evidence of any non-linearity in temperature's influence on C fluxes.
