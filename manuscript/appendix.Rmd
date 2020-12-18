@@ -89,19 +89,15 @@ Model forms tested include first-order linear (Lin), second-order polynomial (Po
 
 \elandscape
 
-## Table S3. Signficance of relationships of forest C fluxes to MAT alone and in combination with MAP.
+## Table S3. Summary of models relating forest C fluxes to MAT alone and in combination with MAP.
 ```{r eval = TRUE, echo=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
-S5 <- read.csv("tables_figures/mat_map.csv", stringsAsFactors = FALSE, check.names = FALSE)
+S5 <- read.csv("tables_figures/mat_map.csv", col.names = c("C flux", "MAT","MAT + MAP", "MAT x MAP", "form", "$R^2$"), stringsAsFactors = FALSE, check.names = FALSE)
 kable(S5, format = "latex", booktabs = TRUE,  escape = F)%>%
-  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 12) %>%
-  column_spec(1, width = "4cm") %>%
-  column_spec(2, width = "6cm") %>%
-  column_spec(3, width = "6cm") %>%
-  column_spec(4, width = "6cm")%>%
-  column_spec(5, width = "4cm")%>%
-  column_spec(6, width = "2cm")
+  kable_styling(latex_options = c("scale_down", "hold_position"), font_size = 10) %>%
+  add_header_above(c(" ", "p-value by model term"=3, "best (lowest AIC) model "=2)) 
+
 ```
 
 \newpage
@@ -134,6 +130,7 @@ library(knitr)
 library(kableExtra)
 S3 <- read.csv("tables_figures/best_models_each_flux.csv", stringsAsFactors = FALSE, check.names = FALSE)
 kable(S3, format = "latex", booktabs = TRUE, escape = F) %>%
+  column_spec(4:5, width = "3cm") %>%
   kable_styling(latex_options = c("scale_down", "hold_position")) %>%
   collapse_rows(columns = 1, latex_hline = "major")
 ```

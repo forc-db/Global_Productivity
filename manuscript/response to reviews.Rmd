@@ -140,7 +140,7 @@ Minor comments:
 
 2. In Table S3, does the R2 come from the univariate linear model or the multivariate model?
 
-**We have clarified this in the table caption.**
+**We have adjusted table column names to clarify.**
 
 3. Perhaps add R2 and p value in Fig. S3. Additionally, could you add the NPP to GPP ratio (CUE) as CUE is a quite often used allocation indicator.
 
