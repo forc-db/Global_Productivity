@@ -364,17 +364,18 @@ Compared to tropical forests, the temperate forest biome has experienced more wi
 Because carbon allocation varies with stand age [@de_lucia_forest_2007; @anderson-teixeira_altered_2013;  @doughty_what_2018], age differences may introduce systematic biases into analyses of C fluxes across latitude or global climatic gradients. 
 For example, woody productivity tends to be higher in rapidly aggrading secondary stands than in old-growth forests, where proportionally more C is allocated to respiration and non-woody productivity [@de_lucia_forest_2007; @piao_forest_2010; @doughty_what_2018; @kunert_understanding_2019].
 Thus, findings that temperate forest productivity rivals that of tropical forests are likely an artifact of different forest ages across biomes.
+*As many dynamic global vegetation models lack age effects, such biases may be imbued in models *
 **PERHAPS WE CAN BRING IN MODELING COMMENT HERE**
 
 **Several papers note that many DVGMs don't include effects of age/assume stand equilibrium (e.g. Collalti 2020, Yu 2014) - perhaps we can note that you would expect discrepancies in model outputs if age is not accounted for?**
 
-We show that C fluxes are broadly consistent in their responses to climate drivers on the global scale, with no trends in C allocation among the variable pairs tested (Figs. 2, S3).
+We show that C fluxes are broadly consistent in their responses to climate drivers on the global scale, with no signficant trends in C allocation among the variable pairs tested (Figs. 2, S3).
 This parallels the observation that C allocation across multiple C fluxes varies little with respect to climate along a steep tropical elevational gradient [@malhi_variation_2017; but see @moser_elevation_2011], 
-and is not surprising given that carbon allocation within forest ecosystems is relatively constrained [@enquist_global_2002; @litton_carbon_2007; @malhi_allocation_2011]. 
+and is not surprising given that carbon allocation within forest ecosystems is relatively constrained [@enquist_global_2002; @litton_carbon_2007; @malhi_allocation_2011; @collalti_forest_2020]. 
 We find no significant trend in the allocation of $GPP$ between production and respiration across latitude or climate ($NPP$:$R_{auto}$; Fig. S3), counter to the idea that tropical forests have anomalously low $CUE$ [@de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016], as predicted by most models [@collalti_forest_2020]. 
 In contrast, @collalti_forest_2020 found that forest production efficiency increased with temperature--a finding that is consistent in direction with insignificant trends observed here (Fig. S3).  
 Previously observed differences in $CUE$ between old-growth tropical forests relative to (mostly younger) extratropical forests are likely an artifact of comparing stands of different age, as $CUE$ declines with forest age [@de_lucia_forest_2007; @piao_forest_2010; @collalti_forest_2020].
-Another previously observed pattern for which we find no support is a tendency for belowground C allocation to decrease with increasing temperature  [@moser_elevation_2011; @gill_belowground_2016]; rather, we observe no trends in allocation between $ANPP$ and $BNPP$ across latitudes.
+Another previously observed pattern for which we find no support is a tendency for belowground C allocation to decrease with increasing temperature  [@moser_elevation_2011; @gill_belowground_2016; @xia_global_2019]; rather, we observe no trends in allocation between $ANPP$ and $BNPP$ across latitudes.
 Failure to detect significant trends in C allocation with respect to climate in this analysis does not imply that none exist; rather, it suggests that, at this global scale, differences are subtle and/or that more careful methodological standardization and/or more data is required to detect them [*sensu* @collalti_forest_2020].
 
 Despite the broad consistency of climate responses across C fluxes, climate explains lower proportions of variability among some of the subsidiary C fluxes (*e.g.*, $ANPP_{stem}$, $BNPP$,  $BNPP_{fine.root}$; Fig. 2; Tables S2, S6). 
