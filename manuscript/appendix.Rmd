@@ -153,34 +153,34 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
 ```
 \elandscape
 ## Figure S1. Sample distribution maps for the nine forest C fluxes analyzed
-```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed", out.height ='90%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S1: Maps showing distribution of samples for the nine forest C fluxes analyzed. Variables are defined in Table 2.", out.height ='90%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/distribution_all_samples.png")
 ```
 \blandscape
 ## Figure S2. Correlations among climate variables and latitude
-```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Scatterplots and Pearson's R values for relationships among climate variables and latitude", out.height='90%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center", fig.cap = "Figure S2: Scatterplots and Pearson's R values for relationships among climate variables and latitude. Climate variables are as defined in Table S1.", out.height='90%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/climate_regressions.png")
 ```
 
 ## Figure S3. Ratios among forest C fluxes as a function of latitude and climate variables
-```{r echo=FALSE, fig.align = "center",fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables. Regressions test variation in allocation to component fluxes for three relationships: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. We interpret analysis of variation in $NPP:R_{auto}$ in the context of CUE (GPP/NPP), as variation in CUE will be directly related to variation in $NPP:R_{auto}$.", out.width ='75%', fig.pos='H'}
+```{r echo=FALSE, fig.align = "center",fig.cap = "Figure S3: Ratios among forest C fluxes as a function of latitude and climate variables. Regressions test variation in allocation to component fluxes for three relationships: (1) $GPP = NPP + R_{auto}$, (2) $NPP = ANPP + BNPP$, and (3) $ANPP = ANPP_{foliage} + ANPP_{stem}$. We interpret analysis of variation in $NPP:R_{auto}$ in the context of CUE ($CUE = NPP/GPP = NPP/(NPP+R_auto)$), as variation in CUE will be directly related to variation in $NPP:R_{auto}$. All relationships are non-signficant (p>0.05).", out.width ='80%', fig.pos='H'}
 
-  knitr::include_graphics("tables_figures/ratio_grid_plots.png")
+  knitr::include_graphics("tables_figures/ratio_grid_plots_nolegend.png")
 ```
 \elandscape
 
 \blandscape
 ## Figure S4. Individual plots of forest C fluxes in relation to mean annual climate, part 1
-```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of forest C fluxes in relation to mean annual climate, part 1.", out.height='90%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S4: Individual plots of forest C fluxes in relation to mean annual climate, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate1.png")
 ```
 
 \newpage
 ## Figure S5. Individual plots of forest C fluxes in relation to mean annual climate, part 2
-```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of forest C fluxes in relation to mean annual climate, part 2.", out.height='90%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S5: Individual plots of forest C fluxes in relation to mean annual climate, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height='85%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_climate2.png")
 ```
@@ -188,28 +188,28 @@ kable(S4, format = "latex", booktabs = TRUE, escape = F) %>%
 
 
 ## Figure S6. Individual plots of forest C fluxes in relation to mean climate seasonality, part 1
-```{r echo=FALSE, fig.cap = "Figure S6: Individual plots of forest C fluxes in relation to mean climate seasonality, part 1.", out.height ='80%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S6: Individual plots of forest C fluxes in relation to mean climate seasonality, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.height ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality3.png")
 ```
 
 \newpage
 ## Figure S7. Individual plots of forest C fluxes in relation to mean climate seasonality, part 2
-```{r echo=FALSE, fig.cap = "Figure S7: Individual plots of forest C fluxes in relation to mean climate seasonality, part 2.", out.width ='80%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S7: Individual plots of forest C fluxes in relation to mean climate seasonality, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines. Fits shown are of the form with the lowest AIC for each C variable- climate variable combination (Table S2).", out.width ='80%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/grid_plots_seasonality4.png")
 ```
 
 \newpage
 ## Figure S8. Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1
-```{r echo=FALSE, fig.cap = "Figure S8: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1.", out.width ='95%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S8: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 1. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season1.png")
 ```
 
 \newpage
 ## Figure S9. Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2
-```{r echo=FALSE, fig.cap = "Figure S9: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2.", out.width ='95%', fig.pos='H'}
+```{r echo=FALSE, fig.cap = "Figure S9: Growing season length-standardized forest C fluxes in relation to mean growing season climate, part 2. Statistical signficance is indicated by solid (p < 0.05) and dashed (p > 0.05) regression lines.", out.width ='95%', fig.pos='H'}
 
   knitr::include_graphics("tables_figures/gridded_growing_season2.png")
 ```
