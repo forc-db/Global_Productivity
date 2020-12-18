@@ -17,7 +17,7 @@ We are please to submit a revised version of our manuscript, "Global patterns of
 
 - We added some statements clarifying how our analysis improves upon previous similar analyses. Major improvements include sized of database, number of variables considered, and standardization of stand age, history, and management.
 
-- We added discussion relating our results to the eddy-covariance literature and highlighting some modeling implications.
+- We added discussion relating our results to the eddy-covariance literature on growing season length and highlighting some modeling implications.
 
 Thank you for considering this revised version, and we look forward to your response.
 
