@@ -48,7 +48,7 @@ Using 1,319 records from the Global Forest Carbon Database (ForC), authors of th
 **2. We have made the following revisions to the language in the abstract and introduction to clarify that our intention is to provide a quantitative review that clarifies uncertainty in these relationships:**  
 
 - **Abstract: "Here, we draw upon 1,319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively ~~explore~~ *review* how annual C cycling in mature, undisturbed forests varies with latitude and climate on a global scale."** 
-- **Introduction: "In order to approach this broad topic, we simplify the major gaps in our knowledge to five broad *review questions* and corresponding predictions (Table 1)."**
+- **Introduction: "In order to approach this broad topic, we organize the major gaps in our knowledge under five broad review questions and corresponding predictions, many derived from the findings of previous studies (Table 1)."**
 
 **One point above that is not addressed below is that we present "simple statistical analyses". While we concur that the analyses are relatively simple, that does not preclude their being appropriate, informative, and sufficient. They represent several substantive advances over past analyses of this type:**
 
@@ -72,7 +72,7 @@ Forest C fluxes decreasing with latitude was also not a new finding. The author 
 
 **We agree that these results are not surprising to many of us, and state in the introduction that productivity decreases with latitude. Yet, as also noted in the introduction, the form of this relationship is less clear, and contradictory papers have been published in high-profile journals in the last 15 years [@luyssaert_co_2007; @huston_global_2009;  @gillman_latitude_2015]. A crucial part of science is built on high-quality synthesis that clarifies current understanding and probes for unexpected relationships, which is the goal here-- as opposed to testing this as a novel hypothesis.** 
 
-**As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships. We have added text to the introduction to highlight the importance of standardisation of the dataset: "Productivity may vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset."**
+**As this comment identifies, results from previous studies were complicated by other effects. The power of this synthesis lies in how it standardises for the effects of stand age and disturbance history, unambiguously clarifying these relationships. We have added text to the introduction to highlight the importance of standardisation of the dataset: "C flux and allocation vary with stand age, disturbance, and management [@de_lucia_forest_2007; @yu_high_2014; @fernandez-martinez_spatial_2014; @simova_enigma_2017], making clear latitudinal patterns difficult to discern without standardization of the dataset."**
 
 **Thank you for highlighting the paper by Yu et al. (2014). We have cited this at several points in the text.**
 
