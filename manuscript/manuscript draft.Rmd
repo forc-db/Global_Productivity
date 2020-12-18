@@ -366,6 +366,8 @@ For example, woody productivity tends to be higher in rapidly aggrading secondar
 Thus, findings that temperate forest productivity rivals that of tropical forests are likely an artifact of different forest ages across biomes.
 **PERHAPS WE CAN BRING IN MODELING COMMENT HERE**
 
+**Several papers note that many DVGMs don't include effects of age/assume stand equilibrium (e.g. Collalti 2020, Yu 2014) - perhaps we can note that you would expect discrepancies in model outputs if age is not accounted for?**
+
 We show that C fluxes are broadly consistent in their responses to climate drivers on the global scale, with no trends in C allocation among the variable pairs tested (Figs. 2, S3).
 This parallels the observation that C allocation across multiple C fluxes varies little with respect to climate along a steep tropical elevational gradient [@malhi_variation_2017; but see @moser_elevation_2011], 
 and is not surprising given that carbon allocation within forest ecosystems is relatively constrained [@enquist_global_2002; @litton_carbon_2007; @malhi_allocation_2011]. 
