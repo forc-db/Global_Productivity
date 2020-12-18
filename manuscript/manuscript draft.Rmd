@@ -364,7 +364,9 @@ Compared to tropical forests, the temperate forest biome has experienced more wi
 Because carbon allocation varies with stand age [@de_lucia_forest_2007; @anderson-teixeira_altered_2013;  @doughty_what_2018], age differences may introduce systematic biases into analyses of C fluxes across latitude or global climatic gradients. 
 For example, woody productivity tends to be higher in rapidly aggrading secondary stands than in old-growth forests, where proportionally more C is allocated to respiration and non-woody productivity [@de_lucia_forest_2007; @piao_forest_2010; @doughty_what_2018; @kunert_understanding_2019].
 Thus, findings that temperate forest productivity rivals that of tropical forests are likely an artifact of different forest ages across biomes.
-The significant variation in carbon fluxes with stand age has implications for ecosystem models. Ecosystem modelling approaches may neglect age-related effects, or assume stand equilibrium [see e.g. @yu_high_2014; @collalti_forest_2020]. Our results highlight the importance of incorporating stand age into ecosystem models.
+**PERHAPS WE CAN BRING IN MODELING COMMENT HERE**
+
+**Several papers note that many DVGMs don't include effects of age/assume stand equilibrium (e.g. Collalti 2020, Yu 2014) - perhaps we can note that you would expect discrepancies in model outputs if age is not accounted for?**
 
 We show that C fluxes are broadly consistent in their responses to climate drivers on the global scale, with no trends in C allocation among the variable pairs tested (Figs. 2, S3).
 This parallels the observation that C allocation across multiple C fluxes varies little with respect to climate along a steep tropical elevational gradient [@malhi_variation_2017; but see @moser_elevation_2011], 
