@@ -123,11 +123,8 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 
 2. A key conclusion is “no detectable differences in allocation across latitude or climates”, however, I do not see a strong evidence for that presented in the main text – Fig.S3 does show several allocation indicators though no statistics are provided. Fig. 2 shows that C fluxes increase approximately in proportion to one another, but that does not necessarily mean allocation is unchanged across latitude or climates.
 
-**We found no significant relationships between flux ratios (allocation to fluxes) across latitude and three climate variables tested, and as a result have not presented figures illustrating this in the text. We state that these results were non-significant in the results section. We have updated Fig. S3 to clarify that none of the fits are significant (and therefore no statistics are presented).**
+**We found no significant relationships between flux ratios (allocation to fluxes) across latitude and three climate variables tested, and as a result have not presented figures illustrating this in the main article. We state that these results were non-significant (p>0.05) in the results section. We have updated the Fig. S3 legend to clarify that none of the fits are significant (and therefore no statistics are presented).**
 
-*from Helene: maybe we should also address statistical power*
-
-*(requires response)*
 
 3. Implication for models. I think it is nice for the authors to report that carbon flux of mature forest is primarily dependent on MAT or latitude. But how much could this advanced knowledge help us improve global simulation of forest carbon cycling. I’d be very curious to see if the state-of-the-art models demonstrate a similar or different functional response of carbon flux to MAT/latitude, and what is the possible reason for that. I think by tapping into this question (even just in discussion) will make the study be of interest to a wider audience.
 

@@ -279,7 +279,7 @@ All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was
 
 Smaller component fluxes summed approximately to larger fluxes across the latitudinal gradient (Fig. 2). That is, modeled estimates of $GPP$, generated from the sum of $NPP$ and $R_{auto}$; $NPP$, generated from the sum of $ANPP$ and $BNPP$; and $ANPP$, generated from the sum of $ANPP_{foliage}$ and $ANPP_{stem}$, fell almost completely within the confidence intervals of the regressions of field estimates of $GPP$, $NPP$, and $ANPP$, respectively.
 
-We found no evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 12 relationships tested (3 ratios among C flux variables regressed against latitude, $MAT$, $MAP$ and temperature seasonality), none were significant.
+We found no evidence of systematic variation in C allocation with latitude or climate (Fig. S3). Of 12 relationships tested (3 ratios among C flux variables regressed against latitude, $MAT$, $MAP$ and temperature seasonality), none were significant (all p>0.05).
    
 *Q2. How do C fluxes relate to $MAT$ and $MAP$?* 
 
