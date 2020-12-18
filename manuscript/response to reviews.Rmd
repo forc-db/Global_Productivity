@@ -125,10 +125,12 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 
 **We found no significant relationships between flux ratios (allocation to fluxes) across latitude and three climate variables tested, and as a result have not presented figures illustrating this in the main article. We state that these results were non-significant (p>0.05) in the results section. We have updated the Fig. S3 legend to clarify that none of the fits are significant (and therefore no statistics are presented).**
 
-
 3. Implication for models. I think it is nice for the authors to report that carbon flux of mature forest is primarily dependent on MAT or latitude. But how much could this advanced knowledge help us improve global simulation of forest carbon cycling. I’d be very curious to see if the state-of-the-art models demonstrate a similar or different functional response of carbon flux to MAT/latitude, and what is the possible reason for that. I think by tapping into this question (even just in discussion) will make the study be of interest to a wider audience.
 
-*(add something on this to the discussion, at the same time addressing R1's 3rd comment)*
+**We have added the following comments on models to the discussion:**
+- **We find no significant trend in the allocation of $GPP$ between production and respiration across latitude or climate ($NPP$:$R_{auto}$; Fig. S3), counter to the idea that tropical forests have anomalously low $CUE$ [@de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016], *which is predicted by most models [@collalti_forest_2020]*. In contrast, @collalti_forest_2020 found that forest production efficiency increased with temperature--a finding that is consistent in direction with the insignificant trends observed here (Fig. S3).** 
+
+*(NEED MORE HERE!!!)*
 
 Minor comments:
 
