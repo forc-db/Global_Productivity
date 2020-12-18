@@ -418,6 +418,7 @@ In the meantime, understanding the fundamental climatic controls on annual C cyc
 ### Acknowledgements
 We gratefully acknowledge all authors of the original studies and data compilations included in this analysis, their funding agencies, and the various networks that support ground-based measurements of C fluxes. 
 We also thank the numerous researchers who have contributed to the building of ForC.
+This manuscript was improved by comments from two anonymous reviewers.
 This study was funded by a Smithsonian Scholarly Studies grant to KJAT and HCML and by Smithsonian's Forest Global Earth Observatory (ForestGEO). 
 Original compilation of the ForC database was funded by DOE grants DE-SC0008085 and DE-SC0010039 to KAT.
 
