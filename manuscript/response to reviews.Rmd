@@ -108,9 +108,8 @@ In the manuscript “Global patterns of forest autotrophic carbon fluxes”, Mor
 
 **We have added the following comments on models to the discussion:**
 - **Discussion: "We find no significant trend in the allocation of $GPP$ between production and respiration across latitude or climate ($NPP$:$R_{auto}$; Fig. S3), counter to the idea that tropical forests have anomalously low $CUE$ [@de_lucia_forest_2007; @malhi_productivity_2012; @anderson-teixeira_carbon_2016], *as predicted by most models* [@collalti_forest_2020]. In contrast, @collalti_forest_2020 found that forest production efficiency increased with temperature--a finding that is consistent in direction with the insignificant trends observed here (Fig. S3)."** 
+- **Discussion: "The significant variation in C fluxes as a function of stand age has implications for ecosystem models. Ecosystem modelling approaches may neglect age-related effects, or assume stand equilibrium [see e.g. @yu_high_2014; @collalti_forest_2020]. Our results highlight the importance of incorporating stand age into ecosystem models; without this, models are likely to be vulnerable to bias in global C flux projections."**
 - **Last sentence of discussion: "In the meantime, understanding the fundamental climatic controls on annual C cycling in Earth's forests sets a firmer foundation for understanding global-scale forest C cycling and benchmarking the models [@fer_beyond_2021] used to predict forest responses and feedbacks to accelerating climate change."**
-
-*(NEED MORE HERE!!!)*
 
 Minor comments:
 
