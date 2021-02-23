@@ -30,7 +30,7 @@ knitr::write_bib(c(
 ```{r setup, include = FALSE}
 #knitr::opts_knit$set(root.dir = 'C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/manuscript/')
   # knitr::opts_knit$set(root.dir = '/Users/kteixeira/Dropbox (Smithsonian)/GitHub/ForC-db/Global_Productivity/manuscript/')
-knitr::opts_knit$set(root.dir = '/Users/gyrcbm/Documents/GitHub/Global_Productivity/manuscript/')
+# knitr::opts_knit$set(root.dir = '/Users/gyrcbm/Documents/GitHub/Global_Productivity/manuscript/')
 ```
 
 ```{r results="asis", include=FALSE}
