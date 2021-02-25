@@ -91,7 +91,7 @@ email: teixeirak@si.edu
 Carbon (C) fixation, allocation, and metabolism by trees set the basis for energy and material flows in forest ecosystems and define their interactions with Earth's changing climate. 
 However, while many studies have considered variation in productivity with latitude and climate, we lack a cohesive synthesis on how forest carbon fluxes vary globally with respect to climate and one another. 
 Here, we draw upon 1,319 records from the Global Forest Carbon Database (ForC), representing all major forest types and the nine most significant autotrophic carbon fluxes, to comprehensively review how annual C cycling in mature, undisturbed forests varies with latitude and climate on a global scale. 
-We show that, across all flux variables analyzed, C cycling decreases continuously with absolute latitude -- a finding that confirms multiple previous studies and contradicts the idea that net primary productivity of temperate forests rivals that of tropical forests. 
+Across all flux variables analyzed, rates of C cycling decreased continuously with absolute latitude -- a finding that confirms multiple previous studies and contradicts the idea that net primary productivity of temperate forests rivals that of tropical forests. 
 C flux variables generally displayed similar trends across latitude and multiple climate variables, with no differences in allocation detected at this global scale.
 Temperature variables in general, and mean annual temperature or temperature seasonality in particular, were the single best predictors of C flux, explaining 19 - 71% of variation in the C fluxes analyzed. 
 The effects of temperature were modified by moisture availability, with C flux reduced under hot and dry conditions and sometimes under very high precipitation. 
@@ -269,7 +269,7 @@ Variation in allocation to component carbon fluxes was explored for three groupi
 
 To test whether and how C fluxes varied with climate when standardised by growing season length (*Q5*; Table 1), we first standardized all annual C fluxes by dividing by growing season length (as defined above). We then derived four variables to describe growing season climate (defined to the nearest month): growing season temperature, precipitation, solar radiation, and PET (Table S1). We tested for correlations between these standardised fluxes and growing season climate variables, using only first-order linear models.
 
-All analyses were conducted in R v.3.5.1 [@r_2020]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: TBD).
+All analyses were conducted in R v.3.5.1 [@r_2020]. Code and data necessary to reproduce all results are available through GitHub (https://github.com/forc-db/Global_Productivity) and archived in Zenodo (DOI: 10.5281/zenodo.4563098).
 
 ### Results
 
