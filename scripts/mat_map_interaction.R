@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("C:/Users/becky/Dropbox (Smithsonian)/GitHub/ForC")
+setwd("")
 
 # Load libaries ####
 library(lme4)
@@ -16,12 +16,6 @@ library(mgcv)
 
 # Load data ####
 ForC_simplified <- read.csv("ForC_simplified/ForC_simplified_WorldClim_CRU_refined.csv", stringsAsFactors = F)
-VARIABLES <- read.csv(paste0(dirname(getwd()), "/ForC/data/ForC_variables.csv"), stringsAsFactors = F)
-
-na_codes <- c("NA", "NI", "NRA", "NaN", "NAC") 
-my_is.na <- function(x) { is.na(x) | x %in% na_codes}
-my_na.omit <- function(x) { return(x[!my_is.na(x)])}
-
 
 # Prepare data ####
 
@@ -43,14 +37,8 @@ ForC_simplified$SolarRadiation <- ForC_simplified$SolarRadiation/1000
 
 
 # Control for some factors ####
-
-
-## keep all ages except na, 0 and 999
-ages.not.999.nor.0.nor.na <- !ForC_simplified$stand.age %in% 999 &  !ForC_simplified$stand.age %in% 0 & !is.na(ForC_simplified$stand.age)
-
-## Keep only age >=100 (or 999)
+## Keep only age >=100
 age.greater.than.100 <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
-age.greater.than.200 <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
 ages <- c("age.greater.than.100")
 
 ## keep only stands that are NOT too strongly influence by management/ disturbance
@@ -63,44 +51,11 @@ min.dbh.to.keep <- rep(TRUE, nrow(ForC_simplified))
 
 ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
 
-
 fixed.no.na <- !is.na(ForC_simplified[, "map"]) & !is.na(ForC_simplified[, "masl"]) & !is.na(ForC_simplified[, "mat"])
-
-
 ForC_simplified <- ForC_simplified[dist.to.keep & fixed.no.na & ages.to.keep, ]
-
-## give leaf type
-broadleaf_codes <- c("2TEB", "2TDB", "2TB")
-needleleaf_codes <- c("2TEN", "2TDN", "2TN")
-mixed <- c("2TD", "2TE", "2TM", "2TREE")
-
-ForC_simplified$leaf.type <- ifelse(ForC_simplified$dominant.veg %in% broadleaf_codes, "broadleaf",
-                                    ifelse(ForC_simplified$dominant.veg %in% needleleaf_codes, "needleleaf",
-                                           ifelse(ForC_simplified$dominant.veg %in% mixed, "mixed", "Other")))
-
-## give leaf phenology
-evergreen_codes <- c("2TE", "2TEB", "2TEN")
-deciduous_codes <- c("2TDN", "2TDB", "2TD")
-
-
-ForC_simplified$leaf.phenology <- ifelse(ForC_simplified$dominant.veg %in% evergreen_codes, "evergreen",
-                                         ifelse(ForC_simplified$dominant.veg %in% deciduous_codes, "deciduous", "Other"))
 
 ### exclude Tura due to extreme high latitude
 ForC_simplified <- ForC_simplified[!(ForC_simplified$sites.sitename %in% "Tura"),]
-
-# Prepare some variables ####
-
-## response variable list (fluxes) ####
-all.response.variables <- VARIABLES[c(4, 7:18, 25:32, 37:38, 51:52),]$variable.name
-all.response.variables <- gsub("(_OM|_C)", "", all.response.variables)
-all.response.variables <- gsub("(_0|_1|_2|_3|_4|_5)", "", all.response.variables)
-all.response.variables <- all.response.variables[all.response.variables %in% ForC_simplified$variable.name]
-all.response.variables <- unique(gsub("_\\d", "", all.response.variables))
-
-
-all.response.variables[!all.response.variables %in% unlist(response.variables.groups)]
-
 
 ## prepare results table
 
@@ -114,7 +69,7 @@ p.table <- NULL
 
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-# response.variables <- "GPP"
+
 ############################## this section of code is useful in determining whether there are significant interactive effects or not
 ####################it is necessary to look at both the AIC and Pvalues
 
@@ -173,10 +128,6 @@ for (response.v in response.variables){
   
   mod.full <- lmer(mean ~ mat * map + (1|geographic.area/plot.name), data = df, REML = F)
   
-#   mod.full <- gam(mean ~ te(mat, map, bs = "tp") + geographic.area, data = df, method = "REML")
-#   print(summary(mod.full))
-#   plot(mod.full, scheme = 2)
-# }
   significant.effect.of.interaction <- drop1(mod.full)$AIC[2] > drop1(mod.full)$AIC[1]
   if(significant.effect.of.interaction) dAIC <- drop1(mod.full)$AIC[2] - drop1(mod.full)$AIC[1]
   
@@ -211,21 +162,12 @@ for (response.v in response.variables){
   }
   
   # significant.effect.of.additive <- TRUE
-  
-  
-  
-  
-  
-  
-  
-  # par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
+
   ylim = range(df$mean)
   xlim = c(-10, 28)# range(df$mat)
   
   if (significant.effect.of.interaction | significant.effect.of.additive | significant.effect) {
     # predict 
-    
-    # plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
     first.plot <- TRUE
     lower_bound <- c(0, 1001, 2001, 3001)
     upper_bound <- c(1000, 2000, 3000, 7500)
@@ -245,21 +187,7 @@ for (response.v in response.variables){
       
       first.plot <- FALSE
     }
-    
-    # newDat <- expand.grid(mat = seq(min(df$mat), max(df$mat), length.out = 100), map = c(500, 1000, 2000, 3000))
-    # 
-    # newDat$fit <- predict(mod.full, newDat, re.form = NA)
-    
-    # first.plot <- TRUE
-    # # plot
-    #   if(first.plot) plot(mean ~ mat, data = df, xlab = "", ylab = "", xaxt = "n", yaxt = "n", ylim = ylim)
-    #   if(!first.plot) points(mean ~ fixed, data = df, ylab = "", col = response.v.color) 
-    #   
-    #   for(map in unique(newDat$map)){
-    #     i <- which(unique(newDat$map) %in% map)
-    #     lines(fit ~ mat, data = newDat[newDat$map %in% map,], lty = ifelse(significant.effect.of.interaction|significant.effect, 1, 2), lwd = i)
-    #     
-    #   }
+
     if(response.v == "GPP") legend(x = -33, y = 43, lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
     # title (paste(response.v), outer = T, line = 1)
     mtext(side = 1, line = 3, text = expression(paste("Mean Annual Temperature (", degrees, ")")), outer = T)
@@ -274,15 +202,10 @@ for (response.v in response.variables){
     fixed2.coef <- r[3]
     int.coef <- r[4]
     
-    # if(significant.effet.of.interaction) equation <- paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3], "+", r[4], " x interaction" )
-    # if(significant.effet.of.additive) equation <-  paste(response.v, "=", r[1], "+", fixed.v,  "x", r[2], " + age x", r[3])
-    # 
-    # 
-    
     if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
     if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
     
-    resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+    resp.v.info <- read.csv("respv_data.csv", stringsAsFactors = F)
     respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
     
     
@@ -298,19 +221,17 @@ for (response.v in response.variables){
     pannel.nb <- pannel.nb +1
   }
   
-  #create all combinations of random / fixed effects
-  
-  
 }
 
 dev.off()
-write.csv(all.results, "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction.csv")
-write.csv(p.table, "C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/tables/best_model_outputs/mat_map_interaction_pvalues.csv")
+write.csv(all.results, "")
+write.csv(p.table, "")
+
 ########################################## code to correctly plot
 Rsqs = NULL
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-png(file = paste0("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png"), width = 2255, height = 2000, units = "px", res = 300)
+png(file = "", width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(3,3), mar = c(2,0,0,2), oma = c(5,8,2,0), xpd = T)
 
@@ -371,7 +292,7 @@ for (response.v in response.variables){
   if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
   if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
   
-  resp.v.info <- read.csv("C:/Users/becky/Dropbox (Smithsonian)/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
+  resp.v.info <- read.csv("respv_data.csv", stringsAsFactors = F)
   respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
   
   
