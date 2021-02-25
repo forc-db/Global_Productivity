@@ -105,7 +105,7 @@ In an era when forests will play a critical yet uncertain role in shaping Earth'
 ### Introduction
 
 Carbon (C) cycling in Earth's forests provides the energetic basis for sustaining the majority of Earth's terrestrial biodiversity and many human populations [@millennium_ecosystem_assessment_ecosystems_2005], while strongly influencing atmospheric carbon dioxide (CO~2~) and climate [@bonan_forests_2008]. 
-Forests' autotrophic C fluxes -- that is, C fixation, allocation, and metabolism by trees and other primary producers -- sets the energy ultimately available to heterotrophic organisms (including microbes), in turn influencing their abundance [@zak_plant_1994; @niedzialkowska_species_2010] and possibly diversity [@waide_relationship_1999; @chu_direct_2018]. 
+Forests' autotrophic C fluxes -- that is, C fixation, allocation, and metabolism by trees and other primary producers -- set the energy ultimately available to heterotrophic organisms (including microbes), in turn influencing their abundance [@zak_plant_1994; @niedzialkowska_species_2010] and possibly diversity [@waide_relationship_1999; @chu_direct_2018]. 
 They are linked to cycling of energy, water, and nutrients and, critically, influence all C stocks and define forest interactions with Earth's changing climate. 
 Each year, over 69 Gt of C cycle through Earth's forests [@badgley_terrestrial_2019] -- a flux more than seven times greater than that of recent anthropogenic fossil fuel emissions [9.5 Gt C yr^-1^; @friedlingstein_global_2019]. 
 As atmospheric CO~2~ continues to rise, driving climate change, forests will play a critical role in shaping the future of Earth's climate [@cavaleri_urgent_2015; @rogelj_mitigation_2018]. 
