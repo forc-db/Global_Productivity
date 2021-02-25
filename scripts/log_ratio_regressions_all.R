@@ -296,15 +296,7 @@ for(fixed.v in fixed.variables){
   if (best.model == "mod.linear") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   if (best.model == "mod") mod.full <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = final_sheet, REML = F)
   
-  cooksd <- cooks.distance(mod.full)
-
-  # plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
-  # abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
-  # text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")
-
-  influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])
-  rows.to.keep<-which(rownames(final_sheet) %in% influential)
-  ifelse(length(influential > 0), dfsubset <- final_sheet[-rows.to.keep,], dfsubset <- final_sheet)
+  dfsubset <- final_sheet
   
   mod <-  lmer(ratio ~ 1 + (1|geographic.area/plot.name), data = dfsubset, REML = F)
   mod.linear <- lmer(ratio ~ poly(fixed, 1, raw = T) + (1|geographic.area/plot.name), data = dfsubset, REML = F)
