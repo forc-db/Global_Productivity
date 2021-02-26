@@ -2,7 +2,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("")
+setwd("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity")
 
 # Load libaries ####
 library(lme4)
@@ -64,7 +64,7 @@ set2 <- c("R_auto")
 sum <- c("GPP")
 
 
-png(file = "", width = 2255, height = 2000, units = "px", res = 300)
+jpeg(file = "C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/stacked_plots/combined_stacked.jpg", width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(2,2), mar = c(2,2,2,2), oma = c(3,3,0,0))
 
@@ -114,6 +114,7 @@ for (age in ages){
       if (best.model == "mod") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = F)
 
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
       significant.effect <- anova(mod, sum.mod)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, sum.mod)$"Pr(>Chisq)"[2]
@@ -122,6 +123,8 @@ for (age in ages){
       if (best.model == "mod.poly") sum.mod <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = T)
+      
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
       
       for (i in seq(along = set1)){
@@ -162,6 +165,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = F)
 
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
             significant.effect <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2]
@@ -171,6 +175,7 @@ for (age in ages){
             if (best.model == "mod.linear") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = T)
             
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             
             ########################################### for response.v.2
             
@@ -207,6 +212,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
             significant.effect <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2]
@@ -215,6 +221,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.2 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.linear") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = T)
+            
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             
             ####################### subset data
             
@@ -343,6 +351,7 @@ for (age in ages){
       if (best.model == "mod") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
       significant.effect <- anova(mod, sum.mod)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, sum.mod)$"Pr(>Chisq)"[2]
@@ -352,6 +361,7 @@ for (age in ages){
       if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
       for (i in seq(along = set1)){
         for (j in seq(along = set2)){
@@ -392,6 +402,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
             significant.effect <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2]
@@ -400,6 +411,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.1 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.linear") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = T)
+            
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             
             ########################################### for response.v.2
             
@@ -437,6 +450,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
             significant.effect <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2]
@@ -445,6 +459,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.2 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.linear") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = T)
+            
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             
             ####################### subset data
             
@@ -467,7 +483,7 @@ for (age in ages){
             
             ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
             ylim[1] <- ylim[1] - 0.25
-            ylim[2] <- ylim[2] + 5
+            ylim[2] <- ylim[2] + 3
             
             # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
@@ -569,6 +585,7 @@ for (age in ages){
       if (best.model == "mod") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
       significant.effect <- anova(mod, sum.mod)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, sum.mod)$"Pr(>Chisq)"[2]
@@ -578,6 +595,7 @@ for (age in ages){
       if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
       for (i in seq(along = set1)){
         for (j in seq(along = set2)){
@@ -618,6 +636,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
             significant.effect <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2]
@@ -626,6 +645,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.1 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.linear") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = T)
+            
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             
             ########################################### for response.v.2
             
@@ -664,6 +685,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
             significant.effect <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2]
@@ -672,6 +694,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.2 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.linear") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = T)
+            
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             
             ####################### subset data
             
@@ -694,7 +718,7 @@ for (age in ages){
             
             ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
             ylim[1] <- ylim[1] - 0.25
-            ylim[2] <- ylim[2] + 5
+            ylim[2] <- ylim[2] + 2
             
             # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
@@ -797,6 +821,7 @@ for (age in ages){
       if (best.model == "mod") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = F)
       
       significant.effect <- anova(mod, sum.mod)$"Pr(>Chisq)"[2] < 0.05
       significance <- anova(mod, sum.mod)$"Pr(>Chisq)"[2]
@@ -806,6 +831,7 @@ for (age in ages){
       if (best.model == "mod.linear") sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       if (best.model == "mod.log") sum.mod <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
+      sum.mod <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.sum, REML = T)
       
       for (i in seq(along = set1)){
         for (j in seq(along = set2)){
@@ -846,6 +872,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = F)
             
             significant.effect <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.1)$"Pr(>Chisq)"[2]
@@ -854,6 +881,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.1 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.linear") mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             if (best.model == "mod.log") mod.full.1 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.1, REML = T)
+            
+            mod.full.1 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.1, REML = T)
             
             ########################################### for response.v.2
             
@@ -890,6 +919,7 @@ for (age in ages){
             if (best.model == "mod") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = F)
             
             significant.effect <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2] < 0.05
             significance <- anova(mod, mod.full.2)$"Pr(>Chisq)"[2]
@@ -898,6 +928,8 @@ for (age in ages){
             if (best.model == "mod.poly") mod.full.2 <- lmer(mean ~ poly(fixed, 2) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.linear") mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             if (best.model == "mod.log") mod.full.2 <- lmer(mean ~ log(fixed) + (1|geographic.area/plot.name), data = df.2, REML = T)
+            
+            mod.full.2 <- lmer(mean ~ poly(fixed, 1) + (1|geographic.area/plot.name), data = df.2, REML = T)
             
             ####################### subset data
             
@@ -920,7 +952,7 @@ for (age in ages){
             
             ylim <- range(c(df.1$mean, df.2$mean, df.sum$mean))
             ylim[1] <- ylim[1] - 0.25
-            ylim[2] <- ylim[2] + 5
+            ylim[2] <- ylim[2] #+ 5
             
             # png(file = paste0("C:/Users/gyrcbm/Dropbox/Global_Productivity/results/figures/final_figures/stacked_plots/", set1[[i]], "_to_", set2[[j]],"_", fixed.v, "_stacked.png"), width = 2255, height = 2000, units = "px", res = 300)
             
