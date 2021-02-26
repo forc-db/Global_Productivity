@@ -3,7 +3,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("")
+setwd("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity")
 
 # Load libaries ####
 library(lme4)
@@ -89,7 +89,7 @@ for(response.variables in response.variables.groups){
       par(mfrow = c(1,1), mar = c(0,0,0,0), oma = c(5,5,2,0))
       print(fixed.v)
       
-      fixed.v.info <- read.csv("fixedv_data.csv", stringsAsFactors = F)
+      fixed.v.info <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data/fixedv_data.csv", stringsAsFactors = F)
       
       xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
       
@@ -252,7 +252,8 @@ for (age in ages){
   if (age %in% "age.greater.than.100") ages.to.keep <- ForC_simplified$stand.age >= 100 & !is.na(ForC_simplified$stand.age)
   if (age %in% "age.greater.than.200") ages.to.keep <- ForC_simplified$stand.age >= 200 & !is.na(ForC_simplified$stand.age)
   
-  png(file = paste0("/combined_plots.png"), width = 2255, height = 3000, units = "px", res = 300)
+  # png(file = paste0("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/final_model_fits/combined_plots.png"), width = 2255, height = 3000, units = "px", res = 300)
+  jpeg(file = paste0("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/final_model_fits/combined_plots.jpg"), width = 2255, height = 3000, units = "px", res = 300)
   
   par(mfrow = c(3,2), mar = c(4,2,2,2), oma = c(0,3,0,0))
   
@@ -268,7 +269,7 @@ for (age in ages){
     ylim[1] <- ylim[1] - 0.25
     ylim[2] <- ylim[2] + 0.25
     
-    fixed.v.info <- read.csv("/fixedv_data.csv", stringsAsFactors = F)
+    fixed.v.info <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data//fixedv_data.csv", stringsAsFactors = F)
     
     xaxis <- fixed.v.info$xaxis[which(fixed.v.info$fixed.v %in% fixed.v)]
     
@@ -282,7 +283,7 @@ for (age in ages){
       if(response.v %in% "ANPP") responses.to.keep  <- c("ANPP_1", "ANPP_2", "ANPP_0")
       if(!response.v %in% c("NPP", "ANPP")) responses.to.keep  <- response.v
       
-      col.sym <- read.csv("/colsym.csv", stringsAsFactors = F)
+      col.sym <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data//colsym.csv", stringsAsFactors = F)
       
       col <- col.sym$col[which(col.sym$variable %in% response.v)]
       sym <- col.sym$sym[which(col.sym$variable %in% response.v)]

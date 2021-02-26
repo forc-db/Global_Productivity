@@ -232,6 +232,7 @@ Rsqs = NULL
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
 png(file = "C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png", width = 2255, height = 2000, units = "px", res = 300)
+jpeg(file = "C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.jpg", width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(3,3), mar = c(2,0,0,2), oma = c(5,8,2,0), xpd = T)
 
@@ -296,7 +297,6 @@ for (response.v in response.variables){
   
   resp.v.info <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
   respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
-  
   
   mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", respv), adj = 0.1, cex = 0.5)
   if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
