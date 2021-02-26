@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory as ForC main folder ####
-setwd("")
+setwd("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity")
 
 # Load libaries ####
 library(lme4)
@@ -205,11 +205,11 @@ for (response.v in response.variables){
     if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
     if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
     
-    resp.v.info <- read.csv("respv_data.csv", stringsAsFactors = F)
+    resp.v.info <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
     respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
     
     
-    mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", respv), adj = 0.1, cex = 0.5)
+    mtext(side = 3, line = -1, text = expression(paste("(", bold(letters[pannel.nb]), ") ", respv)), adj = 0.1, cex = 0.5)
     if(significant.effect.of.interaction) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & significant.effect.of.additive) mtext(side = 3, line = -2, text = "Significant additive effect", adj = 0.1, cex = 0.5)
     if(!significant.effect.of.interaction & !significant.effect.of.additive & significant.effect) mtext(side = 3, line = -2, text = "Significant effect of MAT", adj = 0.1, cex = 0.5)
@@ -224,16 +224,18 @@ for (response.v in response.variables){
 }
 
 dev.off()
-write.csv(all.results, "")
-write.csv(p.table, "")
+# write.csv(all.results, "")
+# write.csv(p.table, "")
 
 ########################################## code to correctly plot
 Rsqs = NULL
 
 response.variables <- c("GPP", "NPP", "ANPP", "ANPP_woody_stem", "ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto", "R_auto_root")
-png(file = "", width = 2255, height = 2000, units = "px", res = 300)
+png(file = "C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/results/figures/final_figures/interactions/mat_map_interaction.png", width = 2255, height = 2000, units = "px", res = 300)
 
 par(mfrow = c(3,3), mar = c(2,0,0,2), oma = c(5,8,2,0), xpd = T)
+
+pannel.nb <- 1
 
 for (response.v in response.variables){
   
@@ -276,7 +278,7 @@ for (response.v in response.variables){
   
   if(response.v == "GPP") legend(x = -33, y = 43, lwd = c(1:4), legend = c(500, 1500, 2500, 3500), col = plasma(5)[1:4], inset = c(-0.4, 0), xpd = NA, title = "MAP (mm)", title.col = "black")
   # title (paste(response.v), outer = T, line = 1)
-  mtext(side = 1, line = 3, text = expression(paste("Mean Annual Temperature (", degrees, ")")), outer = T)
+  mtext(side = 1, line = 3, text = expression(paste("Mean Annual Temperature (", degree, "C)")), outer = T)
   mtext(side = 2, line = 3,  text = expression(paste("Carbon flux (Mg C"~ha^-1~yr^-1,")")), outer = T)
   
   # add equation
@@ -290,13 +292,13 @@ for (response.v in response.variables){
   
 
   if(pannel.nb %in% c(1:6)) axis(1, labels = F, tck = 0.02)
-  if(pannel.nb %in% c(7:9)) axis(1, tck = 0.02)
+  if(pannel.nb %in% c(7:9)) axis(1, labels = F, tck = 0.02)
   
-  resp.v.info <- read.csv("respv_data.csv", stringsAsFactors = F)
+  resp.v.info <- read.csv("C:/Users/gyrcbm/Documents/GitHub/Global_Productivity/raw.data/respv_data.csv", stringsAsFactors = F)
   respv <- resp.v.info$name[which(resp.v.info$response.v %in% response.v)]
   
   
-  mtext(side = 3, line = -1, text = paste0(respv), adj = 0.1, cex = 0.5)
+  mtext(side = 3, line = -1, text = paste0("(", letters[pannel.nb], ") ", respv), adj = 0.1, cex = 0.5)
   if(response.v %in% c("NPP", "ANPP_woody_stem")) mtext(side = 3, line = -2, text = "Significant interactive effect", adj = 0.1, cex = 0.5)
   if(response.v %in% c("GPP", "ANPP", "R_auto")) mtext(side = 3, line = -2, text = "Significant additive effect only", adj = 0.1, cex = 0.5)
   if(response.v %in% c("ANPP_foliage", "BNPP_root", "BNPP_root_fine", "R_auto_root")) mtext(side = 3, line = -2, text = "Significant effect of MAT only", adj = 0.1, cex = 0.5)
