@@ -20,6 +20,7 @@ options(tinytex.verbose = TRUE)
 options(knitr.table.format = "latex")
 
 tables_on=FALSE
+figures_on=FALSE
 ```
 
 
@@ -221,7 +222,7 @@ kable(FACF_table, format = "latex", booktabs = TRUE, caption = "Definitions and 
 ```
 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
+```{r eval = figures_on, echo=FALSE, out.width='100%', fig.cap = "Map showing all data used in the analysis, coded by variable. Variables are plotted individually in Fig. S1. ", fig.pos='H'}
   knitr::include_graphics("distribution_all_variables_cropped.jpg")
 ```
   
@@ -281,7 +282,7 @@ In total, we analyzed 1,319 records from nine forest autotrophic C flux variable
 
 All major carbon fluxes decreased with latitude (Fig. 2; Table S2). Latitude was a strong predictor for many of the carbon fluxes, particularly the larger fluxes (Table S2, S6). Latitude explained 64% of variation in GPP (n = 243, p<0.0001), 50% in NPP (n = 161, p<0.0001) and 44% in ANPP (n = 278, p<0.0001). The C fluxes that were most poorly predicted by latitude were $BNPP_{fine.root}$ (n = 88, p< .01, $R^2$=0.17), and $ANPP_{stem}$ (n = 264, p<0.0001, $R^2$=0.18). The relationship with latitude was best fit by the first-order linear model, with the exception of NPP and $R_{root}$, for which a logarithmic model was a slightly -- but not significantly -- better fit.
   
-```{r echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant (p$\\le$0.05) and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Sample sizes are available in Table 2 and $R^2$ values for linear models are available in Table S2. Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression.", fig.pos='H'}
+```{r eval = figures_on, echo=FALSE, out.width='100%', fig.cap = "Latitudinal trends in forest autotropic carbon flux. Plotted are linear models, all of which were significant (p$\\le$0.05) and had AIC values within 2.0 of the best model (for two fluxes, logarithmic fits were marginally better; Table S2). Sample sizes are available in Table 2 and $R^2$ values for linear models are available in Table S2. Each panel shows major C fluxes together with component fluxes. Also plotted are predicted trends in the major C fluxes based on the sum of component fluxes. 95\\% confidence intervals are plotted for the major flux for comparison with predicted trends. In (d), which shows three belowground fluxes, the major flux, total belowground carbon flux, has insufficient data (n=9) to support a regression.", fig.pos='H'}
 
   knitr::include_graphics("combined_stacked.png")
 ```
@@ -305,7 +306,7 @@ There was a significant additive effect of $MAT$ and $MAP$ on $GPP$, $ANPP$ and 
 The interaction was negative for $NPP$ and positive for $ANPP_{stem}$. 
 For $ANPP_{foliage}$, $BNPP$, $BNPP_{fine.root}$, and $R_{root}$, $MAP$ did not have a significant effect when accounting for $MAT$ (Fig. 3, Table S3). 
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. Significance is defined as p $\\le$ 0.05. Sample sizes are available in Table 2 and $R^2$ values are available in Table S3.", fig.pos='H'}
+```{r eval = figures_on, echo=FALSE, out.width='100%', fig.cap = "Interactive effects of mean annual temperature and precipitation on annual forest carbon fluxes. For visualization purposes, data points are grouped into bins of 0 - 1000, 1001 - 2000, 2001 - 3000, and >3000mm mean annual precipitation, and lines of best fit models are plotted for mean annual precipitation values of 500, 1500, 2500, and 3500mm. Significance is defined as p $\\le$ 0.05. Sample sizes are available in Table 2 and $R^2$ values are available in Table S3.", fig.pos='H'}
   knitr::include_graphics("mat_map_interaction.png")
 ```
 
@@ -324,7 +325,7 @@ Solar radiation explained a low proportion of variability (<30%) in all C fluxes
   
 Annual wet days, cloud cover, and aridity were poor or non-significant predictors of variation in C fluxes, explaining less than 20% of the variation in each of the carbon fluxes (Figs. S4-S5; Table S2).
 
-```{r echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant (p $\\le$ 0.05). Sample sizes are available in Table 2 and $R^2$ values are available in Table S2.", fig.pos='H'}
+```{r eval = figures_on, echo=FALSE, out.width='100%', fig.cap = "Plots of carbon fluxes against (a) mean annual temperature; (b) mean annual precipitation; (c) potential evapotranspiration, (d) vapour pressure deficit; (e) temperature seasonality; (f) length of growing season. For visualization purposes, data for each flux was rescaled with a mean of 0 and standard deviation of 1. Lines of best fit are plotted according to the best model selected during analysis. All regressions are significant (p $\\le$ 0.05). Sample sizes are available in Table 2 and $R^2$ values are available in Table S2.", fig.pos='H'}
   knitr::include_graphics("combined_plots.png")
 ```
 
